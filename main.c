@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:03:37 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/16 12:14:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/16 13:59:00 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ int	main(int argc, char *argv[])
 		return (MINIRT_FAILURE);
 	if (set_content(&content, argv[1]))
 		return (MINIRT_FAILURE);
-	if (validate_content())
-	ft_putstr_fd(content, STDOUT_FILENO);
+	if (validate_content(content))
+		return (MINIRT_FAILURE);
+	// ft_putstr_fd(content, STDOUT_FILENO);
 	free(content);
 	return (MINIRT_SUCCESS);
 }

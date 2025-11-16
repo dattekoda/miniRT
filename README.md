@@ -6,3 +6,6 @@
 ## 11/16
 `.rt`ファイルから読み込んだ内容を`char *content`に保存する機能の実装   
 `minilibx_macos`はホームディレクトリに保存してある前提に`Makefile`を編集   
+`utils_validate.c`: ambientのvalidateが完成   
+
+`strtof.c`を実装する必要あり。   
