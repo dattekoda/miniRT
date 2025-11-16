@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT_define.h                                    :+:      :+:    :+:   */
+/*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 11:49:42 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/16 12:11:02 by khanadat         ###   ########.fr       */
+/*   Created: 2025/11/16 11:55:04 by khanadat          #+#    #+#             */
+/*   Updated: 2025/11/16 12:08:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_DEFINE_H
-# define MINIRT_DEFINE_H
+#include "miniRT_define.h"
 
-# define MINIRT_FAILURE 1
-# define MINIRT_SUCCESS 0
-
-# define ARG_NUM 2
-
-# define MINIRT_FMT ".rt"
-
-#endif
+// int	validate_rt_file(const char *content)
+// {
+// }

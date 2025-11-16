@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT_define.h                                    :+:      :+:    :+:   */
+/*   utils0.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 11:49:42 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/16 12:11:02 by khanadat         ###   ########.fr       */
+/*   Created: 2025/11/16 11:47:08 by khanadat          #+#    #+#             */
+/*   Updated: 2025/11/16 12:09:29 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_DEFINE_H
-# define MINIRT_DEFINE_H
+#include "libft.h"
+#include <stddef.h>
 
-# define MINIRT_FAILURE 1
-# define MINIRT_SUCCESS 0
+int	minirt_strrncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	s1_len;
+	size_t	s2_len;
 
-# define ARG_NUM 2
-
-# define MINIRT_FMT ".rt"
-
-#endif
+	if (n == 0)
+		return (0);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	while (n && s1_len && s2_len)
+	{
+		s1_len--;
+		s2_len--;
+		if (s1[s1_len] != s2[s2_len])
+			return (s1[s1_len] - s2[s2_len]);
+		n--;
+	}
+	return (s1[s1_len] - s2[s2_len]);
+}

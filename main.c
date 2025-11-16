@@ -6,48 +6,31 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:03:37 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/14 12:24:00 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/16 12:14:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT_define.h"
+// #include "miniRT_struct.h"
+#include "utils.h"
 #include "libft.h"
 #include <fcntl.h>
 #include <stddef.h>
 #include <stdio.h>
 
-int	minirt_strrncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	s1_len;
-	size_t	s2_len;
-
-	if (n == 0)
-		return (0);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	while (n && s1_len && s2_len)
-	{
-		s1_len--;
-		s2_len--;
-		if (s1[s1_len] != s2[s2_len])
-			return (s1[s1_len] - s2[s2_len]);
-		n--;
-	}
-	return (s1[s1_len] - s2[s2_len]);
-}
-
 int	main(int argc, char *argv[])
 {
+	char	*content;
+
+	content = NULL;
 	if (argc != ARG_NUM)
 		return (MINIRT_FAILURE);
-	if (minirt_strrncmp(argv[1], ".md", 3))
+	if (minirt_strrncmp(argv[1], MINIRT_FMT, 3))
 		return (MINIRT_FAILURE);
-	int	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-	{
-		perror("open");
+	if (set_content(&content, argv[1]))
 		return (MINIRT_FAILURE);
-	}
-	close(fd);
+	if (validate_content())
+	ft_putstr_fd(content, STDOUT_FILENO);
+	free(content);
 	return (MINIRT_SUCCESS);
 }

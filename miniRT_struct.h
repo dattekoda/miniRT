@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:03:34 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/14 11:49:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/16 11:53:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,20 @@ typedef struct	s_color
 	unsigned char	b;
 }	t_color;
 
-typedef enum	s_type {		
+typedef enum	e__type {
 	AMBIENT,
 	CAMERA,
 	LIGHT,
 	SPHERE,
 	PLANE,
 	CYLINDER	
-}	t_type;
+}	e_type;
 
 typedef struct	s_data {
-	t_type	type;
-	t_coord	coord;
-	t_vec	vec;
-	t_color	color;
+	e_type	type;
+	t_coord	*coord;
+	t_vec	*vec;
+	t_color	*color;
 }	t_data;
 
 #endif

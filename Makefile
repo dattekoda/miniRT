@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 16:08:52 by khanadat          #+#    #+#              #
-#    Updated: 2025/11/14 11:57:31 by khanadat         ###   ########.fr        #
+#    Updated: 2025/11/16 12:08:27 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		:= miniRT
 CC			:= cc
 CCFLAGS		:= -Wall -Wextra -Werror# -lm
 
-SRCS		:= main.c
+SRCS		:= main.c utils0.c utils_set.c # validate.c
 RM			:= rm -rf
 
 OBJS_DIR	:= objs
@@ -24,11 +24,23 @@ LIBFT_DIR	:= libft
 LIBFT_A		:= $(LIBFT_DIR)/libft.a
 LIBFT_FLAGS	:= -I $(LIBFT_DIR)/includes
 
-MLX_DIR		:= minilibx-linux
+
+UNAME		:= $(shell uname -s)
+
+ifeq ($(UNAME),Darwin)
+	MLX_DIR		:= ~/minilibx_macos
+	MLX_FLAGS	:= -framework OpenGL -framework AppKit
+	CCFLAGS		:= -I mac_keypress
+else ifeq ($(UNAME),Linux)
+	MLX_DIR		:= minilibx_linux
+	MLX_FLAGS	:= -lX11 -lXext
+	CCFLAGS		:= -I linux_keypress
+else
+	$(error Unsupported OS: $(UNAME))
+endif
+
 MLX_A		:= $(MLX_DIR)/libmlx.a
-
-MLX_FLAGS	:= -I $(MLX_DIR) #-lx11 -lXext
-
+MLX_FLAGS	+= -I $(MLX_DIR)
 LD_FLAGS	:= -L $(MLX_DIR) -L $(LIBFT_DIR)
 
 .PHONY	:	all clean fclean re
@@ -44,7 +56,7 @@ $(LIBFT_DIR):
 $(LIBFT_A): $(LIBFT_DIR)
 	make bonus -C $^
 
-$(MLX_A):
+$(MLX_A): $(MLX_DIR)
 	make -C $(MLX_DIR)
 
 $(OBJS_DIR)/%.o: %.c

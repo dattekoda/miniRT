@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT_define.h                                    :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 11:49:42 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/16 12:11:02 by khanadat         ###   ########.fr       */
+/*   Created: 2025/11/16 11:47:37 by khanadat          #+#    #+#             */
+/*   Updated: 2025/11/16 12:09:16 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_DEFINE_H
-# define MINIRT_DEFINE_H
+#ifndef UTILS_H
+# define UTILS_H
 
-# define MINIRT_FAILURE 1
-# define MINIRT_SUCCESS 0
+# include <stddef.h>
 
-# define ARG_NUM 2
+// utils_set.c
+int	set_content(char **content, const char *file_name);
 
-# define MINIRT_FMT ".rt"
+// utils0.c
+int	minirt_strrncmp(const char *s1, const char *s2, size_t n);
 
 #endif
