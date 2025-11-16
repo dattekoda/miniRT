@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 14:40:27 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/16 14:41:47 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/16 15:16:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,30 @@ static void	err_ambient()
 	ft_putendl_fd(msg, STDERR_FILENO);
 }
 
-int	validate_ambient(char *line)
+int	validate_ambient(char *line_ptr)
 {
 	double	lighting_ratio;
 	int		tmp;
 	size_t	i;
 
-	line++;
-	if (skip_spaces(&line))
+	line_ptr++;
+	if (skip_spaces(&line_ptr))
 		return (err_ambient(), MINIRT_FAILURE);
-	lighting_ratio = strtof(line, &line);
+	lighting_ratio = strtof(line_ptr, &line_ptr);
 	if (lighting_ratio < 0 || 1 < lighting_ratio)
 		return (err_ambient(), MINIRT_FAILURE);
-	if (skip_spaces(&line))
+	if (skip_spaces(&line_ptr))
 		return (err_ambient(), MINIRT_FAILURE);
 	i = 0;
 	while (i++ < 3)
 	{
-		tmp = ft_atoi(line);
-		if ((tmp < 0 || 255 < tmp) || skip_digit(&line))
+		tmp = ft_atoi(line_ptr);
+		if ((tmp < 0 || 255 < tmp) || skip_digit(&line_ptr))
 			return (err_ambient(), MINIRT_FAILURE);
-		if (i != 3 && *(line++) != ',')
+		if (i != 3 && *(line_ptr++) != ',')
 			return (err_ambient(), MINIRT_FAILURE);
 	}
-	if (*line == '\n')
+	if (*line_ptr == '\n')
 		return (MINIRT_SUCCESS);
 	return (err_ambient(), MINIRT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 11:49:42 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/16 12:11:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/16 15:23:45 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@
 # define ARG_NUM 2
 
 # define MINIRT_FMT ".rt"
+
+# define EPSILON_RT 1e-7
 
 #endif

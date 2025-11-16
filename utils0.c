@@ -6,12 +6,13 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:47:08 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/16 12:09:29 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/16 15:24:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stddef.h>
+#include <stdbool.h>
 
 int	minirt_strrncmp(const char *s1, const char *s2, size_t n)
 {
@@ -31,4 +32,9 @@ int	minirt_strrncmp(const char *s1, const char *s2, size_t n)
 		n--;
 	}
 	return (s1[s1_len] - s2[s2_len]);
+}
+
+bool	rt_double_equal(double a, double b)
+{
+	
 }

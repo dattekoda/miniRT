@@ -9,3 +9,6 @@
 `utils_validate.c`: ambientのvalidateが完成   
 
 `strtof.c`を実装する必要あり。   
+`fabs.c`を実装する必要あり。   
+
+`validate_camera.c`: 作成途中、doubleの値を比較する関数が必要。   
