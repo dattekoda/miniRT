@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 16:08:52 by khanadat          #+#    #+#              #
-#    Updated: 2025/11/16 13:18:31 by khanadat         ###   ########.fr        #
+#    Updated: 2025/11/16 14:41:32 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME		:= miniRT
 CC			:= cc
 CCFLAGS		:= -Wall -Wextra -Werror
 
-SRCS		:= main.c utils0.c utils_set.c utils_validate.c
+SRCS		:= main.c utils0.c utils_set.c \
+validate.c validate_utils0.c validate_ambient.c
 RM			:= rm -rf
 
 OBJS_DIR	:= objs

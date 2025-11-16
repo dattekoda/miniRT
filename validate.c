@@ -1,64 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_validate.c                                   :+:      :+:    :+:   */
+/*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:55:04 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/16 14:06:32 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/16 14:40:34 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT_define.h"
+#include "validate_utils.h"
 #include "libft.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
-
-int	skip_spaces(char **line)
-{
-	if (**line != ' ' && **line != '\t')
-		return (MINIRT_FAILURE);
-	while (**line == ' ' || **line == '\t')
-		(*line)++;
-	return (MINIRT_SUCCESS);
-}
-
-int	skip_digit(char **line)
-{
-	if (!ft_isdigit(**line))
-		return (MINIRT_FAILURE);
-	while (ft_isdigit(**line))
-		(*line)++;
-	return (MINIRT_SUCCESS);
-}
-
-int	validate_ambient(char *line)
-{
-	double	lighting_ratio;
-	int		tmp;
-	size_t	i;
-
-	line++;
-	if (skip_spaces(&line))
-		return (MINIRT_FAILURE);
-	lighting_ratio = strtof(line, &line);
-	if (lighting_ratio < 0 || 1 < lighting_ratio)
-		return (MINIRT_FAILURE);
-	if (skip_spaces(&line))
-		return (MINIRT_FAILURE);
-	i = 0;
-	while (i++ < 3)
-	{
-		tmp = ft_atoi(line);
-		if (skip_digit(&line))
-			return (MINIRT_FAILURE);
-		if (i != 3 && *(line++) != ',')
-			return (MINIRT_FAILURE);
-	}
-	return (!(*line == '\n'));
-}
 
 int	validate_line_ptr(char *line_ptr)
 {
