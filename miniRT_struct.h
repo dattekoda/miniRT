@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_struct.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:03:34 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/16 11:53:39 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:12:28 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef enum	e__type {
 	LIGHT,
 	SPHERE,
 	PLANE,
-	CYLINDER	
+	CYLINDER
 }	e_type;
 
 typedef struct	s_data {

@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 16:08:52 by khanadat          #+#    #+#              #
-#    Updated: 2025/11/16 14:41:32 by khanadat         ###   ########.fr        #
+#    Updated: 2025/11/28 14:14:44 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= miniRT
 CC			:= cc
-CCFLAGS		:= -Wall -Wextra -Werror
+CFLAGS		:= -Wall -Wextra -Werror
 
 SRCS		:= main.c utils0.c utils_set.c \
 validate.c validate_utils0.c validate_ambient.c
@@ -73,3 +73,8 @@ fclean	: clean
 	rm -rf $(NAME)
 
 re: clean all
+
+# --- DEBUGGING & TESTING ---
+
+lldb: fclean
+	$(MAKE) CFLAGS="$(CFLAGS) $(DFLAGS)"
