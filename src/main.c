@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:03:37 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 15:18:37 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/28 16:05:17 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stddef.h>
 #include <stdio.h>
 
+てすとしっぱい！
 // ft_putstr_fd(content, STDOUT_FILENO);
 int	main(int argc, char *argv[])
 {
