@@ -1,0 +1,37 @@
+name: Norminette Check
+
+# いつ実行するか：mainブランチへのプルリクエストが発生した時
+on:
+  pull_request:
+    branches:
+      - main
+  # 念のためmainへのpush時も動かしたい場合は以下をコメントアウト解除
+  # push:
+  #   branches:
+  #     - main
+
+jobs:
+  norminette_job:
+    runs-on: ubuntu-latest
+    name: Run Norminette
+    steps:
+      # 1. リポジトリのコードをチェックアウト（取得）
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # # 2. Python環境のセットアップ（Norminetteのインストールに必要）
+      # - name: Set up Python
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3.x'
+
+      # 3. Norminetteのインストール
+      - name: Install Norminette
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install norminette
+
+      # 4. Norminetteの実行
+      # ここでnorminetteがエラー(終了コード1)を返すと、Action自体が失敗になります
+      - name: Run Norminette on src and include
+        run: norminette src include
