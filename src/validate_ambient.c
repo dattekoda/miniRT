@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 14:40:27 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/16 15:16:39 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:30:32 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include "libft.h"
 #include <stddef.h>
 #include <stdlib.h>
-//strtofを実装する必要あり。
 
-static void	err_ambient()
+//necessary to implement strtod
+static void	err_ambient(void)
 {
 	static char	*msg = \
 	"\x1b[31m""Set ambient information correctly.\n" \

@@ -1,6 +1,6 @@
 *
+.github
 !**/
-!*.gitignore
 !*.c
 !*.h
 !Makefile

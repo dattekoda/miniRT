@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_set.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:49:15 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 14:46:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:31:01 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,5 @@ int	set_content(char **content, const char *file_name)
 // t_data	*new_t_data(const char *line)
 // {
 // 	size_t	i;
-
 // 	i = 0;
-	
 // }

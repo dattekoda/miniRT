@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils0.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:47:08 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 14:42:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:19:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,4 @@ int	minirt_strrncmp(const char *s1, const char *s2, size_t n)
 
 // bool	rt_double_equal(double a, double b)
 // {
-	
 // }
