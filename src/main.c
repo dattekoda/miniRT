@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:03:37 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 14:41:41 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:18:37 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stddef.h>
 #include <stdio.h>
 
+// ft_putstr_fd(content, STDOUT_FILENO);
 int	main(int argc, char *argv[])
 {
 	char	*content;
@@ -31,7 +32,6 @@ int	main(int argc, char *argv[])
 		return (MINIRT_FAILURE);
 	if (validate_content(content))
 		return (MINIRT_FAILURE);
-	// ft_putstr_fd(content, STDOUT_FILENO);
 	free(content);
 	return (MINIRT_SUCCESS);
 }

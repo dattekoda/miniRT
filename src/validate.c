@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:55:04 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/16 14:40:34 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:31:14 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,15 @@ int	validate_line_ptr(char *line_ptr)
 		return (validate_ambient(line_ptr));
 	if (*line_ptr == 'C')
 		return (MINIRT_SUCCESS);
-		// return (validate_camera(line_ptr));
 	if (*line_ptr == 'L')
 		return (MINIRT_SUCCESS);
-		// return (validate_light(line_ptr));
 	if (!ft_strncmp(line_ptr, "sp", 2))
 		return (MINIRT_SUCCESS);
-		// return (validate_sphere(line_ptr));
 	if (ft_strncmp(line_ptr, "pl", 2))
 		return (MINIRT_SUCCESS);
-		// return (validate_plane(line_ptr));
 	if (ft_strncmp(line_ptr, "cy", 2))
 		return (MINIRT_SUCCESS);
-		// return (validate_plane(line_ptr));
-	return MINIRT_FAILURE;
+	return (MINIRT_FAILURE);
 }
 
 int	validate_content(char *content)
