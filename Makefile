@@ -3,27 +3,44 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 16:08:52 by khanadat          #+#    #+#              #
-#    Updated: 2025/11/16 14:41:32 by khanadat         ###   ########.fr        #
+#    Updated: 2025/11/28 14:26:01 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= miniRT
-CC			:= cc
-CCFLAGS		:= -Wall -Wextra -Werror
+# ----------------------------------------------------------------------------- #
+#                                   VARIABLES                                   #
+# ----------------------------------------------------------------------------- #
 
-SRCS		:= main.c utils0.c utils_set.c \
-validate.c validate_utils0.c validate_ambient.c
-RM			:= rm -rf
+# --- EXECUTABLE NAMES ---
+NAME            = miniRT
 
-OBJS_DIR	:= objs
-OBJS		:= $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
+# --- COMPILER & FLAGS ---
+CC              = cc
+CFLAGS          = -Wall -Wextra -Werror $(addprefix -I,$(INCDIRS))
+AR              = ar
+ARFLAGS         = rcs
 
-LIBFT_DIR	:= libft
-LIBFT_A		:= $(LIBFT_DIR)/libft.a
-LIBFT_FLAGS	:= -I $(LIBFT_DIR)/includes
+MLXFLAGS	= -I $(MLX_DIR)
+LIBFTFLAGS	= -I $(LIBFTDIR)
+CFLAGS		+= $(MLXFLAGS)
+CFLAGS		+= $(LIBFTFLAGS)
+
+# --- DIRECTORIES ---
+
+INCDIRS          = include
+
+SRCDIR_BASE     = ./src
+SRCDIR          = $(SRCDIR_BASE)
+
+OBJDIR_BASE     = ./obj
+OBJDIR          = $(OBJDIR_BASE)
+
+# --- LIBRARIES ---
+LIBFT			= $(LIBFTDIR)/libft.a
+MLX				= $(MLXDIR)/libmlx.a
 
 
 UNAME		:= $(shell uname -s)
@@ -40,36 +57,88 @@ else
 	$(error Unsupported OS: $(UNAME))
 endif
 
-MLX_A		:= $(MLX_DIR)/libmlx.a
-MLX_FLAGS	+= -I $(MLX_DIR)
-LD_FLAGS	:= -L $(MLX_DIR) -L $(LIBFT_DIR)
 
-.PHONY	:	all clean fclean re
+# --- FILES ---
 
-all		: $(NAME)
-$(NAME)	: $(OBJS) $(LIBFT_A) $(MLX_A)
-	$(CC) $(CCFLAGS) $(LD_FLAGS) $^ -o $@
+SRC_FILES       =	main.c \
+					utils0.c \
+					utils_set.c \
+					validate.c \
+					validate_utils0.c \
+					validate_ambient.c \
 
-$(LIBFT_DIR):
-	git clone git@github.com:dattekoda/libft.git $@
-	$(RM) $@/.git
+SRCS            = $(foreach file,$(SRC_FILES),$(shell find $(SRCDIR) -name $(file)))
 
-$(LIBFT_A): $(LIBFT_DIR)
-	make bonus -C $^
+# --- OBJECTS ---
+OBJS            = $(patsubst $(SRCDIR_BASE)/%.c, $(OBJDIR_BASE)/%.o, $(SRCS))
 
-$(MLX_A): $(MLX_DIR)
-	make -C $(MLX_DIR)
+# --- DEBUGGING ---
+VALGRIND        = valgrind
+VALGRIND_FLAGS  = --leak-check=full --track-origins=yes --show-leak-kinds=all
+DFLAGS          = -g -O0
+ASAN_FLAGS      = -g -fsanitize=address
+SCAN_BUILD      = scan-build
 
-$(OBJS_DIR)/%.o: %.c
-	mkdir -p $(dir $@);
-	$(CC) $(CCFLAGS) $(LIBFT_FLAGS) $(MLX_FLAGS) -c $< -o $@
+# ----------------------------------------------------------------------------- #
+#                                     RULES                                     #
+# ----------------------------------------------------------------------------- #
 
-clean	:
-	rm -rf $(OBJS_DIR)
-	make clean -C $(MLX_DIR)
-	make fclean -C $(LIBFT_DIR)
+# --- MAIN TARGETS ---
+all:            $(NAME)
 
-fclean	: clean
-	rm -rf $(NAME)
+# --- EXECUTABLE BUILDING ---
+$(NAME):        $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lreadline -L$(LIBFTDIR) -lft
+	@echo "\n\033[1;32m'$(NAME)' has been created!\033[0m"
 
-re: clean all
+# --- LIBRARY BUILDING ---
+$(LIBFT):
+	@make -sC $(LIBFTDIR)
+
+# needed mlx
+
+# --- OBJECT FILE COMPILATION ---
+$(OBJDIR_BASE)/%.o: $(SRCDIR_BASE)/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# --- CLEANUP RULES ---
+clean:
+	@$(RMDIR) $(OBJDIR_BASE)
+	@make clean -C $(LIBFTDIR)
+	@echo "\033[1;33mObject files cleaned.\033[0m"
+
+fclean:         clean
+	@$(RM) $(NAME)
+	@make fclean -C $(LIBFTDIR)
+	@echo "\033[1;31mAll cleaned.\033[0m"
+
+re:             fclean all
+
+# --- DEBUGGING & TESTING ---
+lldb: fclean
+	@$(MAKE) CFLAGS="$(CFLAGS) $(DFLAGS)" $(NAME)
+	@echo "\n\033[1;35mLaunching LLDB for '$(NAME)'...\033[0m"
+	@lldb $(NAME)
+
+asan: fclean
+	@$(MAKE) CFLAGS="$(CFLAGS) $(ASAN_FLAGS)" LDFLAGS="$(ASAN_FLAGS)" $(NAME)
+	@echo "\n\033[1;35mCompiled with AddressSanitizer. Run './$(NAME)' to test.\033[0m"
+
+valgrind: fclean
+	@$(MAKE) CFLAGS="$(CFLAGS) $(DFLAGS)" $(NAME)
+	@echo "\n\033[1;36mRunning Valgrind for '$(NAME)'...\033[0m"
+	$(VALGRIND) $(VALGRIND_FLAGS) ./$(NAME)
+
+test: all
+	@$(MAKE) all
+	@echo "\033[1;36mRunning tests with Valgrind...\033[0m"
+	@$(CC) $(CFLAGS) test.c $(NAME) -o test_runner
+	$(VALGRIND) $(VALGRIND_FLAGS) ./test_runner
+	@$(RM) test_runner
+
+scanb: fclean
+	@$(SCAN_BUILD) $(MAKE) all
+
+# --- PHONY TARGETS ---
+.PHONY:         all clean fclean re test debug asan valgrind
