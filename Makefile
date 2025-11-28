@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 16:08:52 by khanadat          #+#    #+#              #
-#    Updated: 2025/11/28 14:26:01 by ikawamuk         ###   ########.fr        #
+#    Updated: 2025/11/28 14:41:58 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,15 +28,23 @@ LIBFTFLAGS	= -I $(LIBFTDIR)
 CFLAGS		+= $(MLXFLAGS)
 CFLAGS		+= $(LIBFTFLAGS)
 
+# --- COMMANDS ---
+RMDIR           = rm -rf
+
 # --- DIRECTORIES ---
 
-INCDIRS          = include
+INCDIRS          =	include\
+					$(LIBFTDIR)/include \
+					$(MLXDIR)/include
 
 SRCDIR_BASE     = ./src
 SRCDIR          = $(SRCDIR_BASE)
 
 OBJDIR_BASE     = ./obj
 OBJDIR          = $(OBJDIR_BASE)
+
+LIBFTDIR        = ./libft
+MLXDIR			= ./minilibx_linux
 
 # --- LIBRARIES ---
 LIBFT			= $(LIBFTDIR)/libft.a
