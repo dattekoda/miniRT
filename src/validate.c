@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:55:04 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 15:31:14 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/28 17:15:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,24 @@
 
 int	validate_line_ptr(char *line_ptr)
 {
+	// norm error
+	static const char	object_identifier[][2] = {
+		"sp", "pl", "cy", NULL
+	};
+	size_t				i;
+
 	if (*line_ptr == 'A')
 		return (validate_ambient(line_ptr));
 	if (*line_ptr == 'C')
 		return (MINIRT_SUCCESS);
 	if (*line_ptr == 'L')
 		return (MINIRT_SUCCESS);
-	if (!ft_strncmp(line_ptr, "sp", 2))
-		return (MINIRT_SUCCESS);
-	if (ft_strncmp(line_ptr, "pl", 2))
-		return (MINIRT_SUCCESS);
-	if (ft_strncmp(line_ptr, "cy", 2))
-		return (MINIRT_SUCCESS);
+	i = 0;
+	while (object_identifier[i])
+	{
+		if (!ft_strncmp(line_ptr, object_identifier[i++], 2))
+			return (MINIRT_SUCCESS);
+	}
 	return (MINIRT_FAILURE);
 }
 
