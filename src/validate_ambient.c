@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 14:40:27 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 15:30:32 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/28 16:18:54 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 static void	err_ambient(void)
 {
 	static char	*msg = \
-	"\x1b[31m""Set ambient information correctly.\n" \
-	"\x1b[0m""A [lighting ratio] ""\x1b[31m""R"",""\x1b[32m""G"",""\x1b[34m""B";
+"\x1b[31m""Set ambient information correctly.\n" \
+"\x1b[0m""A [lighting ratio] ""\x1b[31m""R"",""\x1b[32m""G"",""\x1b[34m""B";
 
 	ft_putendl_fd(msg, STDERR_FILENO);
 }
