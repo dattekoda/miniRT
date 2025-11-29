@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:03:37 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 16:20:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:51:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include <fcntl.h>
 #include <stddef.h>
-#include <stdio.h>ごはｎ
+#include <stdio.h>
 
 // ft_putstr_fd(content, STDOUT_FILENO);
 int	main(int argc, char *argv[])
