@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:03:37 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 16:20:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:20:44 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include <fcntl.h>
 #include <stddef.h>
-#include <stdio.h>ごはｎ
+#include <stdio.h>
 
 // ft_putstr_fd(content, STDOUT_FILENO);
 int	main(int argc, char *argv[])
@@ -25,13 +25,13 @@ int	main(int argc, char *argv[])
 
 	content = NULL;
 	if (argc != ARG_NUM)
-		return (MINIRT_FAILURE);
-	if (minirt_strrncmp(argv[1], MINIRT_FMT, 3))
-		return (MINIRT_FAILURE);
+		return (EXIT_FAILURE);
+	if (minirt_strrncmp(argv[1], RT_EXTENTION, 3))
+		return (EXIT_FAILURE);
 	if (set_content(&content, argv[1]))
-		return (MINIRT_FAILURE);
+		return (EXIT_FAILURE);
 	if (validate_content(content))
-		return (MINIRT_FAILURE);
+		return (EXIT_FAILURE);
 	free(content);
-	return (MINIRT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_ambient.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 14:40:27 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 16:18:54 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:19:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,22 @@ int	validate_ambient(char *line_ptr)
 
 	line_ptr++;
 	if (skip_spaces(&line_ptr))
-		return (err_ambient(), MINIRT_FAILURE);
+		return (err_ambient(), EXIT_FAILURE);
 	lighting_ratio = strtof(line_ptr, &line_ptr);
 	if (lighting_ratio < 0 || 1 < lighting_ratio)
-		return (err_ambient(), MINIRT_FAILURE);
+		return (err_ambient(), EXIT_FAILURE);
 	if (skip_spaces(&line_ptr))
-		return (err_ambient(), MINIRT_FAILURE);
+		return (err_ambient(), EXIT_FAILURE);
 	i = 0;
 	while (i++ < 3)
 	{
 		tmp = ft_atoi(line_ptr);
 		if ((tmp < 0 || 255 < tmp) || skip_digit(&line_ptr))
-			return (err_ambient(), MINIRT_FAILURE);
+			return (err_ambient(), EXIT_FAILURE);
 		if (i != 3 && *(line_ptr++) != ',')
-			return (err_ambient(), MINIRT_FAILURE);
+			return (err_ambient(), EXIT_FAILURE);
 	}
 	if (*line_ptr == '\n')
-		return (MINIRT_SUCCESS);
-	return (err_ambient(), MINIRT_FAILURE);
+		return (EXIT_SUCCESS);
+	return (err_ambient(), EXIT_FAILURE);
 }

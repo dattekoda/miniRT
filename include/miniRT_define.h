@@ -6,19 +6,16 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 11:49:42 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 14:48:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:20:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_DEFINE_H
 # define MINIRT_DEFINE_H
 
-# define MINIRT_FAILURE 1
-# define MINIRT_SUCCESS 0
-
 # define ARG_NUM 2
 
-# define MINIRT_FMT ".rt"
+# define RT_EXTENTION ".rt"
 
 # define EPSILON_RT 1e-7
 
