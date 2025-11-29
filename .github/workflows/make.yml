@@ -12,20 +12,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
+        # submodules オプションを削除
 
       - name: Install build tools and dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential libx11-dev libxext-dev zlib1g-dev
 
-      - name: Clone MiniLibX (if not submodule)
+      - name: Clone MiniLibX
         run: |
-          if [ ! -f minilibx-linux/Makefile ]; then
-            rm -rf minilibx-linux
-            git clone https://github.com/42Paris/minilibx-linux.git minilibx-linux
-          fi
+          rm -rf minilibx-linux
+          git clone https://github.com/42Paris/minilibx-linux.git minilibx-linux
 
       - name: Build MiniLibX
         run: |
