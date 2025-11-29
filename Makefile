@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 16:08:52 by khanadat          #+#    #+#              #
-#    Updated: 2025/11/28 14:41:58 by ikawamuk         ###   ########.fr        #
+#    Updated: 2025/11/29 19:33:14 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,7 @@ all:            $(NAME)
 
 # --- EXECUTABLE BUILDING ---
 $(NAME):        $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lreadline -L$(LIBFTDIR) -lft
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft
 	@echo "\n\033[1;32m'$(NAME)' has been created!\033[0m"
 
 # --- LIBRARY BUILDING ---
