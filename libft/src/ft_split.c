@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:52:54 by ikawamuk          #+#    #+#             */
-/*   Updated: 2025/05/02 22:53:55 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2025/11/29 19:13:29 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static size_t	count_words(const char *p, const char c);
 static void		*free_all(char **arr);
-static char		*ft_strndup(const char *s, size_t len);
 
 char	**ft_split(char const *s, char c)
 {
@@ -43,26 +42,6 @@ char	**ft_split(char const *s, char c)
 	}
 	arr[i] = NULL;
 	return (arr);
-}
-
-static char	*ft_strndup(const char *s, size_t len)
-{
-	char	*rev;
-	size_t	i;
-
-	if (!s)
-		return (NULL);
-	rev = ft_calloc(len + 1, sizeof(char));
-	if (rev == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i] && i < len)
-	{
-		rev[i] = s[i];
-		i++;
-	}
-	rev[i] = '\0';
-	return (rev);
 }
 
 static void	*free_all(char **arr)

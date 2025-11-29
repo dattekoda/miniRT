@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:55:04 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/29 18:19:29 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2025/11/29 19:17:25 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int	validate_line_ptr(char *line_ptr)
 {
-	static const char	object_identifier[][2] = {
+	static const char	*object_identifier[] = {
 		"sp", "pl", "cy", NULL
 	};
 	size_t				i;
@@ -41,10 +41,8 @@ int	validate_line_ptr(char *line_ptr)
 
 int	validate_content(char *content)
 {
-	size_t	i;
 	char	*line_ptr;
 
-	i = 0;
 	line_ptr = content;
 	while (line_ptr)
 	{
