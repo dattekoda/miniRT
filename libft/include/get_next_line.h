@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 13:55:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2025/06/12 14:34:28 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:42:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,32 +22,26 @@
 #  define BUFFER_SIZE 100
 # endif
 
-# if BUFFER_SIZE < 0
-#  error "BUFFER_SIZE must be positive."
+# ifndef GNL_ERR_INVALID
+#  define GNL_ERR_INVALID -3
 # endif
 
-# define HASH_SIZE 1009
+# ifndef GNL_ERR_MALLOC
+#  define GNL_ERR_MALLOC -2
+# endif
 
-typedef struct s_save
-{
-	char	*data;
-	size_t	buf_size;
-	size_t	str_len;
-}	t_save;
+# ifndef GNL_ERR_READ
+#  define GNL_ERR_READ -1
+# endif
 
-typedef struct s_list
-{
-	int				fd;
-	t_save			save;
-	struct s_list	*next;
-}	t_list;
+# ifndef GNL_EOF
+#  define GNL_EOF 0
+# endif
 
-// get_next_line
-char	*get_next_line(int fd);
-// utils
-t_list	*alloc_fd_node(int fd, t_list	*table[]);
-void	free_fd_node(int fd, t_list	*table[]);
-bool	has_new_line(char *str);
-bool	expand_save(t_save *save, ssize_t rd_size);
+# ifndef GNL_LINE
+#  define GNL_LINE 1
+# endif
+
+int	ft_get_next_line(int fd, char **line);
 
 #endif

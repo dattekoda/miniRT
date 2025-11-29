@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/03 01:01:35 by ikawamuk          #+#    #+#              #
-#    Updated: 2025/06/12 14:48:28 by ikawamuk         ###   ########.fr        #
+#    Updated: 2025/11/29 18:46:37 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCFILES := ft_strlen.c \
 			ft_tolower.c \
 			ft_calloc.c \
 			ft_strdup.c \
+			ft_strndup.c \
 			ft_substr.c \
 			ft_strjoin.c \
 			ft_strtrim.c \
@@ -77,8 +78,7 @@ FT_PRINTF_SRCFILES :=	convert_specifier.c\
 						ptox.c\
 						set_ctx_utils.c
 
-GNL_SRCFILES :=	get_next_line.c \
-				get_next_line_utils.c \
+GNL_SRCFILES :=	ft_get_next_line.c
 
 SRCS := $(addprefix $(SRCDIR)/, $(SRCFILES)) \
 		$(addprefix $(SRCDIR)/$(FT_PRINTF_SRCDIR)/, $(FT_PRINTF_SRCFILES))\
