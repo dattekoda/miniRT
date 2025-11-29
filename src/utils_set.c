@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_set.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:49:15 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 15:31:01 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:19:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,23 @@ int	set_content(char **content, const char *file_name)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		return (perror("open"), MINIRT_FAILURE);
+		return (perror("open"), EXIT_FAILURE);
 	*content = calloc(1, sizeof(char));
 	if (!*content)
-		return (close(fd), perror("malloc"), MINIRT_FAILURE);
+		return (close(fd), perror("malloc"), EXIT_FAILURE);
 	while (*content && rd_size)
 	{
 		rd_size = read(fd, buf, BUFFER_SIZE - 1);
 		if (rd_size == -1)
-			return (close(fd), perror("read"), MINIRT_FAILURE);
+			return (close(fd), perror("read"), EXIT_FAILURE);
 		buf[rd_size] = 0;
 		tmp = *content;
 		*content = ft_strjoin(*content, buf);
 		free(tmp);
 	}
 	if (!*content)
-		return (close(fd), perror("malloc"), MINIRT_FAILURE);
-	return (close(fd), MINIRT_SUCCESS);
+		return (close(fd), perror("malloc"), EXIT_FAILURE);
+	return (close(fd), EXIT_SUCCESS);
 }
 
 // t_data	*new_t_data(const char *line)

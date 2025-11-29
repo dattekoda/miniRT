@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:55:04 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/29 18:16:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:19:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ int	validate_line_ptr(char *line_ptr)
 	if (*line_ptr == 'A')
 		return (validate_ambient(line_ptr));
 	if (*line_ptr == 'C')
-		return (MINIRT_SUCCESS);
+		return (EXIT_SUCCESS);
 	if (*line_ptr == 'L')
-		return (MINIRT_SUCCESS);
+		return (EXIT_SUCCESS);
 	i = 0;
 	while (object_identifier[i])
 	{
 		if (!ft_strncmp(line_ptr, object_identifier[i++], 2))
-			return (MINIRT_SUCCESS);
+			return (EXIT_SUCCESS);
 	}
-	return (MINIRT_FAILURE);
+	return (EXIT_FAILURE);
 }
 
 int	validate_content(char *content)
@@ -51,8 +51,8 @@ int	validate_content(char *content)
 		while (*line_ptr == '\n')
 			line_ptr++;
 		if (validate_line_ptr(line_ptr))
-			return (MINIRT_FAILURE);
+			return (EXIT_FAILURE);
 		line_ptr = ft_strchr(line_ptr, '\n');
 	}
-	return (MINIRT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_utils0.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 14:24:18 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 15:30:19 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:19:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 int	skip_spaces(char **ptr)
 {
 	if (**ptr != ' ' && **ptr != '\t')
-		return (MINIRT_FAILURE);
+		return (EXIT_FAILURE);
 	while (**ptr == ' ' || **ptr == '\t')
 		(*ptr)++;
-	return (MINIRT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
 
 int	skip_digit(char **ptr)
@@ -27,8 +27,8 @@ int	skip_digit(char **ptr)
 	if (**ptr == '-' || **ptr == '+')
 		(*ptr)++;
 	if (!ft_isdigit(**ptr))
-		return (MINIRT_FAILURE);
+		return (EXIT_FAILURE);
 	while (ft_isdigit(**ptr))
 		(*ptr)++;
-	return (MINIRT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
