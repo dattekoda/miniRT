@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:15:47 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 15:29:59 by khanadat         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:19:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	validate_camera(char *line_ptr)
 	{
 		d_tmp = strtof(line_ptr, &line_ptr);
 		if (i != 3 && *(line_ptr++) != ',')
-			return (MINIRT_FAILURE);
+			return (EXIT_FAILURE);
 	}
 	if (skip_spaces(&line_ptr))
-		return (MINIRT_FAILURE);
+		return (EXIT_FAILURE);
 }
