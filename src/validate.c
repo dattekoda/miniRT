@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:55:04 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/28 17:27:20 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:16:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 int	validate_line_ptr(char *line_ptr)
 {
-	// norm error comment
 	static const char	object_identifier[][2] = {
 		"sp", "pl", "cy", NULL
 	};
