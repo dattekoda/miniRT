@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 11:49:42 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/29 18:19:33 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:20:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define ARG_NUM 2
 
-# define MINIRT_FMT ".rt"
+# define RT_EXTENTION ".rt"
 
 # define EPSILON_RT 1e-7
 
