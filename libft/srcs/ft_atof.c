@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:28:54 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/03 18:56:47 by khanadat         ###   ########.fr       */
+/*   Created: 2025/11/29 21:05:00 by khanadat          #+#    #+#             */
+/*   Updated: 2025/11/29 21:07:27 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int	main(void)
+double	ft_atof(const char *nptr)
 {
-	return (EXIT_SUCCESS);
+	return (ft_strtod(nptr, NULL));
 }

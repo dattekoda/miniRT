@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:28:54 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/03 18:56:47 by khanadat         ###   ########.fr       */
+/*   Created: 2025/04/25 07:14:42 by khanadat          #+#    #+#             */
+/*   Updated: 2025/06/23 20:33:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../includes/libft.h"
 
-int	main(void)
+void	ft_bzero(void *s, size_t n)
 {
-	return (EXIT_SUCCESS);
+	ft_memset(s, 0, n);
 }
+
+/*
+#include <stdio.h>
+
+int main(void)
+{
+    char   ohayo[10];
+    ft_bzero(ohayo, 5);
+    printf("%s\n", ohayo);
+    return 0;
+}*/

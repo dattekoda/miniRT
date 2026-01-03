@@ -6,14 +6,14 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/03 18:25:16 by khanadat         ###   ########.fr        #
+#    Updated: 2026/01/03 18:55:53 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	miniRT
 
 CC			=	cc
-CFLAG		=	-Wall -Wextra -Werror $(patsubst, %, -I%(INCDIRS)) -I$(MLXDIR) \
+CFLAG		=	-Wall -Wextra -Werror $(patsubst %,-I%,$(INCDIRS)) -I$(MLXDIR) \
 				-I$(LIBFTDIR)/include -O3 -march=native
 RMDIR		=	rm -rf
 
@@ -23,15 +23,30 @@ SRCFILES	=	main.c
 SRCS		=	$(addprefix $(SRCDIR)/, $(SRCFILES))
 
 # --- obj ---
-OBJSDIR		=	obj
+OBJDIR		=	obj
+OBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 
 # --- include ---
 INCDIRS		=	include
 
+# --- OS DETECTION ---
+UNAME	=	$(shell uname -s)
+ifeq ($(UNAME),Darwin)
+	MLXDIR := $(HOME)/minilibx
+	MLXFLAG := -framework OpenGL -framework AppKit
+else ifeq ($(UNAME),Linux)
+	MLXDIR := minilibx-linux
+	MLXFLAG := -lX11 -lXext
+else
+	$(error Unsupported OS: $(UNAME))
+endif
+
 # --- library ---
 LIBFTDIR	=	libft
+LIBFT		=	$(LIBFTDIR)/libft.a
+MLX			=	$(MLXDIR)/libmlx.a
 LDFLAG		=	-L$(MLXDIR) -L$(LIBFTDIR)
-LDLIBS		=	-lm -lmlx -lft $(MLXDIR)
+LDLIBS		=	-lm -lmlx -lft $(MLXFLAG)
 
 # --- DEBUGGING ---
 VALGRIND	=	valgrind --leak-check=full --track-origins=yes \
@@ -50,22 +65,11 @@ TESTSRCS		=	$(addprefix $(SRCDIR)/, $(TESTSRCFILES)) \
 					$(filter-out $(SRCDIR)/main.c, $(SRCS))
 TESTOBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(TESTSRCS))
 
-# --- OS DETECTION ---
-UNAME	=	$(shell uname -s)
-ifeq ($(UNAME),Darwin)
-	MLXDIR := $(HOME)/minilibx
-	MLX_FLAG := -framework OpenGL -framework AppKit
-else ifeq ($(UNAME),Linux)
-	MLXDIR := minilibx-linux
-	MLX_FLAG := -lX11 -lXext
-else
-	$(error Unsupported OS: $(UNAME))
-endif
-
 # --- Rules ---
-all:	$(NAME)
-$(NAME):	$(OBJS) $(MLX) $(LIBFT)
-	$(CC) $(CFLAG) $(OBJS) $(LIBFT) $(LDFLAG) $(LDLIBS) -o $@
+all: $(NAME)
+
+$(NAME): $(OBJS) $(MLX) $(LIBFT)
+	$(CC) $(CFLAG) $(OBJS) $(LDFLAG) $(LDLIBS) -o $@
 	@echo "\n\033[1;32m'$(NAME)' has been created!\033[0m"
 
 $(LIBFT):

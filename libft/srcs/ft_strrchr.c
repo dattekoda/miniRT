@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:28:54 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/03 18:56:47 by khanadat         ###   ########.fr       */
+/*   Created: 2025/04/25 12:06:00 by khanadat          #+#    #+#             */
+/*   Updated: 2025/06/23 20:32:50 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../includes/libft.h"
 
-int	main(void)
+char	*ft_strrchr(const char *s, int c)
 {
-	return (EXIT_SUCCESS);
+	char	*l;
+
+	l = NULL;
+	while (*s)
+	{
+		if (*s == (char) c)
+			l = (char *)s;
+		s++;
+	}
+	if ((char) c == '\0')
+		l = (char *) s;
+	return (l);
 }

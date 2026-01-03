@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:28:54 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/03 18:56:47 by khanadat         ###   ########.fr       */
+/*   Created: 2025/04/25 06:47:17 by khanadat          #+#    #+#             */
+/*   Updated: 2025/06/23 20:32:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../includes/libft.h"
 
-int	main(void)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	return (EXIT_SUCCESS);
+	unsigned char	*p;
+
+	p = (unsigned char *) s;
+	while (n--)
+		*p++ = (unsigned char) c;
+	return (s);
 }
+
+/*
+#include <stdio.h>
+
+int main(void) {
+    char   ohayo[10];
+    ft_memset(ohayo, 'a', 5);
+    printf("%s\n", ohayo);
+    return 0;
+}*/
