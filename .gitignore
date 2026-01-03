@@ -1,6 +1,7 @@
 *
 !.github/
 !.github/**
+!minilibx-linux
 !**/
 !*.c
 !*.h
