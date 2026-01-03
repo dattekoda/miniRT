@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/03 18:55:53 by khanadat         ###   ########.fr        #
+#    Updated: 2026/01/03 19:01:39 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ RMDIR		=	rm -rf
 
 # --- src ---
 SRCDIR		=	src
-SRCFILES	=	main.c
+SRCFILES	=	main.c \
+				mini_rt.c 
+
 SRCS		=	$(addprefix $(SRCDIR)/, $(SRCFILES))
 
 # --- obj ---
