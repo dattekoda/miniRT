@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/04 07:52:42 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/04 07:56:15 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,9 +36,11 @@ UNAME	=	$(shell uname -s)
 ifeq ($(UNAME),Darwin)
 	MLXDIR := $(HOME)/minilibx
 	MLXFLAG := -framework OpenGL -framework AppKit
+	GITHUBURL := https://github.com/dannywillems/minilibx.git
 else ifeq ($(UNAME),Linux)
 	MLXDIR := minilibx-linux
 	MLXFLAG := -lX11 -lXext
+	GITHUBURL := https://github.com/42paris/minilibx-linux.git
 else
 	$(error Unsupported OS: $(UNAME))
 endif
@@ -78,6 +80,7 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFTDIR) bonus
 
 $(MLX):
+	@git clone $(GITHUBURL)
 	@$(MAKE) -C $(MLXDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
