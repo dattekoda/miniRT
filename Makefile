@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/03 19:01:39 by khanadat         ###   ########.fr        #
+#    Updated: 2026/01/04 07:50:25 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RMDIR		=	rm -rf
 # --- src ---
 SRCDIR		=	src
 SRCFILES	=	main.c \
-				mini_rt.c 
+				mini_rt.c
 
 SRCS		=	$(addprefix $(SRCDIR)/, $(SRCFILES))
 

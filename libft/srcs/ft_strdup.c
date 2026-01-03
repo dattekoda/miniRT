@@ -6,13 +6,11 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 08:26:05 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/03 13:45:03 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/04 07:51:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-
-
 
 char	*ft_strdup(const char *s)
 {
