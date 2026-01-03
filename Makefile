@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/04 07:50:25 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/04 07:52:42 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,9 @@ clean:
 	@$(RMDIR) $(OBJDIR)
 # @$(MAKE) -C $(LIBFTDIR) fclean
 # @$(MAKE) -C $(MLXDIR) clean
+
+fclean: clean
+	$(RM) $(NAME) $(TESTNAME)
 
 re: fclean all
 
