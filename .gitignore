@@ -1,0 +1,11 @@
+*
+!.github/
+!.github/**
+!.gitignore
+!minilibx-linux
+!**/
+!*.c
+!*.h
+!Makefile
+!README.md
+!*.rt
