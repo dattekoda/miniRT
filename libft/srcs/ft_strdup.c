@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:28:54 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/04 07:51:49 by ikawamuk         ###   ########.fr       */
+/*   Created: 2025/04/26 08:26:05 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/04 07:51:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../includes/libft.h"
 
-int	mini_rt(int argc, char *argv[]);
-
-int	main(int argc, char *argv[])
+char	*ft_strdup(const char *s)
 {
-	return (mini_rt(argc, argv));
+	char	*dup;
+	size_t	len;
+
+	len = ft_strlen(s);
+	dup = malloc(len + 1);
+	if (!dup)
+		return (NULL);
+	return (ft_memmove(dup, s, len + 1));
 }

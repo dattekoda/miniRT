@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:28:54 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/04 07:51:49 by ikawamuk         ###   ########.fr       */
+/*   Created: 2025/04/25 10:42:02 by khanadat          #+#    #+#             */
+/*   Updated: 2025/06/23 20:32:15 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../includes/libft.h"
 
-int	mini_rt(int argc, char *argv[]);
-
-int	main(int argc, char *argv[])
+int	ft_isprint(int c)
 {
-	return (mini_rt(argc, argv));
+	if (32 <= c && c <= 126)
+		return (16384);
+	return (0);
 }
+
+/*
+#include <stdio.h>
+int	main(void)
+{
+	if (isprint('a'))
+	{
+		printf("1\n");
+	}
+	else
+	{
+		printf("0\n");
+	}
+	return (0);
+}
+*/

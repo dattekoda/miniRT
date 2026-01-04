@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:28:54 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/04 07:51:49 by ikawamuk         ###   ########.fr       */
+/*   Created: 2025/04/29 10:21:43 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/03 13:46:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../includes/libft.h"
 
-int	mini_rt(int argc, char *argv[]);
-
-int	main(int argc, char *argv[])
+t_list	*ft_lstnew(void *content)
 {
-	return (mini_rt(argc, argv));
+	t_list	*new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

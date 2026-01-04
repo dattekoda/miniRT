@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:28:54 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/04 07:51:49 by ikawamuk         ###   ########.fr       */
+/*   Created: 2025/04/29 10:56:23 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/03 13:47:04 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../includes/libft.h"
 
-int	mini_rt(int argc, char *argv[]);
-
-int	main(int argc, char *argv[])
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	return (mini_rt(argc, argv));
+	if (*lst == NULL)
+		*lst = new;
+	else
+		ft_lstlast(*lst)->next = new;
 }

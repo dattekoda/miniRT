@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:28:54 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/04 07:51:49 by ikawamuk         ###   ########.fr       */
+/*   Created: 2025/04/25 12:40:13 by khanadat          #+#    #+#             */
+/*   Updated: 2025/06/23 20:33:12 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../includes/libft.h"
 
-int	mini_rt(int argc, char *argv[]);
-
-int	main(int argc, char *argv[])
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	return (mini_rt(argc, argv));
+	unsigned char	*t;
+
+	t = (unsigned char *) s;
+	while (n--)
+	{
+		if (*t == (unsigned char) c)
+			return ((void *) t);
+		t++;
+	}
+	return (NULL);
 }

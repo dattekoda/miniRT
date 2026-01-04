@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rt_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:28:54 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/04 07:51:49 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/03 18:33:49 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef RT_DEFINE_H
+# define RT_DEFINE_H
 
-int	mini_rt(int argc, char *argv[]);
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
 
-int	main(int argc, char *argv[])
-{
-	return (mini_rt(argc, argv));
-}
+#endif

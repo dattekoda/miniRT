@@ -3,106 +3,106 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/03 01:01:35 by ikawamuk          #+#    #+#              #
-#    Updated: 2025/11/29 18:46:37 by khanadat         ###   ########.fr        #
+#    Created: 2025/11/29 20:32:41 by khanadat          #+#    #+#              #
+#    Updated: 2026/01/03 13:40:12 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=libft.a
+NAME = libft.a
+CC = cc
+CCFLAGS = -Wall -Wextra -Werror -I includes -g -O0
+AR = ar rcs
+RM = rm -rf
 
-AR := ar
-ARFLAGS := rcs
-CC := cc
-CFLAGS=-Wall -Wextra -Werror $(addprefix -I,$(INCLUDES))
+SRC =	srcs/ft_strtod/ft_strtod.c \
+		srcs/ft_strtod/strtod_set.c \
+		srcs/ft_strtod/strtod_valid.c \
+		srcs/ft_abs.c \
+		srcs/ft_atoi.c \
+		srcs/ft_atof.c \
+		srcs/ft_bzero.c \
+		srcs/ft_calloc.c \
+		srcs/ft_get_next_line.c \
+		srcs/ft_isalnum.c \
+		srcs/ft_isalpha.c \
+		srcs/ft_isascii.c \
+		srcs/ft_isdigit.c \
+		srcs/ft_isprint.c \
+		srcs/ft_isspace.c \
+		srcs/ft_itoa.c \
+		srcs/ft_max.c \
+		srcs/ft_memchr.c \
+		srcs/ft_memcmp.c \
+		srcs/ft_memcpy.c \
+		srcs/ft_memmove.c \
+		srcs/ft_memset.c \
+		srcs/ft_min.c \
+		srcs/ft_putchar_fd.c \
+		srcs/ft_putendl_fd.c \
+		srcs/ft_putnbr_fd.c \
+		srcs/ft_putstr_fd.c \
+		srcs/ft_split.c \
+		srcs/ft_strchr.c \
+		srcs/ft_strcmp.c \
+		srcs/ft_strdup.c \
+		srcs/ft_striteri.c \
+		srcs/ft_strjoin.c \
+		srcs/ft_strlcat.c \
+		srcs/ft_strlcpy.c \
+		srcs/ft_strlen.c \
+		srcs/ft_strmapi.c \
+		srcs/ft_strncmp.c \
+		srcs/ft_strndup.c \
+		srcs/ft_strnstr.c \
+		srcs/ft_strrchr.c \
+		srcs/ft_strtrim.c \
+		srcs/ft_substr.c \
+		srcs/ft_tolower.c \
+		srcs/ft_toupper.c
 
-SRCDIR := src
-FT_PRINTF_SRCDIR := ft_printf_src
-GNL_SRCDIR := get_next_line_src
-OBJDIR := obj
-INCDIR := include
+BONUS =	bonus/ft_lstnew_bonus.c \
+		bonus/ft_lstadd_front_bonus.c \
+		bonus/ft_lstsize_bonus.c \
+		bonus/ft_lstlast_bonus.c \
+		bonus/ft_lstadd_back_bonus.c \
+		bonus/ft_lstdelone_bonus.c \
+		bonus/ft_lstclear_bonus.c \
+		bonus/ft_lstiter_bonus.c \
+		bonus/ft_lstmap_bonus.c
 
-SRCFILES := ft_strlen.c \
-			ft_strlcpy.c \
-			ft_strlcat.c \
-			ft_strchr.c \
-			ft_strrchr.c \
-			ft_strnstr.c \
-			ft_strncmp.c \
-			ft_memset.c \
-			ft_bzero.c \
-			ft_memcpy.c \
-			ft_memchr.c \
-			ft_memmove.c \
-			ft_memcmp.c \
-			ft_atoi.c \
-			ft_isalpha.c \
-			ft_isdigit.c \
-			ft_isalnum.c \
-			ft_isascii.c \
-			ft_isprint.c \
-			ft_toupper.c \
-			ft_tolower.c \
-			ft_calloc.c \
-			ft_strdup.c \
-			ft_strndup.c \
-			ft_substr.c \
-			ft_strjoin.c \
-			ft_strtrim.c \
-			ft_split.c \
-			ft_itoa.c \
-			ft_strmapi.c \
-			ft_striteri.c\
-			ft_putchar_fd.c \
-			ft_putstr_fd.c \
-			ft_putendl_fd.c \
-			ft_putnbr_fd.c
+OBJ_DIR		= objs
+OBJ			= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+OBJ_BONUS	= $(addprefix $(OBJ_DIR)/, $(BONUS:.c=.o))
 
-FT_PRINTF_SRCFILES :=	convert_specifier.c\
-						ft_printf.c\
-						get_format_spec.c\
-						ltox.c\
-						ft_ltoa.c\
-						output.c\
-						pad_char.c\
-						pop_arg.c\
-						print_arg.c\
-						print_char.c\
-						print_dec.c\
-						print_hex.c\
-						print_percent.c\
-						print_ptr.c\
-						print_str.c\
-						print_u_int.c\
-						ptox.c\
-						set_ctx_utils.c
+BUILD_OBJ	:= $(OBJ)
 
-GNL_SRCFILES :=	ft_get_next_line.c
+ifeq ($(MAKECMDGOALS),bonus)
+	BUILD_OBJ += $(OBJ_BONUS)
+else ifeq ($(MAKECMDGOALS),rebonus)
+	BUILD_OBJ += $(OBJ_BONUS)
+endif
 
-SRCS := $(addprefix $(SRCDIR)/, $(SRCFILES)) \
-		$(addprefix $(SRCDIR)/$(FT_PRINTF_SRCDIR)/, $(FT_PRINTF_SRCFILES))\
-		$(addprefix $(SRCDIR)/$(GNL_SRCDIR)/, $(GNL_SRCFILES))
-OBJS := $(patsubst %.c,$(OBJDIR)/%.o,$(notdir $(SRCS)))
-INCLUDES := $(INCDIR)
-
-vpath %.c $(SRCDIR) $(SRCDIR)/$(FT_PRINTF_SRCDIR) $(SRCDIR)/$(GNL_SRCDIR)
+.PHONY: all clean fclean re bonus rebonus
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $@ $^
+$(NAME): $(BUILD_OBJ)
+	$(AR) $@ $^
 
-$(OBJDIR)/%.o: %.c
-	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+bonus: $(NAME)
+
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CCFLAGS) -I srcs/ft_strtod -c $< -o $@
 
 clean:
-	@rm -rf $(OBJDIR)
+	$(RM) $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean re
+rebonus: fclean bonus
