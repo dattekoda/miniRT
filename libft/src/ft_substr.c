@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_rt.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 11:13:21 by khanadat         ###   ########.fr       */
+/*   Created: 2025/04/27 03:11:06 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/05 11:19:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_rt.h"
-#include "util_rt.h"
 #include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
 
-static void	err_argc(void);
-
-int	mini_rt(int argc, char *argv[])
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (argc == 1)
-		return (err_argc(), EXIT_FAILURE);
-	if (validate_rt(argv[1]))
-		return (EXIT_FAILURE);
-	printf("Hello miniRT!\n");
-	return (0);
-}
+	size_t	copy_len;
+	size_t	s_len;
+	char	*sub;
 
-static void	err_argc(void)
-{
-	err_rt();
-	ft_putendl_fd("Set a .rt file as an argument.", STDERR_FILENO);
+	if (!s)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (ft_strdup(""));
+	if (len < s_len - start)
+		copy_len = len;
+	else
+		copy_len = s_len - start;
+	sub = malloc(copy_len + 1);
+	if (!sub)
+		return (NULL);
+	ft_memmove(sub, s + start, copy_len);
+	sub[copy_len] = '\0';
+	return (sub);
 }

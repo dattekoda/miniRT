@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_rt.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 11:13:21 by khanadat         ###   ########.fr       */
+/*   Created: 2025/04/25 06:47:17 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/05 11:19:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_rt.h"
-#include "util_rt.h"
 #include "libft.h"
-#include <stdlib.h>
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	unsigned char	*p;
+
+	p = (unsigned char *) s;
+	while (n--)
+		*p++ = (unsigned char) c;
+	return (s);
+}
+
+/*
 #include <stdio.h>
 
-static void	err_argc(void);
-
-int	mini_rt(int argc, char *argv[])
-{
-	if (argc == 1)
-		return (err_argc(), EXIT_FAILURE);
-	if (validate_rt(argv[1]))
-		return (EXIT_FAILURE);
-	printf("Hello miniRT!\n");
-	return (0);
-}
-
-static void	err_argc(void)
-{
-	err_rt();
-	ft_putendl_fd("Set a .rt file as an argument.", STDERR_FILENO);
-}
+int main(void) {
+    char   ohayo[10];
+    ft_memset(ohayo, 'a', 5);
+    printf("%s\n", ohayo);
+    return 0;
+}*/

@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_rt.c                                          :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 11:13:21 by khanadat         ###   ########.fr       */
+/*   Created: 2025/04/25 10:42:02 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/05 11:19:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_rt.h"
-#include "util_rt.h"
 #include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
 
-static void	err_argc(void);
-
-int	mini_rt(int argc, char *argv[])
+int	ft_isprint(int c)
 {
-	if (argc == 1)
-		return (err_argc(), EXIT_FAILURE);
-	if (validate_rt(argv[1]))
-		return (EXIT_FAILURE);
-	printf("Hello miniRT!\n");
+	if (32 <= c && c <= 126)
+		return (16384);
 	return (0);
 }
 
-static void	err_argc(void)
+/*
+#include <stdio.h>
+int	main(void)
 {
-	err_rt();
-	ft_putendl_fd("Set a .rt file as an argument.", STDERR_FILENO);
+	if (isprint('a'))
+	{
+		printf("1\n");
+	}
+	else
+	{
+		printf("0\n");
+	}
+	return (0);
 }
+*/

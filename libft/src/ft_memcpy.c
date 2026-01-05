@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_rt.c                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 11:13:21 by khanadat         ###   ########.fr       */
+/*   Created: 2025/04/26 10:46:40 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/05 11:19:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_rt.h"
-#include "util_rt.h"
 #include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
 
-static void	err_argc(void);
-
-int	mini_rt(int argc, char *argv[])
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (argc == 1)
-		return (err_argc(), EXIT_FAILURE);
-	if (validate_rt(argv[1]))
-		return (EXIT_FAILURE);
-	printf("Hello miniRT!\n");
-	return (0);
-}
+	unsigned char		*d;
+	const unsigned char	*s;
 
-static void	err_argc(void)
-{
-	err_rt();
-	ft_putendl_fd("Set a .rt file as an argument.", STDERR_FILENO);
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	if (d == s || n == 0)
+		return (dest);
+	while (n--)
+		*d++ = *s++;
+	return (dest);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/04 07:56:15 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/05 11:17:28 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,10 @@ RMDIR		=	rm -rf
 # --- src ---
 SRCDIR		=	src
 SRCFILES	=	main.c \
-				mini_rt.c
+				mini_rt.c \
+				util/util_err.c \
+				validate/validate_file_name.c \
+				validate/validate_rt.c
 
 SRCS		=	$(addprefix $(SRCDIR)/, $(SRCFILES))
 
@@ -29,7 +32,9 @@ OBJDIR		=	obj
 OBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 
 # --- include ---
-INCDIRS		=	include
+INCDIRS		=	include \
+				include/util \
+				include/validate
 
 # --- OS DETECTION ---
 UNAME	=	$(shell uname -s)

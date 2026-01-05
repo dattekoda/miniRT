@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_rt.c                                          :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 11:13:21 by khanadat         ###   ########.fr       */
+/*   Created: 2025/07/17 16:15:50 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/05 11:19:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_rt.h"
-#include "util_rt.h"
 #include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
 
-static void	err_argc(void);
-
-int	mini_rt(int argc, char *argv[])
+int	ft_abs(int a)
 {
-	if (argc == 1)
-		return (err_argc(), EXIT_FAILURE);
-	if (validate_rt(argv[1]))
-		return (EXIT_FAILURE);
-	printf("Hello miniRT!\n");
-	return (0);
+	if (a > 0)
+		return (a);
+	return (-a);
 }
 
-static void	err_argc(void)
-{
-	err_rt();
-	ft_putendl_fd("Set a .rt file as an argument.", STDERR_FILENO);
-}
+// #include <stdio.h>
+// #include <stdlib.h>
+// int	main(int argc, char *argv[])
+// {
+// 	if (argc < 2)
+// 		return (0);
+// 	int	i = ft_atoi(argv[1]);
+// 	if (!ft_strcmp(ft_itoa(ft_abs(i)), ft_itoa(abs(i))))
+// 		ft_putendl_fd("ok", STDOUT_FILENO);
+// 	else
+// 		ft_putendl_fd("false", STDERR_FILENO);
+// 	return (0);
+// }
