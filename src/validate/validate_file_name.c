@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:09:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 11:31:55 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/05 11:35:49 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	err_file_extension(void);
 
 /*
 @brief Check if the file name of argument is correct.
-@param rt_file file name ending with '.rt'.
+@param argv_one just argv[1]
 */
 int	validate_file_name(const char *argv_one)
 {
@@ -35,32 +35,32 @@ int	validate_file_name(const char *argv_one)
 	else
 		rt_file = argv_one;
 	if (rt_file[0] == '.')
-		return (err_first_dot(), EXIT_FAILURE);
+		return (err_first_dot(), exit_failure);
 	rt_file_len = ft_strlen(rt_file);
-	if (rt_file_len <= MIN_RT_FILE_NAME)
-		return (err_file_name_len(), EXIT_FAILURE);
+	if (rt_file_len <= min_rt_file_name)
+		return (err_file_name_len(), exit_failure);
 	if (ft_strcmp(rt_file + rt_file_len - 3, ".rt"))
-		return (err_file_extension(), EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+		return (err_file_extension(), exit_failure);
+	return (exit_success);
 }
 
 static void	err_file_name(void)
 {
 	err_rt();
-	ft_putstr_fd(ERR_MSG_FILE_NAME, STDERR_FILENO);
+	ft_putstr_fd(err_msg_file_name, stderr_fileno);
 }
 
 static void	err_first_dot(void)
 {
 	err_file_name();
-	ft_putendl_fd("File name starting with '.' is not supported.", \
-		STDERR_FILENO);
+	ft_putendl_fd("file name starting with '.' is not supported.", \
+		stderr_fileno);
 }
 
 static void	err_file_name_len(void)
 {
 	err_file_name();
-	ft_putendl_fd("Filename needs to be 4 characters or more.", STDERR_FILENO);
+	ft_putendl_fd("filename needs to be 4 characters or more.", stderr_fileno);
 }
 
 static void	err_file_extension(void)
