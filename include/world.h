@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_rt.c                                      :+:      :+:    :+:   */
+/*   world.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 10:05:57 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 11:36:25 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/05 21:29:32 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/05 22:15:05 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef WORLD_H
+# define WORLD_H
 
-int	validate_file_name(const char *argv_one);
+# include <stdbool.h>
 
-/*
-@brief validate function
-@param argv_one argv[1]
-*/
-int	validate_rt(const char *argv_one)
+typedef struct s_world	t_world;
+
+struct s_world
 {
-	if (validate_file_name(argv_one))
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
-}
+	int	option_flag;
+};
+
+#endif

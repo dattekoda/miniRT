@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_rt.h                                      :+:      :+:    :+:   */
+/*   test_set_option.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 10:17:14 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 21:46:56 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/05 22:48:33 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/05 23:05:28 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATE_RT_H
-# define VALIDATE_RT_H
+#include <assert.h>
 
-# include <stdbool.h>
+int	set_option(const char *options);
 
-bool	validate_rt(int argc, char *argv[]);
+int	test_set_option()
+{
+	assert(set_option("-zppppppp") == 0);
+	assert(set_option("-pppa") == 0);
+	assert(set_option("-a") == 0);
 
-#endif
+	assert(set_option("-") == 0);
+	assert(set_option("ppp") == 0);
+	assert(set_option("-pppppppppp") == 1);
+	assert(set_option("-p") == 1);
+	return (0);
+}

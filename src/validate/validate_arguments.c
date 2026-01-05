@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_rt.h                                      :+:      :+:    :+:   */
+/*   validate_arguments.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 10:17:14 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 21:46:56 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/05 10:05:57 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/05 21:21:49 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATE_RT_H
-# define VALIDATE_RT_H
+#include "util_rt.h"
+#include <stdlib.h>
 
-# include <stdbool.h>
+int	validate_file_name(const char *argv_one);
 
-bool	validate_rt(int argc, char *argv[]);
-
-#endif
+/*
+@brief validate function
+@param argv_one argv[1]
+*/
+int	validate_arguments(int argc, char *argv[])
+{
+	if (argc == 1)
+		return (FAILURE);
+	if (validate_file_name(argv[1]) == FAILURE)
+		return (FAILURE);
+	return (SUCCESS);
+}

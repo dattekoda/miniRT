@@ -6,16 +6,15 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 10:27:19 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/05 21:46:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_DEFINE_H
-# define RT_DEFINE_H
+#ifndef DEFINE_RT_H
+# define DEFINE_RT_H
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
 # endif
-
 
 #endif
