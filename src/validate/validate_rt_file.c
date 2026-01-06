@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_rt_file.c                                 :+:      :+:    :+:   */
+/*   validate_line_list.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -28,7 +28,7 @@ static int	distribute_validate(char *line);
 static void	err_distribute(char *line);
 static void	err_set(char *element);
 
-int	validate_rt_file(const t_list *line_list)
+int	validate_line_list(const t_list *line_list)
 {
 	int	a_count;
 	int	c_count;
@@ -37,27 +37,27 @@ int	validate_rt_file(const t_list *line_list)
 	c_count = 0;
 	while (line_list)
 	{
-		if ((char)*(char *)(line_list->content) == 'A')
+		if (*(char *)(line_list->content) == 'A')
 			a_count++;
-		if ((char)*(char *)(line_list->content) == 'C')
+		if (*(char *)(line_list->content) == 'C')
 			c_count++;
 		if (distribute_validate(line_list->content))
 			return (FAILURE);
 		line_list = line_list->next;
 	}
-	if (a_count == 0)
+	if (a_count == 1 && c_count == 1)
+		return (SUCCESS);
+	if (a_count != 1)
 		err_set("'ambient'");
-	if (c_count == 0)
+	if (c_count != 1)
 		err_set("'camera'");
-	if (a_count * c_count == 0)
-		return (FAILURE);
-	return (SUCCESS);
+	return (FAILURE);
 }
 
 static void	err_set(char *element)
 {
 	err_rt();
-	ft_putstr_fd("Set ", STDERR_FILENO);
+	ft_putstr_fd("Set only one ", STDERR_FILENO);
 	ft_putendl_fd(element, STDERR_FILENO);
 }
 

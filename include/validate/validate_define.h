@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:53:42 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 19:23:25 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/06 21:17:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,12 @@ typedef enum s_vectype
 	IS_COLOR
 }	t_vectype;
 
-// validate_util.c
-int	skip_spaces(char **ptr);
+int	skip_spaces(char **ptr, void (*f)(void));
 int	skip_range(char **ptr, double min, double max);
 int	skip_vec(char **ptr, t_vectype type);
 
-// validate_util_err.c
+void	err_point_out(char *start, char *err_ptr);
 void	err_spaces(void (*f)(void));
-void	err_range(void (*f)(void), int min, int max);
-void	err_vec(void (*f)(void), t_vectype type);
 void	err_end(void (*f)(void));
 
 #endif

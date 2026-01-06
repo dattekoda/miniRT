@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 19:09:28 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 19:22:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/06 23:04:24 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,24 @@
 #include "libft.h"
 
 static void	err_camera(void);
-static void	err_coordinate(void);
-static void	err_orientation(void);
-static void	err_fov(void);
+static int	skip_coordinate(char *line, size_t *i_ptr);
+static int	skip_orientation(char *line);
+static int skip_fov(char *line);
 
 int	validate_camera(char *line)
 {
-	if (skip_spaces(&line))
-		return (err_spaces(err_camera), FAILURE);
-	if (skip_vec(&line, IS_POINT) == FAILURE)
-		return (err_vec(err_coordinate, IS_POINT), FAILURE);
-	if (skip_spaces(&line) == FAILURE)
-		return (err_spaces(err_camera), FAILURE);
-	if (skip_vec(&line, IS_UNIT) == FAILURE)
-		return (err_vec(err_orientation, IS_UNIT), FAILURE);
-	if (skip_spaces(&line) == FAILURE)
-		return (err_spaces(err_camera), FAILURE);
-	if (skip_range(&line, 0, 180) == FAILURE)
-		return (err_range(err_fov, 0, 180), FAILURE);
-	skip_spaces(&line);
+	size_t	i;
+
+	i = 0;
+	if (skip_coordinate(line, &i) == FAILURE)
+		return (FAILURE);
+	if (skip_orientation(&line) == FAILURE)
+		return (FAILURE);
+	if (skip_fov(&line))
+		return (FAILURE);
+	skip_spaces(&line, NULL);
 	if (*line != '\n' && *line != '\0')
-		return (err_end(err_camera), FAILURE);
+		return (err_end(err_camera), err_point_out(start, line), FAILURE);
 	return (SUCCESS);
 }
 
@@ -45,20 +42,29 @@ static void	err_camera(void)
 	ft_putstr_fd("invalid camera format: ", STDERR_FILENO);
 }
 
-static void	err_coordinate(void)
+static int	skip_coordinate(char *line, size_t *i_ptr)
 {
+	if (skip_vec(line, i_ptr, IS_POINT) == SUCCESS)
+		return (SUCCESS);
 	err_camera();
-	ft_putstr_fd("coordinate: ", STDERR_FILENO);
+	ft_putendl_fd("coordinate", STDERR_FILENO);
+	return (FAILURE);
 }
 
-static void	err_orientation(void)
+static int	skip_orientation(char *line)
 {
+	if (skip_vecline, IS_UNIT) == SUCCESS)
+		return (SUCCESS);
 	err_camera();
-	ft_putstr_fd("orientation vector: ", STDERR_FILENO);
+	ft_putendl_fd("orientation vector", STDERR_FILENO);
+	return (FAILURE);
 }
 
-static void	err_fov(void)
+static int skip_fov(char *line)
 {
+	if (skip_rangeline, 0, 180) == SUCCESS)
+		return (SUCCESS);
 	err_camera();
-	ft_putstr_fd("Horizontal field of view: ", STDERR_FILENO);
+	ft_putendl_fd("Horizontal field of view range 0-180", STDERR_FILENO);
+	return (FAILURE);
 }
