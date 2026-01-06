@@ -6,14 +6,16 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:05:57 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 21:21:49 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/06 14:38:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util_rt.h"
+#include "libft.h"
 #include <stdlib.h>
 
-int	validate_file_name(const char *argv_one);
+static void	err_argc(void);
+int			validate_file_name(const char *argv_one);
 
 /*
 @brief validate function
@@ -22,8 +24,14 @@ int	validate_file_name(const char *argv_one);
 int	validate_arguments(int argc, char *argv[])
 {
 	if (argc == 1)
-		return (FAILURE);
+		return (err_argc(), FAILURE);
 	if (validate_file_name(argv[1]) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
+}
+
+static void	err_argc(void)
+{
+	err_rt();
+	ft_putendl_fd("Set a .rt file as an argument.", STDERR_FILENO);
 }
