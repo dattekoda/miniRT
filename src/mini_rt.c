@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 14:51:49 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/06 16:59:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	mini_rt(int argc, char *argv[])
 {
 	t_world	world;
 
-	init_world(&world, argc, argv);
+	if (init_world(&world, argc, argv))
+		return (FAILURE);
 	printf("Hello miniRT!\n");
-	return (0);
+	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:05:57 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 14:38:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/06 17:04:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int	validate_arguments(int argc, char *argv[])
 static void	err_argc(void)
 {
 	err_rt();
-	ft_putendl_fd("Set a .rt file as an argument.", STDERR_FILENO);
+	ft_putendl_fd("set .rt file as an argument.", STDERR_FILENO);
 }

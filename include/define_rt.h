@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 21:46:20 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:40:46 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,18 @@
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
 # endif
+
+typedef enum s_element
+{
+	NOTHING,
+	AMBIENT,
+	CAMERA,
+	LIGHT,
+	SPHERE,
+	PLANE,
+	CYLINDER,
+	CONE,
+	TRIANGLE
+}	t_element;
 
 #endif

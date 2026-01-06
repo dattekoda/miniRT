@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:19:05 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 15:12:48 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/06 17:04:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 */
 void	err_rt(void)
 {
-	ft_putstr_fd(ERR_MSG_MINIRT, STDERR_FILENO);
+	ft_putstr_fd("miniRT: ", STDERR_FILENO);
 }
 
 void	perror_rt(const char *func)

@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/05 23:01:45 by khanadat         ###   ########.fr        #
+#    Updated: 2026/01/06 19:05:22 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,16 @@ SRCFILES	=	main.c \
 				validate/validate_file_name.c \
 				validate/validate_arguments.c
 
-SRCS		=	$(addprefix $(SRCDIR)/, $(SRCFILES))
+SRCS		=	$(addprefix $(SRCDIR)/, main.c mini_rt.c init_world.c \
+				$(addprefix init_world/, read_rt.c set_option.c) \
+				$(addprefix util/, util_err.c) \
+				$(addprefix validate/, \
+				validate_ambient.c \
+				validate_arguments.c \
+				validate_file_name.c \
+				validate_rt_file.c \
+				validate_util_err.c \
+				validate_util.c))
 
 # --- obj ---
 OBJDIR		=	obj

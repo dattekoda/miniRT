@@ -6,4 +6,4 @@
 !*.c
 !*.h
 !Makefile
-!*.rt
+!scene
