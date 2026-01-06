@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:23:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 21:47:10 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:15:12 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ enum
 };
 
 void	err_rt(void);
+void	perror_rt(const char *func);
 
 #endif

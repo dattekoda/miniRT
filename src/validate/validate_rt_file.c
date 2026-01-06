@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_err.c                                         :+:      :+:    :+:   */
+/*   validate_rt_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 10:19:05 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 15:12:48 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/06 15:07:02 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/06 15:27:57 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "validate_define.h"
+#include "define_rt.h"
 #include "util_rt.h"
 #include "libft.h"
-#include <stdlib.h>
 
-/*
-@brief Used as a prefix for all error messages
-*/
-void	err_rt(void)
+int	validate_rt_file(const t_list *line_list)
 {
-	ft_putstr_fd(ERR_MSG_MINIRT, STDERR_FILENO);
-}
-
-void	perror_rt(const char *func)
-{
-	err_rt();
-	perror(func);
 }
