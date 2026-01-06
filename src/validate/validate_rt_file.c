@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:07:02 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 19:04:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/06 19:25:26 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ static int	distribute_validate(char *line)
 {
 	if (*line == 'A')
 		return (validate_ambient(line + 1));
-	// if (*line == 'C')
-	// 	return (validate_camera(line + 1));
+	if (*line == 'C')
+		return (validate_camera(line + 1));
 	// if (*line == 'L')
 	// 	return (validate_light(line + 1));
 	// if (ft_strncmp(line, "pl", 2) == 0)

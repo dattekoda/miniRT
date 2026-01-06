@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:10:50 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 19:06:18 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/06 19:27:55 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	skip_spaces(char **ptr)
 	return (SUCCESS);
 }
 
-int	skip_range(char **ptr, int min, int max)
+int	skip_range(char **ptr, double min, double max)
 {
 	double	num;
 
@@ -44,6 +44,7 @@ int	skip_vec(char **ptr, t_vectype type)
 	char	*tmp_ptr;
 
 	i = 0;
+	d_tmp = 0;
 	while (i++ < 3)
 	{
 		tmp_ptr = *ptr;

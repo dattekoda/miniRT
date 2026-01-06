@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:08:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 19:03:50 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/06 19:22:00 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,10 @@ void	err_vec(void (*f)(void), t_vectype type)
 		ft_putendl_fd("unit vector's values range 0-1", STDERR_FILENO);
 	else if (type == IS_COLOR)
 		ft_putendl_fd("RGB values range 0-255", STDERR_FILENO);
+}
+
+void	err_end(void (*f)(void))
+{
+	f();
+	ft_putendl_fd("incorrect line ending", STDERR_FILENO);
 }

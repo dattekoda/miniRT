@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:01:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 19:03:06 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/06 19:24:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 static void	err_ambient(void);
 static void	err_lighting_ratio(void);
-static void	err_end(void);
 
 int	validate_ambient(char *line)
 {
@@ -30,7 +29,7 @@ int	validate_ambient(char *line)
 		return (err_vec(err_ambient, IS_COLOR), FAILURE);
 	skip_spaces(&line);
 	if (*line != '\n' && *line != '\0')
-		return (err_end(), FAILURE);
+		return (err_end(err_ambient), FAILURE);
 	return (SUCCESS);
 }
 
@@ -44,10 +43,4 @@ static void	err_lighting_ratio(void)
 {
 	err_ambient();
 	ft_putstr_fd("lighting ratio: ", STDERR_FILENO);
-}
-
-static void	err_end(void)
-{
-	err_ambient();
-	ft_putendl_fd("incorrect line ending", STDERR_FILENO);
 }
