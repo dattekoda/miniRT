@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:09:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 14:53:11 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 18:29:09 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 static void	err_file_name(void);
 static void	err_first_dot(void);
-static void	err_file_name_len(void);
 static void	err_file_extension(void);
 
 /*
@@ -36,10 +35,8 @@ int	validate_file_name(const char *file_path)
 		rt_file = file_path;
 	if (rt_file[0] == '.')
 		return (err_first_dot(), FAILURE);
-	// rt_file_len = ft_strlen(rt_file);
-	// if (rt_file_len <= 3)
-	// 	return (err_file_name_len(), FAILURE);
-	if (ft_strlen(rt_file) && ft_strcmp(rt_file + rt_file_len - 3, ".rt") != 0)
+	if (ft_strlen(rt_file) <= 3 \
+|| ft_strcmp(rt_file + rt_file_len - 3, ".rt") != 0)
 		return (err_file_extension(), FAILURE);
 	return (SUCCESS);
 }
@@ -55,12 +52,6 @@ static void	err_first_dot(void)
 	err_file_name();
 	ft_putendl_fd("file name starting with '.' is not supported.", \
 STDERR_FILENO);
-}
-
-static void	err_file_name_len(void)
-{
-	err_file_name();
-	ft_putendl_fd("filename needs to be 4 characters or more.", STDERR_FILENO);
 }
 
 static void	err_file_extension(void)

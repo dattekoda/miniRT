@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 19:09:28 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 18:21:552 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/07 18:28:07 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/07 18:29:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	skip_orientation(const char *line, size_t *i_ptr)
 	return (SUCCESS);
 }
 
-static int skip_fov(const char *line, size_t *i_ptr)
+static int	skip_fov(const char *line, size_t *i_ptr)
 {
 	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
 		return (FAILURE);

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:10:50 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 15:20:26 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 18:29:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	skip_range(const char *line, size_t *i_ptr, double min, double max)
 	double	num;
 
 	num = i_ptr_strtod(line, i_ptr);
-	if (isnan(num) || isinf(num) ||num < min || max < num)
+	if (isnan(num) || isinf(num) || num < min || max < num)
 		return (FAILURE);
 	return (SUCCESS);
 }
