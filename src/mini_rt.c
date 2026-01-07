@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 20:04:55 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:20:11 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static const t_identifer	identifer_table[] = 
-{
-	{"A", 1, AMBIENT, validate_ambient},
-	{"C", 1, CAMERA,  validate_camera},
-	{NULL, 0, NULL}
+const t_element_info	g_elem_table[] = {
+{AMBIENT, "A", 1, validate_ambient},
+{CAMERA, "C", 1, validate_camera},
+{NOTHING, NULL, NULL}
 };
 
 int	init_world(t_world *world, int argc, char *argv[]);

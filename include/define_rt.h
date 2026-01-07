@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 20:06:04 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:19:46 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@
 #  define NORMALIZE_EPSILON 1e-3
 # endif
 
-typedef enum e_element
+#include <stddef.h>
+
+typedef enum e_element_type
 {
 	NOTHING,
 	AMBIENT,
@@ -32,16 +34,16 @@ typedef enum e_element
 	CYLINDER,
 	CONE,
 	TRIANGLE
-}	t_element;
+}	t_element_type;
 
-typedef struct s_identifer
+typedef struct s_element_info
 {
-	char 		*str;
-	size_t		str_len;
-	t_element	num;
-	int			(*validate)(char *line);
-}	t_identifer;
+	t_element_type	type;
+	char 			*str;
+	size_t			str_len;
+	int				(*validate)(char *line);
+}	t_element_info;
 
-extern t_identifer	identifer_table[];
+extern const t_element_info	g_elem_table[];
 
 #endif
