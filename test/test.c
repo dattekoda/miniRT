@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 22:16:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 23:00:39 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/07 19:20:17 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "libft.h"
 
 static int	test(void);
-int	test_set_option();
+int			test_set_option(void);
+int			test_validate_line_list(void);
 
 int	_wrap_errno_ = 0;
 enum e_error_syscall	err_syscall = 0;
@@ -28,5 +29,6 @@ int	main(void)
 static int	test(void)
 {
 	test_set_option();
+	test_validate_line_list();
 	return (0);
 }

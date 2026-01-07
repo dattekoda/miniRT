@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_rt.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:17:14 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 21:46:56 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:04:28 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 # include <stdbool.h>
 
-bool	validate_rt(int argc, char *argv[]);
+int		validate_ambient(char *line);
+int		validate_camera(char *line);
+int		validate_light(char *line);
+int		validate_plane(char *line);
+int		validate_sphere(char *line);
+int		validate_cylinder(char *line);
+int		validate_cone(char *line);
+int		validate_triangle(char *line);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_rt_file.c                                 :+:      :+:    :+:   */
+/*   validate_line_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:28:34 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/07 18:31:36 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:07:07 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 #include "define_rt.h"
 #include "util_rt.h"
 #include "libft.h"
-
-int			validate_ambient(const char *line);
-int			validate_camera(const char *line);
-int			validate_light(const char *line);
-int			validate_plane(const char *line);
-int			validate_sphere(const char *line);
-int			validate_cylinder(const char *line);
-int			validate_cone(const char *line);
-int			validate_triangle(const char *line);
 
 static int	distribute_validate(char *line);
 static void	err_distribute(char *line);
@@ -63,22 +54,14 @@ static void	err_set(char *element)
 
 static int	distribute_validate(char *line)
 {
-	if (*line == 'A')
-		return (validate_ambient(line + 1));
-	if (*line == 'C')
-		return (validate_camera(line + 1));
-	// if (*line == 'L')
-	// 	return (validate_light(line + 1));
-	// if (ft_strncmp(line, "pl", 2) == 0)
-	// 	return (validate_plane(line + 2));
-	// if (ft_strncmp(line, "sp", 2) == 0)
-	// 	return (validate_sphere(line + 2));
-	// if (ft_strncmp(line, "cy", 2) == 0)
-	// 	return (validate_cylinder(line + 2));
-	// if (ft_strncmp(line, "co", 2) == 0)
-	// 	return (validate_cone(line + 2));
-	// if (ft_strncmp(line, "tr", 2) == 0)
-	// 	return (validate_triangle(line + 2));
+	size_t	i;
+
+	while (identifer_table[i].str)
+	{
+		if (ft_strncmp(line, identifer_table[i].str, identifer_table[i].str_len) == 0)
+			return (identifer_table->validate(line));
+		i++;
+	}
 	return (err_distribute(line), FAILURE);
 }
 

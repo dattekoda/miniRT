@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:10:50 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 18:30:49 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 19:35:22 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 #include <math.h>
 #include <float.h>
 
+static int		is_valid_vec(t_vectype type, const double *d3);
 static double	i_ptr_strtod(const char *line, size_t *i_ptr);
 
 /*
 @brief return failure if it doesn't have any space
 @param f if NULL, no err msg
 */
-int	skip_spaces_with_err_msg(const char *line, size_t *i_ptr)
+int	skip_spaces_with_err_msg(char *line, size_t *i_ptr)
 {
 	if (line[*i_ptr] != ' ' && line[*i_ptr] != '\t')
 	{

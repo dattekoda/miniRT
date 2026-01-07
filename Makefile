@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/06 19:25:43 by khanadat         ###   ########.fr        #
+#    Updated: 2026/01/07 20:01:19 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRCS		=	$(addprefix $(SRCDIR)/, main.c mini_rt.c init_world.c \
 				validate_arguments.c \
 				validate_camera.c \
 				validate_file_name.c \
-				validate_rt_file.c \
+				validate_line_list.c \
 				validate_util_err.c \
 				validate_util.c))
 
@@ -76,7 +76,7 @@ ASANFLAG	=	$(DFLAG) -fsanitize=address
 SCANBUILD	=	/usr/bin/scan-build-12
 
 # --- test ---
-TESTNAME	=	test_weekend_c
+TESTNAME	=	test_miniRT
 TESTCFLAG	=	$(ASANFLAG) -Itest/unit_test
 TESTLDFLAG	=	$(LDFLAG) -Wl,--wrap=open,--wrap=read,--wrap=malloc,--wrap=free
 
@@ -84,10 +84,11 @@ TESTSRCFILES	=	$(addprefix test/, \
 					test.c \
 					$(addprefix unit_test/, \
 					syscall_mock.c \
-					$(addprefix set_world/, \
+					$(addprefix init_world/, \
 					test_set_option.c \
 					$(addprefix validate/, \
 					test_validate_file_name.c \
+					test_validate_line_list.c \
 					))))
 
 TESTSRCS		=	$(TESTSRCFILES) \

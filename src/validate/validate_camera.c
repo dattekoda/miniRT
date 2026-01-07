@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:28:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/07 18:30:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 19:25:07 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 #include "libft.h"
 
 static void	err_camera(void);
-static int	skip_coordinate(const char *line, size_t *i_ptr);
-static int	skip_orientation(const char *line, size_t *i_ptr);
-static int	skip_fov(const char *line, size_t *i_ptr);
+static int	skip_coordinate(char *line, size_t *i_ptr);
+static int	skip_orientation(char *line, size_t *i_ptr);
+static int	skip_fov(char *line, size_t *i_ptr);
 
-int	validate_camera(const char *line)
+int	validate_camera(char *line)
 {
 	size_t	i;
 
@@ -30,7 +30,7 @@ int	validate_camera(const char *line)
 		return (FAILURE);
 	if (skip_fov(line, &i))
 		return (FAILURE);
-	skip_spaces_with_err_msg(&line, NULL);
+	skip_spaces_with_err_msg(line, NULL);
 	if (*line != '\n' && *line != '\0')
 	{
 		err_camera();
@@ -47,7 +47,7 @@ static void	err_camera(void)
 	ft_putstr_fd("invalid camera format: ", STDERR_FILENO);
 }
 
-static int	skip_coordinate(const char *line, size_t *i_ptr)
+static int	skip_coordinate(char *line, size_t *i_ptr)
 {
 	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
 		return (FAILURE);
@@ -61,7 +61,7 @@ static int	skip_coordinate(const char *line, size_t *i_ptr)
 	return (SUCCESS);
 }
 
-static int	skip_orientation(const char *line, size_t *i_ptr)
+static int	skip_orientation(char *line, size_t *i_ptr)
 {
 	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
 		return (FAILURE);
@@ -75,7 +75,7 @@ static int	skip_orientation(const char *line, size_t *i_ptr)
 	return (SUCCESS);
 }
 
-static int	skip_fov(const char *line, size_t *i_ptr)
+static int	skip_fov(char *line, size_t *i_ptr)
 {
 	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
 		return (FAILURE);

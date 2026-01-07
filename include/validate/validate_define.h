@@ -6,12 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:53:42 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 14:06:05 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 18:50:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VALIDATE_DEFINE_H
 # define VALIDATE_DEFINE_H
+
+# include <stddef.h>
 
 typedef enum s_vectype
 {
@@ -20,7 +22,7 @@ typedef enum s_vectype
 	IS_COLOR
 }	t_vectype;
 
-int		skip_spaces_with_err_msg(const char *line, size_t *i);
+int		skip_spaces_with_err_msg(char *line, size_t *i);
 int		skip_range(const char *line, size_t *i_ptr, double min, double max);
 int		skip_vec(const char *line, size_t *i_ptr, t_vectype type);
 

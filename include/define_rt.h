@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_rt.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 15:40:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:06:04 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
-typedef enum s_element
+# ifndef NORMALZIE_EPSILON
+#  define NORMALIZE_EPSILON 1e-3
+# endif
+
+typedef enum e_element
 {
 	NOTHING,
 	AMBIENT,
@@ -29,5 +33,15 @@ typedef enum s_element
 	CONE,
 	TRIANGLE
 }	t_element;
+
+typedef struct s_identifer
+{
+	char 		*str;
+	size_t		str_len;
+	t_element	num;
+	int			(*validate)(char *line);
+}	t_identifer;
+
+extern t_identifer	identifer_table[];
 
 #endif

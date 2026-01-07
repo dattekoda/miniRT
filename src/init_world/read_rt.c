@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_rt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 22:40:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:01:19 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-static int	set_head_list(t_list *cur, int fd);
+static int	read_lines_to_list(t_list *cur, int fd);
 
 /*
 @brief set line_list from rt_file
@@ -28,7 +28,7 @@ void	read_rt_file(t_list **line_list, const char *file_path)
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
 	{
-		perror_RT("open");
+		perror_rt("open");
 		exit(EXIT_FAILURE);
 	}
 	if (read_lines_to_list(ft_memset(&head, 0, sizeof(t_list)), fd))

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:01:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 15:21:14 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:01:19 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	validate_ambient(char *line)
 		return (FAILURE);
 	if (skip_ambient_color(line, &i) == FAILURE)
 		return (FAILURE);
-	skip_spaces_with_err_msg(&line, NULL);
+	skip_spaces_with_err_msg(line, NULL);
 	if (*line != '\n' && *line != '\0')
 	{
 		err_ambient();
