@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_util.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:10:50 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 23:29:03 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/07 15:20:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,65 +14,88 @@
 #include "util_rt.h"
 #include "libft.h"
 #include <math.h>
+#include <float.h>
 
-static double	i_ptr_strtod(char *line, size_t *i_ptr);
+static double	i_ptr_strtod(const char *line, size_t *i_ptr);
 
 /*
 @brief return failure if it doesn't have any space
 @param f if NULL, no err msg
 */
-int	skip_spaces(char *line, size_t *i, void (*err_func)(void))
+int	skip_spaces_with_err_msg(const char *line, size_t *i_ptr)
 {
-	if (**ptr != ' ' && **ptr != '\t' && err_func)
-		return (err_spaces(err_func), FAILURE);
-	while (**ptr && (**ptr == ' ' || **ptr == '\t'))
-		(*ptr)++;
+	if (line[*i_ptr] != ' ' && line[*i_ptr] != '\t')
+	{
+		err_rt();
+		err_spaces();
+		err_point_out(line, *i_ptr);
+		return (FAILURE);
+	}
+	while (line[*i_ptr] && (line[*i_ptr] == ' ' || line[*i_ptr] == '\t'))
+		(*i_ptr)++;
 	return (SUCCESS);
 }
 
-int	skip_range(char **ptr, double min, double max)
+int	skip_range(const char *line, size_t *i_ptr, double min, double max)
 {
 	double	num;
 
-	num = ft_strtod(*ptr, ptr);
-	if (num < min || max < num)
+	num = i_ptr_strtod(line, i_ptr);
+	if (isnan(num) || isinf(num) ||num < min || max < num)
 		return (FAILURE);
 	return (SUCCESS);
 }
 
-int	skip_vec(char *line, size_t *i_ptr, t_vectype type)
+int	skip_vec(const char *line, size_t *i_ptr, t_vectype type)
 {
-	size_t	i;
-	size_t	tmp_i_ptr;
-	double	d_tmp;
+	size_t	d_idx;
+	double	d3[3];
 
-	i = 0;
-	d_tmp = 0;
-	while (i++ < 3)
+	d_idx = 0;
+	ft_bzero(d3, sizeof(double) * 3);
+	while (d_idx < 3)
 	{
-		tmp_i_ptr = (*i_ptr);
-		if (type == IS_UNIT)
-			d_tmp += pow(i_ptr_strtod(line, i_ptr), 2);
-		else
-			d_tmp = i_ptr_strtod(line, i_ptr);
-		if (tmp_i_ptr == (*i_ptr))
-			return (FAILURE);
-		if (type == IS_COLOR && (d_tmp < 0 || 255 < d_tmp))
-			return (FAILURE);
-		if (i != 3 && line[*(i_ptr)++] != ',')
+		d3[d_idx++] = i_ptr_strtod(line, i_ptr);
+		if (d_idx != 3 && line[*(i_ptr)++] != ',')
 			return (FAILURE);
 	}
-	if (type == IS_UNIT && __FLT_EPSILON__ < fabs(d_tmp - 1))
-		return (FAILURE);
+	return (is_valid_vec(type, d3));
+}
+
+static int	is_valid_vec(t_vectype type, const double *d3)
+{
+	size_t	d_idx;
+	double	sum;
+
+	d_idx = 0;
+	sum = 0;
+	while (d_idx < 3)
+	{
+		if (isnan(d3[d_idx]) || isinf(d3[d_idx]))
+			return (FAILURE);
+		if (type == IS_COLOR)
+			if (d3[d_idx] < 0.0 || 255.0 < d3[d_idx])
+				return (FAILURE);
+		sum += pow(d3[d_idx], 2);
+		d_idx++;
+	}
+	if (type == IS_UNIT)
+		if (fabs(sum - 1) >= FLT_EPSILON)
+			return (FAILURE);
 	return (SUCCESS);
 }
 
-static double	i_ptr_strtod(char *line, size_t *i_ptr)
+/*
+@brief if not number return NAN
+*/
+static double	i_ptr_strtod(const char *line, size_t *i_ptr)
 {
 	double	d_tmp;
 	char	*endptr;
 
 	d_tmp = ft_strtod(line, &endptr);
+	if (line == endptr)
+		return (NAN);
 	(*i_ptr) += (endptr - line);
 	return (d_tmp);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_ambient.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:01:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 22:58:56 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/07 15:21:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,54 @@
 #include "libft.h"
 
 static void	err_ambient(void);
-static void	err_lighting_ratio(void);
+static int	skip_ambient_light_ratio(char *line, size_t *i_ptr);
+static int	skip_ambient_color(char *line, size_t *i_ptr);
 
 int	validate_ambient(char *line)
 {
 	size_t	i;
 
 	i = 0;
-	if (skip_spaces(line, &i, err_ambient))
-		return (err_point_out(start - 1, line), FAILURE);
-	if (skip_range(&line, 0, 1, err_lighting_ratio) == FAILURE)
-		return (err_point_out(start - 1, line), FAILURE);
-	if (skip_spaces(&line, err_ambient) == FAILURE)
-		return (err_point_out(start - 1, line), FAILURE);
-	if (skip_vec(&line, IS_COLOR, err_ambient) == FAILURE)
-		return (err_point_out(start - 1, line), FAILURE);
-	skip_spaces(&line, NULL);
+	if (skip_ambient_light_ratio(line, &i) == FAILURE)
+		return (FAILURE);
+	if (skip_ambient_color(line, &i) == FAILURE)
+		return (FAILURE);
+	skip_spaces_with_err_msg(&line, NULL);
 	if (*line != '\n' && *line != '\0')
-		return (err_end(err_ambient), err_point_out(start, line), FAILURE);
+	{
+		err_ambient();
+		err_end();
+		err_point_out(line, i);
+		return (FAILURE);
+	}
+	return (SUCCESS);
+}
+
+static int	skip_ambient_light_ratio(char *line, size_t *i_ptr)
+{
+	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
+		return (FAILURE);
+	if (skip_range(line, i_ptr, 0, 1) == FAILURE)
+	{
+		err_ambient();
+		ft_putendl_fd("invalid ambient lighting ratio", STDERR_FILENO);
+		err_point_out(line, *i_ptr);
+		return (FAILURE);
+	}
+	return (SUCCESS);
+}
+
+static int	skip_ambient_color(char *line, size_t *i_ptr)
+{
+	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
+		return (FAILURE);
+	if (skip_vec(line, i_ptr, IS_COLOR) == FAILURE)
+	{
+		err_ambient();
+		ft_putendl_fd("R,G,B[0,255] colors invalid format", STDERR_FILENO);
+		err_point_out(line, *i_ptr);
+		return (FAILURE);
+	}
 	return (SUCCESS);
 }
 
@@ -40,10 +70,5 @@ static void	err_ambient(void)
 {
 	err_rt();
 	ft_putstr_fd("invalid ambient format: ", STDERR_FILENO);
-}
-
-static void	err_lighting_ratio(void)
-{
-	err_ambient();
-	ft_putstr_fd("lighting ratio: ", STDERR_FILENO);
+	return ;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_util_err.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:08:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 20:47:48 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/07 14:05:44 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "validate_define.h"
 #include "libft.h"
 
-void	err_point_out(char *start, char *err_ptr)
+void	err_point_out(char *line, size_t err_idx)
 {
 	size_t	i;
 	size_t	point;
@@ -22,14 +22,13 @@ void	err_point_out(char *start, char *err_ptr)
 
 	i = 0;
 	tab_count = 0;
-	point = err_ptr - start;
-	ft_putstr_fd(start, STDERR_FILENO);
+	ft_putstr_fd(line, STDERR_FILENO);
 	while (i++ < point)
 	{
-		if (start[i] == '\t')
+		if (line[i] == '\t')
 			tab_count++;
 	}
-	point -= tab_count;
+	err_idx -= tab_count;
 	i = 0;
 	while (i++ < point)
 		ft_putchar_fd(' ', STDERR_FILENO);
@@ -39,15 +38,12 @@ void	err_point_out(char *start, char *err_ptr)
 	ft_putendl_fd(GREEN"^"RESET, STDERR_FILENO);
 }
 
-void	err_spaces(void (*f)(void))
+void	err_spaces(void)
 {
-	if (f)
-		f();
 	ft_putendl_fd("need spaces", STDERR_FILENO);
 }
 
-void	err_end(void (*f)(void))
+void	err_end(void)
 {
-	f();
 	ft_putendl_fd("incorrect line ending", STDERR_FILENO);
 }

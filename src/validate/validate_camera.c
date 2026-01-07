@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 19:09:28 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 23:04:24 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/07 18:21:552 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,29 @@
 #include "libft.h"
 
 static void	err_camera(void);
-static int	skip_coordinate(char *line, size_t *i_ptr);
-static int	skip_orientation(char *line);
-static int skip_fov(char *line);
+static int	skip_coordinate(const char *line, size_t *i_ptr);
+static int	skip_orientation(const char *line, size_t *i_ptr);
+static int	skip_fov(const char *line, size_t *i_ptr);
 
-int	validate_camera(char *line)
+int	validate_camera(const char *line)
 {
 	size_t	i;
 
 	i = 0;
 	if (skip_coordinate(line, &i) == FAILURE)
 		return (FAILURE);
-	if (skip_orientation(&line) == FAILURE)
+	if (skip_orientation(line, &i) == FAILURE)
 		return (FAILURE);
-	if (skip_fov(&line))
+	if (skip_fov(line, &i))
 		return (FAILURE);
-	skip_spaces(&line, NULL);
+	skip_spaces_with_err_msg(&line, NULL);
 	if (*line != '\n' && *line != '\0')
-		return (err_end(err_camera), err_point_out(start, line), FAILURE);
+	{
+		err_camera();
+		err_end();
+		err_point_out(line, i);
+		return (FAILURE);
+	}
 	return (SUCCESS);
 }
 
@@ -42,29 +47,43 @@ static void	err_camera(void)
 	ft_putstr_fd("invalid camera format: ", STDERR_FILENO);
 }
 
-static int	skip_coordinate(char *line, size_t *i_ptr)
+static int	skip_coordinate(const char *line, size_t *i_ptr)
 {
+	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
+		return (FAILURE);
 	if (skip_vec(line, i_ptr, IS_POINT) == SUCCESS)
-		return (SUCCESS);
-	err_camera();
-	ft_putendl_fd("coordinate", STDERR_FILENO);
-	return (FAILURE);
+	{
+		err_camera();
+		ft_putendl_fd("invalid camera coordinate", STDERR_FILENO);
+		err_point_out(line, *i_ptr);
+		return (FAILURE);
+	}
+	return (SUCCESS);
 }
 
-static int	skip_orientation(char *line)
+static int	skip_orientation(const char *line, size_t *i_ptr)
 {
-	if (skip_vecline, IS_UNIT) == SUCCESS)
-		return (SUCCESS);
-	err_camera();
-	ft_putendl_fd("orientation vector", STDERR_FILENO);
-	return (FAILURE);
+	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
+		return (FAILURE);
+	if (skip_vec(line, i_ptr, IS_UNIT) == FAILURE)
+	{
+		err_camera();
+		ft_putendl_fd("invalid orientation vector", STDERR_FILENO);
+		err_point_out(line, *i_ptr);
+		return (FAILURE);
+	}
+	return (SUCCESS);
 }
 
-static int skip_fov(char *line)
+static int skip_fov(const char *line, size_t *i_ptr)
 {
-	if (skip_rangeline, 0, 180) == SUCCESS)
-		return (SUCCESS);
-	err_camera();
-	ft_putendl_fd("Horizontal field of view range 0-180", STDERR_FILENO);
-	return (FAILURE);
+	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
+		return (FAILURE);
+	if (skip_range(line, i_ptr, 0, 180) == SUCCESS)
+	{
+		err_camera();
+		ft_putendl_fd("invalid fov", STDERR_FILENO);
+		return (FAILURE);
+	}
+	return (SUCCESS);
 }

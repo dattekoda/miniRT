@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file_name.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:09:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 21:44:45 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/07 14:53:11 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int	validate_file_name(const char *file_path)
 		rt_file = file_path;
 	if (rt_file[0] == '.')
 		return (err_first_dot(), FAILURE);
-	rt_file_len = ft_strlen(rt_file);
-	if (rt_file_len <= 3)
-		return (err_file_name_len(), FAILURE);
-	if (ft_strcmp(rt_file + rt_file_len - 3, ".rt") != 0)
+	// rt_file_len = ft_strlen(rt_file);
+	// if (rt_file_len <= 3)
+	// 	return (err_file_name_len(), FAILURE);
+	if (ft_strlen(rt_file) && ft_strcmp(rt_file + rt_file_len - 3, ".rt") != 0)
 		return (err_file_extension(), FAILURE);
 	return (SUCCESS);
 }
