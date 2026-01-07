@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:28:34 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/07 20:20:23 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 22:45:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,11 @@ static int	distribute_validate(char *line)
 {
 	size_t	i;
 
+	i = 0;
 	while (g_elem_table[i].type != NOTHING)
 	{
 		if (ft_strncmp(line, g_elem_table[i].str, g_elem_table[i].str_len) == 0)
-			return (g_elem_table->validate(line));
+			return (g_elem_table[i].validate(line));
 		i++;
 	}
 	return (err_distribute(line), FAILURE);

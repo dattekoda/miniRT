@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:08:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 18:49:26 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 21:20:57 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	err_point_out(char *line, size_t err_idx)
 
 	i = 0;
 	tab_count = 0;
-	ft_putstr_fd(line, STDERR_FILENO);
+	ft_putendl_fd(line, STDERR_FILENO);
 	while (i++ < err_idx)
 	{
 		if (line[i] == '\t')

@@ -19,7 +19,14 @@ void	*__wrap_malloc(size_t size)
 		}
 	}
 	p = __real_malloc(size);
+	if (!p)
+		return (NULL);
 	new_node = __real_malloc(sizeof(*new_node));
+	if (!new_node)
+	{
+		__real_free(p);
+		return (NULL);
+	}
 	new_node->content = p;
 	new_node->next = NULL;
 	ft_lstadd_back(&dummy_head.next, new_node);
@@ -38,7 +45,8 @@ void	__wrap_free(void *ptr)
 		if (cur->content == ptr)
 		{
 			prev->next = cur->next;
-			ft_lstdelone(cur, __real_free);
+			__real_free(cur->content);
+			__real_free(cur);
 			return ;
 		}
 		prev = cur;

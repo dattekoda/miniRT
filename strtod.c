@@ -8,5 +8,5 @@ int	main(int argc, char *argv[])
 
 	(void)argc;
 	printf("%f\n", ft_strtod(argv[1], &line));
-	printf("%s\n", line);
+	printf("|%s|\n", line);
 }

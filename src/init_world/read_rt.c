@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 20:01:19 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:59:25 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	read_rt_file(t_list **line_list, const char *file_path)
 		perror_rt("open");
 		exit(EXIT_FAILURE);
 	}
-	if (read_lines_to_list(ft_memset(&head, 0, sizeof(t_list)), fd))
+	if (read_lines_to_list(ft_memset(&head, 0, sizeof(t_list)), fd) == FAILURE)
 	{
 		ft_lstclear(&head.next, free);
 		close(fd);

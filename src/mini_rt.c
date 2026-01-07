@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 20:20:11 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:54:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 const t_element_info	g_elem_table[] = {
 {AMBIENT, "A", 1, validate_ambient},
 {CAMERA, "C", 1, validate_camera},
-{NOTHING, NULL, NULL}
+{NOTHING, NULL, 0, NULL}
 };
 
 int	init_world(t_world *world, int argc, char *argv[]);

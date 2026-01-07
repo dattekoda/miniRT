@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:10:50 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 19:35:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 23:24:32 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	skip_spaces_with_err_msg(char *line, size_t *i_ptr)
 {
 	if (line[*i_ptr] != ' ' && line[*i_ptr] != '\t')
 	{
-		err_rt();
-		err_spaces();
-		err_point_out(line, *i_ptr);
+		// err_rt();
+		// err_spaces();
+		// err_point_out(line, *i_ptr);
 		return (FAILURE);
 	}
 	while (line[*i_ptr] && (line[*i_ptr] == ' ' || line[*i_ptr] == '\t'))
@@ -47,7 +47,7 @@ int	skip_range(const char *line, size_t *i_ptr, double min, double max)
 	return (SUCCESS);
 }
 
-int	skip_vec(const char *line, size_t *i_ptr, t_vectype type)
+int	skip_vec(char *line, size_t *i_ptr, t_vectype type)
 {
 	size_t	d_idx;
 	double	d3[3];
@@ -57,7 +57,9 @@ int	skip_vec(const char *line, size_t *i_ptr, t_vectype type)
 	while (d_idx < 3)
 	{
 		d3[d_idx++] = i_ptr_strtod(line, i_ptr);
-		if (d_idx != 3 && line[*(i_ptr)++] != ',')
+		if (d_idx != 3)
+			skip_spaces_with_err_msg(line, i_ptr);
+		if (d_idx != 3 && line[(*i_ptr)++] != ',')
 			return (FAILURE);
 	}
 	return (is_valid_vec(type, d3));
@@ -81,7 +83,7 @@ static int	is_valid_vec(t_vectype type, const double *d3)
 		d_idx++;
 	}
 	if (type == IS_UNIT)
-		if (fabs(sum - 1) >= FLT_EPSILON)
+		if (fabs(sum - 1) >= NORMALIZE_EPSILON)
 			return (FAILURE);
 	return (SUCCESS);
 }
@@ -91,12 +93,14 @@ static int	is_valid_vec(t_vectype type, const double *d3)
 */
 static double	i_ptr_strtod(const char *line, size_t *i_ptr)
 {
-	double	d_tmp;
-	char	*endptr;
+	double		d_tmp;
+	char		*endptr;
+	const char	*read_head;
 
-	d_tmp = ft_strtod(line, &endptr);
-	if (line == endptr)
+	read_head = line + *i_ptr;
+	d_tmp = ft_strtod(read_head, &endptr);
+	if (read_head == endptr)
 		return (NAN);
-	(*i_ptr) += (endptr - line);
+	(*i_ptr) += (endptr - read_head);
 	return (d_tmp);
 }

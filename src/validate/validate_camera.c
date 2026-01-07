@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:28:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/07 19:25:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 23:18:24 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ int	validate_camera(char *line)
 {
 	size_t	i;
 
-	i = 0;
+	i = 1;
 	if (skip_coordinate(line, &i) == FAILURE)
 		return (FAILURE);
 	if (skip_orientation(line, &i) == FAILURE)
 		return (FAILURE);
 	if (skip_fov(line, &i))
 		return (FAILURE);
-	skip_spaces_with_err_msg(line, NULL);
-	if (*line != '\n' && *line != '\0')
+	skip_spaces_with_err_msg(line, &i);
+	if (line[i] != '\n' && line[i] != '\0')
 	{
 		err_camera();
 		err_end();
@@ -51,7 +51,7 @@ static int	skip_coordinate(char *line, size_t *i_ptr)
 {
 	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
 		return (FAILURE);
-	if (skip_vec(line, i_ptr, IS_POINT) == SUCCESS)
+	if (skip_vec(line, i_ptr, IS_POINT) == FAILURE)
 	{
 		err_camera();
 		ft_putendl_fd("invalid camera coordinate", STDERR_FILENO);
@@ -79,7 +79,7 @@ static int	skip_fov(char *line, size_t *i_ptr)
 {
 	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
 		return (FAILURE);
-	if (skip_range(line, i_ptr, 0, 180) == SUCCESS)
+	if (skip_range(line, i_ptr, 0, 180) == FAILURE)
 	{
 		err_camera();
 		ft_putendl_fd("invalid fov", STDERR_FILENO);

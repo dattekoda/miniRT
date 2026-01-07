@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 20:19:46 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 21:33:42 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
-# endif
-
-# ifndef NORMALZIE_EPSILON
-#  define NORMALIZE_EPSILON 1e-3
 # endif
 
 #include <stddef.h>

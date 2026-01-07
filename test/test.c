@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 22:16:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 19:20:17 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/07 21:08:21 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			test_set_option(void);
 int			test_validate_line_list(void);
 
 int	_wrap_errno_ = 0;
-enum e_error_syscall	err_syscall = 0;
+enum e_error_syscall	err_syscall = NOTHING;
 t_list	dummy_head = (t_list){0};
 
 int	main(void)
