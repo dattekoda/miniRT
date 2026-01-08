@@ -30,7 +30,7 @@ int	validate_ambient(char *line)
 	t_element_type = AMBIENT;
 	t_validate result
 
-	miniRT: invalid ambient format: color RGB [0-255]
+	// miniRT: invalid ambient format: color RGB [0-255]
 	i = 1;
 	if (skip_light_ratio(line, &i) == FAILURE)
 		return (FAILURE);

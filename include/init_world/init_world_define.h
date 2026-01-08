@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init_world_define.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/08 16:48:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/08 19:50:35 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INIT_WORLD_H
 # define INIT_WORLD_H
+
+#include <stddef.h>
 
 typedef enum e_element_type
 {

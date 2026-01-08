@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_util.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:10:50 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/08 15:12:20 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:54:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
