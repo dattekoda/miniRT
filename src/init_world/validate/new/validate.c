@@ -62,7 +62,7 @@ t_result	skip_color(const char *line, size_t *line_idx);
 t_result	skip_unit(const char *line, size_t *line_idx);
 t_result	skip_lighting_ratio(const char *line, size_t *line_idx);
 t_result	skip_fov(const char *line, size_t *line_idx);
-t_result	skip_ending(const char *line, size_t *line_idx);
+t_result	skip_until_end(const char *line, size_t *line_idx);
 t_result	skip_diameter(const char *line, size_t *line_idx);
 
 const t_skip	ambient_skips[] = {
@@ -70,7 +70,7 @@ const t_skip	ambient_skips[] = {
 	skip_lighting_ratio,
 	skip_spaces,
 	skip_color,
-	skip_ending,
+	skip_until_end,
 	NULL
 };
 
@@ -88,7 +88,7 @@ const t_skip	camera_skips[] = {
 	skip_unit,
 	skip_spaces,
 	skip_fov,
-	skip_ending,
+	skip_until_end,
 	NULL
 };
 
@@ -106,7 +106,7 @@ const t_skip	light_skips[] = {
 	skip_lighting_ratio,
 	skip_spaces,
 	skip_color,
-	skip_ending,
+	skip_until_end,
 	NULL
 };
 
@@ -124,7 +124,7 @@ const t_skip	sphere_skips[] = {
 	skip_diameter,
 	skip_spaces,
 	skip_color,
-	skip_ending,
+	skip_until_end,
 	NULL
 };
 
@@ -133,14 +133,6 @@ const t_element_info	sphere_info = {
 	.identifier_len = 2,
 	.format = "sp [coordinate](x,y,z) [diameter](>0) [R,G,B](0-255)",
 	.skip_arr = sphere_skips
-};
-
-const t_element_info	*elements[] = {
-	&ambient_info,
-	&camera_info,
-	&light_info,
-	&sphere_info,
-	NULL
 };
 
 t_result	construct_t_result(char *_err_msg)
@@ -255,7 +247,7 @@ t_result	skip_diameter(const char *line, size_t *line_idx)
 	return (skip_range(line, line_idx, 0, INFINITY));
 }
 
-t_result	skip_ending(const char *line, size_t *line_idx)
+t_result	skip_until_end(const char *line, size_t *line_idx)
 {
 	skip_spaces(line, line_idx);
 	if (line[*line_idx] != '\0' && line[*line_idx] != '\n')
@@ -270,23 +262,16 @@ t_result	skip_ending(const char *line, size_t *line_idx)
 void	err_point_out(char *line, size_t err_idx)
 {
 	size_t	i;
-	size_t	tab_count;
 
 	i = 0;
-	tab_count = 0;
 	ft_putendl_fd(line, STDERR_FILENO);
-	while (i++ < err_idx)
+	while (i < err_idx)
 	{
-		if (line[i] == '\t')
-			tab_count++;
+		if (line[i++] == '\t')
+			ft_putchar_fd('\t', STDERR_FILENO);
+		else
+			ft_putchar_fd(' ', STDERR_FILENO);
 	}
-	err_idx -= tab_count;
-	i = 0;
-	while (i++ < err_idx)
-		ft_putchar_fd(' ', STDERR_FILENO);
-	i = 0;
-	while (i++ < tab_count)
-		ft_putchar_fd('\t', STDERR_FILENO);
 	ft_putendl_fd(GREEN"^"RESET, STDERR_FILENO);
 }
 
@@ -303,8 +288,8 @@ int	validate(char *line, const t_element_info elem_info)
 		result = elem_info.skip_arr[func_idx](line, &i);
 		if (result.state == ERROR)
 		{
-			ft_putendl_fd(elem_info.format, STDERR_FILENO);
 			ft_putendl_fd(result.value.err_msg, STDERR_FILENO);
+			ft_putendl_fd(elem_info.format, STDERR_FILENO);
 			err_point_out(line, i);
 			return (1);
 		}
@@ -313,16 +298,24 @@ int	validate(char *line, const t_element_info elem_info)
 	return (0);
 }
 
+int	match_identifier(const char *line, const char *id, size_t size)
+{
+	if (ft_strncmp(line, id, size) == 0 \
+		&& line[size] == ' ' || line[size] == '\t')
+		return (1);
+	return (0);
+}
+
 t_element_info	get_elem_info(const char *line)
 {
-	if (*line == 'A' && (*(line + 1) == '\t' || *(line + 1) == ' '))
-		return (*elements[AMBIENT]);
-	if (*line == 'C' && (*(line + 1) == '\t' || *(line + 1) == ' '))
-		return (*elements[CAMERA]);
-	if (*line == 'L' && (*(line + 1) == '\t' || *(line + 1) == ' '))
-		return (*elements[LIGHT]);
-	if (ft_strncmp(line, "sp ", 2) == 0 || ft_strncmp(line, "sp\t", 2) == 0)
-		return (*elements[SPHERE]);
+	if (match_identifier(line, "A", 1))
+		return (ambient_info);
+	if (match_identifier(line, "C", 1))
+		return (camera_info);
+	if (match_identifier(line, "L", 1))
+		return (light_info);
+	if (match_identifier(line, "sp", 2))
+		return (sphere_info);
 	return (((t_element_info){.type = NOTHING}));
 }
 
