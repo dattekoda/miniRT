@@ -2,18 +2,19 @@
 flowchart
 subgraph validate
 	direction TB
-	input[/line/]-->v1[set_t_validate]
+	input[/line, element_info/]
 	wh----->|false|output([success])
-	v1-->wh{next validate
-	func?}
-	wh-->|true|v2[validate_func]
+	input-->wh{next skip func?}
+	wh-->|true|v2[skip_func]
 	v2-->if1{is valid}
 	if1-->|true|wh
-	if1-->|false|v3[check err]
+	if1-->|false|v3[put error]
 	v3-->f([failure])
 end
 ```
-
+```mermaid
+flowchart 
+```
 ```mermaid
 flowchart
 	subgraph validate ambient
