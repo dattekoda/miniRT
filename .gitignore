@@ -7,4 +7,6 @@
 !*.h
 !Makefile
 !scene
-./docs
+!docs/*.md
+!test/*
+!test_scene/*
