@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   validate_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:28:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/07 23:18:24 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/08 11:58:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_define.h"
 #include "util_rt.h"
 #include "libft.h"
+#include <unistd.h>
 
 static void	err_camera(void);
 static int	skip_coordinate(char *line, size_t *i_ptr);

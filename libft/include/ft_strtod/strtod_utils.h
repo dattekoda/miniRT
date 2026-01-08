@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 11:24:53 by khanadat          #+#    #+#             */
-/*   Updated: 2025/11/29 20:48:15 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/08 11:39:53 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@
 
 # ifndef MAX_EXPONENT
 #  define MAX_EXPONENT 511
+# endif
+
+# ifndef SUCCESS
+#  define SUCCESS 0
+# endif
+
+# ifndef FAILURE
+#  define FAILURE 1
 # endif
 
 typedef struct s_strtod

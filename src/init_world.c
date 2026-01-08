@@ -6,13 +6,14 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 22:43:48 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/08 11:57:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
 #include "util_rt.h"
 #include "libft.h"
+#include <stdlib.h>
 
 void		validate_arguments(int argc, char *argv[]);
 void		read_rt_file(t_list **line_list, const char *file_path);

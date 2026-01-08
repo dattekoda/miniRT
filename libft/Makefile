@@ -6,25 +6,27 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/29 20:32:41 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/05 11:16:00 by khanadat         ###   ########.fr        #
+#    Updated: 2026/01/08 11:29:06 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = cc
-CCFLAGS = -Wall -Wextra -Werror -I include -g -O0
+CCFLAGS = -Wall -Wextra -Werror
+
+INCFLAGS = -Iinclude -Iinclude/ft_get_next_line -Iinclude/ft_strtod
 AR = ar rcs
 RM = rm -rf
 
 SRC =	src/ft_strtod/ft_strtod.c \
 		src/ft_strtod/strtod_set.c \
 		src/ft_strtod/strtod_valid.c \
+		src/ft_get_next_line/ft_get_next_line.c \
 		src/ft_abs.c \
 		src/ft_atoi.c \
 		src/ft_atof.c \
 		src/ft_bzero.c \
 		src/ft_calloc.c \
-		src/ft_get_next_line.c \
 		src/ft_isalnum.c \
 		src/ft_isalpha.c \
 		src/ft_isascii.c \
@@ -95,7 +97,7 @@ bonus: $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CCFLAGS) -I src/ft_strtod -c $< -o $@
+	$(CC) $(CCFLAGS) $(INCFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ_DIR)

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   validate_util_err.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:08:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 21:20:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/08 11:58:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util_rt.h"
 #include "validate_define.h"
 #include "libft.h"
+#include <unistd.h>
 
 void	err_point_out(char *line, size_t err_idx)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_line_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:28:34 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/07 22:45:29 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/08 11:58:34 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "define_rt.h"
 #include "util_rt.h"
 #include "libft.h"
+#include <unistd.h>
 
 static int	distribute_validate(char *line);
 static void	err_distribute(char *line);

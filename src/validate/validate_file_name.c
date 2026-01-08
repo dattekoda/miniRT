@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file_name.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:09:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 18:48:05 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/08 11:58:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "validate_define.h"
 #include "libft.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 static void	err_file_name(void);
 static void	err_first_dot(void);

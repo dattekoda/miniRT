@@ -6,11 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 07:18:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 11:19:18 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/08 11:46:51 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 static int	isset(char c, char const *set)
 {

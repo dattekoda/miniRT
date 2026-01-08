@@ -6,11 +6,16 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:17:14 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/05 11:19:18 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/08 11:48:29 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 #include "libft.h"
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 #define SUCCESS 0
 #define NL_FOUND 1
