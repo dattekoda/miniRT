@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/08 11:57:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/08 16:33:59 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,17 @@ int	init_world(t_world *world, int argc, char *argv[])
 
 	validate_arguments(argc, argv);
 	read_rt_file(&line_list, argv[1]);
-	if (validate_line_list(line_list) == FAILURE)
-		return (FAILURE);
 	line_list = NULL;
+	if (validate_line_list(line_list) == FAILURE)
+	{
+		ft_lstclear(&line_list, free);
+		exit(EXIT_FAILURE);
+	}
+	// if (create_world(line_list) == FAILURE)
+	// {
+	// 	ft_lstclear(&line_list, free);
+	//	exit(EXIT_FAILURE);
+	// }
 	world->option_flag = set_option(argv[2]);
 	ft_lstclear(&line_list, free);
 	return (SUCCESS);

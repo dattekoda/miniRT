@@ -10,7 +10,6 @@ int	validate_file_name(const char *argv_one);
 int	test_validate_file_name(void)
 {
 	fprintf(stderr, "\n===== test_validate_file_name =====\n");
-	alarm(2);
 	{
 		fprintf(stderr, "--- normal case ---\n");
 		assert(validate_file_name("test.rt") == SUCCESS);

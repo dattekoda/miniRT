@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/07 20:01:19 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/08 17:00:17 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,16 +19,15 @@ RMDIR		=	rm -rf
 
 # --- src ---
 SRCDIR		=	src
-SRCFILES	=	main.c \
-				mini_rt.c \
-				init_world.c \
-				util/util_err.c \
-				validate/validate_file_name.c \
-				validate/validate_arguments.c
 
 SRCS		=	$(addprefix $(SRCDIR)/, main.c mini_rt.c init_world.c \
-				$(addprefix init_world/, read_rt.c set_option.c) \
 				$(addprefix util/, util_err.c) \
+				$(addprefix init_world/, \
+				init_world.c \
+				read_rt.c \
+				set_option.c \
+				$(addprefix create_world/, \
+				create_world.c) \
 				$(addprefix validate/, \
 				validate_ambient.c \
 				validate_arguments.c \
@@ -36,7 +35,9 @@ SRCS		=	$(addprefix $(SRCDIR)/, main.c mini_rt.c init_world.c \
 				validate_file_name.c \
 				validate_line_list.c \
 				validate_util_err.c \
-				validate_util.c))
+				validate_util.c) \
+				)
+				)
 
 # --- obj ---
 OBJDIR		=	obj
@@ -89,6 +90,7 @@ TESTSRCFILES	=	$(addprefix test/, \
 					$(addprefix validate/, \
 					test_validate_file_name.c \
 					test_validate_line_list.c \
+					test_validate_ambient.c \
 					))))
 
 TESTSRCS		=	$(TESTSRCFILES) \

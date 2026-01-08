@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:53:42 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 23:23:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/08 14:52:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef enum s_vectype
 	IS_COLOR
 }	t_vectype;
 
+void	skip_spaces(char *line, size_t *i_ptr);
 int		skip_spaces_with_err_msg(char *line, size_t *i);
 int		skip_range(const char *line, size_t *i_ptr, double min, double max);
 int		skip_vec(char *line, size_t *i_ptr, t_vectype type);

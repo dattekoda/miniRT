@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_util_err.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:08:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/08 11:58:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/08 16:33:59 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,9 @@ void	err_spaces(void)
 void	err_end(void)
 {
 	ft_putendl_fd("incorrect line ending", STDERR_FILENO);
+}
+
+void	err_element(t_element_info info)
+{
+	ft_putstr_fd(info->)
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:28:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/08 11:58:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/08 16:33:59 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	validate_camera(char *line)
 		return (FAILURE);
 	if (skip_fov(line, &i))
 		return (FAILURE);
-	skip_spaces_with_err_msg(line, &i);
+	skip_spaces(line, &i);
 	if (line[i] != '\n' && line[i] != '\0')
 	{
 		err_camera();

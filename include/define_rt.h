@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/07 21:33:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/08 16:33:59 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,5 @@
 
 #include <stddef.h>
 
-typedef enum e_element_type
-{
-	NOTHING,
-	AMBIENT,
-	CAMERA,
-	LIGHT,
-	SPHERE,
-	PLANE,
-	CYLINDER,
-	CONE,
-	TRIANGLE
-}	t_element_type;
-
-typedef struct s_element_info
-{
-	t_element_type	type;
-	char 			*str;
-	size_t			str_len;
-	int				(*validate)(char *line);
-}	t_element_info;
-
-extern const t_element_info	g_elem_table[];
 
 #endif

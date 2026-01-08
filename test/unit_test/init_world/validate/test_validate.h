@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_rt.h                                          :+:      :+:    :+:   */
+/*   test_validate.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 10:23:24 by khanadat          #+#    #+#             */
+/*   Created: 2026/01/08 15:00:50 by ikawamuk          #+#    #+#             */
 /*   Updated: 2026/01/08 16:33:59 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTIL_RT_H
-# define UTIL_RT_H
+#ifndef TEST_VALIDATE_H
+# define TEST_VALIDATE_H
 
-#include <stdio.h>
-
-# define GREEN "\033[92m"
-# define RESET "\033[m"
-
-enum
-{
-	SUCCESS,
-	FAILURE,
-};
-
-void	err_element(t_element_info *info);
-void	err_rt(void);
-void	perror_rt(const char *func);
+int	case_validate_line(const char *test_path);
+int	test_validate_ambient(void);
 
 #endif

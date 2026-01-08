@@ -2,6 +2,7 @@
 - put pixels on window
 - calucurate phong color
 - calucurate ray color
+- set_objects
 
 ```mermaid
 flowchart
@@ -76,6 +77,27 @@ flowchart
 		error([error])
 	end
 ```
+
+```mermaid
+sequenceDiagram
+autonumber
+    Actor ユーザー
+    participant 画面 as フロントエンド
+    participant サーバー as 認証サーバー
+    participant DB as データベース
+
+    ユーザー->>+画面: ログインボタン押下
+    画面->>+サーバー: ID/PW送信
+    サーバー->>+DB: ユーザー照会
+    DB-->>-サーバー: ユーザーデータ
+    サーバー-->>-画面: 認証成功レスポンス
+    画面-->>-ユーザー: トップ画面表示
+```
+```mermaid
+stateDiagram-v2
+
+```
+
 ```mermaid
 flowchart
 	subgraph create_world [create world]
@@ -92,6 +114,7 @@ flowchart
 		cw4-->|bvh|output[\world\]
 	end
 ```
+
 ```mermaid
 flowchart
 	subgraph set_objects [set objects]
@@ -143,4 +166,40 @@ flowchart
 		input[/ray/]
 		output[/color/]
 	end
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```mermaid
+flowchart	
 ```
