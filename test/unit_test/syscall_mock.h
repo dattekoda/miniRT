@@ -3,6 +3,7 @@
 
 #include "libft.h"
 #include <stdbool.h>
+#include <sys/types.h>
 
 enum e_error_syscall {
 	NOTHING,

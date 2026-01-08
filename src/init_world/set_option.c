@@ -6,12 +6,13 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:53 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 16:45:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/08 12:25:53 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util_rt.h"
 #include "libft.h"
+#include <unistd.h>
 
 static void	err_invalid_option(void);
 static void	err_set_option(int c);

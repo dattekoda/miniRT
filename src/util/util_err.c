@@ -6,13 +6,15 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:19:05 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/06 17:04:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/08 12:26:19 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util_rt.h"
 #include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
 /*
 @brief Used as a prefix for all error messages
