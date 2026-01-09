@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   validate_element.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/09 21:09:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:08:49 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_define.h"
 #include "libft.h"
 #include <unistd.h>
+
+static void	err_point_out(char *line, size_t err_idx);
 
 int	validate_element(char *line, const t_element_info elem_info)
 {
@@ -25,7 +27,7 @@ int	validate_element(char *line, const t_element_info elem_info)
 	while (elem_info.skip_arr[func_idx])
 	{
 		result = elem_info.skip_arr[func_idx](line, &i);
-		if (result.state == ERROR)
+		if (result.state == FAILURE)
 		{
 			ft_putendl_fd(elem_info.format, STDERR_FILENO);
 			err_point_out(line, i);
@@ -35,4 +37,20 @@ int	validate_element(char *line, const t_element_info elem_info)
 		func_idx++;
 	}
 	return (0);
+}
+
+static void	err_point_out(char *line, size_t err_idx)
+{
+	size_t	i;
+
+	i = 0;
+	ft_putendl_fd(line, STDERR_FILENO);
+	while (i < err_idx)
+	{
+		if (line[i++] == '\t')
+			ft_putchar_fd('\t', STDERR_FILENO);
+		else
+			ft_putchar_fd(' ', STDERR_FILENO);
+	}
+	ft_putendl_fd(GREEN"^"RESET, STDERR_FILENO);
 }

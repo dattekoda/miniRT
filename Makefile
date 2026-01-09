@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/08 17:00:17 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/09 23:44:31 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,11 @@ RMDIR		=	rm -rf
 # --- src ---
 SRCDIR		=	src
 
-SRCS		=	$(addprefix $(SRCDIR)/, main.c mini_rt.c init_world.c \
-				$(addprefix util/, util_err.c) \
+SRCS		=	$(addprefix $(SRCDIR)/, \
+				main.c \
+				mini_rt.c \
+				$(addprefix util/, \
+				util_err.c) \
 				$(addprefix init_world/, \
 				init_world.c \
 				read_rt.c \
@@ -29,15 +32,15 @@ SRCS		=	$(addprefix $(SRCDIR)/, main.c mini_rt.c init_world.c \
 				$(addprefix create_world/, \
 				create_world.c) \
 				$(addprefix validate/, \
-				validate_ambient.c \
-				validate_arguments.c \
-				validate_camera.c \
-				validate_file_name.c \
+				init_element_info.c \
 				validate_line_list.c \
+				validate_element.c \
+
+				validate_arguments.c \
+				validate_file_name.c \
 				validate_util_err.c \
-				validate_util.c) \
-				)
-				)
+				validate_util.c \
+				init_validate.c \)))
 
 # --- obj ---
 OBJDIR		=	obj

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_err.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:19:05 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/08 12:26:19 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/09 23:25:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	err_rt(void)
 	ft_putstr_fd("miniRT: ", STDERR_FILENO);
 }
 
-void	perror_rt(const char *func)
+void	perror_rt(const char *syscall_fname)
 {
 	err_rt();
-	perror(func);
+	perror(syscall_fname);
 }

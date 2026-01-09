@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/09 21:40:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:13:37 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int			validate_line_list(const t_list *line_list);
 int			set_option(const char *options);
 int			create_world(t_world *world, char *file_path);
 
-// void init_world()...?
 int	init_world(t_world *world, int argc, char *argv[])
 {
 	t_list	*line_list;
@@ -34,12 +33,12 @@ int	init_world(t_world *world, int argc, char *argv[])
 		ft_lstclear(&line_list, free);
 		exit(EXIT_FAILURE);
 	}
-	// if (create_world(world, line_list) == FAILURE)
-	// {
-	// 	ft_lstclear(&line_list, free);
-	//	exit(EXIT_FAILURE);
-	// }
-	world->option_flag = set_option(argv[2]);
+	if (create_world(world, line_list) == FAILURE)
+	{
+		ft_lstclear(&line_list, free);
+		exit(EXIT_FAILURE);
+	}
 	ft_lstclear(&line_list, free);
+	world->option_flag = set_option(argv[2]);
 	return (SUCCESS);
 }

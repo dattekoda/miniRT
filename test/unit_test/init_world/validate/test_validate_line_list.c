@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:56:03 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/08 16:33:59 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/09 23:23:59 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,3 @@ int	case_validate_line(const char *test_path)
 	return (result);
 }
 
-// /*
-// testcase名をディレクトリに応じて取得する関数*/
-// int	set_file_names(const char *path, char ***test_case_ptr)
-// {
-// 	struct dirent *entry;
-
-// 	dir = opendir(path);
-// 	if (dir == NULL) {
-// 		perror("opendir");
-// 		return;
-// 	}
-// 	while ((entry = readdir(dir)) != NULL) {
-// 		if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
-// 			continue;
-// 		test_case = (char **)realloc(test_case, )
-// 		// ここ途中！！
-// 	}
-// 	closedir(dir);
-// }

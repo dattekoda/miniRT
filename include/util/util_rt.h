@@ -6,25 +6,16 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:23:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/08 16:33:59 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/09 23:34:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTIL_RT_H
 # define UTIL_RT_H
 
-#include <stdio.h>
+#include "define_rt.h"
+#include <stdio.h> // 後で消す
 
-# define GREEN "\033[92m"
-# define RESET "\033[m"
-
-enum
-{
-	SUCCESS,
-	FAILURE,
-};
-
-void	err_element(t_element_info *info);
 void	err_rt(void);
 void	perror_rt(const char *func);
 

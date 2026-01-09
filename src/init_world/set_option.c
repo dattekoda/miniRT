@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_option.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:53 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/08 12:25:53 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/09 23:27:41 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	set_option(const char *options)
 	if (!options)
 		return (0);
 	if (options[0] != '-')
-		return (err_invalid_option(), 0);
+		return (err_invalid_option(), 0); // このエラーメッセージ必要？無視でも良い希ガス
 	bit_flag = 0;
 	i = 1;
 	while (options[i])

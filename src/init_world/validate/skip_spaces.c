@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_util_skip.c                               :+:      :+:    :+:   */
+/*   skip_spaces.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/09 18:11:50 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/09 18:12:38 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/09 23:48:23 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/10 00:07:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_define.h"
+#include "validate_utils.h"
 
 t_result	skip_spaces(const char *line, size_t *line_idx)
 {
