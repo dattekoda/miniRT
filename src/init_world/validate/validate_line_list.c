@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 01:43:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:50:05 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "rt_define.h"
 #include "libft.h"
 #include <unistd.h>
-
 
 extern const t_element_info	g_ambient_info;
 extern const t_element_info	g_camera_info;
