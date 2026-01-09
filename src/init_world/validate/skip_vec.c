@@ -6,14 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:09:51 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 00:11:59 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:22:09 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_utils.h"
 
-t_result	skip_value(const char *line, size_t *line_idx, \
-t_vectype vectype, double *d);
 static t_result	skip_vec(const char *line, size_t *line_idx, \
 t_vectype vectype);
 static	int validate_unit_vec(double d3[3]);

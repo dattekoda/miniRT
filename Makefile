@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/09 23:44:31 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/10 00:31:05 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,12 @@ SRCS		=	$(addprefix $(SRCDIR)/, \
 				init_element_info.c \
 				validate_line_list.c \
 				validate_element.c \
-
-				validate_arguments.c \
-				validate_file_name.c \
-				validate_util_err.c \
-				validate_util.c \
-				init_validate.c \)))
+				skip_spaces.c \
+				skip_vec.c \
+				skip_value.c \
+				skip_range.c) \
+				) \
+				)
 
 # --- obj ---
 OBJDIR		=	obj
@@ -94,6 +94,7 @@ TESTSRCFILES	=	$(addprefix test/, \
 					test_validate_file_name.c \
 					test_validate_line_list.c \
 					test_validate_ambient.c \
+					tets_validate_camera.c \
 					))))
 
 TESTSRCS		=	$(TESTSRCFILES) \

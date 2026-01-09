@@ -6,17 +6,17 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:05:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/08 16:33:59 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:28:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_validate.h"
 #include "util_rt.h"
 #include "libft.h"
 #include <assert.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <stdlib.h>
+
+int	case_validate_line(const char *test_path);
 
 int	test_validate_camera(void)
 {

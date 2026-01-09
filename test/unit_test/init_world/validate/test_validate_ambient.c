@@ -6,17 +6,16 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 14:56:48 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/09 23:24:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:28:16 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_validate.h"
-#include "util_rt.h"
-#include "libft.h"
+#include "define_rt.h"
 #include <assert.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <stdlib.h>
+
+int	case_validate_line(const char *test_path);
 
 int	test_validate_ambient(void)
 {

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:05:02 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 00:06:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:23:52 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@
 static t_result	skip_range(const char *line, size_t *line_idx, \
 	double min, double max)
 {
+	t_result	result;
 	double	d;
 	char	*endptr;
 
-	d = ft_strtod(line + *line_idx, &endptr);
-	if (endptr == line + *line_idx)
-		return (construct_result("invalid format"));
-	*line_idx = (endptr - line) - 1;
-	if (isinf(d) || isnan(d))
-		return (construct_result("invalid value"));
+	result = skip_value(line, line_idx, IS_POINT, &d);
+	if (result.state == FAILURE)	
+		return (result);
 	if (d < min || max < d)
 		return (construct_result("out of range"));
 	*line_idx = endptr - line;
