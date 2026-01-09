@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:53:42 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 01:25:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:39:16 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define VALIDATE_UTILS_H
 
 # include "validate_define.h"
+# include "rt_utils.h"
 
 extern const t_element_info	*g_info_table[];
 

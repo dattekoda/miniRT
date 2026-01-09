@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 22:39:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 01:25:45 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:28:24 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static const t_skip			g_ambient_skips[] = {
 	NULL
 };
 
-static const t_element_info	g_ambient_info = {
+const t_element_info	g_ambient_info = {
 	.id = "A",
 	.id_len = 1,
 	.format = "A [lighting ratio(0-1)] [R,G,B(0-255)]",
@@ -39,7 +39,7 @@ static const t_skip			g_camera_skips[] = {
 	NULL
 };
 
-static const t_element_info	g_camera_info = {
+const t_element_info		g_camera_info = {
 	.id = "C",
 	.id_len = 1,
 	.format = \

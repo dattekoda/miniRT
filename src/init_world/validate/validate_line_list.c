@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 01:20:38 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:43:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 #include "libft.h"
 #include <unistd.h>
 
+
+extern const t_element_info	g_ambient_info;
+extern const t_element_info	g_camera_info;
+
 static int	count_ambient_and_camera(const t_list *line_list);
 static int	validate_line(char *line);
-static int	match_identifier(const char *line, t_element_info info);
-int			validate_element(char *line, const t_element_info elem_info);
+static int	match_identifier(const char *line, const t_element_info *info);
+int			validate_element(char *line, const t_element_info *elem_info);
 static int	validate_invalid_id(char *line);
 
 int	validate_line_list(const t_list *line_list)
@@ -44,9 +48,9 @@ static int	count_ambient_and_camera(const t_list *line_list)
 	camera_count = 0;
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, "A", 1))
+		if (match_identifier(line_list->content, &g_ambient_info) == SUCCESS)
 			ambient_count++;
-		if (match_identifier(line_list->content, "C", 1))
+		if (match_identifier(line_list->content, &g_camera_info) == SUCCESS)
 			camera_count++;
 		line_list = line_list->next;
 	}
@@ -59,13 +63,13 @@ static int	count_ambient_and_camera(const t_list *line_list)
 	return (FAILURE);
 }
 
-static int	match_identifier(const char *line, t_element_info info)
+static int	match_identifier(const char *line, const t_element_info *info)
 {
-	if (ft_strncmp(line, info.id, info.id_len) == 0)
-		return (1);
-	if (line[info.id_len] == ' ' || line[size] == '\t' || line[size] == '\0')
-		return (1);
-	return (0);
+	if (ft_strncmp(line, info->id, info->id_len))
+		return (FAILURE);
+	if (!ft_strchr(" \t\n", line[info->id_len]))
+		return (FAILURE);
+	return (SUCCESS);
 }
 
 static int	validate_line(char *line)
@@ -75,8 +79,8 @@ static int	validate_line(char *line)
 	i = 0;
 	while (g_info_table[i])
 	{
-		if (match_identifier(line, g_info_table[i]))
-			return (validate_element(line, *g_info_table[i]));
+		if (match_identifier(line, g_info_table[i]) == SUCCESS)
+			return (validate_element(line, g_info_table[i]));
 		i++;
 	}
 	return (validate_invalid_id(line));
