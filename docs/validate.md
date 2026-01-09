@@ -47,3 +47,17 @@ flowchart
 	output2[\invalid\]
 	end
 ```
+
+```mermaid
+flowchart
+classDiagram
+	class t_result {
+		+e_result		state
+		+union_u_result	value
+	}
+	class	e_element_info {
+		+size_t	identifier_len
+		+t_skip	*skip_arr
+	}
+	t_result --> 
+```
