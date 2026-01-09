@@ -3,88 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   validate_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/07 18:28:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/08 16:33:59 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/09 18:26:48 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/09 21:18:57 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_define.h"
-#include "util_rt.h"
-#include "libft.h"
-#include <unistd.h>
 
-static void	err_camera(void);
-static int	skip_coordinate(char *line, size_t *i_ptr);
-static int	skip_orientation(char *line, size_t *i_ptr);
-static int	skip_fov(char *line, size_t *i_ptr);
+static t_result	skip_fov(const char *line, size_t *line_idx);
 
 int	validate_camera(char *line)
 {
-	size_t	i;
+	const t_skip			camera_skips[] = {
+		skip_spaces,
+		skip_point,
+		skip_spaces,
+		skip_unit,
+		skip_spaces,
+		skip_fov,
+		skip_until_end,
+		NULL
+	};
+	const t_element_info	camera_info = {
+		.identifier_len = 1,
+		.format = \
+"C [coordinate](x,y,z) [normalized orient vector](a,b,c) [fov](0-180)",
+		.skip_arr = camera_skips
+	};
 
-	i = 1;
-	if (skip_coordinate(line, &i) == FAILURE)
-		return (FAILURE);
-	if (skip_orientation(line, &i) == FAILURE)
-		return (FAILURE);
-	if (skip_fov(line, &i))
-		return (FAILURE);
-	skip_spaces(line, &i);
-	if (line[i] != '\n' && line[i] != '\0')
-	{
-		err_camera();
-		err_end();
-		err_point_out(line, i);
-		return (FAILURE);
-	}
-	return (SUCCESS);
+	return (validate_element(line, camera_info));
 }
 
-static void	err_camera(void)
+static t_result	skip_fov(const char *line, size_t *line_idx)
 {
-	err_rt();
-	ft_putstr_fd("invalid camera format: ", STDERR_FILENO);
-}
-
-static int	skip_coordinate(char *line, size_t *i_ptr)
-{
-	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
-		return (FAILURE);
-	if (skip_vec(line, i_ptr, IS_POINT) == FAILURE)
-	{
-		err_camera();
-		ft_putendl_fd("invalid camera coordinate", STDERR_FILENO);
-		err_point_out(line, *i_ptr);
-		return (FAILURE);
-	}
-	return (SUCCESS);
-}
-
-static int	skip_orientation(char *line, size_t *i_ptr)
-{
-	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
-		return (FAILURE);
-	if (skip_vec(line, i_ptr, IS_UNIT) == FAILURE)
-	{
-		err_camera();
-		ft_putendl_fd("invalid orientation vector", STDERR_FILENO);
-		err_point_out(line, *i_ptr);
-		return (FAILURE);
-	}
-	return (SUCCESS);
-}
-
-static int	skip_fov(char *line, size_t *i_ptr)
-{
-	if (skip_spaces_with_err_msg(line, i_ptr) == FAILURE)
-		return (FAILURE);
-	if (skip_range(line, i_ptr, 0, 180) == FAILURE)
-	{
-		err_camera();
-		ft_putendl_fd("invalid fov", STDERR_FILENO);
-		return (FAILURE);
-	}
-	return (SUCCESS);
+	return (skip_range(line, line_idx, 0, 180));
 }
