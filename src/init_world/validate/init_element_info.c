@@ -6,13 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 22:39:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 01:07:56 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:25:45 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_utils.h"
 
-const t_skip	ambient_skips[] = {
+static const t_skip			g_ambient_skips[] = {
 	skip_spaces,
 	skip_lighting_ratio,
 	skip_spaces,
@@ -21,16 +21,14 @@ const t_skip	ambient_skips[] = {
 	NULL
 };
 
-const t_element_info ambient_info = 
-{
-	.identifer = "A",
-	.identifier_len = 1,
+static const t_element_info	g_ambient_info = {
+	.id = "A",
+	.id_len = 1,
 	.format = "A [lighting ratio(0-1)] [R,G,B(0-255)]",
-	.skip_arr = ambient_skips
+	.skip_arr = g_ambient_skips
 };
 
-const t_skip	camera_skips[] =
-{
+static const t_skip			g_camera_skips[] = {
 	skip_spaces,
 	skip_point,
 	skip_spaces,
@@ -41,17 +39,15 @@ const t_skip	camera_skips[] =
 	NULL
 };
 
-const t_element_info	camera_info =
-{
-	.identifer = "C",
-	.identifier_len = 1,
+static const t_element_info	g_camera_info = {
+	.id = "C",
+	.id_len = 1,
 	.format = \
 "C [coordinate](x,y,z) [normalized orient vector](a,b,c) [fov](0-180)",
-	.skip_arr = camera_skips
+	.skip_arr = g_camera_skips
 };
 
-const t_skip	light_skips[] =
-{
+static const t_skip			g_light_skips[] = {
 	skip_spaces,
 	skip_point,
 	skip_spaces,
@@ -62,16 +58,14 @@ const t_skip	light_skips[] =
 	NULL
 };
 
-const t_element_info	light_info =
-{
-	.identifier_len = 1,
+static const t_element_info	g_light_info = {
+	.id_len = 1,
 	.format = \
 "L [coordinate](x,y,z) [light brightness ratio](0-1) [R,G,B](0-255)",
-	.skip_arr = light_skips
+	.skip_arr = g_light_skips
 };
 
-const t_skip	sphere_skips[] =
-{
+static const t_skip			g_sphere_skips[] = {
 	skip_spaces,
 	skip_point,
 	skip_spaces,
@@ -82,19 +76,17 @@ const t_skip	sphere_skips[] =
 	NULL
 };
 
-const t_element_info	sphere_info =
-{
-	.identifer = "sp",
-	.identifier_len = 2,
+static const t_element_info	g_sphere_info = {
+	.id = "sp",
+	.id_len = 2,
 	.format = "sp [coordinate](x,y,z) [diameter](>0) [R,G,B](0-255)",
-	.skip_arr = sphere_skips
+	.skip_arr = g_sphere_skips
 };
 
-const t_element_info	*info_table[] = 
-{
-	&ambient_info,
-	&camera_info,
-	&light_info,
-	&sphere_info,
+const t_element_info		*g_info_table[] = {
+	&g_ambient_info,
+	&g_camera_info,
+	&g_light_info,
+	&g_sphere_info,
 	NULL
 };

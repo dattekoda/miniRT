@@ -56,7 +56,7 @@ classDiagram
 		+union_u_result	value
 	}
 	class	e_element_info {
-		+size_t	identifier_len
+		+size_t	id_len
 		+t_skip	*skip_arr
 	}
 	t_result --> 

@@ -6,14 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 00:48:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:15:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef rt_define_H
-# define rt_define_H
+#ifndef RT_DEFINE_H
+# define RT_DEFINE_H
 
-#include <stddef.h>
+# include <stddef.h>
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846

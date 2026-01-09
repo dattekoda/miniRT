@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:09:51 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 00:56:49 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:22:25 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #include "libft.h"
 #include <math.h>
 
-static t_result	skip_vec(const char *line, size_t *line_idx, \
-t_vectype vectype);
-static	int validate_unit_vec(double d3[3]);
+static t_result	skip_vec(const char *line, size_t *line_idx, t_vectype vectype);
+static int		validate_unit_vec(double d3[3]);
 
 t_result	skip_point(const char *line, size_t *line_idx)
 {
@@ -55,7 +54,7 @@ static t_result	skip_vec(const char *line, size_t *line_idx, t_vectype vectype)
 	return (construct_result(NULL));
 }
 
-static	int validate_unit_vec(double d3[3])
+static int	validate_unit_vec(double d3[3])
 {
 	double	squred_sum;
 

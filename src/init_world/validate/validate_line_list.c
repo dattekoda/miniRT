@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 00:54:34 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:20:38 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static int	count_ambient_and_camera(const t_list *line_list);
 static int	validate_line(char *line);
-static int	match_identifier(const char *line, const char *id, size_t size);
+static int	match_identifier(const char *line, t_element_info info);
 int			validate_element(char *line, const t_element_info elem_info);
 static int	validate_invalid_id(char *line);
 
@@ -59,11 +59,11 @@ static int	count_ambient_and_camera(const t_list *line_list)
 	return (FAILURE);
 }
 
-static int	match_identifier(const char *line, const char *id, size_t size)
+static int	match_identifier(const char *line, t_element_info info)
 {
-	if (ft_strncmp(line, id, size) == 0)
+	if (ft_strncmp(line, info.id, info.id_len) == 0)
 		return (1);
-	if (line[size] == ' ' || line[size] == '\t' || line[size] == '\0')
+	if (line[info.id_len] == ' ' || line[size] == '\t' || line[size] == '\0')
 		return (1);
 	return (0);
 }
@@ -73,10 +73,10 @@ static int	validate_line(char *line)
 	size_t	i;
 
 	i = 0;
-	while (info_table[i])
+	while (g_info_table[i])
 	{
-		if (match_identifier(line, info_table[i]->identifer, info_table[i]->identifier_len))
-			return (validate_element(line, *info_table[i]));
+		if (match_identifier(line, g_info_table[i]))
+			return (validate_element(line, *g_info_table[i]));
 		i++;
 	}
 	return (validate_invalid_id(line));

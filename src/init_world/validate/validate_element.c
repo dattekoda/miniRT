@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 00:56:28 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:20:54 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	validate_element(char *line, const t_element_info elem_info)
 	size_t		i;
 	size_t		func_idx;
 
-	i = elem_info.identifier_len;
+	i = elem_info.id_len;
 	func_idx = 0;
 	while (elem_info.skip_arr[func_idx])
 	{
@@ -38,4 +38,3 @@ int	validate_element(char *line, const t_element_info elem_info)
 	}
 	return (0);
 }
-

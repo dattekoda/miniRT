@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:53 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 00:47:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:09:20 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	set_option(const char *options)
 	if (!options)
 		return (0);
 	if (options[0] != '-')
-		return (err_invalid_option(), 0); // このエラーメッセージ必要？無視でも良い希ガス
+		return (err_invalid_option(), 0);
 	bit_flag = 0;
 	i = 1;
 	while (options[i])

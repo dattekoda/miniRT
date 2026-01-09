@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:10:53 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 00:57:10 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:22:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ t_vectype vectype, double *d)
 	*line_idx = (size_t)(endptr - line);
 	return (construct_result(NULL));
 }
-

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:50:21 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 00:48:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:19:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ typedef t_result	(*t_skip)(const char *line, size_t *line_idx);
 
 typedef struct s_element_info
 {
-	char			*identifer;
-	size_t			identifier_len;
+	char			*id;
+	size_t			id_len;
 	char			*format;
 	const t_skip	*skip_arr;
-}t_element_info;
+}	t_element_info;
 
 #endif
