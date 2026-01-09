@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:09:51 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 01:48:41 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:53:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,12 @@ static t_result	skip_vec(const char *line, size_t *line_idx, t_vectype vectype)
 		if (result.state == FAILURE)
 			return (result);
 		if (++d_idx != 3)
-			if (line[(*line_idx)++] != ',')
-				return (--(*line_idx), construct_result("need ','"));
+		{
+			skip_spaces(line, line_idx);
+			if (line[*line_idx] != ',')
+				return (construct_result("need ','"));
+			(*line_idx)++;
+		}
 	}
 	if (vectype == IS_UNIT && validate_unit_vec(d3))
 		return ((*line_idx)--, construct_result("not normalized vector"));
