@@ -6,11 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:09:51 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 00:22:09 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:56:49 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_utils.h"
+#include "libft.h"
+#include <math.h>
 
 static t_result	skip_vec(const char *line, size_t *line_idx, \
 t_vectype vectype);

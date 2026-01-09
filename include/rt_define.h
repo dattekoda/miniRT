@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define_rt.h                                        :+:      :+:    :+:   */
+/*   rt_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/09 23:57:04 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:48:07 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINE_RT_H
-# define DEFINE_RT_H
+#ifndef rt_define_H
+# define rt_define_H
 
 #include <stddef.h>
 

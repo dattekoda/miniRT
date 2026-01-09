@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_rt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/08 11:57:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:47:57 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util_rt.h"
+#include "rt_utils.h"
 #include "libft.h"
 #include <fcntl.h>
 #include <stdlib.h>

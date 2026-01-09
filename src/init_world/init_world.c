@@ -6,17 +6,18 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 00:34:29 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:05:02 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
-#include "util_rt.h"
+#include "rt_utils.h"
 #include "libft.h"
 #include <stdlib.h>
 #include <unistd.h>
 
 static void	validate_arguments(int argc, char *argv[]);
+static int	validate_file_name(const char *file_path);
 void		read_rt_file(t_list **line_list, const char *file_path);
 int			validate_line_list(const t_list *line_list);
 int			set_option(const char *options);
@@ -48,7 +49,7 @@ int	init_world(t_world *world, int argc, char *argv[])
 @brief validate function
 @param argv_one argv[1]
 */
-static void	validate_arguments(int argc, char *argv[])
+void	validate_arguments(int argc, char *argv[])
 {
 	if (argc == 1)
 	{
@@ -59,4 +60,29 @@ static void	validate_arguments(int argc, char *argv[])
 	if (validate_file_name(argv[1]) == FAILURE)
 		exit(EXIT_FAILURE);
 	return ;
+}
+
+/*
+@brief Check if the file name of argument is correct.
+@param file_path just argv[1]
+*/
+int	validate_file_name(const char *file_path)
+{
+	size_t		rt_file_len;
+	const char	*rt_file;
+
+	rt_file = ft_strchr(file_path, '/');
+	if (rt_file)
+		rt_file += 1;
+	else
+		rt_file = file_path;
+	rt_file_len = ft_strlen(rt_file);
+	if ((rt_file[0] == '.') \
+|| (rt_file_len <= 3 || ft_strcmp(rt_file + rt_file_len - 3, ".rt") != 0))
+	{
+		err_rt();
+		ft_putendl_fd("invalid file name", STDERR_FILENO);
+		return (FAILURE);
+	}
+	return (SUCCESS);
 }

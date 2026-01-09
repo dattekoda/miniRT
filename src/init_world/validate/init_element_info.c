@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 22:39:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 00:04:14 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 01:07:56 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ const t_element_info ambient_info =
 	.format = "A [lighting ratio(0-1)] [R,G,B(0-255)]",
 	.skip_arr = ambient_skips
 };
+
 const t_skip	camera_skips[] =
 {
 	skip_spaces,

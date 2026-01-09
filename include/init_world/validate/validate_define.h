@@ -6,14 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:50:21 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 00:20:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:48:07 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VALIDATE_DEFINE_H
 # define VALIDATE_DEFINE_H
 
-# include "define_rt.h"
+# include "rt_define.h"
 
 # ifndef NORMALZIE_EPSILON
 #  define NORMALIZE_EPSILON 1e-3

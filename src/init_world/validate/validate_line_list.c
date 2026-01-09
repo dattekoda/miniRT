@@ -6,12 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/09 23:54:25 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:54:34 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_define.h"
-#include "define_rt.h"
+#include "validate_utils.h"
+#include "rt_define.h"
 #include "libft.h"
 #include <unistd.h>
 

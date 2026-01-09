@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/10 00:31:05 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/10 01:05:43 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ SRCS		=	$(addprefix $(SRCDIR)/, \
 				create_world.c) \
 				$(addprefix validate/, \
 				init_element_info.c \
+				construct_result.c \
+				err_point_out.c \
 				validate_line_list.c \
 				validate_element.c \
 				skip_spaces.c \
@@ -48,8 +50,8 @@ OBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 
 # --- include ---
 INCDIRS		=	include \
-				include/util \
-				include/validate
+				include/init_world \
+				include/init_world/validate \
 
 # --- OS DETECTION ---
 UNAME	=	$(shell uname -s)
@@ -91,10 +93,9 @@ TESTSRCFILES	=	$(addprefix test/, \
 					$(addprefix init_world/, \
 					test_set_option.c \
 					$(addprefix validate/, \
-					test_validate_file_name.c \
 					test_validate_line_list.c \
 					test_validate_ambient.c \
-					tets_validate_camera.c \
+					test_validate_camera.c \
 					))))
 
 TESTSRCS		=	$(TESTSRCFILES) \

@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   construct_result.c                                 :+:      :+:    :+:   */
+/*   rt_utils.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/10 00:02:54 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 00:58:53 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/05 10:23:24 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/10 00:40:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_define.h"
-#include "libft.h"
+#ifndef rt_utils_H
+# define rt_utils_H
 
-void	err_point_out(char *line, size_t err_idx);
+#include "rt_define.h"
+#include <stdio.h> // 後で消す
 
-t_result	construct_result(char *_err_msg)
-{
-	t_result	result;
+void	err_rt(void);
+void	perror_rt(const char *syscall_fname);
 
-	ft_bzero(&result, sizeof(t_result));
-	if (_err_msg == NULL)
-	{
-		result.state = SUCCESS;
-		result.value.ok = 0;
-		return (result);
-	}
-	result.state = FAILURE;
-	result.value.err_msg = _err_msg;
-	return (result);
-}
+#endif

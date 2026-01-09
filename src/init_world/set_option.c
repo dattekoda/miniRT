@@ -6,11 +6,11 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:53 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/09 23:27:41 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:47:57 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util_rt.h"
+#include "rt_utils.h"
 #include "libft.h"
 #include <unistd.h>
 

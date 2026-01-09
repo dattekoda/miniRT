@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 00:08:49 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 00:56:28 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <unistd.h>
 
-static void	err_point_out(char *line, size_t err_idx);
+void	err_point_out(char *line, size_t err_idx);
 
 int	validate_element(char *line, const t_element_info elem_info)
 {
@@ -39,18 +39,3 @@ int	validate_element(char *line, const t_element_info elem_info)
 	return (0);
 }
 
-static void	err_point_out(char *line, size_t err_idx)
-{
-	size_t	i;
-
-	i = 0;
-	ft_putendl_fd(line, STDERR_FILENO);
-	while (i < err_idx)
-	{
-		if (line[i++] == '\t')
-			ft_putchar_fd('\t', STDERR_FILENO);
-		else
-			ft_putchar_fd(' ', STDERR_FILENO);
-	}
-	ft_putendl_fd(GREEN"^"RESET, STDERR_FILENO);
-}
