@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:15:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 16:17:16 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/10 16:38:11 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 	{
-		if (validate_line(argv[i]) == 1)
+		if (validate_line(argv[i]) == FAILURE)
 			validate_flag = FAILURE;
 		i++;
 	}
