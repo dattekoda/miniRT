@@ -9,4 +9,4 @@
 !scene
 !docs/*.md
 !test/*
-!test_scene/*
+!test_scene/**
