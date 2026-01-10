@@ -1,39 +1,34 @@
 ```mermaid
 flowchart
-	subgraph validate_line
-	direction LR
-	input1[/line/]-->if1
-	if1{match ...}-->|ambient|input2
-	if1-->|camera|input3
-	if1-->|light|input4
-	if1-->|sphere|input5
-	if1--->|no match|output[\validate no match\]
-	input2[/line/]-->vl2
-	vl2[\validate ambient\]
-	input3[/line/]-->vl3
-	vl3[\validate camera\]
-	input4[/line/]-->vl4
-	vl4[\validate light\]
-	input5[/line/]-->vl5
-	vl5[\validate sphere\]
-	end
-```
-```mermaid
-flowchart
-	subgraph validate_
+	subgraph validate line list
 	direction TB
-	input1[/line/]-->v1
-	v1[set element info]
-	v1-->input2[/line, element info/]
-	input2-->v2[[validate element]]
-	v2-->if1{is valid}
-	if1-->|false|output1[\return error\]
-	if1-->|true|output2[\return ok\]
+	input1[/line list/]-->if1
+	if1{next line list ?}-->|true|input2
+	if1----->|false|output1
+	input2[/line/]-->vll1
+	vll1[[validate line]]-->if3
+	if3{is valid?}-->|true|if1
+	if3-->|false|vll2
+	vll2[set flag]-->if1
+	output1[\flag\]
 	end
 ```
 ```mermaid
 flowchart
-	subgraph validate_element
+	subgraph validate line
+	direction TB
+	input1[/line/]-->if1
+	if1{match element?}-->|true|input2
+	if1---->|false|output2[\invalid\]
+	input2[/line,
+	element info/]-->vl1
+	vl1[[validate element]]-->output
+	output[\validate result\]
+	end
+```
+```mermaid
+flowchart
+	subgraph validate element
 	direction TB
 	input1[/line, element_info/]-->if1
 	if1{next
@@ -46,18 +41,4 @@ flowchart
 	output1[\valid\]
 	output2[\invalid\]
 	end
-```
-
-```mermaid
-flowchart
-classDiagram
-	class t_result {
-		+e_result		state
-		+union_u_result	value
-	}
-	class	e_element_info {
-		+size_t	id_len
-		+t_skip	*skip_arr
-	}
-	t_result --> 
 ```

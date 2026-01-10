@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_element_info.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 22:39:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 01:49:48 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 16:25:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static const t_skip			g_light_skips[] = {
 };
 
 static const t_element_info	g_light_info = {
+	.id = "L",
 	.id_len = 1,
 	.format = \
 "L [coordinate](x,y,z) [light brightness ratio](0-1) [R,G,B](0-255)",

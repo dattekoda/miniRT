@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   skip_range.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:05:02 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 01:23:03 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 16:34:17 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_result	skip_lighting_ratio(const char *line, size_t *line_idx)
 
 t_result	skip_fov(const char *line, size_t *line_idx)
 {
-	return (skip_range(line, line_idx, DBL_EPSILON, 180 - DBL_EPSILON));
+	return (skip_range(line, line_idx, FLT_EPSILON, 180.0 - FLT_EPSILON));
 }
 
 t_result	skip_diameter(const char *line, size_t *line_idx)
