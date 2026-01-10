@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   skip_vec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:09:51 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 17:46:00 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/10 20:29:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,58 +14,46 @@
 #include "libft.h"
 #include <math.h>
 
-static t_result	skip_vec(const char *line, size_t *line_idx, t_vectype vectype);
-static int		validate_unit_vec(double d3[3]);
-static t_result	skip_comma(const char *line, size_t *line_idx);
+static int	validate_color(double d3[3]);
+static int	validate_unit_vec(double d3[3]);
 
-t_result	skip_point(const char *line, size_t *line_idx)
-{
-	return (skip_vec(line, line_idx, IS_POINT));
-}
-
-t_result	skip_unit(const char *line, size_t *line_idx)
-{
-	return (skip_vec(line, line_idx, IS_UNIT));
-}
-
-t_result	skip_color(const char *line, size_t *line_idx)
-{
-	return (skip_vec(line, line_idx, IS_COLOR));
-}
-
-static t_result	skip_vec(const char *line, size_t *line_idx, t_vectype vectype)
+t_result	skip_vec(const char *line, size_t *line_idx, t_vectype vectype)
 {
 	t_result	result;
 	double		d3[3];
-	size_t		d_idx;
 
 	result = skip_spaces(line, line_idx);
 	if (result.state == FAILURE)
 		return (result);
 	ft_bzero(d3, sizeof(double) * 3);
-	d_idx = 0;
-	while (d_idx < 3)
+	result = line_to_vec(line, line_idx, d3);
+	if (result.state == FAILURE)
+		return (result);
+	if (vectype == IS_COLOR && validate_color(d3) == FAILURE)
 	{
-		result = skip_value(line, line_idx, d3 + d_idx);
-		if (result.state == FAILURE)
-			return (result);
-		if (vectype == IS_COLOR && (d3[d_idx] < 0.0 || 255.0 < d3[d_idx]))
-			return (construct_result("invalid color range"));
-		if (++d_idx != 3)
-			skip_comma(line, line_idx);
+		(*line_idx)--;
+		return (construct_result("invalid color range"));
 	}
 	if (vectype == IS_UNIT && validate_unit_vec(d3) == FAILURE)
-		return ((*line_idx)--, construct_result("not normalized vector"));
+	{
+		(*line_idx)--;
+		return (construct_result("not normalized vector"));
+	}
 	return (construct_result(NULL));
 }
 
-static t_result	skip_comma(const char *line, size_t *line_idx)
+static int	validate_color(double d3[3])
 {
-	skip_spaces(line, line_idx);
-	if (line[*line_idx] != ',')
-		return (construct_result("need ','"));
-	(*line_idx)++;
-	return (construct_result(NULL));
+	size_t	d_idx;
+
+	d_idx = 0;
+	while (d_idx < 3)
+	{
+		if (d3[d_idx] < 0.0 || 255.0 < d3[d_idx])
+			return (FAILURE);
+		d_idx++;
+	}
+	return (SUCCESS);
 }
 
 static int	validate_unit_vec(double d3[3])
@@ -73,5 +61,7 @@ static int	validate_unit_vec(double d3[3])
 	double	squred_sum;
 
 	squred_sum = pow(d3[0], 2) + pow(d3[1], 2) + pow(d3[2], 2);
-	return (0.01 <= fabs(squred_sum - 1));
+	if (0.01 <= fabs(squred_sum - 1))
+		return (FAILURE);
+	return (SUCCESS);
 }

@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   util_err.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 22:16:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 20:37:52 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/05 10:19:05 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/10 18:36:52 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "syscall_mock.h"
+#include "rt_utils.h"
 #include "libft.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
-static int	test(void);
-int			test_set_option(void);
-int			test_skips(void);
-
-int	_wrap_errno_ = 0;
-enum e_error_syscall	err_syscall = NOTHING;
-t_list	dummy_head = (t_list){0};
-
-int	main(void)
+/*
+@brief Used as a prefix for all error messages
+*/
+void	err_rt(char *err_msg)
 {
-	return (test());
+	ft_putstr_fd("miniRT: ", STDERR_FILENO);
+	if (err_msg)
+		ft_putendl_fd(err_msg, STDERR_FILENO);
 }
 
-static int	test(void)
+void	perror_rt(const char *syscall_fname)
 {
-	test_set_option();
-	test_skips();
-	return (0);
+	err_rt(NULL);
+	perror(syscall_fname);
 }

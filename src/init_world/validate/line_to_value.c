@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   skip_value.c                                       :+:      :+:    :+:   */
+/*   line_to_value.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:10:53 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 17:30:06 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/10 19:38:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <math.h>
 
-t_result	skip_value(const char *line, size_t *line_idx, double *d)
+t_result	line_to_value(const char *line, size_t *line_idx, double *d)
 {
 	char	*endptr;
 

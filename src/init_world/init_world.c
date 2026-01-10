@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 01:44:16 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 18:37:19 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ void	validate_arguments(int argc, char *argv[])
 {
 	if (argc == 1)
 	{
-		err_rt();
-		ft_putendl_fd("set .rt file as first argument", STDERR_FILENO);
+		err_rt("set .rt file as first argument");
 		exit(EXIT_FAILURE);
 	}
 	if (validate_file_name(argv[1]) == FAILURE)
@@ -80,8 +79,7 @@ int	validate_file_name(const char *file_path)
 	if ((rt_file[0] == '.') \
 || (rt_file_len <= 3 || ft_strcmp(rt_file + rt_file_len - 3, ".rt") != 0))
 	{
-		err_rt();
-		ft_putendl_fd("invalid file name", STDERR_FILENO);
+		err_rt("invalid file name");
 		return (FAILURE);
 	}
 	return (SUCCESS);

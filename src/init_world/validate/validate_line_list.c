@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_line_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 16:43:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/10 18:39:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static int	count_ambient_and_camera(const t_list *line_list)
 	if (ambient_count == 1 && camera_count == 1)
 		return (SUCCESS);
 	if (ambient_count != 1)
-		ft_putendl_fd("set only one ambient", STDERR_FILENO);
+		err_rt("set only one ambient");
 	if (camera_count != 1)
-		ft_putendl_fd("set only one camera", STDERR_FILENO);
+		err_rt("set only one camera");
 	return (FAILURE);
 }
 
@@ -90,12 +90,10 @@ static int	validate_invalid_id(char *line)
 	size_t	identifier_idx;
 
 	identifier_idx = 0;
-	while (line[identifier_idx] && \
-		line[identifier_idx] != ' ' && line[identifier_idx] != '\t')
+	while (!ft_strchr(" \t", line[identifier_idx]))
 		identifier_idx++;
 	err_point_out(line, identifier_idx - 1);
-	err_rt();
-	ft_putendl_fd("invalid identifier", STDERR_FILENO);
+	err_rt("invalid identifier");
 	return (FAILURE);
 }
 

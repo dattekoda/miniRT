@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_err.c                                         :+:      :+:    :+:   */
+/*   vector_skips.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 10:19:05 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 00:47:57 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/10 18:31:56 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/10 19:02:45 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_utils.h"
-#include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "validate_define.h"
 
-/*
-@brief Used as a prefix for all error messages
-*/
-void	err_rt(void)
+t_result	skip_vec(const char *line, size_t *line_idx, t_vectype vectype);
+
+t_result	skip_point(const char *line, size_t *line_idx)
 {
-	ft_putstr_fd("miniRT: ", STDERR_FILENO);
+	return (skip_vec(line, line_idx, IS_POINT));
 }
 
-void	perror_rt(const char *syscall_fname)
+t_result	skip_unit(const char *line, size_t *line_idx)
 {
-	err_rt();
-	perror(syscall_fname);
+	return (skip_vec(line, line_idx, IS_UNIT));
+}
+
+t_result	skip_color(const char *line, size_t *line_idx)
+{
+	return (skip_vec(line, line_idx, IS_COLOR));
 }

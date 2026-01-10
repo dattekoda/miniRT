@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 01:27:53 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 19:00:20 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include "rt_define.h"
 # include <stdio.h> // delete later 
 
-void	err_rt(void);
+int		fequal(double a, double b);
+
+void	err_rt(char *err_msg);
 void	perror_rt(const char *syscall_fname);
 
 #endif

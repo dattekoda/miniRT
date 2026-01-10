@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   utils_float.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 22:16:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 20:37:52 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/10 18:56:30 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/10 19:00:02 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "syscall_mock.h"
-#include "libft.h"
+#include "rt_define.h"
+#include <math.h>
+#include <float.h>
 
-static int	test(void);
-int			test_set_option(void);
-int			test_skips(void);
-
-int	_wrap_errno_ = 0;
-enum e_error_syscall	err_syscall = NOTHING;
-t_list	dummy_head = (t_list){0};
-
-int	main(void)
+int	fequal(double a, double b)
 {
-	return (test());
-}
-
-static int	test(void)
-{
-	test_set_option();
-	test_skips();
-	return (0);
+	return (fabs(a - b) < FLT_EPSILON);
 }

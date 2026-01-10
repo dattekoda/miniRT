@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:53 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 01:09:20 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 18:37:33 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,12 @@ int	set_option(const char *options)
 
 static void	err_invalid_option(void)
 {
-	err_rt();
-	ft_putendl_fd("option needs to start with '-'", STDERR_FILENO);
+	err_rt("option needs to start with '-'");
 }
 
 static void	err_set_option(int c)
 {
-	err_rt();
+	err_rt(NULL);
 	ft_putstr_fd("invalid option -- '", STDERR_FILENO);
 	ft_putchar_fd(c, STDERR_FILENO);
 	ft_putendl_fd("'", STDERR_FILENO);

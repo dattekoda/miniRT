@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_utils.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:53:42 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 17:40:14 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/10 20:30:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ t_result	skip_angle(const char *line, size_t *line_idx);
 t_result	skip_sharp_angle(const char *line, size_t *line_idx);
 t_result	skip_length(const char *line, size_t *line_idx);
 
-t_result	skip_value(const char *line, size_t *line_idx, double *d);
+t_result	line_to_value(const char *line, size_t *line_idx, double *d);
+t_result	line_to_vec(const char *line, size_t *line_idx, double d3[3]);
 
 t_result	skip_point(const char *line, size_t *line_idx);
 t_result	skip_unit(const char *line, size_t *line_idx);

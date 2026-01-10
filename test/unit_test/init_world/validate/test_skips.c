@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   test_skips.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 22:16:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 20:37:52 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/10 18:41:23 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/10 20:31:36 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "syscall_mock.h"
-#include "libft.h"
+int	test_skip_spaces(void);
+int	test_line_to_value(void);
+int	test_skip_range(void);
+int	test_skip_point(void);
+int	test_skip_unit(void);
+int	test_skip_color(void);
+int	test_skip_until_end(void);
 
-static int	test(void);
-int			test_set_option(void);
-int			test_skips(void);
-
-int	_wrap_errno_ = 0;
-enum e_error_syscall	err_syscall = NOTHING;
-t_list	dummy_head = (t_list){0};
-
-int	main(void)
+int	test_skips(void)
 {
-	return (test());
-}
-
-static int	test(void)
-{
-	test_set_option();
-	test_skips();
+	test_skip_spaces();
+	test_line_to_value();
+	test_skip_range();
+	test_skip_point();
+	test_skip_unit();
+	test_skip_color();
+	test_skip_until_end();
 	return (0);
 }
+
