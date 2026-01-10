@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   skip_vec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:09:51 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 01:53:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/10 17:46:00 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 static t_result	skip_vec(const char *line, size_t *line_idx, t_vectype vectype);
 static int		validate_unit_vec(double d3[3]);
+static t_result	skip_comma(const char *line, size_t *line_idx);
 
 t_result	skip_point(const char *line, size_t *line_idx)
 {
@@ -38,23 +39,32 @@ static t_result	skip_vec(const char *line, size_t *line_idx, t_vectype vectype)
 	double		d3[3];
 	size_t		d_idx;
 
+	result = skip_spaces(line, line_idx);
+	if (result.state == FAILURE)
+		return (result);
 	ft_bzero(d3, sizeof(double) * 3);
 	d_idx = 0;
 	while (d_idx < 3)
 	{
-		result = skip_value(line, line_idx, vectype, d3 + d_idx);
+		result = skip_value(line, line_idx, d3 + d_idx);
 		if (result.state == FAILURE)
 			return (result);
+		if (vectype == IS_COLOR && (d3[d_idx] < 0.0 || 255.0 < d3[d_idx]))
+			return (construct_result("invalid color range"));
 		if (++d_idx != 3)
-		{
-			skip_spaces(line, line_idx);
-			if (line[*line_idx] != ',')
-				return (construct_result("need ','"));
-			(*line_idx)++;
-		}
+			skip_comma(line, line_idx);
 	}
-	if (vectype == IS_UNIT && validate_unit_vec(d3))
+	if (vectype == IS_UNIT && validate_unit_vec(d3) == FAILURE)
 		return ((*line_idx)--, construct_result("not normalized vector"));
+	return (construct_result(NULL));
+}
+
+static t_result	skip_comma(const char *line, size_t *line_idx)
+{
+	skip_spaces(line, line_idx);
+	if (line[*line_idx] != ',')
+		return (construct_result("need ','"));
+	(*line_idx)++;
 	return (construct_result(NULL));
 }
 
