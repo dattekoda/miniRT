@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/04 07:56:15 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/10 20:38:53 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,17 +19,44 @@ RMDIR		=	rm -rf
 
 # --- src ---
 SRCDIR		=	src
-SRCFILES	=	main.c \
-				mini_rt.c
 
-SRCS		=	$(addprefix $(SRCDIR)/, $(SRCFILES))
+SRCS		=	$(addprefix $(SRCDIR)/, \
+				main.c \
+				mini_rt.c \
+				$(addprefix util/, \
+				utils_float.c \
+				utils_err.c) \
+				$(addprefix init_world/, \
+				init_world.c \
+				read_rt.c \
+				set_option.c \
+				$(addprefix create_world/, \
+				create_world.c) \
+				$(addprefix validate/, \
+				init_element_info.c \
+				construct_result.c \
+				err_point_out.c \
+				validate_line_list.c \
+				validate_element.c \
+				skip_spaces.c \
+				skip_vec.c \
+				line_to_value.c \
+				line_to_vec.c \
+				skip_range.c \
+				value_skips.c \
+				vector_skips.c \
+				) \
+				) \
+				)
 
 # --- obj ---
 OBJDIR		=	obj
 OBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 
 # --- include ---
-INCDIRS		=	include
+INCDIRS		=	include \
+				include/init_world \
+				include/init_world/validate \
 
 # --- OS DETECTION ---
 UNAME	=	$(shell uname -s)
@@ -55,17 +82,33 @@ LDLIBS		=	-lm -lmlx -lft $(MLXFLAG)
 # --- DEBUGGING ---
 VALGRIND	=	valgrind --leak-check=full --track-origins=yes \
 				--show-leak-kinds=all
-DFLAG		=	-g -O0
-ASAN_FLAG	=	$(DFLAG) -fsanitize=address
-SCAN_BUILD	=	/usr/bin/scan-build-12
+DFLAG		=	$(CFLAG) -g -O0
+ASANFLAG	=	$(DFLAG) -fsanitize=address
+SCANBUILD	=	/usr/bin/scan-build-12
 
 # --- test ---
-TESTNAME	=	test_weekend_c
-TESTCFLAG	=	$(ASANFLAG) -I$(INCDIRS)/test/
-TESTLDFLAG	=	$(LDFLAG) -Wl,--wrap=open,--wrap=read,--wrap=malloc, \
-				--wrap=free
-TESTSRCFILES	=	$(addprefix test/, test.c)
-TESTSRCS		=	$(addprefix $(SRCDIR)/, $(TESTSRCFILES)) \
+TESTNAME	=	test_miniRT
+TESTCFLAG	=	$(ASANFLAG) -Itest/unit_test
+TESTLDFLAG	=	$(LDFLAG) -Wl,--wrap=open,--wrap=read,--wrap=malloc,--wrap=free
+
+TESTSRCFILES	=	$(addprefix test/, \
+					test.c \
+					$(addprefix unit_test/, \
+					syscall_mock.c \
+					test_line_to_value.c \
+					$(addprefix init_world/, \
+					test_set_option.c \
+					$(addprefix validate/, \
+					test_skips.c \
+					test_skip_color.c \
+					test_skip_point.c \
+					test_skip_range.c \
+					test_skip_spaces.c \
+					test_skip_unit.c \
+					test_skip_until_end.c \
+					))))
+
+TESTSRCS		=	$(TESTSRCFILES) \
 					$(filter-out $(SRCDIR)/main.c, $(SRCS))
 TESTOBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(TESTSRCS))
 
@@ -104,8 +147,8 @@ lldb: fclean $(NAME)
 	@lldb $(NAME)
 
 # --- address sanitizer ---
-asan: CFLAG=$(CFLAG) $(ASAN_FLAG)
-asan: LDFLAG=$(LDFLAG) $(ASAN_FLAG)
+asan: CFLAG=$(CFLAG) $(ASANFLAG)
+asan: LDFLAG=$(LDFLAG) $(ASANFLAG)
 asan: fclean $(NAME)
 	@echo "\n\033[1;35mCompiled with AddressSanitizer. Run './$(NAME)' to test.\033[0m"
 
@@ -130,8 +173,8 @@ test: fclean
 $(TESTNAME):$(TESTOBJS) $(MLX) $(LIBFT)
 	$(CC) $(TESTOBJS) $(TESTCFLAG) $(TESTLDFLAG) $(LDLIBS) -o $@
 
-# --- scan build ---
+# --- scan build ---$(INCDIRS)/test/
 scanb: fclean
-	@$(SCAN_BUILD) $(MAKE) all
+	@$(SCANBUILD) $(MAKE) all
 
 .PHONY:	all clean fclean re test debug asan valgrind scanb
