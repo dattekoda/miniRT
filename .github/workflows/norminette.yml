@@ -32,6 +32,8 @@ jobs:
           pip3 install norminette
 
       # 4. Norminetteの実行
-      # ここでnorminetteがエラー(終了コード1)を返すと、Action自体が失敗になります
       - name: Run Norminette on src and include
-        run: norminette src include
+        run: |
+          if norminette src include | grep -q "Error:"; then
+            exit 1
+          fi
