@@ -6,11 +6,10 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 18:37:19 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/11 15:42:04 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "world.h"
 #include "rt_utils.h"
 #include "libft.h"
 #include <stdlib.h>

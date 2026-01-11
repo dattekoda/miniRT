@@ -6,14 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 15:39:37 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/11 15:41:45 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_DEFINE_H
 # define RT_DEFINE_H
 
-#include "world.h"
 # include <stddef.h>
 
 # ifndef M_PI
