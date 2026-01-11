@@ -3,14 +3,11 @@ flowchart
 	subgraph validate line list
 	direction TB
 	input1[/line list/]-->if1
-	if1{next line list ?}-->|true|input2
-	if1----->|false|output1
-	input2[/line/]-->vll1
-	vll1[[validate line]]-->if3
-	if3{is valid?}-->|true|if1
-	if3-->|false|vll2
+	if1{next line list ?}-->|true|if2
+	if1--->|false|output1[\flag\]
+	if2{validate line}-->|true|if1
+	if2-->|false|vll2
 	vll2[set flag]-->if1
-	output1[\flag\]
 	end
 ```
 ```mermaid
