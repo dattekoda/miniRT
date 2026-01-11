@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/10 20:38:53 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/11 22:26:20 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,17 @@ SRCDIR		=	src
 SRCS		=	$(addprefix $(SRCDIR)/, \
 				main.c \
 				mini_rt.c \
-				$(addprefix util/, \
+				$(addprefix utils/, \
 				utils_float.c \
-				utils_err.c) \
+				utils_err.c \
+				$(addprefix vec/, \
+				onb.c \
+				vec3_basic.c \
+				vec3_product.c \
+				vec3_scal.c \
+				vec3.c\
+				) \
+				) \
 				$(addprefix init_world/, \
 				init_world.c \
 				read_rt.c \
@@ -57,6 +65,8 @@ OBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 INCDIRS		=	include \
 				include/init_world \
 				include/init_world/validate \
+				include/utils \
+				include/utils/vec
 
 # --- OS DETECTION ---
 UNAME	=	$(shell uname -s)
