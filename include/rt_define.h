@@ -6,13 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 01:15:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/11 15:39:37 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_DEFINE_H
 # define RT_DEFINE_H
 
+#include "world.h"
 # include <stddef.h>
 
 # ifndef M_PI
@@ -39,5 +40,12 @@ typedef struct s_result
 	enum e_result	state;
 	union u_result	value;
 }	t_result;
+
+typedef struct s_world	t_world;
+
+struct s_world
+{
+	int	option_flag;
+};
 
 #endif
