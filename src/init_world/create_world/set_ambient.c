@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 21:21:23 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 21:56:24 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "world.h"
 #include "libft.h"
 
-static t_result	line_to_ambient(const char *line, int is_phong, t_color *ambient);
+static t_result	line_to_ambient(const char *line, int is_phong, \
+t_color *ambient);
 
 void	set_ambient(t_world *world, const t_list *line_list)
 {
@@ -31,7 +32,8 @@ void	set_ambient(t_world *world, const t_list *line_list)
 	line_to_ambient(line_list->content, is_phong, &world->ambient);
 }
 
-static t_result	line_to_ambient(const char *line, int is_phong, t_color *ambient)
+static t_result	line_to_ambient(const char *line, int is_phong, \
+t_color *ambient)
 {
 	t_color	color;
 	double	ratio;

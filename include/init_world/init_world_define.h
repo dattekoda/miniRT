@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/12 21:51:31 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 22:09:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include <stddef.h>
 # include "result.h"
-#include "hitter.h"
+# include "hitter.h"
 
 # define PATHTRACING_AMBIENTRATIO 100.0
 # define LIGHT_RADIUS 100.0
 
-typedef t_result	(*t_skip)(const char *line, size_t *line_idx);
+typedef t_result		(*t_skip)(const char *line, size_t *line_idx);
 
 typedef struct s_element
 {

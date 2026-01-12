@@ -6,14 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:38:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 20:19:12 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 22:02:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HITTER_H
 # define HITTER_H
 
-#include "ray.h"
+# include "ray.h"
 
 typedef struct s_hrec	t_hrec;
 

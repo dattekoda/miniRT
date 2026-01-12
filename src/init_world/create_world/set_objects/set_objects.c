@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 20:17:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 21:43:47 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 21:56:57 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 #include <stdlib.h>
 
 static void	delete_light_line(t_list **line_list);
-t_tree		*set_object_in_table(const t_list *line_list, const t_element *object_table[]);
+t_tree		*set_object_in_table(const t_list *line_list, \
+const t_element *object_table[]);
 
 int	set_objects(t_world *world, t_list *line_list)
 {
@@ -26,7 +27,6 @@ int	set_objects(t_world *world, t_list *line_list)
 	world->object_tree->rhs = set_object_in_table(line_list, g_infinite_table);
 	if (!world->object_tree->rhs)
 		return (FAILURE);
-	
 	world->object_tree->lhs = set_object_in_table(line_list, g_finite_table);
 	if (!world->object_tree->lhs)
 	{
@@ -60,5 +60,3 @@ static void	delete_light_line(t_list **line_list)
 	}
 	*line_list = dummy_head.next;
 }
-
-

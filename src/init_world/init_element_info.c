@@ -20,7 +20,7 @@ static const t_skip			g_ambient_skips[] = {
 	NULL
 };
 
-const t_element		g_ambient_info = {
+const t_element				g_ambient_info = {
 	.type = AMBIENT,
 	.id = "A",
 	.id_len = 1,
@@ -36,7 +36,7 @@ static const t_skip			g_camera_skips[] = {
 	NULL
 };
 
-const t_element		g_camera_info = {
+const t_element				g_camera_info = {
 	.type = CAMERA,
 	.id = "C",
 	.id_len = 1,
@@ -53,7 +53,7 @@ static const t_skip			g_light_skips[] = {
 	NULL
 };
 
-const t_element	g_light_info = {
+const t_element				g_light_info = {
 	.type = LIGHT,
 	.id = "L",
 	.id_len = 1,
@@ -70,7 +70,7 @@ static const t_skip			g_sphere_skips[] = {
 	NULL
 };
 
-static const t_element	g_sphere_info = {
+static const t_element		g_sphere_info = {
 	.type = SPHERE,
 	.id = "sp",
 	.id_len = 2,
@@ -86,7 +86,7 @@ static const t_skip			g_plane_skips[] = {
 	NULL
 };
 
-static const t_element	g_plane_info = {
+static const t_element		g_plane_info = {
 	.type = PLANE,
 	.id = "pl",
 	.id_len = 2,
@@ -105,7 +105,7 @@ static const t_skip			g_cylinder_skips[] = {
 	NULL
 };
 
-static const t_element	g_cylinder_info = {
+static const t_element		g_cylinder_info = {
 	.type = CYLINDER,
 	.id = "cy",
 	.id_len = 2,
@@ -123,7 +123,7 @@ static const t_skip			g_cone_skips[] = {
 	NULL
 };
 
-static const t_element	g_cone_info = {
+static const t_element		g_cone_info = {
 	.type = CONE,
 	.id = "co",
 	.id_len = 2,
@@ -141,7 +141,7 @@ static const t_skip			g_triangle_skips[] = {
 	NULL
 };
 
-static const t_element	g_triangle_info = {
+static const t_element		g_triangle_info = {
 	.type = TRIANGLE,
 	.id = "tr",
 	.id_len = 2,
@@ -150,7 +150,7 @@ static const t_element	g_triangle_info = {
 	.skip_arr = g_triangle_skips
 };
 
-const t_element		*g_info_table[] = {
+const t_element				*g_info_table[] = {
 	&g_ambient_info,
 	&g_camera_info,
 	&g_light_info,
@@ -162,13 +162,13 @@ const t_element		*g_info_table[] = {
 	NULL
 };
 
-const t_element		*g_infinte_table[] = {
+const t_element				*g_infinte_table[] = {
 	&g_plane_info,
 	&g_cone_info,
 	NULL
 };
 
-const t_element		*g_finte_table[] = {
+const t_element				*g_finte_table[] = {
 	&g_sphere_info,
 	&g_cylinder_info,
 	&g_triangle_info,
