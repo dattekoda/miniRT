@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 22:10:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 22:11:13 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:20:30 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_onb	construct_onb(t_vec3 vec3)
 	if (fabs(onb.v[2].e[0]) > 0.9)
 		operand = construct_vec3(0, 1, 0);
 	else
-		operand = construct_vec3(1, 0, 1);
+		operand = construct_vec3(1, 0, 0);
 	onb.v[1] = normalize(cross(onb.v[2], operand));
 	onb.v[0] = cross(onb.v[2], onb.v[1]);
 	return (onb);
