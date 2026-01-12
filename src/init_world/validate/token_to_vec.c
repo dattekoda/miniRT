@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_to_vector.c                                   :+:      :+:    :+:   */
+/*   token_to_vec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 19:31:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 20:29:58 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:22:38 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static t_result	skip_comma(const char *line, size_t *line_idx);
 
-t_result	line_to_vec(const char *line, size_t *line_idx, double d3[3])
+t_result	token_to_vec(const char *line, size_t *line_idx, double d3[3])
 {
 	t_result	result;
 	size_t		d_idx;
@@ -23,7 +23,7 @@ t_result	line_to_vec(const char *line, size_t *line_idx, double d3[3])
 	d_idx = 0;
 	while (d_idx < 3)
 	{
-		result = line_to_value(line, line_idx, d3 + d_idx);
+		result = token_to_value(line, line_idx, d3 + d_idx);
 		if (result.state == FAILURE)
 			return (result);
 		if (d_idx != 2)

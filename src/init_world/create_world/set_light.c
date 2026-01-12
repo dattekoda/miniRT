@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/11 20:16:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 21:53:08 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,23 @@
 #include "world.h"
 #include "libft.h"
 
+t_hitter		*line_to_light(const char *line);
+static void		clear_light_list(t_list *light_list);
+
 int	set_light(t_world *world, const t_list *line_list)
 {
 	t_hitter	*new_light;
 
 	while (line_list)
 	{
-		if (!ft_strncmp(line_list->content, "L", 1))
+		if (match_identifier(line_list->content, &g_light_info) == SUCCESS)
 		{
 			new_light = line_to_light(line_list->content);
 			if (!new_light)
-				return (clear_light_list(world->light_list), FAILURE);
+			{
+				clear_light_list(&world->light_list);
+				return (FAILURE);
+			}
 			ft_lstadd_back(&world->light_list, new_light);
 		}
 		line_list = line_list->next;
@@ -33,28 +39,21 @@ int	set_light(t_world *world, const t_list *line_list)
 	return (SUCCESS);
 }
 
-static t_hitter	*line_to_light(const char *line)
+/*
+@brief ft_lstclear(&world->light_list, clear_sphere)でもいいけど、
+こっちだとlightの形が異なったりノードそれぞれで形が変化してもOK
+*/
+static void	clear_light_list(t_list *light_list)
 {
-	size_t		i;
-	t_point3	point;
-	double		ratio;
-	t_color		int_color;
+	t_list		*next;
+	t_hitter	*light;
 
-	i = 1;
-	line_to_vec(line, &i, &point);
-	line_to_value(line, &i, &ratio);
-	line_to_vec(line, &i, &int_color);
-	return (gen_light(point, ratio, int_color));
-}
-
-static t_hitter	*gen_light(t_point3 point, double ratio, t_color int_color)
-{
-	t_color		color;
-	t_material	*mat_ptr;
-
-	color = scal_mul_vec(normalize_color(int_color), ratio);
-	mat_ptr = (t_material *)gen_light_material(color);
-	if (!mat_ptr)
-		return (NULL);
-	return (gen_sphere(point, LIGHT_RADIUS, mat_ptr));
+	while (light_list)
+	{
+		next = light_list->next;
+		light = (t_hitter *)light_list->content;
+		light->clear(&light);
+		free(light_list);
+		light_list = light_list->next;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:05:02 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 19:16:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:23:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ double min, double max)
 	result = skip_spaces(line, line_idx);
 	if (result.state == FAILURE)
 		return (result);
-	result = line_to_value(line, line_idx, &d);
+	result = token_to_value(line, line_idx, &d);
 	if (result.state == FAILURE)
 		return (result);
 	if (d < min || max < d)

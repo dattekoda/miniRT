@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_to_value.c                                    :+:      :+:    :+:   */
+/*   token_to_value.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:10:53 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 19:38:40 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:22:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <math.h>
 
-t_result	line_to_value(const char *line, size_t *line_idx, double *d)
+t_result	token_to_value(const char *line, size_t *line_idx, double *d)
 {
 	char	*endptr;
 

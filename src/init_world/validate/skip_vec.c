@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:09:51 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/11 16:53:47 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:22:52 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_result	skip_vec(const char *line, size_t *line_idx, t_vec3type vectype)
 	if (result.state == FAILURE)
 		return (result);
 	ft_bzero(d3, sizeof(double) * 3);
-	result = line_to_vec(line, line_idx, d3);
+	result = token_to_vec(line, line_idx, d3);
 	if (result.state == FAILURE)
 		return (result);
 	if (vectype == IS_COLOR && validate_color(d3) == FAILURE)

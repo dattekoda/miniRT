@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_finite_objects.c                               :+:      :+:    :+:   */
+/*   line_to_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 23:30:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 14:34:09 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/12 21:53:02 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/12 21:53:41 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
-#include "node.h"
-#include "libft.h"
+#include "hitter.h"
 
-int	match_identifier(const char *line, const t_element_info *info);
-static int	match_infinite_object(const char *line);
-
-t_tree	*set_finite_objects(const t_list *line_list)
+t_hitter	*line_to_light(const char *line)
 {
-	
+	size_t		i;
+	t_point3	point;
+	double		ratio;
+	t_color		int_color;
+	t_color		color;
+
+	i = 1;
+	token_to_vec(line, &i, &point);
+	token_to_value(line, &i, &ratio);
+	token_to_vec(line, &i, &int_color);
+	color = scal_mul_vec(normalize_color(int_color), ratio);
+	return (gen_sphere(point, LIGHT_RADIUS, gen_light_material(color)));
 }

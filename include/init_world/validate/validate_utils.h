@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:53:42 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 18:43:37 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:23:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_result	skip_angle(const char *line, size_t *line_idx);
 t_result	skip_sharp_angle(const char *line, size_t *line_idx);
 t_result	skip_length(const char *line, size_t *line_idx);
 
-t_result	line_to_value(const char *line, size_t *line_idx, double *d);
-t_result	line_to_vec(const char *line, size_t *line_idx, double d3[3]);
+t_result	token_to_value(const char *line, size_t *line_idx, double *d);
+t_result	token_to_vec(const char *line, size_t *line_idx, double d3[3]);
 
 t_result	skip_point(const char *line, size_t *line_idx);
 t_result	skip_unit(const char *line, size_t *line_idx);

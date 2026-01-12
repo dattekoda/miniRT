@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 18:45:10 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 21:43:47 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void	err_point_out(char *line, size_t err_idx);
 
-int	validate_element(char *line, const t_element_info *elem_info)
+int	validate_element(char *line, const t_element *elem_info)
 {
 	t_result	result;
 	size_t		i;

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 14:23:20 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 21:43:47 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 static int	count_ambient_and_camera(const t_list *line_list);
 static int	validate_line(char *line);
-static int	match_identifier(const char *line, const t_element_info *info);
-int			validate_element(char *line, const t_element_info *elem_info);
+static int	match_identifier(const char *line, const t_element *info);
+int			validate_element(char *line, const t_element *elem_info);
 static int	validate_invalid_id(char *line);
 
 int	validate_line_list(const t_list *line_list)
@@ -59,7 +59,7 @@ static int	count_ambient_and_camera(const t_list *line_list)
 	return (FAILURE);
 }
 
-int	match_identifier(const char *line, const t_element_info *info)
+int	match_identifier(const char *line, const t_element *info)
 {
 	if (ft_strncmp(line, info->id, info->id_len))
 		return (FAILURE);

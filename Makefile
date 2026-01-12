@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/10 20:38:53 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/12 21:43:47 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,15 +33,15 @@ SRCS		=	$(addprefix $(SRCDIR)/, \
 				$(addprefix create_world/, \
 				create_world.c) \
 				$(addprefix validate/, \
-				init_element_info.c \
+				init_element.c \
 				construct_result.c \
 				err_point_out.c \
 				validate_line_list.c \
 				validate_element.c \
 				skip_spaces.c \
 				skip_vec.c \
-				line_to_value.c \
-				line_to_vec.c \
+				token_to_value.c \
+				token_to_vec.c \
 				skip_range.c \
 				value_skips.c \
 				vector_skips.c \
@@ -95,7 +95,7 @@ TESTSRCFILES	=	$(addprefix test/, \
 					test.c \
 					$(addprefix unit_test/, \
 					syscall_mock.c \
-					test_line_to_value.c \
+					test_token_to_value.c \
 					$(addprefix init_world/, \
 					test_set_option.c \
 					$(addprefix validate/, \

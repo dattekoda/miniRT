@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 16:31:24 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:51:54 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ int			validate_line_list(const t_list *line_list);
 int			set_option(const char *options);
 int			create_world(t_world *world, const t_list *line_list);
 
+/*
+@brief line_listの開放責務を持つ
+*/
 int	init_world(t_world *world, int argc, char *argv[])
 {
 	t_list	*line_list;
