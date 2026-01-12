@@ -6,14 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 19:00:20 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/11 18:38:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_UTILS_H
 # define RT_UTILS_H
 
-# include "rt_define.h"
 # include <stdio.h> // delete later 
 
 int		fequal(double a, double b);

@@ -1,23 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_define.h                                        :+:      :+:    :+:   */
+/*   line_to_hitter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 16:34:03 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/11 23:32:54 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/11 23:33:07 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_DEFINE_H
-# define RT_DEFINE_H
-
-# ifndef M_PI
-#  define M_PI 3.14159265358979323846
-# endif
-
-# define GREEN "\033[92m"
-# define RESET "\033[m"
-
-#endif

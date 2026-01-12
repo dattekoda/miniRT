@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_world.c                                     :+:      :+:    :+:   */
+/*   set_objects.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 15:14:11 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 18:36:09 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/11 20:17:12 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/12 14:34:09 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "result.h"
+#include "validate_utils.h"
 #include "world.h"
 #include "libft.h"
 
-void	set_ambient(t_world *world, const t_list *line_list);
-void	set_camera(t_world *world, const t_list *line_list);
-int		set_light(t_world *world, const t_list *line_list);
-int		set_objects(t_world *world, const t_list *line_list);
+t_tree	*set_infinite_objects(const t_list *line_list);
+t_tree	*set_finite_objects(const t_list *line_list);
 
-int	create_world(t_world *world, const t_list *line_list)
+int	set_objects(t_world *world, const t_list *line_list)
 {
-	set_ambient(world, line_list);
-	set_camera(world, line_list);
-	if (set_light(world, line_list) == FAILURE)
+	world->object_tree->rhs = set_infinite_objects(line_list);
+	if (!world->object_tree->rhs)
 		return (FAILURE);
-	if (set_objects(world, line_list) == FAILURE)
+	world->object_tree->lhs = set_finite_objects(line_list);
+	if (!world->object_tree->lhs)
+	{
+		clear_node(world->object_tree->rhs);
 		return (FAILURE);
+	}
+	world->object_tree->hitter = construct_tree_hitter(&world->object_tree);
 	return (SUCCESS);
 }

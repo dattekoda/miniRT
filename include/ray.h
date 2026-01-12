@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_define.h                                        :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 16:34:03 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/11 16:46:45 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/11 16:54:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_DEFINE_H
-# define RT_DEFINE_H
+#ifndef RAY_H
+# define RAY_H
 
-# ifndef M_PI
-#  define M_PI 3.14159265358979323846
-# endif
+#include "vec.h"
 
-# define GREEN "\033[92m"
-# define RESET "\033[m"
+typedef struct s_ray
+{
+	t_point3	ori;
+	t_vec3		dir;
+}	t_ray;
 
 #endif

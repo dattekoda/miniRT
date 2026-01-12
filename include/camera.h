@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_define.h                                        :+:      :+:    :+:   */
+/*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 16:34:03 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/11 16:34:36 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/11 19:18:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_DEFINE_H
-# define RT_DEFINE_H
+#ifndef CAMERA_H
+# define CAMERA_H
 
-# ifndef M_PI
-#  define M_PI 3.14159265358979323846
-# endif
+#include "vec.h"
 
-# define GREEN "\033[92m"
-# define RESET "\033[m"
+typedef struct s_camera
+{
+	t_point3	origin;
+	t_point3	ltop_corner;
+	t_vec3		hori;
+	t_vec3		vert;
+	t_vec3		onb[3];
+	double		lens_rad;
+}	t_camera;
 
 #endif

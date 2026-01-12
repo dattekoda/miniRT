@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_define.h                                        :+:      :+:    :+:   */
+/*   vec.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 16:34:03 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/11 16:28:48 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/12 14:34:43 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_DEFINE_H
-# define RT_DEFINE_H
+#ifndef VEC_H
+# define VEC_H
 
-# ifndef M_PI
-#  define M_PI 3.14159265358979323846
-# endif
+typedef struct s_vec3
+{
+	double	e[3];
+}	t_vec3;
 
-# define GREEN "\033[92m"
-# define RESET "\033[m"
+typedef t_vec3	t_color;
+typedef t_vec3	t_point3;
+
+typedef struct s_vec2
+{
+	e[2];
+}	t_point2;
+
+typedef t_point2	t_range;
 
 #endif

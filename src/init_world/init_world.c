@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 15:42:04 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:31:24 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_utils.h"
+#include "result.h"
+#include "world.h"
 #include "libft.h"
 #include <stdlib.h>
 #include <unistd.h>
@@ -34,13 +35,13 @@ int	init_world(t_world *world, int argc, char *argv[])
 		ft_lstclear(&line_list, free);
 		exit(EXIT_FAILURE);
 	}
+	world->option_flag = set_option(argv[2]);
 	if (create_world(world, line_list) == FAILURE)
 	{
 		ft_lstclear(&line_list, free);
 		exit(EXIT_FAILURE);
 	}
 	ft_lstclear(&line_list, free);
-	world->option_flag = set_option(argv[2]);
 	return (SUCCESS);
 }
 

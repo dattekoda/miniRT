@@ -6,13 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 18:37:55 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/11 18:45:10 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_define.h"
+#include "init_world_define.h"
 #include "libft.h"
-#include "rt_utils.h"
+#include "result.h"
 #include <unistd.h>
 
 void	err_point_out(char *line, size_t err_idx);

@@ -6,11 +6,10 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 22:48:33 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 00:48:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:32:45 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_define.h"
 #include <assert.h>
 
 int	set_option(const char *options);

@@ -6,17 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:53:42 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 20:30:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/11 18:43:37 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VALIDATE_UTILS_H
 # define VALIDATE_UTILS_H
 
-# include "validate_define.h"
-# include "rt_utils.h"
-
-extern const t_element_info	*g_info_table[];
+# include "result.h"
 
 t_result	construct_result(char *_err_msg);
 void		err_point_out(char *line, size_t err_idx);

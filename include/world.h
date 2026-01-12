@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_define.h                                        :+:      :+:    :+:   */
+/*   world.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 16:34:03 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/11 16:27:58 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/12 14:34:33 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_DEFINE_H
-# define RT_DEFINE_H
+#ifndef WORLD_H
+# define WORLD_H
 
-# ifndef M_PI
-#  define M_PI 3.14159265358979323846
-# endif
+#include "vec.h"
+#include "camera.h"
+#include "tree.h"
+#include "libft.h"
 
-# define GREEN "\033[92m"
-# define RESET "\033[m"
+typedef struct s_world	t_world;
+
+struct s_world
+{
+	int			option_flag;
+	t_color		ambient;
+	t_camera	camera;
+	t_list		*light_list;
+	t_tree		*object_tree;
+};
 
 #endif

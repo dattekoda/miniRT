@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 18:45:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 20:32:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:33:33 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_define.h"
+#include "result.h"
+#include <stddef.h>
 #include <assert.h>
 
 t_result	skip_until_end(const char *line, size_t *line_idx);

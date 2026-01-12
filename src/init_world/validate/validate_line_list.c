@@ -6,17 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 18:39:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:23:20 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_utils.h"
-#include "rt_define.h"
+#include "init_world_define.h"
+#include "rt_utils.h"
 #include "libft.h"
 #include <unistd.h>
-
-extern const t_element_info	g_ambient_info;
-extern const t_element_info	g_camera_info;
 
 static int	count_ambient_and_camera(const t_list *line_list);
 static int	validate_line(char *line);
@@ -62,7 +59,7 @@ static int	count_ambient_and_camera(const t_list *line_list)
 	return (FAILURE);
 }
 
-static int	match_identifier(const char *line, const t_element_info *info)
+int	match_identifier(const char *line, const t_element_info *info)
 {
 	if (ft_strncmp(line, info->id, info->id_len))
 		return (FAILURE);

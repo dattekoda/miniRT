@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:09:51 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 20:29:53 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:53:47 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include <math.h>
 
 static int	validate_color(double d3[3]);
-static int	validate_unit_vec(double d3[3]);
+static int	validate_unit_vec3(double d3[3]);
 
-t_result	skip_vec(const char *line, size_t *line_idx, t_vectype vectype)
+t_result	skip_vec(const char *line, size_t *line_idx, t_vec3type vectype)
 {
 	t_result	result;
 	double		d3[3];
@@ -34,7 +34,7 @@ t_result	skip_vec(const char *line, size_t *line_idx, t_vectype vectype)
 		(*line_idx)--;
 		return (construct_result("invalid color range"));
 	}
-	if (vectype == IS_UNIT && validate_unit_vec(d3) == FAILURE)
+	if (vectype == IS_UNIT && validate_unit_vec3(d3) == FAILURE)
 	{
 		(*line_idx)--;
 		return (construct_result("not normalized vector"));
@@ -56,7 +56,7 @@ static int	validate_color(double d3[3])
 	return (SUCCESS);
 }
 
-static int	validate_unit_vec(double d3[3])
+static int	validate_unit_vec3(double d3[3])
 {
 	double	squred_sum;
 

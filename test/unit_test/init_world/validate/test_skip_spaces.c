@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 18:44:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 20:35:19 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:33:08 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_define.h"
+#include "result.h"
+#include <stddef.h>
 #include <assert.h>
 
 t_result	skip_spaces(const char *line, size_t *line_idx);

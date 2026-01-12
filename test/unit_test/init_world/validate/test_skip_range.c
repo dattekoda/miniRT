@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 18:44:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 20:40:53 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:32:57 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_define.h"
+#include "result.h"
+#include <stddef.h>
 #include <math.h>
 #include <assert.h>
 

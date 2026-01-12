@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_define.h                                        :+:      :+:    :+:   */
+/*   set_finite_objects.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 16:34:03 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/11 23:30:16 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/12 14:34:09 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_DEFINE_H
-# define RT_DEFINE_H
+#include "init_world_define.h"
+#include "node.h"
+#include "libft.h"
 
-# ifndef M_PI
-#  define M_PI 3.14159265358979323846
-# endif
+int	match_identifier(const char *line, const t_element_info *info);
+static int	match_infinite_object(const char *line);
 
-# define GREEN "\033[92m"
-# define RESET "\033[m"
-
-#endif
+t_tree	*set_finite_objects(const t_list *line_list)
+{
+	
+}
