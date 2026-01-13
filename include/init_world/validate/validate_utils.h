@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:53:42 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/12 16:23:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/14 04:10:47 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define VALIDATE_UTILS_H
 
 # include "result.h"
+#include "vec.h"
+#include <stddef.h>
 
 t_result	construct_result(char *_err_msg);
 void		err_point_out(char *line, size_t err_idx);
@@ -29,7 +31,7 @@ t_result	skip_sharp_angle(const char *line, size_t *line_idx);
 t_result	skip_length(const char *line, size_t *line_idx);
 
 t_result	token_to_value(const char *line, size_t *line_idx, double *d);
-t_result	token_to_vec(const char *line, size_t *line_idx, double d3[3]);
+t_result	token_to_vec(const char *line, size_t *line_idx, t_vec3 *vec);
 
 t_result	skip_point(const char *line, size_t *line_idx);
 t_result	skip_unit(const char *line, size_t *line_idx);

@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 00:47:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/14 00:09:22 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_utils.h"
+#include "result.h"
 #include "libft.h"
 #include <fcntl.h>
 #include <stdlib.h>

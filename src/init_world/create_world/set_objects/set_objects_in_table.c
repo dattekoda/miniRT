@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 23:30:19 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 22:00:26 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/14 00:07:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include "tree.h"
 #include "libft.h"
 
-int	match_infinite_object(const char *line);
+t_hitter	**line_list_to_object_arr(const t_list *line_list, \
+const t_element *object_table[]);
+void		clear_hitter_arr(t_hitter **hitter_arr);
 
 t_tree	*set_object_in_table(const t_list *line_list, \
 const t_element *object_table[])

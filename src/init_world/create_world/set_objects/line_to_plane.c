@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_to_shpere.c                                   :+:      :+:    :+:   */
+/*   line_to_plane.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/12 21:45:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 04:40:08 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/14 04:15:33 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/14 04:39:48 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,17 @@
 #include "hitter.h"
 #include "vec.h"
 
-/*
-@brief lineとgenの橋渡しなので使いやすい用にデータを加工する。(normalize_colorを噛ませたり)
-*/
-t_hitter	*line_to_sphere(const char *line)
+t_hitter	*line_to_plane(const char *line)
 {
 	size_t			i;
-	t_sphere_param	param;
-	double			diameter;
+	t_plane_param	param;
 	t_color			int_color;
 
 	i = 2;
-	token_to_vec(line, &i, &param.center);
-	token_to_value(line, &i, &diameter);
-	param.radius = diameter * 0.5;
+	token_to_vec(line, &i, &param.point);
+	token_to_vec(line, &i, &param.normal);
 	token_to_vec(line, &i, &int_color);
 	param.mat_ptr = gen_lambertian(
 			gen_solid_texture(normalize_color(int_color)));
-	return (gen_sphere(param));
+	return (gen_plane(param));
 }

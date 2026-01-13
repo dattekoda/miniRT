@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/12 22:11:21 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/14 00:18:22 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,12 +36,24 @@ SRCS		=	$(addprefix $(SRCDIR)/, \
 				) \
 				$(addprefix init_world/, \
 				init_world.c \
+				init_element.c \
 				read_rt.c \
 				set_option.c \
 				$(addprefix create_world/, \
-				create_world.c) \
+				create_world.c\
+				set_ambient.c \
+				set_camera.c \
+				set_light.c \
+				) \
+				$(addprefix set_object/, \
+				set_objects.c \
+				set_objects_in_table.c \
+				line_to_sphere.c \
+				line_to_light.c \
+				line_list_to_object_arr.c \
+				gen_bvh.c \
+				) \
 				$(addprefix validate/, \
-				init_element.c \
 				construct_result.c \
 				err_point_out.c \
 				validate_line_list.c \

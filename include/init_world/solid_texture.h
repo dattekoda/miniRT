@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   construct_result.c                                 :+:      :+:    :+:   */
+/*   solid_texture.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/10 00:02:54 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 00:11:45 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/14 04:45:41 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/14 04:50:17 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "result.h"
-#include "libft.h"
+#ifndef SOLID_TEXTURE_H
+# define SOLID_TEXTURE_H
 
-void	err_point_out(char *line, size_t err_idx);
+#include "texture.h"
+#include "vec.h"
 
-t_result	construct_result(char *_err_msg)
+typedef struct s_solid_texture
 {
-	t_result	result;
+	t_texture	texture;
+	t_color		color;
+}	t_solid_texture;
 
-	ft_bzero(&result, sizeof(t_result));
-	if (_err_msg == NULL)
-	{
-		result.state = SUCCESS;
-		result.value.ok = 0;
-		return (result);
-	}
-	result.state = FAILURE;
-	result.value.err_msg = _err_msg;
-	return (result);
-}
+t_solid_texture	*gen_solid_texture(t_color color);
+
+#endif

@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/12 21:43:47 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/14 00:13:00 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
+#include "rt_utils.h"
 #include "libft.h"
 #include "result.h"
 #include <unistd.h>

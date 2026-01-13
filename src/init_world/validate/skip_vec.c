@@ -6,11 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:09:51 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 16:22:52 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/14 00:13:55 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "validate_define.h"
 #include "validate_utils.h"
+#include "result.h"
 #include "libft.h"
 #include <math.h>
 

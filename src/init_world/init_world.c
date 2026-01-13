@@ -6,10 +6,11 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/12 15:51:54 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/14 00:09:54 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "rt_utils.h"
 #include "result.h"
 #include "world.h"
 #include "libft.h"
@@ -21,7 +22,7 @@ static int	validate_file_name(const char *file_path);
 void		read_rt_file(t_list **line_list, const char *file_path);
 int			validate_line_list(const t_list *line_list);
 int			set_option(const char *options);
-int			create_world(t_world *world, const t_list *line_list);
+int			create_world(t_world *world, t_list *line_list);
 
 /*
 @brief line_listの開放責務を持つ
