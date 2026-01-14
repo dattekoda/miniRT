@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 21:53:08 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/14 17:12:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include "world.h"
 #include "libft.h"
 
-t_hitter		*line_to_light(const char *line);
-static void		clear_light_list(t_list *light_list);
+t_hitter	*line_to_light(const char *line);
+static void	clear_light(void *content);
 
 int	set_light(t_world *world, const t_list *line_list)
 {
@@ -29,7 +29,7 @@ int	set_light(t_world *world, const t_list *line_list)
 			new_light = line_to_light(line_list->content);
 			if (!new_light)
 			{
-				clear_light_list(&world->light_list);
+				ft_lstclear(&world->light_list, clear_light);
 				return (FAILURE);
 			}
 			ft_lstadd_back(&world->light_list, new_light);
@@ -43,17 +43,10 @@ int	set_light(t_world *world, const t_list *line_list)
 @brief ft_lstclear(&world->light_list, clear_sphere)でもいいけど、
 こっちだとlightの形が異なったりノードそれぞれで形が変化してもOK
 */
-static void	clear_light_list(t_list *light_list)
+static void	clear_light(void *content)
 {
-	t_list		*next;
 	t_hitter	*light;
 
-	while (light_list)
-	{
-		next = light_list->next;
-		light = (t_hitter *)light_list->content;
-		light->clear(&light);
-		free(light_list);
-		light_list = light_list->next;
-	}
+	light = (t_hitter *)content;
+	light->clear(&light);
 }
