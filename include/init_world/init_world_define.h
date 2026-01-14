@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/14 04:35:35 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 00:56:42 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 
 # define PATHTRACING_AMBIENTRATIO 100.0
 # define LIGHT_RADIUS 100.0
+
+# define T_AABB	1.0f
+# define T_TRI	1.0f
 
 typedef enum e_element_type
 {
@@ -43,10 +46,10 @@ typedef struct s_element
 	char			*format;
 	const t_skip	*skip_arr;
 	int				is_infinite;
-	t_hitter		*(*line_to_hitter)(const char *line);
+	int				(*line_to_hitter)(void *hitter, const char *line);
 }	t_element;
 
-extern const t_element	g_ambient_info;
+extern const t_element	g_ambieset_object_in_tablent_info;
 extern const t_element	g_camera_info;
 extern const t_element	g_light_info;
 extern const t_element	*g_info_table[];
@@ -82,5 +85,14 @@ typedef struct s_cylinder_param
 	double		height;
 	t_material	*mat_ptr;
 }	t_cylinder_param;
+
+typedef struct s_hitter_arr
+{
+	t_hitter	**arr;
+	size_t		size;
+	double		surface_area;
+}	t_hitter_arr;
+
+void	clear_hitter(void *content);
 
 #endif

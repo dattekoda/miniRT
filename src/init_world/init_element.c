@@ -150,6 +150,9 @@ static const t_element		g_triangle_info = {
 	.skip_arr = g_triangle_skips
 };
 
+/*
+@param NULL終端にするためにポインタの配列にしている。
+*/
 const t_element				*g_info_table[] = {
 	&g_ambient_info,
 	&g_camera_info,

@@ -6,14 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:53:02 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 17:12:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/14 23:48:45 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
 #include "hitter.h"
 
-t_hitter	*line_to_light(const char *line)
+int	line_to_light(t_hitter **light, const char *line)
 {
 	size_t			i;
 	t_sphere_param	param;
@@ -25,7 +25,9 @@ t_hitter	*line_to_light(const char *line)
 	token_to_value(line, &i, &ratio);
 	param.radius = LIGHT_RADIUS;
 	token_to_vec(line, &i, &int_color);
-	param.mat_ptr = gen_light(
-		scal_mul_vec(normalize_color(int_color), ratio));
-	return (gen_sphere(param));
+	param.mat_ptr = gen_light(scal_mul_vec(normalize_color(int_color), ratio));
+	*light = gen_sphere(param);
+	if (!*light)
+		return (FAILURE);
+	return (SUCCESS);
 }

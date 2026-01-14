@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 20:17:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/13 23:53:25 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 00:07:16 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,27 @@
 #include <stdlib.h>
 
 static void	delete_light_line(t_list **line_list);
-t_tree		*set_object_in_table(const t_list *line_list, \
-const t_element *object_table[]);
+int			line_list_to_bvh(t_hitter **node, const t_list *line_list,
+				const t_element *object_table[]);
+t_hitter	*gen_tree(t_hitter *lhs, t_hitter *rhs);
 
 int	set_objects(t_world *world, t_list *line_list)
 {
+	t_hitter	*rhs;
+	t_hitter	*lhs;
+
 	if (world->option_flag & IS_PHONG)
 		delete_light_line(line_list);
-	world->object_tree->rhs = set_object_in_table(line_list, g_infinite_table);
-	if (!world->object_tree->rhs)
+	if (line_list_to_bvh(&rhs, line_list, g_infinite_table) == FAILURE)
 		return (FAILURE);
-	world->object_tree->lhs = set_object_in_table(line_list, g_finite_table);
-	if (!world->object_tree->lhs)
+	if (line_list_to_bvh(&lhs, line_list, g_finite_table) == FAILURE)
 	{
-		clear_node(world->object_tree->rhs);
+		clear_node(rhs);
 		return (FAILURE);
 	}
-	world->object_tree->hitter = construct_tree_hitter(&world->object_tree);
+	world->object_tree = gen_tree(lhs, rhs);
+	if (!world->object_tree)
+		return (FAILURE);
 	return (SUCCESS);
 }
 

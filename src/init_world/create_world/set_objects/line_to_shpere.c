@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:45:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 04:40:08 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/14 23:47:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /*
 @brief lineとgenの橋渡しなので使いやすい用にデータを加工する。(normalize_colorを噛ませたり)
 */
-t_hitter	*line_to_sphere(const char *line)
+int	line_to_sphere(t_hitter **sphere, const char *line)
 {
 	size_t			i;
 	t_sphere_param	param;
@@ -31,6 +31,9 @@ t_hitter	*line_to_sphere(const char *line)
 	param.radius = diameter * 0.5;
 	token_to_vec(line, &i, &int_color);
 	param.mat_ptr = gen_lambertian(
-			gen_solid_texture(normalize_color(int_color)));
-	return (gen_sphere(param));
+		gen_solid_texture(normalize_color(int_color)));
+	*sphere = gen_sphere(param);
+	if (!*sphere)
+		return (FAILURE);
+	return (SUCCESS);
 }

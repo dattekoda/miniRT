@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 17:12:18 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/14 20:37:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 
 t_hitter	*line_to_light(const char *line);
-static void	clear_light(void *content);
+void		clear_hitter(void *content);
 
 int	set_light(t_world *world, const t_list *line_list)
 {
@@ -29,7 +29,7 @@ int	set_light(t_world *world, const t_list *line_list)
 			new_light = line_to_light(line_list->content);
 			if (!new_light)
 			{
-				ft_lstclear(&world->light_list, clear_light);
+				ft_lstclear(&world->light_list, clear_hitter);
 				return (FAILURE);
 			}
 			ft_lstadd_back(&world->light_list, new_light);
@@ -39,14 +39,10 @@ int	set_light(t_world *world, const t_list *line_list)
 	return (SUCCESS);
 }
 
-/*
-@brief ft_lstclear(&world->light_list, clear_sphere)でもいいけど、
-こっちだとlightの形が異なったりノードそれぞれで形が変化してもOK
-*/
-static void	clear_light(void *content)
+void	clear_hitter(void *content)
 {
-	t_hitter	*light;
+	t_hitter	*hitter;
 
-	light = (t_hitter *)content;
-	light->clear(&light);
+	hitter = (t_hitter *)content;
+	hitter->clear(&hitter);
 }
