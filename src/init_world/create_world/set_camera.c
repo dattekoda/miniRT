@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:09:34 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 21:50:12 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/14 17:08:31 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "world.h"
 #include "libft.h"
 
-static t_camera	line_to_camera(const char *line);
+t_camera	get_camera_data(const char *line);
 
 void	set_camera(t_world *world, const t_list *line_list)
 {
@@ -24,10 +24,10 @@ void	set_camera(t_world *world, const t_list *line_list)
 			break ;
 		line_list = line_list->next;
 	}
-	world->camera = line_to_camera(line_list->content);
+	world->camera = get_camera_data(line_list->content);
 }
 
-t_camera	line_to_camera(const char *line)
+t_camera	get_camera_data(const char *line)
 {
 	size_t		i;
 	t_point3	original;

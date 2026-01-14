@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 21:56:24 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/14 17:08:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 #include "world.h"
 #include "libft.h"
 
-static t_result	line_to_ambient(const char *line, int is_phong, \
-t_color *ambient);
+static t_color	get_ambient_data(const char *line, int is_phong);
 
 void	set_ambient(t_world *world, const t_list *line_list)
 {
@@ -29,11 +28,10 @@ void	set_ambient(t_world *world, const t_list *line_list)
 		line_list = line_list->next;
 	}
 	is_phong = world->option_flag & IS_PHONG;
-	line_to_ambient(line_list->content, is_phong, &world->ambient);
+	world->ambient = construct_ambient(line_list->content, is_phong);
 }
 
-static t_result	line_to_ambient(const char *line, int is_phong, \
-t_color *ambient)
+static t_color	get_ambient_data(const char *line, int is_phong)
 {
 	t_color	color;
 	double	ratio;
@@ -44,6 +42,5 @@ t_color *ambient)
 	token_to_value(line, &i, &ratio);
 	if (!is_phong)
 		ratio *= PATHTRACING_AMBIENTRATIO;
-	*ambient = normalize_color(scal_mul_vec(color, ratio));
-	return (construct_result(NULL));
+	return (normalize_color(scal_mul_vec(color, ratio)));
 }

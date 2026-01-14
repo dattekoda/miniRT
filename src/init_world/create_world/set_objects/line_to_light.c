@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:53:02 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/13 23:50:03 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/14 17:12:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 
 t_hitter	*line_to_light(const char *line)
 {
-	size_t		i;
-	t_point3	point;
-	double		ratio;
-	t_color		int_color;
-	t_color		color;
+	size_t			i;
+	t_sphere_param	param;
+	double			ratio;
+	t_color			int_color;
 
 	i = 1;
-	token_to_vec(line, &i, &point);
+	token_to_vec(line, &i, &param.center);
 	token_to_value(line, &i, &ratio);
+	param.radius = LIGHT_RADIUS;
 	token_to_vec(line, &i, &int_color);
-	color = scal_mul_vec(normalize_color(int_color), ratio);
-	return (gen_sphere(point, LIGHT_RADIUS, gen_light_material(color)));
+	param.mat_ptr = gen_light(
+		scal_mul_vec(normalize_color(int_color), ratio));
+	return (gen_sphere(param));
 }
