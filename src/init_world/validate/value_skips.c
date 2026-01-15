@@ -6,14 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 18:30:53 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/11 16:32:37 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 13:01:49 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "result.h"
-#include <stddef.h>
 #include <float.h>
 #include <math.h>
+#include <stddef.h>
 
 t_result	skip_range(const char *line, size_t *line_idx, \
 double min, double max);

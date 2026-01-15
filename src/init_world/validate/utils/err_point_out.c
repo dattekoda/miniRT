@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:55:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 18:24:17 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 13:54:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 #include "libft.h"
 #include <unistd.h>
 
-static void	err_line(char *line);
+static void	put_err_line(char *line);
 
 void	err_point_out(char *line, size_t err_idx)
 {
 	size_t	i;
 
 	i = 0;
-	err_line(line);
+	put_err_line(line);
 	while (i < err_idx)
 	{
 		if (line[i++] == '\t')
@@ -32,7 +32,7 @@ void	err_point_out(char *line, size_t err_idx)
 	ft_putendl_fd(GREEN"^"RESET, STDERR_FILENO);
 }
 
-static void	err_line(char *line)
+static void	put_err_line(char *line)
 {
 	if (line[ft_strlen(line) - 1] == '\n')
 	{

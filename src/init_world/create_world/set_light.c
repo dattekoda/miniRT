@@ -6,11 +6,11 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 20:37:40 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 12:40:06 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
+#include "init_world_utils.h"
 #include "validate_utils.h"
 #include "world.h"
 #include "libft.h"
@@ -37,12 +37,4 @@ int	set_light(t_world *world, const t_list *line_list)
 		line_list = line_list->next;
 	}
 	return (SUCCESS);
-}
-
-void	clear_hitter(void *content)
-{
-	t_hitter	*hitter;
-
-	hitter = (t_hitter *)content;
-	hitter->clear(&hitter);
 }

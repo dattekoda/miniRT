@@ -6,21 +6,16 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 00:12:48 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 12:41:05 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
-#include "validate_utils.h"
+#include "init_world_utils.h"
 #include "rt_utils.h"
 #include "libft.h"
-#include <unistd.h>
 
 static int	count_ambient_and_camera(const t_list *line_list);
-static int	validate_line(char *line);
-int			match_identifier(const char *line, const t_element *info);
-int			validate_element(char *line, const t_element *elem_info);
-static int	validate_invalid_id(char *line);
+int			validate_line(char *line);
 
 int	validate_line_list(const t_list *line_list)
 {
@@ -59,56 +54,3 @@ static int	count_ambient_and_camera(const t_list *line_list)
 		err_rt("set only one camera");
 	return (FAILURE);
 }
-
-int	match_identifier(const char *line, const t_element *info)
-{
-	if (ft_strncmp(line, info->id, info->id_len))
-		return (FAILURE);
-	if (ft_strchr(" \t", line[info->id_len]) == NULL)
-		return (FAILURE);
-	return (SUCCESS);
-}
-
-static int	validate_line(char *line)
-{
-	size_t	i;
-
-	i = 0;
-	while (g_info_table[i])
-	{
-		if (match_identifier(line, g_info_table[i]) == SUCCESS)
-			return (validate_element(line, g_info_table[i]));
-		i++;
-	}
-	return (validate_invalid_id(line));
-}
-
-static int	validate_invalid_id(char *line)
-{
-	size_t	identifier_idx;
-
-	identifier_idx = 0;
-	while (!ft_strchr(" \t", line[identifier_idx]))
-		identifier_idx++;
-	err_point_out(line, identifier_idx - 1);
-	err_rt("invalid identifier");
-	return (FAILURE);
-}
-
-// int	main(int argc, char *argv[])
-// {
-// 	int	validate_flag;
-// 	int	i;
-
-// 	validate_flag = SUCCESS;
-// 	i = 1;
-// 	while (i < argc)
-// 	{
-// 		if (validate_line(argv[i]) == FAILURE)
-// 			validate_flag = FAILURE;
-// 		i++;
-// 	}
-// 	if (validate_flag == 0)
-// 		printf("success\n");
-// 	return (validate_flag);
-// }

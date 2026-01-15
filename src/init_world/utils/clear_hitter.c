@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_world_define.h                                :+:      :+:    :+:   */
+/*   clear_hitter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/15 12:31:18 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/15 12:40:22 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_WORLD_DEFINE_H
-# define INIT_WORLD_DEFINE_H
+#include "hitter.h"
 
-# define PATHTRACING_AMBIENTRATIO 100.0
-# define LIGHT_RADIUS 100.0
-
-# define T_AABB	1.0f
-# define T_TRI	1.0f
-
-enum e_option
+void	clear_hitter(void *content)
 {
-	IS_PHONG = (1 << 0)
-};
+	t_hitter	*hitter;
 
-#endif
+	hitter = (t_hitter *)content;
+	hitter->clear(&hitter);
+}

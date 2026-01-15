@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_world_define.h                                :+:      :+:    :+:   */
+/*   match_identifer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/15 12:31:18 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/15 12:37:37 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/15 12:39:08 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_WORLD_DEFINE_H
-# define INIT_WORLD_DEFINE_H
+#include "element.h"
+#include "result.h"
 
-# define PATHTRACING_AMBIENTRATIO 100.0
-# define LIGHT_RADIUS 100.0
-
-# define T_AABB	1.0f
-# define T_TRI	1.0f
-
-enum e_option
+int	match_identifier(const char *line, const t_element *info)
 {
-	IS_PHONG = (1 << 0)
-};
-
-#endif
+	if (ft_strncmp(line, info->id, info->id_len))
+		return (FAILURE);
+	if (ft_strchr(" \t", line[info->id_len]) == NULL)
+		return (FAILURE);
+	return (SUCCESS);
+}

@@ -6,14 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:02:54 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 00:11:45 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 13:45:27 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "result.h"
 #include "libft.h"
-
-void	err_point_out(char *line, size_t err_idx);
 
 t_result	construct_result(char *_err_msg)
 {

@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_element.c                                :+:      :+:    :+:   */
+/*   init_element.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/09 22:39:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 21:16:27 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/15 13:12:17 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
-#include "validate_utils.h"
+#include "element.h"
 
 static const t_skip			g_ambient_skips[] = {
 	skip_lighting_ratio,

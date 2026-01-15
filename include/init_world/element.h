@@ -1,32 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_skips.c                                     :+:      :+:    :+:   */
+/*   element.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/10 18:31:56 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 13:01:28 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/15 12:27:15 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/15 13:47:46 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_define.h"
+#ifndef ELEMENT_H
+# define ELEMENT_H
+
 #include "result.h"
+#include "skip.h"
 #include <stddef.h>
 
-t_result	skip_vec(const char *line, size_t *line_idx, t_vec3type vectype);
-
-t_result	skip_point(const char *line, size_t *line_idx)
+typedef enum e_element_type
 {
-	return (skip_vec(line, line_idx, IS_POINT));
-}
+	NOTHING,
+	AMBIENT,
+	CAMERA,
+	LIGHT,
+	SPHERE,
+	PLANE,
+	CYLINDER,
+	CONE,
+	TRIANGLE
+}	t_element_type;
 
-t_result	skip_unit(const char *line, size_t *line_idx)
+typedef struct s_element
 {
-	return (skip_vec(line, line_idx, IS_UNIT));
-}
+	t_element_type	type;
+	char			*id;
+	size_t			id_len;
+	char			*format;
+	const t_skip	*skip_arr;
+	int				is_infinite;
+	int				(*line_to_hitter)(void *hitter, const char *line);
+}	t_element;
 
-t_result	skip_color(const char *line, size_t *line_idx)
-{
-	return (skip_vec(line, line_idx, IS_COLOR));
-}
+#endif

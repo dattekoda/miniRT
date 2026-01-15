@@ -6,17 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/14 00:13:00 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 12:59:25 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
+#include "validate_utils.h"
 #include "rt_utils.h"
-#include "libft.h"
-#include "result.h"
-#include <unistd.h>
-
-void	err_point_out(char *line, size_t err_idx);
+#include "element.h"
 
 int	validate_element(char *line, const t_element *elem_info)
 {

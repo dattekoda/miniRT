@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   result.h                                           :+:      :+:    :+:   */
+/*   parameter.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 16:29:47 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 13:43:17 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/15 12:29:05 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/15 12:29:47 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RESULT_H
-# define RESULT_H
+#ifndef PARAMETER_H
+# define PARAMETER_H
 
-enum e_result
+# include "vec.h"
+
+typedef struct s_sphere_param
 {
-	SUCCESS,
-	FAILURE,
-};
+	t_point3	center;
+	double		radius;
+	t_material	*mat_ptr;
+}	t_sphere_param;
 
-union u_result
+typedef struct s_plane_param
 {
-	int		ok;
-	char	*err_msg;
-};
+	t_point3	point;
+	t_vec3		normal;
+	t_material	*mat_ptr;
+}	t_plane_param;
 
-typedef struct s_result
+typedef struct s_cylinder_param
 {
-	enum e_result	state;
-	union u_result	value;
-}	t_result;
-
-t_result	construct_result(char *_err_msg);
+	t_point3	center;
+	t_vec3		normal;
+	double		radius;
+	double		height;
+	t_material	*mat_ptr;
+}	t_cylinder_param;
 
 #endif

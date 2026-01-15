@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   skip_spaces.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:48:23 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 16:06:12 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/15 13:45:00 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_utils.h"
+#include "result.h"
+#include <stddef.h>
 
 t_result	skip_spaces(const char *line, size_t *line_idx)
 {
@@ -21,10 +22,3 @@ t_result	skip_spaces(const char *line, size_t *line_idx)
 	return (construct_result(NULL));
 }
 
-t_result	skip_until_end(const char *line, size_t *line_idx)
-{
-	skip_spaces(line, line_idx);
-	if (line[*line_idx] != '\0' && line[*line_idx] != '\n')
-		return (construct_result("invalid end"));
-	return (construct_result(NULL));
-}
