@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 16:34:03 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 13:56:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@
 
 # define GREEN "\033[92m"
 # define RESET "\033[m"
+
+# define OPTIONS_STRING "p"
 
 #endif

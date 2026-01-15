@@ -6,10 +6,11 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:53 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 18:37:33 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 13:58:58 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "rt_define.h"s
 #include "rt_utils.h"
 #include "libft.h"
 #include <unistd.h>
@@ -22,7 +23,7 @@ static void	err_set_option(int c);
 */
 int	set_option(const char *options)
 {
-	static const char	table[] = "p";
+	static const char	table[] = OPTIONS_STRING;
 	int					bit_flag;
 	size_t				i;
 	char				*tmp;
