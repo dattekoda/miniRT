@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_to_shpere.c                                   :+:      :+:    :+:   */
+/*   line_to_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:45:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 23:47:26 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 21:06:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "validate_utils.h"
 #include "hitter.h"
 #include "vec.h"
+#include <parameter.h>
 
 /*
 @brief lineとgenの橋渡しなので使いやすい用にデータを加工する。(normalize_colorを噛ませたり)

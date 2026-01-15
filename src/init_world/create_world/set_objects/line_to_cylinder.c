@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_cylinder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:20:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 23:49:25 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 21:06:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include "validate_utils.h"
 #include "hitter.h"
 #include "vec.h"
+#include "parameter.h"
 
-int	line_to_cylinder(t_hitter **cylinder, const char *line)
+int	line_to_cylinder(t_hitter **hitter, const char *line)
 {
 	size_t				i;
 	t_cylinder_param	param;
@@ -31,8 +32,10 @@ int	line_to_cylinder(t_hitter **cylinder, const char *line)
 	token_to_vec(line, &i, &int_color);
 	param.mat_ptr = gen_lambertian(
 			gen_solid_texture(normalize_color(int_color)));
-	*cylinder = gen_cylinder(param);
-	if (!*cylinder)
+	*(hitter) = gen_cylinder(param);
+	*(hitter + 1) = gen_disk(param);
+	*(hitter + 2) = gen_disk(param);
+	if (!*hitter || !*(hitter + 1) || !*(hitter + 2))
 		return (FAILURE);
 	return (SUCCESS);
 }

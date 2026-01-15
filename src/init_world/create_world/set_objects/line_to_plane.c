@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_plane.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:15:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 23:48:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 21:06:01 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "validate_utils.h"
 #include "hitter.h"
 #include "vec.h"
+#include <parameter.h>
 
 int	line_to_plane(t_hitter **plane, const char *line)
 {

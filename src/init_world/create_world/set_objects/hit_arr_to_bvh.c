@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   hit_arr_to_bvh.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 02:09:40 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 20:56:32 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
+#include "hitter_arr.h"
+#include "hitter.h"
+#include "result.h"
 #include <math.h>
 
 t_hitter		*gen_tree(t_hitter *lhs, t_hitter *rhs);
