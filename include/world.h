@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:27:58 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 22:01:05 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:38:04 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ struct s_world
 	t_color		ambient;
 	t_camera	camera;
 	t_list		*light_list;
-	t_tree		*object_tree;
+	t_hitter	*object_tree;
 };
 
 #endif

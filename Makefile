@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/16 15:07:24 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/16 16:43:16 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,50 +23,17 @@ SRCDIR		=	src
 SRCS		=	$(addprefix $(SRCDIR)/, \
 				main.c \
 				mini_rt.c \
-				$(addprefix utils/, \
-				utils_float.c \
-				utils_err.c \
-				$(addprefix vec/, \
-				onb.c \
-				vec3_basic.c \
-				vec3_product.c \
-				vec3_scal.c \
-				vec3.c\
-				) \
-				) \
 				$(addprefix init_world/, \
 				init_world.c \
-				init_element.c \
-				read_rt.c \
-				set_option.c \
-				$(addprefix create_world/, \
-				create_world.c\
-				set_ambient.c \
-				set_camera.c \
-				set_light.c \
-				) \
-				$(addprefix set_object/, \
-				set_objects.c \
-				set_objects_in_table.c \
-				line_to_sphere.c \
-				line_to_light.c \
-				line_list_to_object_arr.c \
-				gen_bvh.c \
-				) \
+				read_rt_file.c \
 				$(addprefix validate/, \
-				construct_result.c \
-				err_point_out.c \
-				validate_line_list.c \
-				validate_element.c \
-				skip_spaces.c \
-				skip_vec.c \
-				token_to_value.c \
-				token_to_vec.c \
-				skip_range.c \
-				value_skips.c \
-				vector_skips.c \
-				) \
-				) \
+				validate_arguments.c \
+				
+				)
+				)
+				$(addprefix utils/, \
+				utils_err.c \
+				)
 				)
 
 # --- obj ---

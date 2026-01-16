@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:11:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/16 16:09:09 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:33:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_vec3	random_in_unit_disk(void)
 	while (1)
 	{
 		p = construct_vec3(random_double(-1, 1), random_double(-1, 1), 0);
-		if (length_squared_vec(p) >= 1)
+		if (length_squared_vec3(p) >= 1)
 			continue ;
 		return (p);
 	}

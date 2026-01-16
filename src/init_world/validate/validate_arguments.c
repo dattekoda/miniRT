@@ -6,12 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:21:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 14:01:45 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:41:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "result.h"
 #include "init_world_utils.h"
+#include "rt_utils.h"
 #include "libft.h"
 #include <stdlib.h>
 #include <unistd.h>
@@ -23,7 +24,7 @@ static void	put_format(void);
 @brief validate function
 @param argv_one argv[1]
 */
-static void	validate_arguments(int argc, char *argv[])
+void	validate_arguments(int argc, char *argv[])
 {
 	if (argc == 1)
 	{
