@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:20:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 15:45:20 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:28:44 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ t_camera	construct_camera(t_point3 origin, t_vec3 direct, double hfov)
 
 static t_onb	construct_camera_onb(t_vec3 direct)
 {
-	t_onb			camera_onb;
-	static t_vec3	vup = (t_vec3){0, 1, 0};
+	t_onb	camera_onb;
+	t_vec3	vup;
 
 	if (fabs(direct.e[1]) > 0.9)
 		vup = construct_vec3(1, 0, 0);
+	else
+		vup = construct_vec3(0, 1, 0);
 	camera_onb.v[2] = negative_vec3(direct);
 	camera_onb.v[0] = normalize(cross(vup, camera_onb.v[2]));
 	camera_onb.v[1] = cross(camera_onb.v[2], camera_onb.v[0]);
