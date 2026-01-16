@@ -1,16 +1,42 @@
 ```mermaid
 classDiagram
 	class t_hitter {
-		- mat_ptr*:	t_material
+		<<interface>>
+		- mat_ptr*:		t_material
+		- albedo_p*:	t_texture
 		- hit()
 		- clear()
-		- albedo_p*:	t_texture
 	}
 	class t_sphere {
 		- hitter:	t_hitter
-		- center:	t_point
+		- center:	t_point3
 		- radius:	double
 		- color:	t_color
+	}
+	class t_plane {
+		- hitter:	t_hitter
+		- point:	t_point3
+		- normal:	t_vec3
+		- color:	t_color
+	}
+	class t_cylinder {
+		- hitter:	t_hitter
+		- center:	t_point3
+		- direct:	t_vec3
+		- color:	t_color
+		- height:	double
+		- radius:	double
+	}
+	class t_cone {
+		- hitter:	t_hitter
+		- point:	t_point3
+		- direct:	t_vec3
+		- color:	t_color
+	}
+	class t_triangle {
+		- hitter:	t_hitter
+		- vertex:	t_point3[3]
+		- side:		t_vec3[3]
 	}
 
 	t_hitter <|-- t_sphere

@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 23:30:19 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 00:08:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 13:27:57 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
+#include "element.h"
+#include "hitter_arr.h"
 #include "tree.h"
 #include "libft.h"
 

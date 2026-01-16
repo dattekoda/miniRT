@@ -6,13 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:59:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 23:51:33 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 13:44:46 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hitter.h"
+#include "element.h"
+#include "hitter_arr.h"
 #include "libft.h"
-#include "init_world_define.h"
 
 int	line_to_object(t_hitter **hitter, 
 	const char *line, const t_element *object_table[]);

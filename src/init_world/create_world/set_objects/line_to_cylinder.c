@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:20:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 23:49:25 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 13:43:03 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "validate_utils.h"
 #include "hitter.h"
 #include "vec.h"
+#include "parameter.h"
 
 int	line_to_cylinder(t_hitter **cylinder, const char *line)
 {

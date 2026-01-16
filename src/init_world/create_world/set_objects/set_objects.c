@@ -6,15 +6,15 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 20:17:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 00:07:16 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 13:27:33 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "init_world_utils.h"
 #include "init_world_define.h"
-#include "validate_utils.h"
+#include "element.h"
 #include "world.h"
 #include "libft.h"
-#include <stdlib.h>
 
 static void	delete_light_line(t_list **line_list);
 int			line_list_to_bvh(t_hitter **node, const t_list *line_list,

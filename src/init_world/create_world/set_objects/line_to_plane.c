@@ -6,14 +6,16 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:15:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 23:48:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 13:42:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
-#include "validate_utils.h"
+#include "parameter.h"
 #include "hitter.h"
 #include "vec.h"
+#include "result.h"
+#include <stddef.h>
 
 int	line_to_plane(t_hitter **plane, const char *line)
 {
