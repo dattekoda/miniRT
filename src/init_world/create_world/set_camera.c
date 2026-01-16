@@ -6,11 +6,18 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:09:34 by ikawamuk          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/01/15 21:46:05 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
+=======
+/*   Updated: 2026/01/15 16:44:00 by ikawamuk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+>>>>>>> 8ef67f5 (update:)
 #include "init_world_utils.h"
 #include "world.h"
 #include "result.h"
@@ -41,4 +48,12 @@ static t_camera	get_camera_data(const char *line)
 	token_to_vec(line, &i, &direct);
 	token_to_value(line, &i, &hfov);
 	return (construct_camera(original, direct, hfov));
+}
+
+static t_camera	construct_camera(t_point3 origin, t_vec3 direct, double hfov)
+{
+	t_camera	camera;
+
+	camera.origin = origin;
+	camera.screen_size = 
 }

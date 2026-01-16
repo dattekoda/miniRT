@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.h                                           :+:      :+:    :+:   */
+/*   rt_config.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 16:34:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 16:43:59 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/15 15:04:04 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAMERA_H
-# define CAMERA_H
+#ifndef RT_CONFIG_H
+# define RT_CONFIG_H
 
-# include "vec.h"
+// camera
+# ifndef ASPECT_RATIO
+#  define ASPECT_RATIO (16.0 / 9.0)
+# endif
 
-typedef struct s_camera
-{
-	t_point3	origin;
-	t_vec3		onb[3];
-	t_point2	screen_size;
-}	t_camera;
+
 
 #endif

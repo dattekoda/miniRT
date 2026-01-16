@@ -6,16 +6,24 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 20:17:12 by ikawamuk          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/01/15 21:56:10 by khanadat         ###   ########.fr       */
+=======
+/*   Updated: 2026/01/16 13:27:33 by ikawamuk         ###   ########.fr       */
+>>>>>>> 8ef67f5 (update:)
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "init_world_utils.h"
 #include "init_world_define.h"
+<<<<<<< HEAD
 #include "init_world_utils.h"
 #include "validate_utils.h"
+=======
+#include "element.h"
+>>>>>>> 8ef67f5 (update:)
 #include "world.h"
 #include "libft.h"
-#include <stdlib.h>
 
 static void	delete_light_line(t_list **line_list);
 int			line_list_to_bvh(t_hitter **node, const t_list *line_list,

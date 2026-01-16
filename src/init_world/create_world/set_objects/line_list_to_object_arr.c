@@ -6,17 +6,25 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:59:04 by ikawamuk          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/01/15 21:59:02 by khanadat         ###   ########.fr       */
+=======
+/*   Updated: 2026/01/16 13:44:46 by ikawamuk         ###   ########.fr       */
+>>>>>>> 8ef67f5 (update:)
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hitter.h"
+#include "element.h"
+#include "hitter_arr.h"
 #include "libft.h"
+<<<<<<< HEAD
 #include "init_world_define.h"
 #include "init_world_utils.h"
 #include "result.h"
 #include "element.h"
 #include "hitter_arr.h"
+=======
+>>>>>>> 8ef67f5 (update:)
 
 static size_t	count_objects(
 					const t_list *line_list, const t_element *object_table[]);

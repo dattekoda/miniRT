@@ -6,14 +6,23 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:53:02 by ikawamuk          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/01/15 20:58:06 by khanadat         ###   ########.fr       */
+=======
+/*   Updated: 2026/01/16 13:44:26 by ikawamuk         ###   ########.fr       */
+>>>>>>> 8ef67f5 (update:)
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
 #include "hitter.h"
+<<<<<<< HEAD
 #include "parameter.h"
 #include "result.h"
+=======
+#include "result.h"
+#include "parameter.h"
+>>>>>>> 8ef67f5 (update:)
 #include <stddef.h>
 
 int	line_to_light(t_hitter **light, const char *line)

@@ -6,11 +6,16 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 23:30:19 by ikawamuk          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/01/15 20:51:48 by khanadat         ###   ########.fr       */
+=======
+/*   Updated: 2026/01/16 13:27:57 by ikawamuk         ###   ########.fr       */
+>>>>>>> 8ef67f5 (update:)
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
+#include "element.h"
+#include "hitter_arr.h"
 #include "tree.h"
 #include "libft.h"
 #include <element.h>

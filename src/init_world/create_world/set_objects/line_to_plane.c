@@ -6,15 +6,24 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:15:33 by ikawamuk          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/01/15 21:06:01 by khanadat         ###   ########.fr       */
+=======
+/*   Updated: 2026/01/16 13:42:26 by ikawamuk         ###   ########.fr       */
+>>>>>>> 8ef67f5 (update:)
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
-#include "validate_utils.h"
+#include "parameter.h"
 #include "hitter.h"
 #include "vec.h"
+<<<<<<< HEAD
 #include <parameter.h>
+=======
+#include "result.h"
+#include <stddef.h>
+>>>>>>> 8ef67f5 (update:)
 
 int	line_to_plane(t_hitter **plane, const char *line)
 {
