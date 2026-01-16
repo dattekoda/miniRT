@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   bvh_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:29:43 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 01:00:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 21:22:45 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
+#include <hitter_arr.h>
 
 static double	calc_surface_area(const t_aabb aabb);
 
@@ -45,7 +46,7 @@ t_aabb	create_bounfing_aabb(const t_hitter_arr hit_arr)
 	size_t	i;
 
 	i = 0;
-	rev = construct_aabb(constant_vec(0), constant_vec(0));
+	rev = construct_aabb(constant_vec3(0), constant_vec3(0));
 	while (i < hit_arr.size)
 		rev = surrounding_box(rev, hit_arr.arr[i++]->aabb);
 	return (rev);
@@ -57,10 +58,10 @@ static t_aabb	surrounding_box(t_aabb box0, t_aabb box1)
 	t_point3	small;
 	t_point3	big;
 
-	small = construct_vec(fmin(box0.min.e[0], box1.min.e[0]),
+	small = construct_vec3(fmin(box0.min.e[0], box1.min.e[0]),
 						fmin(box0.min.e[1], box1.min.e[1]),
 						fmin(box0.min.e[2], box1.min.e[2]));
-	big = construct_vec(fmax(box0.min.e[0], box1.min.e[0]),
+	big = construct_vec3(fmax(box0.min.e[0], box1.min.e[0]),
 						fmax(box0.min.e[1], box1.min.e[1]),
 						fmax(box0.min.e[2], box1.min.e[2]));
 	return (construct_aabb(small, big));

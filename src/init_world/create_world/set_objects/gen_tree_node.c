@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   gen_tree_node.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 23:39:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 00:06:46 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/15 21:57:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
+#include "result.h"
 #include "tree.h"
 #include "libft.h"
 
 static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs);
-static int	hit_bvh(void *s, t_ray ray, t_hrec *hrec, t_range range);
-static void	clear_bvh(void *s);
+static int		hit_tree(void *s, t_ray ray, t_hrec *hrec, t_range range);
+void			clear_tree(void *s);
 
 t_hitter	*gen_tree(t_hitter *lhs, t_hitter *rhs)
 {
@@ -30,7 +31,11 @@ t_hitter	*gen_tree(t_hitter *lhs, t_hitter *rhs)
 		return (lhs);
 	node = ft_calloc(1, sizeof(t_tree));
 	if (!node)
+	{
+		lhs->clear(lhs);
+		rhs->clear(rhs);
 		return (NULL);
+	}
 	*node = construct_tree(lhs, rhs);
 	return ((t_hitter *)node);
 }
@@ -40,13 +45,13 @@ static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs)
 	t_tree	node;
 
 	ft_bzero(&node, sizeof(t_tree));
-	node.hitter.hit = hit_bvh;
-	node.hitter.clear = clear_bvh;
+	node.hitter.hit = hit_tree;
+	node.hitter.clear = clear_tree;
 	node.lhs = lhs;
 	node.rhs = rhs;
 }
 
-static int	hit_bvh(void *s, t_ray ray, t_hrec *hrec, t_range range)
+static int	hit_tree(void *s, t_ray ray, t_hrec *hrec, t_range range)
 {
 	const t_tree	*self;
 
@@ -55,11 +60,14 @@ static int	hit_bvh(void *s, t_ray ray, t_hrec *hrec, t_range range)
 	return (SUCCESS);
 }
 
-static void	clear_bvh(void *s)
+/*
+@brief not static because used at set_objects() in set_objects.c
+*/
+void	clear_tree(void *s)
 {
 	t_tree	*self;
 
-	self = s;
+	self = (t_tree *)s;
 	if (self->lhs)
 		self->lhs->clear(self->lhs);
 	if (self->rhs)

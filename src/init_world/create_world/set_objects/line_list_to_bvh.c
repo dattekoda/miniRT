@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 23:30:19 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 13:27:57 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/16 14:13:54 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "hitter_arr.h"
 #include "tree.h"
 #include "libft.h"
+#include <element.h>
+#include <hitter_arr.h>
 
 void		clear_hitter_arr(t_hitter_arr arr);
 int			line_list_to_object_arr(t_hitter_arr *hit_arr,

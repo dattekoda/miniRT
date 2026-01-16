@@ -5,16 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 19:09:34 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 16:44:00 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/16 14:13:45 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/16 14:13:47 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_utils.h"
 #include "world.h"
+#include "result.h"
 #include "libft.h"
 
-t_camera	get_camera_data(const char *line);
+static t_camera	get_camera_data(const char *line);
 
 void	set_camera(t_world *world, const t_list *line_list)
 {

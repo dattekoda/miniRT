@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 04:20:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 13:43:03 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/16 14:14:16 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/16 14:14:19 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "vec.h"
 #include "parameter.h"
 
-int	line_to_cylinder(t_hitter **cylinder, const char *line)
+int	line_to_cylinder(t_hitter **hitter, const char *line)
 {
 	size_t				i;
 	t_cylinder_param	param;
@@ -32,8 +32,10 @@ int	line_to_cylinder(t_hitter **cylinder, const char *line)
 	token_to_vec(line, &i, &int_color);
 	param.mat_ptr = gen_lambertian(
 			gen_solid_texture(normalize_color(int_color)));
-	*cylinder = gen_cylinder(param);
-	if (!*cylinder)
+	*(hitter) = gen_cylinder(param);
+	*(hitter + 1) = gen_disk(param);
+	*(hitter + 2) = gen_disk(param);
+	if (!*hitter || !*(hitter + 1) || !*(hitter + 2))
 		return (FAILURE);
 	return (SUCCESS);
 }
