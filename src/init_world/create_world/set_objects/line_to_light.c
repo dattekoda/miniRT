@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 14:15:40 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:30:52 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "hitter.h"
 #include "parameter.h"
 #include "result.h"
+#include "rt_config.h"
 #include <stddef.h>
 
 int	line_to_light(t_hitter **light, const char *line)

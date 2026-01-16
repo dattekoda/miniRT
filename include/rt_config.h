@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:07:11 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:30:41 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@
 #  define LENS_RADIUS 0.0
 # endif
 
+// light
+# define LIGHT_RADIUS 100.0
 
 #endif
