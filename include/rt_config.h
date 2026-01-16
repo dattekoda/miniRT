@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:30:41 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:27:28 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // camera
 # ifndef ASPECT_RATIO
-#  define ASPECT_RATIO (16.0 / 9.0)
+#  define ASPECT_RATIO 1.77777777778 /*  (16.0 / 9.0)  */
 # endif
 
 # ifndef LENS_RADIUS

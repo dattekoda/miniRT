@@ -6,15 +6,15 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:45:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 04:50:17 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:31:33 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SOLID_TEXTURE_H
 # define SOLID_TEXTURE_H
 
-#include "texture.h"
-#include "vec.h"
+# include "texture.h"
+# include "vec.h"
 
 typedef struct s_solid_texture
 {

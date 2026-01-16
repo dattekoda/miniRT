@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:20:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:28:44 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:40:22 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include "rt_define.h"
 #include <math.h>
 
-static void	get_screen_size(double hfov, double *width, double *height);
+static t_onb	construct_camera_onb(t_vec3 direct);
+static void		get_screen_size(double hfov, double *width, double *height);
 
 t_camera	construct_camera(t_point3 origin, t_vec3 direct, double hfov)
 {
@@ -25,9 +26,11 @@ t_camera	construct_camera(t_point3 origin, t_vec3 direct, double hfov)
 	camera.origin = origin;
 	camera.onb = construct_camera_onb(direct);
 	get_screen_size(hfov, &camera.screen_width, &camera.screen_height);
-	camera.heigher_left = add_vec3(origin, 
-		add_vec3(scal_mul_vec3(camera.onb.v[0], camera.screen_width * 0.5),
-		scal_mul_vec3(camera.onb.v[2], camera.screen_height * 0.5)));
+	camera.heigh_left = add_vec3(origin,
+			add_vec3(scal_mul_vec3(camera.onb.v[0],
+					camera.screen_width * 0.5),
+				scal_mul_vec3(camera.onb.v[2],
+					camera.screen_height * 0.5)));
 	return (camera);
 }
 

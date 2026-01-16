@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:53:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 14:57:58 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:23:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	preprocess_line_list(const t_world *world, t_list **line_list)
 {
 	if (world->option_flag & IS_PHONG)
 		delete_light_line(line_list);
+	return (SUCCESS);
 }
 
 static void	delete_light_line(t_list **line_list)

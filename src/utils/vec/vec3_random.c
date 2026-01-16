@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   construct_result.c                                 :+:      :+:    :+:   */
+/*   vec3_random.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/10 00:02:54 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:51:36 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/16 16:58:12 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/16 17:34:06 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "result.h"
-#include "libft.h"
+#include "vec.h"
+#include "rt_utils.h"
 
-t_result	construct_result(char *_err_msg)
+t_vec3	construct_vec3(double e0, double e1, double e2);
+double	length_squared_vec3(t_vec3 vec3);
+
+t_vec3	random_in_unit_disk(void)
 {
-	t_result	result;
+	t_vec3	p;
 
-	ft_bzero(&result, sizeof(t_result));
-	if (_err_msg == NULL)
+	while (1)
 	{
-		result.state = SUCCESS;
-		result.value.ok = 0;
-		return (result);
+		p = construct_vec3(random_double(-1, 1), random_double(-1, 1), 0);
+		if (length_squared_vec3(p) >= 1)
+			continue ;
+		return (p);
 	}
-	result.state = FAILURE;
-	result.value.err_msg = _err_msg;
-	return (result);
 }

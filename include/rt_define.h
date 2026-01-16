@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/16 16:01:27 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:34:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 
 # define OPTIONS_STRING "p"
 
-# define RANDOM_SEED_UINT64 0x629d97afad9281f2 // /bin/bash -c openssl rand -hex 8
-#define DOUBLE_MANTISSA_BITS 53
-#define DOUBLE_MANTISSA_SCALE (1ULL << DOUBLE_MANTISSA_BITS)
+// /bin/bash -c openssl rand -hex 8
+# define RANDOM_SEED_UINT64 0x629d97afad9281f2
+
+# define DOUBLE_MANTISSA_SCALE 9.007199254740992
 
 #endif

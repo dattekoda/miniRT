@@ -6,12 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:35:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 12:59:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:07:00 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_utils.h"
 #include "init_world_utils.h"
+#include "rt_utils.h"
 #include "libft.h"
 
 int			validate_element(char *line, const t_element *elem_info);

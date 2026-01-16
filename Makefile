@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/16 16:43:16 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/16 17:13:47 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,15 +26,51 @@ SRCS		=	$(addprefix $(SRCDIR)/, \
 				$(addprefix init_world/, \
 				init_world.c \
 				read_rt_file.c \
+				init_element.c \
 				$(addprefix validate/, \
 				validate_arguments.c \
-				
-				)
-				)
+				validate_line_list.c \
+				validate_line.c \
+				validate_element.c \
+				value_skips.c \
+				vector_skips.c \
+				skip_until_end.c \
+				$(addprefix utils/, \
+				err_point_out.c \
+				skip_spaces.c \
+				skip_range.c \
+				skip_vec.c \
+				) \
+				) \
+				set_option.c \
+				$(addprefix create_world/, \
+				create_world.c \
+				set_ambient.c \
+				$(addprefix set_camera/, \
+				set_camera.c \
+				construct_camera.c \
+				) \
+				) \
+				$(addprefix utils/, \
+				match_identifer.c \
+				) \
+				) \
 				$(addprefix utils/, \
 				utils_err.c \
-				)
-				)
+				construct_result.c \
+				token_to_value.c \
+				token_to_vec.c \
+				random.c \
+				$(addprefix vec/, \
+				vec3.c \
+				vec3_basic.c \
+				vec3_product.c \
+				vec3_scal.c \
+				vec3_random.c \
+				onb.c \
+				) \
+				) \
+				) \
 
 # --- obj ---
 OBJDIR		=	obj

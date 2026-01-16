@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/16 16:43:46 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:17:27 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ int	init_world(t_world *world, int argc, char *argv[])
 	ft_lstclear(&line_list, free);
 	return (SUCCESS);
 }
-

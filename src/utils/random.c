@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:48:09 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:08:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:35:03 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ double	random_double(double min, double max)
 
 static uint64_t	random_uint64(void)
 {
-	static uint64_t x = RANDOM_SEED_UINT64;
+	static uint64_t	x = RANDOM_SEED_UINT64;
+
 	x ^= x << 12;
 	x ^= x >> 25;
 	x ^= x << 27;

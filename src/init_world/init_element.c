@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_element.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 18:40:37 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:14:20 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,13 +170,13 @@ const t_element				*g_info_table[] = {
 	NULL
 };
 
-const t_element				*g_infinte_table[] = {
+const t_element				*g_infinite_table[] = {
 	&g_plane_info,
 	&g_cone_info,
 	NULL
 };
 
-const t_element				*g_finte_table[] = {
+const t_element				*g_finite_table[] = {
 	&g_sphere_info,
 	&g_cylinder_info,
 	&g_triangle_info,

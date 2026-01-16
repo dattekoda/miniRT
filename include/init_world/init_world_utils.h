@@ -6,15 +6,15 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 13:52:10 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:24:16 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INIT_WORLD_UTILS_H
 # define INIT_WORLD_UTILS_H
 
-#include "element.h"
-#include "vec.h"
+# include "element.h"
+# include "vec.h"
 
 extern const t_element	g_ambient_info;
 extern const t_element	g_camera_info;

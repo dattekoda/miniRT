@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:00:46 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 13:49:02 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:11:16 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_utils.h"
+#include "validate_utils.h"
 #include "vec.h"
 #include "libft.h"
 

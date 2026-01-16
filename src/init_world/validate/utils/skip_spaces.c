@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:48:23 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 13:45:00 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:35:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,3 @@ t_result	skip_spaces(const char *line, size_t *line_idx)
 		(*line_idx)++;
 	return (construct_result(NULL));
 }
-

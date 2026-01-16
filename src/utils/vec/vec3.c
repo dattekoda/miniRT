@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:11:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/16 16:33:18 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:34:12 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,4 @@ t_color	construct_color(double e0, double e1, double e2)
 t_color	normalize_color(t_color int_color)
 {
 	return (scal_mul_vec3(int_color, COLOR_DIV));
-}
-
-t_vec3	random_in_unit_disk(void)
-{
-	t_vec3	p;
-
-	while (1)
-	{
-		p = construct_vec3(random_double(-1, 1), random_double(-1, 1), 0);
-		if (length_squared_vec3(p) >= 1)
-			continue ;
-		return (p);
-	}
 }

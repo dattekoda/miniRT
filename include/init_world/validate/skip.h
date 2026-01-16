@@ -13,8 +13,8 @@
 #ifndef SKIP_H
 # define SKIP_H
 
-#include "result.h"
-#include <stddef.h>
+# include "result.h"
+# include <stddef.h>
 
 typedef t_result		(*t_skip)(const char *line, size_t *line_idx);
 

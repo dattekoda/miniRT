@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:21:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:41:53 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:37:33 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ static int	validate_file_name(const char *file_path)
 	else
 		rt_file = file_path;
 	rt_file_len = ft_strlen(rt_file);
-	if ((rt_file[0] == '.') 
-	|| (rt_file_len <= 3 || ft_strcmp(rt_file + rt_file_len - 3, ".rt") != 0))
+	if ((rt_file[0] == '.')
+		|| (rt_file_len <= 3
+			|| ft_strcmp(rt_file + rt_file_len - 3, ".rt") != 0))
 	{
 		err_rt("invalid file name");
 		return (FAILURE);
@@ -66,6 +67,6 @@ static void	put_format(void)
 	size_t	i;
 
 	i = 0;
-	while (g_infinite_table[i])
-		ft_putendl_fd(g_infinite_table[i++]->format, STDERR_FILENO);
+	while (g_info_table[i])
+		ft_putendl_fd(g_info_table[i++]->format, STDERR_FILENO);
 }

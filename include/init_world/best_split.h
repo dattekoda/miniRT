@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   construct_result.c                                 :+:      :+:    :+:   */
+/*   best_split.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/10 00:02:54 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:51:36 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/16 17:47:46 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/16 17:49:22 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "result.h"
-#include "libft.h"
+#ifndef BEST_SPLIT_H
+# define BEST_SPLIT_H
 
-t_result	construct_result(char *_err_msg)
+# include <stddef.h>
+
+typedef struct s_best_split
 {
-	t_result	result;
+	int		axis;
+	size_t	left_size;
+	double	cost;
+}	t_best_split;
 
-	ft_bzero(&result, sizeof(t_result));
-	if (_err_msg == NULL)
-	{
-		result.state = SUCCESS;
-		result.value.ok = 0;
-		return (result);
-	}
-	result.state = FAILURE;
-	result.value.err_msg = _err_msg;
-	return (result);
-}
+#endif

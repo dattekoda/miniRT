@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bvh_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:29:43 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 21:22:45 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:43:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ static double	calc_surface_area(const t_aabb aabb);
 
 double	cost_func(const t_hitter_arr root, size_t left_size)
 {
-	size_t	i;
+	size_t			i;
 	t_hitter_arr	left;
 	t_hitter_arr	right;
 
 	left = construct_hitter_arr(root.arr, left_size);
 	right = construct_hitter_arr(root.arr + left_size, root.size - left_size);
-	return (2 * T_AABB + 
-		(left.surface_area * left.size + right.surface_area * right.size)
+	return (2 * T_AABB
+		+ (left.surface_area * left.size + right.surface_area * right.size)
 		* T_TRI / root.surface_area);
 }
 
@@ -50,7 +50,6 @@ t_aabb	create_bounfing_aabb(const t_hitter_arr hit_arr)
 	while (i < hit_arr.size)
 		rev = surrounding_box(rev, hit_arr.arr[i++]->aabb);
 	return (rev);
-	
 }
 
 static t_aabb	surrounding_box(t_aabb box0, t_aabb box1)
@@ -58,12 +57,14 @@ static t_aabb	surrounding_box(t_aabb box0, t_aabb box1)
 	t_point3	small;
 	t_point3	big;
 
-	small = construct_vec3(fmin(box0.min.e[0], box1.min.e[0]),
-						fmin(box0.min.e[1], box1.min.e[1]),
-						fmin(box0.min.e[2], box1.min.e[2]));
-	big = construct_vec3(fmax(box0.min.e[0], box1.min.e[0]),
-						fmax(box0.min.e[1], box1.min.e[1]),
-						fmax(box0.min.e[2], box1.min.e[2]));
+	small = construct_vec3(
+			fmin(box0.min.e[0], box1.min.e[0]),
+			fmin(box0.min.e[1], box1.min.e[1]),
+			fmin(box0.min.e[2], box1.min.e[2]));
+	big = construct_vec3(
+			fmax(box0.min.e[0], box1.min.e[0]),
+			fmax(box0.min.e[1], box1.min.e[1]),
+			fmax(box0.min.e[2], box1.min.e[2]));
 	return (construct_aabb(small, big));
 }
 
