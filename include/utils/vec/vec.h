@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_define.h                                       :+:      :+:    :+:   */
+/*   vec.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 21:54:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 22:36:50 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/11 16:28:48 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/16 16:04:03 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC_DEFINE_H
-# define VEC_DEFINE_H
+#ifndef VEC_H
+# define VEC_H
 
 # define COLOR_DIV 0.00392156862745098 // 1/255
 
-/*
-@brief vector
-@param e[0] x, R
-@param e[1] y, G
-@param e[2] z, B
-*/
 typedef struct s_vec3
 {
 	double	e[3];
-}	t_vec3;
+}			t_vec3;
+
+typedef t_vec3		t_color;
+typedef t_vec3		t_point3;
+
+typedef struct s_vec2
+{
+	double	e[2];
+}	t_vec2;
+
+typedef t_vec2		t_point2;
+typedef t_point2	t_range;
 
 /*
 @brief orthonormal basis
@@ -36,7 +41,5 @@ typedef struct s_onb
 {
 	t_vec3	v[3];
 }	t_onb;
-
-typedef t_vec3	t_color;
 
 #endif

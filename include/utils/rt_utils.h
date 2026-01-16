@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/11 18:38:35 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:08:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ int		fequal(double a, double b);
 
 void	err_rt(char *err_msg);
 void	perror_rt(const char *syscall_fname);
+
+double	random_double(double min, double max);
 
 #endif

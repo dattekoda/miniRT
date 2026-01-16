@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_product.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 22:05:29 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/12 14:27:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/16 15:10:42 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_utils.h"
-#include "vec_define.h"
+#include "vec.h"
 #include <math.h>
 
 double	dot(t_vec3 lhs, t_vec3 rhs)

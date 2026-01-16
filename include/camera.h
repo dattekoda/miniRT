@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:34:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 16:43:59 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 15:41:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 typedef struct s_camera
 {
 	t_point3	origin;
-	t_vec3		onb[3];
-	t_point2	screen_size;
+	t_onb		onb;
+	double		screen_width;
+	double		screen_height;
+	t_point3	heigher_left;
 }	t_camera;
 
 #endif

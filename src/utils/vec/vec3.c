@@ -6,12 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:11:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/15 14:22:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:09:09 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_utils.h"
-#include "vec_define.h"
+#include "rt_utils.h"
 #include <math.h>
 #include <stddef.h>
 
@@ -52,4 +52,17 @@ t_color	construct_color(double e0, double e1, double e2)
 t_color	normalize_color(t_color int_color)
 {
 	return (scal_mul_vec3(int_color, COLOR_DIV));
+}
+
+t_vec3	random_in_unit_disk(void)
+{
+	t_vec3	p;
+
+	while (1)
+	{
+		p = construct_vec3(random_double(-1, 1), random_double(-1, 1), 0);
+		if (length_squared_vec(p) >= 1)
+			continue ;
+		return (p);
+	}
 }

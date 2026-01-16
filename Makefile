@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/14 00:18:22 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/16 15:07:24 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ INCDIRS		=	include \
 				include/init_world \
 				include/init_world/validate \
 				include/utils \
-				include/utils/vec
+				include/utils/vec \
 
 # --- OS DETECTION ---
 UNAME	=	$(shell uname -s)

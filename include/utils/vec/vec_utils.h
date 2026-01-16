@@ -6,14 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 21:55:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/15 14:22:19 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:09:12 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC_UTILS_H
 # define VEC_UTILS_H
 
-# include "vec_define.h"
+# include "vec.h"
 
 t_vec3	construct_vec3(double e0, double e1, double e2);
 t_vec3	map_vec3(t_vec3 vec3, double (*f)(double));
@@ -36,5 +36,7 @@ double	length_vec3(t_vec3 vec3);
 t_vec3	normalize(t_vec3 vec3);
 
 t_vec3	cross(t_vec3 lhs, t_vec3 rhs);
+
+t_vec3	random_in_unit_disk(void);
 
 #endif

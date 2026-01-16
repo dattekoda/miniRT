@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec.h                                              :+:      :+:    :+:   */
+/*   construct_ray.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 16:28:48 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/14 00:08:14 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/16 16:23:55 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/16 16:24:16 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC_H
-# define VEC_H
+#include "ray.h"
 
-typedef struct s_vec3
+t_ray	construct_ray(t_point3 ori, t_vec3 dir)
 {
-	double	e[3];
-}			t_vec3;
+	t_ray	ray;
 
-typedef t_vec3		t_color;
-typedef t_vec3		t_point3;
-
-typedef struct s_vec2
-{
-	double	e[2];
-}	t_point2;
-
-typedef t_point2	t_range;
-
-#endif
+	ray.ori = ori;
+	ray.dir = dir;
+	return (ray);
+}

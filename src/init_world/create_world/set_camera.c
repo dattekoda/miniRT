@@ -6,16 +6,18 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:45 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 14:13:47 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 15:21:45 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_utils.h"
 #include "world.h"
 #include "result.h"
+#include "vec_utils.h"
 #include "libft.h"
 
 static t_camera	get_camera_data(const char *line);
+t_camera		construct_camera(t_point3 origin, t_vec3 direct, double hfov);
 
 void	set_camera(t_world *world, const t_list *line_list)
 {
@@ -39,13 +41,5 @@ static t_camera	get_camera_data(const char *line)
 	token_to_vec(line, &i, &original);
 	token_to_vec(line, &i, &direct);
 	token_to_value(line, &i, &hfov);
-	return (construct_camera(original, direct, hfov));
-}
-
-static t_camera	construct_camera(t_point3 origin, t_vec3 direct, double hfov)
-{
-	t_camera	camera;
-
-	camera.origin = origin;
-	camera.screen_size = 
+	return (construct_camera(original, normalize(direct), hfov));
 }
