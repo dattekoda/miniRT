@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:45 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:01:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 18:30:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 static t_camera	get_camera_data(const char *line);
 t_camera		construct_camera(t_point3 origin, t_vec3 direct, double hfov);
 
-void	set_camera(t_world *world, const t_list *line_list)
+void	set_camera(t_camera *camera, const t_list *line_list)
 {
 	while (line_list)
 	{
@@ -27,7 +27,7 @@ void	set_camera(t_world *world, const t_list *line_list)
 			break ;
 		line_list = line_list->next;
 	}
-	world->camera = get_camera_data(line_list->content);
+	*camera = get_camera_data(line_list->content);
 }
 
 static t_camera	get_camera_data(const char *line)
