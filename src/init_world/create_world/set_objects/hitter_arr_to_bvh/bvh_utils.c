@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:29:43 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:43:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/18 00:07:21 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,42 +17,32 @@ static double	calc_surface_area(const t_aabb aabb);
 
 double	cost_func(const t_hitter_arr root, size_t left_size)
 {
-	size_t			i;
-	t_hitter_arr	left;
-	t_hitter_arr	right;
+	size_t	right_size;
+	double	left_surface_area;
+	double	right_surface_area;
 
-	left = construct_hitter_arr(root.arr, left_size);
-	right = construct_hitter_arr(root.arr + left_size, root.size - left_size);
+	right_size = root.size - left_size;
+	left_surface_area = root.left_area_arr[left_size - 1];
+	right_surface_area = root.right_area_arr[right_size - 1];
 	return (2 * T_AABB
-		+ (left.surface_area * left.size + right.surface_area * right.size)
-		* T_TRI / root.surface_area);
+		+ (left_surface_area * left_size + right_surface_area * right_size)
+		* T_TRI / root.left_area_arr[root.size - 1]);
 }
 
-t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size)
+t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size, double *left_arr, double *right_arr)
 {
 	t_hitter_arr	rev;
 	t_aabb			bounding_box;
 
 	rev.arr = arr;
 	rev.size = size;
-	bounding_box = create_bounfing_aabb(rev);
-	rev.surface_area = calc_surface_area(bounding_box);
+	rev.left_area_arr = left_arr;
+	rev.right_area_arr = right_arr;
 	return (rev);
 }
 
-t_aabb	create_bounfing_aabb(const t_hitter_arr hit_arr)
-{
-	t_aabb	rev;
-	size_t	i;
 
-	i = 0;
-	rev = construct_aabb(constant_vec3(0), constant_vec3(0));
-	while (i < hit_arr.size)
-		rev = surrounding_box(rev, hit_arr.arr[i++]->aabb);
-	return (rev);
-}
-
-static t_aabb	surrounding_box(t_aabb box0, t_aabb box1)
+t_aabb	surrounding_box(t_aabb box0, t_aabb box1)
 {
 	t_point3	small;
 	t_point3	big;

@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   gen_disk.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 19:23:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/17 21:42:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/17 23:45:20 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disk.h"
+
+static t_disk	construct_disk(t_disk disk_param, t_material *mat_ptr);
 
 /*
 @brief if gen_disk failed, mat_ptr->clear()
@@ -29,7 +31,7 @@ t_disk	*gen_disk(t_disk disk_param, t_material *mat_ptr)
 	return (p);
 }
 
-t_disk	construct_disk(t_disk disk_param, t_material *mat_ptr)
+static t_disk	construct_disk(t_disk disk_param, t_material *mat_ptr)
 {
 	disk_param.hitter.hit = hit_disk;
 	disk_param.hitter.clear = clear_primitive;

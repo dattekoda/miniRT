@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   find_best_split_info.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 21:42:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/18 00:04:33 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hitter_arr.h"
 #include "best_split.h"
+#include "libft.h"
 #include <math.h>
+
+double	cost_func(const t_hitter_arr root, size_t left_size);
+double	calc_surface_area(const t_aabb aabb);
+t_aabb	surrounding_box(t_aabb box0, t_aabb box1);
 
 static t_best_split	construct_best_split(int axis, size_t left_size,
 	double cost)
@@ -25,40 +30,48 @@ static t_best_split	construct_best_split(int axis, size_t left_size,
 	return (rev);
 }
 
-static t_best_split	find_best_split_info(t_hitter_arr hit_arr)
+t_best_split	find_best_split_info(t_hitter_arr hit_arr)
 {
-	size_t			axis;
-	t_best_split	info;
+	t_best_split	best_info;
 	t_best_split	tmp_info;
+	size_t			axis;
+	size_t			i;
 
-	info = construct_best_split(0, 0, INFINITY);
+	best_info = construct_best_split(0, 0, INFINITY);
 	axis = 0;
 	while (axis < 3)
 	{
 		sort_hit_arr(hit_arr, axis);
-		tmp_info = find_best_split_info_in_the_axis(hit_arr);
-		if (tmp_info.cost < info.cost)
-			info = construct_best_split(
+		i = 1;
+		prepare_surface_arr(hit_arr);
+		while (i <= hit_arr.size)
+		{
+			tmp_info.cost = cost_func(hit_arr, i);
+			if (tmp_info.cost < best_info.cost)
+				best_info = construct_best_split(
 					axis, tmp_info.left_size, tmp_info.cost);
+			i++;
+		}
 		axis++;
 	}
-	return (info);
+	return (best_info);
 }
 
-static t_best_split	find_best_split_info_in_the_axis(t_hitter_arr hit_arr)
+static void	prepare_surface_arr(t_hitter_arr hit_arr)
 {
-	t_best_split	info;
-	double			tmp_cost;
-	size_t			i;
+	t_aabb	aabb_left;
+	t_aabb	aabb_right;
+	size_t	i;
 
-	info = construct_best_split(0, 0, INFINITY);
+	aabb_left = construct_aabb(constant_vec3(0), constant_vec3(0));
+	aabb_right = construct_aabb(constant_vec3(0), constant_vec3(0));
 	i = 0;
 	while (i < hit_arr.size)
 	{
-		tmp_cost = cost_func(hit_arr, i);
-		if (tmp_cost < info.cost)
-			info = construct_best_split(0, i, tmp_cost);
+		aabb_left = surrounding_box(aabb_left, hit_arr.arr[i]->aabb);
+		aabb_right = surrounding_box(aabb_right, hit_arr.arr[hit_arr.size - i]->aabb);
+		hit_arr.left_area_arr[i] = calc_surface_area(aabb_left);
+		hit_arr.right_area_arr[i] = calc_surface_area(aabb_right);
 		i++;
 	}
-	return (info);
 }

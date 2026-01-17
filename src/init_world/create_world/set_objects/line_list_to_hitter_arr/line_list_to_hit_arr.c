@@ -117,25 +117,43 @@ int	match_objects(const char *line,
 }
 
 
+/*
+@brief not responsible for free(hitter_list)
+*/
 int	line_list_to_hitter_list(t_list **hitter_list, const t_list *line_list, 
 	const t_element *object_table[])
 {
-	t_list		*list_tmp;
-	t_hitter	*hitter_tmp;
 	size_t		obj_idx;
 
 	while (line_list)
 	{
 		if (match_objects(line_list->content, object_table, &obj_idx) == SUCCESS)
 		{
-			if (object_table[obj_idx]->line_to_hitter(
-				&hitter_tmp, line_list->content) == FAILURE)
+			if (add_hitter_list(hitter_list, line_list->content, object_table[obj_idx]) == FAILURE)
 				return (FAILURE);
-		}
-		list_tmp = ft_lstnew(&hitter_tmp)
-		if (match_identifier(line, g_cylinder_info) == SUCCESS)
-		{
 		}
 		line_list = line_list->next;
 	}
+	return (SUCCESS);
+}
+
+int	add_hitter_list(t_list **hitter_list, const char *line, const t_element *element)
+{
+	t_list		*list_tmp;
+	t_hitter	*hitter_tmp;
+
+	if (element->line_to_hitter(&hitter_tmp, line) == FAILURE)
+		return (FAILURE);
+	list_tmp = ft_lstnew(hitter_tmp);
+	if (!list_tmp)
+		return (hitter_tmp->clear(hitter_tmp), FAILURE);
+	ft_lstadd_back(hitter_list, list_tmp);
+
+	if (match_identifier(line, g_cylinder_info) == SUCCESS)
+	{
+		if (add_cylinder_disk(hitter_list, (t_cylinder)*hitter_tmp) == FAILURE)
+			return (FAILURE);
+	}
+
+	return (SUCCESS);
 }

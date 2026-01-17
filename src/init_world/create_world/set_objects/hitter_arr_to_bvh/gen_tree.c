@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gen_tree.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 23:39:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 21:42:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/17 23:19:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 
 static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs);
-static int		hit_tree(void *s, t_ray ray, t_hrec *hrec, t_range range);
+static bool	hit_tree(void *s, t_ray ray, t_hrec *hrec, t_range range);
 void			clear_tree(void *s);
 
 t_hitter	*gen_tree(t_hitter *lhs, t_hitter *rhs)
@@ -51,13 +51,21 @@ static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs)
 	node.rhs = rhs;
 }
 
-static int	hit_tree(void *s, t_ray ray, t_hrec *hrec, t_range range)
+static bool	hit_tree(void *s, t_ray ray, t_hrec *hrec, t_range range)
 {
 	const t_tree	*self;
+	bool			hit_lhs;
+	bool			hit_rhs;
 
 	self = s;
-	if (self->)
-	return (SUCCESS);
+	if (self->hitter.has_aabb
+		&& !self->hitter.aabb.hit(&self->hitter.aabb, ray, hrec, range))
+		return (false);
+	hit_lhs = self->lhs->hit(self->lhs, ray, hrec, range);
+	if (hit_lhs)
+		range.e[1] = hrec->param_t;
+	hit_rhs = self->rhs->hit(self->rhs, ray, hrec, range);
+	return (hit_lhs | hit_rhs);
 }
 
 /*
