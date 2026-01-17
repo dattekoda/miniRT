@@ -19,78 +19,35 @@
 #include "element.h"
 #include "hitter_arr.h"
 
-static size_t	count_objects(
-					const t_list *line_list, const t_element *object_table[]);
-void			clear_hitter_arr(t_hitter_arr hit_arr);
+static int	line_list_to_hitter_list(t_list **hitter_list, const t_list *line_list, 
+		const t_element *object_table[]);
 int				match_objects(const char *line,
 					const t_element *object_table[], size_t *idx);
 
 int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list, \
 const t_element *object_table[])
 {
-	size_t	obj_idx;
 	size_t	arr_idx;
 	t_list	*hitter_list;
+	t_list	*curr;
 
 	ft_bzero(hit_arr, sizeof(t_hitter_arr));
 	if (line_list_to_hitter_list(&hitter_list, line_list, object_table) 
 		== FAILURE)
 		return (ft_lstclear(hitter_list, free), FAILURE);
-
 	hit_arr->size = ft_lstsize(&hitter_list);
-
-	hit_arr->size = count_objects(line_list, object_table);
-	if (hit_arr->size == 0)
-		return (SUCCESS);
 	hit_arr->arr = ft_calloc(hit_arr->size, sizeof(t_hitter *));
 	if (!hit_arr->arr)
 		return (FAILURE);
+	curr = hitter_list;
 	arr_idx = 0;
-	while (line_list)
+	while (curr)
 	{
-		if (match_objects(line_list->content,
-				object_table, &obj_idx) == SUCCESS)
-		{
-			if (object_table[obj_idx]->line_to_hitter(
-					&hit_arr->arr[arr_idx], line_list->content) == FAILURE)
-				return (clear_hitter_arr(*hit_arr), FAILURE);
-			arr_idx++;
-		}
-		line_list = line_list->next;
+		hit_arr->arr[arr_idx++] = curr->content;
+		curr = curr->next;
 	}
-
 	ft_lstclear(&hitter_list, NULL);
 	return (SUCCESS);
-}
-
-void	clear_hitter_arr(t_hitter_arr hit_arr)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < hit_arr.size)
-	{
-		if (hit_arr.arr[i])
-			hit_arr.arr[i]->clear(hit_arr.arr[i]);
-		i++;
-	}
-	free(hit_arr.arr);
-}
-
-static size_t	count_objects(const t_list *line_list, \
-const t_element *object_table[])
-{
-	size_t	count;
-	size_t	idx;
-
-	count = 0;
-	while (line_list)
-	{
-		if (match_objects(line_list->content, object_table, &idx) == SUCCESS)
-			count += object_table[idx]->primitive_num;
-		line_list = line_list->next;
-	}
-	return (count);
 }
 
 /*
@@ -116,11 +73,10 @@ int	match_objects(const char *line,
 	return (FAILURE);
 }
 
-
 /*
 @brief not responsible for free(hitter_list)
 */
-int	line_list_to_hitter_list(t_list **hitter_list, const t_list *line_list, 
+static int	line_list_to_hitter_list(t_list **hitter_list, const t_list *line_list, 
 	const t_element *object_table[])
 {
 	size_t		obj_idx;
@@ -148,12 +104,10 @@ int	add_hitter_list(t_list **hitter_list, const char *line, const t_element *ele
 	if (!list_tmp)
 		return (hitter_tmp->clear(hitter_tmp), FAILURE);
 	ft_lstadd_back(hitter_list, list_tmp);
-
 	if (match_identifier(line, g_cylinder_info) == SUCCESS)
 	{
 		if (add_cylinder_disk(hitter_list, (t_cylinder)*hitter_tmp) == FAILURE)
 			return (FAILURE);
 	}
-
 	return (SUCCESS);
 }
