@@ -10,22 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "init_world_uttils.h"
+#include "init_world_define.h"
 #include "element.h"
 #include "hitter_arr.h"
 #include "libft.h"
-#include "init_world_define.h"
-#include "init_world_uttils.h"
 #include "result.h"
 #include "element.h"
 #include "hitter_arr.h"
 
+static int	add_hitter_list(t_list **hitter_list, const char *line, 
+		const t_element *element);
 static int	line_list_to_hitter_list(t_list **hitter_list, const t_list *line_list, 
 		const t_element *object_table[]);
-int				match_objects(const char *line,
-					const t_element *object_table[], size_t *idx);
+static int	match_objects(const char *line, const t_element *object_table[], 
+		size_t *idx);
 
 int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list, \
-const t_element *object_table[])
+	const t_element *object_table[])
 {
 	size_t	arr_idx;
 	t_list	*hitter_list;
@@ -54,7 +56,7 @@ const t_element *object_table[])
 @brief if matched object_table return SUCCESS, or return FAILURE
 @param idx if set NULL, you can get appropriate return value
 */
-int	match_objects(const char *line,
+static int	match_objects(const char *line,
 	const t_element *object_table[], size_t *idx)
 {
 	size_t	i;
@@ -93,7 +95,7 @@ static int	line_list_to_hitter_list(t_list **hitter_list, const t_list *line_lis
 	return (SUCCESS);
 }
 
-int	add_hitter_list(t_list **hitter_list, const char *line, const t_element *element)
+static int	add_hitter_list(t_list **hitter_list, const char *line, const t_element *element)
 {
 	t_list		*list_tmp;
 	t_hitter	*hitter_tmp;
