@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:29:43 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/18 00:18:43 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/18 01:39:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,28 @@
 static double	calc_surface_area(const t_aabb aabb);
 t_aabb			construct_aabb(t_point3 min, t_point3 max);
 
-double	cost_func(const t_hitter_arr root, size_t left_size)
+double	cost_func(const t_hitter_arr root, size_t left_size,
+	double *left_area_arr, double *right_area_arr)
 {
 	size_t	right_size;
 	double	left_surface_area;
 	double	right_surface_area;
 
 	right_size = root.size - left_size;
-	left_surface_area = root.left_area_arr[left_size - 1];
-	right_surface_area = root.right_area_arr[right_size - 1];
+	left_surface_area = left_area_arr[left_size - 1];
+	right_surface_area = right_area_arr[right_size - 1];
 	return (2 * T_AABB
 		+ (left_surface_area * left_size + right_surface_area * right_size)
-		* T_TRI / root.left_area_arr[root.size - 1]);
+		* T_TRI / left_area_arr[root.size - 1]);
 }
 
-t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size, double *left_arr, double *right_arr)
+t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size)
 {
 	t_hitter_arr	rev;
 	t_aabb			bounding_box;
 
 	rev.arr = arr;
 	rev.size = size;
-	rev.left_area_arr = left_arr;
-	rev.right_area_arr = right_arr;
 	return (rev);
 }
 
