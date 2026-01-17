@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:29:43 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/18 00:07:44 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/18 00:18:43 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <hitter_arr.h>
 
 static double	calc_surface_area(const t_aabb aabb);
+t_aabb			construct_aabb(t_point3 min, t_point3 max);
 
 double	cost_func(const t_hitter_arr root, size_t left_size)
 {
