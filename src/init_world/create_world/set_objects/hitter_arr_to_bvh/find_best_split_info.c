@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/18 00:04:33 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/18 00:14:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,24 @@ static t_best_split	construct_best_split(int axis, size_t left_size,
 t_best_split	find_best_split_info(t_hitter_arr hit_arr)
 {
 	t_best_split	best_info;
-	t_best_split	tmp_info;
+	double			cost;
 	size_t			axis;
-	size_t			i;
+	size_t			left_size;
 
 	best_info = construct_best_split(0, 0, INFINITY);
 	axis = 0;
 	while (axis < 3)
 	{
 		sort_hit_arr(hit_arr, axis);
-		i = 1;
 		prepare_surface_arr(hit_arr);
-		while (i <= hit_arr.size)
+		left_size = 1;
+		while (left_size <= hit_arr.size)
 		{
-			tmp_info.cost = cost_func(hit_arr, i);
-			if (tmp_info.cost < best_info.cost)
+			cost = cost_func(hit_arr, left_size);
+			if (cost < best_info.cost)
 				best_info = construct_best_split(
-					axis, tmp_info.left_size, tmp_info.cost);
-			i++;
+					axis, left_size, cost);
+			left_size++;
 		}
 		axis++;
 	}

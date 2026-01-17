@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:29:43 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/18 00:07:21 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/18 00:07:44 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
+#include "vec_utils.h"
 #include <hitter_arr.h>
 
 static double	calc_surface_area(const t_aabb aabb);
@@ -40,7 +41,6 @@ t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size, double *left_arr,
 	rev.right_area_arr = right_arr;
 	return (rev);
 }
-
 
 t_aabb	surrounding_box(t_aabb box0, t_aabb box1)
 {
