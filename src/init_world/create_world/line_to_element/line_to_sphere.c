@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_to_light.c                                    :+:      :+:    :+:   */
+/*   line_to_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:30:52 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/12 21:45:13 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/17 15:33:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
-#include "hitter.h"
-#include "parameter.h"
-#include "result.h"
-#include "rt_config.h"
-#include <stddef.h>
+#include "init_world_utils.h"
+#include "sphere.h"
+#include "solid_texture.h"
+#include "vec_utils.h"
+#include <parameter.h>
 
-int	line_to_light(t_hitter **light, const char *line)
+/*
+@brief lineとgenの橋渡しなので使いやすい用にデータを加工する。(normalize_colorを噛ませたり)
+*/
+int	line_to_sphere(t_hitter **sphere, const char *line)
 {
 	size_t			i;
 	t_sphere_param	param;
-	double			ratio;
+	double			diameter;
 	t_color			int_color;
 
-	i = 1;
+	i = 2;
 	token_to_vec(line, &i, &param.center);
-	token_to_value(line, &i, &ratio);
-	param.radius = LIGHT_RADIUS;
+	token_to_value(line, &i, &diameter);
+	param.radius = diameter * 0.5;
 	token_to_vec(line, &i, &int_color);
-	param.mat_ptr = gen_light(scal_mul_vec(normalize_color(int_color), ratio));
-	*light = gen_sphere(param);
-	if (!*light)
+	*sphere = gen_sphere(&param);
+	if (!*sphere)
 		return (FAILURE);
-	(*light)++;
 	return (SUCCESS);
 }

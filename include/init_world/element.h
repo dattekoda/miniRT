@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:27:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:24:10 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 15:48:52 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ typedef struct s_element
 	char			*format;
 	const t_skip	*skip_arr;
 	int				is_infinite;
-	size_t			primitive_num;
 	int				(*line_to_hitter)(void *hitter, const char *line);
+	size_t			texture_id;
+	size_t			material_id;
 }	t_element;
 
 #endif

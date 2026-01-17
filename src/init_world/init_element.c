@@ -6,11 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:14:20 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 15:50:33 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "element.h"
+#include "line_to_element.h"
+#include "rt_config.h"
 
 static const t_skip			g_ambient_skips[] = {
 	skip_lighting_ratio,
@@ -59,7 +61,7 @@ const t_element				g_light_info = {
 	.format = \
 "L [coordinate](x,y,z) [light brightness ratio](0-1) [R,G,B](0-255)",
 	.skip_arr = g_light_skips,
-	.primitive_num = 1
+	.line_to_hitter = line_to_light
 };
 
 static const t_skip			g_sphere_skips[] = {
@@ -76,7 +78,8 @@ static const t_element		g_sphere_info = {
 	.id_len = 2,
 	.format = "sp [coordinate](x,y,z) [diameter](>0) [R,G,B](0-255)",
 	.skip_arr = g_sphere_skips,
-	.primitive_num = 1
+	.line_to_hitter = line_to_sphere,
+	.texture_id = SPHERE_TEXTURE_ID
 };
 
 static const t_skip			g_plane_skips[] = {
@@ -94,7 +97,7 @@ static const t_element		g_plane_info = {
 	.format = "pl [coordinate](x,y,z) [normalized orient vector](0-1) \
 [R,G,B](0-255)",
 	.skip_arr = g_plane_skips,
-	.primitive_num = 1
+	.line_to_hitter = NULL
 };
 
 static const t_skip			g_cylinder_skips[] = {
@@ -114,7 +117,7 @@ static const t_element		g_cylinder_info = {
 	.format = "cy [coordinate](x,y,z) [normalized orient vector](0-1) \
 [diameter](>0) [height](>0) [R,G,B](0-255)",
 	.skip_arr = g_cylinder_skips,
-	.primitive_num = 3
+	.line_to_hitter = NULL
 };
 
 static const t_skip			g_cone_skips[] = {
@@ -133,7 +136,7 @@ static const t_element		g_cone_info = {
 	.format = "co [coordinate](x,y,z) [normalized orient vector](0-1) \
 [angle](0-90) [R,G,B](0-255)",
 	.skip_arr = g_cone_skips,
-	.primitive_num = 1
+	.line_to_hitter = NULL
 };
 
 static const t_skip			g_triangle_skips[] = {
@@ -152,7 +155,7 @@ static const t_element		g_triangle_info = {
 	.format = "tr [coordinate](x,y,z) [coordinate](x,y,z) [coordinate](x,y,z) \
 [R,G,B](0-255)",
 	.skip_arr = g_triangle_skips,
-	.primitive_num = 1
+	.line_to_hitter = NULL
 };
 
 /*
@@ -183,3 +186,10 @@ const t_element				*g_finite_table[] = {
 	&g_light_info,
 	NULL
 };
+
+
+
+const t_gen_texture	g_gen_textures[] = {
+	gen_solid_texture;
+	NULL
+}

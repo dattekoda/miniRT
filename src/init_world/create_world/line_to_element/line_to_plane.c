@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:41:24 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 20:13:00 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	line_to_plane(t_hitter **plane, const char *line)
 	token_to_vec(line, &i, &param.point);
 	token_to_vec(line, &i, &param.normal);
 	token_to_vec(line, &i, &int_color);
-	param.mat_ptr = gen_lambertian(
-			gen_solid_texture(normalize_color(int_color)));
 	*plane = gen_plane(param);
 	if (!*plane)
 		return (FAILURE);

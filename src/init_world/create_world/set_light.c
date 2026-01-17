@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 18:34:08 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 18:38:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	new_light_node(t_list **new_node, const char *line)
 {
 	t_hitter	*new_light;
 
-	if (lines_to_light(&new_light, line) == FAILURE)
+	if (line_to_light(&new_light, line) == FAILURE)
 		return (FAILURE);
 	*new_node = ft_lstnew(new_light);
 	if (!*new_node)

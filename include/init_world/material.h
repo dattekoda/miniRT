@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_world_define.h                                :+:      :+:    :+:   */
+/*   material.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/17 15:50:41 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/17 15:41:11 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_WORLD_DEFINE_H
-# define INIT_WORLD_DEFINE_H
+#ifndef MATERIAL_H
+# define MATERIAL_H
 
-# define T_AABB	1.0f
-# define T_TRI	1.0f
+# include "hitter.h"
+# include "texture.h"
 
-enum e_option
+typedef struct s_scatter_record
 {
-	IS_PHONG = (1 << 0)
-};
+	t_color	attenuation;
+	t_ray	specular_ray;
+}	t_srec;
 
-typedef void *(*t_gen_texture)(void *arg);
+typedef struct s_material
+{
+	int			(*scatter)(const void *self, const t_hrec *hrec, t_srec *srec);
+	t_texture	*texture_p;
+	t_clear		clear;
+}	t_material;
 
 #endif

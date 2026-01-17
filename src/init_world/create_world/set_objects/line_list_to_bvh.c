@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:42:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 15:56:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	line_list_to_bvh(t_hitter **node, const t_list *line_list,
 	t_hitter_arr	hit_arr;
 
 	*node = NULL;
+	if (line_list_to_hit_arr_list() == FAILURE)
+		return (FAILURE);
 	if (line_list_to_object_arr(&hit_arr, line_list, object_table) == FAILURE)
 		return (FAILURE);
 	if (hit_arr_to_bvh(node, hit_arr) == FAILURE)

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:24:16 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 15:51:02 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 
 # include "element.h"
 # include "vec.h"
+# include "init_world_define.h"
 
-extern const t_element	g_ambient_info;
-extern const t_element	g_camera_info;
-extern const t_element	g_light_info;
-extern const t_element	*g_info_table[];
-extern const t_element	*g_infinite_table[];
-extern const t_element	*g_finite_table[];
+extern const t_element		g_ambient_info;
+extern const t_element		g_camera_info;
+extern const t_element		g_light_info;
+extern const t_element		*g_info_table[];
+extern const t_element		*g_infinite_table[];
+extern const t_element		*g_finite_table[];
+extern const t_gen_texture	g_gen_textures[];
 
 int			match_identifier(const char *line, const t_element *info);
 void		clear_hitter(void *content);

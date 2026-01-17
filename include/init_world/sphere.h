@@ -1,13 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gen_lambertian.c                                   :+:      :+:    :+:   */
+/*   sphere.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 04:52:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:40:59 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/16 19:33:11 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/16 19:36:02 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lambertian.h"
+#ifndef SPHERE_H
+# define SPHERE_H
+
+# include "hitter.h"
+
+typedef struct s_sphere
+{
+	t_hitter	hitter;
+	t_point3	center;
+	double		radius;
+}	t_sphere;
+
+t_sphere	*gen_sphere(t_sphere_param *param);
+
+#endif

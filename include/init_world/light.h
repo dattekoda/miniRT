@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_world_define.h                                :+:      :+:    :+:   */
+/*   light.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/17 15:50:41 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/16 19:16:42 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/16 19:28:42 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_WORLD_DEFINE_H
-# define INIT_WORLD_DEFINE_H
+#ifndef LIGHT_H
+# define LIGHT_H
 
-# define T_AABB	1.0f
-# define T_TRI	1.0f
+# include "material.h"
+# include "vec.h"
 
-enum e_option
+typedef struct s_light
 {
-	IS_PHONG = (1 << 0)
-};
+	t_material	material;
+	t_color		emit_color;
+}	t_light;
 
-typedef void *(*t_gen_texture)(void *arg);
+t_light	*gen_light(t_color color);
 
 #endif

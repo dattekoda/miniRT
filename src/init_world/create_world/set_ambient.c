@@ -6,14 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 18:32:52 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 18:53:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
 #include "init_world_utils.h"
 #include "world.h"
 #include "vec_utils.h"
+#include "rt_config.h"
 
 static t_color	get_ambient_data(const char *line, int is_phong);
 static t_color	construct_ambient(t_color int_color, double ratio);
@@ -39,7 +39,7 @@ static t_color	get_ambient_data(const char *line, int is_phong)
 	token_to_vec(line, &i, &int_color);
 	token_to_value(line, &i, &ratio);
 	if (!is_phong)
-		ratio *= PATHTRACING_AMBIENTRATIO;
+		ratio *= PATHTRACING_AMBIENTSCALE;
 	return (construct_ambient(int_color, ratio));
 }
 

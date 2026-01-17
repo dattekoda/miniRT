@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 14:14:19 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 20:13:43 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,8 @@ int	line_to_cylinder(t_hitter **hitter, const char *line)
 	param.radius = diameter * 0.5;
 	token_to_value(line, &i, &param.height);
 	token_to_vec(line, &i, &int_color);
-	param.mat_ptr = gen_lambertian(
-			gen_solid_texture(normalize_color(int_color)));
-	*(hitter) = gen_cylinder(param);
-	*(hitter + 1) = gen_disk(param);
-	*(hitter + 2) = gen_disk(param);
-	if (!*hitter || !*(hitter + 1) || !*(hitter + 2))
+	*hitter = gen_cylinder(param);
+	if (!*hitter)
 		return (FAILURE);
 	return (SUCCESS);
 }

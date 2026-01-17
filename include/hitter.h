@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:38:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:56:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/16 19:47:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,36 @@
 
 # include "ray.h"
 
+typedef struct s_material t_material;
+
 typedef struct s_hrec
 {
 	t_ray		ray_in;
 	double		param_t;
 	t_point3	point;
 	t_vec3		normal;
-	t_point2	texture_map;
+	t_point2	map;
+	// t_material	*mat_ptr;
 }	t_hrec;
+
+typedef int		(*t_hit)(const void *self, t_ray ray, t_hrec *hrec, t_range range);
+typedef void	(*t_clear)(void *self);
 
 typedef struct s_aabb
 {
 	t_point3	min;
 	t_point3	max;
 	t_point3	centroid;
-	int			(*hit)(void *self, t_ray ray, t_hrec *hrec, t_range range);
+	t_hit		hit;
 }	t_aabb;
 
 typedef struct s_hitter
 {
-	int		(*hit)(void *self, t_ray ray, t_hrec *hrec, t_range range);
-	void	(*clear)(struct s_hitter *self);
-	int		has_aabb;
-	t_aabb	aabb;
+	t_hit		hit;
+	t_clear		clear;
+	int			has_aabb;
+	t_aabb		aabb;
+	// t_material	*mat_ptr;
 }	t_hitter;
 
 #endif

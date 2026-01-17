@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_world_define.h                                :+:      :+:    :+:   */
+/*   line_to_element.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/17 15:50:41 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/16 18:58:22 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/16 18:59:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_WORLD_DEFINE_H
-# define INIT_WORLD_DEFINE_H
+#ifndef LINE_TO_ELEMENT_H
+# define LINE_TO_ELEMENT_H
 
-# define T_AABB	1.0f
-# define T_TRI	1.0f
+#include "hitter.h"
 
-enum e_option
-{
-	IS_PHONG = (1 << 0)
-};
-
-typedef void *(*t_gen_texture)(void *arg);
+int	line_to_light(t_hitter **light, const char *line);
+int	line_to_sphere(t_hitter **sphere, const char *line);
 
 #endif
