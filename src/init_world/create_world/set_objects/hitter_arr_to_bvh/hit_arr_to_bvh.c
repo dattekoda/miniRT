@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/18 01:41:55 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/18 02:05:38 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ t_hitter		*gen_tree(t_hitter *lhs, t_hitter *rhs);
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
 static void		sort_hit_arr(t_hitter_arr hit_arr, int axis);
 double			cost_func(const t_hitter_arr root, size_t left_size);
-t_best_split	find_best_split_info(t_hitter_arr hit_arr);
-static bool		is_component_lower(const t_hitter *subject,
-	const t_hitter *base, int axis);
+int				find_best_split_info(t_hitter_arr hit_arr, t_best_split *info);
+static bool		is_component_higher(const t_hitter *subject,
+				const t_hitter *base, int axis);
+static void	swap_hitter(t_hitter **a, t_hitter **b);
 
 int	hit_arr_to_bvh(t_hitter **root, t_hitter_arr hit_arr)
 {
@@ -61,13 +62,51 @@ static t_hitter	*gen_bvh_recursive(t_hitter_arr hit_arr)
 
 static void	sort_hit_arr(t_hitter_arr hit_arr, int axis)
 {
-	t_hitter	*pivot;
+	t_hitter	**pivot_p;
+	size_t		left;
+	size_t		right;
+
+	if (hit_arr.size <= 1)
+		return ;
+	if (hit_arr.size == 2)
+	{
+		if (is_component_higher(hit_arr.arr[0], hit_arr.arr[1], axis))
+			swap_hitter(hit_arr.arr, hit_arr.arr + 1);
+		return ;
+	}
+	left = 0;
+	right = hit_arr.size - 1;
+	pivot_p = hit_arr.arr;
+	while (left < right)
+	{
+		while (left < hit_arr.size
+			&& !is_component_higher(hit_arr.arr[left], *pivot_p ,axis))
+			left++;
+		while (0 < right
+			&& is_component_higher(hit_arr.arr[right], *pivot_p ,axis))
+			right--;
+		if (right <= left)
+			break ;
+		swap_hitter(&hit_arr.arr[left++], &hit_arr.arr[right--]);
+	}
+	swap_hitter(&hit_arr.arr[left], pivot_p);
+	sort_hit_arr(construct_hitter_arr(hit_arr.arr, left), axis);
+	sort_hit_arr(construct_hitter_arr(hit_arr.arr, right), axis);
 }
 
-static bool	is_component_lower(const t_hitter *subject,
+static void	swap_hitter(t_hitter **a, t_hitter **b)
+{
+	t_hitter	*tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+static bool	is_component_higher(const t_hitter *subject,
 	const t_hitter *base, int axis)
 {
 	if (!subject->has_aabb || !base->has_aabb)
 		return (false);
-	return (subject->aabb.centroid.e[axis] < base->aabb.centroid.e[axis]);
+	return (subject->aabb.centroid.e[axis] > base->aabb.centroid.e[axis]);
 }
