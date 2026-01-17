@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 18:38:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 20:24:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 static int	new_light_node(t_list **new_node, const char *line);
 int			line_to_light(t_hitter **light, const char *line);
 
-int	set_light(t_list **light_list, const t_list *line_list)
+int	set_light(t_list **light_list, const t_list *line_list/*, t_point3 camera_p*/)
 {
 	t_list		*new_node;
 
+	// camera point をもとに line_list書き換え
 	while (line_list)
 	{
 		if (match_identifier(line_list->content, &g_light_info) == SUCCESS)

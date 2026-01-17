@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:14:11 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/16 18:33:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 21:42:02 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	create_world(t_world *world, t_list *line_list)
 	is_phong = world->option_flag & IS_PHONG;
 	set_ambient(&world->ambient, line_list, is_phong);
 	set_camera(&world->camera, line_list);
+
 	if (set_light(&world->light_list, line_list) == FAILURE)
 		return (FAILURE);
 	if (set_objects(world, line_list) == FAILURE)

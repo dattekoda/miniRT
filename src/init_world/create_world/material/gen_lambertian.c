@@ -1,0 +1,62 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gen_lambertian.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/17 16:36:39 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/17 21:42:02 by khanadat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "lambertian.h"
+#include "result.h"
+#include "libft.h"
+
+static t_lambertian	construct_lambertian(t_texture *texture_p);
+void				clear_material(void *s);
+
+t_lambertian	*gen_lambertian(t_texture *texture_p)
+{
+	t_lambertian	*p;
+
+	if (!texture_p)
+		return (NULL);
+	p = ft_calloc(1, sizeof(t_lambertian));
+	if (!p)
+		return (texture_p->clear(texture_p), NULL);
+	*p = construct_lambertian(texture_p);
+	return (p);
+}
+
+static t_lambertian	construct_lambertian(t_texture *texture_p)
+{
+	t_lambertian	lambertian;
+
+	lambertian.material.scatter = scatter_lambertian;
+	lambertian.material.clear = clear_material;
+	lambertian.material.texture_p = texture_p;
+}
+
+static int	scatter_lambertian(const void *s, t_hrec *hrec, t_srec *srec)
+{
+	t_lambertian	*self;
+	t_texture		*texture_p;
+
+	self = s;
+	texture_p = hrec->mat_p->texture_p;
+	srec->attenuation = texture_p->texture_value(texture_p, hrec);
+	srec->matpdf_p = &self->material.pdf;
+	srec->next_ray = 0;
+	return (SUCCESS);
+}
+
+void	clear_material(void *s)
+{
+	t_material	*self;
+
+	self = s;
+	self->texture_p->clear(self->texture_p);
+	free(self);
+}

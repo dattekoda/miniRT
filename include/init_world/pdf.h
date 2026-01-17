@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   pdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 04:46:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 19:00:04 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/17 19:07:47 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/17 19:54:44 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#ifndef PDF_H
+# define PDF_H
 
-# include "hitter.h"
-
-typedef struct s_texture
+typedef struct s_pdf
 {
-	t_color	(*texture_value)(void *self, t_hrec * hrec);
-	t_clear	clear;
-}	t_texture;
+	double	(*value_pdf)(void *self);
+	t_vec3	(*random_pdf)(void *self);
+}	t_pdf;
 
 #endif

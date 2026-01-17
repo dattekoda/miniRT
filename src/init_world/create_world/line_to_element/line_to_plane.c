@@ -6,12 +6,11 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 20:13:00 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 18:47:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
-#include "parameter.h"
 #include "hitter.h"
 #include "vec.h"
 #include "result.h"
@@ -20,14 +19,14 @@
 int	line_to_plane(t_hitter **plane, const char *line)
 {
 	size_t			i;
-	t_plane_param	param;
-	t_color			int_color;
+	t_plane			shape_param;
+	t_color			raw_color;
 
 	i = 2;
-	token_to_vec(line, &i, &param.point);
-	token_to_vec(line, &i, &param.normal);
-	token_to_vec(line, &i, &int_color);
-	*plane = gen_plane(param);
+	token_to_vec(line, &i, &shape_param.point);
+	token_to_vec(line, &i, &shape_param.normal);
+	token_to_vec(line, &i, &raw_color);
+	*plane = gen_plane(shape_param);
 	if (!*plane)
 		return (FAILURE);
 	return (SUCCESS);

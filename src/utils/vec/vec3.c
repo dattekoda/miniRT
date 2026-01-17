@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:11:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/16 17:34:12 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 18:47:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ t_color	construct_color(double e0, double e1, double e2)
 }
 
 /*
-@param int_color RGB[0-255]
+@param raw_color RGB[0-255]
 */
-t_color	normalize_color(t_color int_color)
+t_color	normalize_color(t_color raw_color)
 {
-	return (scal_mul_vec3(int_color, COLOR_DIV));
+	return (scal_mul_vec3(raw_color, COLOR_DIV));
 }

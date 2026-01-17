@@ -6,31 +6,31 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 20:13:43 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 18:49:05 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
+#include "init_world_utils.h"
 #include "validate_utils.h"
 #include "hitter.h"
 #include "vec.h"
-#include "parameter.h"
 
 int	line_to_cylinder(t_hitter **hitter, const char *line)
 {
-	size_t				i;
-	t_cylinder_param	param;
-	double				diameter;
-	t_color				int_color;
+	size_t		i;
+	t_cylinder	cylinder;
+	double		diameter;
+	t_color		raw_color;
 
-	i = 2;
-	token_to_vec(line, &i, &param.center);
-	token_to_vec(line, &i, &param.normal);
+	i = g_cylinder_info.id_len;
+	token_to_vec(line, &i, &cylinder.center);
+	token_to_vec(line, &i, &cylinder.normal);
 	token_to_value(line, &i, &diameter);
-	param.radius = diameter * 0.5;
-	token_to_value(line, &i, &param.height);
-	token_to_vec(line, &i, &int_color);
-	*hitter = gen_cylinder(param);
+	cylinder.radius = diameter * 0.5;
+	token_to_value(line, &i, &cylinder.height);
+	token_to_vec(line, &i, &raw_color);
+	*hitter = gen_cylinder(cylinder, normalize_color(color));
 	if (!*hitter)
 		return (FAILURE);
 	return (SUCCESS);

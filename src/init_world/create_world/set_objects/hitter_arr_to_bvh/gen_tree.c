@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gen_tree.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 23:39:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:41:09 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 21:42:02 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static int	hit_tree(void *s, t_ray ray, t_hrec *hrec, t_range range)
 	const t_tree	*self;
 
 	self = s;
+	if (self->)
 	return (SUCCESS);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_arr_to_bvh.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:53:37 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 21:42:03 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	hit_arr_to_bvh(t_hitter **root, t_hitter_arr hit_arr)
 
 static t_hitter	*gen_bvh_recursive(t_hitter_arr hit_arr)
 {
-	t_best_split	result;
+	t_best_split	info;
 	t_hitter		*lhs;
 	t_hitter		*rhs;
 
@@ -42,14 +42,14 @@ static t_hitter	*gen_bvh_recursive(t_hitter_arr hit_arr)
 		return (hit_arr.arr[0]);
 	if (hit_arr.size == 2)
 		return (gen_tree(hit_arr.arr[0], hit_arr.arr[1]));
-	result = find_best_split_result(hit_arr);
-	sort_hit_arr(hit_arr, 0);
+	info = find_best_split_info(hit_arr);
+	sort_hit_arr(hit_arr, info.axis);
 	lhs = gen_bvh_recursive(
-			construct_hitter_arr(hit_arr.arr, result.left_size));
+			construct_hitter_arr(hit_arr.arr, info.left_size));
 	if (!lhs)
 		return (NULL);
 	rhs = gen_bvh_recursive(construct_hitter_arr(
-			hit_arr.arr + result.left_size, hit_arr.size - result.left_size));
+			hit_arr.arr + info.left_size, hit_arr.size - info.left_size));
 	if (!rhs)
 		return (lhs->clear(lhs), NULL);
 	return (gen_tree(lhs, rhs));
@@ -57,4 +57,5 @@ static t_hitter	*gen_bvh_recursive(t_hitter_arr hit_arr)
 
 static void	sort_hit_arr(t_hitter_arr hit_arr, int axis)
 {
+	
 }

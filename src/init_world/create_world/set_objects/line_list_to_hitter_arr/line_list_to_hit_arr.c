@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_list_to_object_arr.c                          :+:      :+:    :+:   */
+/*   line_list_to_hit_arr.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,7 +14,7 @@
 #include "hitter_arr.h"
 #include "libft.h"
 #include "init_world_define.h"
-#include "init_world_utils.h"
+#include "init_world_uttils.h"
 #include "result.h"
 #include "element.h"
 #include "hitter_arr.h"
@@ -25,13 +25,20 @@ void			clear_hitter_arr(t_hitter_arr hit_arr);
 int				match_objects(const char *line,
 					const t_element *object_table[], size_t *idx);
 
-int	line_list_to_object_arr(t_hitter_arr *hit_arr, const t_list *line_list, \
+int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list, \
 const t_element *object_table[])
 {
 	size_t	obj_idx;
 	size_t	arr_idx;
+	t_list	*hitter_list;
 
 	ft_bzero(hit_arr, sizeof(t_hitter_arr));
+	if (line_list_to_hitter_list(&hitter_list, line_list, object_table) 
+		== FAILURE)
+		return (ft_lstclear(hitter_list, free), FAILURE);
+
+	hit_arr->size = ft_lstsize(&hitter_list);
+
 	hit_arr->size = count_objects(line_list, object_table);
 	if (hit_arr->size == 0)
 		return (SUCCESS);
@@ -47,10 +54,12 @@ const t_element *object_table[])
 			if (object_table[obj_idx]->line_to_hitter(
 					&hit_arr->arr[arr_idx], line_list->content) == FAILURE)
 				return (clear_hitter_arr(*hit_arr), FAILURE);
-			arr_idx += object_table[obj_idx]->primitive_num;
+			arr_idx++;
 		}
 		line_list = line_list->next;
 	}
+
+	ft_lstclear(&hitter_list, NULL);
 	return (SUCCESS);
 }
 
@@ -105,4 +114,28 @@ int	match_objects(const char *line,
 		i++;
 	}
 	return (FAILURE);
+}
+
+
+int	line_list_to_hitter_list(t_list **hitter_list, const t_list *line_list, 
+	const t_element *object_table[])
+{
+	t_list		*list_tmp;
+	t_hitter	*hitter_tmp;
+	size_t		obj_idx;
+
+	while (line_list)
+	{
+		if (match_objects(line_list->content, object_table, &obj_idx) == SUCCESS)
+		{
+			if (object_table[obj_idx]->line_to_hitter(
+				&hitter_tmp, line_list->content) == FAILURE)
+				return (FAILURE);
+		}
+		list_tmp = ft_lstnew(&hitter_tmp)
+		if (match_identifier(line, g_cylinder_info) == SUCCESS)
+		{
+		}
+		line_list = line_list->next;
+	}
 }

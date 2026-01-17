@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/16 17:13:47 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/17 19:54:45 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ SRCS		=	$(addprefix $(SRCDIR)/, \
 				onb.c \
 				) \
 				) \
-				) \
+				)
 
 # --- obj ---
 OBJDIR		=	obj
@@ -78,10 +78,17 @@ OBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 
 # --- include ---
 INCDIRS		=	include \
-				include/init_world \
-				include/init_world/validate \
-				include/utils \
-				include/utils/vec \
+				$(addprefix include/, \
+				init_world \
+				$(addprefix init_world/, \
+				validate \
+				) \
+				primitive \
+				utils \
+				$(addprefix utils/,
+				vec \
+				) \
+				)
 
 # --- OS DETECTION ---
 UNAME	=	$(shell uname -s)

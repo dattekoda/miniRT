@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 21:55:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/16 16:09:12 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 18:47:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_vec3	construct_vec3(double e0, double e1, double e2);
 t_vec3	map_vec3(t_vec3 vec3, double (*f)(double));
 t_vec3	constant_vec3(double d);
 t_color	construct_color(double e0, double e1, double e2);
-t_color	normalize_color(t_color int_color);
+t_color	normalize_color(t_color raw_color);
 
 t_vec3	negative_vec3(t_vec3 vec3);
 t_vec3	add_vec3(t_vec3 lhs, t_vec3 rhs);

@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   clear_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 19:33:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 19:36:02 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/17 21:41:19 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPHERE_H
-# define SPHERE_H
+#include "hitter.h"
 
-# include "hitter.h"
-
-typedef struct s_sphere
+void	clear_hitter(void *content)
 {
-	t_hitter	hitter;
-	t_point3	center;
-	double		radius;
-}	t_sphere;
+	t_hitter	*hitter;
 
-t_sphere	*gen_sphere(t_sphere_param *param);
+	hitter = (t_hitter *)content;
+	hitter->clear(&hitter);
+}
 
-#endif
+void	clear_premitive(void *self)
+{
+	t_hitter	*hitter;
+
+	hitter = (t_hitter *)self;
+	hitter->mat_ptr->clear(self->mat_ptr);
+	free(hitter);
+}

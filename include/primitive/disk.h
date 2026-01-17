@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   disk.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 04:46:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 19:00:04 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/17 18:40:24 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/17 19:08:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#ifndef DISK_H
+# define DISK_H
 
 # include "hitter.h"
 
-typedef struct s_texture
+typedef struct s_disk
 {
-	t_color	(*texture_value)(void *self, t_hrec * hrec);
-	t_clear	clear;
-}	t_texture;
+	t_hitter	hitter;
+	t_point3	center;
+	t_vec3		normal;
+	double		radius;
+}
 
 #endif

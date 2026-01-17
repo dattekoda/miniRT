@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material.h                                         :+:      :+:    :+:   */
+/*   gen_disk.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
+/*   Created: 2026/01/17 19:23:41 by khanadat          #+#    #+#             */
 /*   Updated: 2026/01/17 21:42:02 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIAL_H
-# define MATERIAL_H
+#include "disk.h"
 
-# include "hitter.h"
-# include "texture.h"
-# include "pdf.h"
-
-typedef struct s_scatter_record
+/*
+@brief if gen_disk failed, mat_ptr->clear()
+*/
+t_disk	*gen_disk(t_disk disk_param, t_material *mat_ptr)
 {
-	t_color	attenuation;
-	t_pdf	*matpdf_p;
-}	t_srec;
+	t_disk	*p;
 
-typedef struct s_material
+	p = ft_calloc(1, sizeof(t_material));
+	if (!p)
+	{
+		mat_ptr->clear();
+		return (NULL);
+	}
+	*p = construct_disk(disk_param, mat_ptr);
+	return (p);
+}
+
+t_disk	construct_disk(t_disk disk_param, t_material *mat_ptr)
 {
-	int			(*scatter)(const void *self, t_hrec *hrec, t_srec *srec);
-	t_texture	*texture_p;
-	t_pdf		pdf;
-	t_clear		clear;
-}	t_material;
-
-#endif
+	disk_param.hitter.hit = hit_disk;
+	disk_param.hitter.clear = clear_primitive;
+	disk_param.has_aabb = true;
+	disk_param.aabb = construct_disk_aabb(disk_param);
+	disk_param.mat_ptr = mat_ptr;
+	return (disk_param);
+}

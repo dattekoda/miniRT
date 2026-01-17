@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:38:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 19:47:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 18:59:52 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_hrec
 	t_point3	point;
 	t_vec3		normal;
 	t_point2	map;
-	// t_material	*mat_ptr;
+	t_material	*mat_p;
 }	t_hrec;
 
 typedef int		(*t_hit)(const void *self, t_ray ray, t_hrec *hrec, t_range range);
@@ -44,7 +44,7 @@ typedef struct s_hitter
 	t_clear		clear;
 	int			has_aabb;
 	t_aabb		aabb;
-	// t_material	*mat_ptr;
+	t_material	*mat_ptr;
 }	t_hitter;
 
 #endif

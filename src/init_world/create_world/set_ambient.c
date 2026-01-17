@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 18:53:14 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/17 18:47:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "rt_config.h"
 
 static t_color	get_ambient_data(const char *line, int is_phong);
-static t_color	construct_ambient(t_color int_color, double ratio);
+static t_color	construct_ambient(t_color raw_color, double ratio);
 
 void	set_ambient(t_world *world, const t_list *line_list, int is_phong)
 {
@@ -31,19 +31,19 @@ void	set_ambient(t_world *world, const t_list *line_list, int is_phong)
 
 static t_color	get_ambient_data(const char *line, int is_phong)
 {
-	t_color	int_color;
+	t_color	raw_color;
 	double	ratio;
 	size_t	i;
 
 	i = 1;
-	token_to_vec(line, &i, &int_color);
+	token_to_vec(line, &i, &raw_color);
 	token_to_value(line, &i, &ratio);
 	if (!is_phong)
 		ratio *= PATHTRACING_AMBIENTSCALE;
-	return (construct_ambient(int_color, ratio));
+	return (construct_ambient(raw_color, ratio));
 }
 
-static t_color	construct_ambient(t_color int_color, double ratio)
+static t_color	construct_ambient(t_color raw_color, double ratio)
 {
-	return (normalize_color(scal_mul_vec3(int_color, ratio)));
+	return (normalize_color(scal_mul_vec3(raw_color, ratio)));
 }
