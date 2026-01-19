@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 20:07:12 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/19 20:09:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ static int	add_light_radius(char **light_line, t_point3 camera_origin)
 	idx = g_light_info.id_len;
 	token_to_vec(*light_line, &idx, &light_point);
 	distance = length_vec3(sub_vec3(light_point, camera_origin));
-	radius = (int)(distance * sqrt(0.21 / M_PI - pow(0.21 / (2 * M_PI), 2)));
+	radius = (int)(distance 
+		* sqrt(LIGHT_STERADIAN / M_PI - pow(LIGHT_STERADIAN / (2 * M_PI), 2)));
 	if (radius_strjoin(light_line, radius) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

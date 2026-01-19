@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/19 19:31:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/19 20:09:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
-# ifndef POW2_M_PI
-#  define POW2_M_PI 9.86960440108935861881
+# ifndef LIGHT_STERADIAN
+#  define LIGHT_STERADIAN 0.21
 # endif
 
 # define GREEN "\033[92m"
