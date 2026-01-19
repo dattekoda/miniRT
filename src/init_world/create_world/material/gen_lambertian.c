@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:36:39 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 16:43:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:45:21 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ static t_mixture_pdf	create_mix_pdf_lambertian(const t_world *world, const t_hre
 		reflect_normal = hrec->normal;
 	cos_pdf = construct_cosine_pdf(reflect_normal);
 	light_pdf = construct_light_pdf(hrec, world);
+	mix_pdf = construct_mixture_pdf(&cos_pdf, &light_pdf);
 	return (mix_pdf);
 }
