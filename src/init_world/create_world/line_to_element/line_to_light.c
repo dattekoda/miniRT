@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 21:42:03 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/19 14:36:02 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	line_to_light(t_hitter **light, const char *line)
 	t_material		*mat_p;
 
 	line_to_shape_param(line, &shape_param, &raw_color);
-	texture_p = gen_solid_texture(normalize(raw_color));
-	if (!textuere_p)
+	texture_p = gen_solid_texture(normalize_color(raw_color));
+	if (!texture_p)
 		return (NULL);
 	mat_p = gen_light(texture_p);
 	if (!mat_p)
@@ -51,6 +51,6 @@ static void	line_to_shape_param(const char *line,
 	token_to_vec(line, &i, &shape_param->center);
 	token_to_value(line, &i, &ratio);
 	token_to_vec(line, &i, raw_color);
-	shape_param->radius = LIGHT_RADIUS;
+	shape_param->radius = LIGHT_RADIUS; // toke_to_vec(line, &i, &shape_param->radius)に変更予定。
 	return ;
 }

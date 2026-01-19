@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gen_lambertian.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:36:39 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 21:42:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/19 14:49:22 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,9 @@ static t_lambertian	construct_lambertian(t_texture *texture_p)
 	lambertian.material.texture_p = texture_p;
 }
 
-static int	scatter_lambertian(const void *s, t_hrec *hrec, t_srec *srec)
+static bool	scatter_lambertian(const void *s, t_hrec *hrec, t_srec *srec)
 {
-	t_lambertian	*self;
-	t_texture		*texture_p;
-
-	self = s;
-	texture_p = hrec->mat_p->texture_p;
-	srec->attenuation = texture_p->texture_value(texture_p, hrec);
-	srec->matpdf_p = &self->material.pdf;
-	srec->next_ray = 0;
+	
 	return (SUCCESS);
 }
 
