@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 21:42:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:11:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	line_list_to_bvh(t_hitter **node, const t_list *line_list,
 	t_hitter_arr	hit_arr;
 
 	*node = NULL;
-	if (hitter_list_to_hit_arr(&hit_arr, line_list, object_table) == FAILURE)
+	if (line_list_to_hit_arr(&hit_arr, line_list, object_table) == FAILURE)
 		return (FAILURE);
 	if (hit_arr_to_bvh(node, hit_arr) == FAILURE)
 	{

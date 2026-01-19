@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world_utils.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 19:01:19 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ extern const t_element		g_disk_info;
 extern const t_element		*g_info_table[];
 extern const t_element		*g_infinite_table[];
 extern const t_element		*g_finite_table[];
-extern const t_gen_texture	g_gen_textures[];
+extern const t_generate_texture	g_generate_textures[];
 
 int			match_identifier(const char *line, const t_element *info);
 void		clear_hitter(void *content);

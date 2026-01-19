@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   light_pdf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:14:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 16:17:35 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:36:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "light_pdf.h"
 
+/*
+@brief calc pdf to lights
+*/
 t_light_pdf	construct_light_pdf(const t_hrec *hrec, const t_world *world)
 {
 	t_light_pdf	light_;

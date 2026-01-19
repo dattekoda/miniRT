@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disk.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 18:40:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/17 23:45:21 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ typedef struct s_disk
 	double		radius;
 }
 
-t_disk	*gen_disk(t_disk disk_param, t_material *mat_ptr);
+t_disk	*generate_disk(t_disk disk_param, t_material *mat_ptr);
 
 #endif

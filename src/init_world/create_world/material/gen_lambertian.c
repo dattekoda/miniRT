@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gen_lambertian.c                                   :+:      :+:    :+:   */
+/*   generate_lambertian.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:36:39 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 16:45:21 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:26:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_lambertian		construct_lambertian(t_texture *texture_p);
 void					clear_material(void *s);
 static t_mixture_pdf	create_mix_pdf_lambertian(const t_world *world, const t_hrec *hrec);
 
-t_lambertian	*gen_lambertian(t_texture *texture_p)
+t_lambertian	*generate_lambertian(t_texture *texture_p)
 {
 	t_lambertian	*p;
 
@@ -49,9 +49,11 @@ static bool	scatter_lambertian(const void *s, const t_world *world, t_hrec *hrec
 {
 	const t_lambertian	*self;
 	t_mixture_pdf		mix_pdf;
+	t_texture			*texture_p;
 
 	self = s;
-	srec->attenuation = self->material.texture_p->texture_value(self->material.texture_p, hrec);
+	texture_p = self->material.texture_p;
+	srec->attenuation = texture_p->texture_value(texture_p, hrec);
 	mix_pdf = create_mix_pdf_lambertian(world, hrec);
 	srec->next_ray = construct_ray(hrec->point, mix_pdf.pdf.random_pdf(&mix_pdf));
 	srec->sampling_pdf = mix_pdf.pdf.value_pdf(&mix_pdf, srec->next_ray.direct);

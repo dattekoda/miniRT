@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solid_texture.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:45:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 16:59:45 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 # include "texture.h"
 # include "vec.h"
 
+/*
+@brief solid, bump, checker
+*/
 typedef struct s_solid_texture
 {
 	t_texture	texture;
 	t_color		color;
 }	t_solid_texture;
 
-t_solid_texture	*gen_solid_texture(t_color color);
+t_solid_texture	*generate_solid_texture(t_color color);
 
 #endif

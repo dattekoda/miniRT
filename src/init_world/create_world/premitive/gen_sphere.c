@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gen_sphere.c                                       :+:      :+:    :+:   */
+/*   generate_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -22,7 +22,7 @@ void	clear_premitive(void *self);
 
 
 
-t_hitter	*gen_sphere(t_sphere *shape_param, t_material *mat_ptr)
+t_hitter	*generate_sphere(t_sphere *shape_param, t_material *mat_ptr)
 {
 	t_sphere	*p;
 

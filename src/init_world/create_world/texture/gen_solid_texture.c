@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gen_solid_texture.c                                :+:      :+:    :+:   */
+/*   generate_solid_texture.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:05:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 17:05:12 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:56:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "libft.h"
 
 static t_solid_texture	construct_solid_texture(t_color color);
-static t_color			texture_value_solid(void *s, t_hrec *hrec);
+static t_color			texture_value_solid(const void *s, t_hrec *hrec);
 void					clear_texture(void *s);
 
-t_solid_texture	*gen_solid_texture(t_color color)
+t_solid_texture	*generate_solid_texture(t_color color)
 {
 	t_solid_texture	*p;
 
@@ -25,6 +25,7 @@ t_solid_texture	*gen_solid_texture(t_color color)
 	if (!p)
 		return (NULL);
 	*p = construct_solid_texture(color);
+	return (p);
 }
 
 static t_solid_texture	construct_solid_texture(t_color color)
@@ -37,9 +38,9 @@ static t_solid_texture	construct_solid_texture(t_color color)
 	return (solid);
 }
 
-static t_color	texture_value_solid(void *s, t_hrec *hrec)
+static t_color	texture_value_solid(const void *s, t_hrec *hrec)
 {
-	t_solid_texture	*self;
+	const t_solid_texture	*self;
 
 	self = s;
 	(void)hrec;

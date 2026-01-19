@@ -40,7 +40,7 @@ int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list, \
 	hit_arr->size = ft_lstsize(&hitter_list);
 	hit_arr->arr = ft_calloc(hit_arr->size, sizeof(t_hitter *));
 	if (!hit_arr->arr)
-		return (FAILURE);
+		return (ft_lstclear(hitter_list, free), FAILURE);
 	curr = hitter_list;
 	arr_idx = 0;
 	while (curr)

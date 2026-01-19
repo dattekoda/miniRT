@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   construct_camera.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:20:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/18 13:08:09 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:07:49 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_camera	construct_camera(t_point3 origin, t_vec3 direct, double hfov)
 	camera.origin = origin;
 	camera.onb = construct_camera_onb(direct);
 	get_screen_size(hfov, &camera.screen_width, &camera.screen_height);
-	camera.heigh_left = add_vec3(origin,
+	camera.high_left = add_vec3(origin,
 			add_vec3(scal_mul_vec3(camera.onb.v[0],
 					camera.screen_width * 0.5),
 				scal_mul_vec3(camera.onb.v[2],

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 19:16:42 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 15:58:24 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ typedef struct s_light
 	t_material	material;
 }	t_light;
 
-t_light	*gen_light(t_texture *texture_p);
+t_light	*generate_light(t_texture *texture_p);
 
 #endif

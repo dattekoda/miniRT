@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/16 17:34:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 19:31:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
+# endif
+
+# ifndef POW2_M_PI
+#  define POW2_M_PI 9.86960440108935861881
 # endif
 
 # define GREEN "\033[92m"

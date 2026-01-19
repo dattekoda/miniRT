@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gen_tree.c                                         :+:      :+:    :+:   */
+/*   generate_tree.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -19,7 +19,7 @@ static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs);
 static bool	hit_tree(void *s, t_ray ray, t_hrec *hrec, t_range range);
 void			clear_tree(void *s);
 
-t_hitter	*gen_tree(t_hitter *lhs, t_hitter *rhs)
+t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs)
 {
 	t_tree	*node;
 

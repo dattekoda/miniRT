@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_cylinder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 18:49:05 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	line_to_cylinder(t_hitter **hitter, const char *line)
 	cylinder.radius = diameter * 0.5;
 	token_to_value(line, &i, &cylinder.height);
 	token_to_vec(line, &i, &raw_color);
-	*hitter = gen_cylinder(cylinder, normalize_color(color));
+	*hitter = generate_cylinder(cylinder, normalize_color(color));
 	if (!*hitter)
 		return (FAILURE);
 	return (SUCCESS);

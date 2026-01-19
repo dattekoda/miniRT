@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_plane.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 18:47:23 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	line_to_plane(t_hitter **plane, const char *line)
 	token_to_vec(line, &i, &shape_param.point);
 	token_to_vec(line, &i, &shape_param.normal);
 	token_to_vec(line, &i, &raw_color);
-	*plane = gen_plane(shape_param);
+	*plane = generate_plane(shape_param);
 	if (!*plane)
 		return (FAILURE);
 	return (SUCCESS);

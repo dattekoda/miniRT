@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_disk.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:50:11 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/17 19:46:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	line_to_disk(t_hitter **disk, const char *line)
 		param.radius = diameter * 0.5;
 		token_to_vec(line, &i, &raw_color);
 	}
-	*disk = gen_disk(param, ray_color);
+	*disk = generate_disk(param, ray_color);
 	if (!*disk)
 		return (FAILURE);
 	return (SUCCESS);

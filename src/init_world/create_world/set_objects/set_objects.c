@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_objects.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 21:29:03 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 static void	delete_light_line(t_list **line_list);
 int			line_list_to_bvh(t_hitter **node, const t_list *line_list,
 				const t_element *object_table[]);
-t_hitter	*gen_tree(t_hitter *lhs, t_hitter *rhs);
+t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs);
 void		clear_tree(void *s);
 
 int	set_objects(t_world *world, t_list *line_list)
@@ -38,7 +38,7 @@ int	set_objects(t_world *world, t_list *line_list)
 		clear_tree(rhs);
 		return (FAILURE);
 	}
-	world->object_tree = gen_tree(lhs, rhs);
+	world->object_tree = generate_tree(lhs, rhs);
 	if (!world->object_tree)
 		return (FAILURE);
 	return (SUCCESS);

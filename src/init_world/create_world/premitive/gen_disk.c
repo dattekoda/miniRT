@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gen_disk.c                                         :+:      :+:    :+:   */
+/*   generate_disk.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,9 +15,9 @@
 static t_disk	construct_disk(t_disk disk_param, t_material *mat_ptr);
 
 /*
-@brief if gen_disk failed, mat_ptr->clear()
+@brief if generate_disk failed, mat_ptr->clear()
 */
-t_disk	*gen_disk(t_disk disk_param, t_material *mat_ptr)
+t_disk	*generate_disk(t_disk disk_param, t_material *mat_ptr)
 {
 	t_disk	*p;
 

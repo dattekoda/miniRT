@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world_define.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/17 15:50:41 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ enum e_option
 	IS_PHONG = (1 << 0)
 };
 
-typedef void *(*t_gen_texture)(void *arg);
+typedef void *(*t_generate_texture)(void *arg);
 
 #endif

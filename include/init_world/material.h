@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   material.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 16:58:14 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:49:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 # include "pdf.h"
 
 /*
-@brief color_in = emmited + attenuation * ray_color(next_ray) * surface_pdf / sampling_pdf
+@brief ray_color() {
+	// ...
+	return (emmited + attenuation * ray_color(next_ray,...) * surface_pdf / sampling_pdf);
+	}
 */
 typedef struct s_scatter_record
 {
