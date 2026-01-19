@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:28:48 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:04:03 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 21:15:24 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,20 @@ typedef struct s_vec3
 typedef t_vec3		t_color;
 typedef t_vec3		t_point3;
 
+// params for discriminant
+typedef t_vec3		t_abc;
+
 typedef struct s_vec2
 {
 	double	e[2];
 }	t_vec2;
 
 typedef t_vec2		t_point2;
+
+/*
+@param e[0] min
+@param e[1] max
+*/
 typedef t_point2	t_range;
 
 /*

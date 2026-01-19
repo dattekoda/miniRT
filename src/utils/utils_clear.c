@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clear_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 17:05:43 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 20:31:27 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	clear_texture(void *s)
 	free(s);
 }
 
-void	clear_premitive(void *self)
+void	clear_primitive(void *self)
 {
 	t_hitter	*hitter;
 
@@ -36,5 +36,6 @@ void	clear_material(void *s)
 	self = s;
 	if (self->texture_p)
 		self->texture_p->clear(self->texture_p);
+	self->texture_p = NULL;
 	free(self);
 }

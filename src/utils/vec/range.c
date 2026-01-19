@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   range.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 16:46:45 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 22:22:55 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/19 21:41:03 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/19 22:07:57 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#include "vec.h"
+#include <stdbool.h>
 
-# include "vec.h"
-
-typedef struct s_ray
+bool	inside_range(double d, t_range range)
 {
-	t_point3	origin;
-	t_vec3		direct;
-}	t_ray;
-
-t_ray		construct_ray(t_point3 origin, t_vec3 dir);
-t_point3	at_ray(t_ray ray, double param_t);
-
-#endif
+	return (range.e[0] <= d && d <= range.e[1]);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 21:55:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/17 18:47:23 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 22:08:08 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_vec3	normalize(t_vec3 vec3);
 
 t_vec3	cross(t_vec3 lhs, t_vec3 rhs);
 
-t_vec3	random_in_unit_disk(void);
+bool	inside_range(double d, t_range range);
+// range.c
 
 #endif

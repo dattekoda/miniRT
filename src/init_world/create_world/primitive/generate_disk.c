@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "disk.h"
+#include "rt_utils.h"
 
 static t_disk	construct_disk(t_disk disk_param, t_material *mat_ptr);
 
@@ -24,7 +25,7 @@ t_disk	*generate_disk(t_disk disk_param, t_material *mat_ptr)
 	p = ft_calloc(1, sizeof(t_material));
 	if (!p)
 	{
-		mat_ptr->clear();
+		mat_ptr->clear(mat_ptr);
 		return (NULL);
 	}
 	*p = construct_disk(disk_param, mat_ptr);

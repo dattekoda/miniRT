@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:08:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 22:05:17 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,24 @@
 # define RT_UTILS_H
 
 # include <stdio.h> // delete later 
+# include <stdbool.h>
 
-int		fequal(double a, double b);
+bool	fequal(double a, double b);
+// utils_float.c
 
 void	err_rt(char *err_msg);
 void	perror_rt(const char *syscall_fname);
+// utils_err.c
 
 double	random_double(double min, double max);
+// utils_random.c
+
+void	clear_primitive(void *self);
+void	clear_material(void *s);
+void	clear_texture(void *s);
+// utils_clear.c
+
+void	rt_swap(void *a, void *b, size_t size);
+// utils_swap.c
 
 #endif
