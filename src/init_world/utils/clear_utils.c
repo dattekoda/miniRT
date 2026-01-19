@@ -6,12 +6,17 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 16:26:47 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:05:43 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hitter.h"
 #include "material.h"
+
+void	clear_texture(void *s)
+{
+	free(s);
+}
 
 void	clear_premitive(void *self)
 {
@@ -29,6 +34,7 @@ void	clear_material(void *s)
 	t_material	*self;
 
 	self = s;
-	self->texture_p->clear(self->texture_p);
+	if (self->texture_p)
+		self->texture_p->clear(self->texture_p);
 	free(self);
 }

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:05:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 16:59:44 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:05:12 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,3 @@ static t_color	texture_value_solid(void *s, t_hrec *hrec)
 	return (self->color);
 }
 
-void	clear_texture(void *s)
-{
-	free(s);
-}

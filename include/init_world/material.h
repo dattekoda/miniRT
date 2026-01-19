@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 16:20:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:58:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "world.h"
 # include "pdf.h"
 
+/*
+@brief color_in = emmited + attenuation * ray_color(next_ray) * surface_pdf / sampling_pdf
+*/
 typedef struct s_scatter_record
 {
 	t_color	attenuation;
@@ -29,6 +32,7 @@ typedef struct s_scatter_record
 typedef struct s_material
 {
 	bool		(*scatter)(const void *self, const t_world *world, t_hrec *hrec, t_srec *srec);
+	t_color		(*emitted)(const void *self, t_hrec hrec);
 	t_texture	*texture_p;
 	t_clear		clear;
 }	t_material;
