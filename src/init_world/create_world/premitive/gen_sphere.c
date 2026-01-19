@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:55:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 23:45:20 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 15:59:31 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	clear_premitive(void *self);
 
 
 
-t_hitter	*gen_sphere(t_sphere shape_param, t_material *mat_ptr)
+t_hitter	*gen_sphere(t_sphere *shape_param, t_material *mat_ptr)
 {
 	t_sphere	*p;
 
@@ -35,7 +35,7 @@ t_hitter	*gen_sphere(t_sphere shape_param, t_material *mat_ptr)
 	return ((t_hitter *)p);
 }
 
-static t_sphere	construct_sphere(t_sphere shape_param, t_material *mat_ptr)
+static t_sphere	construct_sphere(t_sphere *shape_param, t_material *mat_ptr)
 {
 	t_sphere	sphere;
 
@@ -43,7 +43,7 @@ static t_sphere	construct_sphere(t_sphere shape_param, t_material *mat_ptr)
 	sphere.radius = shape_param->radius;
 	sphere.hitter.hit = hit_sphere;
 	sphere.hitter.clear = clear_premitive;
-	sphere.hitter.has_aabb = 1;
+	sphere.hitter.has_aabb = true;
 	sphere.hitter.aabb = construct_sphere_aabb();
 	sphere.hitter.mat_ptr = mat_ptr;
 	return (sphere);

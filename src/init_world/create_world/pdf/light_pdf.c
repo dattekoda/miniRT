@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_utils.c                                      :+:      :+:    :+:   */
+/*   light_pdf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 16:26:47 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/19 16:14:59 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/19 16:17:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hitter.h"
-#include "material.h"
+#include "light_pdf.h"
 
-void	clear_premitive(void *self)
+t_light_pdf	construct_light_pdf(const t_hrec *hrec, const t_world *world)
 {
-	t_hitter	*hitter;
+	t_light_pdf	light_;
 
-	hitter = (t_hitter *)self;
-	if (hitter->mat_ptr)
-		hitter->mat_ptr->clear(hitter->mat_ptr);
-	hitter->mat_ptr = NULL;
-	free(hitter);
-}
-
-void	clear_material(void *s)
-{
-	t_material	*self;
-
-	self = s;
-	self->texture_p->clear(self->texture_p);
-	free(self);
+	// light_.pdf.value_pdf = value_light_pdf;
+	// light_.pdf.random_pdf = random_light_pdf;
+	light_.light_list = world->light_list;
+	light_.p = hrec->point;
+	return (light_);
 }

@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_utils.c                                      :+:      :+:    :+:   */
+/*   mixture_pdf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 16:26:47 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/19 16:04:11 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/19 16:09:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hitter.h"
-#include "material.h"
+#include "mixture_pdf.h"
 
-void	clear_premitive(void *self)
+t_mixture_pdf	construct_mixture_pdf(void *surface_pdf, void *light_pdf)
 {
-	t_hitter	*hitter;
+	t_mixture_pdf	mixture;
 
-	hitter = (t_hitter *)self;
-	if (hitter->mat_ptr)
-		hitter->mat_ptr->clear(hitter->mat_ptr);
-	hitter->mat_ptr = NULL;
-	free(hitter);
-}
-
-void	clear_material(void *s)
-{
-	t_material	*self;
-
-	self = s;
-	self->texture_p->clear(self->texture_p);
-	free(self);
+	return (mixture);
 }

@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_utils.c                                      :+:      :+:    :+:   */
+/*   cosine_pdf.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 16:26:47 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/19 16:29:05 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/19 16:33:28 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hitter.h"
-#include "material.h"
+#ifndef COSINE_PDF_H
+# define COSINE_PDF_H
 
-void	clear_premitive(void *self)
+# include "pdf.h"
+# include "vec.h"
+
+typedef struct s_cosine_pdf
 {
-	t_hitter	*hitter;
+	t_pdf	pdf;
+	t_vec3	normal;
+}	t_cosine_pdf;
 
-	hitter = (t_hitter *)self;
-	if (hitter->mat_ptr)
-		hitter->mat_ptr->clear(hitter->mat_ptr);
-	hitter->mat_ptr = NULL;
-	free(hitter);
-}
+t_cosine_pdf	construct_cosine_pdf(t_vec3 normal);
 
-void	clear_material(void *s)
-{
-	t_material	*self;
-
-	self = s;
-	self->texture_p->clear(self->texture_p);
-	free(self);
-}
+#endif

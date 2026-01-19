@@ -6,16 +6,22 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:36:39 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 14:49:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:43:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lambertian.h"
+#include "mixture_pdf.h"
+#include "light_pdf.h"
+#include "cosine_pdf.h"
+#include "vec_utils.h"
+#include "ray.h"
 #include "result.h"
 #include "libft.h"
 
-static t_lambertian	construct_lambertian(t_texture *texture_p);
-void				clear_material(void *s);
+static t_lambertian		construct_lambertian(t_texture *texture_p);
+void					clear_material(void *s);
+static t_mixture_pdf	create_mix_pdf_lambertian(const t_world *world, const t_hrec *hrec);
 
 t_lambertian	*gen_lambertian(t_texture *texture_p)
 {
@@ -39,17 +45,32 @@ static t_lambertian	construct_lambertian(t_texture *texture_p)
 	lambertian.material.texture_p = texture_p;
 }
 
-static bool	scatter_lambertian(const void *s, t_hrec *hrec, t_srec *srec)
+static bool	scatter_lambertian(const void *s, const t_world *world, t_hrec *hrec, t_srec *srec)
 {
-	
-	return (SUCCESS);
-}
-
-void	clear_material(void *s)
-{
-	t_material	*self;
+	const t_lambertian	*self;
+	t_mixture_pdf		mix_pdf;
 
 	self = s;
-	self->texture_p->clear(self->texture_p);
-	free(self);
+	srec->attenuation = self->material.texture_p->texture_value(self->material.texture_p, hrec);
+	mix_pdf = create_mix_pdf_lambertian(world, hrec);
+	srec->next_ray = construct_ray(hrec->point, mix_pdf.pdf.random_pdf(&mix_pdf));
+	srec->sampling_pdf = mix_pdf.pdf.value_pdf(&mix_pdf, srec->next_ray.direct);
+	srec->surface_pdf = mix_pdf.surface_pdf->value_pdf(&mix_pdf.surface_pdf, srec->next_ray.direct);
+	return (true);
+}
+
+static t_mixture_pdf	create_mix_pdf_lambertian(const t_world *world, const t_hrec *hrec)
+{
+	t_mixture_pdf		mix_pdf;
+	t_light_pdf			light_pdf;
+	t_cosine_pdf		cos_pdf;
+	t_vec3				reflect_normal;
+
+	if (dot(hrec->normal, hrec->ray_in.direct) > 0)
+		reflect_normal = negative_vec3(hrec->normal);
+	else
+		reflect_normal = hrec->normal;
+	cos_pdf = construct_cosine_pdf(reflect_normal);
+	light_pdf = construct_light_pdf(hrec, world);
+	return (mix_pdf);
 }
