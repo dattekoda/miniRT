@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cylinder.h                                         :+:      :+:    :+:   */
+/*   disk.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/17 20:31:35 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/19 20:23:57 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/17 18:40:24 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/20 17:06:48 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CYLINDER_H
-# define CYLINDER_H
+#ifndef DISK_H
+# define DISK_H
 
-# include "vec.h"
+# include "hitter.h"
+# include "material.h"
 
-typedef struct s_cylinder
+typedef struct s_disk
 {
+	t_hitter	hitter;
 	t_point3	center;
-	t_vec3		direct;
+	t_vec3		normal;
 	double		radius;
-	double		height;
-}	t_cylinder;
+}	t_disk;
+
+t_hitter	*generate_disk(t_disk disk_param, t_material *mat_ptr);
 
 #endif

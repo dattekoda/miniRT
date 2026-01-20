@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/20 16:56:33 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/20 17:14:15 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_material	*generate_light(t_texture *texture_ptr)
 	if (!light_ptr)
 		return (texture_ptr->clear(texture_ptr), NULL);
 	*light_ptr = construct_light(texture_ptr);
-	return (light_ptr);
+	return ((t_material *)light_ptr);
 }
 
 static t_light	construct_light(t_texture *texture_ptr)
@@ -55,7 +55,7 @@ static t_color	emmited_light(void *s, t_hrec hrec)
 	texture_ptr = self->material.texture_ptr;
 	if (dot(hrec.normal, hrec.ray_in.direct) > 0)
 		return (construct_vec3(1.0, 0.0, 0.0));
-	return (texture_ptr->texture_value(texture_ptr, &hrec));
+	return (texture_ptr->calc_texture_value(texture_ptr, &hrec));
 }
 
 static bool	scatter_light(const void *s, const t_world *world, t_hrec *hrec, t_srec *srec)

@@ -1,60 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_to_sphere.c                                   :+:      :+:    :+:   */
+/*   line_to_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/12 21:45:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/20 16:40:09 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/20 17:09:29 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_utils.h"
-#include "sphere.h"
-#include "solid_texture.h"
-#include "lambertian.h"
 #include "vec_utils.h"
+#include "sphere.h"
+#include "rt_config.h"
+#include "light.h"
 
 static void	line_to_shape_param(const char *line,
 	t_sphere *shape_param, t_color *color);
 
 /*
-@brief lineとgenの橋渡しなので使いやすい用にデータを加工する。(normalize_colorを噛ませたり)
+@brief line "L 0,4,4, 0.3, 255,255,0 4"
 */
-int	line_to_sphere(t_hitter **sphere, const char *line)
+int	line_to_light(t_hitter **light, const char *line)
 {
-	t_sphere	shape_param;
-	t_color		color;
-	t_material	*mat_p;
-	t_texture	*texture_ptr;
+	t_sphere		shape_param;
+	t_color			color;
+	t_texture		*texture_ptr;
+	t_material		*mat_ptr;
 
+	ft_bzero(&shape_param, sizeof(t_sphere));
 	line_to_shape_param(line, &shape_param, &color);
 	texture_ptr = generate_solid_texture(color);
 	if (!texture_ptr)
 		return (FAILURE);
-	mat_p = generate_lambertian(texture_ptr);
-	if (!mat_p)
+	mat_ptr = generate_light(texture_ptr);
+	if (!mat_ptr)
 		return (FAILURE);
-	*sphere = generate_sphere(&shape_param, mat_p);
-	if (!*sphere)
+	*light = generate_sphere(shape_param, mat_ptr);
+	if (!*light)
 		return (FAILURE);
 	return (SUCCESS);
 }
 
+/*
+L 0,0,0 0.3 255,255,0 4
+*/
 static void	line_to_shape_param(const char *line,
 	t_sphere *shape_param, t_color *color)
 {
 	t_sphere		shape_param;
-	size_t			i;
-	double			diameter;
 	t_color			raw_color;
+	size_t			i;
+	double			ratio;
 
-	i = g_sphere_info.id_len;
+	i = g_light_info.id_len;
 	token_to_vec(line, &i, &shape_param->center);
-	token_to_value(line, &i, &diameter);
-	shape_param->radius = diameter * 0.5;
+	token_to_value(line, &i, &ratio);
 	token_to_vec(line, &i, &raw_color);
-	*color = normalize_color(raw_color);
+	*color = scal_mul_vec3(normalize_color(raw_color), ratio);
+	token_to_vec(line, &i, &shape_param->radius);
 	return ;
 }

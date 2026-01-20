@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   mixture_pdf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:04:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 16:46:17 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/20 17:16:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mixture_pdf.h"
+#include "libft.h"
 
 t_mixture_pdf	construct_mixture_pdf(void *surface_pdf, void *light_pdf)
 {
 	t_mixture_pdf	mixture;
 
+	ft_bzero(&mixture, sizeof(t_mixture_pdf));
 	mixture.surface_pdf = surface_pdf;
 	mixture.light_pdf = light_pdf;
 	// mixture.pdf.value_pdf = value_mixure_pdf;

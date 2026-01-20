@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   cylinder.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 19:33:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/17 20:31:35 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/20 17:06:27 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPHERE_H
-# define SPHERE_H
+#ifndef CYLINDER_H
+# define CYLINDER_H
 
-# include "hitter.h"
 # include "material.h"
+# include "vec.h"
 
-typedef struct s_sphere
+typedef struct s_cylinder
 {
-	t_hitter	hitter;
 	t_point3	center;
+	t_vec3		direct;
 	double		radius;
-}	t_sphere;
+	double		height;
+}	t_cylinder;
 
-t_sphere	*generate_sphere(t_sphere *shape_param, t_material *mat_p);
+t_hitter	*generate_cylinder(t_cylinder cylinder_param, t_material *mat_ptr);
 
 #endif

@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   vec2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 04:46:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/20 17:14:15 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/20 17:34:15 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/20 17:36:01 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#include "vec.h"
 
-# include "hitter.h"
-
-typedef struct s_texture
+t_vec2	construct_vec2(double e0, double e1)
 {
-	t_color	(*calc_texture_value)(const void *self, t_hrec *hrec);
-	t_clear	clear;
-}	t_texture;
+	t_vec2	vec2;
 
-#endif
+	vec2.e[0] = e0;
+	vec2.e[1] = e1;
+	return (vec2);
+}

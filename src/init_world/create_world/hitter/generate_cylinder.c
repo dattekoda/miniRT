@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disk.h                                             :+:      :+:    :+:   */
+/*   generate_cylinder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/17 18:40:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/19 20:21:54 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/20 17:07:16 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/20 17:13:24 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DISK_H
-# define DISK_H
+#include "cylinder.h"
 
-# include "hitter.h"
-# include "material.h"
-
-typedef struct s_disk
+t_hitter	*generate_cylinder(t_cylinder cylinder_param, t_material *mat_ptr)
 {
-	t_hitter	hitter;
-	t_point3	center;
-	t_vec3		normal;
-	double		radius;
-}	t_disk;
+	t_cylinder	*p;
 
-t_disk	*generate_disk(t_disk disk_param, t_material *mat_ptr);
-
-#endif
+	if (!mat_ptr)
+		return (NULL);
+	p = ft_calloc(1, sizeof(t_cylinder));
+	if (!p)
+		return (mat_ptr->clear(mat_ptr), NULL);
+	*p = construct_cylinder(cylinder_param, mat_ptr);
+	return ((t_hitter *)p);
+}
