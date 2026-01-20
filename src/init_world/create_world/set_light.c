@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   set_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 19:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 20:09:39 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/20 19:45:11 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/20 19:45:33 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "result.h"
 #include "init_world_utils.h"
 #include "validate_utils.h"
 #include "vec_utils.h"
@@ -26,7 +27,7 @@ int			line_to_light(t_hitter **light, const char *line);
 
 int	set_light(t_list **light_list, t_list *line_list, t_point3 camera_origin)
 {
-	t_list	*new_list;
+	t_list	*new_node;
 
 	if (preprocess_line_list(line_list, camera_origin) == FAILURE)
 		return (FAILURE);
@@ -34,12 +35,12 @@ int	set_light(t_list **light_list, t_list *line_list, t_point3 camera_origin)
 	{
 		if (match_identifier(line_list->content, &g_light_info) == SUCCESS)
 		{
-			if (new_light_list(&new_list, line_list->content) == FAILURE)
+			if (new_light_node(&new_node, line_list->content) == FAILURE)
 			{
 				ft_lstclear(light_list, clear_hitter);
 				return (FAILURE);
 			}
-			ft_lstadd_back(light_list, new_list);
+			ft_lstadd_back(light_list, new_node);
 		}
 		line_list = line_list->next;
 	}
