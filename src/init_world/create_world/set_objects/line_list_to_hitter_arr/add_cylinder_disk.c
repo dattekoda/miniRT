@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_cylinder_disk.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 22:12:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/19 16:33:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/20 21:44:13 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include "libft.h"
 
 static t_disk	cylinder_to_upper_disk(t_cylinder cylinder);
-static t_disk	cylinder_to_lower_disk(t_cylinder cylinder)
-static t_disk	cylinder_to_disk(t_cylinder cylinder, bool is_upper);
+static t_disk	cylinder_to_lower_disk(t_cylinder cylinder);
+static int		add_disk(t_list **hitter_list, t_disk disk);
 
 int	add_cylinder_disk(t_list **hitter_list, t_cylinder cylinder)
 {
@@ -33,28 +33,29 @@ int	add_cylinder_disk(t_list **hitter_list, t_cylinder cylinder)
 	return (SUCCESS);
 }
 
-static int	add_disk(t_list **hitter_list, t_disk disk)
+static int	add_disk(t_list **hitter_list, t_disk disk_param)
 {
-	t_list		*list_tmp;
-	t_hitter	*disk_tmp;
+	t_list		*tmp_list;
+	t_disk		*tmp_disk;
 
-	disk_tmp = cylinder_to_disk(cylinder, is_upper);
-	if (!disk_tmp)
+	tmp_disk = generate_disk(disk_param, disk_param.hitter.mat_ptr);
+	if (!tmp_disk)
 		return (FAILURE);
-	list_tmp = ft_lstnew(list_tmp);
-	if (!list_tmp)
-		return (disk_tmp->clear(disk_tmp), FAILURE);
-	ft_lstadd_back(hitter_list, list_tmp);
+	tmp_list = ft_lstnew(disk);
+	if (!tmp_list)
+		return (tmp_disk->hitter.clear(tmp_disk), FAILURE);
+	ft_lstadd_back(hitter_list, tmp_list);
 	return (SUCCESS);
 }
 
-static t_disk	cylinder_to_lower_disk(t_cylinder cylinder, bool is_upper)
+static t_disk	cylinder_to_lower_disk(t_cylinder cylinder)
 {
 	t_disk	disk_param;
 
 	disk_param.center = cylinder.center;
-	disk_param.normal = negative_vec3(disk_param.normal);
+	disk_param.normal = negative_vec3(cylinder.direct);
 	disk_param.radius = cylinder.radius;
+	disk_param.hitter.mat_ptr = cylinder.hitter.mat_ptr;
 	return (disk_param);
 }
 
@@ -66,5 +67,6 @@ static t_disk	cylinder_to_upper_disk(t_cylinder cylinder)
 		cylinder.center, scal_mul_vec3(cylinder.height, cylinder.normal));
 	disk_param.normal = cylinder.direct;
 	disk_param.radius = cylinder.radius;
+	disk_param.hitter.mat_ptr = cylinder.hitter.mat_ptr;
 	return (disk_param);
 }
