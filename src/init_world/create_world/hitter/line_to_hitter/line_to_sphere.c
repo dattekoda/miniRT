@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:45:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/20 17:21:12 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/20 22:45:34 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ int	line_to_sphere(t_hitter **sphere, const char *line)
 	t_texture	*texture_ptr;
 
 	line_to_shape_param(line, &shape_param, &color);
-	texture_ptr = generate_solid_texture(color);
+	// texture_ptr = generate_solid_texture(color);
+	texture_ptr = generate_texture[texture_idx](color);
 	if (!texture_ptr)
 		return (FAILURE);
-	mat_p = generate_lambertian(texture_ptr);
+	mat_p = generate_material[material_idx](texture_ptr);
 	if (!mat_p)
 		return (FAILURE);
 	*sphere = generate_sphere(shape_param, mat_p);
@@ -56,5 +57,7 @@ static void	line_to_shape_param(const char *line,
 	shape_param->radius = diameter * 0.5;
 	token_to_vec(line, &i, &raw_color);
 	*color = normalize_color(raw_color);
+	token_to_mat()
+	
 	return ;
 }

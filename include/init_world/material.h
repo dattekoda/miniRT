@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   material.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/20 16:40:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/20 22:32:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_material
 	bool		(*scatter)(const void *self, const t_world *world, t_hrec *hrec, t_srec *srec);
 	t_color		(*emitted)(const void *self, t_hrec hrec);
 	t_texture	*texture_ptr;
-	t_clear		clear;
+	// t_clear		clear;
 }	t_material;
 
 #endif
