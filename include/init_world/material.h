@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 17:49:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:40:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_material
 {
 	bool		(*scatter)(const void *self, const t_world *world, t_hrec *hrec, t_srec *srec);
 	t_color		(*emitted)(const void *self, t_hrec hrec);
-	t_texture	*texture_p;
+	t_texture	*texture_ptr;
 	t_clear		clear;
 }	t_material;
 

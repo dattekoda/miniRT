@@ -19,41 +19,41 @@
 #include "result.h"
 #include "libft.h"
 
-static t_lambertian		construct_lambertian(t_texture *texture_p);
+static t_lambertian		construct_lambertian(t_texture *texture_ptr);
 void					clear_material(void *s);
 static t_mixture_pdf	create_mix_pdf_lambertian(const t_world *world, const t_hrec *hrec);
 
-t_lambertian	*generate_lambertian(t_texture *texture_p)
+t_lambertian	*generate_lambertian(t_texture *texture_ptr)
 {
 	t_lambertian	*p;
 
-	if (!texture_p)
+	if (!texture_ptr)
 		return (NULL);
 	p = ft_calloc(1, sizeof(t_lambertian));
 	if (!p)
-		return (texture_p->clear(texture_p), NULL);
-	*p = construct_lambertian(texture_p);
+		return (texture_ptr->clear(texture_ptr), NULL);
+	*p = construct_lambertian(texture_ptr);
 	return (p);
 }
 
-static t_lambertian	construct_lambertian(t_texture *texture_p)
+static t_lambertian	construct_lambertian(t_texture *texture_ptr)
 {
 	t_lambertian	lambertian;
 
 	lambertian.material.scatter = scatter_lambertian;
 	lambertian.material.clear = clear_material;
-	lambertian.material.texture_p = texture_p;
+	lambertian.material.texture_ptr = texture_ptr;
 }
 
 static bool	scatter_lambertian(const void *s, const t_world *world, t_hrec *hrec, t_srec *srec)
 {
 	const t_lambertian	*self;
 	t_mixture_pdf		mix_pdf;
-	t_texture			*texture_p;
+	t_texture			*texture_ptr;
 
 	self = s;
-	texture_p = self->material.texture_p;
-	srec->attenuation = texture_p->texture_value(texture_p, hrec);
+	texture_ptr = self->material.texture_ptr;
+	srec->attenuation = texture_ptr->texture_value(texture_ptr, hrec);
 	mix_pdf = create_mix_pdf_lambertian(world, hrec);
 	srec->next_ray = construct_ray(hrec->point, mix_pdf.pdf.random_pdf(&mix_pdf));
 	srec->sampling_pdf = mix_pdf.pdf.value_pdf(&mix_pdf, srec->next_ray.direct);

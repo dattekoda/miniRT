@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:52:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:40:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ typedef struct s_lambertian
 	t_material	material;
 }	t_lambertian;
 
-t_lambertian	*generate_lambertian(t_texture *texture_p);
+t_lambertian	*generate_lambertian(t_texture *texture_ptr);
 
 #endif

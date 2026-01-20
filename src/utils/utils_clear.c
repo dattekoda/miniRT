@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_utils.c                                      :+:      :+:    :+:   */
+/*   utils_clear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 20:31:27 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:40:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	clear_material(void *s)
 	t_material	*self;
 
 	self = s;
-	if (self->texture_p)
-		self->texture_p->clear(self->texture_p);
-	self->texture_p = NULL;
+	if (self->texture_ptr)
+		self->texture_ptr->clear(self->texture_ptr);
+	self->texture_ptr = NULL;
 	free(self);
 }

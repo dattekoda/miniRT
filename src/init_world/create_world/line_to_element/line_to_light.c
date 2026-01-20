@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 19:57:53 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/20 17:01:24 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,25 @@
 static void	line_to_shape_param(const char *line,
 	t_sphere *shape_param, t_color *color);
 
+/*
+@brief line "L 0,4,4, 0.3, 255,255,0 4"
+*/
 int	line_to_light(t_hitter **light, const char *line)
 {
 	t_sphere		shape_param;
 	t_color			color;
-	t_texture		*texture_p;
-	t_material		*mat_p;
+	t_texture		*texture_ptr;
+	t_material		*mat_ptr;
 
+	ft_bzero(&shape_param, sizeof(t_sphere));
 	line_to_shape_param(line, &shape_param, &color);
-	texture_p = generate_solid_texture(color);
-	if (!texture_p)
+	texture_ptr = generate_solid_texture(color);
+	if (!texture_ptr)
 		return (FAILURE);
-	mat_p = generate_light(texture_p);
-	if (!mat_p)
+	mat_ptr = generate_light(texture_ptr);
+	if (!mat_ptr)
 		return (FAILURE);
-	*light = generate_sphere(&shape_param, mat_p);
+	*light = generate_sphere(&shape_param, mat_ptr);
 	if (!*light)
 		return (FAILURE);
 	return (SUCCESS);
@@ -46,9 +50,9 @@ static void	line_to_shape_param(const char *line,
 	t_sphere *shape_param, t_color *color)
 {
 	t_sphere		shape_param;
+	t_color			raw_color;
 	size_t			i;
 	double			ratio;
-	t_color			raw_color;
 
 	i = g_light_info.id_len;
 	token_to_vec(line, &i, &shape_param->center);

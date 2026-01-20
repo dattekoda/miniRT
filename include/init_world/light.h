@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 19:16:42 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:57:15 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ typedef struct s_light
 	t_material	material;
 }	t_light;
 
-t_light	*generate_light(t_texture *texture_p);
+t_material	*generate_light(t_texture *texture_ptr);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:45:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:40:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	line_to_sphere(t_hitter **sphere, const char *line)
 	t_sphere	shape_param;
 	t_color		color;
 	t_material	*mat_p;
-	t_texture	*texture_p;
+	t_texture	*texture_ptr;
 
 	line_to_shape_param(line, &shape_param, &color);
-	texture_p = generate_solid_texture(color);
-	if (!texture_p)
+	texture_ptr = generate_solid_texture(color);
+	if (!texture_ptr)
 		return (FAILURE);
-	mat_p = generate_lambertian(texture_p);
+	mat_p = generate_lambertian(texture_ptr);
 	if (!mat_p)
 		return (FAILURE);
 	*sphere = generate_sphere(&shape_param, mat_p);

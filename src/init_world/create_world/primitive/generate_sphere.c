@@ -28,6 +28,9 @@ static bool		hit_sphere(void *self, t_ray ray, t_hrec *hrec, t_range range);
 static bool		assign_sphere_hrec(const t_sphere *self, t_hrec *hrec, const t_ray ray, double solution);
 static t_vec2	construct_sphere_uv(t_vec3 unit_normal);
 
+/*
+@brief responsible for free(mat_ptr)
+*/
 t_hitter	*generate_sphere(t_sphere *shape_param, t_material *mat_ptr)
 {
 	t_sphere	*p;
