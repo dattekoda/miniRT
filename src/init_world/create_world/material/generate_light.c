@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/20 16:56:33 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/20 19:46:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static t_color	emmited_light(void *s, t_hrec hrec)
 	self = s;
 	texture_ptr = self->material.texture_ptr;
 	if (dot(hrec.normal, hrec.ray_in.direct) > 0)
-		return (construct_vec3(1.0, 0.0, 0.0));
+		return (construct_vec3(0.0, 0.0, 0.0));
 	return (texture_ptr->texture_value(texture_ptr, &hrec));
 }
 

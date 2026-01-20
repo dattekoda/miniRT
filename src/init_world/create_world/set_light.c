@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:45:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/20 19:45:33 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/20 19:57:00 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,37 +21,39 @@
 
 static int	radius_strjoin(char **light_line, int radius);
 static int	add_light_radius(char **light_line, t_point3 camera_origin);
-static int	new_light_list(t_list **new_list, const char *line);
+static int	new_light_node(t_list **new_list, const char *line, bool is_phong);
 static int	preprocess_line_list(t_list *line_list, t_point3 camera_origin);
-int			line_to_light(t_hitter **light, const char *line);
+int			line_to_light(t_hitter **light, const char *line, bool is_phong);
 
-int	set_light(t_list **light_list, t_list *line_list, t_point3 camera_origin)
+int	set_light(t_world *world, t_list *line_list, t_point3 camera_origin)
 {
 	t_list	*new_node;
+	bool	is_phong;
 
+	is_phong = world->option_flag & IS_PHONG;
 	if (preprocess_line_list(line_list, camera_origin) == FAILURE)
 		return (FAILURE);
 	while (line_list)
 	{
 		if (match_identifier(line_list->content, &g_light_info) == SUCCESS)
 		{
-			if (new_light_node(&new_node, line_list->content) == FAILURE)
+			if (new_light_node(&new_node, line_list->content, is_phong) == FAILURE)
 			{
-				ft_lstclear(light_list, clear_hitter);
+				ft_lstclear(world->light_list, clear_hitter);
 				return (FAILURE);
 			}
-			ft_lstadd_back(light_list, new_node);
+			ft_lstadd_back(world->light_list, new_node);
 		}
 		line_list = line_list->next;
 	}
 	return (SUCCESS);
 }
 
-static int	new_light_list(t_list **new_list, const char *line)
+static int	new_light_node(t_list **new_list, const char *line, bool is_phong)
 {
 	t_hitter	*new_light;
 
-	if (line_to_light(&new_light, line) == FAILURE)
+	if (line_to_light(&new_light, line, is_phong) == FAILURE)
 		return (FAILURE);
 	*new_list = ft_lstnew(new_light);
 	if (!*new_list)

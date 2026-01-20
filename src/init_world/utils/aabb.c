@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 00:08:38 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/18 00:12:38 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/20 20:00:02 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ static bool	hit_aabb(const void *s, t_ray ray, t_hrec *hrec, t_range range)
 	t_aabb	*self;
 
 	self = s;
+	// next to do
 	return (true);
 }
