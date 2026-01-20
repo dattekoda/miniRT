@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   range.c                                            :+:      :+:    :+:   */
+/*   a.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/19 21:41:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/20 21:18:47 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/20 20:26:04 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/20 20:55:17 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec.h"
-#include <stdbool.h>
-
-bool	is_inside_range(double d, t_range range)
+int	main(int argc, char *argv[])
 {
-	return (range.e[0] <= d && d <= range.e[1]);
+	return (do_somthe(), do_anything(), and_then(), jp(), k(), ooo(), );
+}
+
+#include <stdbool.h>
+bool	is_phong(bool _is)
+{
+	static bool	is;
+	static bool	a = 0;
+
+	if (!a)
+	{
+		is = _is;
+		a = true;
+	}
+	return (is);
+}
+
+bool	is_phong(bool is)
+{
+	stati
 }

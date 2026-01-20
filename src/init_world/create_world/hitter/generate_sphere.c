@@ -25,7 +25,7 @@
 
 static t_sphere	construct_sphere(t_sphere shape_param, t_material *mat_ptr);
 static bool		hit_sphere(void *self, t_ray ray, t_hrec *hrec, t_range range);
-static bool		assign_sphere_hrec(const t_sphere *self, t_hrec *hrec, const t_ray ray, double solution);
+static void		assign_sphere_hrec(const t_sphere *self, t_hrec *hrec, const t_ray ray, double solution);
 static t_vec2	construct_sphere_uv(t_vec3 unit_normal);
 
 /*
@@ -74,17 +74,17 @@ static bool	hit_sphere(void *s, t_ray ray, t_hrec *hrec, t_range range)
 	solu.discriminant = calc_discriminant(solu.abc);
 	if (solu.discriminant < 0)
 		return (false);
-	solu.root = sqrt(solu.discriminant);
-	solu.solution = calc_first_solution(solu);
-	if (inside_range(solu.solution, range) == true)
-		return (assign_sphere_hrec(self, hrec, ray, solu.solution));
-	solu.solution = calc_second_solution(solu);
-	if (inside_range(solu.solution, range) == true)
-		return (assign_sphere_hrec(self, hrec, ray, solu.solution));
+	solu.root_discriminant = sqrt(solu.discriminant);
+	solu.solution = calc_minus_solution(solu);
+	if (is_inside_range(solu.solution, range) == true)
+		return (assign_sphere_hrec(self, hrec, ray, solu.solution), true);
+	solu.solution = calc_plus_solution(solu);
+	if (is_inside_range(solu.solution, range) == true)
+		return (assign_sphere_hrec(self, hrec, ray, solu.solution), true);
 	return (false);
 }
 
-static bool	assign_sphere_hrec(const t_sphere *self, t_hrec *hrec, const t_ray ray, double solution)
+static void	assign_sphere_hrec(const t_sphere *self, t_hrec *hrec, const t_ray ray, double solution)
 {
 	hrec->ray_in = ray;
 	hrec->param_t = solution;
@@ -92,7 +92,7 @@ static bool	assign_sphere_hrec(const t_sphere *self, t_hrec *hrec, const t_ray r
 	hrec->normal = scal_div_vec3(sub_vec3(hrec->point, self->center), self->radius); // 面の向き
 	hrec->mat_ptr = self->hitter.mat_ptr; // 材質
 	hrec->map = construct_sphere_uv(hrec->normal);
-	return (true);
+	return ;
 }
 
 static t_vec2	construct_sphere_uv(t_vec3 unit_normal)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solution.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:30:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/19 21:40:11 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/20 21:16:36 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ double	calc_discriminant(t_abc abc)
 }
 
 /*
-@brief (-b - root(discriminant)) / a
+@brief (-b - sqrt (D) ) / a
 */
-double	calc_first_solution(t_solution solu)
+double	calc_minus_solution(t_solution solu)
 {
-	return ((-solu.abc.e[1] - solu.root) / solu.abc.e[0]);
+	return ((-solu.abc.e[1] - solu.root_discriminant) / solu.abc.e[0]);
 }
 
 /*
-@brief (-b + root(discriminant)) / a
+@brief (-b + sqrt (D) ) / a
 */
-double	calc_second_solution(t_solution solu)
+double	calc_plus_solution(t_solution solu)
 {
-	return ((-solu.abc.e[1] + solu.root) / solu.abc.e[0]);
+	return ((-solu.abc.e[1] + solu.root_discriminant) / solu.abc.e[0]);
 }
