@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   construct_result.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:02:54 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:51:36 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:15:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

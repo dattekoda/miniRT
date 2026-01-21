@@ -17,7 +17,7 @@ static t_solid_texture	construct_solid_texture(t_color color);
 static t_color			calc_texture_value_solid(const void *s, t_hrec *hrec);
 void					clear_texture(void *s);
 
-t_solid_texture	*generate_solid_texture(t_color color)
+t_texture	*generate_solid_texture(t_color color)
 {
 	t_solid_texture	*p;
 
@@ -25,7 +25,7 @@ t_solid_texture	*generate_solid_texture(t_color color)
 	if (!p)
 		return (NULL);
 	*p = construct_solid_texture(color);
-	return (p);
+	return ((t_texture *)p);
 }
 
 static t_solid_texture	construct_solid_texture(t_color color)

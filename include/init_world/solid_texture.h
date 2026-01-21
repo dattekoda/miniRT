@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:45:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:48:49 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ typedef struct s_solid_texture
 	t_color		color;
 }	t_solid_texture;
 
-t_solid_texture	*generate_solid_texture(t_color color);
+t_texture	*generate_solid_texture(t_color color);
 
 #endif

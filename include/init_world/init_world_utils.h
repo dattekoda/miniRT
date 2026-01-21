@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 18:21:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:47:28 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,26 @@
 # include "vec.h"
 # include "init_world_define.h"
 
-extern const t_element		g_ambient_info;
-extern const t_element		g_camera_info;
-extern const t_element		g_light_info;
-extern const t_element		g_sphere_info;
-extern const t_element		g_cylinder_info;
-extern const t_element		g_disk_info;
-extern const t_element		*g_info_table[];
-extern const t_element		*g_infinite_table[];
-extern const t_element		*g_finite_table[];
-extern const t_generate_texture	g_generate_textures[];
+extern const t_element				g_ambient_info;
+extern const t_element				g_camera_info;
+extern const t_element				g_light_info;
+extern const t_element				g_sphere_info;
+extern const t_element				g_cylinder_info;
+extern const t_element				g_disk_info;
+extern const t_element				*g_info_table[];
+extern const t_element				*g_infinite_table[];
+extern const t_element				*g_finite_table[];
+
+extern const t_generate_texture		g_generate_textures[];
+extern const t_generate_material	g_generate_materials[];
 
 int			match_identifier(const char *line, const t_element *info);
 void		clear_hitter(void *content);
 t_result	token_to_value(const char *line, size_t *line_idx, double *d);
 t_result	token_to_vec(const char *line, size_t *line_idx, t_vec3 *vec);
+t_result	token_to_char(const char *line, size_t *line_idx, char *c);
+
+size_t	char_to_material_idx(char c, size_t default_idx);
+size_t	char_to_texture_idx(char c, size_t default_idx);
 
 #endif

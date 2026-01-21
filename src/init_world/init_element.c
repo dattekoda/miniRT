@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   init_element.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/20 22:42:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:02:53 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "element.h"
 #include "line_to_element.h"
 #include "init_world_define.h"
+#include "solid_texture.h"
+#include "lambertian.h"
 #include "rt_config.h"
 
 int	line_to_light(t_hitter **light, const char *line);
@@ -80,6 +82,7 @@ static const t_element		g_sphere_info = {
 	.format = "sp [coordinate](x,y,z) [diameter](>0) [R,G,B](0-255)",
 	.skip_arr = g_sphere_skips,
 	.line_to_hitter = line_to_sphere,
+	.material_id = SPHERE_MATERIAL_ID,
 	.texture_id = SPHERE_TEXTURE_ID
 };
 
@@ -97,7 +100,9 @@ static const t_element		g_plane_info = {
 	.format = "pl [coordinate](x,y,z) [normalized orient vector](0-1) \
 [R,G,B](0-255)",
 	.skip_arr = g_plane_skips,
-	.line_to_hitter = NULL
+	.line_to_hitter = NULL,
+	.material_id = PLANE_MATERIAL_ID,
+	.texture_id = PLANE_TEXTURE_ID
 };
 
 static const t_skip			g_cylinder_skips[] = {
@@ -116,7 +121,9 @@ static const t_element		g_cylinder_info = {
 	.format = "cy [coordinate](x,y,z) [normalized orient vector](0-1) \
 [diameter](>0) [height](>0) [R,G,B](0-255)",
 	.skip_arr = g_cylinder_skips,
-	.line_to_hitter = NULL
+	.line_to_hitter = NULL,
+	.material_id = CYLINDER_MATERIAL_ID,
+	.texture_id = CYLINDER_TEXTURE_ID
 };
 
 static const t_skip			g_disk_skips[] = {
@@ -128,13 +135,15 @@ static const t_skip			g_disk_skips[] = {
 	NULL
 };
 
-static const t_element		g_cylinder_info = {
+static const t_element		g_disk_info = {
 	.id = "di",
 	.id_len = 2,
 	.format = "di [coordinate](x,y,z) [normalized orient vector](0-1) \
 [diameter](>0) [R,G,B](0-255)",
 	.skip_arr = g_disk_skips,
-	.line_to_hitter = line_to_disk
+	.line_to_hitter = line_to_disk,
+	.material_id = CYLINDER_MATERIAL_ID,
+	.texture_id = CYLINDER_TEXTURE_ID
 };
 
 static const t_skip			g_cone_skips[] = {
@@ -152,7 +161,9 @@ static const t_element		g_cone_info = {
 	.format = "co [coordinate](x,y,z) [normalized orient vector](0-1) \
 [angle](0-90) [R,G,B](0-255)",
 	.skip_arr = g_cone_skips,
-	.line_to_hitter = NULL
+	.line_to_hitter = NULL,
+	.material_id = CONE_MATERIAL_ID,
+	.texture_id = CONE_TEXTURE_ID
 };
 
 static const t_skip			g_triangle_skips[] = {
@@ -170,7 +181,9 @@ static const t_element		g_triangle_info = {
 	.format = "tr [coordinate](x,y,z) [coordinate](x,y,z) [coordinate](x,y,z) \
 [R,G,B](0-255)",
 	.skip_arr = g_triangle_skips,
-	.line_to_hitter = NULL
+	.line_to_hitter = NULL,
+	.material_id = TRIANGLE_MATERIAL_ID,
+	.texture_id = TRIANGLE_TEXTURE_ID
 };
 
 /*
@@ -206,5 +219,10 @@ const t_element				*g_finite_table[] = {
 
 const t_generate_texture	g_generate_textures[] = {
 	generate_solid_texture,
+	NULL
+};
+
+const t_generate_material	g_generate_materials[] = {
+	generate_lambertian,
 	NULL
 };

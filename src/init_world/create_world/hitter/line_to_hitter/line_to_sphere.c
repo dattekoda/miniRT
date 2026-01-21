@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:45:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/20 22:45:34 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/21 18:06:54 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,49 +15,44 @@
 #include "solid_texture.h"
 #include "lambertian.h"
 #include "vec_utils.h"
+#include "rt_define.h"
 
-static void	line_to_shape_param(const char *line,
-	t_sphere *shape_param, t_color *color);
+int	line_to_material(const char *line, size_t i, 
+	t_material *mat_ptr, t_element element);
+static int	line_to_sphere_param(const char *line,
+	t_sphere *sphere_param);
 
 /*
 @brief lineとgenの橋渡しなので使いやすい用にデータを加工する。(normalize_colorを噛ませたり)
+オプションフラグに応じてmaterial, textureを読むかどうか判断するためには引数を増やす必要がある
 */
-int	line_to_sphere(t_hitter **sphere, const char *line)
+int	line_to_sphere(t_hitter **sphere, const char *line/* , bool is_option_m */)
 {
-	t_sphere	shape_param;
+	t_sphere	sphere_param;
 	t_color		color;
-	t_material	*mat_p;
-	t_texture	*texture_ptr;
 
-	line_to_shape_param(line, &shape_param, &color);
-	// texture_ptr = generate_solid_texture(color);
-	texture_ptr = generate_texture[texture_idx](color);
-	if (!texture_ptr)
-		return (FAILURE);
-	mat_p = generate_material[material_idx](texture_ptr);
-	if (!mat_p)
-		return (FAILURE);
-	*sphere = generate_sphere(shape_param, mat_p);
+	ft_bzero(&sphere_param, sizeof(t_sphere));
+	line_to_sphere_param(line, &sphere_param);
+	*sphere = generate_sphere(sphere_param);
 	if (!*sphere)
 		return (FAILURE);
 	return (SUCCESS);
 }
 
-static void	line_to_shape_param(const char *line,
-	t_sphere *shape_param, t_color *color)
+static int	line_to_sphere_param(const char *line,
+	t_sphere *sphere_param)
 {
-	t_sphere		shape_param;
-	t_color			raw_color;
+	t_sphere		sphere_param;
 	double			diameter;
 	size_t			i;
 
 	i = g_sphere_info.id_len;
-	token_to_vec(line, &i, &shape_param->center);
+	token_to_vec(line, &i, &sphere_param->center);
 	token_to_value(line, &i, &diameter);
-	shape_param->radius = diameter * 0.5;
-	token_to_vec(line, &i, &raw_color);
-	*color = normalize_color(raw_color);
-	token_to_mat()
-	
-	return ;
+	sphere_param->radius = diameter * 0.5;
+	if (line_to_material
+		(line, i, &sphere_param->hitter.mat_ptr, g_sphere_info) 
+		== FAILURE)
+		return (FAILURE);
+	return (SUCCESS);
 }

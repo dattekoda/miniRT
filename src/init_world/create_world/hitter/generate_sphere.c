@@ -23,40 +23,40 @@
 #include "libft.h"
 #include <math.h>
 
-static t_sphere	construct_sphere(t_sphere shape_param, t_material *mat_ptr);
+static t_sphere	construct_sphere(t_sphere shape_param);
 static bool		hit_sphere(void *self, t_ray ray, t_hrec *hrec, t_range range);
-static void		assign_sphere_hrec(const t_sphere *self, t_hrec *hrec, const t_ray ray, double solution);
+static void		assign_sphere_hrec
+	(const t_sphere *self, t_hrec *hrec, const t_ray ray, double solution);
 static t_vec2	construct_sphere_uv(t_vec3 unit_normal);
 
 /*
 @brief responsible for free(mat_ptr)
 */
-t_hitter	*generate_sphere(t_sphere shape_param, t_material *mat_ptr)
+t_hitter	*generate_sphere(t_sphere shape_param)
 {
 	t_sphere	*p;
 
-	if (!mat_ptr)
-		return (NULL);
 	p = ft_calloc(1, sizeof(t_sphere));
 	if (!p)
-		return (mat_ptr->clear(mat_ptr), NULL);
-	*p = construct_sphere(shape_param, mat_ptr);
+	{
+		shape_param.hitter.mat_ptr->clear(shape_param.hitter.mat_ptr);
+		return (NULL);
+	}
+	*p = construct_sphere(shape_param);
 	return ((t_hitter *)p);
 }
 
-static t_sphere	construct_sphere(t_sphere shape_param, t_material *mat_ptr)
+static t_sphere	construct_sphere(t_sphere shape_param)
 {
 	t_sphere	sphere;
 
-	sphere.center = shape_param.center;
-	sphere.radius = shape_param.radius;
+	ft_memmove(&sphere, &shape_param, sizeof(t_sphere));
 	sphere.hitter.hit = hit_sphere;
 	sphere.hitter.clear = clear_primitive;
 	sphere.hitter.has_aabb = true;
 	sphere.hitter.aabb = construct_aabb(
 		sub_vec3(sphere.center, constant_vec3(sphere.radius)), 
 			add_vec3(sphere.center, constant_vec3(sphere.radius)));
-	sphere.hitter.mat_ptr = mat_ptr;
 	return (sphere);
 }
 
@@ -84,13 +84,15 @@ static bool	hit_sphere(void *s, t_ray ray, t_hrec *hrec, t_range range)
 	return (false);
 }
 
-static void	assign_sphere_hrec(const t_sphere *self, t_hrec *hrec, const t_ray ray, double solution)
+static void		assign_sphere_hrec
+	(const t_sphere *self, t_hrec *hrec, const t_ray ray, double solution)
 {
 	hrec->ray_in = ray;
 	hrec->param_t = solution;
-	hrec->point = at_ray(ray, hrec->param_t); // 交点
-	hrec->normal = scal_div_vec3(sub_vec3(hrec->point, self->center), self->radius); // 面の向き
-	hrec->mat_ptr = self->hitter.mat_ptr; // 材質
+	hrec->point = at_ray(ray, hrec->param_t);
+	hrec->normal = scal_div_vec3
+		(sub_vec3(hrec->point, self->center), self->radius);
+	hrec->mat_ptr = self->hitter.mat_ptr;
 	hrec->map = construct_sphere_uv(hrec->normal);
 	return ;
 }

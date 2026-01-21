@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_world_define.h                                :+:      :+:    :+:   */
+/*   token_to_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/21 14:55:38 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/21 15:21:32 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/21 16:16:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_WORLD_DEFINE_H
-# define INIT_WORLD_DEFINE_H
+#include "result.h"
+#include "libft.h"
+#include <math.h>
 
-# define T_AABB	1.0f
-# define T_TRI	1.0f
-
-# define PATHTRACING_LIGHT_STRENGTH 100
-
-enum e_option
+t_result	token_to_char(const char *line, size_t *line_idx, char *c)
 {
-	IS_PHONG = (1 << 0)
-};
-
-typedef t_texture	*(*t_generate_texture)(t_color color);
-typedef t_material	*(*t_generate_material)(t_texture *texture_ptr);
-
-#endif
+	*c = line[(*line_idx)];
+	if (*c == '\0' || ft_isspace(*c))
+		return (construct_result("invalid value"));
+	(*line_idx)++;
+	return (construct_result(NULL));
+}
