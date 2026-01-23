@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:45:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/20 20:22:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:24:58 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	set_light(t_world *world, t_list *line_list)
 		return (FAILURE);
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, &g_light_info) == SUCCESS)
+		if (match_identifier(line_list->content, &g_light_info))
 		{
 			if (new_light_node(&new_node, line_list->content, is_phong) == FAILURE)
 			{
@@ -68,7 +68,7 @@ static int	preprocess_line_list(t_list *line_list, t_point3 camera_origin)
 {
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, &g_light_info) == SUCCESS)
+		if (match_identifier(line_list->content, &g_light_info))
 		{
 			if (add_light_radius(&line_list->content, camera_origin) == FAILURE)
 				return (FAILURE);

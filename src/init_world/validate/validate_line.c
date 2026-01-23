@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:35:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:07:00 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:25:32 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	validate_line(char *line)
 	i = 0;
 	while (g_info_table[i])
 	{
-		if (match_identifier(line, g_info_table[i]) == SUCCESS)
+		if (match_identifier(line, g_info_table[i]))
 			return (validate_element(line, g_info_table[i]));
 		i++;
 	}

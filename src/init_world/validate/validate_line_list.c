@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:44:36 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:25:27 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static int	count_ambient_and_camera(const t_list *line_list)
 	camera_count = 0;
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, &g_ambient_info) == SUCCESS)
+		if (match_identifier(line_list->content, &g_ambient_info))
 			ambient_count++;
-		if (match_identifier(line_list->content, &g_camera_info) == SUCCESS)
+		if (match_identifier(line_list->content, &g_camera_info))
 			camera_count++;
 		line_list = line_list->next;
 	}

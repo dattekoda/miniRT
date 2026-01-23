@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world_utils.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/21 17:47:28 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:24:04 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "element.h"
 # include "vec.h"
 # include "init_world_define.h"
+# include <stdbool.h>
 
 extern const t_element				g_ambient_info;
 extern const t_element				g_camera_info;
@@ -30,7 +31,7 @@ extern const t_element				*g_finite_table[];
 extern const t_generate_texture		g_generate_textures[];
 extern const t_generate_material	g_generate_materials[];
 
-int			match_identifier(const char *line, const t_element *info);
+bool		match_identifier(const char *line, const t_element *info);
 void		clear_hitter(void *content);
 t_result	token_to_value(const char *line, size_t *line_idx, double *d);
 t_result	token_to_vec(const char *line, size_t *line_idx, t_vec3 *vec);

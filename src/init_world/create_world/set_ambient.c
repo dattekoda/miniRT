@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/20 19:50:52 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:24:47 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	set_ambient(t_world *world, const t_list *line_list)
 
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, &g_ambient_info) == SUCCESS)
+		if (match_identifier(line_list->content, &g_ambient_info))
 			break ;
 		line_list = line_list->next;
 	}

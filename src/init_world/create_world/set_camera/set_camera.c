@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:45 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 18:30:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:25:03 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	set_camera(t_camera *camera, const t_list *line_list)
 {
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, &g_camera_info) == SUCCESS)
+		if (match_identifier(line_list->content, &g_camera_info))
 			break ;
 		line_list = line_list->next;
 	}
