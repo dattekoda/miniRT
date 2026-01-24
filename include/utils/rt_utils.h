@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 18:22:50 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/24 22:33:31 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ void	err_rt(char *err_msg);
 void	perror_rt(const char *syscall_fname);
 // utils_err.c
 
-bool	is_phong(int option_flag);
-// utils_option.c
-
 double	random_double(double min, double max);
+int		random_int(int min, int max);
 // utils_random.c
 
-void	clear_primitive(void *self);
+void	clear_hitter(void *self);
 void	clear_material(void *s);
 void	clear_texture(void *s);
 // utils_clear.c

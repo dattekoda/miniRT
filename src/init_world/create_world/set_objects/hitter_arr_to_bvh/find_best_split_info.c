@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/18 01:45:04 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/24 22:24:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ double	cost_func(const t_hitter_arr root, size_t left_size,
 double	calc_surface_area(const t_aabb aabb);
 t_aabb	surrounding_box(t_aabb box0, t_aabb box1);
 t_aabb	construct_aabb(t_point3 min, t_point3 max);
+void	sort_hit_arr(t_hitter_arr hit_arr, int axis);
+t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
 
 static t_best_split	construct_best_split(int axis, size_t left_size,
 	double cost)

@@ -40,7 +40,7 @@ t_disk	*generate_disk(t_disk disk_param)
 static t_disk	construct_disk(t_disk disk_param)
 {
 	disk_param.hitter.hit = hit_disk;
-	disk_param.hitter.clear = clear_primitive;
+	disk_param.hitter.clear = clear_hitter;
 	disk_param.hitter.has_aabb = true;
 	disk_param.hitter.aabb = construct_disk_aabb(disk_param);
 	return (disk_param);

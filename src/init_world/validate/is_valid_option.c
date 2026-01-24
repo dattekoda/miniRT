@@ -6,19 +6,25 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:46:26 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/23 16:48:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:35:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_utils.h"
+#include "rt_utils.h"
+#include "libft.h"
 #include <unistd.h>
 #include <stdbool.h>
+
+static bool	is_valid_short_option(char *option);
+static bool	is_valid_long_option(char *option);
+static void	err_set_short_option(char c);
+static void	err_set_long_option(char *str);
 
 bool	is_valid_option(char **options)
 {
 	char	*option;
 	size_t	i;
-	char	tmp;
 
 	i = 0;
 	while (options[i])
@@ -32,6 +38,9 @@ bool	is_valid_option(char **options)
 	return (true);
 }
 
+/*
+@brief -a, -m
+*/
 static bool	is_valid_short_option(char *option)
 {
 	size_t	i1;
@@ -53,18 +62,26 @@ static bool	is_valid_short_option(char *option)
 	return (true);
 }
 
+/*
+@brief --artificial 
+*/
 static bool	is_valid_long_option(char *option)
 {
 	size_t	i;
 
+	if (option[1] != '-')
+		return (true);
 	i = 0;
 	while (g_option_table[i])
 	{
-		if (ft_strncmp(g_option_table[i]->str, option + 2, ft_strlen(g_option_table[i])))
+		if (ft_strcmp(g_option_table[i]->str, option + 2))
 			break ;
 	}
 	if ((g_option_table[i]) == NULL)
+	{
+		err_set_long_option(option);
 		return (false);
+	}
 	return (true);
 }
 
@@ -76,10 +93,10 @@ static void	err_set_short_option(char c)
 	ft_putendl_fd("'", STDERR_FILENO);
 }
 
-static void	err_set_long_option(char *s)
+static void	err_set_long_option(char *str)
 {
 	err_rt(NULL);
 	ft_putstr_fd("invalid option -- '", STDERR_FILENO);
-	ft_putstr_fd(s, STDERR_FILENO);
+	ft_putstr_fd(str, STDERR_FILENO);
 	ft_putendl_fd("'", STDERR_FILENO);
 }

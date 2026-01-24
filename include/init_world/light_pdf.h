@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_pdf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:12:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/20 17:38:44 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:40:54 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 
 typedef struct s_light_pdf
 {
-	t_pdf				pdf;
-	const t_list const	*light_list;
-	t_point3			point;
+	t_pdf			pdf;
+	const t_list	*light_list;
+	t_point3		point;
 }	t_light_pdf;
 
 t_light_pdf	construct_light_pdf(const t_hrec *hrec, const t_world *world);

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:52:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 18:52:41 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:40:28 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "rt_define.h"
 #include "libft.h"
 #include <math.h>
+#include <stdlib.h>
 
 static int	radius_strjoin(char **light_line, int radius);
 static int	add_light_radius(char **light_line, t_point3 camera_origin);
@@ -41,10 +42,10 @@ int	set_light(t_world *world, t_list *line_list)
 			if (new_light_node
 				(&new_node, line_list->content, phong_flag) == FAILURE)
 			{
-				ft_lstclear(world->light_list, clear_hitter);
+				ft_lstclear(&world->light_list, clear_hitter);
 				return (FAILURE);
 			}
-			ft_lstadd_back(world->light_list, new_node);
+			ft_lstadd_back(&world->light_list, new_node);
 		}
 		line_list = line_list->next;
 	}
@@ -72,7 +73,7 @@ static int	preprocess_line_list(t_list *line_list, t_point3 camera_origin)
 	{
 		if (match_identifier(line_list->content, &g_light_info))
 		{
-			if (add_light_radius(&line_list->content, camera_origin) == FAILURE)
+			if (add_light_radius((char **)&line_list->content, camera_origin) == FAILURE)
 				return (FAILURE);
 		}
 		line_list = line_list->next;

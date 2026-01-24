@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:35:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 16:37:32 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:38:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 bool		is_valid_element(char *line, const t_element *elem_info, int option_flag);
 static void	err_invalid_identifer(char *line);
 
-bool	is_valid_line(const char *line, int option_flag)
+bool	is_valid_line(char *line, int option_flag)
 {
 	size_t	i;
 
@@ -29,7 +29,7 @@ bool	is_valid_line(const char *line, int option_flag)
 			return (is_valid_element(line, g_info_table[i], option_flag));
 		i++;
 	}
-	return (err_invalid_id(line), false);
+	return (err_invalid_identifer(line), false);
 }
 
 static void	err_invalid_identifer(char *line)

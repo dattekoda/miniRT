@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/17 19:54:45 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/24 22:11:50 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,57 +20,123 @@ RMDIR		=	rm -rf
 # --- src ---
 SRCDIR		=	src
 
-SRCS		=	$(addprefix $(SRCDIR)/, \
+SRCS	=	$(addprefix $(SRCDIR)/, \
+				get_camera_ray.c \
 				main.c \
 				mini_rt.c \
 				$(addprefix init_world/, \
-				init_world.c \
-				read_rt_file.c \
-				init_element.c \
-				$(addprefix validate/, \
-				validate_arguments.c \
-				validate_line_list.c \
-				validate_line.c \
-				validate_element.c \
-				value_skips.c \
-				vector_skips.c \
-				skip_until_end.c \
+					define_element.c \
+					define_option.c \
+					define_skips.c \
+					init_world.c \
+					read_rt_file.c \
+					set_option.c \
+					$(addprefix validate/, \
+						is_valid_option.c \
+						skip_until_end.c \
+						skip_value.c \
+						skip_vector.c \
+						validate_arguments.c \
+						validate_element.c \
+						validate_line.c \
+						validate_line_list.c \
+						$(addprefix utils/, \
+							err_point_out.c \
+							skip_material.c \
+							skip_range.c \
+							skip_spaces.c \
+							skip_texture.c \
+							skip_vec.c \
+						) \
+					) \
+					$(addprefix utils/, \
+						char_to_idx.c \
+						match_identifer.c \
+						token_to_char.c \
+						token_to_value.c \
+						token_to_vec.c \
+					) \
+					$(addprefix create_world/, \
+						create_world.c \
+						set_ambient.c \
+						set_light.c \
+						$(addprefix set_camera/, \
+							construct_camera.c \
+							set_camera.c \
+						) \
+						$(addprefix texture/, \
+							generate_solid_texture.c \
+						) \
+						$(addprefix material/, \
+							generate_lambertian.c \
+							generate_light.c \
+							$(addprefix pdf/, \
+								calc_light_pdf_value.c \
+								cosine_pdf.c \
+								light_pdf.c \
+								mixture_pdf.c \
+							) \
+						) \
+						$(addprefix hitter/, \
+							generate_cylinder.c \
+							generate_disk.c \
+							generate_sphere.c \
+							solution.c \
+							$(addprefix aabb/, \
+								aabb.c \
+							) \
+							$(addprefix hit/, \
+								hit_disk.c \
+								hit_sphere.c \
+							) \
+							$(addprefix line_to_hitter/, \
+								line_to_cylinder.c \
+								line_to_disk.c \
+								line_to_light.c \
+								line_to_material.c \
+								line_to_plane.c \
+								line_to_sphere.c \
+							) \
+						) \
+						$(addprefix set_objects/, \
+							line_list_to_bvh.c \
+							set_objects.c \
+							$(addprefix hitter_arr_to_bvh/, \
+								bvh_utils.c \
+								find_best_split_info.c \
+								generate_tree.c \
+								hit_arr_to_bvh.c \
+							) \
+							$(addprefix line_list_to_hitter_arr/, \
+								add_cylinder_disk.c \
+								line_list_to_hit_arr.c \
+							) \
+						) \
+					) \
+				) \
+				$(addprefix ray/, \
+					construct_ray.c \
+					ray.c \
+				) \
 				$(addprefix utils/, \
-				err_point_out.c \
-				skip_spaces.c \
-				skip_range.c \
-				skip_vec.c \
+					construct_result.c \
+					utils_clear.c \
+					utils_err.c \
+					utils_float.c \
+					utils_random.c \
+					utils_swap.c \
+					$(addprefix vec/, \
+						onb.c \
+						range.c \
+						vec2.c \
+						vec3.c \
+						vec3_basic.c \
+						vec3_product.c \
+						vec3_scal.c \
+					) \
 				) \
-				) \
-				set_option.c \
-				$(addprefix create_world/, \
-				create_world.c \
-				set_ambient.c \
-				$(addprefix set_camera/, \
-				set_camera.c \
-				construct_camera.c \
-				) \
-				) \
-				$(addprefix utils/, \
-				match_identifer.c \
-				) \
-				) \
-				$(addprefix utils/, \
-				utils_err.c \
-				construct_result.c \
-				token_to_value.c \
-				token_to_vec.c \
-				random.c \
-				$(addprefix vec/, \
-				vec3.c \
-				vec3_basic.c \
-				vec3_product.c \
-				vec3_scal.c \
-				vec3_random.c \
-				onb.c \
-				) \
-				) \
-				)
+			)
+
 
 # --- obj ---
 OBJDIR		=	obj
@@ -79,15 +145,19 @@ OBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 # --- include ---
 INCDIRS		=	include \
 				$(addprefix include/, \
-				init_world \
-				$(addprefix init_world/, \
-				validate \
-				) \
-				primitive \
-				utils \
-				$(addprefix utils/,
-				vec \
-				) \
+					hitter \
+					init_world \
+					$(addprefix hitter/, \
+						line_to_hitter \
+					) \
+					$(addprefix init_world/, \
+						material \
+						validate \
+					) \
+					utils \
+					$(addprefix utils/, \
+						vec \
+					) \
 				)
 
 # --- OS DETECTION ---

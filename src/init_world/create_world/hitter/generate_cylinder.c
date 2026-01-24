@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   generate_cylinder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 17:07:16 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/23 14:15:57 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:39:31 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cylinder.h"
-#include "rt_utils.h" // clear_primitive()
+#include "rt_utils.h" // clear_hitter()
 
 t_hitter	*generate_cylinder(t_cylinder cylinder_param)
 {
@@ -33,7 +33,7 @@ t_cylinder	construct_cylinder(t_cylinder shape_param)
 
 	ft_memmove(&cylinder, &shape_param, sizeof(t_cylinder));
 	cylinder.hitter.hit = hit_cylinder;
-	cylinder.hitter.clear = clear_primitive;
+	cylinder.hitter.clear = clear_hitter;
 	cylinder.hitter.has_aabb = true;
 	cylinder.hitter.aabb = construct_aabb(cylinder);
 	return (cylinder);

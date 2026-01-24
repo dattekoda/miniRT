@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_ambient.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 18:24:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:38:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	set_ambient(t_world *world, const t_list *line_list)
 		line_list = line_list->next;
 	}
 	world->ambient = 
-		get_ambient_data(line_list->content, is_phong(world->option_flag));
+		get_ambient_data(line_list->content, world->option_flag & OPT_ARTIFICIAL);
 	return ;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_option.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:53 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/24 18:11:28 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:29:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,22 @@
 #include "libft.h"
 #include <unistd.h>
 
+static int	set_long_option(char *option);
+static int	set_short_option(char *option);
+
 /*
 @brief set option like -p
 */
-int	set_option(const char *options[])
+int	set_option(char *options[])
 {
-	int					bit_flag;
-	size_t				i;
-	char				*tmp;
+	size_t	i;
+	int		bit_flag;
 
 	bit_flag = 0;
 	i = 1;
 	while (options[i])
 	{
-		if (options[i] + 2 == '-')
+		if (options[i][1] == '-')
 			bit_flag |= set_long_option(options[i] + 2);
 		else
 			bit_flag |= set_short_option(options[i] + 1);
@@ -38,7 +40,7 @@ int	set_option(const char *options[])
 	return (bit_flag);
 }
 
-static int	set_long_option(const char *option)
+static int	set_long_option(char *option)
 {
 	size_t	i;
 	size_t	len;
@@ -53,7 +55,7 @@ static int	set_long_option(const char *option)
 	return (0);
 }
 
-static int	set_short_option(const char *option)
+static int	set_short_option(char *option)
 {
 	int		bit_flag;
 	size_t	i;

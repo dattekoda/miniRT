@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/20 21:29:09 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:44:05 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "vec_utils.h"
 
 static t_light	construct_light(t_texture *texture_ptr);
-static t_color	emmited_light(void *s, t_hrec hrec);
+static t_color	emmited_light(const void *s, t_hrec *hrec);
 static bool		scatter_light(const void *s, const t_world *world, t_hrec *hrec, t_srec *srec);
 
 /*
@@ -46,16 +46,16 @@ static t_light	construct_light(t_texture *texture_ptr)
 	return (light);
 }
 
-static t_color	emmited_light(void *s, t_hrec hrec)
+static t_color	emmited_light(const void *s, t_hrec *hrec)
 {
-	t_light		*self;
+	const t_light		*self;
 	t_texture	*texture_ptr;
 
 	self = s;
 	texture_ptr = self->material.texture_ptr;
-	if (dot(hrec.normal, hrec.ray_in.direct) > 0)
+	if (dot(hrec->normal, hrec->ray_in.direct) > 0)
 		return (construct_vec3(1.0, 0.0, 0.0));
-	return (texture_ptr->calc_texture_value(texture_ptr, &hrec));
+	return (texture_ptr->calc_texture_value(texture_ptr, hrec));
 }
 
 static bool	scatter_light(const void *s, const t_world *world, t_hrec *hrec, t_srec *srec)

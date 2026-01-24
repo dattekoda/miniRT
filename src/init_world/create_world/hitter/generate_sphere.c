@@ -52,7 +52,7 @@ static t_sphere	construct_sphere(t_sphere shape_param)
 
 	ft_memmove(&sphere, &shape_param, sizeof(t_sphere));
 	sphere.hitter.hit = hit_sphere;
-	sphere.hitter.clear = clear_primitive;
+	sphere.hitter.clear = clear_hitter;
 	sphere.hitter.has_aabb = true;
 	sphere.hitter.aabb = construct_aabb(
 		sub_vec3(sphere.center, constant_vec3(sphere.radius)), 
