@@ -23,6 +23,9 @@ static t_lambertian		construct_lambertian(t_texture *texture_ptr);
 void					clear_material(void *s);
 static t_mixture_pdf	create_mix_pdf_lambertian(const t_world *world, const t_hrec *hrec);
 
+/*
+@brief responsible for free(texture_ptr)
+*/
 t_material	*generate_lambertian(t_texture *texture_ptr)
 {
 	t_lambertian	*p;
