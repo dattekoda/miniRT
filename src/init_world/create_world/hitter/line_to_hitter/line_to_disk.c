@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:50:11 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/21 15:08:59 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/24 16:35:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	line_to_disk(t_hitter **disk, const char *line)
 	token_to_vec(line, &i, &diameter);
 	param.radius = diameter * 0.5;
 	token_to_vec(line, &i, &raw_color);
-	*disk = generate_disk(param, ray_color);
+	*disk = generate_disk(param);
 	if (!*disk)
 		return (FAILURE);
 	return (SUCCESS);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solution.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:27:21 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/20 21:16:36 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:57:01 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,18 @@
 
 typedef struct s_solution
 {
-	t_abc	abc;
-	double	discriminant;
-	double	root_discriminant;
-	double	solution;
+	t_vec3		center_to_origin;
+	t_point3	point;
+	double		a;
+	double		b;
+	double		c;
+	double		discriminant;
+	double		root_discriminant;
+	double		solution;
 }	t_solution;
 
-double	calc_discriminant(t_abc abc);
-double	calc_minus_solution(t_solution solu);
-double	calc_plus_solution(t_solution solu);
+double	calc_discriminant(const t_solution *solu);
+double	calc_minus_solution(const t_solution *solu);
+double	calc_plus_solution(const t_solution *solu);
 
 #endif

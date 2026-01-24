@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:28:48 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 21:15:24 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:42:22 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ typedef struct s_vec3
 
 typedef t_vec3		t_color;
 typedef t_vec3		t_point3;
-
-// params for discriminant
-typedef t_vec3		t_abc;
 
 typedef struct s_vec2
 {

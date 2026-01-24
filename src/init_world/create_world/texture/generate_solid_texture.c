@@ -14,7 +14,7 @@
 #include "libft.h"
 
 static t_solid_texture	construct_solid_texture(t_color color);
-static t_color			calc_texture_value_solid(const void *s, t_hrec *hrec);
+static t_color			calc_solid_texture_value(const void *s, t_hrec *hrec);
 void					clear_texture(void *s);
 
 t_texture	*generate_solid_texture(t_color color)
@@ -32,13 +32,13 @@ static t_solid_texture	construct_solid_texture(t_color color)
 {
 	t_solid_texture	solid;
 
-	solid.texture.calc_texture_value = calc_texture_value_solid;
+	solid.texture.calc_texture_value = calc_solid_texture_value;
 	solid.texture.clear = clear_texture;
 	solid.color = color;
 	return (solid);
 }
 
-static t_color	calc_texture_value_solid(const void *s, t_hrec *hrec)
+static t_color	calc_solid_texture_value(const void *s, t_hrec *hrec)
 {
 	const t_solid_texture	*self;
 
@@ -46,4 +46,3 @@ static t_color	calc_texture_value_solid(const void *s, t_hrec *hrec)
 	(void)hrec;
 	return (self->color);
 }
-

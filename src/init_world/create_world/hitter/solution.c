@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solution.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:30:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/20 21:16:36 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:56:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@
 /*
 @brief discriminant = b * b - a * c
 */
-double	calc_discriminant(t_abc abc)
+double	calc_discriminant(const t_solution *solu)
 {
-	return (pow(abc.e[1], 2) - abc.e[0] * abc.e[2]);
+	return (pow(solu->b, 2) - solu->a * solu->c);
 }
 
 /*
 @brief (-b - sqrt (D) ) / a
 */
-double	calc_minus_solution(t_solution solu)
+double	calc_minus_solution(const t_solution *solu)
 {
-	return ((-solu.abc.e[1] - solu.root_discriminant) / solu.abc.e[0]);
+	return ((-solu->b - solu->root_discriminant) / solu->a);
 }
 
 /*
 @brief (-b + sqrt (D) ) / a
 */
-double	calc_plus_solution(t_solution solu)
+double	calc_plus_solution(const t_solution *solu)
 {
-	return ((-solu.abc.e[1] + solu.root_discriminant) / solu.abc.e[0]);
+	return ((-solu->b + solu->root_discriminant) / solu->a);
 }
