@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/20 19:45:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 18:26:55 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/24 18:52:28 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/24 18:52:41 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	set_light(t_world *world, t_list *line_list)
 	t_list	*new_node;
 	bool	phong_flag;
 
-	phong_flag = is_phong(world->option_flag);
+	phong_flag = world->option_flag & OPT_ARTIFICIAL;
 	if (preprocess_line_list(line_list, world->camera.origin) == FAILURE)
 		return (FAILURE);
 	while (line_list)
