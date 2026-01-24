@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:21:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 18:07:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:09:02 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ static void	put_format(void)
 	i = 0;
 	while (g_info_table[i])
 		ft_putendl_fd(g_info_table[i++]->input_format, STDERR_FILENO);
+	return ;
 }
