@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 22:24:13 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 00:21:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 t_hitter		*generate_tree(t_hitter *lhs, t_hitter *rhs);
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
-void		sort_hit_arr(t_hitter_arr hit_arr, int axis);
+void			sort_hit_arr(t_hitter_arr hit_arr, int axis);
 double			cost_func(const t_hitter_arr root, size_t left_size);
 int				find_best_split_info(t_hitter_arr hit_arr, t_best_split *info);
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);

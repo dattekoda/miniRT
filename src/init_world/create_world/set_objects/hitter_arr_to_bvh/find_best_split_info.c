@@ -6,35 +6,26 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 22:24:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 00:24:57 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hitter_arr.h"
 #include "best_split.h"
+#include "hitter_utils.h"
 #include "vec_utils.h"
-#include "libft.h"
 #include "result.h"
 #include <math.h>
 
+static t_best_split	construct_best_split
+	(int axis, size_t left_size, double cost);
+void				sort_hit_arr(t_hitter_arr hit_arr, int axis);
+static int			prepare_surface_arr
+	(t_hitter_arr hit_arr, double *left_arr, double *right_arr);
+t_aabb				surrounding_box(t_aabb box0, t_aabb box1);
+double				calc_surface_area(const t_aabb aabb);
 double	cost_func(const t_hitter_arr root, size_t left_size,
-	double *left_arr, double *right_arr);
-double	calc_surface_area(const t_aabb aabb);
-t_aabb	surrounding_box(t_aabb box0, t_aabb box1);
-t_aabb	construct_aabb(t_point3 min, t_point3 max);
-void	sort_hit_arr(t_hitter_arr hit_arr, int axis);
-t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
-
-static t_best_split	construct_best_split(int axis, size_t left_size,
-	double cost)
-{
-	t_best_split	rev;
-
-	rev.axis = axis;
-	rev.left_size = left_size;
-	rev.cost = cost;
-	return (rev);
-}
+	double *left_area_arr, double *right_area_arr);
 
 int	find_best_split_info(t_hitter_arr hit_arr, t_best_split *best_info)
 {
@@ -67,8 +58,19 @@ int	find_best_split_info(t_hitter_arr hit_arr, t_best_split *best_info)
 	return (best_info);
 }
 
-static int	prepare_surface_arr(t_hitter_arr hit_arr,
-	double *left_arr, double *right_arr)
+static t_best_split	construct_best_split
+	(int axis, size_t left_size, double cost)
+{
+	t_best_split	rev;
+
+	rev.axis = axis;
+	rev.left_size = left_size;
+	rev.cost = cost;
+	return (rev);
+}
+
+static int	prepare_surface_arr
+	(t_hitter_arr hit_arr, double *left_arr, double *right_arr)
 {
 	t_aabb	aabb_left;
 	t_aabb	aabb_right;

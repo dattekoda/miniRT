@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 22:22:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 22:23:18 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 00:37:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 static bool		is_component_lower(const t_hitter *subject,
 				const t_hitter *base, int axis);
-static void	swap_hitter(t_hitter **a, t_hitter **b);
+static void		swap_hitter(t_hitter **a, t_hitter **b);
 static size_t	pertition(t_hitter_arr hit_arr, int axis);
+t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
+
 void	sort_hit_arr(t_hitter_arr hit_arr, int axis)
 {
-	size_t	pivot_location;
+	size_t	pivot_idx;
 
 	if (hit_arr.size <= 1)
 		return ;
@@ -28,9 +30,10 @@ void	sort_hit_arr(t_hitter_arr hit_arr, int axis)
 			rt_swap(hit_arr.arr, hit_arr.arr + 1, sizeof(t_hitter **));
 		return ;
 	}
-	pivot_location = pertition(hit_arr, axis);
-	sort_hit_arr(construct_hitter_arr(hit_arr.arr,pivot_location - 1), axis);
-	sort_hit_arr(construct_hitter_arr(hit_arr.arr, pivot_location + 1), axis);
+	pivot_idx = pertition(hit_arr, axis);
+	sort_hit_arr(construct_hitter_arr(hit_arr.arr, pivot_idx - 1), axis);
+	sort_hit_arr(construct_hitter_arr(hit_arr.arr + pivot_idx + 1,
+									hit_arr.size - (pivot_idx + 1)), axis);
 }
 
 static size_t	pertition(t_hitter_arr hit_arr, int axis)
@@ -41,7 +44,7 @@ static size_t	pertition(t_hitter_arr hit_arr, int axis)
 
 	left = 0;
 	right = hit_arr.size - 1;
-	pivot_p = &hit_arr.arr[hit_arr.size];
+	pivot_p = &hit_arr.arr[right];
 	while (left < right)
 	{
 		while (left < hit_arr.size
@@ -67,7 +70,7 @@ static void	swap_hitter(t_hitter **a, t_hitter **b)
 	*b = tmp;
 }
 
-static bool	is_component_higher(const t_hitter *subject,
+static bool	is_component_lower(const t_hitter *subject,
 	const t_hitter *base, int axis)
 {
 	if (!subject->has_aabb || !base->has_aabb)
