@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/21 14:37:19 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:04:56 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	init_world(t_world *world, int argc, char *argv[])
 		ft_lstclear(&line_list, free);
 		exit(EXIT_FAILURE);
 	}
-	world->option_flag = set_option(argv[2]);
+	world->option_flag = set_option(argv + 2);
 	// ここから上はOK
 	if (create_world(world, line_list) == FAILURE)
 	{

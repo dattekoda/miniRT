@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_element.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/21 15:02:53 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:26:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,5 +224,21 @@ const t_generate_texture	g_generate_textures[] = {
 
 const t_generate_material	g_generate_materials[] = {
 	generate_lambertian,
+	NULL
+};
+
+static const t_option	g_artificial_option = {
+	.str = "artificial",
+	.flag = ARTIFICIAL
+};
+
+static const t_option	g_material_option = {
+	.str = "material",
+	.flag = MATERIAL
+};
+
+const t_option	*g_option_table[] = {
+	&g_artificial_option,
+	&g_material_option,
 	NULL
 };
