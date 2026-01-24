@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   test_init_world.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 22:16:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 01:36:57 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/25 01:46:42 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/25 01:47:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	test_mini_rt(void);
+int	test_validate_arguments(void);
+int	test_skips(void);
 
-int	main(void)
+int	test_init_world(void)
 {
-	return (test_mini_rt());
+	test_validate_arguments();
+	// test_skips();
+	return (0);
 }
-

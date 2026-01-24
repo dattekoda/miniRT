@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_arguments.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:21:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 18:09:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 01:18:13 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static int	validate_file_name(const char *file_path);
+bool		is_valid_file_name(const char *file_path);
 static void	put_format(void);
 bool		is_valid_option(char **options);
 
@@ -33,7 +33,7 @@ void	validate_arguments(int argc, char *argv[])
 		put_format();
 		exit(EXIT_FAILURE);
 	}
-	if (validate_file_name(argv[1]) == FAILURE)
+	if (!is_valid_file_name(argv[1]))
 		exit(EXIT_FAILURE);
 	if (argc >= 3 && !is_valid_option(argv + 2))
 		exit(EXIT_FAILURE);
@@ -44,7 +44,7 @@ void	validate_arguments(int argc, char *argv[])
 @brief Check if the file name of argument is correct.
 @param file_path just argv[1]
 */
-static int	validate_file_name(const char *file_path)
+bool	is_valid_file_name(const char *file_path)
 {
 	size_t		rt_file_len;
 	const char	*rt_file;

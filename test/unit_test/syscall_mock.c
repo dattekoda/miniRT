@@ -3,12 +3,17 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/types.h>
+
+int	_wrap_errno_ = 0;
+enum e_error_syscall	err_syscall = NOTHING;
+t_list	dummy_head = (t_list){0};
 
 void	*__wrap_malloc(size_t size)
 {
 	static int	called_count = 0;
-	void	*p;
-	t_list	*new_node;
+	void		*p;
+	t_list		*new_node;
 
 	if (err_syscall == MALLOC)
 	{
