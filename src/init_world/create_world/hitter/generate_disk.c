@@ -25,6 +25,8 @@ t_disk	*generate_disk(t_disk disk_param)
 {
 	t_disk	*p;
 
+	if (!disk_param.hitter.mat_ptr)
+		return (NULL);
 	p = ft_calloc(1, sizeof(t_material));
 	if (!p)
 	{

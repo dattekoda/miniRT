@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_objects.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/22 16:25:08 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:23:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "validate_utils.h"
 #include "element.h"
 #include "world.h"
+#include "rt_utils.h"
 #include "libft.h"
 #include <stdlib.h>
 
@@ -29,7 +30,7 @@ int	set_objects(t_world *world, t_list *line_list)
 	t_hitter	*rhs;
 	t_hitter	*lhs;
 
-	if (world->option_flag & IS_PHONG)
+	if (is_phong(world->option_flag))
 		delete_light_line(&line_list);
 	if (line_list_to_bvh(&rhs, line_list, g_infinite_table) == FAILURE)
 		return (FAILURE);

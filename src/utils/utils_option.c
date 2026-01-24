@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define_option.c                                    :+:      :+:    :+:   */
+/*   utils_option.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/24 16:27:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 18:13:09 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/24 18:21:30 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/24 18:22:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
+#include <stdbool.h>
 
-const t_option	g_artificial_option = {
-	.str = "artificial",
-	.flag = OPT_ARTIFICIAL
-};
-
-const t_option	g_material_option = {
-	.str = "material",
-	.flag = OPT_MATERIAL
-};
+bool	is_phong(int option_flag)
+{
+	return (option_flag & 1);
+}

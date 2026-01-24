@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/20 20:08:05 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:17:28 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	line_to_light(t_hitter **light, const char *line, bool is_phong)
 	mat_ptr = generate_light(texture_ptr);
 	if (!mat_ptr)
 		return (FAILURE);
-	*light = generate_sphere(shape_param, mat_ptr);
+	shape_param.hitter.mat_ptr = mat_ptr;
+	*light = generate_sphere(shape_param);
 	if (!*light)
 		return (FAILURE);
 	return (SUCCESS);

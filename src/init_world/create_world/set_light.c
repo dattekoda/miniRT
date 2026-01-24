@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:45:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/22 16:24:58 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:26:55 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "validate_utils.h"
 #include "vec_utils.h"
 #include "world.h"
+#include "rt_utils.h"
 #include "rt_define.h"
 #include "libft.h"
 #include <math.h>
@@ -28,16 +29,17 @@ int			line_to_light(t_hitter **light, const char *line, bool is_phong);
 int	set_light(t_world *world, t_list *line_list)
 {
 	t_list	*new_node;
-	bool	is_phong;
+	bool	phong_flag;
 
-	is_phong = world->option_flag & IS_PHONG;
+	phong_flag = is_phong(world->option_flag);
 	if (preprocess_line_list(line_list, world->camera.origin) == FAILURE)
 		return (FAILURE);
 	while (line_list)
 	{
 		if (match_identifier(line_list->content, &g_light_info))
 		{
-			if (new_light_node(&new_node, line_list->content, is_phong) == FAILURE)
+			if (new_light_node
+				(&new_node, line_list->content, phong_flag) == FAILURE)
 			{
 				ft_lstclear(world->light_list, clear_hitter);
 				return (FAILURE);

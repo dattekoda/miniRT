@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/21 15:33:54 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:20:22 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,6 @@
 # define MATERIAL_SPECIFIER "lmd"
 # define TEXTURE_SPECIFIER "sbc"
 
+# define IS_PHONG 1
+# define LIGHT_STERADIAN 0.21
 #endif

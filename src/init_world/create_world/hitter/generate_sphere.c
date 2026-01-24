@@ -34,6 +34,8 @@ t_hitter	*generate_sphere(t_sphere shape_param)
 {
 	t_sphere	*p;
 
+	if (!shape_param.hitter.mat_ptr)
+		return (NULL);
 	p = ft_calloc(1, sizeof(t_sphere));
 	if (!p)
 	{

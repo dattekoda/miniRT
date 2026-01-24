@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   set_ambient.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/22 16:24:47 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:24:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_utils.h"
 #include "world.h"
 #include "vec_utils.h"
+#include "rt_utils.h"
 #include "rt_config.h"
+#include "rt_define.h"
 #include <stdbool.h>
 
 static t_color	get_ambient_data(const char *line, bool is_phong);
@@ -21,16 +23,15 @@ static t_color	construct_ambient(t_color raw_color, double ratio);
 
 void	set_ambient(t_world *world, const t_list *line_list)
 {
-	bool	is_phong;
-
 	while (line_list)
 	{
 		if (match_identifier(line_list->content, &g_ambient_info))
 			break ;
 		line_list = line_list->next;
 	}
-	is_phong = world->option_flag & IS_PHONG;
-	world->ambient = get_ambient_data(line_list->content, is_phong);
+	world->ambient = 
+		get_ambient_data(line_list->content, is_phong(world->option_flag));
+	return ;
 }
 
 static t_color	get_ambient_data(const char *line, bool is_phong)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_option.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:53 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/24 15:57:04 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:11:28 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 #include "rt_utils.h"
 #include "libft.h"
 #include <unistd.h>
-
-static void	err_invalid_option(void);
-static void	err_set_option(int c);
 
 /*
 @brief set option like -p
