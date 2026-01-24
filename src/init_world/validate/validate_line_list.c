@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 16:37:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/24 16:39:36 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ bool		is_valid_line(const char *line, int option_flag);
 bool	is_valid_line_list(const t_list *line_list, int option_flag)
 {
 	int	result;
-	int	materaial_option_flag;
 
-	materaial_option_flag = (option_flag & OPT_MATERIAL);
 	result = count_ambient_and_camera(line_list);
 	while (line_list)
 	{
