@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:35:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/22 16:25:32 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/24 16:37:32 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #include "rt_utils.h"
 #include "libft.h"
 
-int			validate_element(char *line, const t_element *elem_info);
-static int	validate_invalid_id(char *line);
+bool		is_valid_element(char *line, const t_element *elem_info, int option_flag);
+static void	err_invalid_identifer(char *line);
 
-int	validate_line(char *line)
+bool	is_valid_line(const char *line, int option_flag)
 {
 	size_t	i;
 
@@ -26,13 +26,13 @@ int	validate_line(char *line)
 	while (g_info_table[i])
 	{
 		if (match_identifier(line, g_info_table[i]))
-			return (validate_element(line, g_info_table[i]));
+			return (is_valid_element(line, g_info_table[i], option_flag));
 		i++;
 	}
-	return (validate_invalid_id(line));
+	return (err_invalid_id(line), false);
 }
 
-static int	validate_invalid_id(char *line)
+static void	err_invalid_identifer(char *line)
 {
 	size_t	identifier_idx;
 
@@ -41,5 +41,5 @@ static int	validate_invalid_id(char *line)
 		identifier_idx++;
 	err_point_out(line, identifier_idx - 1);
 	err_rt("invalid identifier");
-	return (FAILURE);
+	return ;
 }
