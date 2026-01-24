@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/22 16:25:27 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/24 16:37:07 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,22 @@
 #include "libft.h"
 
 static int	count_ambient_and_camera(const t_list *line_list);
-int			validate_line(char *line);
+bool		is_valid_line(const char *line, int option_flag);
 
-int	validate_line_list(const t_list *line_list)
+bool	is_valid_line_list(const t_list *line_list, int option_flag)
 {
-	int	rev;
+	int	result;
+	int	materaial_option_flag;
 
-	rev = count_ambient_and_camera(line_list);
+	materaial_option_flag = (option_flag & OPT_MATERIAL);
+	result = count_ambient_and_camera(line_list);
 	while (line_list)
 	{
-		if (validate_line(line_list->content) == FAILURE)
-			rev = FAILURE;
+		if (!is_valid_line(line_list->content, option_flag))
+			result = false;
 		line_list = line_list->next;
 	}
-	return (rev);
+	return (result);
 }
 
 static int	count_ambient_and_camera(const t_list *line_list)

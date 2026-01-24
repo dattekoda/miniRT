@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/22 16:24:04 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:22:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ extern const t_element				*g_finite_table[];
 
 extern const t_generate_texture		g_generate_textures[];
 extern const t_generate_material	g_generate_materials[];
+
+extern const t_option	*g_option_table[];
 
 bool		match_identifier(const char *line, const t_element *info);
 void		clear_hitter(void *content);

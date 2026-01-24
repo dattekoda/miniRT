@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:21:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:37:33 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:46:58 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 static int	validate_file_name(const char *file_path);
 static void	put_format(void);
+bool		is_valid_option(char **options);
 
 /*
 @brief validate function
@@ -33,6 +34,8 @@ void	validate_arguments(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	if (validate_file_name(argv[1]) == FAILURE)
+		exit(EXIT_FAILURE);
+	if (argc >= 3 && !is_valid_option(argv + 2))
 		exit(EXIT_FAILURE);
 	return ;
 }

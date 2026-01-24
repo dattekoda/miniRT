@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   element.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:27:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/21 14:47:39 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/24 16:33:32 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,9 @@ typedef struct s_element
 {
 	char			*id;
 	size_t			id_len;
-	char			*format;
+	char			*input_format;
 	const t_skip	*skip_arr;
-	int				is_infinite;
 	int				(*line_to_hitter)(void *hitter, const char *line);
-	size_t			texture_id;
-	size_t			material_id;
 }	t_element;
 
 #endif
