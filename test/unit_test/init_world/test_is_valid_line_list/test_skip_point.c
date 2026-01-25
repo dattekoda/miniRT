@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 18:45:08 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 20:43:41 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 11:43:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_utils.h"
+#include "result.h"
 #include <assert.h>
 
 t_result	skip_point(const char *line, size_t *line_idx);

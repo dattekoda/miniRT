@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 20:28:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/10 20:33:08 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 11:44:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_utils.h"
+#include "result.h"
+#include <stddef.h>
 #include <assert.h>
 
 t_result	skip_color(const char *line, size_t *line_idx);

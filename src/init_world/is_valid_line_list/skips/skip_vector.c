@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_skips.c                                     :+:      :+:    :+:   */
+/*   skip_vector.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 18:31:56 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:49:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 11:32:03 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_define.h"
+#include "vec.h"
 #include "result.h"
+#include <math.h>
 #include <stddef.h>
 
 t_result	skip_vec(const char *line, size_t *line_idx, t_vec3type vectype);

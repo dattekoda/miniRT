@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_utils.h"
+#include "result.h"
+#include <stddef.h>
 #include <assert.h>
 
 t_result	token_to_value(const char *line, size_t *line_idx, double *d);
