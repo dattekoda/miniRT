@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:53:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 15:09:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 15:24:55 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 #include "rt_config.h"
 #include "rt_define.h"
 #include "vec_utils.h"
+#include "rt_utils.h"
 #include <stdbool.h>
 #include <assert.h>
 
 static int		test_get_camera_data(void);
 static t_camera	get_camera_data(const char *line);
 static bool		camera_equal(t_camera a, t_camera b);
+bool			vec3_equal(t_vec3 a, t_vec3 b);
 
 int	test_set_camera(void)
 {
@@ -43,5 +45,19 @@ static int	test_get_camera_data(void)
 
 static bool	camera_equal(t_camera a, t_camera b)
 {
+	if (!vec3_equal(a.origin, b.origin))
+		return (false);
+	if (!vec3_equal(a.onb.v[0], b.onb.v[0]))
+		return (false);
+	if (!vec3_equal(a.onb.v[1], b.onb.v[1]))
+		return (false);
+	if (!vec3_equal(a.onb.v[2], b.onb.v[2]))
+		return (false);
+	if (!fequal(a.screen_width, b.screen_width))
+		return (false);
+	if (!fequal(a.screen_height, b.screen_height))
+		return (false);
+	if (!vec3_equal(a.left_top, b.left_top))
+		return (false);
 	return (false);
 }
