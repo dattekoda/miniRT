@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:34:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 17:07:55 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 15:12:38 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 
 # include "vec.h"
 
+/*
+@param origin ray origin of camera
+@param onb v[0]: Right v[1]: Up v[2]:look for
+@param left_top left top corner of the screen
+*/
 typedef struct s_camera
 {
 	t_point3	origin;
 	t_onb		onb;
 	double		screen_width;
 	double		screen_height;
-	t_point3	high_left;
+	t_point3	left_top;
 }	t_camera;
 
 #endif

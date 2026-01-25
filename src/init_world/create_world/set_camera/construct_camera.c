@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   construct_camera.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:20:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 17:07:49 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 15:09:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ t_camera	construct_camera(t_point3 origin, t_vec3 direct, double hfov)
 	camera.origin = origin;
 	camera.onb = construct_camera_onb(direct);
 	get_screen_size(hfov, &camera.screen_width, &camera.screen_height);
-	camera.high_left = add_vec3(origin,
+	camera.left_top = add_vec3(origin,
 			add_vec3(scal_mul_vec3(camera.onb.v[0],
 					camera.screen_width * 0.5),
-				scal_mul_vec3(camera.onb.v[2],
+				scal_mul_vec3(camera.onb.v[1],
 					camera.screen_height * 0.5)));
 	return (camera);
 }
@@ -51,9 +51,9 @@ static t_onb	construct_camera_onb(t_vec3 direct)
 
 static void	get_screen_size(double hfov, double *width, double *height)
 {
-	double	theta;
+	double	hfov_radian;
 
-	theta = hfov * M_PI / 180.0;
-	*width = tan(theta) * 2.0;
+	hfov_radian = hfov * M_PI / 180.0;
+	*width = tan(hfov_radian / 2) * 2.0;
 	*height = *width * ASPECT_RATIO;
 }

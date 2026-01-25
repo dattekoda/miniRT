@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_camera_ray.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:35:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 22:01:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 15:09:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ t_ray	get_camera_ray(const t_camera *camera, double u, double v)
 
 static t_vec3	calc_ray_direct(const t_camera *camera, double u, double v)
 {
-	t_vec3	to_high_left;
+	t_vec3	to_left_top;
 	t_vec3	horizonal;
 	t_vec3	vertical;
 
-	to_high_left = sub_vec3(camera->high_left, camera->origin);
+	to_left_top = sub_vec3(camera->left_top, camera->origin);
 	horizonal = scal_mul_vec3(camera->onb.v[0], camera->screen_width * u);
 	vertical = scal_mul_vec3(camera->onb.v[2], camera->screen_height * (-v));
-	return (add_vec3(to_high_left, add_vec3(horizonal, vertical)));
+	return (add_vec3(to_left_top, add_vec3(horizonal, vertical)));
 }
 
 static t_vec3	random_in_unit_disk(void)
