@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/24 20:44:05 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 11:22:55 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static t_light	construct_light(t_texture *texture_ptr)
 
 static t_color	emmited_light(const void *s, t_hrec *hrec)
 {
-	const t_light		*self;
-	t_texture	*texture_ptr;
+	const t_light	*self;
+	t_texture		*texture_ptr;
 
 	self = s;
 	texture_ptr = self->material.texture_ptr;

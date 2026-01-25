@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 19:07:47 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 22:08:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 11:20:35 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 # include "vec.h"
 
 /*
-@param value_pdf ほうこうべくとるにおうじてかくりつみつどをかえす
-@param random_pdf そのpdf にそう ほうこうべくせいせい*/
+@param calc_pdf_value 方向ベクトルに応じた確率密度を計算
+@param random_pdf ランダムな方向ベクトルを生成
+*/
 typedef struct s_pdf
 {
-	double	(*calc_pdf_value)(const void *self, t_vec3 direction);
+	double	(*calc_pdf_value)(const void *self, const t_vec3 *direction);
 	t_vec3	(*random_pdf)(const void *self);
 }	t_pdf;
 

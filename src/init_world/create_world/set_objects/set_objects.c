@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 18:23:39 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 11:02:19 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	set_objects(t_world *world, t_list *line_list)
 	t_hitter	*rhs;
 	t_hitter	*lhs;
 
-	if (is_phong(world->option_flag))
+	if (world->option_flag & OPT_ARTIFICIAL)
 		delete_light_line(&line_list);
 	if (line_list_to_bvh(&rhs, line_list, g_infinite_table) == FAILURE)
 		return (FAILURE);

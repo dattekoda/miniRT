@@ -62,8 +62,8 @@ static bool	scatter_lambertian(const void *s, const t_world *world, t_hrec *hrec
 	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec);
 	mix_pdf = create_mix_pdf_lambertian(world, hrec);
 	srec->next_ray = construct_ray(hrec->point, mix_pdf.pdf.random_pdf(&mix_pdf));
-	srec->sampling_pdf = mix_pdf.pdf.value_pdf(&mix_pdf, srec->next_ray.direct);
-	srec->surface_pdf = mix_pdf.surface_pdf->value_pdf(&mix_pdf.surface_pdf, srec->next_ray.direct);
+	srec->sampling_pdf = mix_pdf.pdf.calc_pdf_value(&mix_pdf, &srec->next_ray.direct);
+	srec->surface_pdf = mix_pdf.surface_pdf->calc_pdf_value(&mix_pdf.surface_pdf, &srec->next_ray.direct);
 	return (true);
 }
 

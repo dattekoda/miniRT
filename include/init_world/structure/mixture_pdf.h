@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mixture_pdf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:04:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 16:09:52 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 11:19:11 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
