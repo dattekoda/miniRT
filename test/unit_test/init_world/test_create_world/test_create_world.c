@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_skips.c                                       :+:      :+:    :+:   */
+/*   test_create_world.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/10 18:41:23 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/12 16:23:01 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/25 11:51:35 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/25 11:55:31 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	test_skip_spaces(void);
-int	test_token_to_value(void);
-int	test_skip_range(void);
-int	test_skip_point(void);
-int	test_skip_unit(void);
-int	test_skip_color(void);
-int	test_skip_until_end(void);
+int	test_match_identifer(void); // test_utilsとかのほうがいいか
+int	test_set_ambient(void);
+int	test_set_camera(void);
+int	test_set_light(void);
+int	test_set_objects(void);
 
-int	test_skips(void)
+int	test_create_world(void)
 {
-	test_skip_spaces();
-	test_token_to_value();
-	test_skip_range();
-	test_skip_point();
-	test_skip_unit();
-	test_skip_color();
-	test_skip_until_end();
+	test_set_ambient();
+	test_set_camera();
+	test_set_light();
+	test_set_objects();
 	return (0);
 }
-

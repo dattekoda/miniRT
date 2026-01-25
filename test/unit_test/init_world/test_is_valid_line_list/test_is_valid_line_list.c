@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_init_world.c                                  :+:      :+:    :+:   */
+/*   test_skips.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 01:46:42 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 11:57:33 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/10 18:41:23 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/25 11:50:54 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	test_utils(void);
-int	test_validate_arguments(void);
-int	test_set_option(void);
-int	test_is_valid_line_list(void);
-int	test_create_world(void);
+int	test_skip_spaces(void);
+int	test_token_to_value(void);
+int	test_skip_range(void);
+int	test_skip_point(void);
+int	test_skip_unit(void);
+int	test_skip_color(void);
+int	test_skip_until_end(void);
 
-int	test_init_world(void)
+static int	test_skips(void);
+
+int	test_is_valid_line_list(void)
 {
-	test_validate_arguments();
-	test_set_option();
 	test_skips();
-	test_create_world();
 	return (0);
 }
 
-int	test_match_identifer(void);
-
-static int	test_utils(void)
+static int	test_skips(void)
 {
-	test_match_identifer();
+	test_skip_spaces();
+	test_token_to_value();
+	test_skip_range();
+	test_skip_point();
+	test_skip_unit();
+	test_skip_color();
+	test_skip_until_end();
 	return (0);
 }
+

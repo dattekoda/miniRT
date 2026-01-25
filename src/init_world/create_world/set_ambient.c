@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 20:38:35 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 12:39:07 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ void	set_ambient(t_world *world, const t_list *line_list)
 	return ;
 }
 
-static t_color	get_ambient_data(const char *line, bool is_phong)
+t_color	get_ambient_data(const char *line, bool is_phong)
 {
 	t_color	raw_color;
 	double	ratio;
 	size_t	i;
 
 	i = 1;
-	token_to_vec(line, &i, &raw_color);
 	token_to_value(line, &i, &ratio);
+	token_to_vec(line, &i, &raw_color);
 	if (!is_phong)
 		ratio *= PATHTRACING_AMBIENTSCALE;
 	return (construct_ambient(raw_color, ratio));
@@ -50,5 +50,5 @@ static t_color	get_ambient_data(const char *line, bool is_phong)
 
 static t_color	construct_ambient(t_color raw_color, double ratio)
 {
-	return (normalize_color(scal_mul_vec3(raw_color, ratio)));
+	return (scal_mul_vec3(normalize_color(raw_color), ratio));
 }

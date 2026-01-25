@@ -6,17 +6,15 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:27:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 20:25:24 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 11:59:16 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ELEMENT_H
 # define ELEMENT_H
 
-# include "result.h"
 # include "skip.h"
 # include "hitter.h"
-# include <stddef.h>
 
 // typedef enum e_element_type
 // {

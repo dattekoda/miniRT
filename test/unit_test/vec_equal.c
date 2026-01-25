@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_init_world.c                                  :+:      :+:    :+:   */
+/*   vec_equal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 01:46:42 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 11:57:33 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/25 12:48:46 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/25 13:30:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	test_utils(void);
-int	test_validate_arguments(void);
-int	test_set_option(void);
-int	test_is_valid_line_list(void);
-int	test_create_world(void);
+#include "vec_utils.h"
+#include <stdbool.h>
+#include <stddef.h>
 
-int	test_init_world(void)
+bool	vec3_equal(t_vec3 a, t_vec3 b)
 {
-	test_validate_arguments();
-	test_set_option();
-	test_skips();
-	test_create_world();
-	return (0);
-}
-
-int	test_match_identifer(void);
-
-static int	test_utils(void)
-{
-	test_match_identifer();
-	return (0);
+	return (length_squared_vec3(sub_vec3(b, a)) < 1e-5);
 }
