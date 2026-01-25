@@ -6,15 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:53 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/24 20:29:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 02:41:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_utils.h"
-#include "rt_define.h"
-#include "rt_utils.h"
 #include "libft.h"
-#include <unistd.h>
 
 static int	set_long_option(char *option);
 static int	set_short_option(char *option);

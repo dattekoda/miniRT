@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/25 01:36:44 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/25 03:02:10 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,18 +25,23 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 				main.c \
 				mini_rt.c \
 				$(addprefix init_world/, \
+					init_world.c \
+					set_option.c \
+					read_rt_file.c \
+					$(addprefix define/, \
 					define_element.c \
 					define_option.c \
 					define_skips.c \
-					init_world.c \
-					read_rt_file.c \
-					set_option.c \
-					$(addprefix validate/, \
-						is_valid_option.c \
+					) \
+					$(addprefix validate_arguments/, \
+					validate_arguments.c \
+					is_valid_file_name.c \
+					is_valid_option.c \
+					)
+					$(addprefix is_valid_line_list/, \
 						skip_until_end.c \
 						skip_value.c \
 						skip_vector.c \
-						validate_arguments.c \
 						validate_element.c \
 						validate_line.c \
 						validate_line_list.c \

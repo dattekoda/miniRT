@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define_option.c                                    :+:      :+:    :+:   */
+/*   option.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/24 16:27:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 18:46:17 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/25 02:39:50 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/25 02:40:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
+#ifndef OPTION_H
+# define OPTION_H
 
-const t_option	g_artificial_option = {
-	.str = "artificial",
-	.flag = OPT_ARTIFICIAL
+enum e_option
+{
+	OPT_ARTIFICIAL = (1 << 0),
+	OPT_MATERIAL = (1 << 1),
 };
 
-const t_option	g_material_option = {
-	.str = "material",
-	.flag = OPT_MATERIAL
-};
+typedef struct s_option
+{
+	char			*str;
+	enum e_option	flag;
+}	t_option;
+
+#endif

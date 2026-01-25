@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:27:58 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:38:04 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 02:00:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,16 @@
 
 # include "vec.h"
 # include "camera.h"
-# include "tree.h"
 # include "libft.h"
+# include "hitter.h"
 
-typedef struct s_world	t_world;
-
-struct s_world
+typedef struct s_world
 {
 	int			option_flag;
 	t_color		ambient;
 	t_camera	camera;
 	t_list		*light_list;
 	t_hitter	*object_tree;
-};
+}	t_world;
 
 #endif

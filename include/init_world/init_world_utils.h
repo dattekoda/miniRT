@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 20:32:13 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 02:41:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "element.h"
 # include "vec.h"
+# include "option.h"
 # include "init_world_define.h"
 # include <stdbool.h>
 

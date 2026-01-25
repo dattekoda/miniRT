@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_line_list.c                               :+:      :+:    :+:   */
+/*   is_valid_line_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 16:39:36 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 03:19:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include "libft.h"
 
 static int	count_ambient_and_camera(const t_list *line_list);
-bool		is_valid_line(const char *line, int option_flag);
+bool		is_valid_line(char *line, const int option_flag);
 
-bool	is_valid_line_list(const t_list *line_list, int option_flag)
+bool	is_valid_line_list(const t_list *line_list, const int option_flag)
 {
 	int	result;
 
@@ -49,8 +49,8 @@ static int	count_ambient_and_camera(const t_list *line_list)
 	if (ambient_count == 1 && camera_count == 1)
 		return (SUCCESS);
 	if (ambient_count != 1)
-		err_rt("set only one ambient");
+		err_rt("Set only one ambient");
 	if (camera_count != 1)
-		err_rt("set only one camera");
+		err_rt("Set only one camera");
 	return (FAILURE);
 }

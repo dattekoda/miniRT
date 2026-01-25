@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_world_define.h                                :+:      :+:    :+:   */
+/*   define_option.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 02:40:18 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/24 16:27:10 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/25 02:40:52 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_WORLD_DEFINE_H
-# define INIT_WORLD_DEFINE_H
+#include "option.h"
+#include <stddef.h>
 
-# define T_AABB	1.0f
-# define T_TRI	1.0f
+const t_option	g_artificial_option = {
+	.str = "artificial",
+	.flag = OPT_ARTIFICIAL
+};
 
-# define PATHTRACING_LIGHT_STRENGTH 100
+const t_option	g_material_option = {
+	.str = "material",
+	.flag = OPT_MATERIAL
+};
 
-# include "texture.h"
-
-typedef t_texture	*(*t_generate_texture)(t_color color);
-typedef t_material	*(*t_generate_material)(t_texture *texture_ptr);
-
-#endif
+const t_option	*g_option_table[] = {
+	&g_artificial_option,
+	&g_material_option,
+	NULL
+};

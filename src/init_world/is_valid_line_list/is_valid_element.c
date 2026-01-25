@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_element.c                                 :+:      :+:    :+:   */
+/*   is_valid_element.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/24 20:37:44 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 03:24:07 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
+#include "option.h"
 #include "validate_utils.h"
 #include "rt_utils.h"
 #include "element.h"
 #include "result.h"
 
-static bool	is_valid_material
-	(char *line, size_t *i_ptr, char *input_format);
 static bool	is_valid_parameters
 	(char *line, size_t *i_ptr, const t_element *elem_info);
+static bool	is_valid_material
+	(char *line, size_t *i_ptr, char *input_format);
+static bool	err_invlid_line(char *line, char *format, size_t i, char *err_msg);
 t_result	skip_material(char *line, size_t *line_idx);
 t_result	skip_texture(char *line, size_t *line_idx);
-static bool	err_invlid_line(char *line, char *format, size_t i, char *err_msg);
-
 
 bool	is_valid_element
-	(char *line, const t_element *elem_info, int option_flag)
+	(char *line, const t_element *elem_info, const int option_flag)
 {
 	t_result	result;
 	size_t		i;
@@ -69,7 +68,7 @@ static bool	is_valid_material
 {
 	t_result	result;
 
-	result = skip_texture(line, i_ptr);
+	result = skip_material(line, i_ptr);
 	if (result.state == FAILURE)
 		return (err_invlid_line
 			(line, input_format, *i_ptr, result.value.err_msg));

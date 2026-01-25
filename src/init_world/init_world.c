@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/24 22:12:18 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 02:04:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include <stdlib.h>
 
 void	validate_arguments(int argc, char *argv[]);
+int		set_option(char *options[]);
 void	read_rt_file(t_list **line_list, const char *file_path);
 bool	is_valid_line_list(const t_list *line_list, int option_flag);
-int		set_option(char *options[]);
 int		create_world(t_world *world, t_list *line_list);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 20:23:20 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 02:39:00 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,11 +150,5 @@ const t_generate_texture	g_generate_textures[] = {
 
 const t_generate_material	g_generate_materials[] = {
 	generate_lambertian,
-	NULL
-};
-
-const t_option	*g_option_table[] = {
-	&g_artificial_option,
-	&g_material_option,
 	NULL
 };
