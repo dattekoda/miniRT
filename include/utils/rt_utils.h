@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 22:33:31 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:09:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	perror_rt(const char *syscall_fname);
 
 double	random_double(double min, double max);
 int		random_int(int min, int max);
+size_t	random_size_t(size_t min, size_t max);
 // utils_random.c
 
 void	clear_hitter(void *self);

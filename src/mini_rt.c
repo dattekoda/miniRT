@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 02:21:19 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:01:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int	mini_rt(int argc, char *argv[])
 	if (init_world(&world, argc, argv) == FAILURE)
 		return (EXIT_FAILURE);
 	ft_putendl_fd("Hello, miniRT!", 1);
-	return (EXIT_SUCCESS);
+	return (SUCCESS);
 }
