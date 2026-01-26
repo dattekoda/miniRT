@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_list_to_bvh.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 21:20:36 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:47:35 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

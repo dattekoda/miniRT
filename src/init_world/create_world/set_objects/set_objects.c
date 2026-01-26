@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 11:02:19 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:59:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ int	set_objects(t_world *world, t_list *line_list)
 	{
 		clear_tree(rhs);
 		return (FAILURE);
+	}
+	if (!lhs && !rhs)
+	{
+		world->object_tree = NULL;
+		return (SUCCESS);
 	}
 	world->object_tree = generate_tree(lhs, rhs);
 	if (!world->object_tree)

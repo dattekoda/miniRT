@@ -23,7 +23,8 @@
 
 static int	add_hitter_list(t_list **hitter_list, const char *line, 
 		const t_element *element);
-static int	line_list_to_hitter_list(t_list **hitter_list, const t_list *line_list, 
+static int	line_list_to_hitter_list
+	(t_list **hitter_list, const t_list *line_list, 
 		const t_element *object_table[]);
 static int	match_objects(const char *line, const t_element *object_table[], 
 		size_t *idx);
@@ -39,10 +40,11 @@ int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list, \
 	t_list	*curr;
 
 	ft_bzero(hit_arr, sizeof(t_hitter_arr));
+	hitter_list = NULL;
 	if (line_list_to_hitter_list(&hitter_list, line_list, object_table) 
 		== FAILURE)
 		return (ft_lstclear(&hitter_list, free), FAILURE);
-	hit_arr->size = ft_lstsize(hitter_list);
+	hit_arr->size = (size_t)ft_lstsize(hitter_list);
 	hit_arr->arr = ft_calloc(hit_arr->size, sizeof(t_hitter *));
 	if (!hit_arr->arr)
 		return (ft_lstclear(&hitter_list, free), FAILURE);
@@ -83,8 +85,9 @@ static int	match_objects(const char *line,
 /*
 @brief not responsible for free(hitter_list)
 */
-static int	line_list_to_hitter_list(t_list **hitter_list, const t_list *line_list, 
-	const t_element *object_table[])
+static int	line_list_to_hitter_list
+	(t_list **hitter_list, const t_list *line_list, 
+		const t_element *object_table[])
 {
 	size_t		obj_idx;
 
