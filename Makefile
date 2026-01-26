@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/26 08:44:40 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/26 19:25:07 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -186,8 +186,8 @@ SCANBUILD	=	/usr/bin/scan-build-12
 
 # --- test ---
 TESTNAME	=	test_miniRT
-TESTCFLAG	=	$(ASANFLAG) -Itest/unit_test
-TESTLDFLAG	=	$(LDFLAG) -Wl,--wrap=open,--wrap=read,--wrap=malloc,--wrap=free
+TESTCFLAG	=	$(ASANFLAG) -Itest/utils
+TESTLDFLAG	=	$(LDFLAG) -Wl,--wrap=open,--wrap=read,--wrap=malloc,--wrap=free,--wrap=exit
 
 TESTSRCFILES	=	$(addprefix test/, \
 						test.c \
@@ -195,6 +195,7 @@ TESTSRCFILES	=	$(addprefix test/, \
 						$(addprefix init_world/, \
 							test_init_world.c \
 							test_set_option.c \
+							test_read_rt_file.c \
 							$(addprefix test_validate_arguments/, \
 								test_validate_arguments.c \
 								test_is_valid_file_name.c \
@@ -231,7 +232,7 @@ TESTSRCFILES	=	$(addprefix test/, \
 							vec_equal.c \
 							print_vec.c \
 						) \
-					) \
+					)
 
 TESTSRCS		=	$(TESTSRCFILES) \
 					$(filter-out $(SRCDIR)/main.c, $(SRCS))

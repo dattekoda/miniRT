@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid_option.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:46:26 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 08:35:49 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:51:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool	is_valid_option(char **options)
 }
 
 /*
-@brief -a, -m
+@param option -aaaa -maamm
 */
 static bool	is_valid_short_option(char *option)
 {
@@ -70,7 +70,7 @@ static bool	is_valid_short_option(char *option)
 }
 
 /*
-@brief --artificial 
+@param option --artificial --material
 */
 static bool	is_valid_long_option(char *option)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_rt.c                                          :+:      :+:    :+:   */
+/*   read_rt_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/16 16:44:26 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:39:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ static int	read_lines_to_list(t_list *cur, int fd)
 		cur = cur->next;
 	}
 	if (!cur)
-		return (perror_rt("malloc"), FAILURE);
+		return (free(line), perror_rt("malloc"), FAILURE);
 	return (SUCCESS);
 }

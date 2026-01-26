@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_is_valid_option.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 01:26:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 08:32:26 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:52:05 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ bool	is_valid_option(char **options);
 int	test_is_valid_option(void)
 {
 	assert(is_valid_option((char *[]){"-a", NULL}) == true);
+	assert(is_valid_option((char *[]){"-aaa", NULL}) == true);
+	assert(is_valid_option((char *[]){"-amma", NULL}) == true);
 	assert(is_valid_option((char *[]){"-a", "-m", NULL}) == true);
 	assert(is_valid_option((char *[]){"-am", NULL}) == true);
 	assert(is_valid_option((char *[]){"-ma", NULL}) == true);

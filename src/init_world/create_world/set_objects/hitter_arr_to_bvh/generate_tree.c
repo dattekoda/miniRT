@@ -21,6 +21,9 @@ static bool		hit_tree
 	(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range);
 void			clear_tree(void *s);
 
+/*
+@brief responsible for free lhs, rhs when malloc failed
+*/
 t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs)
 {
 	t_tree	*node;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syscall_mock.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 01:37:49 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 01:45:19 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:24:19 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SYSCALL_MOCK_H
 
 # include <stdbool.h>
+# include <setjmp.h>
 enum e_error_syscall {
 	NOTHING,
 	OPEN,
@@ -24,6 +25,9 @@ enum e_error_syscall {
 
 extern int		_wrap_errno_;
 extern enum		e_error_syscall err_syscall;
+
+extern jmp_buf	g_test_jump_env;
+extern int		g_last_exit_status;
 
 bool	is_memory_leaked(void);
 

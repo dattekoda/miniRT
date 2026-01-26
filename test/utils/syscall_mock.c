@@ -91,3 +91,14 @@ int	__wrap_open(const char *pathname, int flags)
 	}
 	return (__real_open(pathname, flags));
 }
+
+#include <setjmp.h>
+
+jmp_buf	g_test_jump_env;
+int		g_last_exit_status;
+
+void	__wrap_exit(int status)
+{
+	g_last_exit_status = status;
+	longjmp(g_test_jump_env, 1);
+}
