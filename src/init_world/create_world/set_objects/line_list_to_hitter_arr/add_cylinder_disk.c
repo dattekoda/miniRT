@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_cylinder_disk.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 22:12:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/24 18:19:32 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:44:24 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ static t_disk	cylinder_to_upper_disk(t_cylinder cylinder);
 static t_disk	cylinder_to_lower_disk(t_cylinder cylinder);
 static int		add_disk(t_list **hitter_list, t_disk disk);
 
-int	add_cylinder_disk(t_list **hitter_list, t_cylinder cylinder)
+int	add_cylinder_disk(t_list **hitter_list, t_cylinder *cylinder)
 {
-	t_disk	upper_disk;
-	t_disk	lower_disk;
+	t_disk		upper_disk;
+	t_disk		lower_disk;
 
-	upper_disk = cylinder_to_upper_disk(cylinder);
-	lower_disk = cylinder_to_lower_disk(cylinder);
+	upper_disk = cylinder_to_upper_disk(*cylinder);
+	lower_disk = cylinder_to_lower_disk(*cylinder);
 	if (add_disk(hitter_list, upper_disk) == FAILURE)
 		return (FAILURE);
 	if (add_disk(hitter_list, lower_disk) == FAILURE)
@@ -39,7 +39,7 @@ static int	add_disk(t_list **hitter_list, t_disk disk_param)
 	t_list		*tmp_list;
 	t_disk		*tmp_disk;
 
-	tmp_disk = generate_disk(disk_param);
+	tmp_disk = (t_disk *)generate_disk(disk_param);
 	if (!tmp_disk)
 		return (FAILURE);
 	tmp_list = ft_lstnew(tmp_disk);

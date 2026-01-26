@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/24 15:30:25 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:18:41 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "solution.h"
 #include "vec_utils.h"
 #include "rt_define.h"
+#include <math.h>
 
 static t_solution	init_solution_context
 	(const t_sphere *self, const t_ray *ray);
@@ -22,9 +23,9 @@ static void			assign_sphere_hrec
 static t_vec2		construct_sphere_uv(const t_vec3 *unit_normal);
 
 bool	hit_sphere
-	(const void *s, const t_ray *ray, t_hrec *hrec, const t_range *range)
+	(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {
-	t_sphere	*self;
+	const t_sphere	*self;
 	t_solution	solu;
 
 	self = s;

@@ -5,6 +5,11 @@
 #include <stdio.h>
 #include <sys/types.h>
 
+void	*__real_malloc(size_t size);
+void	__real_free(void *ptr);
+ssize_t	__real_read(int fd, void *buf, size_t count);
+int		__real_open(const char *pathname, int flags);
+
 int	_wrap_errno_ = 0;
 enum e_error_syscall	err_syscall = NOTHING;
 t_list	dummy_head = (t_list){0};

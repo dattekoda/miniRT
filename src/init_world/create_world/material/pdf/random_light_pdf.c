@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 23:03:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 23:05:55 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:54:05 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "rt_define.h"
 #include <math.h>
 
+static size_t	count_list_size(const t_list *lst);
 static t_vec3	random_light_list_pdf
 	(const t_list *light_list, const t_point3 *point);
 static t_vec3	random_sphere(const t_sphere *sphere, const t_point3 *point);
@@ -32,14 +33,14 @@ t_vec3	random_light_pdf(const void *s)
 
 static t_vec3	random_light_list_pdf(const t_list *light_list, const t_point3 *point)
 {
-	int	count;
-	int	target;
-	int	i;
+	size_t	count;
+	size_t	target;
+	size_t	i;
 
-	count = ft_lstsize(light_list);
+	count = count_list_size(light_list);
 	if (count == 0)
 		return (constant_vec3(0));
-	target = random_int(0, count - 1);
+	target = (size_t)random_int(0, (int)count - 1);
 	i = 0;
 	while (light_list)
 	{
@@ -49,6 +50,20 @@ static t_vec3	random_light_list_pdf(const t_list *light_list, const t_point3 *po
 	}
 	return (constant_vec3(0));
 }
+
+
+static size_t	count_list_size(const t_list *lst)
+{
+	size_t	size;
+
+	if (!lst)
+		return (0);
+	size = 1;
+	while (lst->next != NULL)
+		lst = (size++, lst->next);
+	return (size);
+}
+
 
 static t_vec3	random_sphere(const t_sphere *sphere, const t_point3 *point)
 {

@@ -13,7 +13,9 @@
 #include "result.h"
 #include <stddef.h>
 #include <assert.h>
+#include <stdbool.h>
 
+bool		fequal(double a, double b);
 t_result	token_to_value(const char *line, size_t *line_idx, double *d);
 
 int	test_token_to_value(void)

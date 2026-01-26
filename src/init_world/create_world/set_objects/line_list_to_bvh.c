@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   line_list_to_bvh.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 17:11:42 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:20:36 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "element.h"
 #include "hitter_arr.h"
-#include "tree.h"
 #include "libft.h"
-#include <element.h>
-#include <hitter_arr.h>
+#include <stdlib.h>
 
-void		clear_hitter_arr(t_hitter_arr arr);
+static void		clear_hitter_arr(t_hitter_arr arr);
 int			line_list_to_hit_arr(t_hitter_arr *hit_arr,
 				const t_list *line_list, const t_element *object_table[]);
 int			hit_arr_to_bvh(t_hitter **root, const t_hitter_arr hit_arr);
@@ -37,4 +35,17 @@ int	line_list_to_bvh(t_hitter **node, const t_list *line_list,
 	}
 	free(hit_arr.arr);
 	return (SUCCESS);
+}
+
+static void		clear_hitter_arr(t_hitter_arr arr)
+{
+	size_t		i;
+
+	i = 0;
+	while (i < arr.size)
+	{
+		arr.arr[i]->clear(arr.arr[i]);
+		i++;
+	}
+	free(arr.arr);
 }

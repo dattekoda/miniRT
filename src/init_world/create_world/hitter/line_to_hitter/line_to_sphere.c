@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:45:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 17:47:25 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:28:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "material_info.h"
 #include "init_world_utils.h"
 #include "sphere.h"
-#include "solid_texture.h"
-#include "lambertian.h"
 #include "vec_utils.h"
 #include "rt_define.h"
 
@@ -30,7 +28,6 @@ static int	line_to_sphere_param(const char *line,
 int	line_to_sphere(t_hitter **sphere, const char *line/* , bool is_option_m */)
 {
 	t_sphere	sphere_param;
-	t_color		color;
 
 	ft_bzero(&sphere_param, sizeof(t_sphere));
 	line_to_sphere_param(line, &sphere_param);
@@ -43,7 +40,6 @@ int	line_to_sphere(t_hitter **sphere, const char *line/* , bool is_option_m */)
 static int	line_to_sphere_param(const char *line,
 	t_sphere *sphere_param)
 {
-	t_sphere		sphere_param;
 	double			diameter;
 	size_t			i;
 
@@ -52,7 +48,7 @@ static int	line_to_sphere_param(const char *line,
 	token_to_value(line, &i, &diameter);
 	sphere_param->radius = diameter * 0.5;
 	if (line_to_material
-		(line, i, &sphere_param->hitter.mat_ptr, g_sphere_info) 
+		(line, &i, sphere_param->hitter.mat_ptr, g_sphere_info) 
 		== FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

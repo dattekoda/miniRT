@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:45 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/22 16:25:03 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:48:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "vec_utils.h"
 #include "libft.h"
 
-static t_camera	get_camera_data(const char *line);
+t_camera	get_camera_data(const char *line);
 t_camera		construct_camera(t_point3 origin, t_vec3 direct, double hfov);
 
 void	set_camera(t_camera *camera, const t_list *line_list)
@@ -30,7 +30,7 @@ void	set_camera(t_camera *camera, const t_list *line_list)
 	*camera = get_camera_data(line_list->content);
 }
 
-static t_camera	get_camera_data(const char *line)
+t_camera	get_camera_data(const char *line)
 {
 	size_t		i;
 	t_point3	original;

@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 22:22:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 00:37:26 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:24:25 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hitter_arr.h"
+#include "rt_utils.h"
 
 static bool		is_component_lower(const t_hitter *subject,
 				const t_hitter *base, int axis);
@@ -57,7 +58,7 @@ static size_t	pertition(t_hitter_arr hit_arr, int axis)
 			break ;
 		swap_hitter(&hit_arr.arr[left++], &hit_arr.arr[right--]);
 	}
-	swap_hitter(&hit_arr.arr[left], *pivot_p);
+	swap_hitter(&hit_arr.arr[left], pivot_p);
 	return (left);
 }
 

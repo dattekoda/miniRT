@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_light_pdf_value.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 22:04:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 11:24:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:06:06 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ double	calc_light_pdf_value(const void *s, const t_vec3 *direct)
 	const t_light_pdf	*self;
 
 	self = s;
-	return (calc_sphere_pdf_value(self->light_list, &self->point, direct));
+	return (calc_light_list_pdf_value(self->light_list, &self->point, direct));
 }
 
 static double	calc_light_list_pdf_value

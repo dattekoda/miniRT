@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/25 03:02:10 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/26 08:44:40 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,9 @@ RMDIR		=	rm -rf
 SRCDIR		=	src
 
 SRCS	=	$(addprefix $(SRCDIR)/, \
-				get_camera_ray.c \
 				main.c \
 				mini_rt.c \
+				get_camera_ray.c \
 				$(addprefix init_world/, \
 					init_world.c \
 					set_option.c \
@@ -37,14 +37,16 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 					validate_arguments.c \
 					is_valid_file_name.c \
 					is_valid_option.c \
-					)
+					) \
 					$(addprefix is_valid_line_list/, \
-						skip_until_end.c \
-						skip_value.c \
-						skip_vector.c \
-						validate_element.c \
-						validate_line.c \
-						validate_line_list.c \
+						is_valid_element.c \
+						is_valid_line.c \
+						is_valid_line_list.c \
+						$(addprefix skips/, \
+							skip_until_end.c \
+							skip_value.c \
+							skip_vector.c \
+						) \
 						$(addprefix utils/, \
 							err_point_out.c \
 							skip_material.c \
@@ -54,20 +56,16 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							skip_vec.c \
 						) \
 					) \
-					$(addprefix utils/, \
-						char_to_idx.c \
-						match_identifer.c \
-						token_to_char.c \
-						token_to_value.c \
-						token_to_vec.c \
-					) \
 					$(addprefix create_world/, \
 						create_world.c \
 						set_ambient.c \
-						set_light.c \
 						$(addprefix set_camera/, \
 							construct_camera.c \
 							set_camera.c \
+						) \
+						$(addprefix set_light/, \
+							set_light.c \
+							preprocess_line_list.c \
 						) \
 						$(addprefix texture/, \
 							generate_solid_texture.c \
@@ -80,6 +78,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								cosine_pdf.c \
 								light_pdf.c \
 								mixture_pdf.c \
+								random_light_pdf.c \
 							) \
 						) \
 						$(addprefix hitter/, \
@@ -111,6 +110,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								find_best_split_info.c \
 								generate_tree.c \
 								hit_arr_to_bvh.c \
+								sort_hit_arr.c \
 							) \
 							$(addprefix line_list_to_hitter_arr/, \
 								add_cylinder_disk.c \
@@ -118,9 +118,15 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							) \
 						) \
 					) \
+					$(addprefix utils/, \
+						char_to_idx.c \
+						match_identifer.c \
+						token_to_char.c \
+						token_to_value.c \
+						token_to_vec.c \
+					) \
 				) \
 				$(addprefix ray/, \
-					construct_ray.c \
 					ray.c \
 				) \
 				$(addprefix utils/, \
@@ -148,22 +154,7 @@ OBJDIR		=	obj
 OBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 
 # --- include ---
-INCDIRS		=	include \
-				$(addprefix include/, \
-					hitter \
-					init_world \
-					$(addprefix hitter/, \
-						line_to_hitter \
-					) \
-					$(addprefix init_world/, \
-						material \
-						validate \
-					) \
-					utils \
-					$(addprefix utils/, \
-						vec \
-					) \
-				)
+INCDIRS		=	$(shell find include -type d)
 
 # --- OS DETECTION ---
 UNAME	=	$(shell uname -s)
@@ -201,20 +192,46 @@ TESTLDFLAG	=	$(LDFLAG) -Wl,--wrap=open,--wrap=read,--wrap=malloc,--wrap=free
 TESTSRCFILES	=	$(addprefix test/, \
 						test.c \
 						test_mini_rt.c \
-						$(addprefix unit_test/, \
+						$(addprefix init_world/, \
+							test_init_world.c \
+							test_set_option.c \
+							$(addprefix test_validate_arguments/, \
+								test_validate_arguments.c \
+								test_is_valid_file_name.c \
+								test_is_valid_option.c \
+							) \
+							$(addprefix test_is_valid_line_list/, \
+								test_is_valid_line_list.c \
+								test_line_to_value.c \
+								test_skip_color.c \
+								test_skip_point.c \
+								test_skip_range.c \
+								test_skip_spaces.c \
+								test_skip_unit.c \
+								test_skip_until_end.c \
+							) \
+							$(addprefix test_create_world/, \
+								test_create_world.c \
+								test_set_ambient.c \
+								test_set_camera.c \
+								$(addprefix test_set_light/, \
+									test_line_to_light.c \
+									test_set_light.c \
+								) \
+								$(addprefix test_set_objects/, \
+									test_set_objects.c \
+								) \
+							) \
+							$(addprefix test_utils/, \
+								test_match_identifer.c \
+							) \
+						) \
+						$(addprefix utils/, \
 							syscall_mock.c \
-							test_token_to_value.c \
-							$(addprefix init_world/, \
-								test_set_option.c \
-								$(addprefix validate/, \
-									test_skips.c \
-									test_skip_color.c \
-									test_skip_point.c \
-									test_skip_range.c \
-									test_skip_spaces.c \
-									test_skip_unit.c \
-									test_skip_until_end.c \
-					))))
+							vec_equal.c \
+							print_vec.c \
+						) \
+					) \
 
 TESTSRCS		=	$(TESTSRCFILES) \
 					$(filter-out $(SRCDIR)/main.c, $(SRCS))
@@ -273,7 +290,7 @@ debug: re
 # --- test ---
 test: CFLAG=$(TESTFLAG)
 test: LDFLAG=$(TESTLDFLAG)
-test: fclean
+test:
 	@$(MAKE) $(TESTNAME)
 	@echo "\033[1;36mRunning tests ...\033[0m"
 	./$(TESTNAME)

@@ -6,13 +6,16 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 15:29:18 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 16:11:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:05:36 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_utils.h"
 #include "rt_define.h"
+#include "vec_utils.h"
 #include "libft.h"
+#include <math.h>
+#include <stdlib.h>
 
 int			add_light_radius(char **light_line, t_point3 camera_origin);
 static int	radius_strjoin(char **light_line, int radius);

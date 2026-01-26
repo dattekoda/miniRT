@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_disk.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:50:11 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/24 16:35:18 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:21:00 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	line_to_disk(t_hitter **disk, const char *line)
 	t_disk			param;
 	t_color			raw_color;
 
-	i = g_disk_info.id_len;
+	// i = g_disk_info.id_len;
 	token_to_vec(line, &i, &param.center);
 	token_to_vec(line, &i, &param.normal);
-	token_to_vec(line, &i, &diameter);
+	token_to_value(line, &i, &diameter);
 	param.radius = diameter * 0.5;
 	token_to_vec(line, &i, &raw_color);
 	*disk = generate_disk(param);
@@ -34,17 +34,17 @@ int	line_to_disk(t_hitter **disk, const char *line)
 	return (SUCCESS);
 }
 
-static void	line_to_disk_param(const char *line, 
-	t_disk *disk_param, t_color *raw_color)
-{
-	size_t	i;
-	double	diameter;
+// static void	line_to_disk_param(const char *line, 
+// 	t_disk *disk_param, t_color *raw_color)
+// {
+	// size_t	i;
+	// double	diameter;
 
-	i = g_disk_info.id_len;
-	token_to_vec(line, &i, &disk_param->center);
-	token_to_vec(line, &i, &disk_param->normal);
-	token_to_vec(line, &i, &diameter);
-	param.radius = diameter * 0.5;
-	token_to_vec(line, &i, &raw_color);
-	return ;
-}
+	// i = g_disk_info.id_len;
+	// token_to_vec(line, &i, &disk_param->center);
+	// token_to_vec(line, &i, &disk_param->normal);
+	// token_to_vec(line, &i, &diameter);
+	// param.radius = diameter * 0.5;
+	// token_to_vec(line, &i, &raw_color);
+// 	return ;
+// }

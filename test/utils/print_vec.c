@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   construct_ray.c                                    :+:      :+:    :+:   */
+/*   print_vec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 16:23:55 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 17:38:23 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/26 08:43:06 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/26 08:44:56 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ray.h"
+#include "vec.h"
+#include <stdio.h>
 
-t_ray	construct_ray(t_point3 origin, t_vec3 dir)
+void	print_vec(t_vec3 v)
 {
-	t_ray	ray;
-
-	ray.origin = origin;
-	ray.direct = dir;
-	return (ray);
+	for (int i = 0; i < 3; i++)
+	{
+		printf("e[%d]: %f\n", i, v.e[i]);
+	}
 }

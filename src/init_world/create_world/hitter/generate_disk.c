@@ -13,15 +13,18 @@
 #include "solution.h"
 #include "vec_utils.h"
 #include "hitter_utils.h"
+#include <math.h>
 
 static t_disk	construct_disk(t_disk disk_param);
-bool	hit_disk
-	(const void *s, const t_ray *ray, t_hrec *hrec, const t_range *range);
+bool			hit_disk
+	(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range);
+static t_aabb	construct_disk_aabb(t_disk disk_param);
+static double	calc_normal_max(double d);
 
 /*
 @brief if generate_disk failed, mat_ptr->clear()
 */
-t_disk	*generate_disk(t_disk disk_param)
+t_hitter	*generate_disk(t_disk disk_param)
 {
 	t_disk	*p;
 
@@ -34,7 +37,7 @@ t_disk	*generate_disk(t_disk disk_param)
 		return (NULL);
 	}
 	*p = construct_disk(disk_param);
-	return (p);
+	return ((t_hitter *)p);
 }
 
 static t_disk	construct_disk(t_disk disk_param)
@@ -61,7 +64,7 @@ static t_aabb	construct_disk_aabb(t_disk disk_param)
 	return (construct_aabb(min, max));
 }
 
-static float	calc_normal_max(float d)
+static double	calc_normal_max(double d)
 {
 	return (sqrt(1 - pow(d, 2)));
 }

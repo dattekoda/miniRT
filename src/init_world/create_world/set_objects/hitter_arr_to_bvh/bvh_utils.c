@@ -6,15 +6,15 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:29:43 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 00:25:37 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:29:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
 #include "vec_utils.h"
-#include <hitter_arr.h>
+#include "hitter_arr.h"
+#include <math.h>
 
-static double	calc_surface_area(const t_aabb aabb);
 t_aabb			construct_aabb(t_point3 min, t_point3 max);
 
 double	cost_func(const t_hitter_arr root, size_t left_size,
@@ -35,7 +35,6 @@ double	cost_func(const t_hitter_arr root, size_t left_size,
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size)
 {
 	t_hitter_arr	rev;
-	t_aabb			bounding_box;
 
 	rev.arr = arr;
 	rev.size = size;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hitter.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:38:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/23 16:12:51 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:15:13 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_hrec
 }	t_hrec;
 
 typedef bool	(*t_hit)
-	(const void *self, const t_ray *ray, t_hrec *hrec, const t_range *range);
+	(const void *self, const t_ray *ray, t_hrec *hrec, t_range *range);
 typedef void	(*t_clear)(void *self);
 
 typedef struct s_aabb

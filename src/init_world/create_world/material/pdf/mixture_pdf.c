@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   mixture_pdf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:04:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 11:36:05 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:07:42 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mixture_pdf.h"
+#include "rt_utils.h"
 #include "libft.h"
 
 static double	calc_mixture_pdf_value(const void *s, const t_vec3 *direction);
@@ -44,9 +45,9 @@ static double	calc_mixture_pdf_value(const void *s, const t_vec3 *direction)
 
 static t_vec3	random_mixture_pdf(const void *s)
 {
-	t_mixture_pdf	*self = s;
-	t_pdf			*surface_pdf = self->surface_pdf;
-	t_pdf			*light_pdf = self->light_pdf;
+	const t_mixture_pdf	*self = s;
+	t_pdf				*surface_pdf = self->surface_pdf;
+	t_pdf				*light_pdf = self->light_pdf;
 
 	if (!light_pdf || random_double(0, 1) > MIXTURE_RATIO)
 		return (surface_pdf->random_pdf(surface_pdf));

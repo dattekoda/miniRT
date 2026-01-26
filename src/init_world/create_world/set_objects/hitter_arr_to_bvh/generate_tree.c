@@ -14,9 +14,11 @@
 #include "result.h"
 #include "tree.h"
 #include "libft.h"
+#include <stdlib.h>
 
 static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs);
-static bool	hit_tree(void *s, t_ray ray, t_hrec *hrec, t_range range);
+static bool		hit_tree
+	(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range);
 void			clear_tree(void *s);
 
 t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs)
@@ -49,9 +51,10 @@ static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs)
 	node.hitter.clear = clear_tree;
 	node.lhs = lhs;
 	node.rhs = rhs;
+	return (node);
 }
 
-static bool	hit_tree(void *s, t_ray ray, t_hrec *hrec, t_range range)
+static bool	hit_tree(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {
 	const t_tree	*self;
 	bool			hit_lhs;
@@ -63,7 +66,7 @@ static bool	hit_tree(void *s, t_ray ray, t_hrec *hrec, t_range range)
 		return (false);
 	hit_lhs = self->lhs->hit(self->lhs, ray, hrec, range);
 	if (hit_lhs)
-		range.e[1] = hrec->param_t;
+		range->e[1] = hrec->param_t;
 	hit_rhs = self->rhs->hit(self->rhs, ray, hrec, range);
 	return (hit_lhs | hit_rhs);
 }

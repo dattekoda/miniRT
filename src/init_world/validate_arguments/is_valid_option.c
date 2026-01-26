@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:46:26 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 02:35:29 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 08:35:49 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,14 @@ bool	is_valid_option(char **options)
 		option = options[i];
 		if (option[0] != '-')
 			return (err_rt("option needs to start with '-'"), false);
-		if (!is_valid_short_option(option) || !is_valid_long_option(option))
+		if (option[1] == '-')
+		{
+			if (!is_valid_long_option(option))
+				return (false);
+		}
+		else if (!is_valid_short_option(option))
 			return (false);
+		i++;
 	}
 	return (true);
 }
@@ -52,8 +58,9 @@ static bool	is_valid_short_option(char *option)
 		i2 = 0;
 		while (g_option_table[i2])
 		{
-			if (g_option_table[i2++]->str[0] == option[i1])
+			if (g_option_table[i2]->str[0] == option[i1])
 				break ;
+			i2++;
 		}
 		if ((g_option_table[i2]) == NULL)
 			return (err_set_short_option(option[i1]), false);
@@ -69,13 +76,12 @@ static bool	is_valid_long_option(char *option)
 {
 	size_t	i;
 
-	if (option[1] != '-')
-		return (true);
 	i = 0;
 	while (g_option_table[i])
 	{
-		if (ft_strcmp(g_option_table[i]->str, option + 2))
+		if (!ft_strcmp(g_option_table[i]->str, option + 2))
 			break ;
+		i++;
 	}
 	if ((g_option_table[i]) == NULL)
 	{

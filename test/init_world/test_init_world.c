@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 01:46:42 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 11:57:33 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:37:24 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ int	test_create_world(void);
 
 int	test_init_world(void)
 {
+	test_utils();
 	test_validate_arguments();
 	test_set_option();
-	test_skips();
+	test_is_valid_line_list();
 	test_create_world();
 	return (0);
 }

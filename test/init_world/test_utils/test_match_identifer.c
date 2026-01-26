@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:58:00 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 12:11:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:51:38 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ extern const t_element				g_sphere_info;
 int	test_match_identifer(void)
 {
 	assert(match_identifier("A 1.0", &g_ambient_info) == true);\
-	assert(match_identifier("C\t ", &g_ambient_info) == true);
-	assert(match_identifier("L  ", &g_ambient_info) == true);
-	assert(match_identifier("sp\t0", &g_ambient_info) == true);
+	assert(match_identifier("C\t ", &g_camera_info) == true);
+	assert(match_identifier("L  ", &g_light_info) == true);
+	assert(match_identifier("sp\t0", &g_sphere_info) == true);
 	return (0);
 }

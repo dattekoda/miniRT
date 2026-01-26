@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:34:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 15:12:38 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 21:46:16 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 /*
 @param origin ray origin of camera
-@param onb v[0]: Right v[1]: Up v[2]:look for
+@param onb v[0]:Right, v[1]:Up, v[2]:look for
 @param left_top left top corner of the screen
 */
 typedef struct s_camera

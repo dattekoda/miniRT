@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:54:00 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 13:30:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 08:47:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,17 @@ int	test_set_ambient(void)
 static int	test_get_ambient_data(void)
 {
 	assert(vec3_equal(get_ambient_data("A 1.0 255, 255 , 255", 0),
-					(t_color){{1.0, 1.0, 1.0}}));
+					(t_color){{100.0, 100.0, 100.0}}));
 	assert(vec3_equal(get_ambient_data("A 0.5 255, 255 , 255", 0),
-					(t_color){{0.5, 0.5, 0.5}}));
+					(t_color){{50.0, 50.0, 50.0}}));
 	assert(vec3_equal(get_ambient_data("A 1.0 200, 150 , 100", 0),
+					(t_color){{78.43137255, 58.82352941, 39.21568627}}));
+
+	assert(vec3_equal(get_ambient_data("A 1.0 255, 255 , 255", OPT_ARTIFICIAL),
+					(t_color){{1.0, 1.0, 1.0}}));
+	assert(vec3_equal(get_ambient_data("A 0.5 255, 255 , 255", OPT_ARTIFICIAL),
+					(t_color){{0.5, 0.5, 0.5}}));
+	assert(vec3_equal(get_ambient_data("A 1.0 200, 150 , 100", OPT_ARTIFICIAL),
 					(t_color){{0.7843137255, 0.5882352941, 0.3921568627}}));
 	return (0);
 }

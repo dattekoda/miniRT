@@ -6,12 +6,15 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 17:07:16 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/24 20:39:31 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:10:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cylinder.h"
 #include "rt_utils.h" // clear_hitter()
+
+static t_cylinder	construct_cylinder(t_cylinder shape_param);
+static t_aabb	construct_aabb(t_cylinder cylinder);
 
 t_hitter	*generate_cylinder(t_cylinder cylinder_param)
 {
@@ -27,12 +30,12 @@ t_hitter	*generate_cylinder(t_cylinder cylinder_param)
 	return ((t_hitter *)p);
 }
 
-t_cylinder	construct_cylinder(t_cylinder shape_param)
+static t_cylinder	construct_cylinder(t_cylinder shape_param)
 {
 	t_cylinder	cylinder;
 
 	ft_memmove(&cylinder, &shape_param, sizeof(t_cylinder));
-	cylinder.hitter.hit = hit_cylinder;
+	// cylinder.hitter.hit = hit_cylinder;
 	cylinder.hitter.clear = clear_hitter;
 	cylinder.hitter.has_aabb = true;
 	cylinder.hitter.aabb = construct_aabb(cylinder);
@@ -41,5 +44,9 @@ t_cylinder	construct_cylinder(t_cylinder shape_param)
 
 static t_aabb	construct_aabb(t_cylinder cylinder)
 {
-	
+	t_aabb	aabb;
+
+	ft_bzero(&aabb, sizeof(t_aabb));
+	(void)cylinder;
+	return (aabb);
 }

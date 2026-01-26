@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_disk.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:24:47 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/24 15:32:06 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:18:25 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 
 static t_solution	init_solution_context
 	(const t_point3 *point, const t_vec3 *normal, const t_ray *ray);
-static void			assign_hrec(const t_disk *self, const t_ray *ray, 
-	t_hrec *hrec, const t_solution *solu);
+// static void			assign_hrec(const t_disk *self, const t_ray *ray, 
+// 	t_hrec *hrec, const t_solution *solu);
 
 bool	hit_disk
-	(const void *s, const t_ray *ray, t_hrec *hrec, const t_range *range)
+	(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {
 	const t_disk	*self;
 	t_solution		solu;
@@ -38,7 +38,8 @@ bool	hit_disk
 	if (length_squared_vec3
 		(sub_vec3(solu.point, self->center)) > pow(self->radius, 2))
 		return (false);
-	assign_hrec(self, ray, hrec, range);
+	// assign_hrec(self, ray, hrec, range); // ????
+	(void)hrec; // 後で消す
 	return (true);
 }
 
@@ -54,13 +55,13 @@ static t_solution	init_solution_context
 	return (solu);
 }
 
-static void	assign_hrec(const t_disk *self, const t_ray *ray, 
-	t_hrec *hrec, const t_solution *solu)
-{
-	hrec->ray_in = *ray;
-	hrec->param_t = solu->solution;
-	hrec->point = at_ray(ray, hrec->param_t);
-	hrec->normal = normalize(self->normal);
-	hrec->mat_ptr = self->hitter.mat_ptr;
-	return ;
-}
+// static void	assign_hrec(const t_disk *self, const t_ray *ray, 
+// 	t_hrec *hrec, const t_solution *solu)
+// {
+// 	hrec->ray_in = *ray;
+// 	hrec->param_t = solu->solution;
+// 	hrec->point = at_ray(ray, hrec->param_t);
+// 	hrec->normal = normalize(self->normal);
+// 	hrec->mat_ptr = self->hitter.mat_ptr;
+// 	return ;
+// }

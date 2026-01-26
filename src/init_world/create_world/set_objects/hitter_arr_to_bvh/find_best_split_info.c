@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 00:24:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:31:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 #include "hitter_utils.h"
 #include "vec_utils.h"
 #include "result.h"
+#include "libft.h"
 #include <math.h>
+#include <stdlib.h>
 
 static t_best_split	construct_best_split
 	(int axis, size_t left_size, double cost);
@@ -35,6 +37,8 @@ int	find_best_split_info(t_hitter_arr hit_arr, t_best_split *best_info)
 	double			*left_arr;
 	double			*right_arr;
 
+	left_arr = NULL;
+	right_arr = NULL;
 	*best_info = construct_best_split(0, 0, INFINITY);
 	axis = 0;
 	while (axis < 3)
@@ -55,7 +59,7 @@ int	find_best_split_info(t_hitter_arr hit_arr, t_best_split *best_info)
 		free(right_arr);
 		axis++;
 	}
-	return (best_info);
+	return (SUCCESS);
 }
 
 static t_best_split	construct_best_split

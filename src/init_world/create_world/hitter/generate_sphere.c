@@ -24,7 +24,7 @@
 #include <math.h>
 
 bool			hit_sphere
-	(const void *s, const t_ray *ray, t_hrec *hrec, const t_range *range);
+	(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range);
 static t_sphere	construct_sphere(t_sphere shape_param);
 
 /*

@@ -6,13 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:14:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/24 23:06:19 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:47:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "light_pdf.h"
 
-double	calc_light_pdf_value(const void *s, t_vec3 direct);
+double	calc_light_pdf_value(const void *s, const t_vec3 *direct);
 t_vec3	random_light_pdf(const void *s);
 
 /*
