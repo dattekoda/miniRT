@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_element.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 21:17:55 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 19:53:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ const t_element				g_ambient_info = {
 	.id_len = 1,
 	.input_format = "A [lighting ratio(0-1)] [R,G,B(0-255)]",
 	.skip_arr = g_ambient_skips,
-	.line_to_hitter = NULL
+	.line_to_hitter = NULL,
+	.material_idx = 0,
+	.texture_idx = 0
 };
 
 const t_element				g_camera_info = {
@@ -54,7 +56,9 @@ const t_element				g_light_info = {
 	.input_format = \
 "L [coordinate](x,y,z) [light brightness ratio](0-1) [R,G,B](0-255)",
 	.skip_arr = g_light_skips,
-	.line_to_hitter = line_to_light
+	.line_to_hitter = line_to_light,
+	.material_idx = LIGHT_MATERIAL_ID,
+	.texture_idx = LIGHT_TEXTURE_ID
 };
 
 const t_element		g_sphere_info = {
@@ -62,7 +66,9 @@ const t_element		g_sphere_info = {
 	.id_len = 2,
 	.input_format = "sp [coordinate](x,y,z) [diameter](>0) [R,G,B](0-255)",
 	.skip_arr = g_sphere_skips,
-	.line_to_hitter = line_to_sphere
+	.line_to_hitter = line_to_sphere,
+	.material_idx = SPHERE_MATERIAL_ID,
+	.texture_idx = SPHERE_TEXTURE_ID
 };
 
 const t_element		g_plane_info = {
@@ -71,7 +77,9 @@ const t_element		g_plane_info = {
 	.input_format = "pl [coordinate](x,y,z) [normalized orient vector](0-1) \
 [R,G,B](0-255)",
 	.skip_arr = g_plane_skips,
-	.line_to_hitter = NULL
+	.line_to_hitter = NULL,
+	.material_idx = PLANE_MATERIAL_ID,
+	.texture_idx = PLANE_TEXTURE_ID
 };
 
 const t_element		g_cylinder_info = {
@@ -80,7 +88,9 @@ const t_element		g_cylinder_info = {
 	.input_format = "cy [coordinate](x,y,z) [normalized orient vector](0-1) \
 [diameter](>0) [height](>0) [R,G,B](0-255)",
 	.skip_arr = g_cylinder_skips,
-	.line_to_hitter = NULL
+	.line_to_hitter = NULL,
+	.material_idx = CYLINDER_MATERIAL_ID,
+	.texture_idx = CYLINDER_TEXTURE_ID
 };
 
 const t_element		g_disk_info = {
@@ -89,7 +99,9 @@ const t_element		g_disk_info = {
 	.input_format = "di [coordinate](x,y,z) [normalized orient vector](0-1) \
 [diameter](>0) [R,G,B](0-255)",
 	.skip_arr = g_disk_skips,
-	.line_to_hitter = line_to_disk
+	.line_to_hitter = line_to_disk,
+	.material_idx = DISK_MATERIAL_ID,
+	.texture_idx = DISK_TEXTURE_ID
 };
 
 const t_element		g_cone_info = {
@@ -98,7 +110,9 @@ const t_element		g_cone_info = {
 	.input_format = "co [coordinate](x,y,z) [normalized orient vector](0-1) \
 [angle](0-90) [R,G,B](0-255)",
 	.skip_arr = g_cone_skips,
-	.line_to_hitter = NULL
+	.line_to_hitter = NULL,
+	.material_idx = CONE_MATERIAL_ID,
+	.texture_idx = CONE_TEXTURE_ID
 };
 
 const t_element		g_triangle_info = {
@@ -107,7 +121,9 @@ const t_element		g_triangle_info = {
 	.input_format = "tr [coordinate](x,y,z) [coordinate](x,y,z) [coordinate](x,y,z) \
 [R,G,B](0-255)",
 	.skip_arr = g_triangle_skips,
-	.line_to_hitter = NULL
+	.line_to_hitter = NULL,
+	.material_idx = TRIANGLE_MATERIAL_ID,
+	.texture_idx = TRIANGLE_TEXTURE_ID
 };
 
 /*

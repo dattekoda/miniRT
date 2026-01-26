@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/21 14:46:22 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/26 19:49:46 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 // 0: solid
 // 1: bump
 // 2: checker
+# define LIGHT_TEXTURE_ID 0
 # define SPHERE_TEXTURE_ID 0
 # define PLANE_TEXTURE_ID 0
 # define CYLINDER_TEXTURE_ID 0
@@ -48,6 +49,7 @@
 // 0: lambertian
 // 1: metal
 // 2: dielectric
+# define LIGHT_MATERIAL_ID 0
 # define SPHERE_MATERIAL_ID 0
 # define PLANE_MATERIAL_ID 0
 # define CYLINDER_MATERIAL_ID 0

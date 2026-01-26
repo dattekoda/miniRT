@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   element.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:27:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 11:59:16 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 19:47:17 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_element
 	char			*input_format;
 	const t_skip	*skip_arr;
 	int				(*line_to_hitter)(t_hitter **hitter, const char *line);
+	size_t			material_idx;
+	size_t			texture_idx;
 }	t_element;
 
 #endif

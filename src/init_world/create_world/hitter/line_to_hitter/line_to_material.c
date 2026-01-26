@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_material.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:54:31 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 20:25:35 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 19:54:56 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,15 @@ static t_material_info	line_to_material_info
 	(const char *line, size_t *i, t_element element)
 {
 	t_material_info	info;
-	ft_bzero(&info, sizeof(t_material_info));
-	(void)line;
-	(void)i;
-	(void)element;
-	// t_color			raw_color;
-	// char			c;
+	t_color			raw_color;
+	char			c;
 
-	// token_to_vec(line, &i, &raw_color);
-	// info.color = normalize_color(raw_color);
-	// token_to_char(line, &i, &c);
-	// info.mat_idx = char_to_material_idx(c, element.material_id);
-	// token_to_char(line, &i, &c);
-	// info.tex_idx = char_to_material_idx(c, element.texture_id);
+	ft_bzero(&info, sizeof(t_material_info));
+	token_to_vec(line, i, &raw_color);
+	info.color = normalize_color(raw_color);
+	token_to_char(line, i, &c);
+	info.mat_idx = char_to_material_idx(c, element.material_idx);
+	token_to_char(line, i, &c);
+	info.tex_idx = char_to_material_idx(c, element.texture_idx);
 	return (info);
 }
