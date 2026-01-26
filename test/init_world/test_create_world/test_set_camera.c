@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:53:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 09:08:40 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 09:11:47 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	test_set_camera(void)
 
 static int	test_get_camera_data(void)
 {
+	// カメラのonb座標設定確認要
 	assert(camera_equal(get_camera_data("C -50.0,0,20 0,0,1 70"), (t_camera){
 		.origin = (t_point3){{-50.0,0,20}},
 		.onb = (t_onb){(t_vec3){{-1, 0, 0}}, (t_vec3){{0, 1, 0}}, (t_vec3){{0, 0, -1}}},
