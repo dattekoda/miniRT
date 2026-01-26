@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_to_vec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:00:46 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:11:16 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 22:16:54 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ static t_result	skip_comma(const char *line, size_t *line_idx);
 t_result	token_to_vec(const char *line, size_t *line_idx, t_vec3 *vec)
 {
 	t_result	result;
-	size_t		d_idx;
+	size_t		e_idx;
 
-	d_idx = 0;
-	while (d_idx < 3)
+	e_idx = 0;
+	while (e_idx < 3)
 	{
-		result = token_to_value(line, line_idx, &vec->e[d_idx]);
+		result = token_to_value(line, line_idx, &vec->e[e_idx]);
 		if (result.state == FAILURE)
 			return (result);
-		if (d_idx != 2)
+		if (e_idx != 2)
 			result = skip_comma(line, line_idx);
 		if (result.state == FAILURE)
 			return (result);
-		d_idx++;
+		e_idx++;
 	}
 	return (construct_result(NULL));
 }

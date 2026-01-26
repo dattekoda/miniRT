@@ -35,7 +35,10 @@ t_material	*generate_lambertian(t_texture *texture_ptr)
 		return (NULL);
 	p = ft_calloc(1, sizeof(t_lambertian));
 	if (!p)
-		return (texture_ptr->clear(texture_ptr), NULL);
+	{
+		texture_ptr->clear(texture_ptr);
+		return (NULL);
+	}
 	*p = construct_lambertian(texture_ptr);
 	return ((t_material *)p);
 }

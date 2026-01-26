@@ -26,8 +26,8 @@ static int	add_hitter_list(t_list **hitter_list, const char *line,
 static int	line_list_to_hitter_list
 	(t_list **hitter_list, const t_list *line_list, 
 		const t_element *object_table[]);
-static int	match_objects(const char *line, const t_element *object_table[], 
-		size_t *idx);
+static bool	match_objects(const char *line,
+	const t_element *object_table[], size_t *idx);
 static int	add_sub_hitters(t_list **hitter_list, t_hitter *hitter_tmp);
 static bool	has_subhitter(const char *line);
 int			add_cylinder_disk(t_list **hitter_list, t_cylinder *cylinder);
@@ -63,7 +63,7 @@ int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list, \
 @brief if matched object_table return SUCCESS, or return FAILURE
 @param idx if set NULL, you can get appropriate return value
 */
-static int	match_objects(const char *line,
+static bool	match_objects(const char *line,
 	const t_element *object_table[], size_t *idx)
 {
 	size_t	i;
@@ -75,11 +75,11 @@ static int	match_objects(const char *line,
 		{
 			if (idx)
 				*idx = i;
-			return (SUCCESS);
+			return (true);
 		}
 		i++;
 	}
-	return (FAILURE);
+	return (false);
 }
 
 /*
@@ -93,7 +93,7 @@ static int	line_list_to_hitter_list
 
 	while (line_list)
 	{
-		if (match_objects(line_list->content, object_table, &obj_idx) == SUCCESS)
+		if (match_objects(line_list->content, object_table, &obj_idx))
 		{
 			if (add_hitter_list(hitter_list, line_list->content, object_table[obj_idx]) == FAILURE)
 				return (FAILURE);
