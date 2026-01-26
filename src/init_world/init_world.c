@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 11:58:24 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:37:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	is_valid_line_list(const t_list *line_list, int option_flag);
 int		create_world(t_world *world, t_list *line_list);
 
 /*
-@brief line_listの開放責務を持つ
+@brief responsible for free line_list
 */
 int	init_world(t_world *world, int argc, char *argv[])
 {
