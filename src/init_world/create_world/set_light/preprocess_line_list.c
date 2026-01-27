@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 15:29:18 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/27 20:59:40 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/27 21:03:40 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/27 21:03:42 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int	preprocess_line_list(t_list *line_list, t_point3 camera_origin)
 	return (SUCCESS);
 }
 
-
-#include <stdio.h>
 /*
 L 0,5,5 0.1 255,255,255 → L 0,5,5 0.1 255,255,255 30
 */
