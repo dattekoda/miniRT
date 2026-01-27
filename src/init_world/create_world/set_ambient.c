@@ -25,7 +25,7 @@ void	set_ambient(t_world *world, const t_list *line_list)
 {
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, &g_ambient_info))
+		if (match_identifier(line_list->content, g_info_table[AMBIENT]))
 			break ;
 		line_list = line_list->next;
 	}

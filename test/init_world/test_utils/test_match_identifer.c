@@ -22,9 +22,9 @@ extern const t_element				g_sphere_info;
 
 int	test_match_identifer(void)
 {
-	assert(match_identifier("A 1.0", &g_ambient_info) == true);
-	assert(match_identifier("C\t ", &g_camera_info) == true);
-	assert(match_identifier("L  ", &g_light_info) == true);
-	assert(match_identifier("sp\t0", &g_sphere_info) == true);
+	assert(match_identifier("A 1.0", g_info_table[AMBIENT]) == true);
+	assert(match_identifier("C\t ", g_info_table[CAMERA]) == true);
+	assert(match_identifier("L  ", g_info_table[LIGHT]) == true);
+	assert(match_identifier("sp\t0", g_info_table[SPHERE]) == true);
 	return (0);
 }

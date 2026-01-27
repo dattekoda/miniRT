@@ -130,7 +130,7 @@ const t_element		g_triangle_info = {
 @param NULL終端にするためにポインタの配列にしている。
 */
 const t_element				*g_info_table[] = {
-	&g_ambient_info,
+	&g_info_table,
 	&g_camera_info,
 	&g_light_info,
 	&g_sphere_info,
@@ -141,6 +141,8 @@ const t_element				*g_info_table[] = {
 	&g_triangle_info,
 	NULL
 };
+
+
 
 const t_element				*g_infinite_table[] = {
 	// &g_plane_info,

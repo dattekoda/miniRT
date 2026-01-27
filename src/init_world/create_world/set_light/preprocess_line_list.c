@@ -26,7 +26,7 @@ int	preprocess_line_list(t_list *line_list, t_point3 camera_origin)
 {
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, &g_light_info))
+		if (match_identifier(line_list->content, g_info_table[LIGHT]))
 		{
 			if (add_light_radius((char **)&line_list->content, camera_origin) == FAILURE)
 				return (FAILURE);

@@ -40,9 +40,9 @@ static bool	is_valid_ambient_camera_count(const t_list *line_list)
 	camera_count = 0;
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, &g_ambient_info))
+		if (match_identifier(line_list->content, g_info_table[AMBIENT]))
 			ambient_count++;
-		if (match_identifier(line_list->content, &g_camera_info))
+		if (match_identifier(line_list->content, g_info_table[CAMERA]))
 			camera_count++;
 		line_list = line_list->next;
 	}

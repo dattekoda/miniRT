@@ -132,7 +132,7 @@ static int	add_hitter_list(t_list **hitter_list, const char *line, const t_eleme
 
 static bool	has_subhitter(const t_element *element)
 {
-	return (element == &g_cylinder_info);
+	return (element == g_info_table[CYLINDER]);
 }
 
 static int	add_sub_hitters(t_list **hitter_list, t_hitter *hitter_tmp)

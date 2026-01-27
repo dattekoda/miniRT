@@ -35,7 +35,7 @@ int	set_light(t_world *world, t_list *line_list)
 	// ここまでOK
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, &g_light_info))
+		if (match_identifier(line_list->content, g_info_table[LIGHT]))
 		{
 			if (new_light_node
 				(&new_node, line_list->content, world->option_flag) == FAILURE)

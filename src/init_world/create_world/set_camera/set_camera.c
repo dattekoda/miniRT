@@ -23,7 +23,7 @@ void	set_camera(t_camera *camera, const t_list *line_list)
 {
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, &g_camera_info))
+		if (match_identifier(line_list->content, g_info_table[CAMERA]))
 			break ;
 		line_list = line_list->next;
 	}
