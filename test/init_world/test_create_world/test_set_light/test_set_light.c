@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:53:55 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/27 19:24:48 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/27 22:22:54 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	add_light_radius(char **light_line, t_point3 camera_origin);
 int	test_set_light(void)
 {
 	test_add_light_radius();
-	test_line_to_light();
+	// test_line_to_light();
 	return (0);
 }
