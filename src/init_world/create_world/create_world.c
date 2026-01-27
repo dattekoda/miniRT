@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:14:11 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/27 19:11:44 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/27 21:07:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	create_world(t_world *world, t_list *line_list)
 {
 	set_ambient(world, line_list);
 	set_camera(&world->camera, line_list);
-	// ここまでOK
 	if (set_light(world, line_list) == FAILURE)
 		return (FAILURE);
 	if (set_objects(world, line_list) == FAILURE)

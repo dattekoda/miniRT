@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:52:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/27 19:22:40 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/27 21:07:37 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	set_light(t_world *world, t_list *line_list)
 
 	if (preprocess_line_list(line_list, world->camera.origin) == FAILURE)
 		return (FAILURE);
+	// ここまでOK
 	while (line_list)
 	{
 		if (match_identifier(line_list->content, &g_light_info))
