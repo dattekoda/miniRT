@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:51:35 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/27 19:23:53 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/27 20:54:38 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	test_set_camera(void);
 int	test_set_light(void);
 int	test_set_objects(void);
 
+
+#include <stdio.h>
 int	test_create_world(void)
 {
 	test_set_ambient();

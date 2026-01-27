@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 22:48:33 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/26 08:38:58 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/27 20:53:46 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 int	set_option(const char *options[]);
 
+#include <stdio.h>
 int	test_set_option(void)
 {
 	assert((OPT_ARTIFICIAL & OPT_MATERIAL) == 0);

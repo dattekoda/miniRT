@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 15:29:18 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/27 20:35:37 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/27 20:59:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	add_light_radius(char **light_line, t_point3 camera_origin)
 	return (SUCCESS);
 }
 
-#define LIGHT_STERADIAN 0.1
 static int	calc_radius(t_point3 light_point, t_point3 camera_origin)
 {
 	int		radius_in_int;
