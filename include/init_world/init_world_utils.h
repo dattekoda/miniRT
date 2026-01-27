@@ -19,12 +19,6 @@
 # include "init_world_define.h"
 # include <stdbool.h>
 
-extern const t_element				g_ambient_info;
-extern const t_element				g_camera_info;
-extern const t_element				g_light_info;
-extern const t_element				g_sphere_info;
-extern const t_element				g_cylinder_info;
-extern const t_element				g_disk_info;
 extern const t_element				*g_info_table[];
 extern const t_element				*g_infinite_table[];
 extern const t_element				*g_finite_table[];
