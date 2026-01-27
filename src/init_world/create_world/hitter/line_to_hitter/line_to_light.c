@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 20:22:20 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/27 22:21:31 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,23 @@
 #include "rt_config.h"
 #include "light.h"
 
-static void	light_line_to_shape_param(const char *line,
-	t_sphere *shape_param, t_color *color);
-int	line_to_material
+static int	light_line_to_shape_param(const char *line,
+	t_sphere *light_param, int option_flag);
+int			line_to_material
 	(const char *line, size_t *i, t_material *mat_ptr, t_element element);
+static int	line_to_light_material(const char *line, size_t *line_idx,
+	t_material **mat_pp, int option_flag);
 
 /*
 @brief line "L 0,4,4, 0.3, 255,255,0 4"
 */
-int	line_to_light(t_hitter **light, const char *line, bool is_phong)
+int	line_to_light(t_hitter **light, const char *line, int option_flag)
 {
 	t_sphere		shape_param;
-	t_color			color;
-	t_texture		*texture_ptr;
-	t_material		*mat_ptr;
 
 	ft_bzero(&shape_param, sizeof(t_sphere));
-	light_line_to_shape_param(line, &shape_param, &color);
-	if (is_phong)
-		color = scal_mul_vec3(color, PATHTRACING_LIGHT_STRENGTH);
-	texture_ptr = generate_solid_texture(color);
-	if (!texture_ptr)
+	if (light_line_to_shape_param(line, &shape_param, option_flag) == FAILURE)
 		return (FAILURE);
-	mat_ptr = generate_light(texture_ptr);
-	if (!mat_ptr)
-		return (FAILURE);
-	shape_param.hitter.mat_ptr = mat_ptr;
 	*light = generate_sphere(shape_param);
 	if (!*light)
 		return (FAILURE);
@@ -53,18 +44,37 @@ int	line_to_light(t_hitter **light, const char *line, bool is_phong)
 /*
 L 0,0,0 0.3 255,255,0 4
 */
-static void	light_line_to_shape_param(const char *line,
-	t_sphere *shape_param, t_color *color)
+static int	light_line_to_shape_param(const char *line, t_sphere *light_param, int option_flag)
 {
-	t_color			raw_color;
-	size_t			i;
-	double			ratio;
+	size_t	i;
 
 	i = g_light_info.id_len;
-	token_to_vec(line, &i, &shape_param->center);
-	token_to_value(line, &i, &ratio);
-	token_to_vec(line, &i, &raw_color);
-	*color = scal_mul_vec3(normalize_color(raw_color), ratio);
-	token_to_value(line, &i, &shape_param->radius);
-	return ;
+	token_to_vec(line, &i, &light_param->center);
+	if (line_to_light_material(line, &i, &light_param->hitter.mat_ptr, option_flag) == FAILURE)
+		return (FAILURE);
+	token_to_value(line, &i, &light_param->radius);
+	return (SUCCESS);
+}
+
+static int	line_to_light_material(const char *line, size_t *line_idx,
+	t_material **mat_pp, int option_flag)
+{
+	double		ratio;
+	t_color		color;
+	t_texture	*texture_ptr;
+	t_material	*mat_ptr;
+
+	token_to_value(line, line_idx, &ratio);
+	token_to_vec(line, line_idx, &color);
+	color = scal_mul_vec3(normalize_color(color), ratio);
+	if (!(option_flag & OPT_ARTIFICIAL))
+		color = scal_mul_vec3(color, PATHTRACING_LIGHT_STRENGTH);
+	texture_ptr = generate_solid_texture(color);
+	if (!texture_ptr)
+		return (FAILURE);
+	mat_ptr = generate_light(texture_ptr);
+	if (!mat_ptr)
+		return (FAILURE);
+	*mat_pp = mat_ptr;
+	return (SUCCESS);
 }

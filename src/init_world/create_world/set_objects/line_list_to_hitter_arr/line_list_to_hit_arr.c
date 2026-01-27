@@ -29,33 +29,41 @@ static int	line_list_to_hitter_list
 static bool	match_objects(const char *line,
 	const t_element *object_table[], size_t *idx);
 static int	add_sub_hitters(t_list **hitter_list, t_hitter *hitter_tmp);
-static bool	has_subhitter(const char *line);
+static bool	has_subhitter(const t_element *element);
 int			add_cylinder_disk(t_list **hitter_list, t_cylinder *cylinder);
+static int	hitter_list_to_hitter_arr(t_list *hitter_list, t_hitter_arr *hit_arr);
 
 int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list, \
 	const t_element *object_table[])
 {
-	size_t	arr_idx;
 	t_list	*hitter_list;
-	t_list	*curr;
 
 	ft_bzero(hit_arr, sizeof(t_hitter_arr));
 	hitter_list = NULL;
-	if (line_list_to_hitter_list(&hitter_list, line_list, object_table) 
+	if (line_list_to_hitter_list(&hitter_list, line_list, object_table)
 		== FAILURE)
 		return (ft_lstclear(&hitter_list, free), FAILURE);
+	if (hitter_list_to_hitter_arr(hitter_list, hit_arr) == FAILURE)
+		return (ft_lstclear(&hitter_list, NULL), FAILURE);
+	return (ft_lstclear(&hitter_list, NULL), SUCCESS);
+}
+
+static int	hitter_list_to_hitter_arr(t_list *hitter_list, t_hitter_arr *hit_arr)
+{
+	t_list		*curr;
+	size_t		i;
+
 	hit_arr->size = (size_t)ft_lstsize(hitter_list);
 	hit_arr->arr = ft_calloc(hit_arr->size, sizeof(t_hitter *));
 	if (!hit_arr->arr)
-		return (ft_lstclear(&hitter_list, free), FAILURE);
+		return (FAILURE);
 	curr = hitter_list;
-	arr_idx = 0;
+	i = 0;
 	while (curr)
 	{
-		hit_arr->arr[arr_idx++] = curr->content;
+		hit_arr->arr[i++] = curr->content;
 		curr = curr->next;
 	}
-	ft_lstclear(&hitter_list, NULL);
 	return (SUCCESS);
 }
 
@@ -114,7 +122,7 @@ static int	add_hitter_list(t_list **hitter_list, const char *line, const t_eleme
 	if (!list_tmp)
 		return (hitter_tmp->clear(hitter_tmp), FAILURE);
 	ft_lstadd_back(hitter_list, list_tmp);
-	if (has_subhitter(line) == SUCCESS)
+	if (has_subhitter(element) == SUCCESS)
 	{
 		if (add_sub_hitters(hitter_list, list_tmp->content) == FAILURE)
 			return (FAILURE);
@@ -122,9 +130,9 @@ static int	add_hitter_list(t_list **hitter_list, const char *line, const t_eleme
 	return (SUCCESS);
 }
 
-static bool	has_subhitter(const char *line)
+static bool	has_subhitter(const t_element *element)
 {
-	return (match_identifier(line, &g_cylinder_info));
+	return (element == &g_cylinder_info);
 }
 
 static int	add_sub_hitters(t_list **hitter_list, t_hitter *hitter_tmp)

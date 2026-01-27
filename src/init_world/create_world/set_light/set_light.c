@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:52:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/27 21:07:37 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/27 21:10:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 #include <math.h>
 #include <stdlib.h>
 
-static int	new_light_node(t_list **new_list, const char *line, bool is_phong);
+static int	new_light_node(t_list **new_list, const char *line,
+	int option_flag);
 int			preprocess_line_list(t_list *line_list, t_point3 camera_origin);
 int			line_to_light(t_hitter **light, const char *line, bool is_phong);
 
@@ -37,7 +38,7 @@ int	set_light(t_world *world, t_list *line_list)
 		if (match_identifier(line_list->content, &g_light_info))
 		{
 			if (new_light_node
-				(&new_node, line_list->content, world) == FAILURE)
+				(&new_node, line_list->content, world->option_flag) == FAILURE)
 			{
 				ft_lstclear(&world->light_list, clear_hitter);
 				return (FAILURE);
@@ -49,11 +50,11 @@ int	set_light(t_world *world, t_list *line_list)
 	return (SUCCESS);
 }
 
-static int	new_light_node(t_list **new_list, const char *line, bool is_phong)
+static int	new_light_node(t_list **new_list, const char *line, int option_flag)
 {
 	t_hitter	*new_light;
 
-	if (line_to_light(&new_light, line, is_phong) == FAILURE)
+	if (line_to_light(&new_light, line, option_flag) == FAILURE)
 		return (FAILURE);
 	*new_list = ft_lstnew(new_light);
 	if (!*new_list)
