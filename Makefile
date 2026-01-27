@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/26 19:25:07 by khanadat         ###   ########.fr        #
+#    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
+#    Updated: 2026/01/27 20:41:20 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -216,8 +216,9 @@ TESTSRCFILES	=	$(addprefix test/, \
 								test_set_ambient.c \
 								test_set_camera.c \
 								$(addprefix test_set_light/, \
-									test_line_to_light.c \
 									test_set_light.c \
+									test_add_light_radius.c \
+									test_line_to_light.c \
 								) \
 								$(addprefix test_set_objects/, \
 									test_set_objects.c \

@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_set_light.c                                   :+:      :+:    :+:   */
+/*   test_add_light_radius.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 11:53:55 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/27 19:24:48 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/27 19:24:19 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/27 20:35:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec.h"
+#include "result.h"
 #include "libft.h"
 #include <assert.h>
 
-int	test_add_light_radius(void);
-int	test_line_to_light(void);
 int	add_light_radius(char **light_line, t_point3 camera_origin);
 
+#define LIGHT_STERADIAN 0.1
 
-int	test_set_light(void)
+int	test_add_light_radius(void)
 {
-	test_add_light_radius();
-	test_line_to_light();
+	char	*line;
+	static const double sample_xyz = 3.2489963543;
+
+	line = ft_strdup("L 0,0,0 1 255,255,255");
+	assert(line != NULL);
+	assert(add_light_radius(&line, (t_point3){{sample_xyz, sample_xyz, sample_xyz}}) == SUCCESS
+		&& !ft_strcmp(line, "L 0,0,0 1 255,255,255 2"));
 	return (0);
 }
