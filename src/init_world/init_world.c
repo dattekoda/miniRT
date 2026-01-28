@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 19:52:06 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 19:52:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	init_world(t_world *world, int *option_flag, int argc, char *argv[])
 	*option_flag = set_option(argv + 2);
 	line_list = NULL;
 	read_rt_file(&line_list, argv[1]);
-	if (!is_valid_line_list(line_list, *option_flag))
+	if (!is_valid_line_list(line_list, option_flag))
 	{
 		ft_lstclear(&line_list, free);
 		exit(EXIT_FAILURE);
