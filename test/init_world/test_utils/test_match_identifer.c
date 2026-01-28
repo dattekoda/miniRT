@@ -6,19 +6,15 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:58:00 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 19:35:41 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 13:13:53 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "init_world_utils.h"
 #include "element.h"
 #include <assert.h>
 
 bool	match_identifier(const char *line, const t_element *info);
-
-extern const t_element				g_ambient_info;
-extern const t_element				g_camera_info;
-extern const t_element				g_light_info;
-extern const t_element				g_sphere_info;
 
 int	test_match_identifer(void)
 {

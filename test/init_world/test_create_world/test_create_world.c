@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_create_world.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:51:35 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/27 20:54:38 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 11:29:19 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	test_create_world(void)
 	test_set_ambient();
 	test_set_camera();
 	test_set_light();
-	// test_set_objects();
+	test_set_objects();
 	return (0);
 }

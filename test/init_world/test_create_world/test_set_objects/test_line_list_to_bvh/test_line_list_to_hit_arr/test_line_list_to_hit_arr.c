@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   element.h                                          :+:      :+:    :+:   */
+/*   test_line_list_to_hit_arr.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 12:27:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 13:20:49 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/28 13:02:31 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/28 13:02:32 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ELEMENT_H
-# define ELEMENT_H
-
-# include "skip.h"
-# include "hitter.h"
-
-typedef struct s_element
+int	test_line_list_to_hit_arr(void)
 {
-	char			*id;
-	size_t			id_len;
-	char			*input_format;
-	const t_skip	*skip_arr;
-	int				(*line_to_hitter)(t_hitter **hitter, const char *line);
-	size_t			material_idx;
-	size_t			texture_idx;
-}	t_element;
-
-#endif
+	return (0);
+}

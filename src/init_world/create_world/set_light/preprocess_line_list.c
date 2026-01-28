@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   preprocess_line_list.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 21:03:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/27 21:03:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 13:32:24 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	add_light_radius(char **light_line, t_point3 camera_origin)
 	t_point3	light_point;
 	int			radius;
 
-	idx = g_light_info.id_len;
+	idx = g_info_table[LIGHT]->id_len;
 	token_to_vec(*light_line, &idx, &light_point);
 	radius = calc_radius(light_point, camera_origin) + 1;
 	if (radius_strjoin(light_line, radius) == FAILURE)

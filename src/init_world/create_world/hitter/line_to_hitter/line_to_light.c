@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/27 22:21:31 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 13:33:05 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	light_line_to_shape_param(const char *line, t_sphere *light_param, in
 {
 	size_t	i;
 
-	i = g_light_info.id_len;
+	i = g_info_table[LIGHT]->id_len;
 	token_to_vec(line, &i, &light_param->center);
 	if (line_to_light_material(line, &i, &light_param->hitter.mat_ptr, option_flag) == FAILURE)
 		return (FAILURE);

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 16:59:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/26 19:42:10 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 11:28:37 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	test_read_rt_file(void)
 	}
 	err_syscall = 0;
 	read_rt_file(&list_ptr, "test_scene/test_ambient/success1.rt");
-	assert(!is_valid_success1(list_ptr));
+	assert(is_valid_success1(list_ptr) == false);
 	return (0);
 }
 

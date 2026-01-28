@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 22:34:22 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 11:34:27 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int			line_list_to_hit_arr(t_hitter_arr *hit_arr,
 				const t_list *line_list, const t_element *object_table[]);
 int			hit_arr_to_bvh(t_hitter **root, const t_hitter_arr hit_arr);
 
-#include <stdio.h>
 int	line_list_to_bvh(t_hitter **node, const t_list *line_list,
 			const t_element *object_table[])
 {

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 10:34:48 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 13:31:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,26 @@
 // 0: solid
 // 1: bump
 // 2: checker
-# define LIGHT_TEXTURE_ID 0
-# define SPHERE_TEXTURE_ID 0
-# define PLANE_TEXTURE_ID 0
-# define CYLINDER_TEXTURE_ID 0
-# define DISK_TEXTURE_ID 0
-# define CONE_TEXTURE_ID 0
-# define TRIANGLE_TEXTURE_ID 0
+
+# define LIGHT_TEXTURE_ID		0
+# define SPHERE_TEXTURE_ID		0
+# define PLANE_TEXTURE_ID		0
+# define CYLINDER_TEXTURE_ID	0
+# define DISK_TEXTURE_ID		0
+# define CONE_TEXTURE_ID		0
+# define TRIANGLE_TEXTURE_ID	0
 
 // material
 // 0: lambertian
 // 1: metal
 // 2: dielectric
-# define LIGHT_MATERIAL_ID 0
-# define SPHERE_MATERIAL_ID 0
-# define PLANE_MATERIAL_ID 0
-# define CYLINDER_MATERIAL_ID 0
-# define DISK_MATERIAL_ID 0
-# define CONE_MATERIAL_ID 0
-# define TRIANGLE_MATERIAL_ID 0
+
+# define LIGHT_MATERIAL_ID		0
+# define SPHERE_MATERIAL_ID		0
+# define PLANE_MATERIAL_ID		0
+# define CYLINDER_MATERIAL_ID	0
+# define DISK_MATERIAL_ID		0
+# define CONE_MATERIAL_ID		0
+# define TRIANGLE_MATERIAL_ID	0
 
 #endif

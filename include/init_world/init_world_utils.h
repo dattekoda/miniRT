@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 10:32:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 13:18:30 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,6 @@
 # include "material.h"
 # include "texture.h"
 # include <stdbool.h>
-
-extern const t_element				g_ambient_info;
-extern const t_element				g_camera_info;
-extern const t_element				g_light_info;
-extern const t_element				g_sphere_info;
-extern const t_element				g_plane_info;
-extern const t_element				g_cylinder_info;
-extern const t_element				g_disk_info;
-extern const t_element				g_cone_info;
-extern const t_element				g_ambient_info;
-extern const t_element				g_triangle_info;
 
 extern const t_element				*g_info_table[];
 extern const t_element				*g_infinite_table[];

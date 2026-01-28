@@ -122,7 +122,7 @@ static int	add_hitter_list(t_list **hitter_list, const char *line, const t_eleme
 	if (!list_tmp)
 		return (hitter_tmp->clear(hitter_tmp), FAILURE);
 	ft_lstadd_back(hitter_list, list_tmp);
-	if (has_subhitter(element) == SUCCESS)
+	if (has_subhitter(element) == true)
 	{
 		if (add_sub_hitters(hitter_list, list_tmp->content) == FAILURE)
 			return (FAILURE);

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:45:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 10:43:12 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 13:20:14 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ static int	line_to_sphere_param(const char *line,
 	double			diameter;
 	size_t			i;
 
-	i = g_sphere_info.id_len;
+	i = g_info_table[SPHERE]->id_len;
 	token_to_vec(line, &i, &sphere_param->center);
 	token_to_value(line, &i, &diameter);
 	sphere_param->radius = diameter * 0.5;
 	if (line_to_material
-		(line, &i, &sphere_param->hitter.mat_ptr, g_sphere_info) 
+		(line, &i, &sphere_param->hitter.mat_ptr, *g_info_table[SPHERE]) 
 		== FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

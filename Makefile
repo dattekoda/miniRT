@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/01/27 20:41:20 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/28 13:12:25 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -222,6 +222,15 @@ TESTSRCFILES	=	$(addprefix test/, \
 								) \
 								$(addprefix test_set_objects/, \
 									test_set_objects.c \
+									$(addprefix test_line_list_to_bvh/, \
+									test_line_list_to_bvh.c \
+										$(addprefix test_line_list_to_hit_arr/, \
+										test_line_list_to_hit_arr.c \
+										) \
+										$(addprefix test_hit_arr_to_bvh/, \
+										test_hit_arr_to_bvh.c \
+										) \
+									) \
 								) \
 							) \
 							$(addprefix test_utils/, \

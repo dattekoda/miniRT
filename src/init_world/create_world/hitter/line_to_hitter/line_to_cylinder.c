@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_cylinder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 21:01:31 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 13:32:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	line_to_cylinder(t_hitter **hitter, const char *line)
 	double		diameter;
 	t_color		raw_color;
 
-	i = g_cylinder_info.id_len;
+	i = g_info_table[CYLINDER]->id_len;
 	token_to_vec(line, &i, &cylinder.center);
 	token_to_vec(line, &i, &cylinder.direct);
 	token_to_value(line, &i, &diameter);
