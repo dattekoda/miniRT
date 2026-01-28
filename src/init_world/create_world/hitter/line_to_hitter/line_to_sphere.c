@@ -3,18 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/12 21:45:13 by ikawamuk          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/01/28 16:28:17 by khanadat         ###   ########.fr       */
-=======
-/*   Updated: 2026/01/28 16:23:18 by ikawamuk         ###   ########.fr       */
->>>>>>> c30aa75 (update:)
+/*   Created: 2026/01/28 16:33:40 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/28 16:38:46 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "material_info.h"
 #include "init_world_utils.h"
 #include "sphere.h"
 #include "vec_utils.h"

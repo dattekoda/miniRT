@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/01/28 16:32:22 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/28 16:38:46 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,10 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 					read_rt_file.c \
 					$(addprefix define/, \
 					define_element.c \
+					define_material.c \
 					define_option.c \
 					define_skips.c \
+					define_texture.c \
 					) \
 					$(addprefix validate_arguments/, \
 					validate_arguments.c \

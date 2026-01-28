@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_to_idx.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:45:57 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 16:23:24 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 16:35:05 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int str_to_idx(const char *str, const char *specifiers[]);
 
 enum e_mat_idx	str_to_material_idx(const char *str)
 {
-	enum e_mat_idx	idx;
+	int	idx;
 
 	idx = str_to_idx(str, g_material_specifiers);
 	if (idx == -1)
@@ -29,7 +29,7 @@ enum e_mat_idx	str_to_material_idx(const char *str)
 
 enum e_texture_idx	str_to_texture_idx(const char *str)
 {
-	enum e_texture_idx	idx;
+	int	idx;
 
 	idx = str_to_idx(str, g_texture_specifiers);
 	if (idx == -1)
