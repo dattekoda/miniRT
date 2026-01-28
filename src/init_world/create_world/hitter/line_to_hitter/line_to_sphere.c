@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 16:33:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 17:06:29 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 18:16:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	line_to_material
 /*
 @brief lineとgenの橋渡しなので使いやすい用にデータを加工する。(normalize_colorを噛ませたり)
 */
-int	line_to_sphere(t_hitter **sphere, const char *line/* , bool is_option_m */)
+int	line_to_sphere(t_hitter **sphere, const char *line)
 {
 	t_sphere	sphere_param;
 

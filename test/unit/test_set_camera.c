@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:53:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 17:49:19 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 19:11:09 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	test_get_camera_data(void)
 {
 	static const double hfov70_width = 1.4004150764; // tan((hfov*M_PI/180) / 2) * 2
 	// カメラのonb座標設定確認要
-	assert(camera_equal(get_camera_data("C -50.0,0,20 0,0,1 70"), (t_camera){
-		.origin = (t_point3){{-50.0,0,20}},
-		.onb = (t_onb){(t_vec3){{-1, 0, 0}}, (t_vec3){{0, 1, 0}}, (t_vec3){{0, 0, -1}}},
+	assert(camera_equal(get_camera_data("C 50.0,0,20 0,0,1 70"), (t_camera){
+		.origin = (t_point3){{50.0,0,20}},
+		.onb = (t_onb){(t_vec3){{1, 0, 0}}, (t_vec3){{0, 1, 0}}, (t_vec3){{0, 0, 1}}},
 		.screen_width = hfov70_width,
 		.screen_height = hfov70_width * ASPECT_RATIO,
-		.left_top = add_vec3((t_point3){{-50.0,0,20}}, (t_vec3){{-hfov70_width / 2, hfov70_width * ASPECT_RATIO / 2, 1}})
+		.left_top = add_vec3((t_point3){{50.0,0,20}}, (t_vec3){{-hfov70_width / 2, hfov70_width * ASPECT_RATIO / 2, 1}})
 	}));
 	return (0);
 }
