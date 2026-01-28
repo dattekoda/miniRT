@@ -6,13 +6,14 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 19:53:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 10:30:57 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "element.h"
 #include "line_to_element.h"
 #include "init_world_define.h"
+#include "init_world_utils.h"
 #include "solid_texture.h"
 #include "lambertian.h"
 #include "option.h"
@@ -21,16 +22,16 @@
 int	line_to_light(t_hitter **light, const char *line);
 int	line_to_disk(t_hitter **disk, const char *line);
 
-extern const t_skip	g_ambient_skips[];
-extern const t_skip	g_camera_skips[];
-extern const t_skip	g_light_skips[];
-extern const t_skip	g_sphere_skips[];
-extern const t_skip	g_plane_skips[];
-extern const t_skip	g_cylinder_skips[];
-extern const t_skip	g_disk_skips[];
-extern const t_skip	g_cone_skips[];
-extern const t_skip	g_ambient_skips[];
-extern const t_skip	g_triangle_skips[];
+extern const t_skip					g_ambient_skips[];
+extern const t_skip					g_camera_skips[];
+extern const t_skip					g_light_skips[];
+extern const t_skip					g_sphere_skips[];
+extern const t_skip					g_plane_skips[];
+extern const t_skip					g_cylinder_skips[];
+extern const t_skip					g_disk_skips[];
+extern const t_skip					g_cone_skips[];
+extern const t_skip					g_ambient_skips[];
+extern const t_skip					g_triangle_skips[];
 
 const t_element				g_ambient_info = {
 	.id = "A",
@@ -130,7 +131,7 @@ const t_element		g_triangle_info = {
 @param NULL終端にするためにポインタの配列にしている。
 */
 const t_element				*g_info_table[] = {
-	&g_info_table,
+	&g_ambient_info,
 	&g_camera_info,
 	&g_light_info,
 	&g_sphere_info,

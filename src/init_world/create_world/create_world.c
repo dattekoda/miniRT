@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   create_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:14:11 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/27 21:07:29 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 10:26:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "init_world_define.h"
 #include "result.h"

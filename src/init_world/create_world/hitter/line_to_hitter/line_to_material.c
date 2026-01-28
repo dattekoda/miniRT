@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:54:31 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/26 23:04:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 10:44:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static t_material_info	line_to_material_info
 static int				info_to_material
 	(t_material_info info, t_material **mat_ptr_ptr);
 
-	#include <stdio.h>
+/*
+@brief if line doesn't have any material nor texture info 
+then set their default material and texture.
+*/
 int	line_to_material
 	(const char *line, size_t *i_ptr, t_material **mat_ptr_ptr, t_element element)
 {
@@ -35,7 +38,6 @@ int	line_to_material
 	return (SUCCESS);
 }
 
-#include <stdio.h>
 /*
 @detail no need free(texture_ptr) when generate_material failed because
 gen mat responsible for free(texture_ptr)

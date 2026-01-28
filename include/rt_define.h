@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/27 20:42:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 10:59:08 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 # define RANDOM_SEED_UINT64 0x629d97afad9281f2
 
 # define DOUBLE_MANTISSA_SCALE 9.007199254740992
+
+// how heavy to calculate to hit aabb intersection
+# define COST_AABB_INTERSECTION 1
+
+// how heavy to calculate to hit element intersection
+# define COST_ELEMENT_INTERSECTION 1
 
 # define MATERIAL_SPECIFIER "lmd"
 # define TEXTURE_SPECIFIER "sbc"

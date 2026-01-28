@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 19:49:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 10:34:48 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 
 // light
 # define LIGHT_RADIUS 100.0
+
+# define PATHTRACING_LIGHT_STRENGTH 100.0
 
 // steradian of path tracing model
 # ifndef LIGHT_STERADIAN

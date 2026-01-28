@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   bvh_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:29:43 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 20:29:53 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 10:56:46 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
 #include "vec_utils.h"
 #include "hitter_arr.h"
+#include "rt_define.h"
 #include <math.h>
 
 t_aabb			construct_aabb(t_point3 min, t_point3 max);
@@ -27,9 +28,9 @@ double	cost_func(const t_hitter_arr root, size_t left_size,
 	right_size = root.size - left_size;
 	left_surface_area = left_area_arr[left_size - 1];
 	right_surface_area = right_area_arr[right_size - 1];
-	return (2 * T_AABB
+	return (2 * COST_AABB_INTERSECTION
 		+ (left_surface_area * left_size + right_surface_area * right_size)
-		* T_TRI / left_area_arr[root.size - 1]);
+		* COST_ELEMENT_INTERSECTION / left_area_arr[root.size - 1]);
 }
 
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size)

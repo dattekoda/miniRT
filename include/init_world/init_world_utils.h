@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world_utils.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 21:00:54 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 10:32:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,27 @@
 # include "vec.h"
 # include "option.h"
 # include "init_world_define.h"
+# include "material.h"
+# include "texture.h"
 # include <stdbool.h>
+
+extern const t_element				g_ambient_info;
+extern const t_element				g_camera_info;
+extern const t_element				g_light_info;
+extern const t_element				g_sphere_info;
+extern const t_element				g_plane_info;
+extern const t_element				g_cylinder_info;
+extern const t_element				g_disk_info;
+extern const t_element				g_cone_info;
+extern const t_element				g_ambient_info;
+extern const t_element				g_triangle_info;
 
 extern const t_element				*g_info_table[];
 extern const t_element				*g_infinite_table[];
 extern const t_element				*g_finite_table[];
+
+typedef t_texture					*(*t_generate_texture)(t_color color);
+typedef t_material					*(*t_generate_material)(t_texture *texture_ptr);
 
 extern const t_generate_texture		g_generate_textures[];
 extern const t_generate_material	g_generate_materials[];
