@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   test_unit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 22:16:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 17:06:22 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/28 17:01:32 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/28 17:06:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	test_mini_rt(void);
+int	test_init_world(void);
 
-int	main(void)
+int	test_unit(void)
 {
-	return (test_mini_rt());
+	test_init_world(void);
 }

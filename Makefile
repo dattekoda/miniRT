@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/01/28 16:49:38 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/28 17:06:04 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -194,17 +194,17 @@ TESTLDFLAG	=	$(LDFLAG) -Wl,--wrap=open,--wrap=read,--wrap=malloc,--wrap=free,--w
 TESTSRCFILES	=	$(addprefix test/, \
 						test.c \
 						test_mini_rt.c \
-						$(addprefix unit_test/, \
+						$(addprefix unit/, \
 							$(addprefix init_world/, \
 								test_init_world.c \
 								test_set_option.c \
 								test_read_rt_file.c \
-								$(addprefix test_validate_arguments/, \
+								$(addprefix validate_arguments/, \
 									test_validate_arguments.c \
 									test_is_valid_file_name.c \
 									test_is_valid_option.c \
 								) \
-								$(addprefix test_is_valid_line_list/, \
+								$(addprefix is_valid_line_list/, \
 									test_is_valid_line_list.c \
 									test_line_to_value.c \
 									test_skip_color.c \
@@ -214,29 +214,29 @@ TESTSRCFILES	=	$(addprefix test/, \
 									test_skip_unit.c \
 									test_skip_until_end.c \
 								) \
-								$(addprefix test_create_world/, \
+								$(addprefix create_world/, \
 									test_create_world.c \
 									test_set_ambient.c \
 									test_set_camera.c \
-									$(addprefix test_set_light/, \
+									$(addprefix set_light/, \
 										test_set_light.c \
 										test_add_light_radius.c \
 										test_line_to_light.c \
 									) \
-									$(addprefix test_set_objects/, \
+									$(addprefix set_objects/, \
 										test_set_objects.c \
-										$(addprefix test_line_list_to_bvh/, \
+										$(addprefix line_list_to_bvh/, \
 										test_line_list_to_bvh.c \
-											$(addprefix test_line_list_to_hit_arr/, \
+											$(addprefix line_list_to_hit_arr/, \
 											test_line_list_to_hit_arr.c \
 											) \
-											$(addprefix test_hit_arr_to_bvh/, \
+											$(addprefix hit_arr_to_bvh/, \
 											test_hit_arr_to_bvh.c \
 											) \
 										) \
 									) \
 								) \
-								$(addprefix test_utils/, \
+								$(addprefix utils/, \
 									test_match_identifer.c \
 								) \
 							) \
@@ -248,7 +248,7 @@ TESTSRCFILES	=	$(addprefix test/, \
 					) \
 					$(addprefix integration/, \
 					init_world/, \
-					)
+					) \
 				)
 
 TESTSRCS		=	$(TESTSRCFILES) \

@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   test_integration.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 22:16:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 17:06:22 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/28 17:02:49 by khanadat          #+#    #+#             */
+/*   Updated: 2026/01/28 17:06:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	test_mini_rt(void);
+int	test_line_list_to_bvh();
 
-int	main(void)
+int	test_integration(void)
 {
-	return (test_mini_rt());
+	test_line_list_to_bvh();
+	return (0);
 }
