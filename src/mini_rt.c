@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 20:32:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 20:43:27 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	mini_rt(int argc, char *argv[])
 	ft_bzero(&world, sizeof(t_world));
 	if (init_world(&world, &option_flag, argc, argv) == FAILURE)
 		return (EXIT_FAILURE);
-	pixel_arr = NULL;
 	if (render_pixel(&pixel_arr, &world) == FAILURE)
 	{
 		clear_world(world);

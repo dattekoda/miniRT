@@ -6,13 +6,20 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 20:44:59 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 20:33:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "world.h"
 #include "hitter.h"
 #include "material.h"
 #include <stdlib.h>
+
+void	clear_world(t_world world)
+{
+	ft_lstclear(world.light_list, clear_hitter);
+	world.object_tree->clear(world.object_tree);
+}
 
 void	clear_texture(void *s)
 {

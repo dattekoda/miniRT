@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:52:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 19:27:23 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 20:35:25 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	new_light_node(t_list **new_list, const char *line,
 int			preprocess_line_list(t_list *line_list, t_point3 camera_origin);
 int			line_to_light(t_hitter **light, const char *line, bool is_phong);
 
-int	set_light(t_world *world, t_list *line_list)
+int	set_light(t_world *world, t_list *line_list, int option_flag)
 {
 	t_list	*new_node;
 
@@ -37,7 +37,7 @@ int	set_light(t_world *world, t_list *line_list)
 		if (match_identifier(line_list->content, g_info_table[LIGHT]))
 		{
 			if (new_light_node
-				(&new_node, line_list->content, world->option_flag) == FAILURE)
+				(&new_node, line_list->content, option_flag) == FAILURE)
 			{
 				ft_lstclear(&world->light_list, clear_hitter);
 				return (FAILURE);

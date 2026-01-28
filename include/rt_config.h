@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_config.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 13:31:04 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 20:41:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 // ambient
 # define PATHTRACING_AMBIENTSCALE 100.0
 
+// window
+# ifndef WINDOW_WIDTH
+#  define WINDOW_WIDTH 1280
+# endif
 // camera
 # ifndef ASPECT_RATIO
 #  define ASPECT_RATIO 1.77777777778 /*  (16.0 / 9.0)  */

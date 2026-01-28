@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 21:51:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 20:34:41 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 t_color			get_ambient_data(const char *line, bool is_phong);
 static t_color	construct_ambient(t_color raw_color, double ratio);
 
-void	set_ambient(t_world *world, const t_list *line_list)
+void	set_ambient(t_world *world, const t_list *line_list, int option_flag)
 {
 	while (line_list)
 	{
@@ -30,7 +30,7 @@ void	set_ambient(t_world *world, const t_list *line_list)
 		line_list = line_list->next;
 	}
 	world->ambient = 
-		get_ambient_data(line_list->content, world->option_flag & OPT_ARTIFICIAL);
+		get_ambient_data(line_list->content, option_flag & OPT_ARTIFICIAL);
 	return ;
 }
 
