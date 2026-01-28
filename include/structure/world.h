@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:27:58 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 02:00:29 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 19:51:56 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 typedef struct s_world
 {
-	int			option_flag;
 	t_color		ambient;
 	t_camera	camera;
 	t_list		*light_list;
