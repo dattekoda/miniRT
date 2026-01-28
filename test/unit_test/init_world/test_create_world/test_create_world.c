@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_create_world.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:51:35 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 11:29:19 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 16:46:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

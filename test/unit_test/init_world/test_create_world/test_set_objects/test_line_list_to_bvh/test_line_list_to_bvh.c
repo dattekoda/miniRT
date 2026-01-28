@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_line_list_to_bvh.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 11:33:29 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 13:15:59 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 16:46:43 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ int	test_line_list_to_bvh(void)
 {
 	test_line_list_to_hit_arr();
 	test_hit_arr_to_bvh();
-	test_self();
 	return (0);
 }
 
-int	test_self(void)
+static int	test_self(void)
 {
 	t_hitter	*node;
 	t_list		*line_list;
@@ -85,7 +84,8 @@ static int	set_line_list(t_list **line_list, const char *z_value_arr[])
 }
 
 /*
-@brief check i has */
+@brief check i has 
+*/
 static bool	hit_origin_to_point(t_hitter *node, t_vec3 origin, t_vec3 point)
 {
 	t_range	range = construct_vec2(HIT_T_MIN, length_vec3(sub_vec3(point, origin)));

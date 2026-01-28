@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 22:16:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 01:36:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 16:49:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,3 @@ int	main(void)
 {
 	return (test_mini_rt());
 }
-
