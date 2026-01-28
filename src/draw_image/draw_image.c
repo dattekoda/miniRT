@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   option.h                                           :+:      :+:    :+:   */
+/*   draw_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 02:39:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 20:47:13 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/28 20:45:39 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/28 20:52:21 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPTION_H
-# define OPTION_H
+#include "option.h"
+#include "vec.h"
+#include "result.h"
 
-enum e_option
+int	draw_ppm_image(const t_color *pixel_arr);
+
+int	draw_image(const t_color *pixel_arr, int option_flag, void **mlx_p)
 {
-	OPT_ARTIFICIAL = (1 << 0),
-	OPT_MATERIAL = (1 << 1),
-	OPT_PPM = (1 << 2),
-};
+	// t_hook_var	var;
+	// t_img		img;
 
-typedef struct s_option
-{
-	char			*str;
-	enum e_option	flag;
-}	t_option;
+	if (option_flag & OPT_PPM)
+		return (draw_ppm_image(pixel_arr));
 
-#endif
+	// *mlx_p = var.mlx;
+	return (SUCCESS);
+}

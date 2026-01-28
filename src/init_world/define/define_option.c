@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 16:27:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 02:40:52 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 20:48:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,14 @@ const t_option	g_material_option = {
 	.flag = OPT_MATERIAL
 };
 
+const t_option	g_ppm_option = {
+	.str = "ppm",
+	.flag = OPT_PPM
+};
+
 const t_option	*g_option_table[] = {
 	&g_artificial_option,
 	&g_material_option,
+	&g_ppm_option,
 	NULL
 };
