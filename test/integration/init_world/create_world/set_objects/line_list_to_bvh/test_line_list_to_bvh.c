@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 11:33:29 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 16:46:43 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 17:19:13 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	test_line_list_to_bvh(void)
 {
 	test_line_list_to_hit_arr();
 	test_hit_arr_to_bvh();
+	test_self();
 	return (0);
 }
 

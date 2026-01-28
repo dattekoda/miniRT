@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/01/28 17:06:04 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/28 17:23:33 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -195,6 +195,7 @@ TESTSRCFILES	=	$(addprefix test/, \
 						test.c \
 						test_mini_rt.c \
 						$(addprefix unit/, \
+							test_unit.c \
 							$(addprefix init_world/, \
 								test_init_world.c \
 								test_set_option.c \
@@ -225,6 +226,23 @@ TESTSRCFILES	=	$(addprefix test/, \
 									) \
 									$(addprefix set_objects/, \
 										test_set_objects.c \
+									) \
+								) \
+								$(addprefix utils/, \
+									test_match_identifer.c \
+								) \
+							) \
+						) \
+						$(addprefix utils/, \
+							syscall_mock.c \
+							vec_equal.c \
+							print_vec.c \
+						) \
+						$(addprefix integration/, \
+						test_integration.c \
+							$(addprefix init_world/, \
+								$(addprefix create_world/, \
+									$(addprefix set_objects/, \
 										$(addprefix line_list_to_bvh/, \
 										test_line_list_to_bvh.c \
 											$(addprefix line_list_to_hit_arr/, \
@@ -236,20 +254,9 @@ TESTSRCFILES	=	$(addprefix test/, \
 										) \
 									) \
 								) \
-								$(addprefix utils/, \
-									test_match_identifer.c \
-								) \
 							) \
-							$(addprefix utils/, \
-								syscall_mock.c \
-								vec_equal.c \
-								print_vec.c \
-							) \
-					) \
-					$(addprefix integration/, \
-					init_world/, \
-					) \
-				)
+						) \
+					)
 
 TESTSRCS		=	$(TESTSRCFILES) \
 					$(filter-out $(SRCDIR)/main.c, $(SRCS))
