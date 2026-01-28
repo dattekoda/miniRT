@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 16:23:10 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 16:23:17 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

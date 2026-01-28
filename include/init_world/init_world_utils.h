@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world_utils.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 16:27:25 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 16:32:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

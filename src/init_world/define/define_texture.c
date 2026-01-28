@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_texture.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 15:01:00 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 16:23:10 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 16:23:17 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
