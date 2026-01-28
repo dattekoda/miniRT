@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 02:22:49 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 08:24:25 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 19:20:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ static bool	is_valid_file_extention(const char *file)
 	len = ft_strlen(file);
 	if (file[0] == '.')
 		return (false);
-	char	extention[10];
-	ft_strlcpy(extention, file + len - 3, 10);
 	if (len < 4 || ft_strcmp(file + len - 3, ".rt"))
 		return (false);
 	return (true);
