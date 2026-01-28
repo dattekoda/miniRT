@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world_utils.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 16:05:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 16:13:56 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,8 @@ bool		match_identifier(const char *line, const t_element *info);
 t_result	token_to_value(const char *line, size_t *line_idx, double *d);
 t_result	token_to_vec(const char *line, size_t *line_idx, t_vec3 *vec);
 t_result	token_to_str(const char *line, size_t *line_idx, char **c);
+
+enum e_mat_idx		str_to_material_idx(const char *str);
+enum e_texture_idx	str_to_texture_idx(const char *str);
 
 #endif

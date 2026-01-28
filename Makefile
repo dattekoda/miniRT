@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/01/28 16:05:57 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/28 16:13:22 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,7 +119,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						) \
 					) \
 					$(addprefix utils/, \
-						char_to_idx.c \
+						str_to_idx.c \
 						match_identifer.c \
 						token_to_str.c \
 						token_to_value.c \

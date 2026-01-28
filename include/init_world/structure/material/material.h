@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 15:41:03 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 16:19:59 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ enum e_mat_idx
 {
 	LAMBERTIAN,
 	METAL,
-	DIELECTRIC
+	DIELECTRIC,
+	INVALID_MATERIAL_IDX
 };
 
 #endif
