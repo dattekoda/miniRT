@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_to_char.c                                    :+:      :+:    :+:   */
+/*   token_to_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:21:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/21 16:16:47 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:09:13 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 #include "libft.h"
 #include <math.h>
 
-t_result	token_to_char(const char *line, size_t *line_idx, char *c)
+t_result	token_to_str(const char *line, size_t *line_idx, char **str_p)
 {
-	*c = line[(*line_idx)];
-	if (*c == '\0' || ft_isspace(*c))
-		return (construct_result("invalid value"));
-	(*line_idx)++;
+	*str_p = &line[*line_idx];
+	if (!**str_p)
+		*str_p = NULL;
+	while (line[*line_idx] != '\0' || !ft_isspace(line[*line_idx]))
+		(*line_idx)++;
 	return (construct_result(NULL));
 }

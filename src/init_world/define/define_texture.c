@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char_to_idx.c                                      :+:      :+:    :+:   */
+/*   define_texture.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/21 15:45:57 by khanadat          #+#    #+#             */
+/*   Created: 2026/01/28 15:01:00 by khanadat          #+#    #+#             */
 /*   Updated: 2026/01/28 16:05:57 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_utils.h"
-#include "rt_define.h"
-#include "libft.h"
 #include <stddef.h>
+
+t_texture	*generate_solid_texture(t_color color);
+
+const char	*g_texture_specifiers[] = {
+	"solid",
+	// "checker",
+	// "bump",
+	NULL
+};
+
+const t_generate_texture	g_gen_texture_table[] = 
+{
+	generate_solid_texture,
+	NULL
+};

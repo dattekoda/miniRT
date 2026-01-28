@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_material.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:54:31 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 10:44:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/28 16:05:56 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,56 +18,80 @@
 #include "vec_utils.h"
 #include <stddef.h>
 
-static t_material_info	line_to_material_info
-	(const char *line, size_t *i_ptr, t_element element);
-static int				info_to_material
-	(t_material_info info, t_material **mat_ptr_ptr);
+static enum e_mat_idx	str_to_material_idx(const char *str);
+static enum e_texture_idx	str_to_texture_idx(const char *str);
 
 /*
 @brief if line doesn't have any material nor texture info 
 then set their default material and texture.
 */
 int	line_to_material
-	(const char *line, size_t *i_ptr, t_material **mat_ptr_ptr, t_element element)
+	(const char *line, size_t *line_idx, 
+		t_material **mat_pp, const t_element *element)
 {
-	t_material_info	info;
+	t_color	raw_color;
+	char	*mat_str;
+	char	*tex_str;
 
-	info = line_to_material_info(line, i_ptr, element);
-	if (info_to_material(info, mat_ptr_ptr) == FAILURE)
+	token_to_vec(line, line_idx, &raw_color);
+	token_to_str(line, line_idx, &mat_str);
+	token_to_str(line, line_idx, &tex_str);
+	*mat_pp = param_to_material_ptr
+		(normalize_color(raw_color), tex_str, mat_str, element);
+	if (!*mat_pp)
 		return (FAILURE);
+	return (SUCCESS);
+}
+
+t_material	*parm_to_material_ptr
+	(t_color color, char *tex_str, char *mat_str, const t_element *element)
+{
+	t_material			*mat_ptr;
+	t_texture			*texture_ptr;
+	enum e_mat_idx		mat_idx;
+	enum e_texture_idx	texture_idx;
+
+	if (!mat_str)
+		texture_idx = element->material_idx;
+	else
+		texture_idx = str_to_texture_idx(tex_str);
+	texture_ptr = g_gen_texture_table[texture_idx](color);
+	if (!texture_ptr)
+		return (NULL);
+	if (!mat_str)
+		mat_idx = element->material_idx;
+	else
+		mat_idx = str_to_material_idx(mat_str);
+	mat_ptr = g_gen_material_table[mat_idx](texture_ptr);
+	if (!mat_ptr)
+		return (texture_ptr->clear(texture_ptr), FAILURE);
 	return (SUCCESS);
 }
 
 /*
-@detail no need free(texture_ptr) when generate_material failed because
-gen mat responsible for free(texture_ptr)
+@brief if match str in specifiers then return valid idx
+@return if str was invalid then returen -1
 */
-static int	info_to_material(t_material_info info, t_material **mat_ptr_ptr)
+static int str_to_idx(const char *str, const char *specifiers[])
 {
-	t_texture	*texture_ptr;
-	
-	texture_ptr = g_generate_textures[info.tex_idx](info.color);
-	if (!texture_ptr)
-		return (FAILURE);
-	*mat_ptr_ptr = g_generate_materials[info.mat_idx](texture_ptr);
-	if (!*mat_ptr_ptr)
-		return (FAILURE);
-	return (SUCCESS);
+	int	idx;
+
+	idx = 0;
+	while (specifiers[idx])
+	{
+		if (ft_strncmp(specifiers[idx], str, ft_strlen(specifiers[idx])) == 0)
+			return (idx);
+		idx++;
+	}
+	return (-1);
 }
 
-static t_material_info	line_to_material_info
-	(const char *line, size_t *i_ptr, t_element element)
+static enum e_mat_idx	str_to_material_idx(const char *str)
 {
-	t_material_info	info;
-	t_color			raw_color;
-	char			c;
+	return (str_to_idx(str, g_material_specifiers));
+}
 
-	ft_bzero(&info, sizeof(t_material_info));
-	token_to_vec(line, i_ptr, &raw_color);
-	info.color = normalize_color(raw_color);
-	token_to_char(line, i_ptr, &c);
-	info.mat_idx = char_to_material_idx(c, element.material_idx);
-	token_to_char(line, i_ptr, &c);
-	info.tex_idx = char_to_material_idx(c, element.texture_idx);
-	return (info);
+enum e_texture_idx	str_to_texture_idx(const char *str)
+{
+	return (str_to_idx(str, g_texture_specifiers));
 }
