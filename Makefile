@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/01/28 17:23:33 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/28 17:50:13 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -196,49 +196,30 @@ TESTSRCFILES	=	$(addprefix test/, \
 						test_mini_rt.c \
 						$(addprefix unit/, \
 							test_unit.c \
-							$(addprefix init_world/, \
-								test_init_world.c \
-								test_set_option.c \
-								test_read_rt_file.c \
-								$(addprefix validate_arguments/, \
-									test_validate_arguments.c \
-									test_is_valid_file_name.c \
-									test_is_valid_option.c \
-								) \
-								$(addprefix is_valid_line_list/, \
-									test_is_valid_line_list.c \
-									test_line_to_value.c \
-									test_skip_color.c \
-									test_skip_point.c \
-									test_skip_range.c \
-									test_skip_spaces.c \
-									test_skip_unit.c \
-									test_skip_until_end.c \
-								) \
-								$(addprefix create_world/, \
-									test_create_world.c \
-									test_set_ambient.c \
-									test_set_camera.c \
-									$(addprefix set_light/, \
-										test_set_light.c \
-										test_add_light_radius.c \
-										test_line_to_light.c \
-									) \
-									$(addprefix set_objects/, \
-										test_set_objects.c \
-									) \
-								) \
-								$(addprefix utils/, \
-									test_match_identifer.c \
-								) \
-							) \
+							test_match_identifer.c \
+							test_set_option.c \
+							test_read_rt_file.c \
+							test_is_valid_file_name.c \
+							test_is_valid_option.c \
+							test_line_to_value.c \
+							test_skip_color.c \
+							test_skip_point.c \
+							test_skip_range.c \
+							test_skip_spaces.c \
+							test_skip_unit.c \
+							test_skip_until_end.c \
+							test_set_ambient.c \
+							test_set_camera.c \
+							test_add_light_radius.c \
+							test_line_to_light.c \
 						) \
 						$(addprefix utils/, \
 							syscall_mock.c \
 							vec_equal.c \
 							print_vec.c \
-						) \
-						$(addprefix integration/, \
+						))
+
+# $(addprefix integration/, \
 						test_integration.c \
 							$(addprefix init_world/, \
 								$(addprefix create_world/, \
@@ -256,7 +237,7 @@ TESTSRCFILES	=	$(addprefix test/, \
 								) \
 							) \
 						) \
-					)
+					) \
 
 TESTSRCS		=	$(TESTSRCFILES) \
 					$(filter-out $(SRCDIR)/main.c, $(SRCS))

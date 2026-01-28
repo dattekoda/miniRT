@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_create_world.c                                :+:      :+:    :+:   */
+/*   test_line_to_light.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 11:51:35 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 17:14:43 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/28 17:48:05 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/28 17:49:10 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	test_match_identifer(void); // test_utilsとかのほうがいいか
-int	test_set_ambient(void);
-int	test_set_camera(void);
-int	test_set_light(void);
-int	test_set_objects(void);
+#include "hitter.h"
 
-int	test_create_world(void)
+/*
+@brief line "L 0,4,4, 0.3, 255,255,0 4"
+*/
+int	line_to_light(t_hitter **light, const char *line, int option_flag);
+
+int	test_line_to_light(void)
 {
-	test_set_ambient();
-	test_set_camera();
-	test_set_light();
-	test_set_objects();
 	return (0);
 }

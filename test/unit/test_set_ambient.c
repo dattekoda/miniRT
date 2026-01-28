@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:54:00 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 08:47:23 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/28 17:39:44 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,9 @@
 #include <assert.h>
 
 t_color		get_ambient_data(const char *line, bool is_phong);
-static int	test_get_ambient_data(void);
 bool		vec3_equal(t_vec3 a, t_vec3 b);
 
-int	test_set_ambient(void)
-{
-	test_get_ambient_data();
-	return (0);
-}
-
-static int	test_get_ambient_data(void)
+int	test_get_ambient_data(void)
 {
 	assert(vec3_equal(get_ambient_data("A 1.0 255, 255 , 255", 0),
 					(t_color){{100.0, 100.0, 100.0}}));
