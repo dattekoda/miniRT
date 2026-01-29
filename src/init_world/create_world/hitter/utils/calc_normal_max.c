@@ -6,9 +6,11 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 06:03:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 06:03:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 07:07:25 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <math.h>
 
 double	calc_normal_max(double d)
 {

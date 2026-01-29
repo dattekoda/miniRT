@@ -6,11 +6,11 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 02:07:31 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 07:11:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
+#include "line_to_element.h"
 #include "init_world_utils.h"
 #include "validate_utils.h"
 #include "cylinder.h"
@@ -39,7 +39,7 @@ static int	line_to_cylinder_param(
 				const char *line, t_cylinder *cylinder_param)
 {
 	size_t	i;
-	double		diameter;
+	double	diameter;
 
 	i = g_infinite_table[CYLINDER]->id_len;
 	token_to_vec(line, &i, &cylinder_param->center);

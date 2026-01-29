@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 06:25:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 07:08:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,8 @@ static t_aabb	construct_disk_aabb(t_disk disk)
 	t_point3	v_max;
 
 	v_max = scal_mul_vec3(
-				map_vec3(disk.normal, calc_normal_max), disk.radius);
+			map_vec3(disk.normal, calc_normal_max), disk.radius);
 	min = sub_vec3(disk.center, v_max);
 	max = add_vec3(disk.center, v_max);
 	return (construct_aabb(min, max));
 }
-

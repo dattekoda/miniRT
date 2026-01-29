@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 01:52:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 01:59:43 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 07:12:32 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,15 @@
 #include "vec_utils.h"
 #include <math.h>
 
-static t_solution	init_solution_context(const t_point3 *point,
-						const t_vec3 *normal, const t_ray *ray);
-bool				hit_plane(
-						const void *s,
-						const t_ray *ray, t_hrec *hrec, t_range *range);
+bool	hit_plane(
+			const void *s,
+			const t_ray *ray, t_hrec *hrec, t_range *range);
 
 bool	hit_disk(
 			const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {
 	const t_disk	*self;
 	t_plane			plane;
-	t_solution		solu;
 
 	self = s;
 	plane.normal = self->normal;
