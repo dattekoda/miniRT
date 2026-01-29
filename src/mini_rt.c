@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 18:20:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 20:22:52 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include <stdlib.h>
 
 int		init_world(t_world *world, int *option_flag, int argc, char *argv[]);
-void	clear_world(t_world world);
 int		render_pixel(t_color **pxl_arr_p, const t_world *world);
 int		draw_image(const t_color *pixel_arr, int option_flag, void **mlx_p);
+void	clear_world(t_world world);
 
 int	mini_rt(int argc, char *argv[])
 {

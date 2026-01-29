@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 19:50:02 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 20:27:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	line_to_light_material(
 				size_t *line_idx,
 				t_material **mat_pp,
 				int option_flag);
-static int	pam_to_light_material(t_color color, t_material **mat_pp);
+static int	param_to_light_material(t_color color, t_material **mat_pp);
 
 /*
 @brief line "L 0,4,4, 0.3, 255,255,0 4"
@@ -76,16 +76,16 @@ static int	line_to_light_material(const char *line, size_t *line_idx,
 	t_color		color;
 
 	token_to_value(line, line_idx, &ratio);
+	if (!(option_flag & OPT_ARTIFICIAL))
+		ratio *= PATHTRACING_LIGHT_STRENGTH;
 	token_to_vec(line, line_idx, &color);
 	color = scal_mul_vec3(normalize_color(color), ratio);
-	if (!(option_flag & OPT_ARTIFICIAL))
-		color = scal_mul_vec3(color, PATHTRACING_LIGHT_STRENGTH);
-	if (pam_to_light_material(color, mat_pp) == FAILURE)
+	if (param_to_light_material(color, mat_pp) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
 
-static int	pam_to_light_material(t_color color, t_material **mat_pp)
+static int	param_to_light_material(t_color color, t_material **mat_pp)
 {
 	t_texture	*texture_ptr;
 	t_material	*mat_ptr;

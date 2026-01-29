@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/01/29 18:25:04 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/29 20:22:21 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ SRCDIR		=	src
 SRCS	=	$(addprefix $(SRCDIR)/, \
 				main.c \
 				mini_rt.c \
-				get_camera_ray.c \
 				$(addprefix init_world/, \
 					init_world.c \
 					set_option.c \
@@ -131,6 +130,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 				) \
 				$(addprefix render_pixel/, \
 					render_pixel.c \
+					get_camera_ray.c \
 				) \
 				$(addprefix draw_image/, \
 					draw_image.c \

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 18:33:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 20:40:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ typedef struct s_scatter_record
 
 typedef struct s_material
 {
-	bool		(*scatter)(const void *self, const t_world * world,
-		t_hrec * hrec, t_srec * srec);
-	t_color		(*emitted)(const void *self, t_hrec * hrec);
+	bool		(*scatter)(const void *self,
+		const t_world * world, t_hrec * hrec, t_srec * srec);
 	t_texture	*texture_ptr;
 	t_clear		clear;
 }	t_material;

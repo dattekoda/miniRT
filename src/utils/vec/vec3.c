@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:11:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/17 18:47:23 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 20:30:41 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 #include <math.h>
 #include <stddef.h>
 
+/*
+@param e0 X(R)
+@param e1 Y(G)
+@param e2 Z(B)
+*/
 t_vec3	construct_vec3(double e0, double e1, double e2)
 {
 	t_vec3	vec3;
