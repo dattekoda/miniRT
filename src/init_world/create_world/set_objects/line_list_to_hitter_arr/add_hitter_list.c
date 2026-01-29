@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:48:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 21:28:49 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:44:16 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	add_hitter_list(t_list **hitter_list, const char *line,
 {
 	t_hitter	*hitter_tmp;
 
-	if (add_hitter(hitter_list, &hitter_tmp, line, element) == FAILURE)
+	if (add_hitter(hitter_list, line, &hitter_tmp, element) == FAILURE)
 		return (FAILURE);
 	if (has_subhitter(element) == true)
 	{

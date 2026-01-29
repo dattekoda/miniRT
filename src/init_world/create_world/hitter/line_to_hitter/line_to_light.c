@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 22:28:41 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:36:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ static int			light_line_to_shape_param(
 						const char *line,
 						t_sphere *light_param,
 						int option_flag);
-int					line_to_material(
-						const char *line,
-						size_t *line_idx,
-						t_material **mat_pp,
-						const t_element *element);
 static int			line_to_light_material(
 						const char *line,
 						size_t *line_idx,

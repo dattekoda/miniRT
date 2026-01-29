@@ -6,14 +6,18 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 22:19:08 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:37:34 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "plane.h"
+#include "line_to_element.h"
+#include "vec_utils.h"
 #include "init_world_utils.h"
 #include "result.h"
 #include "libft.h"
+
+static int	line_to_plane_param(const char *line, t_plane *plane_param);
 
 int	line_to_plane(t_hitter **plane, const char *line)
 {
@@ -37,4 +41,10 @@ static int	line_to_plane_param(const char *line, t_plane *plane_param)
 	i = g_infinite_table[PLANE]->id_len;
 	token_to_vec(line, &i, &plane_param->point);
 	token_to_vec(line, &i, &plane_param->normal);
+	plane_param->normal = normalize(plane_param->normal);
+	if (line_to_material(
+			line, &i, &plane_param->hitter.mat_ptr, g_info_table[PLANE])
+		== FAILURE)
+		return (FAILURE);
+	return (SUCCESS);
 }

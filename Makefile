@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/01/29 20:22:21 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/29 23:47:18 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,16 +83,19 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							) \
 						) \
 						$(addprefix hitter/, \
-							generate_cylinder.c \
-							generate_disk.c \
-							generate_sphere.c \
-							solution.c \
+							$(addprefix generator/, \
+								generate_cylinder.c \
+								generate_disk.c \
+								generate_sphere.c \
+								generate_plane.c \
+							) \
 							$(addprefix aabb/, \
 								aabb.c \
 							) \
 							$(addprefix hit/, \
 								hit_disk.c \
 								hit_sphere.c \
+								hit_plane.c \
 							) \
 							$(addprefix line_to_hitter/, \
 								line_to_cylinder.c \
@@ -102,6 +105,9 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								line_to_plane.c \
 								line_to_sphere.c \
 							) \
+							$(addprefix utils/, \
+								solution.c \
+							) \
 						) \
 						$(addprefix set_objects/, \
 							line_list_to_bvh.c \
@@ -109,6 +115,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							$(addprefix hitter_arr_to_bvh/, \
 								bvh_utils.c \
 								find_best_split_info.c \
+								prepare_surface_arr.c \
 								generate_tree.c \
 								hit_arr_to_bvh.c \
 								sort_hit_arr.c \

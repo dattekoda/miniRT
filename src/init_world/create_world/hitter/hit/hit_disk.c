@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_disk.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:24:47 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 16:06:55 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:46:22 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ bool	hit_disk(
 	solu.solution = solu.a / solu.b;
 	if (is_inside_range(solu.solution, range) == false)
 		return (false);
-	solu.point = at_ray(ray, solu.solution);
+	hrec->point = at_ray(ray, solu.solution);
 	if (length_squared_vec3
-		(sub_vec3(solu.point, self->center)) > pow(self->radius, 2))
+		(sub_vec3(hrec->point, self->center)) > pow(self->radius, 2))
 		return (false);
 	// assign_hrec(self, ray, hrec, range); // ????
 	(void)hrec; // 後で消す
@@ -47,10 +47,11 @@ static t_solution	init_solution_context(
 	const t_point3 *point, const t_vec3 *normal, const t_ray *ray)
 {
 	t_solution	solu;
+	t_vec3		center_to_origin;
 
 	ft_bzero(&solu, sizeof(t_solution));
-	solu.center_to_origin = sub_vec3(*point, ray->origin);
-	solu.a = -dot(solu.center_to_origin, *normal);
+	center_to_origin = sub_vec3(*point, ray->origin);
+	solu.a = -dot(center_to_origin, *normal);
 	solu.b = dot(ray->direct, *normal);
 	return (solu);
 }

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 21:55:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/24 22:39:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:22:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ bool	is_inside_range(double d, const t_range *range);
 
 t_vec2	construct_vec2(double e0, double e1);
 
-t_onb	construct_onb(t_vec3 vec3);
+t_onb	construct_onb(const t_vec3 vec3);
 t_vec3	local_onb(t_onb onb, t_vec3 vec3);
 // onb.c
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 16:02:14 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:05:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ static t_solution	init_solution_context(
 		const t_sphere *self, const t_ray *ray)
 {
 	t_solution	solu;
+	t_vec3		center_to_ray_origin;
 
 	ft_bzero(&solu, sizeof(t_solution));
-	solu.center_to_origin = sub_vec3(ray->origin, self->center);
+	center_to_ray_origin = sub_vec3(ray->origin, self->center);
 	solu.a = length_squared_vec3(ray->direct);
-	solu.b = dot(solu.center_to_origin, ray->direct);
-	solu.c = length_squared_vec3(solu.center_to_origin)
+	solu.b = dot(center_to_ray_origin, ray->direct);
+	solu.c = length_squared_vec3(center_to_ray_origin)
 		- pow(self->radius, 2);
 	solu.discriminant = calc_discriminant(&solu);
 	return (solu);

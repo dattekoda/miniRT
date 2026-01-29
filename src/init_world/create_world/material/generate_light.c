@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 20:41:28 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:35:24 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "vec_utils.h"
 
 static t_light	construct_light(t_texture *texture_ptr);
-static t_color	emmited_light(const void *s, t_hrec *hrec);
 static bool		scatter_light(
 					const void *s,
 					const t_world *world, t_hrec *hrec, t_srec *srec);
