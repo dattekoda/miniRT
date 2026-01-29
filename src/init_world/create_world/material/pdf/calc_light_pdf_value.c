@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 22:04:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 20:06:06 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 19:42:12 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@
 #include "vec_utils.h"
 #include <math.h>
 
-static double	calc_light_list_pdf_value
-	(const t_list *light_list, const t_point3 *point, const t_vec3 *direct);
-static double	calc_sphere_pdf_value
-	(const t_sphere *sphere, const t_point3 *point, const t_vec3 *direct);
-static double	calc_solid_angle
-	(const t_sphere *sphere, const t_point3 *point);
+static double	calc_light_list_pdf_value(
+					const t_list *light_list,
+					const t_point3 *point,
+					const t_vec3 *direct);
+static double	calc_sphere_pdf_value(
+					const t_sphere *sphere,
+					const t_point3 *point,
+					const t_vec3 *direct);
+static double	calc_solid_angle(
+					const t_sphere *sphere, const t_point3 *point);
 
 double	calc_light_pdf_value(const void *s, const t_vec3 *direct)
 {
@@ -31,8 +35,10 @@ double	calc_light_pdf_value(const void *s, const t_vec3 *direct)
 	return (calc_light_list_pdf_value(self->light_list, &self->point, direct));
 }
 
-static double	calc_light_list_pdf_value
-	(const t_list *light_list, const t_point3 *point, const t_vec3 *direct)
+static double	calc_light_list_pdf_value(
+					const t_list *light_list,
+					const t_point3 *point,
+					const t_vec3 *direct)
 {
 	double		pdf_sum;
 
@@ -45,8 +51,10 @@ static double	calc_light_list_pdf_value
 	return (pdf_sum);
 }
 
-static double	calc_sphere_pdf_value
-	(const t_sphere *sphere, const t_point3 *point, const t_vec3 *direct)
+static double	calc_sphere_pdf_value(
+					const t_sphere *sphere,
+					const t_point3 *point,
+					const t_vec3 *direct)
 {
 	t_hrec	hrec;
 	t_range	range;
@@ -59,8 +67,8 @@ static double	calc_sphere_pdf_value
 	return (1 / calc_solid_angle(sphere, point));
 }
 
-static double	calc_solid_angle
-	(const t_sphere *sphere, const t_point3 *point)
+static double	calc_solid_angle(
+					const t_sphere *sphere, const t_point3 *point)
 {
 	double	cos_theta_max;
 	double	distance;

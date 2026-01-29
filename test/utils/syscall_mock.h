@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syscall_mock.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 01:37:49 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 17:24:19 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 18:28:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdbool.h>
 # include <setjmp.h>
+
 enum e_error_syscall {
 	NOTHING,
 	OPEN,

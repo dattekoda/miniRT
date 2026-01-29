@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:38:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 20:15:13 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 18:32:31 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "ray.h"
 # include <stdbool.h>
 
-typedef struct s_material t_material;
+typedef struct s_material	t_material;
 
 typedef struct s_hrec
 {
@@ -28,9 +28,9 @@ typedef struct s_hrec
 	t_material	*mat_ptr;
 }	t_hrec;
 
-typedef bool	(*t_hit)
-	(const void *self, const t_ray *ray, t_hrec *hrec, t_range *range);
-typedef void	(*t_clear)(void *self);
+typedef bool				(*t_hit)(const void *self, const t_ray *ray,
+	t_hrec *hrec, t_range *range);
+typedef void				(*t_clear)(void *self);
 
 typedef struct s_aabb
 {

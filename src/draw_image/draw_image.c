@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:45:39 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 18:25:32 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 18:37:58 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,8 @@
 
 int	draw_image(const t_color *pixel_arr, int option_flag, void **mlx_p)
 {
-	// t_hook_var	var;
-	// t_img		img;
-
 	if (option_flag & OPT_PPM)
-		; //return (draw_ppm_image(pixel_arr));
-
-	// *mlx_p = var.mlx;
+		;
 	(void)mlx_p;
 	(void)pixel_arr;
 	return (SUCCESS);

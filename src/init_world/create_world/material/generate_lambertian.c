@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_lambertian.c                                   :+:      :+:    :+:   */
+/*   generate_lambertian.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/17 16:36:39 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 17:26:21 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/29 19:44:37 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@
 
 static t_lambertian		construct_lambertian(t_texture *texture_ptr);
 void					clear_material(void *s);
-static t_mixture_pdf	create_mix_pdf_lambertian(const t_world *world, const t_hrec *hrec);
-static bool	scatter_lambertian(const void *s, const t_world *world, t_hrec *hrec, t_srec *srec);
+static t_mixture_pdf	create_mix_pdf_lambertian(
+							const t_world *world, const t_hrec *hrec);
+static bool				scatter_lambertian(
+							const void *s,
+							const t_world *world, t_hrec *hrec, t_srec *srec);
 
 /*
 @brief responsible for free(texture_ptr)
@@ -54,7 +57,9 @@ static t_lambertian	construct_lambertian(t_texture *texture_ptr)
 	return (lambertian);
 }
 
-static bool	scatter_lambertian(const void *s, const t_world *world, t_hrec *hrec, t_srec *srec)
+static bool	scatter_lambertian(
+				const void *s,
+				const t_world *world, t_hrec *hrec, t_srec *srec)
 {
 	const t_lambertian	*self;
 	t_mixture_pdf		mix_pdf;
@@ -64,13 +69,17 @@ static bool	scatter_lambertian(const void *s, const t_world *world, t_hrec *hrec
 	texture_ptr = self->material.texture_ptr;
 	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec);
 	mix_pdf = create_mix_pdf_lambertian(world, hrec);
-	srec->next_ray = construct_ray(hrec->point, mix_pdf.pdf.random_pdf(&mix_pdf));
-	srec->sampling_pdf = mix_pdf.pdf.calc_pdf_value(&mix_pdf, &srec->next_ray.direct);
-	srec->surface_pdf = mix_pdf.surface_pdf->calc_pdf_value(&mix_pdf.surface_pdf, &srec->next_ray.direct);
+	srec->next_ray = construct_ray(
+			hrec->point, mix_pdf.pdf.random_pdf(&mix_pdf));
+	srec->sampling_pdf = mix_pdf.pdf.calc_pdf_value(
+			&mix_pdf, &srec->next_ray.direct);
+	srec->surface_pdf = mix_pdf.surface_pdf->calc_pdf_value(
+			&mix_pdf.surface_pdf, &srec->next_ray.direct);
 	return (true);
 }
 
-static t_mixture_pdf	create_mix_pdf_lambertian(const t_world *world, const t_hrec *hrec)
+static t_mixture_pdf	create_mix_pdf_lambertian(
+							const t_world *world, const t_hrec *hrec)
 {
 	t_mixture_pdf		mix_pdf;
 	t_light_pdf			light_pdf;

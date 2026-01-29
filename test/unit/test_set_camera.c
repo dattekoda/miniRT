@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:53:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 19:11:09 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 19:35:42 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	test_get_camera_data(void)
 	assert(camera_equal(get_camera_data("C 50.0,0,20 0,0,1 70"), (t_camera){
 		.origin = (t_point3){{50.0,0,20}},
 		.onb = (t_onb){(t_vec3){{1, 0, 0}}, (t_vec3){{0, 1, 0}}, (t_vec3){{0, 0, 1}}},
-		.screen_width = hfov70_width,
-		.screen_height = hfov70_width * ASPECT_RATIO,
+		.width = hfov70_width,
+		.height = hfov70_width * ASPECT_RATIO,
 		.left_top = add_vec3((t_point3){{50.0,0,20}}, (t_vec3){{-hfov70_width / 2, hfov70_width * ASPECT_RATIO / 2, 1}})
 	}));
 	return (0);
@@ -56,11 +56,11 @@ static bool	camera_equal(t_camera a, t_camera b)
 	{
 		return (false);
 	}
-	if (!fequal(a.screen_width, b.screen_width))
+	if (!fequal(a.width, b.width))
 	{
 		return (false);
 	}
-	if (!fequal(a.screen_height, b.screen_height))
+	if (!fequal(a.height, b.height))
 	{
 		return (false);
 	}

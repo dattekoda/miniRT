@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 17:07:16 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 20:10:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 20:00:42 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "rt_utils.h" // clear_hitter()
 
 static t_cylinder	construct_cylinder(t_cylinder shape_param);
-static t_aabb	construct_aabb(t_cylinder cylinder);
+static t_aabb		construct_aabb(t_cylinder cylinder);
 
 t_hitter	*generate_cylinder(t_cylinder cylinder_param)
 {

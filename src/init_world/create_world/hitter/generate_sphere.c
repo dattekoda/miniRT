@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   generate_sphere.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:55:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 22:47:08 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 19:53:44 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hitter_utils.h"
 #include "solution.h"
 #include "sphere.h"
-#include "solid_texture.h" // textutre table.hか何かに変更よてい
-#include "lambertian.h" // 同上。
+#include "solid_texture.h"
+#include "lambertian.h"
 #include "init_world_utils.h"
 #include "vec_utils.h"
 #include "rt_utils.h"
@@ -23,8 +23,9 @@
 #include "libft.h"
 #include <math.h>
 
-bool			hit_sphere
-	(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range);
+bool			hit_sphere(
+					const void *s,
+					const t_ray *ray, t_hrec *hrec, t_range *range);
 static t_sphere	construct_sphere(t_sphere shape_param);
 
 /*
@@ -55,7 +56,7 @@ static t_sphere	construct_sphere(t_sphere shape_param)
 	sphere.hitter.clear = clear_hitter;
 	sphere.hitter.has_aabb = true;
 	sphere.hitter.aabb = construct_aabb(
-		sub_vec3(sphere.center, constant_vec3(sphere.radius)), 
+			sub_vec3(sphere.center, constant_vec3(sphere.radius)),
 			add_vec3(sphere.center, constant_vec3(sphere.radius)));
 	return (sphere);
 }

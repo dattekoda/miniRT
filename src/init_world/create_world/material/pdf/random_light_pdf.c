@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 23:03:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 20:54:05 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 19:37:55 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include <math.h>
 
 static size_t	count_list_size(const t_list *lst);
-static t_vec3	random_light_list_pdf
-	(const t_list *light_list, const t_point3 *point);
+static t_vec3	random_light_list_pdf(
+					const t_list *light_list, const t_point3 *point);
 static t_vec3	random_sphere(const t_sphere *sphere, const t_point3 *point);
 static t_vec3	random_to_sphere(double radius, double squared_distance);
 
@@ -31,7 +31,8 @@ t_vec3	random_light_pdf(const void *s)
 	return (random_light_list_pdf(self->light_list, &self->point));
 }
 
-static t_vec3	random_light_list_pdf(const t_list *light_list, const t_point3 *point)
+static t_vec3	random_light_list_pdf(
+					const t_list *light_list, const t_point3 *point)
 {
 	size_t	count;
 	size_t	target;
@@ -51,7 +52,6 @@ static t_vec3	random_light_list_pdf(const t_list *light_list, const t_point3 *po
 	return (constant_vec3(0));
 }
 
-
 static size_t	count_list_size(const t_list *lst)
 {
 	size_t	size;
@@ -63,7 +63,6 @@ static size_t	count_list_size(const t_list *lst)
 		lst = (size++, lst->next);
 	return (size);
 }
-
 
 static t_vec3	random_sphere(const t_sphere *sphere, const t_point3 *point)
 {

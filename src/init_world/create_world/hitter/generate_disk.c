@@ -1,10 +1,12 @@
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_disk.c                                         :+:      :+:    :+:   */
+/*   generate_disk.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/17 19:23:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/17 23:45:20 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/29 19:54:07 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +18,9 @@
 #include <math.h>
 
 static t_disk	construct_disk(t_disk disk_param);
-bool			hit_disk
-	(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range);
+bool			hit_disk(
+					const void *s,
+					const t_ray *ray, t_hrec *hrec, t_range *range);
 static t_aabb	construct_disk_aabb(t_disk disk_param);
 static double	calc_normal_max(double d);
 

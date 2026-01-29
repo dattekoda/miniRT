@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 11:22:55 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 19:42:38 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 
 static t_light	construct_light(t_texture *texture_ptr);
 static t_color	emmited_light(const void *s, t_hrec *hrec);
-static bool		scatter_light(const void *s, const t_world *world, t_hrec *hrec, t_srec *srec);
+static bool		scatter_light(
+					const void *s,
+					const t_world *world, t_hrec *hrec, t_srec *srec);
 
 /*
 @brief responsible for free(texture_ptr)
@@ -58,7 +60,9 @@ static t_color	emmited_light(const void *s, t_hrec *hrec)
 	return (texture_ptr->calc_texture_value(texture_ptr, hrec));
 }
 
-static bool	scatter_light(const void *s, const t_world *world, t_hrec *hrec, t_srec *srec)
+static bool	scatter_light(
+	const void *s,
+	const t_world *world, t_hrec *hrec, t_srec *srec)
 {
 	(void)s;
 	(void)world;

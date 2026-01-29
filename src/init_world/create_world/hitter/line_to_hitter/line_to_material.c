@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_material.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:54:31 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 17:06:29 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 19:47:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,21 @@
 #include "vec_utils.h"
 #include <stddef.h>
 
-t_material					*param_to_material_ptr
-	(t_color color, const char *tex_str, 
-		const char *mat_str, const t_element *element);
+t_material	*param_to_material_ptr(
+				t_color color,
+				const char *tex_str,
+				const char *mat_str,
+				const t_element *element);
 
 /*
 @brief if line doesn't have any material nor texture info 
 then set their default material and texture.
 */
-int	line_to_material
-	(const char *line, size_t *line_idx, 
-		t_material **mat_pp, const t_element *element)
+int	line_to_material(
+		const char *line,
+		size_t *line_idx,
+		t_material **mat_pp,
+		const t_element *element)
 {
 	t_color	raw_color;
 	char	*mat_str;
@@ -43,9 +47,11 @@ int	line_to_material
 	return (SUCCESS);
 }
 
-t_material	*param_to_material_ptr
-	(t_color color, const char *tex_str, 
-		const char *mat_str, const t_element *element)
+t_material	*param_to_material_ptr(
+				t_color color,
+				const char *tex_str,
+				const char *mat_str,
+				const t_element *element)
 {
 	t_texture			*texture_ptr;
 	enum e_mat_idx		mat_idx;

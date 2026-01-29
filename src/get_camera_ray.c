@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:35:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 15:09:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 19:35:42 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static t_vec3	calc_ray_direct(const t_camera *camera, double u, double v)
 	t_vec3	vertical;
 
 	to_left_top = sub_vec3(camera->left_top, camera->origin);
-	horizonal = scal_mul_vec3(camera->onb.v[0], camera->screen_width * u);
-	vertical = scal_mul_vec3(camera->onb.v[2], camera->screen_height * (-v));
+	horizonal = scal_mul_vec3(camera->onb.v[0], camera->width * u);
+	vertical = scal_mul_vec3(camera->onb.v[2], camera->height * (-v));
 	return (add_vec3(to_left_top, add_vec3(horizonal, vertical)));
 }
 

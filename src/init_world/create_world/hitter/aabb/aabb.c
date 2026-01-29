@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:37:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 20:17:06 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 19:51:00 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include "rt_utils.h"
 #include <math.h>
 
-static bool	hit_aabb
-	(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range);
+static bool	hit_aabb(
+				const void *s, const t_ray *ray, t_hrec *hrec, t_range *range);
 
 t_aabb	construct_aabb(t_point3 min, t_point3 max)
 {
@@ -29,12 +29,13 @@ t_aabb	construct_aabb(t_point3 min, t_point3 max)
 	return (aabb);
 }
 
-static bool	hit_aabb(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
+static bool	hit_aabb(
+				const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {
 	const t_aabb	*self;
-	t_range	tmp_range;
-	size_t	axis;
-	double	tmp_div;
+	t_range			tmp_range;
+	size_t			axis;
+	double			tmp_div;
 
 	(void)hrec;
 	self = s;

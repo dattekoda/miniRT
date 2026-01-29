@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 10:59:08 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 18:57:56 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@
 # define MATERIAL_SPECIFIER "lmd"
 # define TEXTURE_SPECIFIER "sbc"
 
-#define HIT_T_MIN 1e-3
+# define HIT_T_MIN 1e-3
 
 # define LIGHT_STERADIAN 0.21
+
 #endif
