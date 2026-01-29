@@ -10,22 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "option.h"
-#include "validate_utils.h"
-#include "rt_utils.h"
 #include "element.h"
+#include "option.h"
 #include "result.h"
+#include "rt_utils.h"
+#include "validate_utils.h"
 
-static bool	is_valid_parameters
-	(char *line, size_t *i_ptr, const t_element *elem_info);
-static bool	is_valid_material
-	(char *line, size_t *i_ptr, char *input_format);
+static bool	is_valid_parameters(char *line, size_t *i_ptr,
+				const t_element *elem_info);
+static bool	is_valid_material(char *line, size_t *i_ptr, char *input_format);
 static bool	err_invlid_line(char *line, char *format, size_t i, char *err_msg);
 t_result	skip_material(char *line, size_t *line_idx);
 t_result	skip_texture(char *line, size_t *line_idx);
 
-bool	is_valid_element
-	(char *line, const t_element *elem_info, const int option_flag)
+bool	is_valid_element(char *line, const t_element *elem_info,
+		const int option_flag)
 {
 	t_result	result;
 	size_t		i;
@@ -40,12 +39,13 @@ bool	is_valid_element
 	}
 	result = skip_until_end(line, &i);
 	if (result.state == FAILURE)
-		return (err_invlid_line
-			(line, elem_info->input_format, i, result.value.err_msg));
+		return (err_invlid_line(line, elem_info->input_format, i,
+				result.value.err_msg));
 	return (true);
 }
 
-static bool	is_valid_parameters(char *line, size_t *i_ptr, const t_element *elem_info)
+static bool	is_valid_parameters(char *line, size_t *i_ptr,
+		const t_element *elem_info)
 {
 	t_result	result;
 	size_t		func_idx;
@@ -56,26 +56,25 @@ static bool	is_valid_parameters(char *line, size_t *i_ptr, const t_element *elem
 	{
 		result = elem_info->skip_arr[func_idx](line, i_ptr);
 		if (result.state == FAILURE)
-			return (err_invlid_line
-				(line, elem_info->input_format, *i_ptr, result.value.err_msg));
+			return (err_invlid_line(line, elem_info->input_format, *i_ptr,
+					result.value.err_msg));
 		func_idx++;
 	}
 	return (true);
 }
 
-static bool	is_valid_material
-	(char *line, size_t *i_ptr, char *input_format)
+static bool	is_valid_material(char *line, size_t *i_ptr, char *input_format)
 {
 	t_result	result;
 
 	result = skip_material(line, i_ptr);
 	if (result.state == FAILURE)
-		return (err_invlid_line
-			(line, input_format, *i_ptr, result.value.err_msg));
+		return (err_invlid_line(line, input_format, *i_ptr,
+				result.value.err_msg));
 	result = skip_texture(line, i_ptr);
 	if (result.state == FAILURE)
-		return (err_invlid_line
-			(line, input_format, *i_ptr, result.value.err_msg));
+		return (err_invlid_line(line, input_format, *i_ptr,
+				result.value.err_msg));
 	return (true);
 }
 

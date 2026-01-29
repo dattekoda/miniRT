@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:52:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 20:35:25 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 15:57:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <stdlib.h>
 
 static int	new_light_node(t_list **new_list, const char *line,
-	int option_flag);
+				int option_flag);
 int			preprocess_line_list(t_list *line_list, t_point3 camera_origin);
 int			line_to_light(t_hitter **light, const char *line, bool is_phong);
 

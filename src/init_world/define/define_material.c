@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_material.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 14:55:03 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 16:38:09 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:28:22 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 t_material	*generate_lambertian(t_texture *texture_ptr);
 
-const char *g_material_specifiers[] = {
+const char					*g_material_specifiers[] = {
 	"lambertian",
 	// "metal",
 	// "dielectric",

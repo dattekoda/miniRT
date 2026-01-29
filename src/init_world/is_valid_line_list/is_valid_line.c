@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:35:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 03:19:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:21:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_utils.h"
 #include "init_world_utils.h"
-#include "rt_utils.h"
 #include "libft.h"
+#include "rt_utils.h"
+#include "validate_utils.h"
 
-bool		is_valid_element
-	(char *line, const t_element *elem_info, const int option_flag);
+bool		is_valid_element(char *line, const t_element *elem_info,
+				const int option_flag);
 static void	err_invalid_identifer(char *line);
 
 bool	is_valid_line(char *line, const int option_flag)

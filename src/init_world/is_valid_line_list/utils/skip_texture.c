@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:35:19 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 16:24:32 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:25:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_result	skip_texture(const char *line, size_t *line_idx)
 	{
 		(*line_idx)--;
 		return (construct_result(
-			"texture specifier should be: solid checker bump"));
+				"texture specifier should be: solid checker bump"));
 	}
 	return (construct_result(NULL));
 }

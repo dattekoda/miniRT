@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_disk.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:24:47 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 20:18:25 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:06:55 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #include "vec_utils.h"
 #include <math.h>
 
-static t_solution	init_solution_context
-	(const t_point3 *point, const t_vec3 *normal, const t_ray *ray);
+static t_solution	init_solution_context(const t_point3 *point,
+						const t_vec3 *normal, const t_ray *ray);
 // static void			assign_hrec(const t_disk *self, const t_ray *ray, 
 // 	t_hrec *hrec, const t_solution *solu);
 
-bool	hit_disk
-	(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
+bool	hit_disk(
+	const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {
 	const t_disk	*self;
 	t_solution		solu;
@@ -43,8 +43,8 @@ bool	hit_disk
 	return (true);
 }
 
-static t_solution	init_solution_context
-	(const t_point3 *point, const t_vec3 *normal, const t_ray *ray)
+static t_solution	init_solution_context(
+	const t_point3 *point, const t_vec3 *normal, const t_ray *ray)
 {
 	t_solution	solu;
 

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 15:01:00 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 16:23:17 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:27:49 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 
 t_texture	*generate_solid_texture(t_color color);
 
-const char	*g_texture_specifiers[] = {
+const char					*g_texture_specifiers[] = {
 	"solid",
 	// "checker",
 	// "bump",
 	NULL
 };
 
-const t_generate_texture	g_gen_texture_table[] = 
-{
+const t_generate_texture	g_gen_texture_table[] = {
 	generate_solid_texture,
 	NULL
 };

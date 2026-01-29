@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   str_to_idx.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:45:57 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 16:35:05 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:19:26 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_utils.h"
-#include "rt_define.h"
 #include "libft.h"
+#include "rt_define.h"
 #include <stddef.h>
 
-static int str_to_idx(const char *str, const char *specifiers[]);
+static int	str_to_idx(const char *str, const char *specifiers[]);
 
 enum e_mat_idx	str_to_material_idx(const char *str)
 {
@@ -41,7 +41,7 @@ enum e_texture_idx	str_to_texture_idx(const char *str)
 @brief if match str in specifiers then return valid idx
 @return if str was invalid then returen -1
 */
-static int str_to_idx(const char *str, const char *specifiers[])
+static int	str_to_idx(const char *str, const char *specifiers[])
 {
 	int	idx;
 

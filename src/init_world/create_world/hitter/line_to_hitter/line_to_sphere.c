@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 16:33:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 18:16:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:10:16 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #include "vec_utils.h"
 #include "rt_define.h"
 
-static int	line_to_sphere_param(const char *line, 
-	t_sphere *sphere_param);
-int	line_to_material
-	(const char *line, size_t *line_idx, 
+static int	line_to_sphere_param(const char *line,
+				t_sphere *sphere_param);
+int			line_to_material(
+	const char *line, size_t *line_idx, 
 		t_material **mat_pp, const t_element *element);
 
 /*

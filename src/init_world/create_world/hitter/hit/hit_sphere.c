@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 20:18:41 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:02:14 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,18 @@
 #include "rt_define.h"
 #include <math.h>
 
-static t_solution	init_solution_context
-	(const t_sphere *self, const t_ray *ray);
-static void			assign_sphere_hrec
-	(const t_sphere *self, const t_ray *ray, t_hrec *hrec, double solution);
+static t_solution	init_solution_context(
+						const t_sphere *self, const t_ray *ray);
+static void			assign_sphere_hrec(
+						const t_sphere *self, const t_ray *ray,
+						t_hrec *hrec, double solution);
 static t_vec2		construct_sphere_uv(const t_vec3 *unit_normal);
 
-bool	hit_sphere
-	(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
+bool	hit_sphere(
+	const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {
 	const t_sphere	*self;
-	t_solution	solu;
+	t_solution		solu;
 
 	self = s;
 	solu = init_solution_context(self, ray);
@@ -48,8 +49,8 @@ bool	hit_sphere
 	return (false);
 }
 
-static t_solution	init_solution_context
-	(const t_sphere *self, const t_ray *ray)
+static t_solution	init_solution_context(
+		const t_sphere *self, const t_ray *ray)
 {
 	t_solution	solu;
 
@@ -57,14 +58,15 @@ static t_solution	init_solution_context
 	solu.center_to_origin = sub_vec3(ray->origin, self->center);
 	solu.a = length_squared_vec3(ray->direct);
 	solu.b = dot(solu.center_to_origin, ray->direct);
-	solu.c = length_squared_vec3(solu.center_to_origin) 
+	solu.c = length_squared_vec3(solu.center_to_origin)
 		- pow(self->radius, 2);
 	solu.discriminant = calc_discriminant(&solu);
 	return (solu);
 }
 
-static void		assign_sphere_hrec
-	(const t_sphere *self, const t_ray *ray, t_hrec *hrec, double solution)
+static void	assign_sphere_hrec(
+		const t_sphere *self, const t_ray *ray,
+		t_hrec *hrec, double solution)
 {
 	hrec->ray_in = *ray;
 	hrec->param_t = solution;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_ambient.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 20:34:41 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 15:56:30 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	set_ambient(t_world *world, const t_list *line_list, int option_flag)
 			break ;
 		line_list = line_list->next;
 	}
-	world->ambient = 
-		get_ambient_data(line_list->content, option_flag & OPT_ARTIFICIAL);
+	world->ambient
+		= get_ambient_data(line_list->content, option_flag & OPT_ARTIFICIAL);
 	return ;
 }
 

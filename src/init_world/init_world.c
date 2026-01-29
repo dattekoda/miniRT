@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 19:52:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 15:55:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		create_world(t_world *world, t_list *line_list);
 /*
 @brief responsible for free line_list
 */
-#include <stdio.h>
 int	init_world(t_world *world, int *option_flag, int argc, char *argv[])
 {
 	t_list	*line_list;

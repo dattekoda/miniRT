@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 21:03:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 13:32:24 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:02:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	preprocess_line_list(t_list *line_list, t_point3 camera_origin)
 	{
 		if (match_identifier(line_list->content, g_info_table[LIGHT]))
 		{
-			if (add_light_radius((char **)&line_list->content, camera_origin) == FAILURE)
+			if (add_light_radius(
+					(char **)&line_list->content, camera_origin) == FAILURE)
 				return (FAILURE);
 		}
 		line_list = line_list->next;

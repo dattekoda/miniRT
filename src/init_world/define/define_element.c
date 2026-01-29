@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 10:30:57 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:30:00 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ extern const t_skip					g_cone_skips[];
 extern const t_skip					g_ambient_skips[];
 extern const t_skip					g_triangle_skips[];
 
-const t_element				g_ambient_info = {
+const t_element						g_ambient_info = {
 	.id = "A",
 	.id_len = 1,
 	.input_format = "A [lighting ratio(0-1)] [R,G,B(0-255)]",
@@ -43,7 +43,7 @@ const t_element				g_ambient_info = {
 	.texture_idx = 0
 };
 
-const t_element				g_camera_info = {
+const t_element						g_camera_info = {
 	.id = "C",
 	.id_len = 1,
 	.input_format = \
@@ -51,7 +51,7 @@ const t_element				g_camera_info = {
 	.skip_arr = g_camera_skips
 };
 
-const t_element				g_light_info = {
+const t_element						g_light_info = {
 	.id = "L",
 	.id_len = 1,
 	.input_format = \
@@ -62,7 +62,7 @@ const t_element				g_light_info = {
 	.texture_idx = LIGHT_TEXTURE_ID
 };
 
-const t_element		g_sphere_info = {
+const t_element						g_sphere_info = {
 	.id = "sp",
 	.id_len = 2,
 	.input_format = "sp [coordinate](x,y,z) [diameter](>0) [R,G,B](0-255)",
@@ -72,7 +72,7 @@ const t_element		g_sphere_info = {
 	.texture_idx = SPHERE_TEXTURE_ID
 };
 
-const t_element		g_plane_info = {
+const t_element						g_plane_info = {
 	.id = "pl",
 	.id_len = 2,
 	.input_format = "pl [coordinate](x,y,z) [normalized orient vector](0-1) \
@@ -83,7 +83,7 @@ const t_element		g_plane_info = {
 	.texture_idx = PLANE_TEXTURE_ID
 };
 
-const t_element		g_cylinder_info = {
+const t_element						g_cylinder_info = {
 	.id = "cy",
 	.id_len = 2,
 	.input_format = "cy [coordinate](x,y,z) [normalized orient vector](0-1) \
@@ -94,7 +94,7 @@ const t_element		g_cylinder_info = {
 	.texture_idx = CYLINDER_TEXTURE_ID
 };
 
-const t_element		g_disk_info = {
+const t_element						g_disk_info = {
 	.id = "di",
 	.id_len = 2,
 	.input_format = "di [coordinate](x,y,z) [normalized orient vector](0-1) \
@@ -105,7 +105,7 @@ const t_element		g_disk_info = {
 	.texture_idx = DISK_TEXTURE_ID
 };
 
-const t_element		g_cone_info = {
+const t_element						g_cone_info = {
 	.id = "co",
 	.id_len = 2,
 	.input_format = "co [coordinate](x,y,z) [normalized orient vector](0-1) \
@@ -116,7 +116,7 @@ const t_element		g_cone_info = {
 	.texture_idx = CONE_TEXTURE_ID
 };
 
-const t_element		g_triangle_info = {
+const t_element						g_triangle_info = {
 	.id = "tr",
 	.id_len = 2,
 	.input_format = "tr [coordinate](x,y,z) [coordinate](x,y,z) [coordinate](x,y,z) \
@@ -130,7 +130,7 @@ const t_element		g_triangle_info = {
 /*
 @param NULL終端にするためにポインタの配列にしている。
 */
-const t_element				*g_info_table[] = {
+const t_element						*g_info_table[] = {
 	&g_ambient_info,
 	&g_camera_info,
 	&g_light_info,
@@ -143,15 +143,13 @@ const t_element				*g_info_table[] = {
 	NULL
 };
 
-
-
-const t_element				*g_infinite_table[] = {
+const t_element						*g_infinite_table[] = {
 	// &g_plane_info,
 	// &g_cone_info,
 	NULL
 };
 
-const t_element				*g_finite_table[] = {
+const t_element						*g_finite_table[] = {
 	&g_light_info,
 	&g_sphere_info,
 	// &g_cylinder_info,
@@ -160,12 +158,12 @@ const t_element				*g_finite_table[] = {
 	NULL
 };
 
-const t_generate_texture	g_generate_textures[] = {
+const t_generate_texture			g_generate_textures[] = {
 	generate_solid_texture,
 	NULL
 };
 
-const t_generate_material	g_generate_materials[] = {
+const t_generate_material			g_generate_materials[] = {
 	generate_lambertian,
 	NULL
 };

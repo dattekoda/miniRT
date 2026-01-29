@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "rt_define.h"
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
 #include <sys/time.h>
 
 static uint64_t	random_uint64(void);
@@ -33,9 +33,11 @@ double	random_double(double min, double max)
 
 int	random_int(int min, int max)
 {
+	int	range;
+
 	if (min > max)
 		return (min);
-	int	range = max - min + 1;
+	range = max - min + 1;
 	return (min + (int)(random_double(0.0, 1.0) * range));
 }
 
