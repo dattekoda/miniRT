@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
-#include "hitter_arr.h"
-#include "hitter.h"
-#include "result.h"
 #include "best_split.h"
+#include "hitter.h"
+#include "hitter_arr.h"
+#include "init_world_define.h"
 #include "libft.h"
+#include "result.h"
 
 static t_hitter	*generate_bvh_recursive(t_hitter_arr hit_arr);
 t_hitter		*generate_tree(t_hitter *lhs, t_hitter *rhs);
@@ -49,11 +49,12 @@ static t_hitter	*generate_bvh_recursive(t_hitter_arr hit_arr)
 	if (find_best_split_info(hit_arr, &info) == FAILURE)
 		return (NULL);
 	sort_hit_arr(hit_arr, info.axis);
-	lhs = generate_bvh_recursive(construct_hitter_arr(hit_arr.arr, info.left_size));
+	lhs = generate_bvh_recursive(construct_hitter_arr(hit_arr.arr,
+				info.left_size));
 	if (!lhs)
 		return (NULL);
-	rhs = generate_bvh_recursive(construct_hitter_arr(
-			hit_arr.arr + info.left_size, hit_arr.size - info.left_size));
+	rhs = generate_bvh_recursive(construct_hitter_arr(hit_arr.arr
+				+ info.left_size, hit_arr.size - info.left_size));
 	if (!rhs)
 		return (lhs->clear(lhs), NULL);
 	return (generate_tree(lhs, rhs));

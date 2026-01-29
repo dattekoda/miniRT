@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_hit_arr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 22:22:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 21:24:25 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:43:59 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "rt_utils.h"
 
 static bool		is_component_lower(const t_hitter *subject,
-				const t_hitter *base, int axis);
+					const t_hitter *base, int axis);
 static void		swap_hitter(t_hitter **a, t_hitter **b);
 static size_t	pertition(t_hitter_arr hit_arr, int axis);
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
@@ -28,13 +28,14 @@ void	sort_hit_arr(t_hitter_arr hit_arr, int axis)
 	if (hit_arr.size == 2)
 	{
 		if (is_component_lower(hit_arr.arr[0], hit_arr.arr[1], axis))
-			rt_swap(hit_arr.arr, hit_arr.arr + 1, sizeof(t_hitter **));
+			rt_swap(hit_arr.arr, hit_arr.arr + 1, sizeof(t_hitter *));
 		return ;
 	}
 	pivot_idx = pertition(hit_arr, axis);
 	sort_hit_arr(construct_hitter_arr(hit_arr.arr, pivot_idx - 1), axis);
-	sort_hit_arr(construct_hitter_arr(hit_arr.arr + pivot_idx + 1,
-									hit_arr.size - (pivot_idx + 1)), axis);
+	sort_hit_arr(construct_hitter_arr(hit_arr.arr + pivot_idx + 1, hit_arr.size
+			- (pivot_idx + 1)), axis);
+	return ;
 }
 
 static size_t	pertition(t_hitter_arr hit_arr, int axis)
@@ -48,31 +49,23 @@ static size_t	pertition(t_hitter_arr hit_arr, int axis)
 	pivot_p = &hit_arr.arr[right];
 	while (left < right)
 	{
-		while (left < hit_arr.size
-			&& !is_component_lower(hit_arr.arr[left], *pivot_p ,axis))
+		while (left < hit_arr.size && !is_component_lower(hit_arr.arr[left],
+				*pivot_p, axis))
 			left++;
-		while (0 < right
-			&& is_component_lower(hit_arr.arr[right], *pivot_p ,axis))
+		while (0 < right && is_component_lower(hit_arr.arr[right], *pivot_p,
+				axis))
 			right--;
 		if (right <= left)
 			break ;
-		swap_hitter(&hit_arr.arr[left++], &hit_arr.arr[right--]);
+		rt_swap(&hit_arr.arr[left++],
+			&hit_arr.arr[right--], sizeof(t_hitter *));
 	}
-	swap_hitter(&hit_arr.arr[left], pivot_p);
+	rt_swap(&hit_arr.arr[left], pivot_p, sizeof(t_hitter *));
 	return (left);
 }
 
-static void	swap_hitter(t_hitter **a, t_hitter **b)
-{
-	t_hitter	*tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-static bool	is_component_lower(const t_hitter *subject,
-	const t_hitter *base, int axis)
+static bool	is_component_lower(const t_hitter *subject, const t_hitter *base,
+		int axis)
 {
 	if (!subject->has_aabb || !base->has_aabb)
 		return (false);

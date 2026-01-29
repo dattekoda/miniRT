@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_list_to_bvh.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 17:27:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:46:02 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include <stdlib.h>
 
 static void		clear_hitter_arr(t_hitter_arr arr);
-int			line_list_to_hit_arr(t_hitter_arr *hit_arr,
-				const t_list *line_list, const t_element *object_table[]);
-int			hit_arr_to_bvh(t_hitter **root, const t_hitter_arr hit_arr);
+int				line_list_to_hit_arr(t_hitter_arr *hit_arr,
+					const t_list *line_list, const t_element *object_table[]);
+int				hit_arr_to_bvh(t_hitter **root, const t_hitter_arr hit_arr);
 
 int	line_list_to_bvh(t_hitter **node, const t_list *line_list,
 			const t_element *object_table[])
@@ -37,9 +37,9 @@ int	line_list_to_bvh(t_hitter **node, const t_list *line_list,
 	return (SUCCESS);
 }
 
-static void		clear_hitter_arr(t_hitter_arr arr)
+static void	clear_hitter_arr(t_hitter_arr arr)
 {
-	size_t		i;
+	size_t	i;
 
 	i = 0;
 	while (i < arr.size)

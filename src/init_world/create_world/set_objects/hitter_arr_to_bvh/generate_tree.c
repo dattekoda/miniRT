@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_tree.c                                         :+:      :+:    :+:   */
+/*   generate_tree.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 23:39:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/17 23:19:29 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:44:11 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
+#include "libft.h"
 #include "result.h"
 #include "tree.h"
-#include "libft.h"
 #include <stdlib.h>
 
 static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs);
-static bool		hit_tree
-	(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range);
+static bool		hit_tree(const void *s, const t_ray *ray, t_hrec *hrec,
+					t_range *range);
 void			clear_tree(void *s);
 
 /*
@@ -57,15 +57,16 @@ static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs)
 	return (node);
 }
 
-static bool	hit_tree(const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
+static bool	hit_tree(const void *s, const t_ray *ray, t_hrec *hrec,
+		t_range *range)
 {
 	const t_tree	*self;
 	bool			hit_lhs;
 	bool			hit_rhs;
 
 	self = s;
-	if (self->hitter.has_aabb
-		&& !self->hitter.aabb.hit(&self->hitter.aabb, ray, hrec, range))
+	if (self->hitter.has_aabb && !self->hitter.aabb.hit(&self->hitter.aabb, ray,
+			hrec, range))
 		return (false);
 	hit_lhs = self->lhs->hit(self->lhs, ray, hrec, range);
 	if (hit_lhs)

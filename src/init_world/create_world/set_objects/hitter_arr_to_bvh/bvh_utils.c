@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
-#include "vec_utils.h"
 #include "hitter_arr.h"
+#include "init_world_define.h"
 #include "rt_define.h"
+#include "vec_utils.h"
 #include <math.h>
 
 t_aabb			construct_aabb(t_point3 min, t_point3 max);
 
 double	cost_func(const t_hitter_arr root, size_t left_size,
-	double *left_area_arr, double *right_area_arr)
+		double *left_area_arr, double *right_area_arr)
 {
 	size_t	right_size;
 	double	left_surface_area;
@@ -28,9 +28,9 @@ double	cost_func(const t_hitter_arr root, size_t left_size,
 	right_size = root.size - left_size;
 	left_surface_area = left_area_arr[left_size - 1];
 	right_surface_area = right_area_arr[right_size - 1];
-	return (2 * COST_AABB_INTERSECTION
-		+ (left_surface_area * left_size + right_surface_area * right_size)
-		* COST_ELEMENT_INTERSECTION / left_area_arr[root.size - 1]);
+	return (2 * COST_AABB_INTERSECTION + (left_surface_area * left_size
+			+ right_surface_area * right_size) * COST_ELEMENT_INTERSECTION
+		/ left_area_arr[root.size - 1]);
 }
 
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size)
@@ -47,14 +47,11 @@ t_aabb	surrounding_box(t_aabb box0, t_aabb box1)
 	t_point3	small;
 	t_point3	big;
 
-	small = construct_vec3(
-			fmin(box0.min.e[0], box1.min.e[0]),
-			fmin(box0.min.e[1], box1.min.e[1]),
-			fmin(box0.min.e[2], box1.min.e[2]));
-	big = construct_vec3(
-			fmax(box0.min.e[0], box1.min.e[0]),
-			fmax(box0.min.e[1], box1.min.e[1]),
-			fmax(box0.min.e[2], box1.min.e[2]));
+	small = construct_vec3(fmin(box0.min.e[0], box1.min.e[0]),
+			fmin(box0.min.e[1], box1.min.e[1]), fmin(box0.min.e[2],
+				box1.min.e[2]));
+	big = construct_vec3(fmax(box0.min.e[0], box1.min.e[0]), fmax(box0.min.e[1],
+				box1.min.e[1]), fmax(box0.min.e[2], box1.min.e[2]));
 	return (construct_aabb(small, big));
 }
 
