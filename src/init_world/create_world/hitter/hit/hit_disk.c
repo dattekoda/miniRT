@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_disk.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:24:47 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 16:06:55 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/30 01:51:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	hit_disk(
 	t_solution		solu;
 
 	self = s;
-	solu = init_solution_context(&ray->origin, &ray->direct, ray);
+	solu = init_solution_context(&self->center, &ray->direct, ray);
 	if (fequal(solu.b, 0))
 		return (false);
 	solu.solution = solu.a / solu.b;
@@ -44,13 +44,14 @@ bool	hit_disk(
 }
 
 static t_solution	init_solution_context(
-	const t_point3 *point, const t_vec3 *normal, const t_ray *ray)
+	const t_point3 *center, const t_vec3 *normal, const t_ray *ray)
 {
 	t_solution	solu;
+	t_vec3		center_to_origin;
 
 	ft_bzero(&solu, sizeof(t_solution));
-	solu.center_to_origin = sub_vec3(*point, ray->origin);
-	solu.a = -dot(solu.center_to_origin, *normal);
+	center_to_origin = sub_vec3(*center, ray->origin);
+	solu.a = -dot(center_to_origin, *normal);
 	solu.b = dot(ray->direct, *normal);
 	return (solu);
 }

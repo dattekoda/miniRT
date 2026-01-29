@@ -6,22 +6,15 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 16:33:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 19:46:26 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 01:48:58 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "line_to_element.h"
 #include "init_world_utils.h"
 #include "sphere.h"
 #include "vec_utils.h"
 #include "rt_define.h"
-
-static int	line_to_sphere_param(const char *line,
-				t_sphere *sphere_param);
-int			line_to_material(
-				const char *line,
-				size_t *line_idx,
-				t_material **mat_pp,
-				const t_element *element);
 
 /*
 @brief lineとgenの橋渡しなので使いやすい用にデータを加工する。
