@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 19:54:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 06:25:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "rt_utils.h"
 #include "solution.h"
 #include "vec_utils.h"
-#include "hitter_utils.h"
 #include <math.h>
 
 static t_disk	construct_disk(t_disk disk_param);
@@ -22,7 +21,8 @@ bool			hit_disk(
 					const void *s,
 					const t_ray *ray, t_hrec *hrec, t_range *range);
 static t_aabb	construct_disk_aabb(t_disk disk_param);
-static double	calc_normal_max(double d);
+t_aabb			construct_aabb(t_point3 min, t_point3 max);
+double			calc_normal_max(double d);
 
 /*
 @brief if generate_disk failed, mat_ptr->clear()
@@ -52,22 +52,16 @@ static t_disk	construct_disk(t_disk disk_param)
 	return (disk_param);
 }
 
-static t_aabb	construct_disk_aabb(t_disk disk_param)
+static t_aabb	construct_disk_aabb(t_disk disk)
 {
 	t_point3	min;
 	t_point3	max;
 	t_point3	v_max;
-	t_point3	constant;
 
-	v_max = map_vec3(disk_param.normal, calc_normal_max);
-	constant = constant_vec3(disk_param.radius);
-	v_max = mul_vec3(constant, v_max);
-	min = sub_vec3(disk_param.center, v_max);
-	max = add_vec3(disk_param.center, v_max);
+	v_max = scal_mul_vec3(
+				map_vec3(disk.normal, calc_normal_max), disk.radius);
+	min = sub_vec3(disk.center, v_max);
+	max = add_vec3(disk.center, v_max);
 	return (construct_aabb(min, max));
 }
 
-static double	calc_normal_max(double d)
-{
-	return (sqrt(1 - pow(d, 2)));
-}

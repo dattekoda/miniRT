@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:27:21 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 23:05:54 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 07:03:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SOLUTION_H
 
 # include "vec.h"
+# include <stdbool.h>
 
 /*
 @param center_to_origin the vector 
@@ -39,5 +40,6 @@ typedef struct s_solution
 double	calc_discriminant(const t_solution *solu);
 double	calc_minus_solution(const t_solution *solu);
 double	calc_plus_solution(const t_solution *solu);
+bool	is_solution_in_range(t_solution *solu, t_range *range);
 
 #endif

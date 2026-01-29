@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 23:05:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 07:04:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,8 @@ bool	hit_sphere(
 
 	self = s;
 	solu = init_solution_context(self, ray);
-	if (solu.discriminant < 0)
-		return (false);
-	solu.root_discriminant = sqrt(solu.discriminant);
-	solu.solution = calc_minus_solution(&solu);
-	if (is_inside_range(solu.solution, range) == true)
-	{
+	if (is_solution_in_range(&solu, range))
 		assign_sphere_hrec(self, ray, hrec, solu.solution);
-		return (true);
-	}
-	solu.solution = calc_plus_solution(&solu);
-	if (is_inside_range(solu.solution, range) == true)
-	{
-		assign_sphere_hrec(self, ray, hrec, solu.solution);
-		return (true);
-	}
 	return (false);
 }
 
