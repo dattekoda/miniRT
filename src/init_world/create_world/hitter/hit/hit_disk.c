@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/23 16:24:47 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/30 01:51:53 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/30 01:52:37 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/30 01:52:38 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ bool	hit_disk(
 	solu.solution = solu.a / solu.b;
 	if (is_inside_range(solu.solution, range) == false)
 		return (false);
-	solu.point = at_ray(ray, solu.solution);
+	hrec->point = at_ray(ray, solu.solution);
 	if (length_squared_vec3
-		(sub_vec3(solu.point, self->center)) > pow(self->radius, 2))
+		(sub_vec3(hrec->point, self->center)) > pow(self->radius, 2))
 		return (false);
 	// assign_hrec(self, ray, hrec, range); // ????
 	(void)hrec; // 後で消す

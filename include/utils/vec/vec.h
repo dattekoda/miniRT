@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:28:48 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 20:31:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:29:55 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ typedef t_point2	t_range;
 
 /*
 @brief orthonormal basis
-@param v[0] x
-@param v[1] y
-@param v[2] z
+@param v[0] u
+@param v[1] v
+@param v[2] w: up
 */
 typedef struct s_onb
 {

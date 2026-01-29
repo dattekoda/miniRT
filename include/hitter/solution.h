@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solution.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:27:21 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/23 16:57:01 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:05:54 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,19 @@
 
 # include "vec.h"
 
+/*
+@param center_to_origin the vector 
+	from the point of the object to Incident ray origin
+@param point the point of intersection (hit point)
+@param a,b,c the oefficients of equation
+@param discriminant of equation: the D
+@param root_discriminant ;for avoiding redundant calculations
+@param solution the solution of equation: hit ray parameter
+*/
 typedef struct s_solution
 {
-	t_vec3		center_to_origin;
-	t_point3	point;
+	// t_vec3		center_to_origin;
+	// t_point3	point;
 	double		a;
 	double		b;
 	double		c;
