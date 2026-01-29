@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   onb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 22:10:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/12 14:20:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:00:36 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_utils.h"
-#include "vec_define.h"
+#include "vec.h"
 #include <math.h>
 
 t_onb	construct_onb(t_vec3 vec3)

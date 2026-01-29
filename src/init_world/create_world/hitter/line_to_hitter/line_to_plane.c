@@ -1,0 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   line_to_plane.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/16 14:16:04 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/29 19:46:52 by ikawamuk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "init_world_define.h"
+#include "hitter.h"
+// #include "plane.h"
+#include "vec.h"
+#include "result.h"
+#include <stddef.h>
+
+int	line_to_plane(t_hitter **plane, const char *line)
+{
+	(void)plane;
+	(void)line;
+	// size_t			i;
+	// t_plane			shape_param;
+	// t_color			raw_color;
+
+	// i = 2;
+	// token_to_vec(line, &i, &shape_param.point);
+	// token_to_vec(line, &i, &shape_param.normal);
+	// token_to_vec(line, &i, &raw_color);
+	// *plane = generate_plane(shape_param);
+	// if (!*plane)
+	// 	return (FAILURE);
+	return (SUCCESS);
+}

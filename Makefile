@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/01/03 16:01:39 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/11 22:26:20 by khanadat         ###   ########.fr        #
+#    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
+#    Updated: 2026/01/29 20:22:21 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,53 +20,150 @@ RMDIR		=	rm -rf
 # --- src ---
 SRCDIR		=	src
 
-SRCS		=	$(addprefix $(SRCDIR)/, \
+SRCS	=	$(addprefix $(SRCDIR)/, \
 				main.c \
 				mini_rt.c \
-				$(addprefix utils/, \
-				utils_float.c \
-				utils_err.c \
-				$(addprefix vec/, \
-				onb.c \
-				vec3_basic.c \
-				vec3_product.c \
-				vec3_scal.c \
-				vec3.c\
-				) \
-				) \
 				$(addprefix init_world/, \
-				init_world.c \
-				read_rt.c \
-				set_option.c \
-				$(addprefix create_world/, \
-				create_world.c) \
-				$(addprefix validate/, \
-				init_element_info.c \
-				construct_result.c \
-				err_point_out.c \
-				validate_line_list.c \
-				validate_element.c \
-				skip_spaces.c \
-				skip_vec.c \
-				line_to_value.c \
-				line_to_vec.c \
-				skip_range.c \
-				value_skips.c \
-				vector_skips.c \
+					init_world.c \
+					set_option.c \
+					read_rt_file.c \
+					$(addprefix define/, \
+					define_element.c \
+					define_material.c \
+					define_option.c \
+					define_skips.c \
+					define_texture.c \
+					) \
+					$(addprefix validate_arguments/, \
+					validate_arguments.c \
+					is_valid_file_name.c \
+					is_valid_option.c \
+					) \
+					$(addprefix is_valid_line_list/, \
+						is_valid_element.c \
+						is_valid_line.c \
+						is_valid_line_list.c \
+						$(addprefix skips/, \
+							skip_until_end.c \
+							skip_value.c \
+							skip_vector.c \
+						) \
+						$(addprefix utils/, \
+							err_point_out.c \
+							skip_material.c \
+							skip_range.c \
+							skip_spaces.c \
+							skip_texture.c \
+							skip_vec.c \
+						) \
+					) \
+					$(addprefix create_world/, \
+						create_world.c \
+						set_ambient.c \
+						$(addprefix set_camera/, \
+							construct_camera.c \
+							set_camera.c \
+						) \
+						$(addprefix set_light/, \
+							set_light.c \
+							preprocess_line_list.c \
+						) \
+						$(addprefix texture/, \
+							generate_solid_texture.c \
+						) \
+						$(addprefix material/, \
+							generate_lambertian.c \
+							generate_light.c \
+							$(addprefix pdf/, \
+								calc_light_pdf_value.c \
+								cosine_pdf.c \
+								light_pdf.c \
+								mixture_pdf.c \
+								random_light_pdf.c \
+							) \
+						) \
+						$(addprefix hitter/, \
+							generate_cylinder.c \
+							generate_disk.c \
+							generate_sphere.c \
+							solution.c \
+							$(addprefix aabb/, \
+								aabb.c \
+							) \
+							$(addprefix hit/, \
+								hit_disk.c \
+								hit_sphere.c \
+							) \
+							$(addprefix line_to_hitter/, \
+								line_to_cylinder.c \
+								line_to_disk.c \
+								line_to_light.c \
+								line_to_material.c \
+								line_to_plane.c \
+								line_to_sphere.c \
+							) \
+						) \
+						$(addprefix set_objects/, \
+							line_list_to_bvh.c \
+							set_objects.c \
+							$(addprefix hitter_arr_to_bvh/, \
+								bvh_utils.c \
+								find_best_split_info.c \
+								generate_tree.c \
+								hit_arr_to_bvh.c \
+								sort_hit_arr.c \
+							) \
+							$(addprefix line_list_to_hitter_arr/, \
+								add_cylinder_disk.c \
+								add_hitter_list.c \
+								line_list_to_hit_arr.c \
+							) \
+						) \
+					) \
+					$(addprefix utils/, \
+						str_to_idx.c \
+						match_identifer.c \
+						token_to_str.c \
+						token_to_value.c \
+						token_to_vec.c \
+					) \
 				) \
+				$(addprefix render_pixel/, \
+					render_pixel.c \
+					get_camera_ray.c \
 				) \
-				)
+				$(addprefix draw_image/, \
+					draw_image.c \
+				) \
+				$(addprefix ray/, \
+					ray.c \
+				) \
+				$(addprefix utils/, \
+					construct_result.c \
+					utils_clear.c \
+					utils_err.c \
+					utils_float.c \
+					utils_random.c \
+					utils_swap.c \
+					$(addprefix vec/, \
+						onb.c \
+						range.c \
+						vec2.c \
+						vec3.c \
+						vec3_basic.c \
+						vec3_product.c \
+						vec3_scal.c \
+					) \
+				) \
+			)
+
 
 # --- obj ---
 OBJDIR		=	obj
 OBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 
 # --- include ---
-INCDIRS		=	include \
-				include/init_world \
-				include/init_world/validate \
-				include/utils \
-				include/utils/vec
+INCDIRS		=	$(shell find include -type d)
 
 # --- OS DETECTION ---
 UNAME	=	$(shell uname -s)
@@ -98,25 +195,56 @@ SCANBUILD	=	/usr/bin/scan-build-12
 
 # --- test ---
 TESTNAME	=	test_miniRT
-TESTCFLAG	=	$(ASANFLAG) -Itest/unit_test
-TESTLDFLAG	=	$(LDFLAG) -Wl,--wrap=open,--wrap=read,--wrap=malloc,--wrap=free
+TESTCFLAG	=	$(ASANFLAG) -Itest/utils
+TESTLDFLAG	=	$(LDFLAG) -Wl,--wrap=open,--wrap=read,--wrap=malloc,--wrap=free,--wrap=exit
 
 TESTSRCFILES	=	$(addprefix test/, \
-					test.c \
-					$(addprefix unit_test/, \
-					syscall_mock.c \
-					test_line_to_value.c \
-					$(addprefix init_world/, \
-					test_set_option.c \
-					$(addprefix validate/, \
-					test_skips.c \
-					test_skip_color.c \
-					test_skip_point.c \
-					test_skip_range.c \
-					test_skip_spaces.c \
-					test_skip_unit.c \
-					test_skip_until_end.c \
-					))))
+						test.c \
+						test_mini_rt.c \
+						$(addprefix unit/, \
+							test_unit.c \
+							test_match_identifer.c \
+							test_set_option.c \
+							test_read_rt_file.c \
+							test_is_valid_file_name.c \
+							test_is_valid_option.c \
+							test_line_to_value.c \
+							test_skip_color.c \
+							test_skip_point.c \
+							test_skip_range.c \
+							test_skip_spaces.c \
+							test_skip_unit.c \
+							test_skip_until_end.c \
+							test_set_ambient.c \
+							test_set_camera.c \
+							test_add_light_radius.c \
+							test_line_to_light.c \
+						) \
+						$(addprefix utils/, \
+							syscall_mock.c \
+							vec_equal.c \
+							print_vec.c \
+						))
+
+# $(addprefix integration/, \
+						test_integration.c \
+							$(addprefix init_world/, \
+								$(addprefix create_world/, \
+									$(addprefix set_objects/, \
+										$(addprefix line_list_to_bvh/, \
+										test_line_list_to_bvh.c \
+											$(addprefix line_list_to_hit_arr/, \
+											test_line_list_to_hit_arr.c \
+											) \
+											$(addprefix hit_arr_to_bvh/, \
+											test_hit_arr_to_bvh.c \
+											) \
+										) \
+									) \
+								) \
+							) \
+						) \
+					) \
 
 TESTSRCS		=	$(TESTSRCFILES) \
 					$(filter-out $(SRCDIR)/main.c, $(SRCS))
@@ -175,7 +303,7 @@ debug: re
 # --- test ---
 test: CFLAG=$(TESTFLAG)
 test: LDFLAG=$(TESTLDFLAG)
-test: fclean
+test:
 	@$(MAKE) $(TESTNAME)
 	@echo "\033[1;36mRunning tests ...\033[0m"
 	./$(TESTNAME)

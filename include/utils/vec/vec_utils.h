@@ -3,22 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   vec_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 21:55:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 22:12:54 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/24 22:39:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC_UTILS_H
 # define VEC_UTILS_H
 
-# include "vec_define.h"
+# include "vec.h"
+# include <stdbool.h>
 
 t_vec3	construct_vec3(double e0, double e1, double e2);
 t_vec3	map_vec3(t_vec3 vec3, double (*f)(double));
 t_vec3	constant_vec3(double d);
 t_color	construct_color(double e0, double e1, double e2);
+t_color	normalize_color(t_color raw_color);
 
 t_vec3	negative_vec3(t_vec3 vec3);
 t_vec3	add_vec3(t_vec3 lhs, t_vec3 rhs);
@@ -35,5 +37,14 @@ double	length_vec3(t_vec3 vec3);
 t_vec3	normalize(t_vec3 vec3);
 
 t_vec3	cross(t_vec3 lhs, t_vec3 rhs);
+
+bool	is_inside_range(double d, const t_range *range);
+// range.c
+
+t_vec2	construct_vec2(double e0, double e1);
+
+t_onb	construct_onb(t_vec3 vec3);
+t_vec3	local_onb(t_onb onb, t_vec3 vec3);
+// onb.c
 
 #endif

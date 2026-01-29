@@ -3,18 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   vec3.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:11:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 22:33:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 20:30:41 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_utils.h"
-#include "vec_define.h"
+#include "rt_utils.h"
 #include <math.h>
 #include <stddef.h>
 
+/*
+@param e0 X(R)
+@param e1 Y(G)
+@param e2 Z(B)
+*/
 t_vec3	construct_vec3(double e0, double e1, double e2)
 {
 	t_vec3	vec3;
@@ -44,4 +49,12 @@ t_vec3	constant_vec3(double d)
 t_color	construct_color(double e0, double e1, double e2)
 {
 	return (scal_mul_vec3(construct_vec3(e0, e1, e2), COLOR_DIV));
+}
+
+/*
+@param raw_color RGB[0-255]
+*/
+t_color	normalize_color(t_color raw_color)
+{
+	return (scal_mul_vec3(raw_color, COLOR_DIV));
 }

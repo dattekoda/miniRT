@@ -6,14 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 15:41:45 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 18:57:56 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_DEFINE_H
 # define RT_DEFINE_H
 
-# include <stddef.h>
+# include "rt_config.h"
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
@@ -22,29 +22,24 @@
 # define GREEN "\033[92m"
 # define RESET "\033[m"
 
-enum e_result
-{
-	SUCCESS,
-	FAILURE,
-};
+# define OPTIONS_STRING "p"
 
-union u_result
-{
-	int		ok;
-	char	*err_msg;
-};
+// /bin/bash -c openssl rand -hex 8
+# define RANDOM_SEED_UINT64 0x629d97afad9281f2
 
-typedef struct s_result
-{
-	enum e_result	state;
-	union u_result	value;
-}	t_result;
+# define DOUBLE_MANTISSA_SCALE 9.007199254740992
 
-typedef struct s_world	t_world;
+// how heavy to calculate to hit aabb intersection
+# define COST_AABB_INTERSECTION 1
 
-struct s_world
-{
-	int	option_flag;
-};
+// how heavy to calculate to hit element intersection
+# define COST_ELEMENT_INTERSECTION 1
+
+# define MATERIAL_SPECIFIER "lmd"
+# define TEXTURE_SPECIFIER "sbc"
+
+# define HIT_T_MIN 1e-3
+
+# define LIGHT_STERADIAN 0.21
 
 #endif
