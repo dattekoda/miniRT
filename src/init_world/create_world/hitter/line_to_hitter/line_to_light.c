@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 23:36:14 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 00:48:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static int	light_line_to_shape_param(
 	token_to_vec(line, &i, &light_param->center);
 	if (line_to_light_material(
 			line, &i, &light_param->hitter.mat_ptr, option_flag) == FAILURE)
+		return (FAILURE);
 	token_to_value(line, &i, &light_param->radius);
 	return (SUCCESS);
 }
@@ -77,7 +78,7 @@ static int	line_to_light_material(
 	token_to_value(line, line_idx, &ratio);
 	token_to_vec(line, line_idx, &raw_color);
 	*mat_pp = param_to_light_material(
-				calc_color(raw_color, ratio, option_flag));
+			calc_color(raw_color, ratio, option_flag));
 	if (!*mat_pp)
 		return (FAILURE);
 	return (SUCCESS);

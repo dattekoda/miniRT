@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 23:39:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 23:43:59 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 00:41:05 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include "libft.h"
 #include <stdlib.h>
 
-double		calc_surface_area(const t_aabb aabb);
-t_aabb		surrounding_box(t_aabb box0, t_aabb box1);
+double	calc_surface_area(const t_aabb aabb);
+t_aabb	surrounding_box(t_aabb box0, t_aabb box1);
 t_aabb	construct_aabb(t_point3 min, t_point3 max);
 
 int	prepare_surface_arr(

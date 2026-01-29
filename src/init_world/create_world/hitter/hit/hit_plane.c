@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:37:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 23:47:45 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 00:49:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static t_solution	init_soluion(const t_plane *self, const t_ray *ray)
 	solu.b = dot(ray->direct, self->normal);
 	return (solu);
 }
+
 static void	assign_plane_hrec(
 				const t_plane *self,
 				const t_ray *ray, t_hrec *hrec, double solution)
