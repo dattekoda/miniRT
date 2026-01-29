@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 15:55:13 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 18:20:44 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	validate_arguments(int argc, char *argv[]);
 int		set_option(char *options[]);
 void	read_rt_file(t_list **line_list, const char *file_path);
 bool	is_valid_line_list(const t_list *line_list, int option_flag);
-int		create_world(t_world *world, t_list *line_list);
+int		create_world(t_world *world, t_list *line_list, int option_flag);
 
 /*
 @brief responsible for free line_list
@@ -32,12 +32,12 @@ int	init_world(t_world *world, int *option_flag, int argc, char *argv[])
 	*option_flag = set_option(argv + 2);
 	line_list = NULL;
 	read_rt_file(&line_list, argv[1]);
-	if (!is_valid_line_list(line_list, option_flag))
+	if (!is_valid_line_list(line_list, *option_flag))
 	{
 		ft_lstclear(&line_list, free);
 		exit(EXIT_FAILURE);
 	}
-	if (create_world(world, line_list) == FAILURE)
+	if (create_world(world, line_list, *option_flag) == FAILURE)
 	{
 		ft_lstclear(&line_list, free);
 		exit(EXIT_FAILURE);

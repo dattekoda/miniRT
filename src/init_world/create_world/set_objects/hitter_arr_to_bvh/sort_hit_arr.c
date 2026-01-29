@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_hit_arr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 22:22:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 16:43:59 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 18:21:21 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 static bool		is_component_lower(const t_hitter *subject,
 					const t_hitter *base, int axis);
-static void		swap_hitter(t_hitter **a, t_hitter **b);
 static size_t	pertition(t_hitter_arr hit_arr, int axis);
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/01/28 19:25:44 by khanadat         ###   ########.fr        #
+#    Updated: 2026/01/29 18:25:04 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,6 +116,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							) \
 							$(addprefix line_list_to_hitter_arr/, \
 								add_cylinder_disk.c \
+								add_hitter_list.c \
 								line_list_to_hit_arr.c \
 							) \
 						) \
@@ -127,6 +128,12 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						token_to_value.c \
 						token_to_vec.c \
 					) \
+				) \
+				$(addprefix render_pixel/, \
+					render_pixel.c \
+				) \
+				$(addprefix draw_image/, \
+					draw_image.c \
 				) \
 				$(addprefix ray/, \
 					ray.c \

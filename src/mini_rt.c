@@ -6,13 +6,14 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 20:43:27 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 18:20:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
 #include "result.h"
 #include "libft.h"
+#include "mlx.h"
 #include <stdlib.h>
 
 int		init_world(t_world *world, int *option_flag, int argc, char *argv[]);
