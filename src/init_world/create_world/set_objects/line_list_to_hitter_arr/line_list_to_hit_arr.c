@@ -37,7 +37,7 @@ int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list,
 	hitter_list = NULL;
 	if (line_list_to_hitter_list(&hitter_list, line_list,
 			object_table) == FAILURE)
-		return (ft_lstclear(&hitter_list, free), FAILURE);
+		return (FAILURE);
 	if (hitter_list_to_hitter_arr(hitter_list, hit_arr) == FAILURE)
 		return (ft_lstclear(&hitter_list, NULL), FAILURE);
 	return (ft_lstclear(&hitter_list, NULL), SUCCESS);
