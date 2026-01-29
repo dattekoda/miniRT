@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 16:33:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 19:46:26 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 22:15:54 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ int	line_to_sphere(t_hitter **sphere, const char *line)
 /*
 sp 0.0,0.0,20.6 12.6 10,0,255 metal solid
 */
-static int	line_to_sphere_param(const char *line,
-	t_sphere *sphere_param)
+static int	line_to_sphere_param(const char *line, t_sphere *sphere_param)
 {
 	double			diameter;
 	size_t			i;

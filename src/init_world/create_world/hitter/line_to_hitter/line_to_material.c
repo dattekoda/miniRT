@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:54:31 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 19:47:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 22:26:11 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	line_to_material(
 	token_to_vec(line, line_idx, &raw_color);
 	token_to_str(line, line_idx, &mat_str);
 	token_to_str(line, line_idx, &tex_str);
-	*mat_pp = param_to_material_ptr
-		(normalize_color(raw_color), tex_str, mat_str, element);
+	*mat_pp = param_to_material_ptr(
+				normalize_color(raw_color), tex_str, mat_str, element);
 	if (!*mat_pp)
 		return (FAILURE);
 	return (SUCCESS);
