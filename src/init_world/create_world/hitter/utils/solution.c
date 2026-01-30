@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solution.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:30:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/30 07:08:04 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 13:59:49 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 */
 double	calc_discriminant(const t_solution *solu)
 {
-	return (pow(solu->b, 2) - solu->a * solu->c);
+	return (pow(solu->coeff.e[1], 2) - solu->coeff.e[0] * solu->coeff.e[2]);
 }
 
 /*
@@ -28,7 +28,7 @@ double	calc_discriminant(const t_solution *solu)
 */
 double	calc_minus_solution(const t_solution *solu)
 {
-	return ((-solu->b - solu->root_discriminant) / solu->a);
+	return ((-solu->coeff.e[1] - solu->root_discriminant) / solu->coeff.e[0]);
 }
 
 /*
@@ -36,7 +36,7 @@ double	calc_minus_solution(const t_solution *solu)
 */
 double	calc_plus_solution(const t_solution *solu)
 {
-	return ((-solu->b + solu->root_discriminant) / solu->a);
+	return ((-solu->coeff.e[1] + solu->root_discriminant) / solu->coeff.e[0]);
 }
 
 bool	is_solution_in_range(t_solution *solu, t_range *range)

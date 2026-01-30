@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 06:26:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 12:59:47 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/30 14:00:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,17 @@ static t_solution	init_solution_context(
 {
 	t_solution	solu;
 	t_vec3		center_to_ray_origin;
-	t_vec3		abc;
+	// t_vec3		abc;
 
 	ft_bzero(&solu, sizeof(t_solution));
 	center_to_ray_origin = sub_vec3(ray->origin, self->center);
-	abc = calc_abc(
+	solu.coeff = calc_abc(
 			&ray->direct, &center_to_ray_origin, &self->direct, self->radius);
-	solu.a = abc.e[0];
-	solu.b = abc.e[1];
-	solu.c = abc.e[2];
+	// abc = calc_abc(
+	// 		&ray->direct, &center_to_ray_origin, &self->direct, self->radius);
+	// solu.a = abc.e[0];
+	// solu.b = abc.e[1];
+	// solu.c = abc.e[2];
 	solu.discriminant = calc_discriminant(&solu);
 	return (solu);
 }
