@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_cylinder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 07:11:29 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 12:53:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	line_to_cylinder(t_hitter **cylinder, const char *line)
 	t_cylinder	cylinder_param;
 
 	ft_bzero(&cylinder_param, sizeof(t_cylinder));
-	line_to_cylinder_param(line, &cylinder_param);
+	if (line_to_cylinder_param(line, &cylinder_param) == FAILURE)
+		return (FAILURE);
 	*cylinder = generate_cylinder(cylinder_param);
 	if (!*cylinder)
 		return (FAILURE);
@@ -41,7 +42,7 @@ static int	line_to_cylinder_param(
 	size_t	i;
 	double	diameter;
 
-	i = g_infinite_table[CYLINDER]->id_len;
+	i = g_info_table[CYLINDER]->id_len;
 	token_to_vec(line, &i, &cylinder_param->center);
 	token_to_vec(line, &i, &cylinder_param->direct);
 	token_to_value(line, &i, &diameter);
