@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:37:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 13:52:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:28:05 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,12 @@ bool	hit_plane(
 
 	self = s;
 	init_soluion(&solu, self, ray);
-	if (fequal(solu.b, 0))
+	// if (fequal(solu.b, 0))
+	// 	return (false);
+	// solu.solution = solu.a / solu.b;
+	if (fequal(solu.coeff.e[1], 0))
 		return (false);
-	solu.solution = solu.a / solu.b;
+	solu.solution = solu.coeff.e[0] / solu.coeff.e[1];
 	if (is_inside_range(solu.solution, range))
 	{
 		assign_plane_hrec(self, ray, hrec, solu.solution);
@@ -58,8 +61,10 @@ static void	init_soluion(
 	t_vec3		point_to_ray_origin;
 
 	point_to_ray_origin = sub_vec3(ray->origin, self->point);
-	solu->a = dot(point_to_ray_origin, self->normal);
-	solu->b = dot(ray->direct, self->normal);
+	// solu->a = dot(point_to_ray_origin, self->normal);
+	// solu->b = dot(ray->direct, self->normal);
+	solu->coeff.e[0] = dot(point_to_ray_origin, self->normal);
+	solu->coeff.e[1] = dot(ray->direct, self->normal);
 	return ;
 }
 
