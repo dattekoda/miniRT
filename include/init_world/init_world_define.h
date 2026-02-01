@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world_define.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 15:41:04 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:27:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "material.h"
 # include "vec.h"
 # include <stddef.h>
+
+# define UNIT_EDGE 10
 
 typedef enum e_element_type
 {
