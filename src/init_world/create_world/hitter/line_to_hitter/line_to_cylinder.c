@@ -6,33 +6,51 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 13:32:42 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/30 12:53:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
+#include "line_to_element.h"
 #include "init_world_utils.h"
 #include "validate_utils.h"
 #include "cylinder.h"
 #include "hitter.h"
 #include "vec.h"
 
-int	line_to_cylinder(t_hitter **hitter, const char *line)
+static int	line_to_cylinder_param(
+				const char *line, t_cylinder *cylinder_param);
+
+int	line_to_cylinder(t_hitter **cylinder, const char *line)
 {
-	size_t		i;
-	t_cylinder	cylinder;
-	double		diameter;
-	t_color		raw_color;
+	t_cylinder	cylinder_param;
+
+	ft_bzero(&cylinder_param, sizeof(t_cylinder));
+	if (line_to_cylinder_param(line, &cylinder_param) == FAILURE)
+		return (FAILURE);
+	*cylinder = generate_cylinder(cylinder_param);
+	if (!*cylinder)
+		return (FAILURE);
+	return (SUCCESS);
+}
+
+/*
+cy 50.0,0.0,20.6 0.0,0.0,1.0 14.2 21.42 10,0,255 lambertian checker
+*/
+static int	line_to_cylinder_param(
+				const char *line, t_cylinder *cylinder_param)
+{
+	size_t	i;
+	double	diameter;
 
 	i = g_info_table[CYLINDER]->id_len;
-	token_to_vec(line, &i, &cylinder.center);
-	token_to_vec(line, &i, &cylinder.direct);
+	token_to_vec(line, &i, &cylinder_param->center);
+	token_to_vec(line, &i, &cylinder_param->direct);
 	token_to_value(line, &i, &diameter);
-	cylinder.radius = diameter * 0.5;
-	token_to_value(line, &i, &cylinder.height);
-	token_to_vec(line, &i, &raw_color);
-	*hitter = generate_cylinder(cylinder);
-	if (!*hitter)
+	cylinder_param->radius = diameter * 0.5;
+	token_to_value(line, &i, &cylinder_param->height);
+	if (line_to_material(
+			line, &i, &cylinder_param->hitter.mat_ptr, g_info_table[DISK])
+		== FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

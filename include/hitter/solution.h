@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solution.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:27:21 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/23 16:57:01 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/01/30 07:03:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,21 @@
 # define SOLUTION_H
 
 # include "vec.h"
+# include <stdbool.h>
 
+/*
+@param center_to_origin the vector 
+	from the point of the object to Incident ray origin
+@param point the point of intersection (hit point)
+@param a,b,c the oefficients of equation
+@param discriminant of equation: the D
+@param root_discriminant ;for avoiding redundant calculations
+@param solution the solution of equation: hit ray parameter
+*/
 typedef struct s_solution
 {
-	t_vec3		center_to_origin;
-	t_point3	point;
+	// t_vec3		center_to_origin;
+	// t_point3	point;
 	double		a;
 	double		b;
 	double		c;
@@ -30,5 +40,6 @@ typedef struct s_solution
 double	calc_discriminant(const t_solution *solu);
 double	calc_minus_solution(const t_solution *solu);
 double	calc_plus_solution(const t_solution *solu);
+bool	is_solution_in_range(t_solution *solu, t_range *range);
 
 #endif

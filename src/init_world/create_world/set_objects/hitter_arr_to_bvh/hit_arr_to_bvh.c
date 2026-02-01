@@ -6,11 +6,10 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 19:27:06 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/29 23:43:48 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "best_split.h"
 #include "hitter.h"
 #include "hitter_arr.h"
 #include "init_world_define.h"
