@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 01:52:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 01:52:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 07:06:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "sphere.h"
 #include "vec_utils.h"
 #include "rt_define.h"
+
+static int	line_to_sphere_param(const char *line, t_sphere *sphere_param);
 
 /*
 @brief lineとgenの橋渡しなので使いやすい用にデータを加工する。

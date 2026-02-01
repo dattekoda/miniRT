@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/01/29 23:47:18 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/01/30 06:04:21 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,6 +107,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							) \
 							$(addprefix utils/, \
 								solution.c \
+								calc_normal_max.c \
 							) \
 						) \
 						$(addprefix set_objects/, \
