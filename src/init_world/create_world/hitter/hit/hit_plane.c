@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:37:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 00:49:18 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/01 16:06:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,15 @@
 #include <float.h>
 #include <math.h>
 
-static t_solution	init_soluion(const t_plane *self, const t_ray *ray);
+void				init_plane_solution(
+						t_solution *solu,
+						const t_vec3 *normal,
+						const t_point3 *point,
+						const t_ray *ray);
 static void			assign_plane_hrec(
 						const t_plane *self,
 						const t_ray *ray, t_hrec *hrec, double solution);
-static t_point2		construct_plane_uv(
+t_point2			construct_plane_uv(
 						const t_vec3 *normal,
 						const t_vec3 *hit_point,
 						const t_vec3 *plane_point);
@@ -34,7 +38,7 @@ bool	hit_plane(
 	t_solution		solu;
 
 	self = s;
-	solu = init_soluion(self, ray);
+	init_plane_solution(&solu, &self->normal, &self->point, ray);
 	if (fabs(solu.b) < FLT_EPSILON)
 		return (false);
 	solu.solution = solu.a / solu.b;
@@ -46,15 +50,19 @@ bool	hit_plane(
 	return (false);
 }
 
-static t_solution	init_soluion(const t_plane *self, const t_ray *ray)
+void	init_plane_solution(
+			t_solution *solu,
+			const t_vec3 *normal,
+			const t_point3 *point,
+			const t_ray *ray)
 {
 	t_solution	solu;
 	t_vec3		point_to_ray_origin;
 
-	point_to_ray_origin = sub_vec3(ray->origin, self->point);
-	solu.a = dot(point_to_ray_origin, self->normal);
-	solu.b = dot(ray->direct, self->normal);
-	return (solu);
+	point_to_ray_origin = sub_vec3(ray->origin, *point);
+	solu->a = dot(point_to_ray_origin, *normal);
+	solu->b = dot(ray->direct, *normal);
+	return ;
 }
 
 static void	assign_plane_hrec(
@@ -67,9 +75,10 @@ static void	assign_plane_hrec(
 	hrec->normal = self->normal;
 	hrec->mat_ptr = self->hitter.mat_ptr;
 	hrec->map = construct_plane_uv(&hrec->normal, &hrec->point, &self->point);
+	return ;
 }
 
-static t_point2	construct_plane_uv(
+t_point2	construct_plane_uv(
 					const t_vec3 *normal,
 					const t_vec3 *hit_point,
 					const t_vec3 *plane_point)
