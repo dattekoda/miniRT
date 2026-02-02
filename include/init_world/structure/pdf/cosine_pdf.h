@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cosine_pdf.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:29:05 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/19 16:33:28 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/31 22:16:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 typedef struct s_cosine_pdf
 {
 	t_pdf	pdf;
-	t_vec3	normal;
+	t_onb	onb;
 }	t_cosine_pdf;
 
+t_cosine_pdf	*generate_cosine_pdf(t_vec3 normal);
 t_cosine_pdf	construct_cosine_pdf(t_vec3 normal);
 
 #endif

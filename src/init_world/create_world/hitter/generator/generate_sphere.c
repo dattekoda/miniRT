@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:55:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 19:53:44 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/01/30 02:19:21 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ bool			hit_sphere(
 					const void *s,
 					const t_ray *ray, t_hrec *hrec, t_range *range);
 static t_sphere	construct_sphere(t_sphere shape_param);
+static t_aabb	construct_sphere_aabb(t_sphere sphere);
 
 /*
 @brief responsible for free(mat_ptr)
@@ -55,8 +56,16 @@ static t_sphere	construct_sphere(t_sphere shape_param)
 	sphere.hitter.hit = hit_sphere;
 	sphere.hitter.clear = clear_hitter;
 	sphere.hitter.has_aabb = true;
-	sphere.hitter.aabb = construct_aabb(
-			sub_vec3(sphere.center, constant_vec3(sphere.radius)),
-			add_vec3(sphere.center, constant_vec3(sphere.radius)));
+	sphere.hitter.aabb = construct_sphere_aabb(sphere);
 	return (sphere);
+}
+
+static t_aabb	construct_sphere_aabb(t_sphere sphere)
+{
+	t_point3	min;
+	t_point3	max;
+
+	min = sub_vec3(sphere.center, constant_vec3(sphere.radius));
+	max = add_vec3(sphere.center, constant_vec3(sphere.radius));
+	return (construct_aabb(min, max));
 }

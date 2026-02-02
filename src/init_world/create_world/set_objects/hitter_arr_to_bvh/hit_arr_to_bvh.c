@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "best_split.h"
 #include "hitter.h"
 #include "hitter_arr.h"
 #include "init_world_define.h"
