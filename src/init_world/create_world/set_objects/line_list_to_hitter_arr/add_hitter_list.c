@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_hitter_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:48:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 21:28:49 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/02 12:49:12 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int			add_cylinder_disk(t_list **hitter_list, t_cylinder *cylinder);
 static bool	has_subhitter(const t_element *element);
 static int	add_sub_hitters(t_list **hitter_list, t_hitter *hitter_tmp);
 static int	add_hitter(t_list **hitter_list,
-						const char *line,
 						t_hitter **hitter_tmp_p,
+						const char *line,
 						const t_element *element);
 
 int	add_hitter_list(t_list **hitter_list, const char *line,
@@ -30,6 +30,7 @@ int	add_hitter_list(t_list **hitter_list, const char *line,
 {
 	t_hitter	*hitter_tmp;
 
+	hitter_tmp = NULL;
 	if (add_hitter(hitter_list, &hitter_tmp, line, element) == FAILURE)
 		return (FAILURE);
 	if (has_subhitter(element) == true)
@@ -41,8 +42,8 @@ int	add_hitter_list(t_list **hitter_list, const char *line,
 }
 
 static int	add_hitter(t_list **hitter_list,
-						const char *line,
 						t_hitter **hitter_tmp_p,
+						const char *line,
 						const t_element *element)
 {
 	t_list		*list_tmp;

@@ -16,6 +16,7 @@
 #include "init_world_define.h"
 #include "init_world_utils.h"
 #include "libft.h"
+#include "rt_utils.h"
 #include "result.h"
 #include <stdlib.h>
 
@@ -37,10 +38,17 @@ int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list,
 	hitter_list = NULL;
 	if (line_list_to_hitter_list(&hitter_list, line_list,
 			object_table) == FAILURE)
+	{
+		ft_lstclear(&hitter_list, clear_hitter);
 		return (FAILURE);
+	}
 	if (hitter_list_to_hitter_arr(hitter_list, hit_arr) == FAILURE)
-		return (ft_lstclear(&hitter_list, NULL), FAILURE);
-	return (ft_lstclear(&hitter_list, NULL), SUCCESS);
+	{
+		ft_lstclear(&hitter_list, clear_hitter);
+		return (FAILURE);
+	}
+	ft_lstclear(&hitter_list, free);
+	return (SUCCESS);
 }
 
 static int	hitter_list_to_hitter_arr(t_list *hitter_list,

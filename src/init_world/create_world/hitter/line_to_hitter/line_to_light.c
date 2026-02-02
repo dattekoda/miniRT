@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 20:53:27 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/02 12:38:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int				line_to_material(
 					size_t *line_idx,
 					t_material **mat_pp,
 					const t_element *element);
-static int		line_to_light_material(
-					const char *line,
-					size_t *line_idx,
-					t_material **mat_pp,
-					int option_flag);
+// static int		line_to_light_material(
+// 					const char *line,
+// 					size_t *line_idx,
+// 					t_material **mat_pp,
+// 					int option_flag);
 static int		param_to_light_material(
 					t_color color, t_material **mat_pp);
 static t_color	calc_color(t_color raw_color, double ratio, int option_flag);
