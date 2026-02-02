@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:00:46 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 22:16:54 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/02 18:30:26 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 #include "validate_utils.h"
 #include "vec.h"
 #include "libft.h"
+#include "line_reader.h"
 
-static t_result	skip_comma(const char *line, size_t *line_idx);
+static t_result	skip_comma(t_line_reader *line_reader);
 
-t_result	token_to_vec(const char *line, size_t *line_idx, t_vec3 *vec)
+t_result	token_to_vec(t_line_reader *line_reader, t_vec3 *vec)
 {
 	t_result	result;
 	size_t		e_idx;
@@ -25,11 +26,11 @@ t_result	token_to_vec(const char *line, size_t *line_idx, t_vec3 *vec)
 	e_idx = 0;
 	while (e_idx < 3)
 	{
-		result = token_to_value(line, line_idx, &vec->e[e_idx]);
+		result = token_to_value(line_reader, &vec->e[e_idx]);
 		if (result.state == FAILURE)
 			return (result);
 		if (e_idx != 2)
-			result = skip_comma(line, line_idx);
+			result = skip_comma(line_reader);
 		if (result.state == FAILURE)
 			return (result);
 		e_idx++;
@@ -37,11 +38,11 @@ t_result	token_to_vec(const char *line, size_t *line_idx, t_vec3 *vec)
 	return (construct_result(NULL));
 }
 
-static t_result	skip_comma(const char *line, size_t *line_idx)
+static t_result	skip_comma(t_line_reader *line_reader)
 {
-	skip_spaces(line, line_idx);
-	if (line[*line_idx] != ',')
+	skip_spaces(line_reader);
+	if (lr_getc(line_reader) != ',')
 		return (construct_result("need ','"));
-	(*line_idx)++;
+	(line_reader->idx)++;
 	return (construct_result(NULL));
 }

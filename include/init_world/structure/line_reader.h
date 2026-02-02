@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_to_element.h                                  :+:      :+:    :+:   */
+/*   line_reader.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 18:58:22 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/02 18:57:30 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/02 17:42:42 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/02 18:19:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINE_TO_ELEMENT_H
-# define LINE_TO_ELEMENT_H
+#ifndef LINE_READER_H
+# define LINE_READER_H
 
-# include "hitter.h"
-# include "element.h"
+# include <stddef.h>
 
-int	line_to_light(t_hitter **light, char *line);
-int	line_to_sphere(t_hitter **sphere, char *line);
-int	line_to_plane(t_hitter **plane, char *line);
+typedef struct s_line_reader
+{
+	char	*line;
+	size_t	idx;
+}	t_line_reader;
+
+t_line_reader	construct_line_reader(char *line);
+char			lr_getc(const t_line_reader *line_reader);
 
 #endif

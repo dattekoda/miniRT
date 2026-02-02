@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 21:03:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 16:02:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/02 19:38:12 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ static int	calc_radius(t_point3 light_point, t_point3 camera_origin);
 static int	radius_strjoin(char **light_line, int radius);
 static char	*str_space_join(char *a, char *b);
 
+static int	update_light_line(char **light_line, t_point3 camera_origin);
+
 int	preprocess_line_list(t_list *line_list, t_point3 camera_origin)
 {
 	while (line_list)
 	{
 		if (match_identifier(line_list->content, g_info_table[LIGHT]))
 		{
-			if (add_light_radius(
+			if (update_light_line(
 					(char **)&line_list->content, camera_origin) == FAILURE)
 				return (FAILURE);
 		}
@@ -37,17 +39,30 @@ int	preprocess_line_list(t_list *line_list, t_point3 camera_origin)
 	return (SUCCESS);
 }
 
+int	update_light_line(char **light_line, t_point3 camera_origin)
+{
+	t_line_reader	line_reader;
+	t_point3		light_point;
+	int				radius;
+
+	line_reader = construct_line_reader(*light_line);
+	line_reader.idx = g_info_table[LIGHT]->id_len;
+	radius = calc_radius(light_point, camera_origin);
+	
+	return (FAILURE);
+}
+
 /*
 L 0,5,5 0.1 255,255,255 → L 0,5,5 0.1 255,255,255 30
 */
 int	add_light_radius(char **light_line, t_point3 camera_origin)
 {
-	size_t		idx;
-	t_point3	light_point;
-	int			radius;
+	t_line_reader	line_reader;
+	t_point3		light_point;
+	int				radius;
 
-	idx = g_info_table[LIGHT]->id_len;
-	token_to_vec(*light_line, &idx, &light_point);
+	line_reader.idx = g_info_table[LIGHT]->id_len;
+	token_to_vec(&line_reader, &light_point);
 	radius = calc_radius(light_point, camera_origin) + 1;
 	if (radius_strjoin(light_line, radius) == FAILURE)
 		return (FAILURE);

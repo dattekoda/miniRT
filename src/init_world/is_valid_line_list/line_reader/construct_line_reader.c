@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_to_element.h                                  :+:      :+:    :+:   */
+/*   construct_line_reader.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 18:58:22 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/02 18:57:30 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/02 17:47:16 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/02 19:13:32 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINE_TO_ELEMENT_H
-# define LINE_TO_ELEMENT_H
+#include "line_reader.h"
+#include "libft.h"
 
-# include "hitter.h"
-# include "element.h"
+t_line_reader	construct_line_reader(char *line)
+{
+	t_line_reader	line_reader;
 
-int	line_to_light(t_hitter **light, char *line);
-int	line_to_sphere(t_hitter **sphere, char *line);
-int	line_to_plane(t_hitter **plane, char *line);
-
-#endif
+	ft_bzero(&line_reader, sizeof(t_line_reader));
+	line_reader.line = line;
+	return (line_reader);
+}

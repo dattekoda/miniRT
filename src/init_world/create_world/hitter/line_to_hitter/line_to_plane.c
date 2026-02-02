@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_plane.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 23:37:34 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/02 18:56:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@
 #include "result.h"
 #include "libft.h"
 
-static int	line_to_plane_param(const char *line, t_plane *plane_param);
+static int	line_to_plane_param(char *line, t_plane *plane_param);
+int			line_to_material(
+				t_line_reader *line_reader,
+				t_material **mat_pp,
+				const t_element *element);
 
-int	line_to_plane(t_hitter **plane, const char *line)
+int	line_to_plane(t_hitter **plane, char *line)
 {
 	t_plane	plane_param;
 
@@ -34,16 +38,15 @@ int	line_to_plane(t_hitter **plane, const char *line)
 /*
 pl 0.0,0.0,-10.0 0.0,1.0,0.0 0,0,225 lambertian bump
 */
-static int	line_to_plane_param(const char *line, t_plane *plane_param)
+static int	line_to_plane_param(char *line, t_plane *plane_param)
 {
-	size_t	i;
+	t_line_reader	line_reader;
 
-	i = g_infinite_table[PLANE]->id_len;
-	token_to_vec(line, &i, &plane_param->point);
-	token_to_vec(line, &i, &plane_param->normal);
+	line_reader = construct_line_reader(line);
+	line_reader.idx = g_infinite_table[PLANE]->id_len;
 	plane_param->normal = normalize(plane_param->normal);
 	if (line_to_material(
-			line, &i, &plane_param->hitter.mat_ptr, g_info_table[PLANE])
+			&line_reader, &plane_param->hitter.mat_ptr, g_info_table[PLANE])
 		== FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

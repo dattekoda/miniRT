@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_material.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:54:31 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/30 00:48:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/02 18:42:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ t_material	*param_to_material_ptr(
 then set their default material and texture.
 */
 int	line_to_material(
-		const char *line,
-		size_t *line_idx,
+		t_line_reader *line_reader,
 		t_material **mat_pp,
 		const t_element *element)
 {
@@ -37,9 +36,9 @@ int	line_to_material(
 	char	*mat_str;
 	char	*tex_str;
 
-	token_to_vec(line, line_idx, &raw_color);
-	token_to_str(line, line_idx, &mat_str);
-	token_to_str(line, line_idx, &tex_str);
+	token_to_vec(line_reader, &raw_color);
+	token_to_str(line_reader, &mat_str);
+	token_to_str(line_reader, &tex_str);
 	*mat_pp = param_to_material_ptr(
 			normalize_color(raw_color), tex_str, mat_str, element);
 	if (!*mat_pp)

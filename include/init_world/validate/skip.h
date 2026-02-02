@@ -14,19 +14,20 @@
 # define SKIP_H
 
 # include "result.h"
+# include "line_reader.h"
 # include <stddef.h>
 
-typedef t_result		(*t_skip)(const char *line, size_t *line_idx);
+typedef t_result		(*t_skip)(t_line_reader *line_reader);
 
-t_result	skip_lighting_ratio(const char *line, size_t *line_idx);
-t_result	skip_angle(const char *line, size_t *line_idx);
-t_result	skip_sharp_angle(const char *line, size_t *line_idx);
-t_result	skip_length(const char *line, size_t *line_idx);
+t_result	skip_lighting_ratio(t_line_reader *line_reader);
+t_result	skip_angle(t_line_reader *line_reader);
+t_result	skip_sharp_angle(t_line_reader *line_reader);
+t_result	skip_length(t_line_reader *line_reader);
 
-t_result	skip_point(const char *line, size_t *line_idx);
-t_result	skip_unit(const char *line, size_t *line_idx);
-t_result	skip_color(const char *line, size_t *line_idx);
+t_result	skip_point(t_line_reader *line_reader);
+t_result	skip_unit(t_line_reader *line_reader);
+t_result	skip_color(t_line_reader *line_reader);
 
-t_result	skip_until_end(const char *line, size_t *line_idx);
+t_result	skip_until_end(t_line_reader *line_reader);
 
 #endif

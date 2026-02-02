@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   skip_spaces.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:48:23 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 11:41:33 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/02 18:20:08 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "result.h"
+#include "line_reader.h"
 #include <stddef.h>
 
-t_result	skip_spaces(const char *line, size_t *line_idx)
+t_result	skip_spaces(t_line_reader *line_reader)
 {
-	if (line[*line_idx] != ' ' && line[*line_idx] != '\t')
+	if (lr_getc(line_reader) != ' ' && lr_getc(line_reader) != '\t')
 		return (construct_result("invalid format"));
-	while (line[*line_idx] == ' ' || line[*line_idx] == '\t')
-		(*line_idx)++;
+	while (lr_getc(line_reader) == ' ' || lr_getc(line_reader) == '\t')
+		line_reader->idx++;
 	return (construct_result(NULL));
 }

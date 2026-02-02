@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/30 13:56:42 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/02 18:52:29 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ bool	hit_sphere(
 static void	init_solution_context(
 		t_solution *solu, const t_sphere *self, const t_ray *ray)
 {
-	t_solution	solu;
-	t_vec3		center_to_ray_origin;
+	t_vec3	center_to_ray_origin;
 
 	ft_bzero(solu, sizeof(t_solution));
 	center_to_ray_origin = sub_vec3(ray->origin, self->center);

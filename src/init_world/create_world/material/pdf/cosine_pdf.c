@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/31 22:16:37 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/02 18:49:28 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static double	calc_cosine_pdf_value(
 
 static t_vec3	random_cosine_pdf(const void *s)
 {
-	t_cosine_pdf	*self;
+	const t_cosine_pdf	*self;
 
 	self = s;
 	return (local_onb(self->onb, random_cosine_direction()));

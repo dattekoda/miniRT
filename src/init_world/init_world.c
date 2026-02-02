@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 18:20:44 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/02 18:48:59 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		create_world(t_world *world, t_list *line_list, int option_flag);
 /*
 @brief responsible for free line_list
 */
-int	init_world(t_world *world, int *option_flag, int argc, char *argv[])
+void	init_world(t_world *world, int *option_flag, int argc, char *argv[])
 {
 	t_list	*line_list;
 
@@ -43,5 +43,5 @@ int	init_world(t_world *world, int *option_flag, int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	ft_lstclear(&line_list, free);
-	return (SUCCESS);
+	return ;
 }

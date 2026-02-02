@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 21:37:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:41:33 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool		is_valid_line(char *line, const int option_flag);
 
 bool	is_valid_line_list(const t_list *line_list, const int option_flag)
 {
-	int	result;
+	bool	result;
 
 	result = is_valid_ambient_camera_count(line_list);
 	while (line_list)

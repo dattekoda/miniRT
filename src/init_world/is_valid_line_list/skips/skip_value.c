@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   value_skips.c                                      :+:      :+:    :+:   */
+/*   skip_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 18:30:53 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:49:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/02 18:27:26 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "line_reader.h"
 #include "result.h"
 #include <float.h>
 #include <math.h>
 #include <stddef.h>
 
-t_result	skip_range(const char *line, size_t *line_idx, \
-double min, double max);
+t_result	skip_range(t_line_reader *line_reader,
+						double min, double max);
 
-t_result	skip_lighting_ratio(const char *line, size_t *line_idx)
+t_result	skip_lighting_ratio(t_line_reader *line_reader)
 {
-	return (skip_range(line, line_idx, 0.0, 1.0));
+	return (skip_range(line_reader, 0.0, 1.0));
 }
 
-t_result	skip_angle(const char *line, size_t *line_idx)
+t_result	skip_angle(t_line_reader *line_reader)
 {
-	return (skip_range(line, line_idx, FLT_EPSILON, 180.0 - FLT_EPSILON));
+	return (skip_range(line_reader, FLT_EPSILON, 180.0 - FLT_EPSILON));
 }
 
-t_result	skip_sharp_angle(const char *line, size_t *line_idx)
+t_result	skip_sharp_angle(t_line_reader *line_reader)
 {
-	return (skip_range(line, line_idx, FLT_EPSILON, 90.0 - FLT_EPSILON));
+	return (skip_range(line_reader, FLT_EPSILON, 90.0 - FLT_EPSILON));
 }
 
-t_result	skip_length(const char *line, size_t *line_idx)
+t_result	skip_length(t_line_reader *line_reader)
 {
-	return (skip_range(line, line_idx, DBL_EPSILON, INFINITY));
+	return (skip_range(line_reader, DBL_EPSILON, INFINITY));
 }

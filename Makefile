@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/01/30 06:04:21 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/02/02 19:13:12 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,10 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						is_valid_element.c \
 						is_valid_line.c \
 						is_valid_line_list.c \
+						$(addprefix line_reader/, \
+						construct_line_reader.c \
+						lr_getc.c \
+						) \
 						$(addprefix skips/, \
 							skip_until_end.c \
 							skip_value.c \

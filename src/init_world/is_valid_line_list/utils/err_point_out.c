@@ -3,28 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   err_point_out.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:55:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:46:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/02 18:21:35 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_define.h"
 #include "libft.h"
+#include "line_reader.h"
 #include <unistd.h>
 
 static void	put_err_line(char *line);
 
-void	err_point_out(char *line, size_t err_idx)
+void	err_point_out(t_line_reader *line_reader)
 {
 	size_t	i;
 
 	i = 0;
-	put_err_line(line);
-	while (i < err_idx)
+	put_err_line(line_reader->line);
+	while (i < line_reader->idx)
 	{
-		if (line[i++] == '\t')
+		if (line_reader->line[i++] == '\t')
 			ft_putchar_fd('\t', STDERR_FILENO);
 		else
 			ft_putchar_fd(' ', STDERR_FILENO);
