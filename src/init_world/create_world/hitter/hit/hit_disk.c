@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_disk.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 01:52:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/01 16:20:22 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/02 11:57:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ static void	assign_disk_hrec(
 {
 	hrec->ray_in = *ray;
 	hrec->param_t = solu->solution;
-	hrec->point = solu->point;
 	hrec->normal = self->normal;
 	hrec->mat_ptr = self->hitter.mat_ptr;
 	hrec->map = construct_plane_uv(&self->normal,
