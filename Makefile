@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/07 16:54:01 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/07 19:51:17 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,6 +108,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								line_to_material.c \
 								line_to_plane.c \
 								line_to_sphere.c \
+								line_to_triangle.c \
 							) \
 							$(addprefix utils/, \
 								solution.c \
