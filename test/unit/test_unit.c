@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_unit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:01:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/28 17:47:54 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/07 21:16:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	test_is_valid_option(void);
 int	test_set_option(void);
 int	test_read_rt_file(void);
 // create_world()
-int	test_get_ambient_data(void);
+
+int	test_line_to_ambient_light(void);
 int	test_get_camera_data(void);
 int	test_add_light_radius(void);
 int	test_line_to_light(void);
@@ -52,7 +53,7 @@ int	test_unit(void)
 	test_set_option();
 	test_read_rt_file();
 
-	test_get_ambient_data();
+	test_line_to_ambient_light();
 	test_get_camera_data();
 	
 	test_add_light_radius();

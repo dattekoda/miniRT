@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:27:58 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 19:51:56 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/07 21:12:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_world
 {
-	t_color		ambient;
+	t_color		ambient_light;
 	t_camera	camera;
 	t_list		*light_list;
 	t_hitter	*object_tree;

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/31 09:39:18 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/07 21:04:27 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,9 @@
 # define LIGHT_STERADIAN 0.21
 
 # define METAL_FUZZINESS 0.8
+
+# define SAMPLES_PER_PIXEL 30
+# define LENS_RADIUS 0.0
+# define MAX_DEPTH 10
 
 #endif
