@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/07 16:54:01 by khanadat         ###   ########.fr        #
+#    Updated: 2026/01/30 06:04:21 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,10 +93,6 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								aabb.c \
 							) \
 							$(addprefix hit/, \
-									$(addprefix hit_cylinder/, \
-									hit_cylinder.c \
-									is_inside_height.c \
-									) \
 								hit_disk.c \
 								hit_sphere.c \
 								hit_plane.c \

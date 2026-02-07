@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:37:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/07 15:42:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/01 16:06:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool	hit_plane(
 
 	self = s;
 	init_plane_solution(&solu, &self->normal, &self->point, ray);
-	if (fabs(solu.coeff.e[1]) < FLT_EPSILON)
+	if (fabs(solu.b) < FLT_EPSILON)
 		return (false);
 	solu.solution = solu.coeff.e[0] / solu.coeff.e[1];
 	if (is_inside_range(solu.solution, range))
@@ -60,8 +60,8 @@ void	init_plane_solution(
 	t_vec3		point_to_ray_origin;
 
 	point_to_ray_origin = sub_vec3(ray->origin, *point);
-	solu->coeff.e[0] = dot(ray->direct, *normal);
-	solu->coeff.e[1] = dot(point_to_ray_origin, *normal);
+	solu->a = dot(point_to_ray_origin, *normal);
+	solu->b = dot(ray->direct, *normal);
 	return ;
 }
 
