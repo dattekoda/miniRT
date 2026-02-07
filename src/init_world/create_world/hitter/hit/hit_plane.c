@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:37:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/07 15:42:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/08 06:34:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,11 @@ void	init_plane_solution(
 			const t_point3 *point,
 			const t_ray *ray)
 {
-	t_vec3		point_to_ray_origin;
+	const t_vec3	point_to_ray_origin = sub_vec3(ray->origin, *point);
 
-	point_to_ray_origin = sub_vec3(ray->origin, *point);
 	solu->coeff.e[0] = dot(ray->direct, *normal);
 	solu->coeff.e[1] = dot(point_to_ray_origin, *normal);
-	return ;
+	return (solu);
 }
 
 static void	assign_plane_hrec(
