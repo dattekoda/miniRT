@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/07 20:44:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/07 21:02:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void			assign_triangle_hrec(
 						const t_ray *ray,
 						t_hrec *hrec,
 						const t_solution *solu);
-static bool	is_inside_of_triangle(t_triangle triangle, t_point3 point);
+static bool			is_inside_of_triangle(t_triangle triangle, t_point3 point);
+static bool			is_point_same_side(t_triangle tri, t_vec3 vtx_to_p[3]);
 
 bool	hit_triangle(
 			const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
@@ -55,14 +56,23 @@ bool	hit_triangle(
 
 static bool	is_inside_of_triangle(t_triangle triangle, t_point3 point)
 {
-	const t_point3	ap = sub_vec3(point, triangle.vertex[0]);
-	const t_point3	bp = sub_vec3(point, triangle.vertex[1]);
-	const t_point3	cp = sub_vec3(point, triangle.vertex[2]);
+	t_vec3	vertex_to_point[3];
 
-	return (dot(triangle.normal, cross(triangle.side[0], ap)) < 0
-		|| dot(triangle.normal, cross(triangle.side[0], bp)) < 0
-		|| dot(triangle.normal, cross(triangle.side[0], cp)) < 0
-	);
+	vertex_to_point[0] = sub_vec3(point, triangle.vertex[0]);
+	vertex_to_point[0] = sub_vec3(point, triangle.vertex[1]);
+	vertex_to_point[0] = sub_vec3(point, triangle.vertex[2]);
+	return (is_point_same_side(triangle, vertex_to_point));
+}
+
+static bool	is_point_same_side(t_triangle tri, t_vec3 vtx_to_p[3])
+{
+	bool	is_negative[3];
+
+	is_negative[0] = dot(tri.normal, cross(tri.side[0], vtx_to_p[0])) < 0;
+	is_negative[0] = dot(tri.normal, cross(tri.side[0], vtx_to_p[0])) < 0;
+	is_negative[0] = dot(tri.normal, cross(tri.side[0], vtx_to_p[0])) < 0;
+	return ((is_negative[0] && is_negative[1] && is_negative[2])
+		|| (!is_negative[0] && !is_negative[1] && !is_negative[2]));
 }
 
 static void	assign_triangle_hrec(
