@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 00:48:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/07 18:47:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,24 @@
 
 static int			light_line_to_shape_param(
 						const char *line,
-						t_sphere *light_param,
-						int option_flag);
+						t_sphere *light_param);
 static int			line_to_light_material(
 						const char *line,
 						size_t *line_idx,
-						t_material **mat_pp,
-						int option_flag);
+						t_material **mat_pp);
 static t_material	*param_to_light_material(t_color color);
 static t_color		calc_color(
-						t_color raw_color, double ratio, int option_flag);
+						t_color raw_color, double ratio);
 
 /*
 @brief line "L 0,4,4, 0.3, 255,255,0 4"
 */
-int	line_to_light(t_hitter **light, const char *line, int option_flag)
+int	line_to_light(t_hitter **light, const char *line)
 {
 	t_sphere		shape_param;
 
 	ft_bzero(&shape_param, sizeof(t_sphere));
-	if (light_line_to_shape_param(line, &shape_param, option_flag) == FAILURE)
+	if (light_line_to_shape_param(line, &shape_param) == FAILURE)
 		return (FAILURE);
 	*light = generate_sphere(shape_param);
 	if (!*light)
@@ -52,15 +50,14 @@ L 0,0,0 0.3 255,255,0 4
 */
 static int	light_line_to_shape_param(
 				const char *line,
-				t_sphere *light_param,
-				int option_flag)
+				t_sphere *light_param)
 {
 	size_t	i;
 
 	i = g_info_table[LIGHT]->id_len;
 	token_to_vec(line, &i, &light_param->center);
 	if (line_to_light_material(
-			line, &i, &light_param->hitter.mat_ptr, option_flag) == FAILURE)
+			line, &i, &light_param->hitter.mat_ptr) == FAILURE)
 		return (FAILURE);
 	token_to_value(line, &i, &light_param->radius);
 	return (SUCCESS);
@@ -69,8 +66,7 @@ static int	light_line_to_shape_param(
 static int	line_to_light_material(
 				const char *line,
 				size_t *line_idx,
-				t_material **mat_pp,
-				int option_flag)
+				t_material **mat_pp)
 {
 	double	ratio;
 	t_color	raw_color;
@@ -78,18 +74,16 @@ static int	line_to_light_material(
 	token_to_value(line, line_idx, &ratio);
 	token_to_vec(line, line_idx, &raw_color);
 	*mat_pp = param_to_light_material(
-			calc_color(raw_color, ratio, option_flag));
+			calc_color(raw_color, ratio));
 	if (!*mat_pp)
 		return (FAILURE);
 	return (SUCCESS);
 }
 
-static t_color	calc_color(t_color raw_color, double ratio, int option_flag)
+static t_color	calc_color(t_color raw_color, double ratio)
 {
 	t_color	color;
 
-	if (!(option_flag & OPT_ARTIFICIAL))
-		ratio *= PATHTRACING_LIGHT_STRENGTH;
 	color = scal_mul_vec3(normalize_color(raw_color), ratio);
 	return (color);
 }

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:52:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 15:57:47 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/07 18:46:00 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "world.h"
 #include "rt_utils.h"
 #include "rt_define.h"
+#include "solid_texture.h"
 #include "libft.h"
 #include <math.h>
 #include <stdlib.h>
@@ -24,7 +25,7 @@
 static int	new_light_node(t_list **new_list, const char *line,
 				int option_flag);
 int			preprocess_line_list(t_list *line_list, t_point3 camera_origin);
-int			line_to_light(t_hitter **light, const char *line, bool is_phong);
+int			line_to_light(t_hitter **light, const char *line);
 
 int	set_light(t_world *world, t_list *line_list, int option_flag)
 {
@@ -51,10 +52,17 @@ int	set_light(t_world *world, t_list *line_list, int option_flag)
 
 static int	new_light_node(t_list **new_list, const char *line, int option_flag)
 {
-	t_hitter	*new_light;
+	t_hitter		*new_light;
+	t_solid_texture	*solid_ptr;
 
-	if (line_to_light(&new_light, line, option_flag) == FAILURE)
+	if (line_to_light(&new_light, line) == FAILURE)
 		return (FAILURE);
+	if (!(option_flag & OPT_ARTIFICIAL))
+	{
+		solid_ptr = (t_solid_texture *)new_light->mat_ptr->texture_ptr;
+		solid_ptr->color
+			= scal_mul_vec3(solid_ptr->color, PATHTRACING_LIGHT_STRENGTH);
+	}
 	*new_list = ft_lstnew(new_light);
 	if (!*new_list)
 	{
