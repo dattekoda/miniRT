@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/07 20:38:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/07 20:44:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void			assign_triangle_hrec(
 						const t_ray *ray,
 						t_hrec *hrec,
 						const t_solution *solu);
+static bool	is_inside_of_triangle(t_triangle triangle, t_point3 point);
 
 bool	hit_triangle(
 			const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
@@ -46,7 +47,8 @@ bool	hit_triangle(
 	if (!is_inside_range(solu.solution, range))
 		return (false);
 	solu.point = at_ray(ray, solu.solution);
-
+	if (!is_inside_of_triangle(*self, solu.point))
+		return (false);
 	assign_triangle_hrec(self, ray, hrec, &solu);
 	return (true);
 }
@@ -57,9 +59,9 @@ static bool	is_inside_of_triangle(t_triangle triangle, t_point3 point)
 	const t_point3	bp = sub_vec3(point, triangle.vertex[1]);
 	const t_point3	cp = sub_vec3(point, triangle.vertex[2]);
 
-	return (dot(triangle.normal, cross(triangle.side[0], ap) < 0
-		|| dot(triangle.normal, cross(triangle.side[0], bp) < 0)
-		|| dot(triangle.normal, cross(triangle.side[0], cp) < 0))
+	return (dot(triangle.normal, cross(triangle.side[0], ap)) < 0
+		|| dot(triangle.normal, cross(triangle.side[0], bp)) < 0
+		|| dot(triangle.normal, cross(triangle.side[0], cp)) < 0
 	);
 }
 
@@ -75,6 +77,6 @@ static void	assign_triangle_hrec(
 	hrec->normal = self->normal;
 	hrec->mat_ptr = self->hitter.mat_ptr;
 	hrec->map = construct_plane_uv(&self->normal,
-					&hrec->point, &self->center);
+					&hrec->point, &self->vertex[0]);
 	return ;
 }
