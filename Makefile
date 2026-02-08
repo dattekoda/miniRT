@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/08 17:45:43 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/08 19:05:07 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,6 +97,11 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 									hit_cylinder.c \
 									validate_height_and_assign.c \
 									) \
+									$(addprefix plane_utils/, \
+									construct_plane_uv.c \
+									init_plane_solution.c \
+									) \
+								hit_cone.c \
 								hit_disk.c \
 								hit_sphere.c \
 								hit_plane.c \
