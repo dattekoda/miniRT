@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 16:47:39 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/08 17:46:24 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/08 17:52:26 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ bool	validate_height_and_assign(
 			t_hrec *hrec,
 			t_solution *solu)
 {
-	const t_vec3	center_to_point
-		= sub_vec3(solu->point, self->center);
-	const double	tmp_height
-		= dot(center_to_point, self->direct);
+	t_vec3	center_to_point;
+	double	tmp_height;
 
+	solu->point = at_ray(ray, solu->solution);
+	center_to_point = sub_vec3(solu->point, self->center);
+	tmp_height = dot(center_to_point, self->direct);
 	if (tmp_height < 0 || tmp_height < self->height)
 		return (false);
-	solu->point = at_ray(ray, solu->solution);
 	assign_cylinder_hrec(self, ray, hrec, solu);
 	hrec->normal = calc_cylinder_normal(self, solu, tmp_height);
 	hrec->map = construct_cylinder_uv(
