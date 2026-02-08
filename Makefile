@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/08 19:05:07 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/08 19:09:30 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,6 +107,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								hit_plane.c \
 							) \
 							$(addprefix line_to_hitter/, \
+								line_to_cone.c \
 								line_to_cylinder.c \
 								line_to_disk.c \
 								line_to_light.c \
