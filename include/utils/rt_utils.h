@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 16:09:06 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/08 16:40:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int		random_int(int min, int max);
 size_t	random_size_t(size_t min, size_t max);
 // utils_random.c
 
-void	clear_hitter(void *self);
-void	clear_material(void *s);
-void	clear_texture(void *s);
+void	clear_hitter(void **self);
+void	clear_material(void **s);
+void	clear_texture(void **s);
 // utils_clear.c
 
 void	rt_swap(void *a, void *b, size_t size);

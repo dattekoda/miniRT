@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 18:21:46 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/08 16:40:33 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,34 @@
 #include "material.h"
 #include <stdlib.h>
 
-void	clear_texture(void *s)
+void	clear_texture(void **s)
 {
-	free(s);
+	free(*s);
+	*s = NULL;
 }
 
-void	clear_hitter(void *self)
+void	clear_hitter(void **self)
 {
 	t_hitter	*hitter;
 
-	hitter = (t_hitter *)self;
+	hitter = (t_hitter *)*self;
 	if (hitter->mat_ptr)
 		hitter->mat_ptr->clear(hitter->mat_ptr);
 	hitter->mat_ptr = NULL;
 	free(hitter);
+	*self = NULL;
 }
 
-void	clear_material(void *s)
+void	clear_material(void **s)
 {
 	t_material	*self;
 
-	self = s;
+	self = *s;
 	if (self->texture_ptr)
 		self->texture_ptr->clear(self->texture_ptr);
 	self->texture_ptr = NULL;
 	free(self);
+	*s = NULL
 }
 
 void	clear_world(t_world world)
