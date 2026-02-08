@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_arr_to_bvh.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 16:10:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/08 16:43:33 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	hit_arr_to_bvh(t_hitter **root, t_hitter_arr hit_arr)
 	if (hit_arr.size == 0)
 		return (SUCCESS);
 	if (generate_bvh_recursive(root, hit_arr) == FAILURE)
-		return ((*root)->clear(*root), FAILURE);
+		return (FAILURE);
 	return (SUCCESS);
 }
 
