@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_pixel_color.c                                 :+:      :+:    :+:   */
+/*   calc_sample_pixel_color.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/08 19:22:47 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/08 22:55:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,23 @@ t_ray			get_ray_from_camera(
 					const t_camera *camera,
 					double u,
 					double v);
-t_color			get_path_tracing_color(
-					t_ray ray,
+t_color			compute_path_tracing_color(
+					const t_ray *ray,
 					const t_world *world,
 					size_t depth);
-static t_color	calc_a_sample_pixel_color(
+static t_color	calc_one_sample_pixel_color(
 					int xi,
 					int yi,
 					const t_world *world,
 					bool is_phong);
 static void		calc_uv(double *u, double *v, int xi, int yi);
+static t_vec3	random_point_in_unit_disk(void);
+static t_ray	get_ray_from_camera(
+					const t_camera *camera,
+					double u,
+					double v);
 
-t_color	calc_pixel_color(
+t_color	calc_sample_pixel_color(
 					int xi,
 					int yi,
 					const t_world *world,
@@ -49,13 +54,13 @@ t_color	calc_pixel_color(
 		pixel_color
 			= add_vec3(
 				pixel_color,
-				calc_a_sample_pixel_color(xi, yi, world, is_phong));
+				calc_one_sample_pixel_color(xi, yi, world, is_phong));
 		si++;
 	}
 	return (scal_mul_vec3(pixel_color, color_scale));
 }
 
-static t_color	calc_a_sample_pixel_color(
+static t_color	calc_one_sample_pixel_color(
 					int xi,
 					int yi,
 					const t_world *world,
@@ -67,9 +72,10 @@ static t_color	calc_a_sample_pixel_color(
 
 	calc_uv(&u, &v, xi, yi);
 	ray = get_ray_from_camera(&world->camera, u, v);
-	if (is_phong)
-		return (get_phong_color());
-	return (get_path_tracing_color(ray, world, 0));
+	(void)is_phong;
+	// if (is_phong)
+	// 	return (compute_phong_color()); // here!
+	return (compute_path_tracing_color(&ray, world, 0));
 }
 
 static void	calc_uv(double *u, double *v, int xi, int yi)
@@ -80,4 +86,39 @@ static void	calc_uv(double *u, double *v, int xi, int yi)
 	*u = xi + random_double(0, 1) * inv_w;
 	*v = yi + random_double(0, 1) * inv_h;
 	return ;
+}
+
+static t_ray	get_ray_from_camera(const t_camera *camera, double u, double v)
+{
+	t_vec3				ray_displacement;
+	t_vec3				offset;
+	t_vec3				ray_direct;
+
+	ray_displacement
+		= scal_mul_vec3(random_point_in_unit_disk(), LENS_RADIUS);
+	offset = add_vec3(
+			scal_mul_vec3(camera->onb.v[0], ray_displacement.e[0]),
+			scal_mul_vec3(camera->onb.v[1], ray_displacement.e[1]));
+	ray_direct = sub_vec3(
+			add_vec3(camera->left_top, scal_mul_vec3(camera->onb.v[0], u)),
+			add_vec3(scal_mul_vec3(camera->onb.v[1], v), camera->origin));
+	return (construct_ray(
+			add_vec3(camera->origin, offset),
+			sub_vec3(ray_direct, offset)));
+}
+
+static t_vec3	random_point_in_unit_disk(void)
+{
+	t_vec3	random_point;
+
+	while (true)
+	{
+		random_point = construct_vec3(
+				random_double(-1, 1),
+				random_double(-1, 1),
+				0);
+		if (length_squared_vec3(random_point) < 1)
+			break ;
+	}
+	return (random_point);
 }

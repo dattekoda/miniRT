@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 19:34:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/08 22:55:03 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "libft.h"
 #include <unistd.h>
 
-t_color			calc_pixel_color(
+t_color	calc_sample_pixel_color(
 					int xi,
 					int yi,
 					const t_world *world,
@@ -64,7 +64,7 @@ static void	accumulate_pixel_arr(
 		while (xi < WINDOW_WIDTH)
 		{
 			pixel_arr[x_base + xi]
-				= calc_pixel_color(xi, yi, world, is_phong);
+				= calc_sample_pixel_color(xi, yi, world, is_phong);
 			xi++;
 		}
 		yi++;

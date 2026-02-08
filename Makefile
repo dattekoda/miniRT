@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/08 19:16:37 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/08 22:56:21 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,8 +137,9 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 					) \
 				) \
 				$(addprefix render_pixels/, \
+					calc_sample_pixel_color.c \
+					compute_path_tracing_color.c \
 					render_pixels.c \
-					get_camera_ray.c \
 				) \
 				$(addprefix draw_image/, \
 					draw_image.c \
@@ -148,6 +149,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 				) \
 				$(addprefix utils/, \
 					construct_result.c \
+					utils_clamp.c \
 					utils_clear.c \
 					utils_err.c \
 					utils_float.c \

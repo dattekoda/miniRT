@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_config.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 20:41:18 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/08 21:34:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@
 # ifndef LIGHT_STERADIAN
 #  define LIGHT_STERADIAN 0.21
 # endif
+
+# define RUSSIAN_ROULETTE_START_DEPTH 10
+
+// set 0.0 - 1.0
+# define LIVE_PROBABILITY_MIN 0.5
 
 // tetxure
 // 0: solid
