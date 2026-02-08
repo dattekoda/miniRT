@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 16:44:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/08 16:44:32 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr)
 				hit_arr.arr + left_size, hit_arr.size - left_size)) == FAILURE)
 		return (lhs->clear(lhs), FAILURE);
 	*hitter = generate_tree(lhs, rhs);
-		if (!*hitter)
-			return (lhs->clear(lhs), rhs->clear(rhs), FAILURE);
+	if (!*hitter)
+		return (lhs->clear(lhs), rhs->clear(rhs), FAILURE);
 	return (SUCCESS);
 }
 
