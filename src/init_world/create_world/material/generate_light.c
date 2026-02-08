@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/30 00:46:52 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/02 12:38:00 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "vec_utils.h"
 
 static t_light	construct_light(t_texture *texture_ptr);
+// static t_color	emmited_light(const void *s, t_hrec *hrec);
 static bool		scatter_light(
 					const void *s,
 					const t_world *world, t_hrec *hrec, t_srec *srec);

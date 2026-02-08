@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/08 22:56:21 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/08 23:03:27 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,14 +88,20 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								generate_disk.c \
 								generate_sphere.c \
 								generate_plane.c \
+								generate_triangle.c \
 							) \
 							$(addprefix aabb/, \
 								aabb.c \
 							) \
 							$(addprefix hit/, \
+									$(addprefix hit_cylinder/, \
+									hit_cylinder.c \
+									is_inside_height.c \
+									) \
 								hit_disk.c \
 								hit_sphere.c \
 								hit_plane.c \
+								hit_triangle.c \
 							) \
 							$(addprefix line_to_hitter/, \
 								line_to_cylinder.c \
@@ -104,6 +110,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								line_to_material.c \
 								line_to_plane.c \
 								line_to_sphere.c \
+								line_to_triangle.c \
 							) \
 							$(addprefix utils/, \
 								solution.c \
