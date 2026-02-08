@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 19:21:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/08 19:34:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	render_pixels(
 		const t_world *world,
 		bool is_phong)
 {
-	const int	window_width = WINDOW_WIDTH;
-	const int	window_height = WINDOW_WIDTH * ASPECT_RATIO;
+	static const int	window_width = WINDOW_WIDTH;
+	static const int	window_height = WINDOW_WIDTH * ASPECT_RATIO;
 
 	*pixel_arr_p = ft_calloc(window_width * window_height, sizeof(t_color));
 	if (!*pixel_arr_p)
