@@ -3,21 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 20:22:52 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/08 19:18:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
 #include "result.h"
+#include "option.h"
 #include "libft.h"
 #include "mlx.h"
 #include <stdlib.h>
 
 int		init_world(t_world *world, int *option_flag, int argc, char *argv[]);
-int		render_pixel(t_color **pxl_arr_p, const t_world *world);
+int		render_pixels(
+			t_color **pixel_arr_p,
+			const t_world *world,
+			bool is_phong);
 int		draw_image(const t_color *pixel_arr, int option_flag, void **mlx_p);
 void	clear_world(t_world world);
 
@@ -31,7 +35,8 @@ int	mini_rt(int argc, char *argv[])
 	ft_bzero(&world, sizeof(t_world));
 	if (init_world(&world, &option_flag, argc, argv) == FAILURE)
 		return (EXIT_FAILURE);
-	if (render_pixel(&pixel_arr, &world) == FAILURE)
+	if (render_pixels(&pixel_arr, &world,
+		option_flag & OPT_ARTIFICIAL) == FAILURE)
 	{
 		clear_world(world);
 		return (EXIT_FAILURE);

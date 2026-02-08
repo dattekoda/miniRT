@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/07 21:54:13 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/08 19:22:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static t_color	calc_a_sample_pixel_color(
 					int xi,
 					int yi,
 					const t_world *world,
-					int option_flag);
+					bool is_phong);
 static void		calc_uv(double *u, double *v, int xi, int yi);
 
 t_color	calc_pixel_color(
 					int xi,
 					int yi,
 					const t_world *world,
-					int option_flag)
+					bool is_phong)
 {
 	static const double	color_scale = 1.0 / SAMPLES_PER_PIXEL;
 	size_t				si;
@@ -49,7 +49,7 @@ t_color	calc_pixel_color(
 		pixel_color
 			= add_vec3(
 				pixel_color,
-				calc_a_sample_pixel_color(xi, yi, world, option_flag));
+				calc_a_sample_pixel_color(xi, yi, world, is_phong));
 		si++;
 	}
 	return (scal_mul_vec3(pixel_color, color_scale));
@@ -59,7 +59,7 @@ static t_color	calc_a_sample_pixel_color(
 					int xi,
 					int yi,
 					const t_world *world,
-					int option_flag)
+					bool is_phong)
 {
 	t_ray	ray;
 	double	u;
@@ -67,7 +67,7 @@ static t_color	calc_a_sample_pixel_color(
 
 	calc_uv(&u, &v, xi, yi);
 	ray = get_ray_from_camera(&world->camera, u, v);
-	if (option_flag & OPT_ARTIFICIAL)
+	if (is_phong)
 		return (get_phong_color());
 	return (get_path_tracing_color(ray, world, 0));
 }

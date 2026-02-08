@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_pixel.c                                     :+:      :+:    :+:   */
+/*   render_pixels.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/07 21:56:06 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/08 19:21:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ t_color			calc_pixel_color(
 					int xi,
 					int yi,
 					const t_world *world,
-					int option_flag);
+					bool is_phong);
 static void		accumulate_pixel_arr(
 					t_color *pixel_arr,
 					const t_world *world,
-					int option_flag);
+					bool is_phong);
 static void		print_remaining(size_t yi);
 
-int	render_pixel(
+int	render_pixels(
 		t_color **pixel_arr_p,
 		const t_world *world,
-		int option_flag)
+		bool is_phong)
 {
 	const int	window_width = WINDOW_WIDTH;
 	const int	window_height = WINDOW_WIDTH * ASPECT_RATIO;
@@ -40,14 +40,14 @@ int	render_pixel(
 	*pixel_arr_p = ft_calloc(window_width * window_height, sizeof(t_color));
 	if (!*pixel_arr_p)
 		return (FAILURE);
-	accumlate_pixel_arr(*pixel_arr_p, world);
+	accumulate_pixel_arr(*pixel_arr_p, world, is_phong);
 	return (SUCCESS);
 }
 
 static void	accumulate_pixel_arr(
 				t_color *pixel_arr,
 				const t_world *world,
-				int option_flag)
+				bool is_phong)
 {
 	static const int	window_height
 		= WINDOW_WIDTH * ASPECT_RATIO;
@@ -63,7 +63,8 @@ static void	accumulate_pixel_arr(
 		xi = 0;
 		while (xi < WINDOW_WIDTH)
 		{
-			pixel_arr[x_base + xi] = calc_pixel_color(xi, yi, world, option_flag);
+			pixel_arr[x_base + xi]
+				= calc_pixel_color(xi, yi, world, is_phong);
 			xi++;
 		}
 		yi++;
