@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/07 16:54:01 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/08 17:45:43 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							$(addprefix hit/, \
 									$(addprefix hit_cylinder/, \
 									hit_cylinder.c \
-									is_inside_height.c \
+									validate_height_and_assign.c \
 									) \
 								hit_disk.c \
 								hit_sphere.c \
