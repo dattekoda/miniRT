@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/08 22:55:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/09 16:32:29 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 #include "option.h"
 #include "rt_utils.h"
 
-t_ray			get_ray_from_camera(
-					const t_camera *camera,
-					double u,
-					double v);
 t_color			compute_path_tracing_color(
 					const t_ray *ray,
 					const t_world *world,

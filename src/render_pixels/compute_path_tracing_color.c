@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/08 22:45:17 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/09 16:32:37 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_color	compute_path_tracing_color(
 	if (depth >= MAX_DEPTH)
 		return (constant_vec3(1.0));
 	if (!world->object_tree
-		|| !world->object_tree->hit(world->object_tree, &ray, &hrec, &range))
+		|| !world->object_tree->hit(world->object_tree, ray, &hrec, &range))
 		return (world->ambient_light);
 	if (!hrec.mat_ptr->scatter(hrec.mat_ptr, world, &hrec, &srec))
 		return (srec.attenuation);

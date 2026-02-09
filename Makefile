@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/08 23:03:27 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/09 16:33:06 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 					) \
 					$(addprefix create_world/, \
 						create_world.c \
-						set_ambient.c \
+						set_ambient_light.c \
 						$(addprefix set_camera/, \
 							construct_camera.c \
 							set_camera.c \
