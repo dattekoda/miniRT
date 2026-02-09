@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 09:32:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/09 22:07:42 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/09 22:32:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@
 #include <math.h>
 #include <stdbool.h>
 
-t_vec3			orient_normal(const t_vec3 *hrec_normal, const t_vec3 *ray_in_direct);
+t_vec3			orient_normal(
+					const t_vec3 *hrec_normal,
+					const t_vec3 *ray_in_direct);
 t_vec3			reflect(const t_vec3 *vec, const t_vec3 *normal);
 static t_vec3	random_in_unit_sphere(void);
 
@@ -78,9 +80,9 @@ static bool	scatter_metal(
 			hrec->point,
 			add_vec3(
 				reflected,
-					scal_mul_vec3(
-						random_in_unit_sphere(),
-						METAL_FUZZINESS)));
+				scal_mul_vec3(
+					random_in_unit_sphere(),
+					METAL_FUZZINESS)));
 	return (true);
 }
 
@@ -91,9 +93,9 @@ static t_vec3	random_in_unit_sphere(void)
 	while (1)
 	{
 		vec = construct_vec3(
-			random_minus1_to_1(),
-			random_minus1_to_1(),
-			random_minus1_to_1());
+				random_minus1_to_1(),
+				random_minus1_to_1(),
+				random_minus1_to_1());
 		if (length_squared_vec3(vec) < 1)
 			break ;
 	}
