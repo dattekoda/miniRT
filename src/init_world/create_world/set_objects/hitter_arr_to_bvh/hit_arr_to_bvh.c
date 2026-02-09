@@ -57,7 +57,7 @@ static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr)
 		return (lhs->clear(lhs), FAILURE);
 	*hitter = generate_tree(lhs, rhs);
 	if (!*hitter)
-		return (lhs->clear(lhs), rhs->clear(rhs), FAILURE);
+		return (FAILURE);
 	return (SUCCESS);
 }
 
