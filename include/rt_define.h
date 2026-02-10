@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/07 21:04:27 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 21:56:59 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
 # endif
+
+extern const unsigned int	g_window_width;
+extern const unsigned int	g_window_height;
 
 # define GREEN "\033[92m"
 # define RESET "\033[m"

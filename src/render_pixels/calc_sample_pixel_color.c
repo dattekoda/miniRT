@@ -6,16 +6,16 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/09 16:32:29 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 21:49:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
 #include "vec_utils.h"
 #include "libft.h"
-#include "rt_define.h"
 #include "option.h"
 #include "rt_utils.h"
+#include "rt_define.h"
 
 t_color			compute_path_tracing_color(
 					const t_ray *ray,
@@ -79,8 +79,8 @@ static void	calc_uv(double *u, double *v, int xi, int yi)
 	static const double	inv_w = 1.0 / (WINDOW_WIDTH - 1);
 	static const double	inv_h = 1.0 / (WINDOW_WIDTH * ASPECT_RATIO - 1);
 	
-	*u = xi + random_double(0, 1) * inv_w;
-	*v = yi + random_double(0, 1) * inv_h;
+	*u = (xi + random_double(0, 1)) * inv_w;
+	*v = (yi + random_double(0, 1)) * inv_h;
 	return ;
 }
 

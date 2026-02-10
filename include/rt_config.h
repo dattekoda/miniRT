@@ -6,12 +6,14 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 21:34:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 18:11:14 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_CONFIG_H
 # define RT_CONFIG_H
+
+# define PROJECT_NAME "miniRT"
 
 // ambient
 # define PATHTRACING_AMBIENTSCALE 100.0
