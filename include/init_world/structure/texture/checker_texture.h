@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   checker_texture.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 04:46:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 15:27:05 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/10 15:02:33 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/10 15:16:00 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#ifndef CHECKER_TEXTURE_H
+# define CHECKER_TEXTURE_H
 
-# include "hitter.h"
-# include "vec.h"
+# include "solid_texture.h"
 
-typedef struct s_texture
+typedef struct s_checker_texture
 {
-	t_color	(*calc_texture_value)(
-				const void *self,
-				t_hrec * hrec,
-				double u,
-				double v);
-	t_clear	clear;
-}	t_texture;
-
-enum e_texture_idx
-{
-	SOLID,
-	CHECKER,
-	BUMP,
-	INVALID_TEXTURE_IDX
-};
+	t_texture		texture;
+	t_solid_texture	even;
+	t_solid_texture	odd;
+}	t_checker_texture;
 
 #endif

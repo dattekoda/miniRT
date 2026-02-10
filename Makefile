@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/10 21:56:50 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/10 22:05:59 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,11 +72,16 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							preprocess_line_list.c \
 						) \
 						$(addprefix texture/, \
+							generate_checker_texture.c \
 							generate_solid_texture.c \
 						) \
 						$(addprefix material/, \
 							generate_lambertian.c \
 							generate_light.c \
+							$(addprefix material_utils/, \
+								orient_normal.c \
+								reflect.c \
+							) \
 							$(addprefix pdf/, \
 								calc_light_pdf_value.c \
 								cosine_pdf.c \

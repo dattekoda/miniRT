@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/10 21:56:59 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 22:06:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ extern const unsigned int	g_window_height;
 // /bin/bash -c openssl rand -hex 8
 # define RANDOM_SEED_UINT64 0x629d97afad9281f2
 
-# define DOUBLE_MANTISSA_SCALE 9.007199254740992
+# define DOUBLE_INV_SCALE 0x1p-53
 
 // how heavy to calculate to hit aabb intersection
 # define COST_AABB_INTERSECTION 1
@@ -45,7 +45,10 @@ extern const unsigned int	g_window_height;
 
 # define LIGHT_STERADIAN 0.21
 
-# define METAL_FUZZINESS 0.8
+// how fuzzy metal is(0.0 - 1.0)
+# define METAL_FUZZINESS 0.0
+
+# define CHECKER_SPLIT_SIZE 20
 
 # define SAMPLES_PER_PIXEL 30
 # define LENS_RADIUS 0.0
