@@ -5,10 +5,11 @@
 #                                                     +:+ +:+         +:+      #
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/09 16:33:06 by khanadat         ###   ########.fr        #
+#    Created: Invalid date        by                   #+#    #+#              #
+#    Updated: 2026/02/10 22:21:36 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME		=	miniRT
 
@@ -69,11 +70,16 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							preprocess_line_list.c \
 						) \
 						$(addprefix texture/, \
+							generate_checker_texture.c \
 							generate_solid_texture.c \
 						) \
 						$(addprefix material/, \
 							generate_lambertian.c \
 							generate_light.c \
+							$(addprefix material_utils/, \
+								orient_normal.c \
+								reflect.c \
+							) \
 							$(addprefix pdf/, \
 								calc_light_pdf_value.c \
 								cosine_pdf.c \

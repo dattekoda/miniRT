@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 22:38:36 by khanadat         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2026/02/10 22:22:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MATERIAL_H
 # define MATERIAL_H
@@ -42,7 +43,7 @@ typedef struct s_material
 	t_clear		clear;
 }	t_material;
 
-enum e_mat_idx
+enum e_material_idx
 {
 	LAMBERTIAN,
 	METAL,

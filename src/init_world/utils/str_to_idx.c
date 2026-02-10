@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:45:57 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 16:19:26 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/09 16:57:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static int	str_to_idx(const char *str, const char *specifiers[]);
 
-enum e_mat_idx	str_to_material_idx(const char *str)
+enum e_material_idx	str_to_material_idx(const char *str)
 {
 	int	idx;
 

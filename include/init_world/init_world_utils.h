@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/09 16:35:59 by khanadat         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2026/02/10 22:22:01 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef INIT_WORLD_UTILS_H
 # define INIT_WORLD_UTILS_H
@@ -46,7 +47,7 @@ t_result			token_to_vec(
 t_result			token_to_str(
 						const char *line, size_t *line_idx, char **c);
 
-enum e_mat_idx		str_to_material_idx(const char *str);
+enum e_material_idx		str_to_material_idx(const char *str);
 enum e_texture_idx	str_to_texture_idx(const char *str);
 
 #endif

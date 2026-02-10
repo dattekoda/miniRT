@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 09:32:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/31 10:10:26 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/09 22:32:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,20 @@
 #include "libft.h"
 #include "rt_define.h"
 #include "vec_utils.h"
+#include "light_pdf.h"
+#include "cosine_pdf.h"
+#include <math.h>
 #include <stdbool.h>
 
+t_vec3			orient_normal(
+					const t_vec3 *hrec_normal,
+					const t_vec3 *ray_in_direct);
+t_vec3			reflect(const t_vec3 *vec, const t_vec3 *normal);
+static t_vec3	random_in_unit_sphere(void);
+
+/*
+@brief responsible for free(texture_ptr)
+*/
 t_material	*generate_metal(t_texture *texture_ptr)
 {
 	t_metal	*metal_ptr;
@@ -53,31 +65,39 @@ static bool	scatter_metal(
 				t_srec *srec)
 {
 	const t_metal	*self;
-	t_mixture_pdf	mix_pdf;
+	const t_vec3	reflect_normal
+		= orient_normal(&hrec->normal, &hrec->ray_in.direct);
+	const t_vec3	reflected
+		= normalize(reflect(&hrec->ray_in.direct, &reflect_normal));
 	t_texture		*texture_ptr;
 
 	self = s;
 	texture_ptr = self->material.texture_ptr;
-	mix_pdf = create_mix_pdf_metal(world, hrec);
+	srec->surface_pdf = 1.0;
+	srec->sampling_pdf = 1.0;
+	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec);
+	srec->next_ray = construct_ray(
+			hrec->point,
+			add_vec3(
+				reflected,
+				scal_mul_vec3(
+					random_in_unit_sphere(),
+					METAL_FUZZINESS)));
+	return (true);
 }
 
-t_mixture_pdf	create_mix_pdf_metal(
-					const t_world *world,
-					const t_hrec *hrec)
+static t_vec3	random_in_unit_sphere(void)
 {
-	t_vec3	reflect_normal;
+	t_vec3	vec;
 
-	reflect_normal = orient_normal(&hrec->normal, &hrec->ray_in.direct);
-
-}
-
-/*
-法線ベクトルの向きを整える関数
-mixture_pdf.cへ追加したい。
-*/
-t_vec3	orient_normal(const t_vec3 *hrec_normal, t_vec3 *ray_in_direct)
-{
-	if (dot(*hrec_normal, *ray_in_direct) > 0)
-		return (negative_vec3(*hrec_normal));
-	return (*hrec_normal);
+	while (1)
+	{
+		vec = construct_vec3(
+				random_minus1_to_1(),
+				random_minus1_to_1(),
+				random_minus1_to_1());
+		if (length_squared_vec3(vec) < 1)
+			break ;
+	}
+	return (vec);
 }
