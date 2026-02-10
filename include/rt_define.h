@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/09 22:10:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 15:30:30 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@
 
 // how fuzzy metal is(0.0 - 1.0)
 # define METAL_FUZZINESS 0.0
+
+# define CHECKER_SPLIT_SIZE 20
 
 #endif
