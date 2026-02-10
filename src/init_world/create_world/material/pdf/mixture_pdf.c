@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mixture_pdf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:04:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 19:39:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/09 21:42:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static t_vec3	random_mixture_pdf(const void *s)
 
 	surface_pdf = self->surface_pdf;
 	light_pdf = self->light_pdf;
-	if (!light_pdf || random_double(0, 1) > MIXTURE_RATIO)
+	if (!light_pdf || random_01() > MIXTURE_RATIO)
 		return (surface_pdf->random_pdf(surface_pdf));
 	return (light_pdf->random_pdf(light_pdf));
 }

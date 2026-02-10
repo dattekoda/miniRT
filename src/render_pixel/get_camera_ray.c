@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_camera_ray.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:35:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 19:35:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/09 21:44:16 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static t_vec3	random_in_unit_disk(void)
 
 	while (1)
 	{
-		vec = construct_vec3(random_double(-1, 1), random_double(-1, 1), 0);
+		vec = construct_vec3(random_minus1_to_1(), random_minus1_to_1(), 0);
 		if (length_squared_vec3(vec) < 1)
 			break ;
 	}

@@ -69,11 +69,16 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							preprocess_line_list.c \
 						) \
 						$(addprefix texture/, \
+							generate_checker_texture.c \
 							generate_solid_texture.c \
 						) \
 						$(addprefix material/, \
 							generate_lambertian.c \
 							generate_light.c \
+							$(addprefix material_utils/, \
+								orient_normal.c \
+								reflect.c \
+							) \
 							$(addprefix pdf/, \
 								calc_light_pdf_value.c \
 								cosine_pdf.c \
@@ -88,6 +93,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								generate_disk.c \
 								generate_sphere.c \
 								generate_plane.c \
+								generate_triangle.c \
 							) \
 							$(addprefix aabb/, \
 								aabb.c \
@@ -105,6 +111,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								hit_disk.c \
 								hit_sphere.c \
 								hit_plane.c \
+								hit_triangle.c \
 							) \
 							$(addprefix line_to_hitter/, \
 								line_to_cone.c \
@@ -114,6 +121,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								line_to_material.c \
 								line_to_plane.c \
 								line_to_sphere.c \
+								line_to_triangle.c \
 							) \
 							$(addprefix utils/, \
 								solution.c \

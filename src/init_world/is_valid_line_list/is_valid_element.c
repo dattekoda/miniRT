@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid_element.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 03:24:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/09 17:14:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static bool	err_invlid_line(char *line, char *format, size_t i, char *err_msg);
 t_result	skip_material(char *line, size_t *line_idx);
 t_result	skip_texture(char *line, size_t *line_idx);
 
+// TODO: arg, const int option_flag should bool is_phong
 bool	is_valid_element(char *line, const t_element *elem_info,
 		const int option_flag)
 {

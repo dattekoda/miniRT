@@ -28,9 +28,6 @@ t_point2			construct_plane_uv(
 						const t_vec3 *normal,
 						const t_vec3 *hit_point,
 						const t_vec3 *plane_point);
-bool				hit_plane(
-						const void *s,
-						const t_ray *ray, t_hrec *hrec, t_range *range);
 static void			assign_disk_hrec(
 						const t_disk *self,
 						const t_ray *ray,

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/31 09:39:18 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 15:30:30 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 // /bin/bash -c openssl rand -hex 8
 # define RANDOM_SEED_UINT64 0x629d97afad9281f2
 
-# define DOUBLE_MANTISSA_SCALE 9.007199254740992
+# define DOUBLE_INV_SCALE 0x1p-53
 
 // how heavy to calculate to hit aabb intersection
 # define COST_AABB_INTERSECTION 1
@@ -42,6 +42,9 @@
 
 # define LIGHT_STERADIAN 0.21
 
-# define METAL_FUZZINESS 0.8
+// how fuzzy metal is(0.0 - 1.0)
+# define METAL_FUZZINESS 0.0
+
+# define CHECKER_SPLIT_SIZE 20
 
 #endif
