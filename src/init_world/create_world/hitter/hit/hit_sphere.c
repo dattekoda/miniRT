@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/07 16:54:22 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/07 22:30:41 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ bool	hit_sphere(
 static void	init_solution_context(
 		t_solution *solu, const t_sphere *self, const t_ray *ray)
 {
-	t_vec3		center_to_ray_origin;
+	const t_vec3	center_to_ray_origin = sub_vec3(ray->origin, self->center);
 
 	ft_bzero(solu, sizeof(t_solution));
-	center_to_ray_origin = sub_vec3(ray->origin, self->center);
 	solu->coeff.e[0] = length_squared_vec3(ray->direct);
 	solu->coeff.e[1] = dot(center_to_ray_origin, ray->direct);
 	solu->coeff.e[2] = length_squared_vec3(center_to_ray_origin)

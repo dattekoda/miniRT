@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:05:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 16:32:17 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 15:28:22 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 #include "libft.h"
 
 static t_solid_texture	construct_solid_texture(t_color color);
-static t_color			calc_solid_texture_value(const void *s, t_hrec *hrec);
+static t_color			calc_solid_texture_value(
+							const void *s,
+							t_hrec *hrec,
+							double u,
+							double v);
 void					clear_texture(void *s);
 
 t_texture	*generate_solid_texture(t_color color)
@@ -28,7 +32,7 @@ t_texture	*generate_solid_texture(t_color color)
 	return ((t_texture *)p);
 }
 
-static t_solid_texture	construct_solid_texture(t_color color)
+t_solid_texture	construct_solid_texture(t_color color)
 {
 	t_solid_texture	solid;
 
@@ -38,7 +42,11 @@ static t_solid_texture	construct_solid_texture(t_color color)
 	return (solid);
 }
 
-static t_color	calc_solid_texture_value(const void *s, t_hrec *hrec)
+static t_color	calc_solid_texture_value(
+					const void *s,
+					t_hrec *hrec,
+					double u,
+					double v)
 {
 	const t_solid_texture	*self;
 

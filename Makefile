@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/07 16:54:01 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/08 19:09:30 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,11 +69,16 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							preprocess_line_list.c \
 						) \
 						$(addprefix texture/, \
+							generate_checker_texture.c \
 							generate_solid_texture.c \
 						) \
 						$(addprefix material/, \
 							generate_lambertian.c \
 							generate_light.c \
+							$(addprefix material_utils/, \
+								orient_normal.c \
+								reflect.c \
+							) \
 							$(addprefix pdf/, \
 								calc_light_pdf_value.c \
 								cosine_pdf.c \
@@ -88,6 +93,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								generate_disk.c \
 								generate_sphere.c \
 								generate_plane.c \
+								generate_triangle.c \
 							) \
 							$(addprefix aabb/, \
 								aabb.c \
@@ -95,19 +101,27 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							$(addprefix hit/, \
 									$(addprefix hit_cylinder/, \
 									hit_cylinder.c \
-									is_inside_height.c \
+									validate_height_and_assign.c \
 									) \
+									$(addprefix plane_utils/, \
+									construct_plane_uv.c \
+									init_plane_solution.c \
+									) \
+								hit_cone.c \
 								hit_disk.c \
 								hit_sphere.c \
 								hit_plane.c \
+								hit_triangle.c \
 							) \
 							$(addprefix line_to_hitter/, \
+								line_to_cone.c \
 								line_to_cylinder.c \
 								line_to_disk.c \
 								line_to_light.c \
 								line_to_material.c \
 								line_to_plane.c \
 								line_to_sphere.c \
+								line_to_triangle.c \
 							) \
 							$(addprefix utils/, \
 								solution.c \

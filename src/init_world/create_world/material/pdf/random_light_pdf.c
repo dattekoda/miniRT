@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   random_light_pdf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 23:03:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 19:37:55 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/09 21:42:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static t_vec3	random_light_list_pdf(
 	count = count_list_size(light_list);
 	if (count == 0)
 		return (constant_vec3(0));
-	target = (size_t)random_int(0, (int)count - 1);
+	target = (size_t)random_double(0, count - 1);
 	i = 0;
 	while (light_list)
 	{
@@ -79,8 +79,8 @@ static t_vec3	random_sphere(const t_sphere *sphere, const t_point3 *point)
 static t_vec3	random_to_sphere(double radius, double squared_distance)
 {
 	t_vec3			vec;
-	const double	u1 = random_double(0, 1);
-	const double	u2 = random_double(0, 1);
+	const double	u1 = random_01();
+	const double	u2 = random_01();
 	const double	phi = 2 * M_PI * u1;
 	const double	cos_theta_max = sqrt(1 - pow(radius, 2) / squared_distance);
 

@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   init_plane_solution.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 04:46:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 15:27:05 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/08 19:01:05 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/08 19:01:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#include "solution.h"
+#include "vec_utils.h"
+#include "ray.h"
 
-# include "hitter.h"
-# include "vec.h"
-
-typedef struct s_texture
+void	init_plane_solution(
+			t_solution *solu,
+			const t_vec3 *normal,
+			const t_point3 *point,
+			const t_ray *ray)
 {
-	t_color	(*calc_texture_value)(
-				const void *self,
-				t_hrec * hrec,
-				double u,
-				double v);
-	t_clear	clear;
-}	t_texture;
+	const t_vec3	point_to_ray_origin = sub_vec3(ray->origin, *point);
 
-enum e_texture_idx
-{
-	SOLID,
-	CHECKER,
-	BUMP,
-	INVALID_TEXTURE_IDX
-};
-
-#endif
+	solu->coeff.e[0] = dot(ray->direct, *normal);
+	solu->coeff.e[1] = dot(point_to_ray_origin, *normal);
+	return ;
+}

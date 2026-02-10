@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_material.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:54:31 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/30 00:48:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/09 17:04:30 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 t_material	*param_to_material_ptr(
 				t_color color,
-				const char *tex_str,
-				const char *mat_str,
+				const char *texture_str,
+				const char *material_str,
 				const t_element *element);
 
 /*
@@ -34,14 +34,17 @@ int	line_to_material(
 		const t_element *element)
 {
 	t_color	raw_color;
-	char	*mat_str;
-	char	*tex_str;
+	char	*material_str;
+	char	*texture_str;
 
 	token_to_vec(line, line_idx, &raw_color);
-	token_to_str(line, line_idx, &mat_str);
-	token_to_str(line, line_idx, &tex_str);
+	token_to_str(line, line_idx, &material_str);
+	token_to_str(line, line_idx, &texture_str);
 	*mat_pp = param_to_material_ptr(
-			normalize_color(raw_color), tex_str, mat_str, element);
+			normalize_color(raw_color),
+			texture_str,
+			material_str,
+			element);
 	if (!*mat_pp)
 		return (FAILURE);
 	return (SUCCESS);
@@ -49,24 +52,24 @@ int	line_to_material(
 
 t_material	*param_to_material_ptr(
 				t_color color,
-				const char *tex_str,
-				const char *mat_str,
+				const char *texture_str,
+				const char *material_str,
 				const t_element *element)
 {
 	t_texture			*texture_ptr;
-	enum e_mat_idx		mat_idx;
+	enum e_material_idx	material_idx;
 	enum e_texture_idx	texture_idx;
 
-	if (!mat_str)
+	if (!texture_str)
 		texture_idx = element->material_idx;
 	else
-		texture_idx = str_to_texture_idx(tex_str);
+		texture_idx = str_to_texture_idx(texture_str);
 	texture_ptr = g_gen_texture_table[texture_idx](color);
 	if (!texture_ptr)
 		return (NULL);
-	if (!mat_str)
-		mat_idx = element->material_idx;
+	if (!material_str)
+		material_idx = element->material_idx;
 	else
-		mat_idx = str_to_material_idx(mat_str);
-	return (g_gen_material_table[mat_idx](texture_ptr));
+		material_idx = str_to_material_idx(material_str);
+	return (g_gen_material_table[material_idx](texture_ptr));
 }

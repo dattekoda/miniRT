@@ -6,17 +6,17 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:48:09 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 16:30:08 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/09 21:31:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_define.h"
-#include <stddef.h>
 #include <stdint.h>
+#include <stddef.h>
 #include <sys/time.h>
 
 static uint64_t	random_uint64(void);
-static uint64_t	get_random_seed_from_time(void);
+static uint64_t	g_x;
 
 /*
 @brief ランダムな53bitを取り出し仮数部とする。
@@ -24,47 +24,45 @@ static uint64_t	get_random_seed_from_time(void);
 double	random_double(double min, double max)
 {
 	uint64_t	u;
-	double		v;
+	double		d;
 
-	u = random_uint64() >> 11;
-	v = (double)u / (double)DOUBLE_MANTISSA_SCALE;
-	return (min + (max - min) * v);
+	u = (random_uint64() >> 11);
+	d = (double)u * DOUBLE_INV_SCALE;
+	return (min + (max - min) * d);
 }
 
-int	random_int(int min, int max)
+double	random_01(void)
 {
-	int	range;
+	uint64_t	u;
 
-	if (min > max)
-		return (min);
-	range = max - min + 1;
-	return (min + (int)(random_double(0.0, 1.0) * range));
+	u = random_uint64() >> 12 | 0x3FF0000000000000ULL;
+	return (*(double *)&u - 1.0);
 }
 
-size_t	random_size_t(size_t min, size_t max)
+double	random_minus1_to_1(void)
 {
-	if (min > max)
-		return (min);
-	return (min + (size_t)(random_double(0.0, 1.0) * (max - min + 1)));
+	uint64_t	u;
+
+	u = (random_uint64() >> 12) | 0x4000000000000000ULL;
+	return (*(double *)&u - 3.0);
 }
 
 static uint64_t	random_uint64(void)
 {
-	static uint64_t	x = 0;
-
-	if (x == 0)
-		x = get_random_seed_from_time();
-	x ^= x << 12;
-	x ^= x >> 25;
-	x ^= x << 27;
-	return (x);
+	g_x ^= g_x << 12;
+	g_x ^= g_x >> 25;
+	g_x ^= g_x << 27;
+	return (g_x);
 }
 
-static uint64_t	get_random_seed_from_time(void)
+void	set_random_seed_from_time(void)
 {
 	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL))
-		return (RANDOM_SEED_UINT64);
-	return ((uint64_t)((tv.tv_sec ^ tv.tv_usec) * RANDOM_SEED_UINT64));
+		g_x = RANDOM_SEED_UINT64;
+	else
+		g_x = (uint64_t)((tv.tv_sec ^ tv.tv_usec) * RANDOM_SEED_UINT64);
+	return ;
 }
+

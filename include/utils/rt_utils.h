@@ -24,8 +24,9 @@ void	perror_rt(const char *syscall_fname);
 // utils_err.c
 
 double	random_double(double min, double max);
-int		random_int(int min, int max);
-size_t	random_size_t(size_t min, size_t max);
+double	random_01(void);
+double	random_minus1_to_1(void);
+void	set_random_seed_from_time(void);
 // utils_random.c
 
 void	clear_hitter(void *self);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world_utils.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 18:37:46 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/09 16:57:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_result			token_to_vec(
 t_result			token_to_str(
 						const char *line, size_t *line_idx, char **c);
 
-enum e_mat_idx		str_to_material_idx(const char *str);
+enum e_material_idx		str_to_material_idx(const char *str);
 enum e_texture_idx	str_to_texture_idx(const char *str);
 
 #endif
