@@ -5,10 +5,11 @@
 #                                                     +:+ +:+         +:+      #
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/08 19:09:30 by khanadat         ###   ########.fr        #
+#    Created: Invalid date        by                   #+#    #+#              #
+#    Updated: 2026/02/10 22:21:36 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME		=	miniRT
 
@@ -59,7 +60,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 					) \
 					$(addprefix create_world/, \
 						create_world.c \
-						set_ambient.c \
+						set_ambient_light.c \
 						$(addprefix set_camera/, \
 							construct_camera.c \
 							set_camera.c \
@@ -154,9 +155,10 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						token_to_vec.c \
 					) \
 				) \
-				$(addprefix render_pixel/, \
-					render_pixel.c \
-					get_camera_ray.c \
+				$(addprefix render_pixels/, \
+					calc_sample_pixel_color.c \
+					compute_path_tracing_color.c \
+					render_pixels.c \
 				) \
 				$(addprefix draw_image/, \
 					draw_image.c \
@@ -166,6 +168,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 				) \
 				$(addprefix utils/, \
 					construct_result.c \
+					utils_clamp.c \
 					utils_clear.c \
 					utils_err.c \
 					utils_float.c \

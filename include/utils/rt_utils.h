@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 15:56:42 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 22:22:15 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <stdio.h> // delete later 
 # include <stdbool.h>
+
+double	clamp(double x, double min, double max);
+// utils_clamp.c
 
 bool	fequal(double a, double b);
 // utils_float.c

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ambient.c                                      :+:      :+:    :+:   */
+/*   set_ambient_light.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 15:56:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/09 16:36:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 #include "rt_define.h"
 #include <stdbool.h>
 
-t_color			get_ambient_data(const char *line, bool is_phong);
-static t_color	construct_ambient(t_color raw_color, double ratio);
+static t_color	line_to_ambient_light(const char *line, bool is_phong);
+static t_color	construct_ambient_light(t_color raw_color, double ratio);
 
-void	set_ambient(t_world *world, const t_list *line_list, int option_flag)
+void	set_ambient_light(t_world *world, const t_list *line_list, bool is_phong)
 {
 	while (line_list)
 	{
@@ -29,12 +29,12 @@ void	set_ambient(t_world *world, const t_list *line_list, int option_flag)
 			break ;
 		line_list = line_list->next;
 	}
-	world->ambient
-		= get_ambient_data(line_list->content, option_flag & OPT_ARTIFICIAL);
+	world->ambient_light
+		= line_to_ambient_light(line_list->content, is_phong);
 	return ;
 }
 
-t_color	get_ambient_data(const char *line, bool is_phong)
+static t_color	line_to_ambient_light(const char *line, bool is_phong)
 {
 	t_color	raw_color;
 	double	ratio;
@@ -45,10 +45,10 @@ t_color	get_ambient_data(const char *line, bool is_phong)
 	token_to_vec(line, &i, &raw_color);
 	if (!is_phong)
 		ratio *= PATHTRACING_AMBIENTSCALE;
-	return (construct_ambient(raw_color, ratio));
+	return (construct_ambient_light(raw_color, ratio));
 }
 
-static t_color	construct_ambient(t_color raw_color, double ratio)
+static t_color	construct_ambient_light(t_color raw_color, double ratio)
 {
 	return (scal_mul_vec3(normalize_color(raw_color), ratio));
 }
