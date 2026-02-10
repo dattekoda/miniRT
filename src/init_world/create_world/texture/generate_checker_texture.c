@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:01:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/10 15:38:49 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 15:42:49 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,14 @@
 #include "libft.h"
 #include <math.h>
 
-t_solid_texture	construct_solid_texture(t_color color);
+t_solid_texture				construct_solid_texture(t_color color);
+static t_color				calc_checker_texture_value(
+								const void *s,
+								t_hrec *hrec,
+								double u,
+								double v);
+static t_checker_texture	construct_checker_texture(
+								t_color color);
 
 // TODO: To stay consistent with generate_*_texture() functions, 
 // we need to rename the material-related functions to generate_*_material().
