@@ -6,28 +6,30 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 06:26:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/07 16:52:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/08 17:51:02 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cylinder.h"
 #include "solution.h"
 #include "vec_utils.h"
+#include "rt_define.h"
 #include <math.h>
 
-static t_vec3		calc_coeff(
-						const t_vec3 *ray_direct,
-						const t_vec3 *center_to_ray_origin,
-						const t_vec3 *cylinder_axis,
-						double radius);
-static t_solution	init_solution_context(
-						const t_cylinder *self,
-						const t_ray *ray);
-bool				is_inside_height(
-						const t_cylinder *self,
-						const t_ray *ray,
-						t_hrec *hrec,
-						t_solution *solu);
+static t_vec3	calc_coeff(
+					const t_vec3 *ray_direct,
+					const t_vec3 *center_to_ray_origin,
+					const t_vec3 *cylinder_axis,
+					double radius);
+static void		init_solution_context(
+					t_solution *solu,
+					const t_cylinder *self,
+					const t_ray *ray);
+bool			validate_height_and_assign(
+					const t_cylinder *self,
+					const t_ray *ray,
+					t_hrec *hrec,
+					t_solution *solu);
 
 bool	hit_cylinder(
 			const void *s,
@@ -39,48 +41,50 @@ bool	hit_cylinder(
 	t_solution			solu;
 
 	self = s;
-	solu = init_solution_context(self, ray);
+	init_solution_context(&solu, self, ray);
 	if (!is_solution_in_range(&solu, range))
 		return (false);
-	if (!is_inside_height(self, ray, hrec, &solu))
+	if (!validate_height_and_assign(self, ray, hrec, &solu))
 		return (false);
 	range->e[1] = solu.solution;
 	return (true);
 }
 
-static t_solution	init_solution_context(
-		const t_cylinder *self, const t_ray *ray)
+static void	init_solution_context(
+		t_solution *solu,
+		const t_cylinder *self,
+		const t_ray *ray)
 {
-	t_solution	solu;
-	t_vec3		center_to_ray_origin;
+	const t_vec3	center_to_ray_origin = sub_vec3(ray->origin, self->center);
 
-	ft_bzero(&solu, sizeof(t_solution));
-	center_to_ray_origin = sub_vec3(ray->origin, self->center);
-	solu.coeff = calc_coeff(
-			&ray->direct, &center_to_ray_origin, &self->direct, self->radius);
-	solu.discriminant = calc_discriminant(&solu);
-	return (solu);
+	solu->coeff = calc_coeff(
+			&ray->direct,
+			&center_to_ray_origin,
+			&self->direct,
+			self->radius);
+	solu->discriminant = calc_discriminant(&solu);
+	return ;
 }
 
 static t_vec3	calc_coeff(
 					const t_vec3 *ray_direct,
 					const t_vec3 *center_to_ray_origin,
-					const t_vec3 *cylinder_axis,
+					const t_vec3 *cylinder_dir,
 					double radius)
 {
-	double	ray_dir_len_sq;
-	double	cto_ori_len_sq;
-	double	ray_dot_cyaxis;
-	double	ax_dot_cto_ori;
-	double	cto_ori_dot_ray;
+	const double	len_sq_ray_dir
+		= length_squared_vec3(*ray_direct);
+	const double	len_sq_c_to_ro
+		= length_squared_vec3(*center_to_ray_origin);
+	const double	dot_ray_dir__cy_dir
+		= dot(*ray_direct, *cylinder_dir);
+	const double	dot_cy_dir__c_to_ro
+		= dot(*cylinder_dir, *center_to_ray_origin);
+	const double	dot_c_to_ro__ray_dir
+		= dot(*center_to_ray_origin, *ray_direct);
 
-	ray_dir_len_sq = length_squared_vec3(*ray_direct);
-	cto_ori_len_sq = length_squared_vec3(*center_to_ray_origin);
-	ray_dot_cyaxis = dot(*ray_direct, *cylinder_axis);
-	ax_dot_cto_ori = dot(*cylinder_axis, *center_to_ray_origin);
-	cto_ori_dot_ray = dot(*center_to_ray_origin, *ray_direct);
 	return (construct_vec3(
-			ray_dir_len_sq - pow(ray_dot_cyaxis, 2),
-			cto_ori_dot_ray - ray_dot_cyaxis * ax_dot_cto_ori,
-			cto_ori_len_sq - pow(ax_dot_cto_ori, 2) - pow(radius, 2)));
+			len_sq_ray_dir - pow(dot_ray_dir__cy_dir, 2),
+			dot_c_to_ro__ray_dir - dot_ray_dir__cy_dir * dot_cy_dir__c_to_ro,
+			len_sq_c_to_ro - pow(dot_cy_dir__c_to_ro, 2) - pow(radius, 2)));
 }

@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/10 15:39:31 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/08 19:09:30 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,14 +101,20 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							$(addprefix hit/, \
 									$(addprefix hit_cylinder/, \
 									hit_cylinder.c \
-									is_inside_height.c \
+									validate_height_and_assign.c \
 									) \
+									$(addprefix plane_utils/, \
+									construct_plane_uv.c \
+									init_plane_solution.c \
+									) \
+								hit_cone.c \
 								hit_disk.c \
 								hit_sphere.c \
 								hit_plane.c \
 								hit_triangle.c \
 							) \
 							$(addprefix line_to_hitter/, \
+								line_to_cone.c \
 								line_to_cylinder.c \
 								line_to_disk.c \
 								line_to_light.c \
