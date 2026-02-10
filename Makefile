@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/07 20:46:03 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/02/09 18:36:25 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,10 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						$(addprefix material/, \
 							generate_lambertian.c \
 							generate_light.c \
+							$(addprefix material_utils/, \
+								orient_normal.c \
+								reflect.c \
+							) \
 							$(addprefix pdf/, \
 								calc_light_pdf_value.c \
 								cosine_pdf.c \
