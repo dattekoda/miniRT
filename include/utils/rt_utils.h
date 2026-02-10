@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/09 21:21:24 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 15:56:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	set_random_seed_from_time(void);
 // utils_random.c
 
 void	clear_hitter(void *self);
-void	clear_material(void *s);
-void	clear_texture(void *s);
+void	clear_material(void *self);
+void	clear_texture(void *self);
 // utils_clear.c
 
 void	rt_swap(void *a, void *b, size_t size);
