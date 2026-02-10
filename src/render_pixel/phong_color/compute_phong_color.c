@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:39:39 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 20:26:56 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/10 20:57:38 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <math.h>
 
 static t_color	calc_phong_color(const t_world *world, const t_hrec *hrec);
-t_color	calc_color_from_light(const t_list *light_list,
+t_color			calc_color_from_light_list(const t_list *light_list,
 			const t_color *reflectance, const t_hrec *hrec);
 
 t_color	compute_phong_color(
@@ -42,7 +42,7 @@ static t_color	calc_phong_color(const t_world *world, const t_hrec *hrec)
 	t_color	color_from_light;
 
 	ambient = calc_ambient(&reflectance, &world->ambient);
-	color_from_light = calc_color_from_light(
+	color_from_light = calc_color_from_light_list(
 				world->light_list, &reflectance, hrec);
 	return (add_vec3(ambient, color_from_light));
 }
