@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_tree.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 23:39:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 16:38:43 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/10 15:54:30 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs);
 static bool		hit_tree(const void *s, const t_ray *ray, t_hrec *hrec,
 					t_range *range);
-void			clear_tree(void **s);
+void			clear_tree(void *s);
 
 /*
 @brief responsible for free lhs, rhs when malloc failed
@@ -78,11 +78,11 @@ static bool	hit_tree(const void *s, const t_ray *ray, t_hrec *hrec,
 /*
 @brief not static because used at set_objects() in set_objects.c
 */
-void	clear_tree(void **s)
+void	clear_tree(void *s)
 {
 	t_tree	*self;
 
-	self = (t_tree *)*s;
+	self = (t_tree *)s;
 	if (self->lhs)
 		self->lhs->clear(self->lhs);
 	if (self->rhs)
@@ -90,5 +90,4 @@ void	clear_tree(void **s)
 	self->lhs = NULL;
 	self->rhs = NULL;
 	free(self);
-	*s = NULL;
 }

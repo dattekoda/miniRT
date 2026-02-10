@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_arr_to_bvh.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 16:44:32 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/10 15:58:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 #include "libft.h"
 #include "result.h"
 
-static int		base_case(t_hitter **hitter, t_hitter_arr hit_arr);
-static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr);
 t_hitter		*generate_tree(t_hitter *lhs, t_hitter *rhs);
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
 void			sort_hit_arr(t_hitter_arr hit_arr, int axis);
 int				find_best_split_info(t_hitter_arr hit_arr,
 					t_axis *best_axis, size_t *best_left_size);
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
+static int		base_case(t_hitter **hitter, t_hitter_arr hit_arr);
+static int		generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr);
 
 int	hit_arr_to_bvh(t_hitter **root, t_hitter_arr hit_arr)
 {
