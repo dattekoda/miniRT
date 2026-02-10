@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 20:41:18 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/10 20:26:44 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,10 @@
 # define DISK_MATERIAL_ID		0
 # define CONE_MATERIAL_ID		0
 # define TRIANGLE_MATERIAL_ID	0
+
+// phong
+# define PHONG_AMBIENT_COEFF 0.1
+# define PHONG_DIFFUSE_COEFF 0.3
+# define PHONG_SPECULAR_COEFF 0.6
 
 #endif

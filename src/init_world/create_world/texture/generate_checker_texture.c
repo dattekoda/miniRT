@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_checker_texture.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:01:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/10 15:42:49 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 18:14:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,13 @@ static t_checker_texture	construct_checker_texture(
 
 static t_color	calc_checker_texture_value(
 					const void *s,
-					t_hrec *hrec,
-					double u,
-					double v)
+					t_hrec *hrec)
 {
 	const t_checker_texture	*self = s;
-	const int				ui = (int)floor(v * CHECKER_SPLIT_SIZE);
-	const int				vi = (int)floor(u * CHECKER_SPLIT_SIZE);
+	const int				ui = (int)floor(hrec->map.e[1] * CHECKER_SPLIT_SIZE);
+	const int				vi = (int)floor(hrec->map.e[0] * CHECKER_SPLIT_SIZE);
 
 	if ((ui + vi) & 1)
-		return (self->odd.texture.calc_texture_value(&self->odd, hrec, u, v));
-	return (self->even.texture.calc_texture_value(&self->even, hrec, u, v));
+		return (self->odd.texture.calc_texture_value(&self->odd, hrec));
+	return (self->even.texture.calc_texture_value(&self->even, hrec));
 }
