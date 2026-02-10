@@ -33,8 +33,8 @@ void	set_random_seed_from_time(void);
 // utils_random.c
 
 void	clear_hitter(void *self);
-void	clear_material(void *s);
-void	clear_texture(void *s);
+void	clear_material(void *self);
+void	clear_texture(void *self);
 // utils_clear.c
 
 void	rt_swap(void *a, void *b, size_t size);
