@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 18:49:14 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 22:06:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 22:14:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	draw_ppm_image(int **raw_rgb_arr)
 		xi = 0;
 		x_base = yi * g_window_width;
 		while (xi < g_window_width)
-			put_rgb_color(*raw_rgb_arr[x_base + xi++]);
+			put_rgb_color((*raw_rgb_arr)[x_base + xi++]);
 		yi++;
 	}
 	free(*raw_rgb_arr);
