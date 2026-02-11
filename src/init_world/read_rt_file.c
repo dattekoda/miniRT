@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_rt_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 18:23:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:28:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static int	read_lines_to_list(t_list *cur, int fd)
 			return (perror_rt("read"), FAILURE);
 		if (gnl_ret == -2)
 			return (perror_rt("malloc"), FAILURE);
-		printf("line: %s", line);
 		if (gnl_ret == 0)
 			break ;
 		if (*line == '\n')
@@ -68,7 +67,6 @@ static int	read_lines_to_list(t_list *cur, int fd)
 			free(line);
 			continue ;
 		}
-		printf("%s", line);
 		cur->next = ft_lstnew(line);
 		cur = cur->next;
 	}

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/11 16:34:14 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/11 18:35:32 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -234,7 +234,7 @@ LDLIBS		=	-lm -lmlx -lft $(MLXFLAG)
 # --- DEBUGGING ---
 VALGRIND	=	valgrind --leak-check=full --track-origins=yes \
 				--show-leak-kinds=all
-DFLAG		=	$(CFLAG) -g -O0
+DFLAG		=	-g -O0
 ASANFLAG	=	$(DFLAG) -fsanitize=address
 SCANBUILD	=	/usr/bin/scan-build-12
 
@@ -324,32 +324,29 @@ fclean: clean
 re: fclean all
 
 # --- DEBUGGIN & TESTING ---
-lldb: CFLAG=$(CFLAG) $(DFLAG)
-lldb: fclean $(NAME)
+lldba:
+	$(MAKE)  CFLAG="$(CFLAG) $(DFLAG)"
 	@echo "\n\033[1;35mLaunching LLDB for '$(NAME)'...\033[0m"
 	@lldb $(NAME)
 
 # --- address sanitizer ---
-asan: CFLAG=$(CFLAG) $(ASANFLAG)
-asan: LDFLAG=$(LDFLAG) $(ASANFLAG)
-asan: fclean $(NAME)
+asan:
+	$(MAKE) LDFLAG="$(LDFLAG) $(ASANFLAG)" "CFLAG=$(CFLAG) $(ASANFLAG)"
 	@echo "\n\033[1;35mCompiled with AddressSanitizer. Run './$(NAME)' to test.\033[0m"
 
 # --- valgrind ---
-valgrind: CFLAG="$(CFLAG) $(DFLAG)"
-valgrind: fclean $(NAME)
+valgrind:
+	$(MAKE) re CFLAG="$CFLAG $(DFLAG)"
 	@echo "\n\033[1;36mRunning Valgrind for '$(NAME)'...\033[0m"
 	$(VALGRIND) $(VALGRIND_FLAG) ./$(NAME)
 
 # --- debug ---
-debug: CFLAG=$(DFLAG)
-debug: re
+debug:
+	$(MAKE) re CFLAG="$(CFLAG) $(DFLAG)"
 
 # --- test ---
-test: CFLAG=$(TESTFLAG)
-test: LDFLAG=$(TESTLDFLAG)
 test:
-	@$(MAKE) $(TESTNAME)
+	@$(MAKE) CFLAG="$(TESTFLAG) $(TESTNAME)" LDFLAG="$(TESTLDFLAG)"
 	@echo "\033[1;36mRunning tests ...\033[0m"
 	./$(TESTNAME)
 
