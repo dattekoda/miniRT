@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_hitter_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:48:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/02 12:49:12 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 22:34:19 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ static int	add_hitter(t_list **hitter_list,
 						const char *line,
 						const t_element *element);
 
-int	add_hitter_list(t_list **hitter_list, const char *line,
-		const t_element *element)
+int	add_hitter_list(t_list **hitter_list, const char *line, const t_element *element)
 {
 	t_hitter	*hitter_tmp;
 

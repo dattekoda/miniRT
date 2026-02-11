@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   world.h                                            :+:      :+:    :+:   */
+/*   init_plane_solution.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 16:27:58 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/07 21:12:07 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/08 19:01:05 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/08 19:01:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WORLD_H
-# define WORLD_H
+#include "solution.h"
+#include "vec_utils.h"
+#include "ray.h"
 
-# include "vec.h"
-# include "camera.h"
-# include "libft.h"
-# include "hitter.h"
-
-typedef struct s_world
+void	init_plane_solution(
+			t_solution *solu,
+			const t_vec3 *normal,
+			const t_point3 *point,
+			const t_ray *ray)
 {
-	t_color		ambient_light;
-	t_camera	camera;
-	t_list		*light_list;
-	t_hitter	*object_tree;
-}	t_world;
+	const t_vec3	point_to_ray_origin = sub_vec3(ray->origin, *point);
 
-#endif
+	solu->coeff.e[0] = dot(ray->direct, *normal);
+	solu->coeff.e[1] = dot(point_to_ray_origin, *normal);
+	return ;
+}

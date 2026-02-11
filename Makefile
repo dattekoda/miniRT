@@ -10,6 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
+
 NAME		=	miniRT
 
 CC			=	cc
@@ -59,7 +60,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 					) \
 					$(addprefix create_world/, \
 						create_world.c \
-						set_ambient.c \
+						set_ambient_light.c \
 						$(addprefix set_camera/, \
 							construct_camera.c \
 							set_camera.c \
@@ -101,14 +102,20 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							$(addprefix hit/, \
 									$(addprefix hit_cylinder/, \
 									hit_cylinder.c \
-									is_inside_height.c \
+									validate_height_and_assign.c \
 									) \
+									$(addprefix plane_utils/, \
+									construct_plane_uv.c \
+									init_plane_solution.c \
+									) \
+								hit_cone.c \
 								hit_disk.c \
 								hit_sphere.c \
 								hit_plane.c \
 								hit_triangle.c \
 							) \
 							$(addprefix line_to_hitter/, \
+								line_to_cone.c \
 								line_to_cylinder.c \
 								line_to_disk.c \
 								line_to_light.c \
@@ -153,8 +160,10 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						calc_color_from_light_list.c \
 						compute_phong_color.c \
 					) \
-					render_pixel.c \
 					get_camera_ray.c \
+					calc_sample_pixel_color.c \
+					compute_path_tracing_color.c \
+					render_pixels.c \
 				) \
 				$(addprefix draw_image/, \
 					draw_image.c \
@@ -164,6 +173,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 				) \
 				$(addprefix utils/, \
 					construct_result.c \
+					utils_clamp.c \
 					utils_clear.c \
 					utils_err.c \
 					utils_float.c \

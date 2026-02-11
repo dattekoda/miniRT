@@ -39,6 +39,11 @@
 #  define LIGHT_STERADIAN 0.21
 # endif
 
+# define RUSSIAN_ROULETTE_START_DEPTH 10
+
+// set 0.0 - 1.0
+# define LIVE_PROBABILITY_MIN 0.5
+
 // tetxure
 // 0: solid
 // 1: bump
