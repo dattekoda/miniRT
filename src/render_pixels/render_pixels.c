@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   render_pixels.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 16:39:49 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 17:53:57 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_define.h"
+#include "rt_utils.h"
 #include "world.h"
 #include "result.h"
 #include "option.h"
@@ -37,6 +38,7 @@ int	render_pixels(
 	*pixel_arr_p = ft_calloc(g_window_width * g_window_height, sizeof(t_color));
 	if (!*pixel_arr_p)
 		return (FAILURE);
+	set_random_seed_from_time();
 	accumulate_pixel_arr(*pixel_arr_p, world, is_phong);
 	return (SUCCESS);
 }

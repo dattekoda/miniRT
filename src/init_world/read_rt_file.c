@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 18:19:25 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:23:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
+
+#include <stdio.h>
 
 static int	read_lines_to_list(t_list *cur, int fd);
 
@@ -58,6 +60,7 @@ static int	read_lines_to_list(t_list *cur, int fd)
 			return (perror_rt("read"), FAILURE);
 		if (gnl_ret == -2)
 			return (perror_rt("malloc"), FAILURE);
+		printf("line: %s", line);
 		if (gnl_ret == 0)
 			break ;
 		if (*line == '\n')
