@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute_path_tracing_color.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 17:04:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 17:50:28 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,6 @@
 #include <math.h>
 
 static bool	is_killed_by_russian_roulette(size_t depth, t_color *attenuation);
-
-#include <stdlib.h>
-void	guess_hitter(t_hitter *hitter)
-{
-	if (!hitter)
-		fprintf(stderr, "NULL");
-	exit(1);
-}
 
 t_color	compute_path_tracing_color(
 			const t_ray *ray,
@@ -43,7 +35,7 @@ t_color	compute_path_tracing_color(
 		return (constant_vec3(1.0));
 	if (!world->object_tree)
 		return (world->ambient_light);
-	guess_hitter(world->object_tree);
+	// hit 異常
 	if (!world->object_tree->hit(world->object_tree, ray, &hrec, &range))
 		return (world->ambient_light);
 	fprintf(stderr, "2\n");
