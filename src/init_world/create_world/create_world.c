@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:14:11 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 18:53:45 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 19:45:17 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		set_objects(t_world *world, t_list *line_list, int option_flag);
 
 
 #include <stdio.h>
+#include <stdlib.h>
+void	print_line_list(const t_list *line_list);
 int	create_world(t_world *world, t_list *line_list, int option_flag)
 {
 	set_ambient_light(world, line_list, option_flag & OPT_ARTIFICIAL);

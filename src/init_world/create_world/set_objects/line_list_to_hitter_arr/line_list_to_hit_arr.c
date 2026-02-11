@@ -31,8 +31,13 @@ static int	line_list_to_hitter_list(t_list **hitter_list,
 
 
 #include <stdio.h>
-int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list,
-		const t_element *object_table[])
+void	print_hitter(t_hitter *hitter);
+void	print_line_list(const t_list *line_list);
+
+int	line_list_to_hit_arr(
+			t_hitter_arr *hit_arr,
+			const t_list *line_list,
+			const t_element *object_table[])
 {
 	t_list	*hitter_list;
 
@@ -43,13 +48,6 @@ int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list,
 	{
 		ft_lstclear(&hitter_list, clear_hitter);
 		return (FAILURE);
-	}
-	t_list	*cur = hitter_list;
-	while (cur)
-	{
-		t_hitter	*hitter =  (t_hitter *)cur->content;
-		printf("type: %d\n", hitter->type);
-		cur = cur->next;
 	}
 	if (hitter_list_to_hitter_arr(hitter_list, hit_arr) == FAILURE)
 	{
@@ -103,6 +101,8 @@ static bool	match_objects(const char *line, const t_element *object_table[],
 	return (false);
 }
 
+
+void	print_line_list(const t_list *line_list);
 /*
 @brief not responsible for free(hitter_list)
 */
@@ -111,10 +111,13 @@ static int	line_list_to_hitter_list(t_list **hitter_list,
 {
 	size_t	obj_idx;
 
+	print_line_list(line_list);
 	while (line_list)
 	{
 		if (match_objects(line_list->content, object_table, &obj_idx))
 		{
+			printf("HERE\n");
+			printf("%s\n", (char *)line_list->content);
 			if (add_hitter_list(hitter_list, line_list->content,
 					object_table[obj_idx]) == FAILURE)
 				return (FAILURE);

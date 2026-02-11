@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 19:05:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 19:41:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void	print_hitter(t_hitter *hitter)
 		"TRIANGLE",
 		"NOTHING"
 	};
+	printf("%u\n", hitter->type);
 	printf("%s\n", string_table[hitter->type]);
 }
