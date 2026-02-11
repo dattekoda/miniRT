@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 21:03:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 19:22:33 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 19:24:57 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ static char	*delete_new_line(char *light_line)
 {
 	const int	len = ft_strlen(light_line);
 
-	if (light_line[len] == '\n')
-		light_line[len] = '\0';
+	if (light_line[len - 1] == '\n')
+		light_line[len - 1] = '\0';
 	return (light_line);
 }
 
