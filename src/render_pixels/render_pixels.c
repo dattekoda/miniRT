@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 22:55:03 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 18:18:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ int	render_pixels(
 		const t_world *world,
 		bool is_phong)
 {
-	static const int	window_width = WINDOW_WIDTH;
-	static const int	window_height = WINDOW_WIDTH * ASPECT_RATIO;
-
-	*pixel_arr_p = ft_calloc(window_width * window_height, sizeof(t_color));
+	*pixel_arr_p = ft_calloc(g_window_width * g_window_height, sizeof(t_color));
 	if (!*pixel_arr_p)
 		return (FAILURE);
 	accumulate_pixel_arr(*pixel_arr_p, world, is_phong);
@@ -49,19 +46,17 @@ static void	accumulate_pixel_arr(
 				const t_world *world,
 				bool is_phong)
 {
-	static const int	window_height
-		= WINDOW_WIDTH * ASPECT_RATIO;
 	size_t				yi;
 	size_t				xi;
 	size_t				x_base;
 
 	yi = 0;
-	while (yi < window_height)
+	while (yi < g_window_height)
 	{
-		x_base = yi * WINDOW_WIDTH;
+		x_base = yi * g_window_width;
 		print_remaining(yi);
 		xi = 0;
-		while (xi < WINDOW_WIDTH)
+		while (xi < g_window_width)
 		{
 			pixel_arr[x_base + xi]
 				= calc_sample_pixel_color(xi, yi, world, is_phong);

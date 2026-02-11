@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/08 19:44:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 19:05:03 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "result.h"
 #include "option.h"
 #include "libft.h"
-#include "mlx.h"
 #include <stdlib.h>
 
 int		init_world(t_world *world, int *option_flag, int argc, char *argv[]);
@@ -22,12 +21,11 @@ int		render_pixels(
 			t_color **pixel_arr_p,
 			const t_world *world,
 			bool is_phong);
-int		draw_image(const t_color *pixel_arr, int option_flag, void **mlx_p);
+int		draw_image(const t_color *pixel_arr, bool is_ppm_mode);
 void	clear_world(t_world world);
 
 int	mini_rt(int argc, char *argv[])
 {
-	void	*mlx;
 	int		option_flag;
 	t_world	world;
 	t_color	*pixel_arr;
@@ -42,11 +40,11 @@ int	mini_rt(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 	clear_world(world);
-	if (draw_image(pixel_arr, option_flag, &mlx) == FAILURE)
+	if (draw_image(pixel_arr, option_flag & OPT_PPM) == FAILURE)
 	{
 		free(pixel_arr);
 		return (FAILURE);
 	}
-	mlx_loop(mlx);
+	free(pixel_arr);
 	return (SUCCESS);
 }

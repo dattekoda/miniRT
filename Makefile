@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/11 15:50:55 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/10 22:05:59 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ SRCDIR		=	src
 SRCS	=	$(addprefix $(SRCDIR)/, \
 				main.c \
 				mini_rt.c \
+				$(addprefix define/, \
+					define_window.c \
+				) \
 				$(addprefix init_world/, \
 					init_world.c \
 					set_option.c \
@@ -166,6 +169,13 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 					render_pixels.c \
 				) \
 				$(addprefix draw_image/, \
+					$(addprefix utils/, \
+						$(addprefix draw_mlx_image/, \
+							mlx_utils.c \
+							draw_mlx_image.c \
+						) \
+						draw_ppm_image.c \
+					) \
 					draw_image.c \
 				) \
 				$(addprefix ray/, \

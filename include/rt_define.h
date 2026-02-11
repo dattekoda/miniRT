@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/10 22:21:42 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 22:06:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
 # endif
+
+extern const unsigned int	g_window_width;
+extern const unsigned int	g_window_height;
 
 # define GREEN "\033[92m"
 # define RESET "\033[m"
@@ -43,5 +46,9 @@
 # define LIGHT_STERADIAN 0.21
 
 # define METAL_FUZZINESS 0.8
+
+# define SAMPLES_PER_PIXEL 30
+# define LENS_RADIUS 0.0
+# define MAX_DEPTH 10
 
 #endif
