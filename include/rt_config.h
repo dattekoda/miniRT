@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_config.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 16:15:39 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:23:13 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 
 // window
 # ifndef WINDOW_WIDTH
-#  define WINDOW_WIDTH 1280
+#  define WINDOW_WIDTH 400
 # endif
 // camera
 # ifndef ASPECT_RATIO
-#  define ASPECT_RATIO 1.77777777778 /*  (16.0 / 9.0)  */
+#  define ASPECT_RATIO 0.5625 /*  (9.0 / 16.0)  */
 # endif
 
 # ifndef LENS_RADIUS

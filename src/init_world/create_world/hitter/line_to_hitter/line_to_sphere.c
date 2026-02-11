@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 01:52:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 20:05:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:19:55 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 static int	line_to_sphere_param(const char *line, t_sphere *sphere_param);
 
-#include <stdio.h>
-
 /*
 @brief lineとgenの橋渡しなので使いやすい用にデータを加工する。
 (normalize_colorを噛ませたり)
@@ -28,7 +26,6 @@ int	line_to_sphere(t_hitter **sphere, const char *line)
 {
 	t_sphere	sphere_param;
 
-	printf("HERE line to sphere\n");
 	ft_bzero(&sphere_param, sizeof(t_sphere));
 	line_to_sphere_param(line, &sphere_param);
 	*sphere = generate_sphere(sphere_param);
