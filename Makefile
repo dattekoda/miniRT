@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: Invalid date        by                   #+#    #+#              #
-#    Updated: 2026/02/10 22:21:36 by khanadat         ###   ########.fr        #
+#    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
+#    Updated: 2026/02/11 15:50:55 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,7 +155,12 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						token_to_vec.c \
 					) \
 				) \
-				$(addprefix render_pixels/, \
+				$(addprefix render_pixel/, \
+					$(addprefix phong_color/, \
+						calc_color_from_light_list.c \
+						compute_phong_color.c \
+					) \
+					get_camera_ray.c \
 					calc_sample_pixel_color.c \
 					compute_path_tracing_color.c \
 					render_pixels.c \

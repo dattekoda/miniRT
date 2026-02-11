@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 21:34:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 15:44:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,20 @@
 # define DISK_MATERIAL_ID		0
 # define CONE_MATERIAL_ID		0
 # define TRIANGLE_MATERIAL_ID	0
+
+// phong
+# define R_PHONG_AMBIENT_COEFF 0.1
+# define G_PHONG_AMBIENT_COEFF 0.1
+# define B_PHONG_AMBIENT_COEFF 0.1
+
+# define R_PHONG_DIFFUSE_COEFF 0.3
+# define G_PHONG_DIFFUSE_COEFF 0.3
+# define B_PHONG_DIFFUSE_COEFF 0.3
+
+# define R_PHONG_SPECULAR_COEFF 0.6
+# define G_PHONG_SPECULAR_COEFF 0.6
+# define B_PHONG_SPECULAR_COEFF 0.6
+
+# define SHININESS 15
 
 #endif

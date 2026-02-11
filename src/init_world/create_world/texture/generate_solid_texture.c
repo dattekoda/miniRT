@@ -6,19 +6,17 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:05:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 15:28:22 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 14:31:24 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solid_texture.h"
 #include "libft.h"
 
-static t_solid_texture	construct_solid_texture(t_color color);
+t_solid_texture	construct_solid_texture(t_color color);
 static t_color			calc_solid_texture_value(
 							const void *s,
-							t_hrec *hrec,
-							double u,
-							double v);
+							t_hrec *hrec);
 void					clear_texture(void *s);
 
 t_texture	*generate_solid_texture(t_color color)
@@ -44,9 +42,7 @@ t_solid_texture	construct_solid_texture(t_color color)
 
 static t_color	calc_solid_texture_value(
 					const void *s,
-					t_hrec *hrec,
-					double u,
-					double v)
+					t_hrec *hrec)
 {
 	const t_solid_texture	*self;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:46:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 15:27:05 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/10 18:13:38 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ typedef struct s_texture
 {
 	t_color	(*calc_texture_value)(
 				const void *self,
-				t_hrec * hrec,
-				double u,
-				double v);
+				t_hrec * hrec);
 	t_clear	clear;
 }	t_texture;
 
