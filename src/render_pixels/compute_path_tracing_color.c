@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 17:50:28 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:39:58 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,10 @@ t_color	compute_path_tracing_color(
 	// hit 異常
 	if (!world->object_tree->hit(world->object_tree, ray, &hrec, &range))
 		return (world->ambient_light);
-	fprintf(stderr, "2\n");
 	if (!hrec.mat_ptr->scatter(hrec.mat_ptr, world, &hrec, &srec))
 		return (srec.attenuation);
-	fprintf(stderr, "3\n");
 	if (is_killed_by_russian_roulette(depth, &srec.attenuation))
 		return (srec.attenuation);
-	fprintf(stderr, "4\n");
 	return (scal_mul_vec3(
 			mul_vec3(
 				srec.attenuation,

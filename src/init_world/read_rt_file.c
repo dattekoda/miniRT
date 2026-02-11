@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 18:28:18 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:38:52 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,5 @@ static int	read_lines_to_list(t_list *cur, int fd)
 	}
 	if (!cur)
 		return (free(line), perror_rt("malloc"), FAILURE);
-	exit(10);
 	return (SUCCESS);
 }

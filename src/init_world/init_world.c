@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 18:20:44 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:40:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	read_rt_file(t_list **line_list, const char *file_path);
 bool	is_valid_line_list(const t_list *line_list, int option_flag);
 int		create_world(t_world *world, t_list *line_list, int option_flag);
 
+
+#include <stdio.h>
 /*
 @brief responsible for free line_list
 */
