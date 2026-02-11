@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 18:40:29 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 21:29:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,26 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void	validate_arguments(int argc, char *argv[]);
-int		set_option(char *options[]);
 void	read_rt_file(t_list **line_list, const char *file_path);
 bool	is_valid_line_list(const t_list *line_list, int option_flag);
 int		create_world(t_world *world, t_list *line_list, int option_flag);
 
-
-#include <stdio.h>
 /*
 @brief responsible for free line_list
 */
-int	init_world(t_world *world, int *option_flag, int argc, char *argv[])
+int	init_world(t_world *world, char *file_path, int option_flag)
 {
 	t_list	*line_list;
 
-	validate_arguments(argc, argv);
-	*option_flag = set_option(argv + 2);
 	line_list = NULL;
-	read_rt_file(&line_list, argv[1]);
-	if (!is_valid_line_list(line_list, *option_flag))
+	read_rt_file(&line_list, file_path);
+	ft_bzero(world, sizeof(t_world));
+	if (!is_valid_line_list(line_list, option_flag))
 	{
 		ft_lstclear(&line_list, free);
 		exit(EXIT_FAILURE);
 	}
-	if (create_world(world, line_list, *option_flag) == FAILURE)
+	if (create_world(world, line_list, option_flag) == FAILURE)
 	{
 		ft_lstclear(&line_list, free);
 		exit(EXIT_FAILURE);

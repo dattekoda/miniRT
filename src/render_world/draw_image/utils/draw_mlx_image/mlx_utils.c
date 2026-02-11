@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:22:49 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/10 21:29:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:54:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	init_rt_img(t_rt_img *rt_img, void *mlx);
 /*
 @brief not responsible for free vars
 */
-int	init_mlx_vars(t_rt_mlx *rt_mlx)
+int	init_rt_mlx(t_rt_mlx *rt_mlx)
 {
 	ft_bzero(rt_mlx, sizeof(t_rt_mlx));
 	rt_mlx->var.mlx = mlx_init();
@@ -62,7 +62,7 @@ static int	init_rt_img(t_rt_img *rt_img, void *mlx)
 	return (SUCCESS);
 }
 
-void	clear_mlx_vars(t_rt_mlx *rt_mlx)
+void	clear_rt_mlx(t_rt_mlx *rt_mlx)
 {
 	if (rt_mlx->var.mlx && rt_mlx->img.id)
 		mlx_destroy_image(rt_mlx->var.mlx, rt_mlx->img.id);
@@ -77,6 +77,7 @@ void	clear_mlx_vars(t_rt_mlx *rt_mlx)
 
 int	close_window(t_rt_mlx *rt_mlx)
 {
-	clear_mlx_vars(rt_mlx);
+	clear_rt_mlx(rt_mlx);
+	exit(EXIT_SUCCESS);
 	return (SUCCESS);
 }

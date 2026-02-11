@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/11 19:08:04 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/02/11 21:47:54 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,25 +158,27 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						token_to_vec.c \
 					) \
 				) \
-				$(addprefix render_pixels/, \
-					$(addprefix compute_phong_color/, \
-						calc_color_from_light_list.c \
-						compute_phong_color.c \
-					) \
-					calc_sample_pixel_color.c \
-					compute_path_tracing_color.c \
-					get_camera_ray.c \
-					render_pixels.c \
-				) \
-				$(addprefix draw_image/, \
-					$(addprefix utils/, \
-						$(addprefix draw_mlx_image/, \
-							mlx_utils.c \
-							draw_mlx_image.c \
+				$(addprefix render_world/, \
+					render_world.c \
+					$(addprefix render_pixels/, \
+						$(addprefix compute_phong_color/, \
+							calc_color_from_light_list.c \
+							compute_phong_color.c \
 						) \
-						draw_ppm_image.c \
+						calc_sample_pixel_color.c \
+						compute_path_tracing_color.c \
+						render_pixels.c \
 					) \
-					draw_image.c \
+					$(addprefix draw_image/, \
+						$(addprefix utils/, \
+							$(addprefix draw_mlx_image/, \
+								mlx_utils.c \
+								draw_mlx_image.c \
+							) \
+							draw_ppm_image.c \
+						) \
+						draw_image.c \
+					) \
 				) \
 				$(addprefix ray/, \
 					ray.c \

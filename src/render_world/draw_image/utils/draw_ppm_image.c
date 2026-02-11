@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_ppm_imge.c                                    :+:      :+:    :+:   */
+/*   draw_ppm_image.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 18:49:14 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/10 20:48:23 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 22:06:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec.h"
 #include "rt_define.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 static void	put_rgb_color(int rgb_color);
 
-void	draw_ppm_image(const int *raw_rgb_arr)
+void	draw_ppm_image(int **raw_rgb_arr)
 {
 	size_t	xi;
 	size_t	yi;
@@ -29,9 +30,10 @@ void	draw_ppm_image(const int *raw_rgb_arr)
 		xi = 0;
 		x_base = yi * g_window_width;
 		while (xi < g_window_width)
-			put_rgb_color(raw_rgb_arr[x_base + xi++]);
+			put_rgb_color(*raw_rgb_arr[x_base + xi++]);
 		yi++;
 	}
+	free(*raw_rgb_arr);
 	return ;
 }
 

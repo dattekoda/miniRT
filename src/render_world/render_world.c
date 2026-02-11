@@ -1,78 +1,94 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_image.c                                       :+:      :+:    :+:   */
+/*   render_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 20:45:39 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 21:52:14 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/11 21:20:58 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/11 22:08:01 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec.h"
+#include "world.h"
 #include "result.h"
-#include "mlx.h"
-#include "rt_utils.h"
+#include "option.h"
 #include "vec_utils.h"
+#include "rt_utils.h"
 #include "rt_define.h"
 #include "libft.h"
-#include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
 
-void		draw_ppm_image(const int *raw_rgb_arr);
-int			draw_mlx_image(const int *raw_rgb_arr);
-static int	*pixel_to_raw_rgb(const t_color *pixel_arr);
+int			render_pixels(
+				t_color **pixel_arr_p,
+				const t_world *world,
+				bool is_phong);
+int			draw_image(int **raw_rgb_arr, bool is_ppm_mode);
+void		clear_world(t_world *world);
+static int	pixel_arr_to_raw_rgb_arr(
+				int **raw_rgb_arr,
+				const t_color *pixel_arr);
 static int	convert_into_raw_rgb(t_color color);
 
-int	draw_image(const t_color *pixel_arr, bool is_ppm_mode)
+/*
+@brief responsible for free(world)
+*/
+int	render_world(t_world *world, int option_flag)
 {
-	int	*raw_rgb_arr;
+	t_color	*pixel_arr;
+	int		*raw_rgb_arr;
 
-	raw_rgb_arr = pixel_to_raw_rgb(pixel_arr);
-	if (!raw_rgb_arr)
+	if (render_pixels(&pixel_arr, world,
+		option_flag & OPT_ARTIFICIAL) == FAILURE)
+	{
+		clear_world(world);
 		return (FAILURE);
-	if (is_ppm_mode)
-		draw_ppm_image(raw_rgb_arr);
-	else
-		if (draw_mlx_image(raw_rgb_arr) == FAILURE)
-			return (free(raw_rgb_arr), FAILURE);
-	free(raw_rgb_arr);
+	}
+	clear_world(world);
+	if (pixel_arr_to_raw_rgb_arr(&raw_rgb_arr, pixel_arr) == FAILURE)
+	{
+		free(pixel_arr);
+		return (FAILURE);
+	}
+	free(pixel_arr);
+	if (draw_image(&raw_rgb_arr, option_flag & OPT_PPM) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 }
 
-static int	*pixel_to_raw_rgb(const t_color *pixel_arr)
+static int	pixel_arr_to_raw_rgb_arr(
+				int **raw_rgb_arr,
+				const t_color *pixel_arr)
 {
-	int		*raw_rgb_arr;
 	size_t	xi;
 	size_t	yi;
 	size_t	x_base;
 
-	raw_rgb_arr = ft_calloc(g_window_width * g_window_height, sizeof(int));
-	if (!raw_rgb_arr)
-		return (NULL);
+	*raw_rgb_arr = ft_calloc(g_window_width * g_window_height, sizeof(int));
+	if (!*raw_rgb_arr)
+		return (FAILURE);
 	xi = 0;
 	yi = 0;
 	while (yi < g_window_height)
 	{
-		x_base = yi * g_window_width;
 		xi = 0;
+		x_base = yi * g_window_width;
 		while (xi < g_window_width)
 		{
-			raw_rgb_arr[x_base + xi]
+			*raw_rgb_arr[x_base + xi]
 				= convert_into_raw_rgb(pixel_arr[x_base + xi]);
 			xi++;
 		}
 		yi++;
 	}
-	return (raw_rgb_arr);
+	return (SUCCESS);
 }
 
 static int	convert_into_raw_rgb(t_color color)
 {
-	int		rgb_color[3];
 	t_color	adjusted_color;
+	int		rgb_color[3];
 
 	adjusted_color = map_vec3(color, sqrt);
 	rgb_color[0] = 256 * clamp(adjusted_color.e[0], 0.0, 0.999);

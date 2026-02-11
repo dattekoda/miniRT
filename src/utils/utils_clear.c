@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_clear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 16:40:33 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 21:52:08 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	clear_material(void *s)
 	free(self);
 }
 
-void	clear_world(t_world world)
+void	clear_world(t_world *world)
 {
-	ft_lstclear(&world.light_list, clear_hitter);
-	world.object_tree->clear(world.object_tree);
+	ft_lstclear(&world->light_list, clear_hitter);
+	world->object_tree->clear(world->object_tree);
 }

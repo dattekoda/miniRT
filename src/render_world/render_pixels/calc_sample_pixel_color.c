@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_sample_pixel_color.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 20:00:45 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 21:00:56 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_color	calc_sample_pixel_color(
 	return (scal_mul_vec3(pixel_color, color_scale));
 }
 
+// TODO: u, v should be t_vec2 map
 static t_color	calc_one_sample_pixel_color(
 					int xi,
 					int yi,
@@ -81,11 +82,12 @@ static void	calc_uv(double *u, double *v, int xi, int yi)
 	static const double	inv_w = 1.0 / (WINDOW_WIDTH - 1);
 	static const double	inv_h = 1.0 / (WINDOW_WIDTH * ASPECT_RATIO - 1);
 	
-	*u = (xi + random_double(0, 1)) * inv_w;
-	*v = (yi + random_double(0, 1)) * inv_h;
+	*u = (xi + random_01()) * inv_w;
+	*v = (yi + random_01()) * inv_h;
 	return ;
 }
 
+// TODO: maybe necessary to normalize ray's vector
 static t_ray	get_ray_from_camera(const t_camera *camera, double u, double v)
 {
 	t_vec3				ray_displacement;
@@ -112,8 +114,8 @@ static t_vec3	random_point_in_unit_disk(void)
 	while (true)
 	{
 		random_point = construct_vec3(
-				random_double(-1, 1),
-				random_double(-1, 1),
+				random_minus1_to_1(),
+				random_minus1_to_1(),
 				0);
 		if (length_squared_vec3(random_point) < 1.0)
 			break ;

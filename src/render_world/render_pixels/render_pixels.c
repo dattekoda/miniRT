@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_pixels.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 17:53:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 22:03:33 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "libft.h"
 #include <unistd.h>
 
-t_color	calc_sample_pixel_color(
+t_color			calc_sample_pixel_color(
 					int xi,
 					int yi,
 					const t_world *world,
@@ -35,7 +35,9 @@ int	render_pixels(
 		const t_world *world,
 		bool is_phong)
 {
-	*pixel_arr_p = ft_calloc(g_window_width * g_window_height, sizeof(t_color));
+	*pixel_arr_p = ft_calloc(
+			g_window_width * g_window_height,
+			sizeof(t_color));
 	if (!*pixel_arr_p)
 		return (FAILURE);
 	set_random_seed_from_time();
@@ -73,5 +75,8 @@ static void	accumulate_pixel_arr(
 static void	print_remaining(size_t yi)
 {
 	ft_putstr_fd("\rScanlines remaining: ", STDERR_FILENO);
-	ft_putnbr_fd((int)yi, STDERR_FILENO);
+	ft_putnbr_fd(
+		(int)((double)yi / (double)(g_window_height - 1) * 100),
+		STDERR_FILENO);
+	ft_putstr_fd("%", STDERR_FILENO);
 }
