@@ -45,10 +45,7 @@ extern const unsigned int	g_window_height;
 
 # define LIGHT_STERADIAN 0.21
 
-// how fuzzy metal is(0.0 - 1.0)
-# define METAL_FUZZINESS 0.0
-
-# define CHECKER_SPLIT_SIZE 20
+# define METAL_FUZZINESS 0.8
 
 # define SAMPLES_PER_PIXEL 30
 # define LENS_RADIUS 0.0

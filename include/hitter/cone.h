@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   cone.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 04:46:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 18:13:38 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/02/10 22:27:47 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#ifndef CONE_H
+# define CONE_H
 
 # include "hitter.h"
-# include "vec.h"
+# include "material.h"
 
-typedef struct s_texture
+typedef struct s_cone
 {
-	t_color	(*calc_texture_value)(
-				const void *self,
-				t_hrec * hrec);
-	t_clear	clear;
-}	t_texture;
+	t_hitter	hitter;
+	t_vec3		direct;
+	double		half_angle; // radian
+	t_point3	center;
+}	t_cone;
 
-enum e_texture_idx
-{
-	SOLID,
-	CHECKER,
-	BUMP,
-	INVALID_TEXTURE_IDX
-};
+t_hitter	*generate_cone(t_cone cone_param);
 
 #endif
