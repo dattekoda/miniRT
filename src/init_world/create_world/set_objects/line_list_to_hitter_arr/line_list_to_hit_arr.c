@@ -114,9 +114,10 @@ static int	line_list_to_hitter_list(t_list **hitter_list,
 	print_line_list(line_list);
 	while (line_list)
 	{
+		printf("HERE1\n");
 		if (match_objects(line_list->content, object_table, &obj_idx))
 		{
-			printf("HERE\n");
+			printf("HERE2\n");
 			printf("%s\n", (char *)line_list->content);
 			if (add_hitter_list(hitter_list, line_list->content,
 					object_table[obj_idx]) == FAILURE)
