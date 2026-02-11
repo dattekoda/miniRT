@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 20:57:40 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:42:44 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int			line_list_to_bvh(t_hitter **node, const t_list *line_list,
 t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs);
 void		clear_tree(void *s);
 
+
+#include <stdio.h>
 int	set_objects(t_world *world, t_list *line_list, int option_flag)
 {
 	t_hitter	*rhs;
@@ -39,6 +41,7 @@ int	set_objects(t_world *world, t_list *line_list, int option_flag)
 		clear_tree(rhs);
 		return (FAILURE);
 	}
+	printf("lhs, rhs ok\n");
 	world->object_tree = generate_tree(lhs, rhs);
 	if (!world->object_tree && (lhs || rhs))
 		return (FAILURE);
