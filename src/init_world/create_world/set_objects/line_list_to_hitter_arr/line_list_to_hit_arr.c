@@ -33,6 +33,7 @@ static int	line_list_to_hitter_list(t_list **hitter_list,
 #include <stdio.h>
 void	print_hitter(t_hitter *hitter);
 void	print_line_list(const t_list *line_list);
+void	print_hitter_list(const t_list *list);
 
 int	line_list_to_hit_arr(
 			t_hitter_arr *hit_arr,
@@ -64,6 +65,8 @@ static int	hitter_list_to_hitter_arr(t_list *hitter_list,
 	t_list	*curr;
 	size_t	i;
 
+	if (!hitter_list)
+		return (SUCCESS);
 	hit_arr->size = (size_t)ft_lstsize(hitter_list);
 	hit_arr->arr = ft_calloc(hit_arr->size, sizeof(t_hitter *));
 	if (!hit_arr->arr)
@@ -111,15 +114,10 @@ static int	line_list_to_hitter_list(t_list **hitter_list,
 {
 	size_t	obj_idx;
 
-	print_line_list(line_list);
 	while (line_list)
 	{
-		printf("HERE1\n");
 		if (match_objects(line_list->content, object_table, &obj_idx))
 		{
-			printf("HERE2\n");
-			printf("%s\n", (char *)line_list->content);
-			exit(1);
 			if (add_hitter_list(hitter_list, line_list->content,
 					object_table[obj_idx]) == FAILURE)
 				return (FAILURE);
