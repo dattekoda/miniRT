@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/26 17:39:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:19:25 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	read_rt_file(t_list **line_list, const char *file_path)
 	return ;
 }
 
+#include <stdio.h>
 static int	read_lines_to_list(t_list *cur, int fd)
 {
 	int		gnl_ret;
@@ -64,10 +65,12 @@ static int	read_lines_to_list(t_list *cur, int fd)
 			free(line);
 			continue ;
 		}
+		printf("%s", line);
 		cur->next = ft_lstnew(line);
 		cur = cur->next;
 	}
 	if (!cur)
 		return (free(line), perror_rt("malloc"), FAILURE);
+	exit(10);
 	return (SUCCESS);
 }
