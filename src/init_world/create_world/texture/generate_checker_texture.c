@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_checker_texture.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:01:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/10 18:14:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 14:30:50 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@
 t_solid_texture				construct_solid_texture(t_color color);
 static t_color				calc_checker_texture_value(
 								const void *s,
-								t_hrec *hrec,
-								double u,
-								double v);
+								t_hrec *hrec);
 static t_checker_texture	construct_checker_texture(
 								t_color color);
 
@@ -37,7 +35,7 @@ t_texture	*generate_checker_texture(t_color color)
 	if (!p)
 		return (NULL);
 	*p = construct_checker_texture(color);
-	return (p);
+	return ((t_texture *)p);
 }
 
 static t_checker_texture	construct_checker_texture(

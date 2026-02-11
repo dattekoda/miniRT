@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/10 15:39:31 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/11 15:50:55 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,6 +149,10 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 					) \
 				) \
 				$(addprefix render_pixel/, \
+					$(addprefix phong_color/, \
+						calc_color_from_light_list.c \
+						compute_phong_color.c \
+					) \
 					render_pixel.c \
 					get_camera_ray.c \
 				) \
