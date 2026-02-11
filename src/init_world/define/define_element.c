@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 16:30:00 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:36:05 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 int	line_to_light(t_hitter **light, const char *line);
 int	line_to_disk(t_hitter **disk, const char *line);
+int	line_to_sphere(t_hitter **sphere, const char *line);
 
 extern const t_skip					g_ambient_skips[];
 extern const t_skip					g_camera_skips[];

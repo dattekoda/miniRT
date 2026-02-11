@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 22:11:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:16:54 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void					clear_material(void *s);
 static t_lambertian		construct_lambertian(t_texture *texture_ptr);
 static bool				scatter_lambertian(
 							const void *s,
-							const t_world *world, t_hrec *hrec, t_srec *srec);
+							const t_world *world,
+							t_hrec *hrec,
+							t_srec *srec);
 static t_mixture_pdf	construct_mix_pdf_lambertian(
 							const t_world *world,
 							const t_hrec *hrec);
@@ -71,7 +73,7 @@ static bool	scatter_lambertian(
 
 	self = s;
 	texture_ptr = self->material.texture_ptr;
-	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec, 0, 0);
+	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec);
 	mix_pdf = construct_mix_pdf_lambertian(world, hrec);
 	srec->next_ray = construct_ray(
 			hrec->point, mix_pdf.pdf.random_pdf(&mix_pdf));

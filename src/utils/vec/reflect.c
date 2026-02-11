@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/09 18:26:36 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/09 18:50:35 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/11 16:21:20 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/11 16:22:57 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 /*
 @brief vec - 2*dot(vec,normal)normal
 */
-t_vec3	reflect(const t_vec3 *vec, const t_vec3 *normal)
+t_vec3	reflect(t_vec3 vec, t_vec3 normal)
 {
 	return (sub_vec3(
-		*vec,
+		vec,
 		scal_mul_vec3(
-			*normal,
-			2 * dot(*vec, *normal))));
+			normal,
+			2 * dot(vec, normal))));
 }
+

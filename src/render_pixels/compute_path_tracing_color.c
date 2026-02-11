@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/09 16:32:37 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 17:04:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 
 static bool	is_killed_by_russian_roulette(size_t depth, t_color *attenuation);
 
+#include <stdlib.h>
+void	guess_hitter(t_hitter *hitter)
+{
+	if (!hitter)
+		fprintf(stderr, "NULL");
+	exit(1);
+}
+
 t_color	compute_path_tracing_color(
 			const t_ray *ray,
 			const t_world *world,
@@ -33,13 +41,18 @@ t_color	compute_path_tracing_color(
 	range = construct_vec2(HIT_T_MIN, INFINITY);
 	if (depth >= MAX_DEPTH)
 		return (constant_vec3(1.0));
-	if (!world->object_tree
-		|| !world->object_tree->hit(world->object_tree, ray, &hrec, &range))
+	if (!world->object_tree)
 		return (world->ambient_light);
+	guess_hitter(world->object_tree);
+	if (!world->object_tree->hit(world->object_tree, ray, &hrec, &range))
+		return (world->ambient_light);
+	fprintf(stderr, "2\n");
 	if (!hrec.mat_ptr->scatter(hrec.mat_ptr, world, &hrec, &srec))
 		return (srec.attenuation);
+	fprintf(stderr, "3\n");
 	if (is_killed_by_russian_roulette(depth, &srec.attenuation))
 		return (srec.attenuation);
+	fprintf(stderr, "4\n");
 	return (scal_mul_vec3(
 			mul_vec3(
 				srec.attenuation,

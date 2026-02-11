@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/10 22:05:59 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/11 16:34:14 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,6 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							generate_light.c \
 							$(addprefix material_utils/, \
 								orient_normal.c \
-								reflect.c \
 							) \
 							$(addprefix pdf/, \
 								calc_light_pdf_value.c \
@@ -93,6 +92,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						) \
 						$(addprefix hitter/, \
 							$(addprefix generator/, \
+								generate_cone.c \
 								generate_cylinder.c \
 								generate_disk.c \
 								generate_sphere.c \
@@ -158,14 +158,14 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						token_to_vec.c \
 					) \
 				) \
-				$(addprefix render_pixel/, \
-					$(addprefix phong_color/, \
+				$(addprefix render_pixels/, \
+					$(addprefix compute_phong_color/, \
 						calc_color_from_light_list.c \
 						compute_phong_color.c \
 					) \
-					get_camera_ray.c \
 					calc_sample_pixel_color.c \
 					compute_path_tracing_color.c \
+					get_camera_ray.c \
 					render_pixels.c \
 				) \
 				$(addprefix draw_image/, \
@@ -197,6 +197,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						vec3_basic.c \
 						vec3_product.c \
 						vec3_scal.c \
+						reflect.c \
 					) \
 				) \
 			)

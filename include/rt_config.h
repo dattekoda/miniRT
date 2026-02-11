@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 18:11:14 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:15:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 
 // set 0.0 - 1.0
 # define LIVE_PROBABILITY_MIN 0.5
+
+# define CHECKER_SPLIT_SIZE 20
 
 // tetxure
 // 0: solid

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/10 21:49:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:51:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include "rt_utils.h"
 #include "rt_define.h"
 
+t_color			compute_phong_color(
+					const t_ray *ray,
+					const t_world *world);
 t_color			compute_path_tracing_color(
 					const t_ray *ray,
 					const t_world *world,
@@ -68,9 +71,8 @@ static t_color	calc_one_sample_pixel_color(
 
 	calc_uv(&u, &v, xi, yi);
 	ray = get_ray_from_camera(&world->camera, u, v);
-	(void)is_phong;
-	// if (is_phong)
-	// 	return (compute_phong_color()); // here!
+	if (is_phong)
+		return (compute_phong_color(&ray, world));
 	return (compute_path_tracing_color(&ray, world, 0));
 }
 
@@ -113,7 +115,7 @@ static t_vec3	random_point_in_unit_disk(void)
 				random_double(-1, 1),
 				random_double(-1, 1),
 				0);
-		if (length_squared_vec3(random_point) < 1)
+		if (length_squared_vec3(random_point) < 1.0)
 			break ;
 	}
 	return (random_point);

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 06:26:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 17:51:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:17:30 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	init_solution_context(
 			&center_to_ray_origin,
 			&self->direct,
 			self->radius);
-	solu->discriminant = calc_discriminant(&solu);
+	solu->discriminant = calc_discriminant(solu);
 	return ;
 }
 

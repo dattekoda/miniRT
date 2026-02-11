@@ -6,13 +6,14 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/10 19:05:03 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:49:12 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
 #include "result.h"
 #include "option.h"
+#include "rt_utils.h"
 #include "libft.h"
 #include <stdlib.h>
 
@@ -33,6 +34,7 @@ int	mini_rt(int argc, char *argv[])
 	ft_bzero(&world, sizeof(t_world));
 	if (init_world(&world, &option_flag, argc, argv) == FAILURE)
 		return (EXIT_FAILURE);
+	set_random_seed_from_time();
 	if (render_pixels(&pixel_arr, &world,
 		option_flag & OPT_ARTIFICIAL) == FAILURE)
 	{
