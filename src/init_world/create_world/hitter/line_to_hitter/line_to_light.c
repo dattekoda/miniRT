@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 22:27:55 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:55:08 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static t_material	*param_to_light_material(t_color color);
 static t_color		calc_color(
 						t_color raw_color, double ratio);
 
+
+#include <stdio.h>
 /*
 @brief line "L 0,4,4, 0.3, 255,255,0 4"
 */

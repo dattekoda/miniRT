@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 18:42:44 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:53:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	set_objects(t_world *world, t_list *line_list, int option_flag)
 		clear_tree(rhs);
 		return (FAILURE);
 	}
-	printf("lhs, rhs ok\n");
 	world->object_tree = generate_tree(lhs, rhs);
 	if (!world->object_tree && (lhs || rhs))
 		return (FAILURE);

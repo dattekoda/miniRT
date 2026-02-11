@@ -29,6 +29,8 @@ static bool	match_objects(const char *line, const t_element *object_table[],
 static int	line_list_to_hitter_list(t_list **hitter_list,
 				const t_list *line_list, const t_element *object_table[]);
 
+
+#include <stdio.h>
 int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list,
 		const t_element *object_table[])
 {
@@ -41,6 +43,14 @@ int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list,
 	{
 		ft_lstclear(&hitter_list, clear_hitter);
 		return (FAILURE);
+	}
+	printf("HERE1\n");
+	t_list	*cur = hitter_list;
+	while (cur)
+	{
+		t_hitter	*hitter =  (t_hitter *)cur->content;
+		printf("type: %d\n", hitter->type);
+		cur = cur->next;
 	}
 	if (hitter_list_to_hitter_arr(hitter_list, hit_arr) == FAILURE)
 	{
