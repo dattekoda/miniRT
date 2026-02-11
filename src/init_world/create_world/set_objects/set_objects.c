@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 19:58:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:18:45 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs);
 void		clear_tree(void *s);
 
 
-#include <stdio.h>
+#include <stdio.h> // debug
+void	print_hitter(t_hitter *hitter); //debug
+void	print_hitter_list(const t_list *list); // debug
+
 int	set_objects(t_world *world, t_list *line_list, int option_flag)
 {
 	t_hitter	*rhs;

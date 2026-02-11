@@ -30,10 +30,11 @@ static int	line_list_to_hitter_list(t_list **hitter_list,
 				const t_list *line_list, const t_element *object_table[]);
 
 
-#include <stdio.h>
-void	print_hitter(t_hitter *hitter);
-void	print_line_list(const t_list *line_list);
-void	print_hitter_list(const t_list *list);
+#include <stdio.h> // debug
+void	print_hitter(t_hitter *hitter); // debug
+void	print_line_list(const t_list *line_list); // debug
+void	print_hitter_list(const t_list *list); // debug
+void	print_hitter_arr(t_hitter_arr arr); // debug
 
 int	line_list_to_hit_arr(
 			t_hitter_arr *hit_arr,
@@ -55,7 +56,7 @@ int	line_list_to_hit_arr(
 		ft_lstclear(&hitter_list, clear_hitter);
 		return (FAILURE);
 	}
-	ft_lstclear(&hitter_list, free);
+	ft_lstclear(&hitter_list, NULL);
 	return (SUCCESS);
 }
 

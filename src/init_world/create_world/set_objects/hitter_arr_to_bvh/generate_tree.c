@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_tree.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 23:39:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 15:54:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:02:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs)
 	t_tree	node;
 
 	ft_bzero(&node, sizeof(t_tree));
+	node.hitter.type = TREE;
 	node.hitter.hit = hit_tree;
 	node.hitter.clear = clear_tree;
 	node.lhs = lhs;

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 19:54:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:14:54 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,17 @@ typedef enum e_element_type
 	DISK,
 	CONE,
 	TRIANGLE,
+	TREE,
 	NOTHING
 }	t_element_type;
 */
 void	print_hitter(t_hitter *hitter)
 {
+	if (!hitter)
+	{
+		printf("it is null\n");
+		return ;
+	}
 	static const char *string_table[] = {
 		"AMBIENT",
 		"CAMERA",
@@ -43,6 +49,7 @@ void	print_hitter(t_hitter *hitter)
 		"DISK",
 		"CONE",
 		"TRIANGLE",
+		"TREE",
 		"NOTHING"
 	};
 	printf("%u\n", hitter->type);
@@ -57,10 +64,28 @@ void	print_hitter_list(const t_list *list)
 		return ;
 	}
 	t_list	*cur = (t_list *)list;
+	printf("print list:\n");
 	while (cur)
 	{
 		t_hitter *hitter = (t_hitter *)cur->content;
 		print_hitter(hitter);
 		cur = cur->next;
+	}
+}
+
+void	print_hitter_arr(t_hitter_arr arr)
+{
+	size_t	i = 0;
+
+	if (arr.size == 0)
+	{
+		printf("arr has no content\n");
+		return ;
+	}
+	printf("print arr:\n");
+	while (i < arr.size)
+	{
+		print_hitter(arr.arr[i]);
+		i++;
 	}
 }

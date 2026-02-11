@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_sample_pixel_color.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 16:51:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:00:45 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

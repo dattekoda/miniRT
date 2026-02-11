@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:38:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 18:49:28 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:01:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef enum e_element_type
 	DISK,
 	CONE,
 	TRIANGLE,
+	TREE,
 	NOTHING
 }	t_element_type;
 

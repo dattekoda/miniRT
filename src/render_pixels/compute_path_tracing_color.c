@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 18:39:58 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:18:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include <math.h>
 
 static bool	is_killed_by_russian_roulette(size_t depth, t_color *attenuation);
+
+void	print_hitter(t_hitter *hitter); // debug
 
 t_color	compute_path_tracing_color(
 			const t_ray *ray,
@@ -35,7 +37,6 @@ t_color	compute_path_tracing_color(
 		return (constant_vec3(1.0));
 	if (!world->object_tree)
 		return (world->ambient_light);
-	// hit 異常
 	if (!world->object_tree->hit(world->object_tree, ray, &hrec, &range))
 		return (world->ambient_light);
 	if (!hrec.mat_ptr->scatter(hrec.mat_ptr, world, &hrec, &srec))
