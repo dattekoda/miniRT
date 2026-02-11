@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 20:23:13 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/12 14:58:36 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,10 @@
 # define DISK_MATERIAL_ID		0
 # define CONE_MATERIAL_ID		0
 # define TRIANGLE_MATERIAL_ID	0
+
+// 0: ripple
+// 1: block
+# define BUMP_TYPE 0
 
 // phong
 # define R_PHONG_AMBIENT_COEFF 0.1
