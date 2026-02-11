@@ -44,7 +44,6 @@ int	line_list_to_hit_arr(t_hitter_arr *hit_arr, const t_list *line_list,
 		ft_lstclear(&hitter_list, clear_hitter);
 		return (FAILURE);
 	}
-	printf("HERE1\n");
 	t_list	*cur = hitter_list;
 	while (cur)
 	{
