@@ -6,13 +6,14 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:22:49 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 20:54:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 18:26:34 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_mlx.h"
 #include "result.h"
 #include "rt_define.h"
+#include "rt_utils.h"
 #include "mlx.h"
 #include "libft.h"
 #include <stdlib.h>
@@ -27,14 +28,20 @@ int	init_rt_mlx(t_rt_mlx *rt_mlx)
 	ft_bzero(rt_mlx, sizeof(t_rt_mlx));
 	rt_mlx->var.mlx = mlx_init();
 	if (!rt_mlx->var.mlx)
+	{
+		err_rt("mlx_init() failed.");
 		return (FAILURE);
+	}
 	rt_mlx->var.win = mlx_new_window(
 				rt_mlx->var.mlx,
 				g_window_width,
 				(int)(g_window_height),
 				PROJECT_NAME);
 	if (!rt_mlx->var.win)
+	{
+		err_rt("mlx_new_window() failed.");
 		return (FAILURE);
+	}
 	if (init_rt_img(&rt_mlx->img, rt_mlx->var.mlx) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
@@ -49,15 +56,21 @@ static int	init_rt_img(t_rt_img *rt_img, void *mlx)
 		g_window_width,
 		g_window_height);
 	if (!rt_img->id)
+	{
+		err_rt("mlx_new_image() failed.");
 		return (FAILURE);
+	}
 	rt_img->addr = mlx_get_data_addr(
-		&rt_img->id, \
+		rt_img->id, \
 		&rt_img->bpp, \
 		&rt_img->line_len, \
 		&rt_img->endian \
 	);
 	if (!rt_img->addr)
+	{
+		err_rt("mlx_get_data_addr() failed.");
 		return (FAILURE);
+	}
 	rt_img->bpp /= 8;
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 21:48:24 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 18:27:37 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int		set_option(char *options[]);
 int		init_world(t_world *world, char *file_name, int option_flag);
 int		render_world(t_world *world, int option_flag);
 
-#include <stdio.h>
 int	mini_rt(int argc, char *argv[])
 {
 	int		option_flag;

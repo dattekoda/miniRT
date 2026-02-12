@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:20:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 22:36:05 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 18:56:25 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,43 +31,6 @@ static int	pixel_arr_to_raw_rgb_arr(
 				const t_color *pixel_arr);
 static int	convert_into_raw_rgb(t_color color);
 
-void	print_vec(t_vec3 v)
-{
-	for (int i = 0; i < 3; i++)
-	{
-		printf("e[%d]: %f\n", i, v.e[i]);
-	}
-}
-
-void	print_pixel_arr(t_color *pixel_arr)
-{
-	for (size_t iy = 0; iy < g_window_height; iy++)
-	{
-		size_t	x_base = iy * g_window_width;
-		for (size_t ix = 0; ix < g_window_width; ix++)
-		{
-			if (iy % 23 == 0 && ix % 51 == 0)
-				print_vec(pixel_arr[x_base + ix]);
-		}
-	}
-}
-
-void	print_raw_rgb_arr(int *raw_rgb_arr)
-{
-	for (size_t iy = 0; iy < g_window_height; iy++)
-	{
-		size_t	x_base = iy * g_window_width;
-		for (size_t ix = 0; ix < g_window_width; ix++)
-		{
-			if (iy % 23 == 0 && ix % 51 == 0)
-			{
-				int color = raw_rgb_arr[x_base + ix];
-				printf("%d %d %d\n", color >> 16 & 0xFF,  color >> 8 & 0xFF, color & 0xFF);
-			}
-		}
-	}
-}
-
 /*
 @brief responsible for free(world)
 */
@@ -83,14 +46,11 @@ int	render_world(t_world *world, int option_flag)
 		return (FAILURE);
 	}
 	clear_world(world);
-	print_pixel_arr(pixel_arr);
 	if (pixel_arr_to_raw_rgb_arr(&raw_rgb_arr, pixel_arr) == FAILURE)
 	{
 		free(pixel_arr);
 		return (FAILURE);
 	}
-	print_raw_rgb_arr(raw_rgb_arr);
-	exit(1);
 	free(pixel_arr);
 	if (draw_image(&raw_rgb_arr, option_flag & OPT_PPM) == FAILURE)
 		return (FAILURE);
@@ -115,7 +75,7 @@ static int	pixel_arr_to_raw_rgb_arr(
 		x_base = yi * g_window_width;
 		while (xi < g_window_width)
 		{
-			*raw_rgb_arr[x_base + xi]
+			(*raw_rgb_arr)[x_base + xi]
 				= convert_into_raw_rgb(pixel_arr[x_base + xi]);
 			xi++;
 		}
@@ -129,22 +89,8 @@ static int	convert_into_raw_rgb(t_color color)
 	t_color	adjusted_color;
 	int		rgb_color[3];
 
-	fprintf(stderr, "%f\n", color.e[0]);
 	adjusted_color = map_vec3(color, sqrt);
-	fprintf(stderr, "%f\n", adjusted_color.e[0]);
 	rgb_color[0] = 256.0 * clamp(adjusted_color.e[0], 0.0, 0.999);
-	fprintf(stderr, "%d\n", rgb_color[0]);
-	fprintf(stderr, "%f\n", color.e[1]);
-	adjusted_color = map_vec3(color, sqrt);
-	fprintf(stderr, "%f\n", adjusted_color.e[1]);
-	rgb_color[1] = 256.0 * clamp(adjusted_color.e[1], 0.0, 0.999);
-	fprintf(stderr, "%d\n", rgb_color[1]);
-	fprintf(stderr, "%f\n", color.e[2]);
-	adjusted_color = map_vec3(color, sqrt);
-	fprintf(stderr, "%f\n", adjusted_color.e[2]);
-	rgb_color[2] = 256.0 * clamp(adjusted_color.e[2], 0.0, 0.999);
-	fprintf(stderr, "%d\n", rgb_color[2]);
-	exit(1);
 	rgb_color[1] = 256.0 * clamp(adjusted_color.e[1], 0.0, 0.999);
 	rgb_color[2] = 256.0 * clamp(adjusted_color.e[2], 0.0, 0.999);
 	return ((rgb_color[0] << 16) | (rgb_color[1] << 8) | rgb_color[2]);
