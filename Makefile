@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/10 22:05:59 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/11 20:37:34 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,11 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							preprocess_line_list.c \
 						) \
 						$(addprefix texture/, \
+							$(addprefix local_normal/, \
+								define_local_normal.c \
+								local_normal.c \
+							) \
+							generate_bump_texture.c \
 							generate_checker_texture.c \
 							generate_solid_texture.c \
 						) \
