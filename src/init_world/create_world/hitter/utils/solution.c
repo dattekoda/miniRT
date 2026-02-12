@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:30:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 20:54:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 20:55:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ bool	is_solution_inside_range(t_solution *solu, const t_range *range)
 	return (false);
 }
 
-#include "rt_debug.h"
-#include <stdio.h>
 bool	is_solution_outside_range(t_solution *solu, const t_range *range)
 {
 	if (solu->discriminant < 0)
