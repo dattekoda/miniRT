@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   onb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 22:10:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 23:29:26 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/12 22:15:30 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_onb	construct_onb(const t_vec3 vec3)
 	t_vec3	operand;
 
 	onb.v[2] = normalize(vec3);
-	if (fabs(onb.v[2].e[X]) > 0.9)
+	if (fabs(onb.v[2].e[A_X]) > 0.9)
 		operand = construct_vec3(0, 1, 0);
 	else
 		operand = construct_vec3(1, 0, 0);

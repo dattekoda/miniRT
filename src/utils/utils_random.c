@@ -6,10 +6,11 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:48:09 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 16:49:17 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 22:25:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "rt_utils.h"
 #include "rt_define.h"
 #include <stdint.h>
 #include <stddef.h>
@@ -60,7 +61,10 @@ void	set_random_seed_from_time(void)
 	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL))
+	{
 		g_x = RANDOM_SEED_UINT64;
+		perror_rt("gettimeofday");
+	}
 	else
 		g_x = (uint64_t)((tv.tv_sec ^ tv.tv_usec) * RANDOM_SEED_UINT64);
 	return ;

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:20:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 20:48:16 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 22:15:08 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static t_vec3	calc_screen_left_top(
 {
 	t_vec3	left_top;
 
-	left_top = sub_vec3(origin, scal_mul_vec3(onb.v[X], 0.5 * width));
-	left_top = add_vec3(left_top, scal_mul_vec3(onb.v[Y], 0.5 * height));
-	left_top = add_vec3(left_top, normalize(onb.v[Z]));
+	left_top = sub_vec3(origin, scal_mul_vec3(onb.v[A_X], 0.5 * width));
+	left_top = add_vec3(left_top, scal_mul_vec3(onb.v[A_Y], 0.5 * height));
+	left_top = add_vec3(left_top, normalize(onb.v[A_Z]));
 	return (left_top);
 }
 
@@ -50,13 +50,13 @@ static t_onb	construct_camera_onb(t_vec3 direct)
 	t_onb	camera_onb;
 	t_vec3	vup;
 
-	if (fabs(direct.e[Y]) > 0.9)
+	if (fabs(direct.e[A_Y]) > 0.9)
 		vup = construct_vec3(0, 1, 0);
 	else
 		vup = construct_vec3(0, 0, 1);
-	camera_onb.v[Z] = direct;
-	camera_onb.v[X] = normalize(cross(vup, camera_onb.v[Z]));
-	camera_onb.v[Y] = cross(camera_onb.v[Z], camera_onb.v[X]);
+	camera_onb.v[A_Z] = direct;
+	camera_onb.v[A_X] = normalize(cross(vup, camera_onb.v[A_Z]));
+	camera_onb.v[A_Y] = cross(camera_onb.v[A_Z], camera_onb.v[A_X]);
 	return (camera_onb);
 }
 

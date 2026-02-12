@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 21:31:11 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 22:16:03 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "vec_utils.h"
 #include "rt_utils.h"
 #include "rt_define.h"
+#include "axis.h"
 #include "libft.h"
 #include <math.h>
 
@@ -50,27 +51,23 @@ static double	calc_cosine_pdf_value(
 {
 	const t_cosine_pdf	*self = s;
 
-	return (dot(self->onb.v[2], normalize(*direction)));
+	return (dot(self->onb.v[A_Z], normalize(*direction)) / M_PI);
 }
 
 static t_vec3	random_cosine_pdf(const void *s)
 {
-	const t_cosine_pdf	*self;
+	const t_cosine_pdf	*self = s;
 
-	self = s;
 	return (local_onb(self->onb, random_cosine_direction()));
 }
 
 static t_vec3	random_cosine_direction(void)
 {
-	t_vec3	direction;
-	double	u1;
-	double	u2;
+	const double	u1 = random_01();
+	const double	u2 = random_01();
 
-	u1 = random_01();
-	u2 = random_01();
-	direction.e[0] = cos(2 * M_PI * u1) * sqrt(u2);
-	direction.e[1] = sin(2 * M_PI * u1) * sqrt(u2);
-	direction.e[2] = sqrt(1 - u2);
-	return (direction);
+	return (construct_vec3(
+		cos(2 * M_PI * u1) * sqrt(u2),
+		sin(2 * M_PI * u1) * sqrt(u2),
+		sqrt(1 - u2)));
 }

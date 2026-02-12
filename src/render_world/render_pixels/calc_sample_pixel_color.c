@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 20:48:34 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 22:36:48 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ static t_color	calc_one_sample_pixel_color(
 					size_t yi,
 					const t_world *world,
 					bool is_phong);
-static void		calc_random_xv(t_vec2 *random_xv, size_t xi, size_t yi);
+static t_vec2	calc_random_xv(size_t xi, size_t yi);
 static t_vec3	random_point_in_unit_disk(void);
 static t_ray	get_ray_from_camera(
 					const t_camera *camera,
-					const t_vec2 *map);
+					size_t xi,
+					size_t yi);
 
 t_color	calc_sample_pixel_color(
 			size_t xi,
@@ -58,51 +59,45 @@ t_color	calc_sample_pixel_color(
 	return (scal_mul_vec3(pixel_color, color_scale));
 }
 
-// TODO: u, v should be t_vec2 map
 static t_color	calc_one_sample_pixel_color(
 					size_t xi,
 					size_t yi,
 					const t_world *world,
 					bool is_phong)
 {
-	t_ray	ray;
-	t_vec2	random_xv;
+	const t_ray		ray = get_ray_from_camera(&world->camera, xi, yi);
 
-	calc_random_xv(&random_xv, xi, yi);
-	ray = get_ray_from_camera(&world->camera, &random_xv);
 	if (is_phong)
 		return (compute_phong_color(&ray, world));
 	return (compute_path_tracing_color(&ray, world, 0));
 }
 
-static void	calc_random_xv(t_vec2 *random_xv, size_t xi, size_t yi)
+// TODO: maybe need to normalize ray's vector
+static t_ray	get_ray_from_camera(const t_camera *camera, size_t xi, size_t yi)
+{
+	const t_vec2	random_xv = calc_random_xv(xi, yi);
+	const t_vec3	ray_displacement
+		= scal_mul_vec3(random_point_in_unit_disk(), LENS_RADIUS);
+	const t_vec3	offset = add_vec3(
+			scal_mul_vec3(camera->onb.v[0], ray_displacement.e[0]),
+			scal_mul_vec3(camera->onb.v[1], ray_displacement.e[1]));
+	const t_vec3	ray_direct = sub_vec3(
+			add_vec3(camera->left_top, scal_mul_vec3(camera->onb.v[0], random_xv.e[0])),
+			add_vec3(scal_mul_vec3(camera->onb.v[1], random_xv.e[1]), camera->origin));
+
+	return (construct_ray(
+			add_vec3(camera->origin, offset),
+			normalize(sub_vec3(ray_direct, offset))));
+}
+
+static t_vec2	calc_random_xv(size_t xi, size_t yi)
 {
 	static const double	inv_w = 1.0 / (WINDOW_WIDTH - 1);
 	static const double	inv_h = 1.0 / (WINDOW_WIDTH * ASPECT_RATIO - 1);
 	
-	random_xv->e[0] = (xi + random_01()) * inv_w;
-	random_xv->e[1] = (yi + random_01()) * inv_h;
-	return ;
-}
-
-// TODO: maybe necessary to normalize ray's vector
-static t_ray	get_ray_from_camera(const t_camera *camera, const t_vec2 *random_xv)
-{
-	t_vec3				ray_displacement;
-	t_vec3				offset;
-	t_vec3				ray_direct;
-
-	ray_displacement
-		= scal_mul_vec3(random_point_in_unit_disk(), LENS_RADIUS);
-	offset = add_vec3(
-			scal_mul_vec3(camera->onb.v[0], ray_displacement.e[0]),
-			scal_mul_vec3(camera->onb.v[1], ray_displacement.e[1]));
-	ray_direct = sub_vec3(
-			add_vec3(camera->left_top, scal_mul_vec3(camera->onb.v[0], random_xv->e[0])),
-			add_vec3(scal_mul_vec3(camera->onb.v[1], random_xv->e[1]), camera->origin));
-	return (construct_ray(
-			add_vec3(camera->origin, offset),
-			sub_vec3(ray_direct, offset)));
+	return (construct_vec2(
+			(xi + random_01()) * inv_w,
+			(yi + random_01()) * inv_h));
 }
 
 static t_vec3	random_point_in_unit_disk(void)
