@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:20:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 22:36:05 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 15:06:54 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,42 +31,8 @@ static int	pixel_arr_to_raw_rgb_arr(
 				const t_color *pixel_arr);
 static int	convert_into_raw_rgb(t_color color);
 
-void	print_vec(t_vec3 v)
-{
-	for (int i = 0; i < 3; i++)
-	{
-		printf("e[%d]: %f\n", i, v.e[i]);
-	}
-}
-
-void	print_pixel_arr(t_color *pixel_arr)
-{
-	for (size_t iy = 0; iy < g_window_height; iy++)
-	{
-		size_t	x_base = iy * g_window_width;
-		for (size_t ix = 0; ix < g_window_width; ix++)
-		{
-			if (iy % 23 == 0 && ix % 51 == 0)
-				print_vec(pixel_arr[x_base + ix]);
-		}
-	}
-}
-
-void	print_raw_rgb_arr(int *raw_rgb_arr)
-{
-	for (size_t iy = 0; iy < g_window_height; iy++)
-	{
-		size_t	x_base = iy * g_window_width;
-		for (size_t ix = 0; ix < g_window_width; ix++)
-		{
-			if (iy % 23 == 0 && ix % 51 == 0)
-			{
-				int color = raw_rgb_arr[x_base + ix];
-				printf("%d %d %d\n", color >> 16 & 0xFF,  color >> 8 & 0xFF, color & 0xFF);
-			}
-		}
-	}
-}
+void	print_pixel_arr(t_color *pixel_arr); // debug
+void	print_raw_rgb_arr(int *raw_rgb_arr); // debug
 
 /*
 @brief responsible for free(world)
@@ -83,7 +49,7 @@ int	render_world(t_world *world, int option_flag)
 		return (FAILURE);
 	}
 	clear_world(world);
-	print_pixel_arr(pixel_arr);
+	print_pixel_arr(pixel_arr); // debug
 	if (pixel_arr_to_raw_rgb_arr(&raw_rgb_arr, pixel_arr) == FAILURE)
 	{
 		free(pixel_arr);

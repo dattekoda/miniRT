@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/12 14:58:19 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/02/12 15:06:18 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -213,6 +213,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 SRCS	+=	$(addprefix src_for_debug/, \
 				print_line_list.c \
 				print_hitter.c \
+				print_pixec_arr.c \
 			) \
 
 # --- obj ---
