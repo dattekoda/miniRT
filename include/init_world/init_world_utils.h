@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 22:06:13 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 19:55:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ extern const t_generate_material	g_generate_materials[];
 
 extern const t_option				*g_option_table[];
 
+// TODO: should be moved into material.h
 extern const char					*g_material_specifiers[];
 extern const char					*g_texture_specifiers[];
 

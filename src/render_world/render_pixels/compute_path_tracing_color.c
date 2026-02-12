@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 21:07:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 20:14:26 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static bool	is_killed_by_russian_roulette(size_t depth, t_color *attenuation);
 
 void	print_hitter(t_hitter *hitter); // debug
 
+#include "rt_debug.h"
+#include <stdlib.h>
 t_color	compute_path_tracing_color(
 			const t_ray *ray,
 			const t_world *world,

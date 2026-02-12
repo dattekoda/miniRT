@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 09:32:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/09 22:32:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 20:01:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static t_metal	construct_metal(t_texture *texture_ptr)
 	metal.material.texture_ptr = texture_ptr;
 	metal.material.clear = clear_material;
 	metal.material.scatter = scatter_metal;
+	metal.material.idx = METAL;
 	return (metal);
 }
 

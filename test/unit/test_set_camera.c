@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_set_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:53:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 19:35:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/12 20:17:23 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	test_get_camera_data(void)
 	return (0);
 }
 
-void	print_vec(t_vec3 v);
+void	print_vec3(t_vec3 v);
 
 static bool	camera_equal(t_camera a, t_camera b)
 {

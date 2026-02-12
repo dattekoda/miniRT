@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 21:00:56 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 20:48:34 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,21 @@ t_color			compute_path_tracing_color(
 					const t_world *world,
 					size_t depth);
 static t_color	calc_one_sample_pixel_color(
-					int xi,
-					int yi,
+					size_t xi,
+					size_t yi,
 					const t_world *world,
 					bool is_phong);
-static void		calc_uv(double *u, double *v, int xi, int yi);
+static void		calc_random_xv(t_vec2 *random_xv, size_t xi, size_t yi);
 static t_vec3	random_point_in_unit_disk(void);
 static t_ray	get_ray_from_camera(
 					const t_camera *camera,
-					double u,
-					double v);
+					const t_vec2 *map);
 
 t_color	calc_sample_pixel_color(
-					int xi,
-					int yi,
-					const t_world *world,
-					bool is_phong)
+			size_t xi,
+			size_t yi,
+			const t_world *world,
+			bool is_phong)
 {
 	static const double	color_scale = 1.0 / SAMPLES_PER_PIXEL;
 	size_t				si;
@@ -61,34 +60,33 @@ t_color	calc_sample_pixel_color(
 
 // TODO: u, v should be t_vec2 map
 static t_color	calc_one_sample_pixel_color(
-					int xi,
-					int yi,
+					size_t xi,
+					size_t yi,
 					const t_world *world,
 					bool is_phong)
 {
 	t_ray	ray;
-	double	u;
-	double	v;
+	t_vec2	random_xv;
 
-	calc_uv(&u, &v, xi, yi);
-	ray = get_ray_from_camera(&world->camera, u, v);
+	calc_random_xv(&random_xv, xi, yi);
+	ray = get_ray_from_camera(&world->camera, &random_xv);
 	if (is_phong)
 		return (compute_phong_color(&ray, world));
 	return (compute_path_tracing_color(&ray, world, 0));
 }
 
-static void	calc_uv(double *u, double *v, int xi, int yi)
+static void	calc_random_xv(t_vec2 *random_xv, size_t xi, size_t yi)
 {
 	static const double	inv_w = 1.0 / (WINDOW_WIDTH - 1);
 	static const double	inv_h = 1.0 / (WINDOW_WIDTH * ASPECT_RATIO - 1);
 	
-	*u = (xi + random_01()) * inv_w;
-	*v = (yi + random_01()) * inv_h;
+	random_xv->e[0] = (xi + random_01()) * inv_w;
+	random_xv->e[1] = (yi + random_01()) * inv_h;
 	return ;
 }
 
 // TODO: maybe necessary to normalize ray's vector
-static t_ray	get_ray_from_camera(const t_camera *camera, double u, double v)
+static t_ray	get_ray_from_camera(const t_camera *camera, const t_vec2 *random_xv)
 {
 	t_vec3				ray_displacement;
 	t_vec3				offset;
@@ -100,8 +98,8 @@ static t_ray	get_ray_from_camera(const t_camera *camera, double u, double v)
 			scal_mul_vec3(camera->onb.v[0], ray_displacement.e[0]),
 			scal_mul_vec3(camera->onb.v[1], ray_displacement.e[1]));
 	ray_direct = sub_vec3(
-			add_vec3(camera->left_top, scal_mul_vec3(camera->onb.v[0], u)),
-			add_vec3(scal_mul_vec3(camera->onb.v[1], v), camera->origin));
+			add_vec3(camera->left_top, scal_mul_vec3(camera->onb.v[0], random_xv->e[0])),
+			add_vec3(scal_mul_vec3(camera->onb.v[1], random_xv->e[1]), camera->origin));
 	return (construct_ray(
 			add_vec3(camera->origin, offset),
 			sub_vec3(ray_direct, offset)));

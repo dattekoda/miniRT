@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:48:05 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 19:42:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 20:17:23 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <assert.h>
 
 bool	vec3_equal(t_vec3 a, t_vec3 b);
-void	print_vec(t_vec3 v);
+void	print_vec3(t_vec3 v);
 
 int			line_to_light(t_hitter **light, const char *line, int option_flag);
 static int	test_target(const char *line, int option_flag);

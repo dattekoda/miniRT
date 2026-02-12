@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 22:06:22 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 19:54:51 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 # include "texture.h"
 # include "world.h"
 # include "pdf.h"
+
+enum e_material_idx
+{
+	LAMBERTIAN,
+	METAL,
+	DIELECTRIC,
+	INVALID_MATERIAL_IDX
+};
 
 /*
 @param attenuation the reduction of the light's force
@@ -34,21 +42,14 @@ typedef struct s_scatter_record
 
 typedef struct s_material
 {
-	bool		(*scatter)(
-		const void *self,
-		const t_world * world,
-		t_hrec * hrec,
-		t_srec * srec);
-	t_texture	*texture_ptr;
-	t_clear		clear;
+	bool				(*scatter)(
+							const void *self,
+							const t_world * world,
+							t_hrec * hrec,
+							t_srec * srec);
+	t_texture			*texture_ptr;
+	t_clear				clear;
+	enum e_material_idx	idx;
 }	t_material;
-
-enum e_material_idx
-{
-	LAMBERTIAN,
-	METAL,
-	DIELECTRIC,
-	INVALID_MATERIAL_IDX
-};
 
 #endif

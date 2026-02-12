@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_pixel_arr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:03:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 15:08:14 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/12 20:17:23 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "rt_define.h"
 #include <stdio.h>
 
-void	print_vec(t_vec3 v);
+void	print_vec3(t_vec3 v);
 
 void	print_pixel_arr(t_color *pixel_arr)
 {
@@ -24,7 +24,7 @@ void	print_pixel_arr(t_color *pixel_arr)
 		for (size_t ix = 0; ix < g_window_width; ix++)
 		{
 			if (iy % 23 == 0 && ix % 51 == 0)
-				print_vec(pixel_arr[x_base + ix]);
+				print_vec3(pixel_arr[x_base + ix]);
 		}
 	}
 }

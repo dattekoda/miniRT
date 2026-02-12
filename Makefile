@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/12 15:08:58 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/02/12 20:10:06 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -211,9 +211,11 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 
 # you can delete later
 SRCS	+=	$(addprefix src_for_debug/, \
-				print_line_list.c \
 				print_hitter.c \
+				print_line_list.c \
+				print_material.c \
 				print_pixel_arr.c \
+				print_ray.c \
 				print_vec.c \
 			) \
 

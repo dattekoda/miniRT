@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   construct_camera.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:20:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 20:32:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/12 20:48:16 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <math.h>
 
 static t_onb	construct_camera_onb(t_vec3 direct);
-static void		get_screen_size(double hfov, double *width, double *height);
+static void		calc_screen_size(double hfov, double *width, double *height);
 static t_vec3	calc_screen_left_top(
 					t_vec3 origin, t_onb onb, double width, double height);
 
@@ -28,7 +28,7 @@ t_camera	construct_camera(t_point3 origin, t_vec3 direct, double hfov)
 
 	camera.origin = origin;
 	camera.onb = construct_camera_onb(direct);
-	get_screen_size(hfov, &camera.width, &camera.height);
+	calc_screen_size(hfov, &camera.width, &camera.height);
 	camera.left_top = calc_screen_left_top(
 			camera.origin, camera.onb, camera.width, camera.height);
 	return (camera);
@@ -51,20 +51,20 @@ static t_onb	construct_camera_onb(t_vec3 direct)
 	t_vec3	vup;
 
 	if (fabs(direct.e[Y]) > 0.9)
-		vup = construct_vec3(1, 0, 0);
-	else
 		vup = construct_vec3(0, 1, 0);
+	else
+		vup = construct_vec3(0, 0, 1);
 	camera_onb.v[Z] = direct;
 	camera_onb.v[X] = normalize(cross(vup, camera_onb.v[Z]));
 	camera_onb.v[Y] = cross(camera_onb.v[Z], camera_onb.v[X]);
 	return (camera_onb);
 }
 
-static void	get_screen_size(double hfov, double *width, double *height)
+static void	calc_screen_size(double hfov, double *width, double *height)
 {
-	double	hfov_radian;
+	const double	hfov_radian = (hfov / 180) * M_PI;
 
-	hfov_radian = hfov * M_PI / 180.0;
-	*width = tan(hfov_radian / 2) * 2.0;
+	*width = tan(hfov_radian * 0.5) * 2.0;
 	*height = *width * ASPECT_RATIO;
+	return ;
 }

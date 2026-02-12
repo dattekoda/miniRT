@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:30:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/07 16:23:42 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 20:54:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ double	calc_plus_solution(const t_solution *solu)
 	return ((-solu->coeff.e[1] + solu->root_discriminant) / solu->coeff.e[0]);
 }
 
-bool	is_solution_in_range(t_solution *solu, t_range *range)
+bool	is_solution_inside_range(t_solution *solu, const t_range *range)
 {
 	if (solu->discriminant < 0)
 		return (false);
@@ -49,6 +49,22 @@ bool	is_solution_in_range(t_solution *solu, t_range *range)
 		return (true);
 	solu->solution = calc_plus_solution(solu);
 	if (is_inside_range(solu->solution, range) == true)
+		return (true);
+	return (false);
+}
+
+#include "rt_debug.h"
+#include <stdio.h>
+bool	is_solution_outside_range(t_solution *solu, const t_range *range)
+{
+	if (solu->discriminant < 0)
+		return (true);
+	solu->root_discriminant = sqrt(solu->discriminant);
+	solu->solution = calc_minus_solution(solu);
+	if (is_outside_range(solu->solution, range) == true)
+		return (true);
+	solu->solution = calc_plus_solution(solu);
+	if (is_outside_range(solu->solution, range) == true)
 		return (true);
 	return (false);
 }

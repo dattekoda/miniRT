@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:20:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 19:02:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 19:06:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void		clear_world(t_world *world);
 static int	pixel_arr_to_raw_rgb_arr(
 				int **raw_rgb_arr,
 				const t_color *pixel_arr);
+static void	set_raw_rgb_arr(int *raw_rgb_arr, const t_color *pixel_arr);
 static int	convert_into_raw_rgb(t_color color);
 
 /*
@@ -39,8 +40,8 @@ int	render_world(t_world *world, int option_flag)
 	t_color	*pixel_arr;
 	int		*raw_rgb_arr;
 
-	if (render_pixels(&pixel_arr, world,
-		option_flag & OPT_ARTIFICIAL) == FAILURE)
+	if (render_pixels(
+		&pixel_arr, world, option_flag & OPT_ARTIFICIAL) == FAILURE)
 	{
 		clear_world(world);
 		return (FAILURE);
@@ -61,13 +62,19 @@ static int	pixel_arr_to_raw_rgb_arr(
 				int **raw_rgb_arr,
 				const t_color *pixel_arr)
 {
+	*raw_rgb_arr = ft_calloc(g_window_width * g_window_height, sizeof(int));
+	if (!*raw_rgb_arr)
+		return (FAILURE);
+	set_raw_rgb_arr(*raw_rgb_arr, pixel_arr);
+	return (SUCCESS);
+}
+
+static void	set_raw_rgb_arr(int *raw_rgb_arr, const t_color *pixel_arr)
+{
 	size_t	xi;
 	size_t	yi;
 	size_t	x_base;
 
-	*raw_rgb_arr = ft_calloc(g_window_width * g_window_height, sizeof(int));
-	if (!*raw_rgb_arr)
-		return (FAILURE);
 	yi = 0;
 	while (yi < g_window_height)
 	{
@@ -75,13 +82,12 @@ static int	pixel_arr_to_raw_rgb_arr(
 		x_base = yi * g_window_width;
 		while (xi < g_window_width)
 		{
-			(*raw_rgb_arr)[x_base + xi]
+			raw_rgb_arr[x_base + xi]
 				= convert_into_raw_rgb(pixel_arr[x_base + xi]);
 			xi++;
 		}
 		yi++;
 	}
-	return (SUCCESS);
 }
 
 static int	convert_into_raw_rgb(t_color color)

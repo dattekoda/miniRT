@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_lambertian.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 14:58:53 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/12 20:00:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static t_lambertian	construct_lambertian(t_texture *texture_ptr)
 	lambertian.material.scatter = scatter_lambertian;
 	lambertian.material.clear = clear_material;
 	lambertian.material.texture_ptr = texture_ptr;
+	lambertian.material.idx = LAMBERTIAN;
 	return (lambertian);
 }
 
