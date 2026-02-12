@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 09:32:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 20:01:06 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 21:18:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 t_vec3			orient_normal(
 					const t_vec3 *hrec_normal,
 					const t_vec3 *ray_in_direct);
-t_vec3			reflect(const t_vec3 *vec, const t_vec3 *normal);
 static t_vec3	random_in_unit_sphere(void);
 
 /*
@@ -69,7 +68,7 @@ static bool	scatter_metal(
 	const t_vec3	reflect_normal
 		= orient_normal(&hrec->normal, &hrec->ray_in.direct);
 	const t_vec3	reflected
-		= normalize(reflect(&hrec->ray_in.direct, &reflect_normal));
+		= reflect(normalize(hrec->ray_in.direct), reflect_normal);
 	t_texture		*texture_ptr;
 
 	self = s;

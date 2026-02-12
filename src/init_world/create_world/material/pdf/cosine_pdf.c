@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/09 21:42:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 21:09:56 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,8 @@ static double	calc_cosine_pdf_value(
 					const void *s,
 					const t_vec3 *direction)
 {
-	const t_cosine_pdf	*self;
+	const t_cosine_pdf	*self = s;
 
-	self = s;
 	return (dot(self->onb.v[2], normalize(*direction)));
 }
 

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 20:00:39 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 21:15:41 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static bool				scatter_lambertian(
 							t_hrec *hrec,
 							t_srec *srec);
 static t_mixture_pdf	construct_mix_pdf_lambertian(
-							const t_world *world,
+							const t_list *light_list,
 							const t_hrec *hrec);
 
 /*
@@ -66,7 +66,9 @@ static t_lambertian	construct_lambertian(t_texture *texture_ptr)
 
 static bool	scatter_lambertian(
 				const void *s,
-				const t_world *world, t_hrec *hrec, t_srec *srec)
+				const t_world *world,
+				t_hrec *hrec,
+				t_srec *srec)
 {
 	const t_lambertian	*self;
 	t_mixture_pdf		mix_pdf;
@@ -75,7 +77,7 @@ static bool	scatter_lambertian(
 	self = s;
 	texture_ptr = self->material.texture_ptr;
 	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec);
-	mix_pdf = construct_mix_pdf_lambertian(world, hrec);
+	mix_pdf = construct_mix_pdf_lambertian(world->light_list, hrec);
 	srec->next_ray = construct_ray(
 			hrec->point, mix_pdf.pdf.random_pdf(&mix_pdf));
 	srec->sampling_pdf = mix_pdf.pdf.calc_pdf_value(
@@ -86,7 +88,7 @@ static bool	scatter_lambertian(
 }
 
 static t_mixture_pdf	construct_mix_pdf_lambertian(
-							const t_world *world,
+							const t_list *light_list,
 							const t_hrec *hrec)
 {
 	const t_vec3	reflect_normal
@@ -95,6 +97,6 @@ static t_mixture_pdf	construct_mix_pdf_lambertian(
 	t_cosine_pdf	cos_pdf;
 
 	cos_pdf = construct_cosine_pdf(reflect_normal);
-	light_pdf = construct_light_pdf(hrec, world);
+	light_pdf = construct_light_pdf(hrec, light_list);
 	return (construct_mixture_pdf(&cos_pdf, &light_pdf));
 }

@@ -6,14 +6,14 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 22:06:25 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 21:00:24 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_UTILS_H
 # define RT_UTILS_H
 
-# include <stdio.h> // delete later 
+# include <stddef.h>
 # include <stdbool.h>
 
 double	clamp(double x, double min, double max);
