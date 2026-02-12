@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_lambertian.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 22:11:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 14:47:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static bool	scatter_lambertian(
 
 	self = s;
 	texture_ptr = self->material.texture_ptr;
-	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec, 0, 0);
+	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec);
 	mix_pdf = construct_mix_pdf_lambertian(world, hrec);
 	srec->next_ray = construct_ray(
 			hrec->point, mix_pdf.pdf.random_pdf(&mix_pdf));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_config.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 20:01:47 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 14:46:57 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@
 // 0: ripple
 // 1: block
 # define BUMP_TYPE 0
+
+# define CHECKER_SPLIT_SIZE 8
 
 // phong
 # define R_PHONG_AMBIENT_COEFF 0.1
