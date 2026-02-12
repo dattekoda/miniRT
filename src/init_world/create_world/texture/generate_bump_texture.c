@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_bump_texture.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 18:52:35 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 20:02:04 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 14:45:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 #include "rt_define.h"
 #include <math.h>
 
-extern t_color *(*const g_local_normal[])(t_vec2);
+extern t_color (*const g_local_normal[])(t_vec2);
+
+static t_bump_texture	construct_bump_texture(t_color color);
+static t_color	calc_bump_texture_value(const void *s, t_hrec *hrec);
 
 t_texture	*generate_bump_texture(t_color color)
 {
@@ -30,7 +33,7 @@ t_texture	*generate_bump_texture(t_color color)
 	return ((t_texture *)p);
 }
 
-t_bump_texture	construct_bump_texture(t_color color)
+static t_bump_texture	construct_bump_texture(t_color color)
 {
 	t_bump_texture	bump;
 
@@ -41,7 +44,7 @@ t_bump_texture	construct_bump_texture(t_color color)
 	return (bump);
 }
 
-t_color	calc_bump_texture_value(const void *s, t_hrec *hrec)
+static t_color	calc_bump_texture_value(const void *s, t_hrec *hrec)
 {
 	const t_bump_texture	*self = s;
 	const t_onb				onb = construct_onb(hrec->normal);

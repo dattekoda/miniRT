@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_lambertian.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 16:16:54 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 14:58:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

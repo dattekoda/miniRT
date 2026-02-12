@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_local_normal.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:48:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 20:35:22 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 14:45:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 t_vec3	local_normal_ripple(t_vec2 map);
 t_vec3	local_normal_block(t_vec2 map);
 
-t_color *(*const g_local_normal[])(t_vec2) = {
+t_color (*const g_local_normal[])(t_vec2) = {
 	local_normal_ripple,
 	local_normal_block,
 	NULL

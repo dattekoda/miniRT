@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_solid_texture.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:05:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 16:16:11 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 14:58:56 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
