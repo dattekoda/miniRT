@@ -6,13 +6,13 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:03:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 15:06:56 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/12 15:08:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec.h"
 #include "rt_define.h"
-#include <stddef.h>
+#include <stdio.h>
 
 void	print_vec(t_vec3 v);
 
