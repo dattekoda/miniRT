@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:48:09 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 22:25:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 22:47:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,15 @@ double	random_double(double min, double max)
 
 double	random_01(void)
 {
-	uint64_t	u;
+	const uint64_t	u = random_uint64() >> 12 | 0x3FF0000000000000ULL;
 
-	u = random_uint64() >> 12 | 0x3FF0000000000000ULL;
 	return (*(double *)&u - 1.0);
 }
 
 double	random_minus1_to_1(void)
 {
-	uint64_t	u;
+	uint64_t	u = (random_uint64() >> 12) | 0x4000000000000000ULL;
 
-	u = (random_uint64() >> 12) | 0x4000000000000000ULL;
 	return (*(double *)&u - 3.0);
 }
 

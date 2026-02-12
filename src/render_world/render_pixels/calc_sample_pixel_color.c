@@ -6,13 +6,14 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 22:36:48 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 23:11:51 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
 #include "vec_utils.h"
 #include "libft.h"
+#include "axis.h"
 #include "option.h"
 #include "rt_utils.h"
 #include "rt_define.h"
@@ -59,6 +60,8 @@ t_color	calc_sample_pixel_color(
 	return (scal_mul_vec3(pixel_color, color_scale));
 }
 
+#include "rt_debug.h"
+#include <stdlib.h>
 static t_color	calc_one_sample_pixel_color(
 					size_t xi,
 					size_t yi,
@@ -72,6 +75,7 @@ static t_color	calc_one_sample_pixel_color(
 	return (compute_path_tracing_color(&ray, world, 0));
 }
 
+#include <stdio.h>
 // TODO: maybe need to normalize ray's vector
 static t_ray	get_ray_from_camera(const t_camera *camera, size_t xi, size_t yi)
 {
@@ -82,8 +86,8 @@ static t_ray	get_ray_from_camera(const t_camera *camera, size_t xi, size_t yi)
 			scal_mul_vec3(camera->onb.v[0], ray_displacement.e[0]),
 			scal_mul_vec3(camera->onb.v[1], ray_displacement.e[1]));
 	const t_vec3	ray_direct = sub_vec3(
-			add_vec3(camera->left_top, scal_mul_vec3(camera->onb.v[0], random_xv.e[0])),
-			add_vec3(scal_mul_vec3(camera->onb.v[1], random_xv.e[1]), camera->origin));
+			add_vec3(camera->left_top, scal_mul_vec3(camera->onb.v[A_X], random_xv.e[A_X])),
+			add_vec3(scal_mul_vec3(camera->onb.v[A_Y], random_xv.e[A_Y]), camera->origin));
 
 	return (construct_ray(
 			add_vec3(camera->origin, offset),
@@ -107,9 +111,9 @@ static t_vec3	random_point_in_unit_disk(void)
 	while (true)
 	{
 		random_point = construct_vec3(
-				random_minus1_to_1(),
-				random_minus1_to_1(),
-				0);
+			random_minus1_to_1(),
+			random_minus1_to_1(),
+			0);
 		if (length_squared_vec3(random_point) < 1.0)
 			break ;
 	}

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:20:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 22:15:08 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 23:11:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ static t_onb	construct_camera_onb(t_vec3 direct)
 	t_onb	camera_onb;
 	t_vec3	vup;
 
-	if (fabs(direct.e[A_Y]) > 0.9)
+	if (fabs(direct.e[A_Y]) < 0.9)
 		vup = construct_vec3(0, 1, 0);
 	else
-		vup = construct_vec3(0, 0, 1);
+		vup = construct_vec3(1, 0, 0);
 	camera_onb.v[A_Z] = direct;
 	camera_onb.v[A_X] = normalize(cross(vup, camera_onb.v[A_Z]));
 	camera_onb.v[A_Y] = cross(camera_onb.v[A_Z], camera_onb.v[A_X]);
