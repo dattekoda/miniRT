@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:04:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 21:02:56 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 21:53:59 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 static double	calc_mixture_pdf_value(const void *s, const t_vec3 *direction);
 static t_vec3	random_mixture_pdf(const void *s);
 
-t_mixture_pdf	construct_mixture_pdf(void *surface_pdf, void *light_pdf)
+t_mixture_pdf	construct_mixture_pdf(
+					const void *surface_pdf,
+					const void *light_pdf)
 {
 	t_mixture_pdf	mixture;
 
@@ -46,11 +48,9 @@ static double	calc_mixture_pdf_value(const void *s, const t_vec3 *direction)
 static t_vec3	random_mixture_pdf(const void *s)
 {
 	const t_mixture_pdf	*self = s;
-	t_pdf				*surface_pdf;
-	t_pdf				*light_pdf;
+	const t_pdf			*surface_pdf = self->surface_pdf;
+	const t_pdf			*light_pdf = self->light_pdf;
 
-	surface_pdf = self->surface_pdf;
-	light_pdf = self->light_pdf;
 	if (!light_pdf || random_01() > MIXTURE_RATIO)
 		return (surface_pdf->random_pdf(surface_pdf));
 	return (light_pdf->random_pdf(light_pdf));

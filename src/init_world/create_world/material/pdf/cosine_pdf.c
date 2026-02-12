@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 21:09:56 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 21:31:11 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ static double	calc_cosine_pdf_value(
 static t_vec3	random_cosine_pdf(const void *s);
 static t_vec3	random_cosine_direction(void);
 
-t_cosine_pdf	*generate_cosine_pdf(t_vec3 normal)
-{
-	t_cosine_pdf	*p;
+// t_cosine_pdf	*generate_cosine_pdf(t_vec3 normal)
+// {
+// 	t_cosine_pdf	*p;
 
-	p = ft_calloc(1, sizeof(t_cosine_pdf));
-	if (!p)
-		return (NULL);
-	*p = construct_cosine_pdf(normal);
-	return (p);
-}
+// 	p = ft_calloc(1, sizeof(t_cosine_pdf));
+// 	if (!p)
+// 		return (NULL);
+// 	*p = construct_cosine_pdf(normal);
+// 	return (p);
+// }
 
 t_cosine_pdf	construct_cosine_pdf(t_vec3 normal)
 {

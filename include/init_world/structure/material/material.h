@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 19:54:51 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 21:27:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_material
 							t_hrec * hrec,
 							t_srec * srec);
 	t_texture			*texture_ptr;
+	t_pdf				*pdf_ptr;
 	t_clear				clear;
 	enum e_material_idx	idx;
 }	t_material;

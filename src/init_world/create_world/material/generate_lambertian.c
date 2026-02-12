@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 21:15:41 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 21:53:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ static bool				scatter_lambertian(
 							const t_world *world,
 							t_hrec *hrec,
 							t_srec *srec);
-static t_mixture_pdf	construct_mix_pdf_lambertian(
+static void				record_next_direct_from_pdf(
 							const t_list *light_list,
-							const t_hrec *hrec);
+							const t_hrec *hrec,
+							t_srec *srec);
 
 /*
 @brief responsible for free(texture_ptr)
@@ -71,32 +72,35 @@ static bool	scatter_lambertian(
 				t_srec *srec)
 {
 	const t_lambertian	*self;
-	t_mixture_pdf		mix_pdf;
-	t_texture			*texture_ptr;
 
 	self = s;
-	texture_ptr = self->material.texture_ptr;
-	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec);
-	mix_pdf = construct_mix_pdf_lambertian(world->light_list, hrec);
+	srec->attenuation
+		= self->material.texture_ptr->calc_texture_value(
+			self->material.texture_ptr,
+			hrec);
+	record_next_direct_from_pdf(world->light_list, hrec, srec);
+	return (true);
+}
+
+static void		record_next_direct_from_pdf(
+				const t_list *light_list,
+				const t_hrec *hrec,
+				t_srec *srec)
+{
+	const t_vec3	reflect_normal
+		= orient_normal(&hrec->normal, &hrec->ray_in.direct);
+	const t_cosine_pdf	cos_pdf
+		= construct_cosine_pdf(reflect_normal);
+	const t_light_pdf	light_pdf
+		= construct_light_pdf(hrec, light_list);
+	const t_mixture_pdf	mix_pdf
+		= construct_mixture_pdf(&cos_pdf, &light_pdf);
+
 	srec->next_ray = construct_ray(
 			hrec->point, mix_pdf.pdf.random_pdf(&mix_pdf));
 	srec->sampling_pdf = mix_pdf.pdf.calc_pdf_value(
 			&mix_pdf, &srec->next_ray.direct);
 	srec->surface_pdf = mix_pdf.surface_pdf->calc_pdf_value(
 			&mix_pdf.surface_pdf, &srec->next_ray.direct);
-	return (true);
-}
-
-static t_mixture_pdf	construct_mix_pdf_lambertian(
-							const t_list *light_list,
-							const t_hrec *hrec)
-{
-	const t_vec3	reflect_normal
-		= orient_normal(&hrec->normal, &hrec->ray_in.direct);
-	t_light_pdf		light_pdf;
-	t_cosine_pdf	cos_pdf;
-
-	cos_pdf = construct_cosine_pdf(reflect_normal);
-	light_pdf = construct_light_pdf(hrec, light_list);
-	return (construct_mixture_pdf(&cos_pdf, &light_pdf));
+	return ;
 }
