@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/11 21:47:54 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/12 15:08:58 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,11 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							preprocess_line_list.c \
 						) \
 						$(addprefix texture/, \
+							$(addprefix local_normal/, \
+								define_local_normal.c \
+								local_normal.c \
+							) \
+							generate_bump_texture.c \
 							generate_checker_texture.c \
 							generate_solid_texture.c \
 						) \
@@ -208,6 +213,8 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 SRCS	+=	$(addprefix src_for_debug/, \
 				print_line_list.c \
 				print_hitter.c \
+				print_pixel_arr.c \
+				print_vec.c \
 			) \
 
 # --- obj ---
