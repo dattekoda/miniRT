@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 22:27:14 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:55:30 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ extern const unsigned int	g_window_height;
 # define METAL_FUZZINESS 0.8
 
 // 0 < SAMPLES_PER_PIXEL
+// should be at rt_config.h
 # define SAMPLES_PER_PIXEL 30
 # define LENS_RADIUS 0.0
 # define MAX_DEPTH 10

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 22:26:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 23:23:37 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 #include <unistd.h>
 
 t_color			calc_sample_pixel_color(
-					size_t xi,
-					size_t yi,
 					const t_world *world,
-					bool is_phong);
+					bool is_phong,
+					size_t xi,
+					size_t yi);
 static void		accumulate_pixel_arr(
 					t_color *pixel_arr,
 					const t_world *world,
@@ -63,7 +63,7 @@ static void	accumulate_pixel_arr(
 		while (xi < g_window_width)
 		{
 			pixel_arr[x_base + xi]
-				= calc_sample_pixel_color(xi, yi, world, is_phong);
+				= calc_sample_pixel_color(world, is_phong, xi, yi);
 			xi++;
 		}
 		yi++;

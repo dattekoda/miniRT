@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 23:11:51 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/13 16:08:57 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ t_color			compute_path_tracing_color(
 					const t_world *world,
 					size_t depth);
 static t_color	calc_one_sample_pixel_color(
-					size_t xi,
-					size_t yi,
 					const t_world *world,
-					bool is_phong);
+					bool is_phong,
+					size_t xi,
+					size_t yi);
 static t_vec2	calc_random_xv(size_t xi, size_t yi);
 static t_vec3	random_point_in_unit_disk(void);
 static t_ray	get_ray_from_camera(
@@ -38,10 +38,10 @@ static t_ray	get_ray_from_camera(
 					size_t yi);
 
 t_color	calc_sample_pixel_color(
-			size_t xi,
-			size_t yi,
 			const t_world *world,
-			bool is_phong)
+			bool is_phong,
+			size_t xi,
+			size_t yi)
 {
 	static const double	color_scale = 1.0 / SAMPLES_PER_PIXEL;
 	size_t				si;
@@ -54,21 +54,19 @@ t_color	calc_sample_pixel_color(
 		pixel_color
 			= add_vec3(
 				pixel_color,
-				calc_one_sample_pixel_color(xi, yi, world, is_phong));
+				calc_one_sample_pixel_color(world, is_phong, xi, yi));
 		si++;
 	}
 	return (scal_mul_vec3(pixel_color, color_scale));
 }
 
-#include "rt_debug.h"
-#include <stdlib.h>
 static t_color	calc_one_sample_pixel_color(
-					size_t xi,
-					size_t yi,
 					const t_world *world,
-					bool is_phong)
+					bool is_phong,
+					size_t xi,
+					size_t yi)
 {
-	const t_ray		ray = get_ray_from_camera(&world->camera, xi, yi);
+	const t_ray	ray = get_ray_from_camera(&world->camera, xi, yi);
 
 	if (is_phong)
 		return (compute_phong_color(&ray, world));
@@ -76,16 +74,19 @@ static t_color	calc_one_sample_pixel_color(
 }
 
 #include <stdio.h>
+#include "rt_debug.h"
 // TODO: maybe need to normalize ray's vector
 static t_ray	get_ray_from_camera(const t_camera *camera, size_t xi, size_t yi)
 {
 	const t_vec2	random_xv = calc_random_xv(xi, yi);
 	const t_vec3	ray_displacement
 		= scal_mul_vec3(random_point_in_unit_disk(), LENS_RADIUS);
-	const t_vec3	offset = add_vec3(
+	const t_vec3	offset
+		= add_vec3(
 			scal_mul_vec3(camera->onb.v[0], ray_displacement.e[0]),
 			scal_mul_vec3(camera->onb.v[1], ray_displacement.e[1]));
-	const t_vec3	ray_direct = sub_vec3(
+	const t_vec3	ray_direct
+		= sub_vec3(
 			add_vec3(camera->left_top, scal_mul_vec3(camera->onb.v[A_X], random_xv.e[A_X])),
 			add_vec3(scal_mul_vec3(camera->onb.v[A_Y], random_xv.e[A_Y]), camera->origin));
 

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:22:49 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 18:26:34 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 23:18:15 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	clear_rt_mlx(t_rt_mlx *rt_mlx)
 		mlx_destroy_image(rt_mlx->var.mlx, rt_mlx->img.id);
 	if (rt_mlx->var.mlx && rt_mlx->var.win)
 		mlx_destroy_window(rt_mlx->var.mlx, rt_mlx->var.win);
-	if (rt_mlx->var.mlx)
-		mlx_destroy_display(rt_mlx->var.mlx);
+	// if (rt_mlx->var.mlx)
+	// 	mlx_destroy_display(rt_mlx->var.mlx);
 	if (rt_mlx->var.mlx)
 		free(rt_mlx->var.mlx);
 	return ;

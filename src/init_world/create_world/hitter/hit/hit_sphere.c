@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 20:54:24 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/13 16:05:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 #include <math.h>
 
 static void			init_solution_context(
-						t_solution *solu, const t_sphere *self, const t_ray *ray);
+						t_solution *solu,
+						const t_sphere *self,
+						const t_ray *ray);
 static void			assign_sphere_hrec(
 						const t_sphere *self,
 						const t_ray *ray,
@@ -40,14 +42,15 @@ static t_vec2		construct_sphere_uv(const t_vec3 *unit_normal);
 // t_vec2	range = construct_vec2(0.01, INFINITY);
 // if (world.object_tree->hit(world.object_tree, &ray, &hrec, &range))
 // 	printf("hit\n");
-	#include <stdio.h>
+#include <stdio.h>
+#include "rt_debug.h"
+#include <stdlib.h>
 bool	hit_sphere(
 	const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {
-	const t_sphere	*self;
+	const t_sphere	*self = s;
 	t_solution		solu;
 
-	self = s;
 	init_solution_context(&solu, self, ray);
 	if (is_solution_outside_range(&solu, range))
 		return (false);
@@ -56,13 +59,15 @@ bool	hit_sphere(
 }
 
 static void	init_solution_context(
-		t_solution *solu, const t_sphere *self, const t_ray *ray)
+				t_solution *solu,
+				const t_sphere *self,
+				const t_ray *ray)
 {
 	const t_vec3	center_to_ray_origin = sub_vec3(ray->origin, self->center);
 
-	solu->coeff.e[0] = length_squared_vec3(ray->direct);
+	solu->coeff.e[0] = dot(ray->direct, ray->direct);
 	solu->coeff.e[1] = dot(center_to_ray_origin, ray->direct);
-	solu->coeff.e[2] = length_squared_vec3(center_to_ray_origin)
+	solu->coeff.e[2] = dot(center_to_ray_origin, center_to_ray_origin)
 		- pow(self->radius, 2);
 	solu->discriminant = calc_discriminant(solu);
 	return ;
