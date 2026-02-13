@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 19:47:24 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/13 20:42:54 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int		set_option(char *options[]);
 int		init_world(t_world *world, char *file_name, int option_flag);
 int		render_world(t_world *world, int option_flag);
 
+#include "rt_debug.h"
+#include <stdio.h>
 int	mini_rt(int argc, char *argv[])
 {
 	int		option_flag;
@@ -31,6 +33,15 @@ int	mini_rt(int argc, char *argv[])
 	option_flag = set_option(argv + 2);
 	if (init_world(&world, argv[1], option_flag) == FAILURE)
 		return (FAILURE);
+	{
+		print_vec3(world.camera.onb.v[0]);
+		print_vec3(world.camera.onb.v[1]);
+		print_vec3(world.camera.onb.v[2]);
+		print_vec3(world.camera.left_top);
+		fprintf(stderr, "%f\n", world.camera.width);
+		fprintf(stderr, "%f\n", world.camera.height);
+		exit(1);
+	}
 	if (render_world(&world, option_flag) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
