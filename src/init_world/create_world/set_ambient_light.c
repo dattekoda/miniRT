@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 16:39:01 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 17:07:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "rt_define.h"
 #include <stdbool.h>
 
-t_color	line_to_ambient_light(const char *line);
+t_color			line_to_ambient_light(const char *line);
 static t_color	construct_ambient_light(t_color raw_color, double ratio);
 
 void	set_ambient_light(t_world *world, const t_list *line_list)

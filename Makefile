@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/13 19:52:48 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/14 17:12:30 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						) \
 						$(addprefix material/, \
 							generate_lambertian.c \
+							generate_metal.c \
 							generate_light.c \
 							$(addprefix material_utils/, \
 								orient_normal.c \
