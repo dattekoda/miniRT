@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 19:51:01 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 16:46:44 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	line_to_triangle_param(const char *line, t_triangle *triangle_param)
 {
 	size_t	i;
 
-	i = g_info_table[TRIANGLE]->id_len;
+	i = g_element_table[TRIANGLE]->id_len;
 	token_to_vec(line, &i, &triangle_param->vertex[0]);
 	token_to_vec(line, &i, &triangle_param->vertex[1]);
 	token_to_vec(line, &i, &triangle_param->vertex[2]);
@@ -48,7 +48,7 @@ static int	line_to_triangle_param(const char *line, t_triangle *triangle_param)
 	triangle_param->normal = normalize(
 			cross(triangle_param->side[0], triangle_param->side[1]));
 	if (line_to_material(
-			line, &i, &triangle_param->hitter.mat_ptr, g_info_table[TRIANGLE])
+			line, &i, &triangle_param->hitter.mat_ptr, g_element_table[TRIANGLE])
 		== FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/13 16:05:42 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 15:51:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool	hit_sphere(
 	t_solution		solu;
 
 	init_solution_context(&solu, self, ray);
-	if (is_solution_outside_range(&solu, range))
+	if (!is_solution_inside_range(&solu, range))
 		return (false);
 	assign_sphere_hrec(self, ray, hrec, solu.solution);
 	return (true);

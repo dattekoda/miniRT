@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 13:46:08 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 16:40:51 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define RT_CONFIG_H
 
 # define PROJECT_NAME "miniRT"
-
-// ambient
-# define PATHTRACING_AMBIENTSCALE 100.0
 
 // window
 # ifndef WINDOW_WIDTH
@@ -34,7 +31,7 @@
 // light
 # define LIGHT_RADIUS 100.0
 
-# define PATHTRACING_LIGHT_STRENGTH 100.0
+# define PATHTRACING_LIGHT_STRENGTH 10.0
 
 // steradian of path tracing model
 # ifndef LIGHT_STERADIAN
@@ -44,7 +41,7 @@
 # define RUSSIAN_ROULETTE_START_DEPTH 10
 
 // set 0.0 - 1.0
-# define LIVE_PROBABILITY_MIN 0.5
+# define LIVE_PROBABILITY_MIN 0.05
 
 # define CHECKER_SPLIT_SIZE 20
 

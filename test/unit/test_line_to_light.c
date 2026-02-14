@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:48:05 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 20:17:23 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	test_target(const char *line, int option_flag)
 	if (line_to_light(&hitter_ptr, line, option_flag) == FAILURE)
 		return (FAILURE);
 	sphere_ptr = (t_sphere *)hitter_ptr;
-	line_idx = g_info_table[SPHERE]->id_len;
+	line_idx = g_element_table[SPHERE]->id_len;
 	token_to_vec(line, &line_idx, &point);
 	token_to_value(line, &line_idx, &light_strength);
 	token_to_vec(line, &line_idx, &color);

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 16:36:05 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ const t_element						g_triangle_info = {
 /*
 @param NULL終端にするためにポインタの配列にしている。
 */
-const t_element						*g_info_table[] = {
+const t_element						*g_element_table[] = {
 	&g_ambient_info,
 	&g_camera_info,
 	&g_light_info,

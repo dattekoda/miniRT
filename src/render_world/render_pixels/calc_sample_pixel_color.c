@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/13 18:21:15 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 15:58:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_color	calc_sample_pixel_color(
 	return (scal_mul_vec3(pixel_color, color_scale));
 }
 
+#include "rt_debug.h"
 static t_color	calc_one_sample_pixel_color(
 					const t_world *world,
 					bool is_phong,

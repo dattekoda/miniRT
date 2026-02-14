@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/14 13:18:22 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 16:39:33 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		set_option(char *options[]);
 int		init_world(t_world *world, char *file_name, int option_flag);
 int		render_world(t_world *world, int option_flag);
 
+#include "material.h"
 #include "rt_debug.h"
 #include <stdio.h>
 int	mini_rt(int argc, char *argv[])
@@ -33,6 +34,10 @@ int	mini_rt(int argc, char *argv[])
 	option_flag = set_option(argv + 2);
 	if (init_world(&world, argv[1], option_flag) == FAILURE)
 		return (FAILURE);
+	// print_vec3(world.ambient_light);
+	// t_texture *ptr = ((t_material *)((t_hitter *)world.light_list->content)->mat_ptr)->texture_ptr;
+	// print_vec3(ptr->calc_texture_value(ptr, NULL));
+	// exit(1);
 	if (render_world(&world, option_flag) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

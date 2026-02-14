@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 12:53:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ static int	line_to_cylinder_param(
 	size_t	i;
 	double	diameter;
 
-	i = g_info_table[CYLINDER]->id_len;
+	i = g_element_table[CYLINDER]->id_len;
 	token_to_vec(line, &i, &cylinder_param->center);
 	token_to_vec(line, &i, &cylinder_param->direct);
 	token_to_value(line, &i, &diameter);
 	cylinder_param->radius = diameter * 0.5;
 	token_to_value(line, &i, &cylinder_param->height);
 	if (line_to_material(
-			line, &i, &cylinder_param->hitter.mat_ptr, g_info_table[DISK])
+			line, &i, &cylinder_param->hitter.mat_ptr, g_element_table[DISK])
 		== FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

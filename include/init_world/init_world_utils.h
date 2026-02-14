@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 19:55:44 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "texture.h"
 # include <stdbool.h>
 
-extern const t_element				*g_info_table[];
+extern const t_element				*g_element_table[];
 extern const t_element				*g_infinite_table[];
 extern const t_element				*g_finite_table[];
 

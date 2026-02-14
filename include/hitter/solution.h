@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:27:21 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 19:43:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 15:51:24 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ double	calc_discriminant(const t_solution *solu);
 double	calc_minus_solution(const t_solution *solu);
 double	calc_plus_solution(const t_solution *solu);
 bool	is_solution_inside_range(t_solution *solu, const t_range *range);
-bool	is_solution_outside_range(t_solution *solu, const t_range *range);
 
 #endif

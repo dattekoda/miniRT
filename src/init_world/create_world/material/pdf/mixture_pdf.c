@@ -6,12 +6,13 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:04:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/13 19:48:34 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 16:29:19 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mixture_pdf.h"
 #include "rt_utils.h"
+#include "vec_utils.h"
 #include "libft.h"
 
 static double	calc_mixture_pdf_value(const void *s, const t_vec3 *direction);
