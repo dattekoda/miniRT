@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 23:23:37 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 13:35:03 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,37 @@
 #include "vec_utils.h"
 #include "libft.h"
 #include <unistd.h>
+#include <math.h>
 
 t_color			calc_sample_pixel_color(
 					const t_world *world,
 					bool is_phong,
 					size_t xi,
 					size_t yi);
-static void		accumulate_pixel_arr(
-					t_color *pixel_arr,
+static void		accumulate_raw_rgb_arr(
+					int *raw_rgb_arr,
 					const t_world *world,
 					bool is_phong);
 static void		print_remaining(size_t yi);
+static int		convert_into_raw_rgb(t_color color);
 
 int	render_pixels(
-		t_color **pixel_arr_p,
+		int **raw_rgb_arr,
 		const t_world *world,
 		bool is_phong)
 {
-	*pixel_arr_p = ft_calloc(
+	*raw_rgb_arr = ft_calloc(
 			g_window_width * g_window_height,
-			sizeof(t_color));
-	if (!*pixel_arr_p)
+			sizeof(int));
+	if (!*raw_rgb_arr)
 		return (FAILURE);
 	set_random_seed_from_time();
-	accumulate_pixel_arr(*pixel_arr_p, world, is_phong);
+	accumulate_raw_rgb_arr(*raw_rgb_arr, world, is_phong);
 	return (SUCCESS);
 }
 
-static void	accumulate_pixel_arr(
-				t_color *pixel_arr,
+static void	accumulate_raw_rgb_arr(
+				int *raw_rgb_arr,
 				const t_world *world,
 				bool is_phong)
 {
@@ -57,13 +59,14 @@ static void	accumulate_pixel_arr(
 	yi = 0;
 	while (yi < g_window_height)
 	{
-		x_base = yi * g_window_width;
 		print_remaining(yi);
+		x_base = yi * g_window_width;
 		xi = 0;
 		while (xi < g_window_width)
 		{
-			pixel_arr[x_base + xi]
-				= calc_sample_pixel_color(world, is_phong, xi, yi);
+			raw_rgb_arr[x_base + xi]
+				= convert_into_raw_rgb(
+					calc_sample_pixel_color(world, is_phong, xi, yi));
 			xi++;
 		}
 		yi++;
@@ -79,4 +82,16 @@ static void	print_remaining(size_t yi)
 		(int)((double)yi / (double)(g_window_height - 1) * 100),
 		STDERR_FILENO);
 	ft_putstr_fd("%", STDERR_FILENO);
+}
+
+static int	convert_into_raw_rgb(t_color color)
+{
+	t_color	adjusted_color;
+	int		rgb_color[3];
+
+	adjusted_color = map_vec3(color, sqrt);
+	rgb_color[0] = 256.0 * clamp(adjusted_color.e[0], 0.0, 0.999);
+	rgb_color[1] = 256.0 * clamp(adjusted_color.e[1], 0.0, 0.999);
+	rgb_color[2] = 256.0 * clamp(adjusted_color.e[2], 0.0, 0.999);
+	return ((rgb_color[0] << 16) | (rgb_color[1] << 8) | rgb_color[2]);
 }

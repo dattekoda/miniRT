@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 18:55:08 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:04:34 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,13 @@ static t_material	*param_to_light_material(t_color color);
 static t_color		calc_color(
 						t_color raw_color, double ratio);
 
-
-#include <stdio.h>
 /*
 @brief line "L 0,4,4, 0.3, 255,255,0 4"
 */
 int	line_to_light(t_hitter **light, const char *line)
 {
-	t_sphere		shape_param;
+	t_sphere	shape_param;
 
-	ft_bzero(&shape_param, sizeof(t_sphere));
 	if (light_line_to_shape_param(line, &shape_param) == FAILURE)
 		return (FAILURE);
 	*light = generate_sphere(shape_param);
@@ -84,10 +81,7 @@ static int	line_to_light_material(
 
 static t_color	calc_color(t_color raw_color, double ratio)
 {
-	t_color	color;
-
-	color = scal_mul_vec3(normalize_color(raw_color), ratio);
-	return (color);
+	return (scal_mul_vec3(normalize_color(raw_color), ratio));
 }
 
 static t_material	*param_to_light_material(t_color color)

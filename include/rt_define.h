@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/13 15:55:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 13:36:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ extern const unsigned int	g_window_height;
 # define TEXTURE_SPECIFIER "sbc"
 
 # define HIT_T_MIN 1e-3
-
-# define LIGHT_STERADIAN 0.21
 
 # define METAL_FUZZINESS 0.8
 

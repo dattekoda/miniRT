@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_solid_texture.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:05:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 14:58:56 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/14 13:50:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,8 @@ static t_color	calc_solid_texture_value(
 					const void *s,
 					t_hrec *hrec)
 {
-	const t_solid_texture	*self;
+	const t_solid_texture	*self = s;
 
-	self = s;
 	(void)hrec;
 	return (self->color);
 }

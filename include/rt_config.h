@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_config.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 14:59:23 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/14 13:46:08 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 
 // steradian of path tracing model
 # ifndef LIGHT_STERADIAN
-#  define LIGHT_STERADIAN 0.21
+#  define LIGHT_STERADIAN 0.021
 # endif
 
 # define RUSSIAN_ROULETTE_START_DEPTH 10

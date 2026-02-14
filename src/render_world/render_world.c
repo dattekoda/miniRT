@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:20:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 19:06:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 13:09:11 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,83 +21,27 @@
 #include <math.h>
 
 int			render_pixels(
-				t_color **pixel_arr_p,
+				int **raw_rgb_arr,
 				const t_world *world,
 				bool is_phong);
 int			draw_image(int **raw_rgb_arr, bool is_ppm_mode);
 void		clear_world(t_world *world);
-static int	pixel_arr_to_raw_rgb_arr(
-				int **raw_rgb_arr,
-				const t_color *pixel_arr);
-static void	set_raw_rgb_arr(int *raw_rgb_arr, const t_color *pixel_arr);
-static int	convert_into_raw_rgb(t_color color);
 
 /*
 @brief responsible for free(world)
 */
 int	render_world(t_world *world, int option_flag)
 {
-	t_color	*pixel_arr;
-	int		*raw_rgb_arr;
+	int	*raw_rgb_arr;
 
 	if (render_pixels(
-		&pixel_arr, world, option_flag & OPT_ARTIFICIAL) == FAILURE)
+		&raw_rgb_arr, world, option_flag & OPT_ARTIFICIAL) == FAILURE)
 	{
 		clear_world(world);
 		return (FAILURE);
 	}
 	clear_world(world);
-	if (pixel_arr_to_raw_rgb_arr(&raw_rgb_arr, pixel_arr) == FAILURE)
-	{
-		free(pixel_arr);
-		return (FAILURE);
-	}
-	free(pixel_arr);
 	if (draw_image(&raw_rgb_arr, option_flag & OPT_PPM) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
-}
-
-static int	pixel_arr_to_raw_rgb_arr(
-				int **raw_rgb_arr,
-				const t_color *pixel_arr)
-{
-	*raw_rgb_arr = ft_calloc(g_window_width * g_window_height, sizeof(int));
-	if (!*raw_rgb_arr)
-		return (FAILURE);
-	set_raw_rgb_arr(*raw_rgb_arr, pixel_arr);
-	return (SUCCESS);
-}
-
-static void	set_raw_rgb_arr(int *raw_rgb_arr, const t_color *pixel_arr)
-{
-	size_t	xi;
-	size_t	yi;
-	size_t	x_base;
-
-	yi = 0;
-	while (yi < g_window_height)
-	{
-		xi = 0;
-		x_base = yi * g_window_width;
-		while (xi < g_window_width)
-		{
-			raw_rgb_arr[x_base + xi]
-				= convert_into_raw_rgb(pixel_arr[x_base + xi]);
-			xi++;
-		}
-		yi++;
-	}
-}
-
-static int	convert_into_raw_rgb(t_color color)
-{
-	t_color	adjusted_color;
-	int		rgb_color[3];
-
-	adjusted_color = map_vec3(color, sqrt);
-	rgb_color[0] = 256.0 * clamp(adjusted_color.e[0], 0.0, 0.999);
-	rgb_color[1] = 256.0 * clamp(adjusted_color.e[1], 0.0, 0.999);
-	rgb_color[2] = 256.0 * clamp(adjusted_color.e[2], 0.0, 0.999);
-	return ((rgb_color[0] << 16) | (rgb_color[1] << 8) | rgb_color[2]);
 }
