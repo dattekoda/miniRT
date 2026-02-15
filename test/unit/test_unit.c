@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_unit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:01:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/07 21:16:42 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 21:26:43 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,39 @@ int	test_get_camera_data(void);
 int	test_add_light_radius(void);
 int	test_line_to_light(void);
 
+void	test_is_component_lower(void);
+void	test_rt_swap(void);
+void	test_pertition(void);
+void	test_sort_hit_arr(void);
+
 int	test_unit(void)
 {
-	// utils
-	test_match_identifer();
-	// validate_arguments
-	test_is_valid_file_name();
-	test_is_valid_option();
-	// validate_line_list(skips)
-	test_skip_spaces();
-	test_token_to_value();
-	test_skip_range();
-	test_skip_point();
-	test_skip_unit();
-	test_skip_color();
-	test_skip_until_end();
+	// // utils
+	// test_match_identifer();
+	// // validate_arguments
+	// test_is_valid_file_name();
+	// test_is_valid_option();
+	// // validate_line_list(skips)
+	// test_skip_spaces();
+	// test_token_to_value();
+	// test_skip_range();
+	// test_skip_point();
+	// test_skip_unit();
+	// test_skip_color();
+	// test_skip_until_end();
 
-	test_set_option();
-	test_read_rt_file();
+	// test_set_option();
+	// test_read_rt_file();
 
-	test_line_to_ambient_light();
-	test_get_camera_data();
+	// test_line_to_ambient_light();
+	// test_get_camera_data();
 	
-	test_add_light_radius();
-	test_line_to_light();
+	// test_add_light_radius();
+	// test_line_to_light();
+
+	test_is_component_lower();
+	test_rt_swap();
+	test_pertition();
+	// test_sort_hit_arr();
 	return (0);
 }

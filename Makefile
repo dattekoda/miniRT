@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/15 20:03:08 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/02/15 21:25:40 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -278,32 +278,15 @@ TESTSRCFILES	=	$(addprefix test/, \
 							test_set_camera.c \
 							test_add_light_radius.c \
 							test_line_to_light.c \
+							test_is_component_lower.c \
+							test_rt_swap.c \
+							test_pertition.c \
+							test_sort_hit_arr.c \
 						) \
 						$(addprefix utils/, \
 							syscall_mock.c \
 							vec_equal.c \
-							print_vec.c \
 						))
-
-# $(addprefix integration/, \
-						test_integration.c \
-							$(addprefix init_world/, \
-								$(addprefix create_world/, \
-									$(addprefix set_objects/, \
-										$(addprefix line_list_to_bvh/, \
-										test_line_list_to_bvh.c \
-											$(addprefix line_list_to_hit_arr/, \
-											test_line_list_to_hit_arr.c \
-											) \
-											$(addprefix hit_arr_to_bvh/, \
-											test_hit_arr_to_bvh.c \
-											) \
-										) \
-									) \
-								) \
-							) \
-						) \
-					) \
 
 TESTSRCS		=	$(TESTSRCFILES) \
 					$(filter-out $(SRCDIR)/main.c, $(SRCS))
@@ -360,12 +343,13 @@ debug:
 
 # --- test ---
 test:
-	@$(MAKE) CFLAG="$(TESTFLAG) $(TESTNAME)" LDFLAG="$(TESTLDFLAG)"
+	@$(MAKE) CFLAG="$(CFLAG) $(TESTCFLAG)" LDFLAG=" $(TESTLDFLAG)" $(TESTNAME)
 	@echo "\033[1;36mRunning tests ...\033[0m"
 	./$(TESTNAME)
+	@echo "\n\033[1;32mall test passed\033[0m"
 
 $(TESTNAME):$(TESTOBJS) $(MLX) $(LIBFT)
-	$(CC) $(TESTOBJS) $(TESTCFLAG) $(TESTLDFLAG) $(LDLIBS) -o $@
+	$(CC) $(TESTOBJS) $(CFLAG) $(TESTLDFLAG) $(LDLIBS) -o $@
 
 # --- scan build ---$(INCDIRS)/test/
 scanb: fclean

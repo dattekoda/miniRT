@@ -6,18 +6,20 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 22:22:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 18:21:21 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/15 21:34:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hitter_arr.h"
 #include "rt_utils.h"
 
-static bool		is_component_lower(const t_hitter *subject,
+bool			is_component_lower(const t_hitter *subject,
 					const t_hitter *base, int axis);
-static size_t	pertition(t_hitter_arr hit_arr, int axis);
+size_t			pertition(t_hitter_arr hit_arr, int axis);
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
 
+#include <stdio.h> // debug
+// left is bigger!
 void	sort_hit_arr(t_hitter_arr hit_arr, int axis)
 {
 	size_t	pivot_idx;
@@ -31,27 +33,31 @@ void	sort_hit_arr(t_hitter_arr hit_arr, int axis)
 		return ;
 	}
 	pivot_idx = pertition(hit_arr, axis);
-	sort_hit_arr(construct_hitter_arr(hit_arr.arr, pivot_idx - 1), axis);
-	sort_hit_arr(construct_hitter_arr(hit_arr.arr + pivot_idx + 1, hit_arr.size
-			- (pivot_idx + 1)), axis);
+	sort_hit_arr(construct_hitter_arr(hit_arr.arr, pivot_idx), axis);
+	sort_hit_arr(construct_hitter_arr(
+					hit_arr.arr + pivot_idx + 1,
+					hit_arr.size - (pivot_idx + 1)), axis);
 	return ;
 }
 
-static size_t	pertition(t_hitter_arr hit_arr, int axis)
+// left is bigger!
+size_t	pertition(t_hitter_arr hit_arr, int axis)
 {
 	size_t		left;
 	size_t		right;
-	t_hitter	**pivot_p;
+	t_hitter	*pivot_p;
 
 	left = 0;
 	right = hit_arr.size - 1;
-	pivot_p = &hit_arr.arr[right];
+	pivot_p = hit_arr.arr[right];
 	while (left < right)
 	{
-		while (left < hit_arr.size && !is_component_lower(hit_arr.arr[left],
-				*pivot_p, axis))
+		while (left < hit_arr.size && is_component_lower(hit_arr.arr[left],
+				pivot_p, axis))
 			left++;
-		while (0 < right && is_component_lower(hit_arr.arr[right], *pivot_p,
+		if (right <= left)
+			break ;
+		while (0 < right && !is_component_lower(hit_arr.arr[right], pivot_p,
 				axis))
 			right--;
 		if (right <= left)
@@ -59,11 +65,11 @@ static size_t	pertition(t_hitter_arr hit_arr, int axis)
 		rt_swap(&hit_arr.arr[left++],
 			&hit_arr.arr[right--], sizeof(t_hitter *));
 	}
-	rt_swap(&hit_arr.arr[left], pivot_p, sizeof(t_hitter *));
+	rt_swap(&hit_arr.arr[left], &pivot_p, sizeof(t_hitter *));
 	return (left);
 }
 
-static bool	is_component_lower(const t_hitter *subject, const t_hitter *base,
+bool	is_component_lower(const t_hitter *subject, const t_hitter *base,
 		int axis)
 {
 	if (!subject->has_aabb || !base->has_aabb)
