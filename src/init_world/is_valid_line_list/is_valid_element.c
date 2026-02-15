@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 15:27:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 18:24:02 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "result.h"
 #include "rt_utils.h"
 #include "validate_utils.h"
+#include "init_world_utils.h"
 
 static bool	is_valid_parameters(char *line, size_t *line_idx,
 				const t_element *elem_info);
@@ -23,6 +24,7 @@ static bool	err_invlid_line(char *line, size_t line_idx, char *format, char *err
 t_result	skip_material(char *line, size_t *line_idx);
 t_result	skip_texture(char *line, size_t *line_idx);
 
+#include <stdio.h>
 // TODO: arg, const int option_flag should bool is_phong
 bool	is_valid_element(char *line, const t_element *elem_info,
 		const int option_flag)
@@ -34,8 +36,8 @@ bool	is_valid_element(char *line, const t_element *elem_info,
 	if (!is_valid_parameters(line, &line_idx, elem_info))
 		return (false);
 	if (option_flag & OPT_MATERIAL
-		&& elem_info != &elem_info[AMBIENT]
-		&& elem_info != &elem_info[CAMERA])
+		&& elem_info != g_element_table[AMBIENT]
+		&& elem_info != g_element_table[CAMERA])
 	{
 		if (is_valid_material(line, &line_idx, elem_info->input_format) == false)
 			return (false);

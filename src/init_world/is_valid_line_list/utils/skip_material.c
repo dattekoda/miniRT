@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:16:14 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 16:24:32 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 18:33:37 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include "validate_utils.h"
 #include <stddef.h>
 
+#include <stdlib.h>
+#include <stdio.h>
 t_result	skip_material(const char *line, size_t *line_idx)
 {
 	t_result	result;
