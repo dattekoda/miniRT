@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 16:17:44 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 16:22:49 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,12 @@ static t_ray	get_ray_from_camera(const t_camera *camera, size_t xi, size_t yi)
 			scal_mul_vec3(camera->onb.v[A_Y], ray_displacement.e[A_Y]));
 	const t_vec3	ray_direct
 		= sub_vec3(
-			add_vec3(camera->left_top, scal_mul_vec3(camera->onb.v[A_X], random_xv.e[A_X] * camera->width)),
-			add_vec3(scal_mul_vec3(camera->onb.v[A_Y], random_xv.e[A_Y] * camera->height), camera->origin));
+			add_vec3(
+				camera->left_top,
+				scal_mul_vec3(camera->onb.v[A_X], random_xv.e[A_X] * camera->width)),
+			add_vec3(
+				scal_mul_vec3(camera->onb.v[A_Y], random_xv.e[A_Y] * camera->height),
+				camera->origin));
 
 	return (construct_ray(
 			add_vec3(camera->origin, offset),
