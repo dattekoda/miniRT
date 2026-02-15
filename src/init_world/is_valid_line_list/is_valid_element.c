@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 20:26:08 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 20:42:45 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ bool	is_valid_element(char *line, const t_element *elem_info,
 		return (false);
 	if (option_flag & OPT_MATERIAL
 		&& elem_info != g_element_table[AMBIENT]
-		&& elem_info != g_element_table[CAMERA])
+		&& elem_info != g_element_table[CAMERA]
+		&& elem_info != g_element_table[LIGHT])
 	{
 		if (is_valid_material(line, &line_idx, elem_info->input_format) == false)
 			return (false);

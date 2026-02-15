@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 16:40:51 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 20:46:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 # endif
 
 # define RUSSIAN_ROULETTE_START_DEPTH 10
+
+# define METAL_FUZZINESS 0.0
 
 // set 0.0 - 1.0
 # define LIVE_PROBABILITY_MIN 0.05
