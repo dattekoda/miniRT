@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:21:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 18:32:28 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 20:31:03 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 t_result	token_to_str(const char *line, size_t *line_idx, char **str_ptr)
 {
 	*str_ptr = (char *)(line + *line_idx);
-	if (**str_ptr == '\0')
+	if (**str_ptr == '\0' || **str_ptr == '\n')
 	{
 		*str_ptr = NULL;
 		return (construct_result("there is no identifier"));

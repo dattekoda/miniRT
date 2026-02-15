@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_rt_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 18:38:52 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/15 20:14:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	read_rt_file(t_list **line_list, const char *file_path)
 	return ;
 }
 
-#include <stdio.h>
 static int	read_lines_to_list(t_list *cur, int fd)
 {
 	int		gnl_ret;

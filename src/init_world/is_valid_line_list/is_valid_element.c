@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 18:24:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 20:26:08 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@
 static bool	is_valid_parameters(char *line, size_t *line_idx,
 				const t_element *elem_info);
 static bool	is_valid_material(char *line, size_t *line_idx, char *input_format);
-static bool	err_invlid_line(char *line, size_t line_idx, char *format, char *err_msg);
+static bool	err_invlid_line(
+				char *line,
+				size_t line_idx,
+				char *format,
+				char *err_msg);
 t_result	skip_material(char *line, size_t *line_idx);
 t_result	skip_texture(char *line, size_t *line_idx);
 
@@ -72,6 +76,8 @@ static bool	is_valid_material(char *line, size_t *line_idx, char *input_format)
 {
 	t_result	result;
 
+	if (line[*line_idx] == '\n' || line[*line_idx] == '\0')
+		return (true);
 	result = skip_material(line, line_idx);
 	if (result.state == FAILURE)
 		return (err_invlid_line(line, *line_idx, input_format,
@@ -83,7 +89,11 @@ static bool	is_valid_material(char *line, size_t *line_idx, char *input_format)
 	return (true);
 }
 
-static bool	err_invlid_line(char *line, size_t line_idx, char *format, char *err_msg)
+static bool	err_invlid_line(
+				char *line,
+				size_t line_idx,
+				char *format,
+				char *err_msg)
 {
 	err_rt(format);
 	err_point_out(line, line_idx);
