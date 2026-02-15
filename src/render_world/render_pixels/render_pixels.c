@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 17:00:26 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 15:38:00 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <unistd.h>
 #include <math.h>
 
-t_color			calc_sample_pixel_color(
+t_color			accumulate_sample_pixel_color(
 					const t_world *world,
 					bool is_phong,
 					size_t xi,
@@ -66,7 +66,7 @@ static void	accumulate_raw_rgb_arr(
 		{
 			raw_rgb_arr[x_base + xi]
 				= convert_into_raw_rgb(
-					calc_sample_pixel_color(world, is_phong, xi, yi));
+					accumulate_sample_pixel_color(world, is_phong, xi, yi));
 			xi++;
 		}
 		yi++;
@@ -75,13 +75,23 @@ static void	accumulate_raw_rgb_arr(
 	return ;
 }
 
+/*
+@brief write() only when percentage changes
+*/
 static void	print_remaining(size_t yi)
 {
+	static const double	inv_h_mul_100
+		= 1 / (WINDOW_WIDTH * ASPECT_RATIO - 1) * 100;
+	static int			old_percentage = -1;
+	int					percentage;
+
+	percentage = (int)((double)yi * inv_h_mul_100);
+	if (percentage == old_percentage)
+		return ;
 	ft_putstr_fd("\rScanlines remaining: ", STDERR_FILENO);
-	ft_putnbr_fd(
-		(int)((double)yi / (double)(g_window_height - 1) * 100),
-		STDERR_FILENO);
+	ft_putnbr_fd(percentage, STDERR_FILENO);
 	ft_putstr_fd("%", STDERR_FILENO);
+	old_percentage = percentage;
 }
 
 static int	convert_into_raw_rgb(t_color color)

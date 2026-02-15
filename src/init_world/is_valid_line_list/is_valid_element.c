@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/14 17:26:41 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 15:27:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool	is_valid_element(char *line, const t_element *elem_info,
 	}
 	result = skip_until_end(line, &line_idx);
 	if (result.state == FAILURE)
-		return (err_invlid_line(line, elem_info->input_format, line_idx,
+		return (err_invlid_line(line, line_idx, elem_info->input_format,
 				result.value.err_msg));
 	return (true);
 }
@@ -59,7 +59,7 @@ static bool	is_valid_parameters(char *line, size_t *line_idx,
 	{
 		result = elem_info->skip_arr[func_idx](line, line_idx);
 		if (result.state == FAILURE)
-			return (err_invlid_line(line, elem_info->input_format, *line_idx,
+			return (err_invlid_line(line, *line_idx, elem_info->input_format,
 					result.value.err_msg));
 		func_idx++;
 	}

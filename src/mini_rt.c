@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/14 17:00:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 16:15:24 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		render_world(t_world *world, int option_flag);
 #include "material.h"
 #include "rt_debug.h"
 #include <stdio.h>
+#include <stdlib.h>
 int	mini_rt(int argc, char *argv[])
 {
 	int		option_flag;
