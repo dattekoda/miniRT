@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 15:58:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/17 22:23:53 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "init_world_define.h"
 #include "axis.h"
 #include "libft.h"
+#include "rt_utils.h"
 #include "result.h"
 
 t_hitter		*generate_tree(t_hitter *lhs, t_hitter *rhs);
@@ -25,6 +26,7 @@ int				find_best_split_info(t_hitter_arr hit_arr,
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
 static int		base_case(t_hitter **hitter, t_hitter_arr hit_arr);
 static int		generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr);
+t_compare		get_compare_func(t_axis axis);
 
 int	hit_arr_to_bvh(t_hitter **root, t_hitter_arr hit_arr)
 {
@@ -36,6 +38,9 @@ int	hit_arr_to_bvh(t_hitter **root, t_hitter_arr hit_arr)
 	return (SUCCESS);
 }
 
+#include <stdlib.h>
+void	print_hitter_arr(t_hitter_arr arr);
+
 static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr)
 {
 	t_axis		axis;
@@ -43,11 +48,17 @@ static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr)
 	t_hitter	*lhs;
 	t_hitter	*rhs;
 
+	// printf("BFORE SORT\n");
+	// print_hitter_arr(hit_arr);
 	if (hit_arr.size < 3)
 		return (base_case(hitter, hit_arr));
 	if (find_best_split_info(hit_arr, &axis, &left_size) == FAILURE)
 		return (FAILURE);
-	sort_hit_arr(hit_arr, axis);
+	// printf("axis: %c\n", "XYZ"[axis]);
+	ft_qsort((char *)hit_arr.arr,
+		hit_arr.size, sizeof(t_hitter *), get_compare_func(axis));
+	// print_hitter_arr(hit_arr);
+	exit(0);
 	if (generate_bvh_recursive(&lhs,
 			construct_hitter_arr(hit_arr.arr, left_size)) == FAILURE) 
 		return (FAILURE);

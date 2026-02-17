@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_vec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 08:43:06 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 08:44:56 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/17 22:09:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,5 @@
 
 void	print_vec(t_vec3 v)
 {
-	for (int i = 0; i < 3; i++)
-	{
-		printf("e[%d]: %f\n", i, v.e[i]);
-	}
+	fprintf(stderr, "(%.2f, %.2f, %.2f)\n", v.e[0], v.e[1], v.e[2]);
 }

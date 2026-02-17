@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 22:06:25 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/17 17:49:23 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ double	random_01(void);
 double	random_minus1_to_1(void);
 void	set_random_seed_from_time(void);
 // utils_random.c
+
+void	ft_qsort(char *base, size_t nmemb, size_t size,
+				bool (*compar)(const void*, const void*));
+// utils_qsort.c
 
 void	clear_hitter(void *self);
 void	clear_material(void *self);

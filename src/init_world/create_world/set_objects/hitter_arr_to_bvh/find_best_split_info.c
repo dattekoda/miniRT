@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_best_split_info.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/15 20:47:00 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/17 22:22:57 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@
 #include "result.h"
 #include "vec_utils.h"
 #include "axis.h"
+#include "rt_utils.h"
 #include <math.h>
 #include <stdlib.h>
 
-void		sort_hit_arr(t_hitter_arr hit_arr, int axis);
+// void		sort_hit_arr(t_hitter_arr hit_arr, int axis);
 int			prepare_surface_arr(
 				t_hitter_arr hit_arr,
 				double **left_arr_p,
 				double **right_arr_p);
+t_compare	get_compare_func(t_axis axis);
 static int	find_best_left_size(
 				t_hitter_arr hit_arr,
 				size_t *best_left_size,
@@ -51,8 +53,10 @@ int	find_best_split_info(t_hitter_arr hit_arr,
 	tmp_axis = 0;
 	while (tmp_axis < 3)
 	{
-		// debug
-		sort_hit_arr(hit_arr, tmp_axis);
+		print_hitter_arr(hit_arr);
+		ft_qsort((char *)hit_arr.arr, hit_arr.size,
+			sizeof(t_hitter *), get_compare_func(tmp_axis));
+		print_hitter_arr(hit_arr);
 		if (find_best_left_size(hit_arr, &tmp_left_size, &tmp_cost) == FAILURE)
 			return (FAILURE);
 		if (tmp_cost < best_cost)

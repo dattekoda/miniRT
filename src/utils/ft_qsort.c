@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_qsort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/17 12:10:01 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/17 12:10:53 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/02/17 10:46:28 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/02/17 22:34:33 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <aio.h>
+#include <stdlib.h>
 
 void			ft_swap(void *a, void *b, size_t size);
 static ssize_t	partition(char *base, size_t size, size_t nmemb,
@@ -47,6 +48,7 @@ static ssize_t	partition(char *base, size_t size, size_t nmemb,
 
 	pivot_p = decide_pivot(base, size, nmemb, compar);
 	ft_memcpy(pivot, pivot_p, size);
+	printf("pivot: %f\n", (t_hitter *)pivot.);
 	l = -1;
 	r = nmemb;
 	while (l < r)
@@ -68,7 +70,7 @@ static void	*decide_pivot(char *base, size_t size, size_t nmemb,
 	ssize_t	tail;
 	ssize_t	center;
 
-	tail = size * (nmemb - 1);
+	tail = (nmemb - 1);
 	center = tail / 2;
 	if ((*compar)(base, base + center * size) < 0)
 	{
@@ -101,12 +103,59 @@ void	ft_swap(void *a, void *b, size_t size)
 	while (size--)
 	{
 		tmp = *_a;
-		*_a = *_b;
-		*_b = tmp;
+		*_a++ = *_b;
+		*_b++ = tmp;
 	}
 }
 
-// // test
+// // structure test
+// #include <stdio.h>
+// typedef struct s_obj
+// {
+// 	int		*date_p;
+// 	char	_;
+// 	size_t	aaa;
+// 	void	*p;
+// }	t_obj;
+
+// int	compare_obj(const void *a, const void *b)
+// {
+// 	t_obj	obj_a = *(const t_obj *)a;
+// 	t_obj	obj_b = *(const t_obj *)b;
+
+// 	return (*obj_a.date_p - *obj_b.date_p);
+// }
+
+// void	print_obj_sort(t_obj arr[])
+// {
+// 	printf("before:\ta:%d b:%d c:%d d:%d\n", *arr[0].date_p, *arr[1].date_p, *arr[2].date_p, *arr[3].date_p);
+// 	ft_qsort((char *)arr, 4, sizeof(t_obj), compare_obj);
+// 	// ft_swap(arr, arr+1, sizeof(t_obj));
+// 	printf("after:\ta:%d b:%d c:%d d:%d\n", *arr[0].date_p, *arr[1].date_p, *arr[2].date_p, *arr[3].date_p);
+// }
+
+// int	main(void)
+// {
+// 	int		one = 1;
+// 	int		two = 2;
+// 	int		three = 3;
+// 	int		four = 4;
+// 	t_obj	a = {.date_p = &one};
+// 	t_obj	b = {.date_p = &two};
+// 	t_obj	c = {.date_p = &three};
+// 	t_obj	d = {.date_p = &four};
+
+// 	t_obj	arr1[] = {a, b, c, d};
+// 	t_obj	arr2[] = {c, d, a, b};
+// 	t_obj	arr3[] = {b, c, d, a};
+// 	print_obj_sort(arr1);
+// 	print_obj_sort(arr2);
+// 	print_obj_sort(arr3);
+// }
+
+
+
+// // sorting test
 // #include <stdio.h>
 // static int	char_cmp(const void *a, const void *b)
 // {

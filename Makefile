@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/17 09:19:51 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/02/17 21:42:11 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -142,11 +142,11 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							set_objects.c \
 							$(addprefix hitter_arr_to_bvh/, \
 								bvh_utils.c \
+								compare.c \
 								find_best_split_info.c \
 								prepare_surface_arr.c \
 								generate_tree.c \
 								hit_arr_to_bvh.c \
-								sort_hit_arr.c \
 							) \
 							$(addprefix line_list_to_hitter_arr/, \
 								add_cylinder_disk.c \
@@ -194,6 +194,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 					utils_clear.c \
 					utils_err.c \
 					utils_float.c \
+					ft_qsort.c \
 					utils_random.c \
 					utils_swap.c \
 					$(addprefix vec/, \
@@ -215,7 +216,7 @@ SRCS	+=	$(addprefix src_for_debug/, \
 				print_hitter.c \
 				print_pixel_arr.c \
 				print_vec.c \
-			) \
+			)
 
 # --- obj ---
 OBJDIR		=	obj
@@ -281,7 +282,6 @@ TESTSRCFILES	=	$(addprefix test/, \
 							test_is_component_higher.c \
 							test_rt_swap.c \
 							test_pertition.c \
-							test_sort_hit_arr.c \
 						) \
 						$(addprefix utils/, \
 							syscall_mock.c \

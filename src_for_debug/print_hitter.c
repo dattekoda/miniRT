@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hitter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/17 07:17:14 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/17 22:08:15 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef enum e_element_type
 	NOTHING
 }	t_element_type;
 */
+void	print_vec(t_vec3 v);
+
 void	print_hitter(t_hitter *hitter)
 {
 	if (!hitter)
@@ -53,7 +55,9 @@ void	print_hitter(t_hitter *hitter)
 		"NOTHING"
 	};
 	// printf("%u\n", hitter->type);
-	printf("type:%s x:%f\n", string_table[hitter->type], hitter->aabb.centroid.e[0]);
+	printf("type:%s", string_table[hitter->type]);
+	printf("vec: ");
+	print_vec(hitter->aabb.centroid);
 }
 
 void	print_hitter_list(const t_list *list)
