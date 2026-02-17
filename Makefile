@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/15 21:25:40 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/02/17 09:19:51 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -278,7 +278,7 @@ TESTSRCFILES	=	$(addprefix test/, \
 							test_set_camera.c \
 							test_add_light_radius.c \
 							test_line_to_light.c \
-							test_is_component_lower.c \
+							test_is_component_higher.c \
 							test_rt_swap.c \
 							test_pertition.c \
 							test_sort_hit_arr.c \

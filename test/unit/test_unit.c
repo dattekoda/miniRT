@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:01:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 21:26:43 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/17 09:20:28 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	test_get_camera_data(void);
 int	test_add_light_radius(void);
 int	test_line_to_light(void);
 
-void	test_is_component_lower(void);
+void	test_is_component_higher(void);
 void	test_rt_swap(void);
 void	test_pertition(void);
 void	test_sort_hit_arr(void);
@@ -64,7 +64,7 @@ int	test_unit(void)
 	// test_add_light_radius();
 	// test_line_to_light();
 
-	test_is_component_lower();
+	test_is_component_higher();
 	test_rt_swap();
 	test_pertition();
 	// test_sort_hit_arr();

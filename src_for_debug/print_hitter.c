@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 20:14:54 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/17 07:17:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	print_hitter(t_hitter *hitter)
 		"TREE",
 		"NOTHING"
 	};
-	printf("%u\n", hitter->type);
-	printf("%s\n", string_table[hitter->type]);
+	// printf("%u\n", hitter->type);
+	printf("type:%s x:%f\n", string_table[hitter->type], hitter->aabb.centroid.e[0]);
 }
 
 void	print_hitter_list(const t_list *list)

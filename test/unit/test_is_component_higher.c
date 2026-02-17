@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_is_component_lower.c                          :+:      :+:    :+:   */
+/*   test_is_component_higher.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 21:20:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/15 21:24:33 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/17 09:21:04 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "hitter.h"
 #include <assert.h>
 
-bool	is_component_lower(const t_hitter *subject, const t_hitter *base,
+bool	is_component_higher(const t_hitter *subject, const t_hitter *base,
 		int axis);
 
-void	test_is_component_lower(void)
+void	test_is_component_higher(void)
 {
 	const t_hitter a = {.has_aabb = true, .aabb = {
 		.centroid = {0.0, 1.0, 2.0}
@@ -25,9 +25,9 @@ void	test_is_component_lower(void)
 	const t_hitter b = {.has_aabb = true, .aabb = {
 		.centroid = {2.0, 1.0, 0.0}
 	}};
-	assert(is_component_lower(&a, &b, X) == true);
-	assert(is_component_lower(&a, &b, Y) == false);
-	assert(is_component_lower(&a, &b, Z) == false);
+	assert(is_component_higher(&a, &b, X) == false);
+	assert(is_component_higher(&a, &b, Y) == false);
+	assert(is_component_higher(&a, &b, Z) == true);
 }
 
 
