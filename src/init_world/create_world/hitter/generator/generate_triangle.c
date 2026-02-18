@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/07 20:27:16 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:50:59 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_hitter	*generate_triangle(t_triangle triangle_param)
 
 static t_triangle	construct_triangle(t_triangle triangle_param)
 {
+	triangle_param.hitter.type = TRIANGLE;
 	triangle_param.hitter.hit = hit_triangle;
 	triangle_param.hitter.clear = clear_hitter;
 	triangle_param.hitter.has_aabb = true;

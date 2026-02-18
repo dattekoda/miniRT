@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 01:52:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 07:06:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ static int	line_to_sphere_param(const char *line, t_sphere *sphere_param)
 	double			diameter;
 	size_t			i;
 
-	i = g_info_table[SPHERE]->id_len;
+	i = g_element_table[SPHERE]->id_len;
 	token_to_vec(line, &i, &sphere_param->center);
 	token_to_value(line, &i, &diameter);
 	sphere_param->radius = diameter * 0.5;
 	if (line_to_material(
-			line, &i, &sphere_param->hitter.mat_ptr, g_info_table[SPHERE])
+			line, &i, &sphere_param->hitter.mat_ptr, g_element_table[SPHERE])
 		== FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

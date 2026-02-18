@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 21:03:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 16:02:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ int			add_light_radius(char **light_line, t_point3 camera_origin);
 static int	calc_radius(t_point3 light_point, t_point3 camera_origin);
 static int	radius_strjoin(char **light_line, int radius);
 static char	*str_space_join(char *a, char *b);
+static char	*delete_new_line(char *light_line);
 
 int	preprocess_line_list(t_list *line_list, t_point3 camera_origin)
 {
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, g_info_table[LIGHT]))
+		if (match_identifier(line_list->content, g_element_table[LIGHT]))
 		{
 			if (add_light_radius(
 					(char **)&line_list->content, camera_origin) == FAILURE)
@@ -46,7 +47,7 @@ int	add_light_radius(char **light_line, t_point3 camera_origin)
 	t_point3	light_point;
 	int			radius;
 
-	idx = g_info_table[LIGHT]->id_len;
+	idx = g_element_table[LIGHT]->id_len;
 	token_to_vec(*light_line, &idx, &light_point);
 	radius = calc_radius(light_point, camera_origin) + 1;
 	if (radius_strjoin(light_line, radius) == FAILURE)
@@ -76,6 +77,7 @@ static int	radius_strjoin(char **light_line, int radius)
 	str_radius = ft_itoa(radius);
 	if (!str_radius)
 		return (FAILURE);
+	*light_line = delete_new_line(*light_line);
 	new_light_line = str_space_join(*light_line, str_radius);
 	if (!new_light_line)
 	{
@@ -88,6 +90,15 @@ static int	radius_strjoin(char **light_line, int radius)
 	return (SUCCESS);
 }
 
+static char	*delete_new_line(char *light_line)
+{
+	const int	len = ft_strlen(light_line);
+
+	if (light_line[len - 1] == '\n')
+		light_line[len - 1] = '\0';
+	return (light_line);
+}
+
 static char	*str_space_join(char *a, char *b)
 {
 	char	*dst;
@@ -97,6 +108,7 @@ static char	*str_space_join(char *a, char *b)
 	dst = ft_calloc(size, sizeof(char));
 	if (!dst)
 		return (NULL);
+	
 	ft_strlcpy(dst, a, size);
 	ft_strlcat(dst, " ", size);
 	ft_strlcat(dst, b, size);

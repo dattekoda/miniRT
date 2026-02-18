@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reflect.c                                          :+:      :+:    :+:   */
+/*   draw_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/09 18:26:36 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/09 18:50:35 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/28 20:45:39 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/02/14 15:11:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_utils.h"
+#include "result.h"
+#include <stdbool.h>
+
+void	draw_ppm_image(int **raw_rgb_arr);
+int		draw_mlx_image(int **raw_rgb_arr);
 
 /*
-@brief vec - 2*dot(vec,normal)normal
+@brief responsible for free(*raw_rgb_arr)
 */
-t_vec3	reflect(const t_vec3 *vec, const t_vec3 *normal)
+int	draw_image(int **raw_rgb_arr, bool is_ppm_mode)
 {
-	return (sub_vec3(
-		*vec,
-		scal_mul_vec3(
-			*normal,
-			2 * dot(*vec, *normal))));
+	if (is_ppm_mode)
+		draw_ppm_image(raw_rgb_arr);
+	else
+		if (draw_mlx_image(raw_rgb_arr) == FAILURE)
+			return (FAILURE);
+	return (SUCCESS);
 }

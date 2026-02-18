@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/11 20:37:34 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/15 22:59:11 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,22 +82,24 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							generate_solid_texture.c \
 						) \
 						$(addprefix material/, \
+							generate_dielectric.c \
 							generate_lambertian.c \
+							generate_metal.c \
 							generate_light.c \
 							$(addprefix material_utils/, \
 								orient_normal.c \
-								reflect.c \
 							) \
 							$(addprefix pdf/, \
 								calc_light_pdf_value.c \
+								generate_light_pdf_direction.c \
 								cosine_pdf.c \
 								light_pdf.c \
 								mixture_pdf.c \
-								random_light_pdf.c \
 							) \
 						) \
 						$(addprefix hitter/, \
 							$(addprefix generator/, \
+								generate_cone.c \
 								generate_cylinder.c \
 								generate_disk.c \
 								generate_sphere.c \
@@ -163,25 +165,27 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						token_to_vec.c \
 					) \
 				) \
-				$(addprefix render_pixel/, \
-					$(addprefix phong_color/, \
-						calc_color_from_light_list.c \
-						compute_phong_color.c \
-					) \
-					get_camera_ray.c \
-					calc_sample_pixel_color.c \
-					compute_path_tracing_color.c \
-					render_pixels.c \
-				) \
-				$(addprefix draw_image/, \
-					$(addprefix utils/, \
-						$(addprefix draw_mlx_image/, \
-							mlx_utils.c \
-							draw_mlx_image.c \
+				$(addprefix render_world/, \
+					render_world.c \
+					$(addprefix render_pixels/, \
+						$(addprefix compute_phong_color/, \
+							calc_color_from_light_list.c \
+							compute_phong_color.c \
 						) \
-						draw_ppm_image.c \
+						calc_sample_pixel_color.c \
+						compute_path_tracing_color.c \
+						render_pixels.c \
 					) \
-					draw_image.c \
+					$(addprefix draw_image/, \
+						$(addprefix utils/, \
+							$(addprefix draw_mlx_image/, \
+								mlx_utils.c \
+								draw_mlx_image.c \
+							) \
+							draw_ppm_image.c \
+						) \
+						draw_image.c \
+					) \
 				) \
 				$(addprefix ray/, \
 					ray.c \
@@ -202,10 +206,20 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 						vec3_basic.c \
 						vec3_product.c \
 						vec3_scal.c \
+						reflect.c \
 					) \
 				) \
 			)
 
+# you can delete later
+SRCS	+=	$(addprefix src_for_debug/, \
+				print_hitter.c \
+				print_line_list.c \
+				print_material.c \
+				print_pixel_arr.c \
+				print_ray.c \
+				print_vec.c \
+			) \
 
 # --- obj ---
 OBJDIR		=	obj
@@ -238,7 +252,7 @@ LDLIBS		=	-lm -lmlx -lft $(MLXFLAG)
 # --- DEBUGGING ---
 VALGRIND	=	valgrind --leak-check=full --track-origins=yes \
 				--show-leak-kinds=all
-DFLAG		=	$(CFLAG) -g -O0
+DFLAG		=	-g -O0
 ASANFLAG	=	$(DFLAG) -fsanitize=address
 SCANBUILD	=	/usr/bin/scan-build-12
 
@@ -328,32 +342,29 @@ fclean: clean
 re: fclean all
 
 # --- DEBUGGIN & TESTING ---
-lldb: CFLAG=$(CFLAG) $(DFLAG)
-lldb: fclean $(NAME)
+lldba:
+	$(MAKE)  CFLAG="$(CFLAG) $(DFLAG)"
 	@echo "\n\033[1;35mLaunching LLDB for '$(NAME)'...\033[0m"
 	@lldb $(NAME)
 
 # --- address sanitizer ---
-asan: CFLAG=$(CFLAG) $(ASANFLAG)
-asan: LDFLAG=$(LDFLAG) $(ASANFLAG)
-asan: fclean $(NAME)
+asan:
+	$(MAKE) LDFLAG="$(LDFLAG) $(ASANFLAG)" "CFLAG=$(CFLAG) $(ASANFLAG)"
 	@echo "\n\033[1;35mCompiled with AddressSanitizer. Run './$(NAME)' to test.\033[0m"
 
 # --- valgrind ---
-valgrind: CFLAG="$(CFLAG) $(DFLAG)"
-valgrind: fclean $(NAME)
+valgrind:
+	$(MAKE) re CFLAG="$CFLAG $(DFLAG)"
 	@echo "\n\033[1;36mRunning Valgrind for '$(NAME)'...\033[0m"
 	$(VALGRIND) $(VALGRIND_FLAG) ./$(NAME)
 
 # --- debug ---
-debug: CFLAG=$(DFLAG)
-debug: re
+debug:
+	$(MAKE) re CFLAG="$(CFLAG) $(DFLAG)"
 
 # --- test ---
-test: CFLAG=$(TESTFLAG)
-test: LDFLAG=$(TESTLDFLAG)
 test:
-	@$(MAKE) $(TESTNAME)
+	@$(MAKE) CFLAG="$(TESTFLAG) $(TESTNAME)" LDFLAG="$(TESTLDFLAG)"
 	@echo "\033[1;36mRunning tests ...\033[0m"
 	./$(TESTNAME)
 

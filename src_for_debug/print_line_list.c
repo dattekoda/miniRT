@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_vec.c                                        :+:      :+:    :+:   */
+/*   print_line_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/26 08:43:06 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 08:44:56 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/02/11 19:00:14 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/02/11 19:44:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec.h"
+#include "libft.h"
 #include <stdio.h>
 
-void	print_vec(t_vec3 v)
+void	print_line_list(const t_list *line_list)
 {
-	for (int i = 0; i < 3; i++)
+	t_list	*cur = (t_list *)line_list;
+	while (cur)
 	{
-		printf("e[%d]: %f\n", i, v.e[i]);
+		printf("%s", (char *)cur->content);
+		cur = cur->next;
 	}
+	printf("\n");
 }

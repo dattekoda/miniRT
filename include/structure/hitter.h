@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:38:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/10 15:57:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 21:41:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,24 @@
 # include "ray.h"
 # include <stdbool.h>
 
+typedef enum e_element_type
+{
+	AMBIENT,
+	CAMERA,
+	LIGHT,
+	SPHERE,
+	PLANE,
+	CYLINDER,
+	DISK,
+	CONE,
+	TRIANGLE,
+	TREE,
+	NOTHING
+}	t_element_type;
+
 typedef struct s_material	t_material;
 
-typedef struct s_hrec
+typedef struct s_hit_record
 {
 	t_ray		ray_in;
 	double		param_t;
@@ -42,11 +57,12 @@ typedef struct s_aabb
 
 typedef struct s_hitter
 {
-	t_hit		hit;
-	t_clear		clear;
-	bool		has_aabb;
-	t_aabb		aabb;
-	t_material	*mat_ptr;
+	t_element_type	type;
+	t_hit			hit;
+	t_clear			clear;
+	bool			has_aabb;
+	t_aabb			aabb;
+	t_material		*mat_ptr;
 }	t_hitter;
 
 #endif

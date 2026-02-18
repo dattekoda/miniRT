@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:52:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/07 19:57:59 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	set_light(t_world *world, t_list *line_list, int option_flag)
 		return (FAILURE);
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, g_info_table[LIGHT]))
+		if (match_identifier(line_list->content, g_element_table[LIGHT]))
 		{
 			if (new_light_node
 				(&new_node, line_list->content, option_flag) == FAILURE)
@@ -50,7 +50,7 @@ int	set_light(t_world *world, t_list *line_list, int option_flag)
 	return (SUCCESS);
 }
 
-static int	new_light_node(t_list **new_list, const char *line, int option_flag)
+static int	new_light_node(t_list **new_node, const char *line, int option_flag)
 {
 	t_hitter		*new_light;
 	t_solid_texture	*solid_ptr;
@@ -63,10 +63,10 @@ static int	new_light_node(t_list **new_list, const char *line, int option_flag)
 		solid_ptr->color
 			= scal_mul_vec3(solid_ptr->color, PATHTRACING_LIGHT_STRENGTH);
 	}
-	*new_list = ft_lstnew(new_light);
-	if (!*new_list)
+	*new_node = ft_lstnew(new_light);
+	if (!*new_node)
 	{
-		new_light->clear(&new_light);
+		new_light->clear(new_light);
 		return (FAILURE);
 	}
 	return (SUCCESS);

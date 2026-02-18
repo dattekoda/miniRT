@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_objects.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 20:57:40 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ int			line_list_to_bvh(t_hitter **node, const t_list *line_list,
 				const t_element *object_table[]);
 t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs);
 void		clear_tree(void *s);
+
+
+#include <stdio.h> // debug
+void	print_hitter(t_hitter *hitter); //debug
+void	print_hitter_list(const t_list *list); // debug
 
 int	set_objects(t_world *world, t_list *line_list, int option_flag)
 {
@@ -56,7 +61,7 @@ static void	delete_light_line(t_list **line_list)
 	curr = prev->next;
 	while (curr)
 	{
-		if (match_identifier(curr->content, g_info_table[LIGHT]))
+		if (match_identifier(curr->content, g_element_table[LIGHT]))
 		{
 			prev->next = curr->next;
 			ft_lstdelone(curr, free);

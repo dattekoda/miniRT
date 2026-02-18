@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/09 16:32:37 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 15:14:23 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 
 static bool	is_killed_by_russian_roulette(size_t depth, t_color *attenuation);
 
+#include "rt_debug.h"
+#include <stdio.h>
+#include <stdlib.h>
 t_color	compute_path_tracing_color(
 			const t_ray *ray,
 			const t_world *world,
@@ -32,9 +35,10 @@ t_color	compute_path_tracing_color(
 
 	range = construct_vec2(HIT_T_MIN, INFINITY);
 	if (depth >= MAX_DEPTH)
-		return (constant_vec3(1.0));
-	if (!world->object_tree
-		|| !world->object_tree->hit(world->object_tree, ray, &hrec, &range))
+		return (constant_vec3(0.0));
+	if (!world->object_tree)
+		return (world->ambient_light);
+	if (!world->object_tree->hit(world->object_tree, ray, &hrec, &range))
 		return (world->ambient_light);
 	if (!hrec.mat_ptr->scatter(hrec.mat_ptr, world, &hrec, &srec))
 		return (srec.attenuation);
@@ -59,7 +63,7 @@ static bool	is_killed_by_russian_roulette(size_t depth, t_color *attenuation)
 				attenuation->e[1]),
 			attenuation->e[2]);
 	live_prob = clamp(live_prob, LIVE_PROBABILITY_MIN, 1.0);
-	if (live_prob < random_double(0.0, 1.0))
+	if (live_prob < random_01())
 		return (true);
 	*attenuation = scal_div_vec3(*attenuation, live_prob);
 	return (false);

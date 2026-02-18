@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 20:05:24 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 15:50:29 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:26:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_color	calc_color_from_light(
 					const t_hitter *light,
 					const t_world *world,
 					const t_color *kd,
-					const t_hrec *hrec);
+					t_hrec *hrec);
 static bool		is_in_shadow(
 					const t_world *world,
 					const t_point3 *point,
@@ -31,7 +31,7 @@ static bool		is_in_shadow(
 					double light_length);
 static t_color	calc_specular(
 					const t_hrec *hrec,
-					const t_vec3 *light_direct,
+					const t_vec3 *normalized_light_direct,
 					const t_color *light_color);
 static t_color	calc_diffuse(
 					const t_color *kd,
@@ -42,7 +42,7 @@ static t_color	calc_diffuse(
 t_color	calc_color_from_light_list(
 			const t_world *world,
 			const t_color *reflectance,
-			const t_hrec *hrec)
+			t_hrec *hrec)
 {
 	const t_color	kd = mul_vec3(
 		*reflectance,
@@ -68,7 +68,7 @@ static t_color	calc_color_from_light(
 					const t_hitter *light,
 					const t_world *world,
 					const t_color *kd,
-					const t_hrec *hrec)
+					t_hrec *hrec)
 {
 	t_color			diffuse;
 	t_color			specular;
@@ -107,14 +107,16 @@ static bool	is_in_shadow(
 
 static t_color	calc_specular(
 			const t_hrec *hrec,
-			const t_vec3 *light_direct,
+			const t_vec3 *normalized_light_direct,
 			const t_color *light_color)
 {
 	const t_color	ks = construct_vec3(
 						R_PHONG_SPECULAR_COEFF,
 						G_PHONG_SPECULAR_COEFF,
 						B_PHONG_SPECULAR_COEFF);
-	const t_vec3	reflect_vec = reflect();
+	const t_vec3	reflect_vec = reflect(
+						*normalized_light_direct,
+						hrec->normal);
 	const t_vec3	point_to_camera = normalize(
 				negative_vec3(hrec->ray_in.direct));
 

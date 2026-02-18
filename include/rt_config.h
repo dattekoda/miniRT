@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 20:01:47 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 23:06:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,13 @@
 
 # define PROJECT_NAME "miniRT"
 
-// ambient
-# define PATHTRACING_AMBIENTSCALE 100.0
-
 // window
 # ifndef WINDOW_WIDTH
-#  define WINDOW_WIDTH 1280
+#  define WINDOW_WIDTH 400
 # endif
 // camera
 # ifndef ASPECT_RATIO
-#  define ASPECT_RATIO 1.77777777778 /*  (16.0 / 9.0)  */
+#  define ASPECT_RATIO 0.5625 /*  (9.0 / 16.0)  */
 # endif
 
 # ifndef LENS_RADIUS
@@ -34,17 +31,24 @@
 // light
 # define LIGHT_RADIUS 100.0
 
-# define PATHTRACING_LIGHT_STRENGTH 100.0
+# define PATHTRACING_LIGHT_STRENGTH 10.0
 
 // steradian of path tracing model
 # ifndef LIGHT_STERADIAN
-#  define LIGHT_STERADIAN 0.21
+#  define LIGHT_STERADIAN 0.021
 # endif
 
 # define RUSSIAN_ROULETTE_START_DEPTH 10
 
+// 0.0 - 1.0
+# define METAL_FUZZINESS 0.0
+// 0.0 -
+# define REFRACT_IDX 1.7
+
 // set 0.0 - 1.0
-# define LIVE_PROBABILITY_MIN 0.5
+# define LIVE_PROBABILITY_MIN 0.05
+
+# define CHECKER_SPLIT_SIZE 20
 
 // tetxure
 // 0: solid

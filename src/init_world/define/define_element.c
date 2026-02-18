@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 16:30:00 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 23:03:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 int	line_to_light(t_hitter **light, const char *line);
 int	line_to_disk(t_hitter **disk, const char *line);
+int	line_to_sphere(t_hitter **sphere, const char *line);
 
 extern const t_skip					g_ambient_skips[];
 extern const t_skip					g_camera_skips[];
@@ -130,7 +131,7 @@ const t_element						g_triangle_info = {
 /*
 @param NULL終端にするためにポインタの配列にしている。
 */
-const t_element						*g_info_table[] = {
+const t_element						*g_element_table[] = {
 	&g_ambient_info,
 	&g_camera_info,
 	&g_light_info,
@@ -155,15 +156,5 @@ const t_element						*g_finite_table[] = {
 	// &g_cylinder_info,
 	// &g_disk_info,
 	// &g_triangle_info,
-	NULL
-};
-
-const t_generate_texture			g_generate_textures[] = {
-	generate_solid_texture,
-	NULL
-};
-
-const t_generate_material			g_generate_materials[] = {
-	generate_lambertian,
 	NULL
 };

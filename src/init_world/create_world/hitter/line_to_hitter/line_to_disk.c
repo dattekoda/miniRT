@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_disk.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:50:11 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/30 02:07:44 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ static int	line_to_disk_param(const char *line, t_disk *disk_param)
 	size_t	i;
 	double	diameter;
 
-	i = g_info_table[DISK]->id_len;
+	i = g_element_table[DISK]->id_len;
 	token_to_vec(line, &i, &disk_param->center);
 	token_to_vec(line, &i, &disk_param->normal);
 	token_to_value(line, &i, &diameter);
 	disk_param->radius = diameter * 0.5;
 	if (line_to_material(
-			line, &i, &disk_param->hitter.mat_ptr, g_info_table[DISK])
+			line, &i, &disk_param->hitter.mat_ptr, g_element_table[DISK])
 		== FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

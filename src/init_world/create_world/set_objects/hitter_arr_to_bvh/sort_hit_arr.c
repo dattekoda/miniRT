@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_hit_arr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 22:22:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 18:21:21 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/14 16:50:15 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static bool		is_component_lower(const t_hitter *subject,
 static size_t	pertition(t_hitter_arr hit_arr, int axis);
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
 
+#include <stdio.h>
 void	sort_hit_arr(t_hitter_arr hit_arr, int axis)
 {
 	size_t	pivot_idx;
@@ -26,6 +27,7 @@ void	sort_hit_arr(t_hitter_arr hit_arr, int axis)
 		return ;
 	if (hit_arr.size == 2)
 	{
+		fprintf(stderr, "here\n");
 		if (is_component_lower(hit_arr.arr[0], hit_arr.arr[1], axis))
 			rt_swap(hit_arr.arr, hit_arr.arr + 1, sizeof(t_hitter *));
 		return ;

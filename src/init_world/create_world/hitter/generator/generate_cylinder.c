@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 17:07:16 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/30 07:11:17 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:50:34 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static t_cylinder	construct_cylinder(t_cylinder shape_param)
 	t_cylinder	cylinder;
 
 	ft_memmove(&cylinder, &shape_param, sizeof(t_cylinder));
+	cylinder.hitter.type = CYLINDER;
 	cylinder.hitter.hit = hit_cylinder;
 	cylinder.hitter.clear = clear_hitter;
 	cylinder.hitter.has_aabb = true;

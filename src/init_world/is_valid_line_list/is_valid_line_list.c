@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 21:37:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 17:15:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ bool		is_valid_line(char *line, const int option_flag);
 
 bool	is_valid_line_list(const t_list *line_list, const int option_flag)
 {
-	int	result;
+	int	is_valid;
 
-	result = is_valid_ambient_camera_count(line_list);
+	is_valid = is_valid_ambient_camera_count(line_list);
 	while (line_list)
 	{
 		if (!is_valid_line(line_list->content, option_flag))
-			result = false;
+			is_valid = false;
 		line_list = line_list->next;
 	}
-	return (result);
+	return (is_valid);
 }
 
 static bool	is_valid_ambient_camera_count(const t_list *line_list)
@@ -40,9 +40,9 @@ static bool	is_valid_ambient_camera_count(const t_list *line_list)
 	camera_count = 0;
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, g_info_table[AMBIENT]))
+		if (match_identifier(line_list->content, g_element_table[AMBIENT]))
 			ambient_count++;
-		if (match_identifier(line_list->content, g_info_table[CAMERA]))
+		if (match_identifier(line_list->content, g_element_table[CAMERA]))
 			camera_count++;
 		line_list = line_list->next;
 	}

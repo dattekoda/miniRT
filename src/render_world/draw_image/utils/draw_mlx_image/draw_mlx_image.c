@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:58:49 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/10 21:51:27 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 18:18:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,28 @@
 #include <stddef.h>
 
 int			close_window(t_rt_mlx *rt_mlx);
-int			init_mlx_vars(t_rt_mlx *rt_mlx);
+int			init_rt_mlx(t_rt_mlx *rt_mlx);
 int			init_rt_img(t_rt_img *rt_img, void *mlx);
-void		clear_mlx_vars(t_rt_mlx *rt_mlx);
+void		clear_rt_mlx(t_rt_mlx *rt_mlx);
 static void	assign_rgb_color_loop(
 				void *mlx,
 				t_rt_img *rt_img,
 				const int *raw_rgb_arr);
 
-int	draw_mlx_image(const int *raw_rgb_arr)
+int	draw_mlx_image(int **raw_rgb_arr)
 {
 	t_rt_mlx	rt_mlx;
 
-	if (init_mlx_vars(&rt_mlx) == FAILURE)
+	if (init_rt_mlx(&rt_mlx) == FAILURE)
 	{
-		clear_mlx_vars(&rt_mlx);
+		clear_rt_mlx(&rt_mlx);
 		return (FAILURE);
 	}
-	assign_rgb_color_loop(rt_mlx.var.mlx, &rt_mlx.img, raw_rgb_arr);
+	assign_rgb_color_loop(rt_mlx.var.mlx, &rt_mlx.img, *raw_rgb_arr);
+	free(*raw_rgb_arr);
 	mlx_put_image_to_window(rt_mlx.var.mlx, rt_mlx.var.win, rt_mlx.img.id, 0, 0);
 	mlx_hook(rt_mlx.var.win, 17, 0L, close_window, &rt_mlx);
 	mlx_loop(rt_mlx.var.mlx);
-	clear_mlx_vars(&rt_mlx);
 	return (SUCCESS);
 }
 

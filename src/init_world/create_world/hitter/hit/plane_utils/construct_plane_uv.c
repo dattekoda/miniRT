@@ -6,12 +6,13 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 18:51:22 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/08 19:00:16 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/11 16:17:45 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_utils.h"
 #include "init_world_utils.h"
+#include <math.h>
 
 t_point2	construct_plane_uv(
 					const t_vec3 *normal,

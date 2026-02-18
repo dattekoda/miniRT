@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 07:08:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:50:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_hitter	*generate_disk(t_disk disk_param)
 
 static t_disk	construct_disk(t_disk disk_param)
 {
+	disk_param.hitter.type = DISK;
 	disk_param.hitter.hit = hit_disk;
 	disk_param.hitter.clear = clear_hitter;
 	disk_param.hitter.has_aabb = true;

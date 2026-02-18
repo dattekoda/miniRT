@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_arguments.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:21:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 02:24:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	put_format(void)
 	size_t	i;
 
 	i = 0;
-	while (g_info_table[i])
-		ft_putendl_fd(g_info_table[i++]->input_format, STDERR_FILENO);
+	while (g_element_table[i])
+		ft_putendl_fd(g_element_table[i++]->input_format, STDERR_FILENO);
 	return ;
 }

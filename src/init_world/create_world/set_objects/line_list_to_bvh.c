@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 21:34:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 20:18:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,21 @@
 #include <stdlib.h>
 
 static void		clear_hitter_arr(t_hitter_arr arr);
-int				line_list_to_hit_arr(t_hitter_arr *hit_arr,
-					const t_list *line_list, const t_element *object_table[]);
+int				line_list_to_hit_arr(
+					t_hitter_arr *hit_arr,
+					const t_list *line_list,
+					const t_element *object_table[]);
 int				hit_arr_to_bvh(t_hitter **root, const t_hitter_arr hit_arr);
 
-int	line_list_to_bvh(t_hitter **node, const t_list *line_list,
-			const t_element *object_table[])
+
+#include <stdio.h> // debug
+void	print_hitter_list(const t_list *list); // debug
+void	print_hitter_arr(t_hitter_arr arr); // debug
+
+int	line_list_to_bvh(
+		t_hitter **node,
+		const t_list *line_list,
+		const t_element *object_table[])
 {
 	t_hitter_arr	hit_arr;
 

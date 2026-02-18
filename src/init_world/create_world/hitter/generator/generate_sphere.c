@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_sphere.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:55:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/07 21:59:54 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/14 15:39:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static t_sphere	construct_sphere(t_sphere shape_param)
 	t_sphere	sphere;
 
 	ft_memmove(&sphere, &shape_param, sizeof(t_sphere));
+	sphere.hitter.type = SPHERE;
 	sphere.hitter.hit = hit_sphere;
 	sphere.hitter.clear = clear_hitter;
 	sphere.hitter.has_aabb = true;

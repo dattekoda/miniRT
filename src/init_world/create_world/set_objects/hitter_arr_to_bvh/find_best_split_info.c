@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/02 12:44:01 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 22:15:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	find_best_split_info(t_hitter_arr hit_arr,
 	size_t	tmp_axis;
 	size_t	tmp_left_size;
 
-	*best_axis = X;
+	*best_axis = A_X;
 	*best_left_size = 0;
 	best_cost = INFINITY;
 	tmp_cost = INFINITY;

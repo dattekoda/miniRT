@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:31:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 02:21:10 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:50:02 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static t_plane	construct_plane(t_plane plane_param)
 	t_plane	plane;
 
 	ft_memmove(&plane, &plane_param, sizeof(t_plane));
+	plane.hitter.type = PLANE;
 	plane.hitter.hit = hit_plane;
 	plane.hitter.clear = clear_hitter;
 	plane.hitter.has_aabb = false;

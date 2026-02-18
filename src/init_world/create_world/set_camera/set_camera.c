@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_camera.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:45 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 19:28:08 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/14 16:02:14 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ void	set_camera(t_camera *camera, const t_list *line_list)
 {
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, g_info_table[CAMERA]))
+		if (match_identifier(line_list->content, g_element_table[CAMERA]))
 			break ;
 		line_list = line_list->next;
 	}
 	*camera = get_camera_data(line_list->content);
 }
 
+#include "rt_debug.h"
+#include <stdio.h>
+#include <stdlib.h>
 t_camera	get_camera_data(const char *line)
 {
 	size_t		i;
@@ -37,7 +40,7 @@ t_camera	get_camera_data(const char *line)
 	t_vec3		direct;
 	double		hfov;
 
-	i = 1;
+	i = (size_t)g_element_table[CAMERA]->id_len;
 	token_to_vec(line, &i, &original);
 	token_to_vec(line, &i, &direct);
 	token_to_value(line, &i, &hfov);
