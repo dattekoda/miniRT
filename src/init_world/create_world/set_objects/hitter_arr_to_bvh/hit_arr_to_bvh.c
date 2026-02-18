@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 19:37:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/18 20:30:02 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "libft.h"
 #include "rt_utils.h"
 #include "result.h"
+#include "tree.h"
 
 t_hitter		*generate_tree(t_hitter *lhs, t_hitter *rhs);
 t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
@@ -28,6 +29,8 @@ static int		base_case(t_hitter **hitter, t_hitter_arr hit_arr);
 static int		generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr);
 t_compare		get_compare_func(t_axis axis);
 
+
+void	print_tree(t_tree *node); // debug
 int	hit_arr_to_bvh(t_hitter **root, t_hitter_arr hit_arr)
 {
 	*root = NULL;
@@ -35,8 +38,13 @@ int	hit_arr_to_bvh(t_hitter **root, t_hitter_arr hit_arr)
 		return (SUCCESS);
 	if (generate_bvh_recursive(root, hit_arr) == FAILURE)
 		return (FAILURE);
+	print_tree((t_tree *)*root);
 	return (SUCCESS);
 }
+
+#include <stdio.h>
+#include <stdlib.h>
+void	print_hitter_arr(t_hitter_arr arr);
 
 static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr)
 {
@@ -45,8 +53,10 @@ static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr)
 	t_hitter	*lhs;
 	t_hitter	*rhs;
 
+	print_hitter_arr(hit_arr);
 	if (hit_arr.size < 3)
 		return (base_case(hitter, hit_arr));
+	exit(0);
 	if (find_best_split_info(hit_arr, &axis, &left_size) == FAILURE)
 		return (FAILURE);
 	ft_qsort((char *)hit_arr.arr,

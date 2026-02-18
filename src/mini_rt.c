@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 20:41:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/18 21:42:09 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	mini_rt(int argc, char *argv[])
 	option_flag = set_option(argv + 2);
 	if (init_world(&world, argv[1], option_flag) == FAILURE)
 		return (FAILURE);
+	printf("\nFinish init_world()\n"); // debug
+	exit(0); // debug
 	if (render_world(&world, option_flag) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
