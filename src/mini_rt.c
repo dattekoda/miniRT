@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/18 20:32:41 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/18 21:30:27 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	mini_rt(int argc, char *argv[])
 	option_flag = set_option(argv + 2);
 	if (init_world(&world, argv[1], option_flag) == FAILURE)
 		return (FAILURE);
-	printf("\nFinish init_world()\n"); // debug
-	exit(0); // debug
 	if (render_world(&world, option_flag) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
