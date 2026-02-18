@@ -29,13 +29,6 @@ static bool	match_objects(const char *line, const t_element *object_table[],
 static int	line_list_to_hitter_list(t_list **hitter_list,
 				const t_list *line_list, const t_element *object_table[]);
 
-
-#include <stdio.h> // debug
-void	print_hitter(t_hitter *hitter); // debug
-void	print_line_list(const t_list *line_list); // debug
-void	print_hitter_list(const t_list *list); // debug
-void	print_hitter_arr(t_hitter_arr arr); // debug
-
 int	line_list_to_hit_arr(
 			t_hitter_arr *hit_arr,
 			const t_list *line_list,
@@ -105,8 +98,6 @@ static bool	match_objects(const char *line, const t_element *object_table[],
 	return (false);
 }
 
-
-void	print_line_list(const t_list *line_list);
 /*
 @brief not responsible for free(hitter_list)
 */

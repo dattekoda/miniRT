@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute_path_tracing_color.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/14 15:14:23 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/18 21:42:03 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@
 
 static bool	is_killed_by_russian_roulette(size_t depth, t_color *attenuation);
 
-#include "rt_debug.h"
-#include <stdio.h>
-#include <stdlib.h>
 t_color	compute_path_tracing_color(
 			const t_ray *ray,
 			const t_world *world,

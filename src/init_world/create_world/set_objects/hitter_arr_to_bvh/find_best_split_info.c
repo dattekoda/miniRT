@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 21:39:52 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/18 21:40:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@ static int	find_best_left_size(
 double		cost_func(const t_hitter_arr root, size_t left_size,
 				double *left_area_arr, double *right_area_arr);
 
-void	print_hitter_arr(t_hitter_arr arr);
-
-#include <stdio.h> // debug
-
 int	find_best_split_info(t_hitter_arr hit_arr,
 	t_axis *best_axis, size_t *best_left_size)
 {
@@ -53,10 +49,8 @@ int	find_best_split_info(t_hitter_arr hit_arr,
 	tmp_axis = 0;
 	while (tmp_axis < 3)
 	{
-		print_hitter_arr(hit_arr);
 		ft_qsort((char *)hit_arr.arr, hit_arr.size,
 			sizeof(t_hitter *), get_compare_func(tmp_axis));
-		print_hitter_arr(hit_arr);
 		if (find_best_left_size(hit_arr, &tmp_left_size, &tmp_cost) == FAILURE)
 			return (FAILURE);
 		if (tmp_cost < best_cost)
