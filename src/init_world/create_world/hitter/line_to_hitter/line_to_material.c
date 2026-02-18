@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:54:31 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/09 17:04:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 18:44:48 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "element.h"
 #include "init_world_utils.h"
 #include "init_world_define.h"
+#include "validate_utils.h"
 #include "vec_utils.h"
 #include <stddef.h>
 
@@ -38,7 +39,9 @@ int	line_to_material(
 	char	*texture_str;
 
 	token_to_vec(line, line_idx, &raw_color);
+	skip_spaces(line, line_idx);
 	token_to_str(line, line_idx, &material_str);
+	skip_spaces(line, line_idx);
 	token_to_str(line, line_idx, &texture_str);
 	*mat_pp = param_to_material_ptr(
 			normalize_color(raw_color),

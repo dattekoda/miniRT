@@ -82,17 +82,19 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							generate_solid_texture.c \
 						) \
 						$(addprefix material/, \
+							generate_dielectric.c \
 							generate_lambertian.c \
+							generate_metal.c \
 							generate_light.c \
 							$(addprefix material_utils/, \
 								orient_normal.c \
 							) \
 							$(addprefix pdf/, \
 								calc_light_pdf_value.c \
+								generate_light_pdf_direction.c \
 								cosine_pdf.c \
 								light_pdf.c \
 								mixture_pdf.c \
-								random_light_pdf.c \
 							) \
 						) \
 						$(addprefix hitter/, \
@@ -212,9 +214,11 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 
 # you can delete later
 SRCS	+=	$(addprefix src_for_debug/, \
-				print_line_list.c \
 				print_hitter.c \
+				print_line_list.c \
+				print_material.c \
 				print_pixel_arr.c \
+				print_ray.c \
 				print_vec.c \
 			)
 

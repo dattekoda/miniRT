@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_ambient_light.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 18:04:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/14 17:07:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@
 #include "rt_define.h"
 #include <stdbool.h>
 
-t_color	line_to_ambient_light(const char *line, bool is_phong);
+t_color			line_to_ambient_light(const char *line);
 static t_color	construct_ambient_light(t_color raw_color, double ratio);
 
-void	set_ambient_light(t_world *world, const t_list *line_list, bool is_phong)
+void	set_ambient_light(t_world *world, const t_list *line_list)
 {
 	while (line_list)
 	{
-		if (match_identifier(line_list->content, g_info_table[AMBIENT]))
+		if (match_identifier(line_list->content, g_element_table[AMBIENT]))
 			break ;
 		line_list = line_list->next;
 	}
 	world->ambient_light
-		= line_to_ambient_light(line_list->content, is_phong);
+		= line_to_ambient_light(line_list->content);
 	return ;
 }
 
-t_color	line_to_ambient_light(const char *line, bool is_phong)
+t_color	line_to_ambient_light(const char *line)
 {
 	t_color	raw_color;
 	double	ratio;
@@ -43,8 +43,6 @@ t_color	line_to_ambient_light(const char *line, bool is_phong)
 	i = 1;
 	token_to_value(line, &i, &ratio);
 	token_to_vec(line, &i, &raw_color);
-	if (!is_phong)
-		ratio *= PATHTRACING_AMBIENTSCALE;
 	return (construct_ambient_light(raw_color, ratio));
 }
 

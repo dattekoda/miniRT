@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   axis.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 18:57:21 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/29 18:57:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/12 22:14:28 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 typedef enum e_axis
 {
-	X,
-	Y,
-	Z
+	A_X,
+	A_Y,
+	A_Z
 }	t_axis;
 
 #endif

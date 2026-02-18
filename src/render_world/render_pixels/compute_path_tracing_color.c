@@ -32,7 +32,7 @@ t_color	compute_path_tracing_color(
 
 	range = construct_vec2(HIT_T_MIN, INFINITY);
 	if (depth >= MAX_DEPTH)
-		return (constant_vec3(1.0));
+		return (constant_vec3(0.0));
 	if (!world->object_tree)
 		return (world->ambient_light);
 	if (!world->object_tree->hit(world->object_tree, ray, &hrec, &range))
@@ -60,7 +60,7 @@ static bool	is_killed_by_russian_roulette(size_t depth, t_color *attenuation)
 				attenuation->e[1]),
 			attenuation->e[2]);
 	live_prob = clamp(live_prob, LIVE_PROBABILITY_MIN, 1.0);
-	if (live_prob < random_double(0.0, 1.0))
+	if (live_prob < random_01())
 		return (true);
 	*attenuation = scal_div_vec3(*attenuation, live_prob);
 	return (false);

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 09:32:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/09 22:32:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/15 20:39:02 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@
 t_vec3			orient_normal(
 					const t_vec3 *hrec_normal,
 					const t_vec3 *ray_in_direct);
-t_vec3			reflect(const t_vec3 *vec, const t_vec3 *normal);
+static t_metal	construct_metal(t_texture *texture_ptr);
 static t_vec3	random_in_unit_sphere(void);
+static bool		scatter_metal(
+					const void *s,
+					const t_world *world,
+					t_hrec *hrec,
+					t_srec *srec);
 
 /*
 @brief responsible for free(texture_ptr)
@@ -55,6 +60,7 @@ static t_metal	construct_metal(t_texture *texture_ptr)
 	metal.material.texture_ptr = texture_ptr;
 	metal.material.clear = clear_material;
 	metal.material.scatter = scatter_metal;
+	metal.material.idx = METAL;
 	return (metal);
 }
 
@@ -64,15 +70,14 @@ static bool	scatter_metal(
 				t_hrec *hrec,
 				t_srec *srec)
 {
-	const t_metal	*self;
+	const t_metal	*self = s;
 	const t_vec3	reflect_normal
 		= orient_normal(&hrec->normal, &hrec->ray_in.direct);
 	const t_vec3	reflected
-		= normalize(reflect(&hrec->ray_in.direct, &reflect_normal));
-	t_texture		*texture_ptr;
+		= reflect(normalize(hrec->ray_in.direct), reflect_normal);
+	const t_texture	*texture_ptr = self->material.texture_ptr;
 
-	self = s;
-	texture_ptr = self->material.texture_ptr;
+	(void)world;
 	srec->surface_pdf = 1.0;
 	srec->sampling_pdf = 1.0;
 	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec);

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   rt_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
 /*   Updated: 2026/02/17 17:49:23 by khanadat         ###   ########.fr       */
@@ -13,7 +13,7 @@
 #ifndef RT_UTILS_H
 # define RT_UTILS_H
 
-# include <stdio.h> // delete later 
+# include <stddef.h>
 # include <stdbool.h>
 
 double	clamp(double x, double min, double max);

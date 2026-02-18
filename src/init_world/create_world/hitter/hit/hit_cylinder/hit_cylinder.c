@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 06:26:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 16:17:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/14 15:51:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool	hit_cylinder(
 
 	self = s;
 	init_solution_context(&solu, self, ray);
-	if (!is_solution_in_range(&solu, range))
+	if (!is_solution_inside_range(&solu, range))
 		return (false);
 	if (!validate_height_and_assign(self, ray, hrec, &solu))
 		return (false);

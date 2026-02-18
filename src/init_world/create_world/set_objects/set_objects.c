@@ -56,7 +56,7 @@ static void	delete_light_line(t_list **line_list)
 	curr = prev->next;
 	while (curr)
 	{
-		if (match_identifier(curr->content, g_info_table[LIGHT]))
+		if (match_identifier(curr->content, g_element_table[LIGHT]))
 		{
 			prev->next = curr->next;
 			ft_lstdelone(curr, free);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_option.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:53 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/26 08:41:11 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/15 18:14:17 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 
 static int	set_long_option(char *option);
-static int	set_short_option(char *option);
+static int	set_short_option(const char *option);
 
 /*
 @brief set option like -p
@@ -51,7 +51,7 @@ static int	set_long_option(char *option)
 	return (0);
 }
 
-static int	set_short_option(char *option)
+static int	set_short_option(const char *option)
 {
 	int		bit_flag;
 	size_t	i;

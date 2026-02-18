@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:58:49 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 21:41:14 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/12 18:18:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	draw_mlx_image(int **raw_rgb_arr)
 	mlx_put_image_to_window(rt_mlx.var.mlx, rt_mlx.var.win, rt_mlx.img.id, 0, 0);
 	mlx_hook(rt_mlx.var.win, 17, 0L, close_window, &rt_mlx);
 	mlx_loop(rt_mlx.var.mlx);
-	clear_rt_mlx(&rt_mlx);
 	return (SUCCESS);
 }
 

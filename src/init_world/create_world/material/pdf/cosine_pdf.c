@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/09 21:42:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/13 19:48:57 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,26 @@
 #include "vec_utils.h"
 #include "rt_utils.h"
 #include "rt_define.h"
+#include "axis.h"
 #include "libft.h"
 #include <math.h>
 
 static double	calc_cosine_pdf_value(
 					const void *s,
 					const t_vec3 *direction);
-static t_vec3	random_cosine_pdf(const void *s);
+static t_vec3	generate_cosine_pdf_direction(const void *s);
 static t_vec3	random_cosine_direction(void);
 
-t_cosine_pdf	*generate_cosine_pdf(t_vec3 normal)
-{
-	t_cosine_pdf	*p;
+// t_cosine_pdf	*generate_cosine_pdf_direction(t_vec3 normal)
+// {
+// 	t_cosine_pdf	*p;
 
-	p = ft_calloc(1, sizeof(t_cosine_pdf));
-	if (!p)
-		return (NULL);
-	*p = construct_cosine_pdf(normal);
-	return (p);
-}
+// 	p = ft_calloc(1, sizeof(t_cosine_pdf));
+// 	if (!p)
+// 		return (NULL);
+// 	*p = construct_cosine_pdf(normal);
+// 	return (p);
+// }
 
 t_cosine_pdf	construct_cosine_pdf(t_vec3 normal)
 {
@@ -40,7 +41,7 @@ t_cosine_pdf	construct_cosine_pdf(t_vec3 normal)
 
 	cosine.onb = construct_onb(normal);
 	cosine.pdf.calc_pdf_value = calc_cosine_pdf_value;
-	cosine.pdf.random_pdf = random_cosine_pdf;
+	cosine.pdf.generate = generate_cosine_pdf_direction;
 	return (cosine);
 }
 
@@ -48,30 +49,30 @@ static double	calc_cosine_pdf_value(
 					const void *s,
 					const t_vec3 *direction)
 {
-	const t_cosine_pdf	*self;
+	const t_cosine_pdf	*self = s;
+	const double		cosine
+			= dot(normalize(*direction), self->onb.v[A_Z]);
 
-	self = s;
-	return (dot(self->onb.v[2], normalize(*direction)));
+	if (cosine < 0)
+		return (0);
+	return (cosine / M_PI);
 }
 
-static t_vec3	random_cosine_pdf(const void *s)
+static t_vec3	generate_cosine_pdf_direction(const void *s)
 {
-	const t_cosine_pdf	*self;
+	const t_cosine_pdf	*self = s;
 
-	self = s;
 	return (local_onb(self->onb, random_cosine_direction()));
 }
 
 static t_vec3	random_cosine_direction(void)
 {
-	t_vec3	direction;
-	double	u1;
-	double	u2;
+	const double	r1 = random_01();
+	const double	r2 = random_01();
+	const double	phi = 2 * M_PI * r1;
 
-	u1 = random_01();
-	u2 = random_01();
-	direction.e[0] = cos(2 * M_PI * u1) * sqrt(u2);
-	direction.e[1] = sin(2 * M_PI * u1) * sqrt(u2);
-	direction.e[2] = sqrt(1 - u2);
-	return (direction);
+	return (construct_vec3(
+		cos(phi) * sqrt(r2),
+		sin(phi) * sqrt(r2),
+		sqrt(1 - r2)));
 }

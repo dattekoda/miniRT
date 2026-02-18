@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light_pdf.h                                        :+:      :+:    :+:   */
+/*   dielectric.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/19 16:12:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 16:29:58 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/15 21:30:07 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/15 21:33:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHT_PDF_H
-# define LIGHT_PDF_H
+#ifndef DIELECTRIC_H
+# define DIELECTRIC_H
 
-# include "pdf.h"
-# include "vec.h"
-# include "world.h"
-# include "libft.h"
+# include "material.h"
 
-typedef struct s_light_pdf
+/*
+@param refract_idx 
+*/
+typedef struct s_dielectric
 {
-	t_pdf			pdf;
-	const t_list	*light_list;
-	t_point3		point;
-}	t_light_pdf;
-
-t_light_pdf	construct_light_pdf(const t_hrec *hrec, const t_list *light_list);
+	t_material	material;
+	double		refract_idx;
+}	t_dielectric;
 
 #endif

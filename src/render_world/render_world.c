@@ -21,7 +21,7 @@
 #include <math.h>
 
 int			render_pixels(
-				t_color **pixel_arr_p,
+				int **raw_rgb_arr,
 				const t_world *world,
 				bool is_phong);
 int			draw_image(int **raw_rgb_arr, bool is_ppm_mode);
@@ -36,11 +36,10 @@ static int	convert_into_raw_rgb(t_color color);
 */
 int	render_world(t_world *world, int option_flag)
 {
-	t_color	*pixel_arr;
-	int		*raw_rgb_arr;
+	int	*raw_rgb_arr;
 
-	if (render_pixels(&pixel_arr, world,
-		option_flag & OPT_ARTIFICIAL) == FAILURE)
+	if (render_pixels(
+		&raw_rgb_arr, world, option_flag & OPT_ARTIFICIAL) == FAILURE)
 	{
 		clear_world(world);
 		return (FAILURE);

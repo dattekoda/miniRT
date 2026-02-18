@@ -41,8 +41,8 @@ int	find_best_split_info(t_hitter_arr hit_arr,
 	size_t	tmp_left_size;
 	double	tmp_cost;
 
-	*best_axis = X;
-	*best_left_size = 1;
+	*best_axis = A_X;
+	*best_left_size = 0;
 	best_cost = INFINITY;
 	tmp_cost = INFINITY;
 	tmp_left_size = 1;

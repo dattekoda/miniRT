@@ -16,17 +16,14 @@
 #include "world.h"
 #include "libft.h"
 
-void	set_ambient_light(
-			t_world *world,
-			const t_list *line_list,
-			bool is_phong);
+void	set_ambient_light(t_world *world, const t_list *line_list);
 void	set_camera(t_camera *camera, const t_list *line_list);
 int		set_light(t_world *world, const t_list *line_list, int option_flag);
 int		set_objects(t_world *world, t_list *line_list, int option_flag);
 
 int	create_world(t_world *world, t_list *line_list, int option_flag)
 {
-	set_ambient_light(world, line_list, option_flag & OPT_ARTIFICIAL);
+	set_ambient_light(world, line_list);
 	set_camera(&world->camera, line_list);
 	if (set_light(world, line_list, option_flag) == FAILURE)
 		return (FAILURE);

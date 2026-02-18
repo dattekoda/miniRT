@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hitter.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:38:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 20:01:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/12 21:41:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef enum e_element_type
 
 typedef struct s_material	t_material;
 
-typedef struct s_hrec
+typedef struct s_hit_record
 {
 	t_ray		ray_in;
 	double		param_t;

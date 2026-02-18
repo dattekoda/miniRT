@@ -13,7 +13,7 @@
 #include "vec.h"
 #include <stdio.h>
 
-void	print_vec(t_vec3 v)
+void	print_vec3(t_vec3 v)
 {
 	fprintf(stdout, "vec: (%.2f, %.2f, %.2f)\n", v.e[0], v.e[1], v.e[2]);
 }

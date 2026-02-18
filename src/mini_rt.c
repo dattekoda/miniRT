@@ -22,7 +22,10 @@ int		set_option(char *options[]);
 int		init_world(t_world *world, char *file_name, int option_flag);
 int		render_world(t_world *world, int option_flag);
 
+#include "material.h"
+#include "rt_debug.h"
 #include <stdio.h>
+#include <stdlib.h>
 int	mini_rt(int argc, char *argv[])
 {
 	int		option_flag;
