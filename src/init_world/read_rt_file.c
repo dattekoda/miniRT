@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_rt_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 20:14:39 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/18 23:20:48 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	read_lines_to_list(t_list *cur, int fd)
 			return (perror_rt("malloc"), FAILURE);
 		if (gnl_ret == 0)
 			break ;
-		if (*line == '\n')
+		if (*line == '\n' || *line == '#')
 		{
 			free(line);
 			continue ;
