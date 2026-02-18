@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 19:37:14 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/18 21:13:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ int	find_best_split_info(t_hitter_arr hit_arr,
 	t_axis *best_axis, size_t *best_left_size)
 {
 	double	best_cost;
-	double	tmp_cost;
 	size_t	tmp_axis;
 	size_t	tmp_left_size;
+	double	tmp_cost;
 
 	*best_axis = X;
-	*best_left_size = 0;
+	*best_left_size = 1;
 	best_cost = INFINITY;
 	tmp_cost = INFINITY;
-	tmp_left_size = 0;
-	tmp_axis = 0;
+	tmp_left_size = 1;
+	tmp_axis = X;
 	while (tmp_axis < 3)
 	{
 		ft_qsort((char *)hit_arr.arr, hit_arr.size,
