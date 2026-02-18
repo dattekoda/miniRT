@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_qsort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 10:46:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/17 22:34:33 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:12:23 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static ssize_t	partition(char *base, size_t size, size_t nmemb,
 
 	pivot_p = decide_pivot(base, size, nmemb, compar);
 	ft_memcpy(pivot, pivot_p, size);
-	printf("pivot: %f\n", (t_hitter *)pivot.);
 	l = -1;
 	r = nmemb;
 	while (l < r)
