@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_light_pdf_value.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 22:04:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 16:30:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/18 23:06:04 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,11 @@ double	calc_light_pdf_value(const void *s, const t_vec3 *direct)
 	double				pdf_sum;
 
 	pdf_sum = 0;
-	// fprintf(stderr, "inside calc_light_pdf_value()\n");
-	// print_vec3(*direct);
 	while (light_list)
 	{
-		// print_hitter(light_list->content);
 		pdf_sum += calc_light_sphere_pdf_value(light_list->content, &self->point, direct);
 		light_list = light_list->next;
 	}
-	// fprintf(stderr, "pdf_sum:%f\n", pdf_sum);
-	// exit(1);
 	return (pdf_sum);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_lambertian.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 15:09:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/18 23:03:25 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ static t_lambertian	construct_lambertian(t_texture *texture_ptr)
 	return (lambertian);
 }
 
+#include <stdio.h>
 static bool	scatter_lambertian(
 				const void *s,
 				const t_world *world,
@@ -81,7 +82,6 @@ static bool	scatter_lambertian(
 	return (true);
 }
 
-#include <stdio.h>
 static void		record_next_direct_from_pdf(
 				const t_list *light_list,
 				const t_hrec *hrec,
