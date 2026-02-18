@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:20:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/18 19:39:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:56:27 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,29 +84,22 @@ static int	pixel_arr_to_raw_rgb_arr(
 	return (SUCCESS);
 }
 
-
-// ????? 修復求ム
+// while で書いてケロ
 static int	convert_into_raw_rgb(t_color color)
 {
 	t_color	adjusted_color;
 	int		rgb_color[3];
 
-	fprintf(stderr, "%f\n", color.e[0]);
 	adjusted_color = map_vec3(color, sqrt);
-	fprintf(stderr, "%f\n", adjusted_color.e[0]);
 	rgb_color[0] = 256.0 * clamp(adjusted_color.e[0], 0.0, 0.999);
-	fprintf(stderr, "%d\n", rgb_color[0]);
-	fprintf(stderr, "%f\n", color.e[1]);
+
 	adjusted_color = map_vec3(color, sqrt);
-	fprintf(stderr, "%f\n", adjusted_color.e[1]);
 	rgb_color[1] = 256.0 * clamp(adjusted_color.e[1], 0.0, 0.999);
-	fprintf(stderr, "%d\n", rgb_color[1]);
-	fprintf(stderr, "%f\n", color.e[2]);
+
 	adjusted_color = map_vec3(color, sqrt);
-	fprintf(stderr, "%f\n", adjusted_color.e[2]);
 	rgb_color[2] = 256.0 * clamp(adjusted_color.e[2], 0.0, 0.999);
-	fprintf(stderr, "%d\n", rgb_color[2]);
-	exit(1);
+
+	rgb_color[0] = 256.0 * clamp(adjusted_color.e[0], 0.0, 0.999);
 	rgb_color[1] = 256.0 * clamp(adjusted_color.e[1], 0.0, 0.999);
 	rgb_color[2] = 256.0 * clamp(adjusted_color.e[2], 0.0, 0.999);
 	return ((rgb_color[0] << 16) | (rgb_color[1] << 8) | rgb_color[2]);

@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_hitter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/17 22:08:15 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/18 20:31:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "tree.h"
 #include "hitter.h"
 #include "hitter_arr.h"
 #include "libft.h"
@@ -55,8 +56,7 @@ void	print_hitter(t_hitter *hitter)
 		"NOTHING"
 	};
 	// printf("%u\n", hitter->type);
-	printf("type:%s", string_table[hitter->type]);
-	printf("vec: ");
+	printf("type:%s ", string_table[hitter->type]);
 	print_vec(hitter->aabb.centroid);
 }
 
@@ -93,3 +93,24 @@ void	print_hitter_arr(t_hitter_arr arr)
 		i++;
 	}
 }
+
+static void	print_tree_recursive(t_hitter *node);
+void	print_tree(t_hitter *node)
+{
+	printf("print bvh:\n");
+	print_tree_recursive(node);
+}
+
+static void	print_tree_recursive(t_hitter *node)
+{
+	if (!node)
+		return ;
+	print_hitter(node);
+	if (node->type != TREE)
+		return ;
+	t_tree	*tree = (t_tree *)node;
+	print_tree_recursive(tree->lhs);
+	print_tree_recursive(tree->rhs);
+}
+
+
