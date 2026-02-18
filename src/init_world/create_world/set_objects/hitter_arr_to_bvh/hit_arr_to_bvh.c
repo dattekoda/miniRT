@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 20:41:48 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/18 21:05:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,8 @@ static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr)
 
 	if (hit_arr.size < 3)
 		return (base_case(hitter, hit_arr));
-	// if (find_best_split_info(hit_arr, &axis, &left_size) == FAILURE)
-	// 	return (FAILURE);
-	axis = X;
-	left_size = hit_arr.size / 2;
-	printf("best axis: %c best left size: %zu\n", "XYZ"[axis], left_size);
+	if (find_best_split_info(hit_arr, &axis, &left_size) == FAILURE)
+		return (FAILURE);
 	ft_qsort((char *)hit_arr.arr,
 		hit_arr.size, sizeof(t_hitter *), get_compare_func(axis));
 	if (generate_bvh_recursive(&lhs,

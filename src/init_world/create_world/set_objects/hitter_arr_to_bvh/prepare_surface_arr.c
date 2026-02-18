@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 23:39:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 00:41:05 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/18 21:25:43 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,9 @@ int	prepare_surface_arr(
 		right_size = hit_arr.size - left_size;
 		aabb_left = surrounding_box(aabb_left, hit_arr.arr[left_size
 				- 1]->aabb);
-		aabb_right = surrounding_box(aabb_right, hit_arr.arr[right_size
-				- 1]->aabb);
+		aabb_right = surrounding_box(aabb_right, hit_arr.arr[right_size]->aabb);
 		(*left_arr_p)[left_size - 1] = calc_surface_area(aabb_left);
-		(*right_arr_p)[right_size - 1] = calc_surface_area(aabb_right);
+		(*right_arr_p)[right_size] = calc_surface_area(aabb_right);
 		left_size++;
 	}
 	return (SUCCESS);
