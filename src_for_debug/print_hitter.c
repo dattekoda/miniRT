@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hitter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 20:31:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/18 21:58:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "hitter.h"
 #include "hitter_arr.h"
 #include "libft.h"
+#include "rt_debug.h"
 #include <stdio.h>
 
 /*
@@ -33,7 +34,6 @@ typedef enum e_element_type
 	NOTHING
 }	t_element_type;
 */
-void	print_vec(t_vec3 v);
 
 void	print_hitter(t_hitter *hitter)
 {
@@ -57,7 +57,7 @@ void	print_hitter(t_hitter *hitter)
 	};
 	// printf("%u\n", hitter->type);
 	printf("type:%s ", string_table[hitter->type]);
-	print_vec(hitter->aabb.centroid);
+	print_vec3(hitter->aabb.centroid);
 }
 
 void	print_hitter_list(const t_list *list)

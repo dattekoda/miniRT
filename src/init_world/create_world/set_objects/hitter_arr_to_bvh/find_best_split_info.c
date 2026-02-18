@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_best_split_info.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 21:13:40 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/18 22:10:17 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ int	find_best_split_info(t_hitter_arr hit_arr,
 	double	tmp_cost;
 
 	*best_axis = A_X;
-	*best_left_size = 0;
+	*best_left_size = 1;
 	best_cost = INFINITY;
 	tmp_cost = INFINITY;
 	tmp_left_size = 1;
-	tmp_axis = X;
+	tmp_axis = A_X;
 	while (tmp_axis < 3)
 	{
 		ft_qsort((char *)hit_arr.arr, hit_arr.size,
