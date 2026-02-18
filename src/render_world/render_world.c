@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:20:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 15:06:54 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:39:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ static int	pixel_arr_to_raw_rgb_arr(
 				const t_color *pixel_arr);
 static int	convert_into_raw_rgb(t_color color);
 
-void	print_pixel_arr(t_color *pixel_arr); // debug
-void	print_raw_rgb_arr(int *raw_rgb_arr); // debug
-
 /*
 @brief responsible for free(world)
 */
@@ -49,14 +46,11 @@ int	render_world(t_world *world, int option_flag)
 		return (FAILURE);
 	}
 	clear_world(world);
-	print_pixel_arr(pixel_arr); // debug
 	if (pixel_arr_to_raw_rgb_arr(&raw_rgb_arr, pixel_arr) == FAILURE)
 	{
 		free(pixel_arr);
 		return (FAILURE);
 	}
-	print_raw_rgb_arr(raw_rgb_arr);
-	exit(1);
 	free(pixel_arr);
 	if (draw_image(&raw_rgb_arr, option_flag & OPT_PPM) == FAILURE)
 		return (FAILURE);
@@ -90,6 +84,8 @@ static int	pixel_arr_to_raw_rgb_arr(
 	return (SUCCESS);
 }
 
+
+// ????? 修復求ム
 static int	convert_into_raw_rgb(t_color color)
 {
 	t_color	adjusted_color;

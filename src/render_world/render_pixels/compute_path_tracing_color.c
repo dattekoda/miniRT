@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute_path_tracing_color.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 21:07:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:39:19 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 #include <math.h>
 
 static bool	is_killed_by_russian_roulette(size_t depth, t_color *attenuation);
-
-void	print_hitter(t_hitter *hitter); // debug
 
 t_color	compute_path_tracing_color(
 			const t_ray *ray,
