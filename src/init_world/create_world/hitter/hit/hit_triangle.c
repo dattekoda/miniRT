@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_triangle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 16:39:33 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:10:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ static bool	is_inside_triangle(
 	t_vec3	vertex_to_point[3];
 
 	vertex_to_point[0] = sub_vec3(*point, tri->vertex[0]);
-	vertex_to_point[0] = sub_vec3(*point, tri->vertex[1]);
-	vertex_to_point[0] = sub_vec3(*point, tri->vertex[2]);
+	vertex_to_point[1] = sub_vec3(*point, tri->vertex[1]);
+	vertex_to_point[2] = sub_vec3(*point, tri->vertex[2]);
 	return (is_point_same_side(tri, vertex_to_point));
 }
 
@@ -82,8 +82,8 @@ static bool	is_point_same_side(
 	bool	is_negative[3];
 
 	is_negative[0] = dot(tri->normal, cross(tri->side[0], vtx_to_p[0])) < 0;
-	is_negative[0] = dot(tri->normal, cross(tri->side[0], vtx_to_p[0])) < 0;
-	is_negative[0] = dot(tri->normal, cross(tri->side[0], vtx_to_p[0])) < 0;
+	is_negative[1] = dot(tri->normal, cross(tri->side[1], vtx_to_p[1])) < 0;
+	is_negative[2] = dot(tri->normal, cross(tri->side[2], vtx_to_p[2])) < 0;
 	return ((is_negative[0] && is_negative[1] && is_negative[2])
 		|| (!is_negative[0] && !is_negative[1] && !is_negative[2]));
 }
