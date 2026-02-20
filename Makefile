@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/17 21:42:11 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/20 19:26:27 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -220,6 +220,7 @@ SRCS	+=	$(addprefix src_for_debug/, \
 				print_pixel_arr.c \
 				print_ray.c \
 				print_vec.c \
+				print_world.c \
 			)
 
 # --- obj ---

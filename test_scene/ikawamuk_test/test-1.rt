@@ -1,0 +1,3 @@
+# ./miniRT test_scene/ikawamuk_test/test-1.rt
+A					1.0					255, 255, 255
+C	0.0, 0.0, 0.0		0.0, 0.0, 1.0					70

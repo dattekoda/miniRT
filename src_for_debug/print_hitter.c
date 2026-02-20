@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hitter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 21:58:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:30:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	print_hitter(t_hitter *hitter)
 
 void	print_hitter_list(const t_list *list)
 {
+	printf("hitter list:\n");
 	if (!list)
 	{
 		printf("list has no content\n");
@@ -98,6 +99,11 @@ static void	print_tree_recursive(t_hitter *node);
 void	print_tree(t_hitter *node)
 {
 	printf("print bvh:\n");
+	if (!node)
+	{
+		printf("the tree has nothing.\n");
+		return ;
+	}
 	print_tree_recursive(node);
 }
 

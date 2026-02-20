@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/18 21:30:27 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:26:09 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		render_world(t_world *world, int option_flag);
 #include "rt_debug.h"
 #include <stdio.h>
 #include <stdlib.h>
+void	print_world(const t_world *world);
+
 int	mini_rt(int argc, char *argv[])
 {
 	int		option_flag;
@@ -35,6 +37,8 @@ int	mini_rt(int argc, char *argv[])
 	option_flag = set_option(argv + 2);
 	if (init_world(&world, argv[1], option_flag) == FAILURE)
 		return (FAILURE);
+	print_world(&world);
+	exit(0);
 	if (render_world(&world, option_flag) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
