@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/14 15:51:20 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/20 22:12:10 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ static t_vec2		construct_sphere_uv(const t_vec3 *unit_normal);
 // print_hitter(world.object_tree);
 // t_sphere *sphere = (t_sphere *)world.object_tree;
 // print_vec3(sphere->center);
-// printf("r: %f\n", sphere->radius);
+// fprintf(stderr, "r: %f\n", sphere->radius);
 // t_ray ray = construct_ray(construct_vec3(0,0,5), construct_vec3(0,0,-1));
 // t_hrec	hrec;
 // t_vec2	range = construct_vec2(0.01, INFINITY);
 // if (world.object_tree->hit(world.object_tree, &ray, &hrec, &range))
-// 	printf("hit\n");
+// 	fprintf(stderr, "hit\n");
 #include <stdio.h>
 #include "rt_debug.h"
 #include <stdlib.h>

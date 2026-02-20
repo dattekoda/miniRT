@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 10:46:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 19:12:23 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/20 22:12:10 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,10 +127,10 @@ void	ft_swap(void *a, void *b, size_t size)
 
 // void	print_obj_sort(t_obj arr[])
 // {
-// 	printf("before:\ta:%d b:%d c:%d d:%d\n", *arr[0].date_p, *arr[1].date_p, *arr[2].date_p, *arr[3].date_p);
+// 	fprintf(stderr, "before:\ta:%d b:%d c:%d d:%d\n", *arr[0].date_p, *arr[1].date_p, *arr[2].date_p, *arr[3].date_p);
 // 	ft_qsort((char *)arr, 4, sizeof(t_obj), compare_obj);
 // 	// ft_swap(arr, arr+1, sizeof(t_obj));
-// 	printf("after:\ta:%d b:%d c:%d d:%d\n", *arr[0].date_p, *arr[1].date_p, *arr[2].date_p, *arr[3].date_p);
+// 	fprintf(stderr, "after:\ta:%d b:%d c:%d d:%d\n", *arr[0].date_p, *arr[1].date_p, *arr[2].date_p, *arr[3].date_p);
 // }
 
 // int	main(void)
@@ -186,12 +186,12 @@ void	ft_swap(void *a, void *b, size_t size)
 // 	size_t	len;
 
 // 	len = ft_strlen((char *)a);
-// 	printf("before:\t%s\n", (char *)a);
+// 	fprintf(stderr, "before:\t%s\n", (char *)a);
 // 	ft_qsort((char *)a, len, sizeof(char), char_cmp);
-// 	printf("after:\t%s", (char *)a);
+// 	fprintf(stderr, "after:\t%s", (char *)a);
 // 	if (!is_in_order((char *)a, len))
-// 		printf("  <-----Error!!");
-// 	printf("\n");
+// 		fprintf(stderr, "  <-----Error!!");
+// 	fprintf(stderr, "\n");
 // }
 
 // static void	print_sort_arr(void **arr, size_t nmemb)

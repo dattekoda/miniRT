@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 19:17:54 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/20 20:48:34 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/20 22:12:10 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@ void	print_tree(t_hitter *node);
 
 void	print_camera(const t_camera *camera)
 {
-	printf("camera:\n");
-	printf("origin ");
+	fprintf(stderr, "camera:\n");
+	fprintf(stderr, "origin ");
 	print_vec3(camera->origin);
-	printf("onb u      ");
+	fprintf(stderr, "onb u      ");
 	print_vec3(camera->onb.v[0]);
-	printf("onb v      ");
+	fprintf(stderr, "onb v      ");
 	print_vec3(camera->onb.v[1]);
-	printf("onb w (up) ");
+	fprintf(stderr, "onb w (up) ");
 	print_vec3(camera->onb.v[2]);
 }
 
 void	print_world(const t_world *world)
 {
-	printf("world:\n");
-	printf("ambient color ");
+	fprintf(stderr, "world:\n");
+	fprintf(stderr, "ambient color ");
 	print_vec3(world->ambient_light);
 	print_camera(&world->camera);
-	printf("lght list: ");
+	fprintf(stderr, "lght list: ");
 	print_hitter_list(world->light_list);
 	print_tree(world->object_tree);
 }
