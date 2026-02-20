@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/20 20:11:37 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/20 20:24:12 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ t_color	compute_path_tracing_color(
 	if (depth >= MAX_DEPTH)
 		return (constant_vec3(0.0));
 	if (!world->object_tree
-	| !world->object_tree->hit(world->object_tree, ray, &hrec, &range))
+	|| !world->object_tree->hit(world->object_tree, ray, &hrec, &range))
 		return (world->ambient_light);
-
 	if (!hrec.mat_ptr->scatter(hrec.mat_ptr, world, &hrec, &srec))
 		return (srec.attenuation);
 	if (is_killed_by_russian_roulette(depth, &srec.attenuation))
