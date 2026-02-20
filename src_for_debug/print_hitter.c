@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/20 20:41:04 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/20 20:48:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	print_hitter_list(const t_list *list)
 		return ;
 	}
 	t_list	*cur = (t_list *)list;
-	printf("print list:\n");
 	while (cur)
 	{
 		t_hitter *hitter = (t_hitter *)cur->content;

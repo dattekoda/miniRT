@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 19:17:54 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/20 19:30:13 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/20 20:48:34 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	print_world(const t_world *world)
 	printf("ambient color ");
 	print_vec3(world->ambient_light);
 	print_camera(&world->camera);
+	printf("lght list: ");
 	print_hitter_list(world->light_list);
 	print_tree(world->object_tree);
 }
