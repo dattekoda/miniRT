@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/20 19:30:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/20 20:41:04 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	print_hitter_arr(t_hitter_arr arr)
 	}
 }
 
-static void	print_tree_recursive(t_hitter *node);
+static void	print_tree_recursive(t_hitter *node, int depth);
 void	print_tree(t_hitter *node)
 {
 	printf("print bvh:\n");
@@ -104,10 +104,10 @@ void	print_tree(t_hitter *node)
 		printf("the tree has nothing.\n");
 		return ;
 	}
-	print_tree_recursive(node);
+	print_tree_recursive(node, 0);
 }
 
-static void	print_tree_recursive(t_hitter *node)
+static void	print_tree_recursive(t_hitter *node, int depth)
 {
 	if (!node)
 		return ;
@@ -115,8 +115,10 @@ static void	print_tree_recursive(t_hitter *node)
 	if (node->type != TREE)
 		return ;
 	t_tree	*tree = (t_tree *)node;
-	print_tree_recursive(tree->lhs);
-	print_tree_recursive(tree->rhs);
+	printf("%*s", depth + 1, "");
+	print_tree_recursive(tree->lhs, depth + 1);
+	printf("%*s", depth + 1, "");
+	print_tree_recursive(tree->rhs, depth + 1);
 }
 
 
