@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:04:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 23:11:58 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/21 16:52:51 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "pdf.h"
 # include "light_pdf.h"
 
-# define MIXTURE_RATIO 0.5
+# define MIXTURE_LIGHT_RATIO 0.5
 
 typedef struct s_mixture_pdf
 {

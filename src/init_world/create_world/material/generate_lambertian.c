@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 23:03:25 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/21 16:45:59 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ static bool	scatter_lambertian(
 	return (true);
 }
 
+void	print_hitter_list(const t_list *list);
+
 static void		record_next_direct_from_pdf(
 				const t_list *light_list,
 				const t_hrec *hrec,
@@ -102,5 +104,7 @@ static void		record_next_direct_from_pdf(
 			&mix_pdf, &srec->next_ray.direct);
 	srec->surface_pdf = mix_pdf.surface_pdf->calc_pdf_value(
 			mix_pdf.surface_pdf, &srec->next_ray.direct);
+
+	// printf("light pdf: %f\n", light_pdf.pdf.calc_pdf_value(&light_pdf.pdf, &srec->next_ray.direct)); // debug
 	return ;
 }

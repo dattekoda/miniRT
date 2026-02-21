@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/20 22:12:10 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:22:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "hitter_arr.h"
 #include "libft.h"
 #include "rt_debug.h"
+#include "material.h"
 #include <stdio.h>
 
 /*
@@ -55,9 +56,13 @@ void	print_hitter(t_hitter *hitter)
 		"TREE",
 		"NOTHING"
 	};
-	// fprintf(stderr, "%u\n", hitter->type);
 	fprintf(stderr, "type:%s ", string_table[hitter->type]);
 	print_vec3(hitter->aabb.centroid);
+	if (hitter->mat_ptr)
+	{
+		fprintf(stderr, "color: ");
+		print_vec3(hitter->mat_ptr->texture_ptr->calc_texture_value(hitter->mat_ptr->texture_ptr, NULL));
+	}
 }
 
 void	print_hitter_list(const t_list *list)

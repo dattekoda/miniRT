@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 20:45:17 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:14:24 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ extern const unsigned int	g_window_height;
 // should be at rt_config.h
 # define SAMPLES_PER_PIXEL 30
 # define LENS_RADIUS 0.0
-# define MAX_DEPTH 10
+# define MAX_DEPTH 2
 
 #endif
