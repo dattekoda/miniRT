@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/21 17:05:58 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/21 19:08:47 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 #  define LIGHT_STERADIAN 0.001
 # endif
 
-# define PATHTRACING_LIGHT_STRENGTH 1000.0
+# define PATHTRACING_LIGHT_STRENGTH 100.0
 
 
 

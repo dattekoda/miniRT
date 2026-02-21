@@ -6,11 +6,12 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 21:03:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/21 14:32:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/21 19:00:04 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_utils.h"
+#include "option.h"
 #include "rt_define.h"
 #include "vec_utils.h"
 #include "libft.h"
@@ -18,12 +19,14 @@
 #include <stdlib.h>
 
 int			add_light_radius(char **light_line, t_point3 camera_origin);
+static int	add_option_flag(char **light_line, int option_flag);
 static int	calc_radius(t_point3 light_point, t_point3 camera_origin);
 static int	radius_strjoin(char **light_line, int radius);
 static char	*str_space_join(char *a, char *b);
 static char	*delete_new_line(char *light_line);
 
-int	preprocess_line_list(t_list *line_list, t_point3 camera_origin)
+#include <stdio.h>
+int	preprocess_line_list(t_list *line_list, t_point3 camera_origin, int option_flag)
 {
 	while (line_list)
 	{
@@ -32,23 +35,27 @@ int	preprocess_line_list(t_list *line_list, t_point3 camera_origin)
 			if (add_light_radius(
 					(char **)&line_list->content, camera_origin) == FAILURE)
 				return (FAILURE);
-			/*
-			if (!(option_flag & ARTIFICA)
-			*/
+			if (add_option_flag((char **)&line_list->content, option_flag) == FAILURE)
+				return (FAILURE);
 		}
 		line_list = line_list->next;
 	}
 	return (SUCCESS);
 }
 
-/*
-
-static int	add_option_flag()
+static int	add_option_flag(char **light_line, int option_flag)
 {
-	
-}
+	char	*new_light_line;
 
-*/
+	if (!(option_flag & OPT_ARTIFICIAL))
+		return (SUCCESS);
+	new_light_line = str_space_join(*light_line, "a");
+	if (!new_light_line)
+		return (FAILURE);
+	free(*light_line);
+	*light_line = new_light_line;
+	return (SUCCESS);
+}
 
 /*
 L 0,5,5 0.1 255,255,255 → L 0,5,5 0.1 255,255,255 30
@@ -102,12 +109,13 @@ static int	radius_strjoin(char **light_line, int radius)
 	return (SUCCESS);
 }
 
+#include <stdio.h>
 static char	*delete_new_line(char *light_line)
 {
 	const int	len = ft_strlen(light_line);
 
 	if (light_line[len - 1] == '\n')
-		light_line[len - 1] = '\0';
+		light_line[len - 1] = ' ';
 	return (light_line);
 }
 
