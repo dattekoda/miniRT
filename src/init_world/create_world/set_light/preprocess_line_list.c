@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   preprocess_line_list.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 21:03:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/21 14:32:42 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,23 @@ int	preprocess_line_list(t_list *line_list, t_point3 camera_origin)
 			if (add_light_radius(
 					(char **)&line_list->content, camera_origin) == FAILURE)
 				return (FAILURE);
+			/*
+			if (!(option_flag & ARTIFICA)
+			*/
 		}
 		line_list = line_list->next;
 	}
 	return (SUCCESS);
 }
+
+/*
+
+static int	add_option_flag()
+{
+	
+}
+
+*/
 
 /*
 L 0,5,5 0.1 255,255,255 → L 0,5,5 0.1 255,255,255 30

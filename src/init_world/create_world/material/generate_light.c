@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/14 14:07:11 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/21 14:16:41 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static t_light	construct_light(t_texture *texture_ptr)
 	return (light);
 }
 
+#include <stdio.h>
 static bool	scatter_light(
 				const void *s,
 				const t_world *world,
@@ -64,5 +65,6 @@ static bool	scatter_light(
 	else
 		srec->attenuation
 		= texture_ptr->calc_texture_value(texture_ptr, hrec);
+	printf("emmited color: %f %f %f\n", srec->attenuation.e[0], srec->attenuation.e[1], srec->attenuation.e[2]);
 	return (false);
 }

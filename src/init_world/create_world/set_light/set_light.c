@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:52:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/21 14:30:44 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@
 
 static int	new_light_node(t_list **new_list, const char *line,
 				int option_flag);
-int			preprocess_line_list(t_list *line_list, t_point3 camera_origin);
+int			preprocess_line_list(t_list *line_list, t_point3 camera_origin /* , int option_flag */ ) ;
 int			line_to_light(t_hitter **light, const char *line);
 
 int	set_light(t_world *world, t_list *line_list, int option_flag)
 {
 	t_list	*new_node;
 
-	if (preprocess_line_list(line_list, world->camera.origin) == FAILURE)
+	if (preprocess_line_list(line_list, world->camera.origin /* , option_flag */) == FAILURE)
 		return (FAILURE);
 	while (line_list)
 	{
@@ -50,6 +50,7 @@ int	set_light(t_world *world, t_list *line_list, int option_flag)
 	return (SUCCESS);
 }
 
+#include <stdio.h>
 static int	new_light_node(t_list **new_node, const char *line, int option_flag)
 {
 	t_hitter		*new_light;
