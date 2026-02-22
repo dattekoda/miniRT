@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/22 16:47:13 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/22 17:13:15 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,8 +94,10 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								orient_normal.c \
 							) \
 							$(addprefix pdf/, \
-								calc_light_pdf_value.c \
-								generate_light_pdf_direction.c \
+								$(addprefix light_pdf_utils/, \
+									calc_light_pdf_value.c \
+									generate_light_pdf_direction.c \
+								) \
 								cosine_pdf.c \
 								light_pdf.c \
 								mixture_pdf.c \
