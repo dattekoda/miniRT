@@ -20,13 +20,14 @@
 #include "result.h"
 #include <stdlib.h>
 
-int			add_hitter_list(t_list **hitter_list, const char *line,
+int				add_hitter_list(t_list **hitter_list, const char *line,
 				const t_element *element);
-static int	hitter_list_to_hitter_arr(t_list *hitter_list,
+static int		hitter_list_to_hitter_arr(t_list *hitter_list,
 				t_hitter_arr *hit_arr);
-static bool	match_objects(const char *line, const t_element *object_table[],
-				size_t *idx);
-static int	line_list_to_hitter_list(t_list **hitter_list,
+static ssize_t	get_objects_idx(
+				const char *line,
+				const t_element *object_table[]);
+static int		line_list_to_hitter_list(t_list **hitter_list,
 				const t_list *line_list, const t_element *object_table[]);
 
 int	line_list_to_hit_arr(
@@ -79,23 +80,20 @@ static int	hitter_list_to_hitter_arr(t_list *hitter_list,
 @brief if matched object_table return SUCCESS, or return FAILURE
 @param idx if set NULL, you can get appropriate return value
 */
-static bool	match_objects(const char *line, const t_element *object_table[],
-		size_t *idx)
+static ssize_t	get_objects_idx(
+		const char *line,
+		const t_element *object_table[])
 {
-	size_t	i;
+	ssize_t	object_idx;
 
-	i = 0;
-	while (object_table[i])
+	object_idx = 0;
+	while (object_table[object_idx])
 	{
-		if (match_identifier(line, object_table[i]))
-		{
-			if (idx)
-				*idx = i;
-			return (true);
-		}
-		i++;
+		if (match_identifier(line, object_table[object_idx]))
+			return (object_idx);
+		object_idx++;
 	}
-	return (false);
+	return (-1);
 }
 
 /*
@@ -104,14 +102,15 @@ static bool	match_objects(const char *line, const t_element *object_table[],
 static int	line_list_to_hitter_list(t_list **hitter_list,
 		const t_list *line_list, const t_element *object_table[])
 {
-	size_t	obj_idx;
+	size_t	object_idx;
 
 	while (line_list)
 	{
-		if (match_objects(line_list->content, object_table, &obj_idx))
+		object_idx = get_objects_idx(line_list->content, object_table);
+		if (object_idx != -1)
 		{
 			if (add_hitter_list(hitter_list, line_list->content,
-					object_table[obj_idx]) == FAILURE)
+						object_table[object_idx]) == FAILURE)
 				return (FAILURE);
 		}
 		line_list = line_list->next;
