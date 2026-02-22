@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 19:47:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 20:12:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,15 @@
 
 # include <stddef.h>
 # include <stdbool.h>
+# include <stdint.h>
 
 typedef void	(*t_clear)(void *self);
+
+union u_rand_double
+{
+	uint64_t	u;
+	double		d;
+};
 
 double	clamp(double x, double min, double max);
 // utils_clamp.c

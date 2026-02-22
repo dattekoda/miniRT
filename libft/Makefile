@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/29 20:32:41 by khanadat          #+#    #+#              #
-#    Updated: 2026/01/08 11:29:06 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/22 20:16:58 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

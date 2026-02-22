@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils_random.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:48:09 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 13:33:10 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 20:12:44 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_utils.h"
 #include "rt_define.h"
+#include "libft.h"
 #include <stdint.h>
 #include <stddef.h>
 #include <sys/time.h>
@@ -32,16 +33,20 @@ double	random_double(double min, double max)
 
 double	random_01(void)
 {
-	const uint64_t	u = random_uint64() >> 12 | 0x3FF0000000000000ULL;
+	const union u_rand_double	rand_d = {
+		.u = random_uint64() >> 12 | 0x3FF0000000000000ULL
+	};
 
-	return (*(double *)&u - 1.0);
+	return (rand_d.d - 1.0);
 }
 
 double	random_minus1_to_1(void)
 {
-	const uint64_t	u = (random_uint64() >> 12) | 0x4000000000000000ULL;
+	const union u_rand_double	rand_d = {
+		.u = random_uint64() >> 12 | 0x4000000000000000ULL
+	};
 
-	return (*(double *)&u - 3.0);
+	return (rand_d.d - 3.0);
 }
 
 static uint64_t	random_uint64(void)
@@ -65,4 +70,3 @@ void	set_random_seed_from_time(void)
 		g_x = (uint64_t)((tv.tv_sec ^ tv.tv_usec) ^ RANDOM_SEED_UINT64);
 	return ;
 }
-
