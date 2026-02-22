@@ -6,16 +6,17 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:54:31 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 18:44:48 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 19:52:41 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "material.h"
+#include "material_define.h"
 #include "element.h"
 #include "init_world_utils.h"
 #include "init_world_define.h"
 #include "validate_utils.h"
 #include "vec_utils.h"
+#include "texture_define.h"
 #include <stddef.h>
 
 t_material	*param_to_material_ptr(
@@ -64,7 +65,7 @@ t_material	*param_to_material_ptr(
 	enum e_texture_idx	texture_idx;
 
 	if (!texture_str)
-		texture_idx = element->material_idx;
+		texture_idx = element->texture_idx;
 	else
 		texture_idx = str_to_texture_idx(texture_str);
 	texture_ptr = g_gen_texture_table[texture_idx](color);

@@ -1,5 +1,4 @@
-#include "material.h"
-#include "init_world_utils.h"
+#include "material_define.h"
 #include <stdio.h>
 
 void	print_material(const t_material *material)

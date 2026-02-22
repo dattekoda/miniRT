@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 14:55:03 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/15 23:07:34 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 19:51:35 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
-#include "material.h"
+#include "material_define.h"
 #include "texture.h"
 #include <stddef.h>
 

@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_swap.c                                       :+:      :+:    :+:   */
+/*   hit_record.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/19 20:53:36 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/22 19:46:16 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/22 19:37:18 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/22 19:49:55 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#ifndef HIT_RECORD_H
+# define HIT_RECORD_H
 
-/*
-@brief set appropriate size like double, t_foo... then swap a and b
-*/
-void	ft_swap(void *a, void *b, size_t size)
+# include "ray.h"
+
+typedef struct s_material	t_material;
+
+typedef struct s_hit_record
 {
-	unsigned char	*_a;
-	unsigned char	*_b;
-	unsigned char	tmp;
-	size_t			i;
+	t_ray		ray_in;
+	double		param_t;
+	t_point3	point;
+	t_vec3		normal;
+	t_point2	map;
+	t_material	*mat_ptr;
+}	t_hrec;
 
-	_a = a;
-	_b = b;
-	i = 0;
-	while (i < size)
-	{
-		tmp = _a[i];
-		_a[i] = _b[i];
-		_b[i] = tmp;
-		i++;
-	}
-	return ;
-}
+#endif

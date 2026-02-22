@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   material_define.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 04:46:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 19:50:38 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/22 19:15:32 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/22 19:28:34 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#ifndef MATERIAL_DEFINE_H
+# define MATERIAL_DEFINE_H
 
-# include "hit_record.h"
-# include "rt_utils.h"
-# include "vec.h"
+# include "material.h"
 
-typedef enum e_texture_idx
-{
-	SOLID,
-	CHECKER,
-	BUMP,
-	INVALID_TEXTURE_IDX
-}	t_texture_idx;
-
-/*
-@param calc_texture_value not const t_hrec* because update it when bump version
-*/
-typedef struct s_texture
-{
-	t_color	(*calc_texture_value)(
-		const void *self,
-		t_hrec * rec);
-	t_clear	clear;
-}	t_texture;
+typedef t_material					*(*t_generate_material)(
+	t_texture *texture_ptr);
+extern const char					*g_material_specifiers[];
+extern const t_generate_material	g_gen_material_table[];
 
 #endif

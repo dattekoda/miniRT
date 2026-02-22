@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   element_type.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 04:46:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 19:50:38 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/22 18:50:47 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/22 18:51:03 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#ifndef ELEMENT_TYPE_H
+# define ELEMENT_TYPE_H
 
-# include "hit_record.h"
-# include "rt_utils.h"
-# include "vec.h"
-
-typedef enum e_texture_idx
+typedef enum e_element_type
 {
-	SOLID,
-	CHECKER,
-	BUMP,
-	INVALID_TEXTURE_IDX
-}	t_texture_idx;
-
-/*
-@param calc_texture_value not const t_hrec* because update it when bump version
-*/
-typedef struct s_texture
-{
-	t_color	(*calc_texture_value)(
-		const void *self,
-		t_hrec * rec);
-	t_clear	clear;
-}	t_texture;
+	AMBIENT,
+	CAMERA,
+	LIGHT,
+	SPHERE,
+	PLANE,
+	CYLINDER,
+	DISK,
+	CONE,
+	TRIANGLE,
+	TREE,
+	NOTHING
+}	t_element_type;
 
 #endif
