@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aabb.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:37:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/20 19:52:24 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/22 16:25:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_aabb	construct_aabb(t_point3 min, t_point3 max)
 
 	aabb.min = min;
 	aabb.max = max;
-	aabb.centroid = scal_div_vec3(add_vec3(min, max), 2.0);
+	aabb.centroid = scal_mul_vec3(add_vec3(min, max), 0.5);
 	aabb.hit = hit_aabb;
 	return (aabb);
 }
