@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/22 20:17:07 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/02/22 20:28:45 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -227,6 +227,7 @@ SRCS	+=	$(addprefix src_for_debug/, \
 				print_ray.c \
 				print_vec.c \
 				print_world.c \
+				print_option.c \
 			)
 
 # --- obj ---
