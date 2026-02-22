@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 20:05:24 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 18:10:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 18:15:54 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ t_color	calc_color_from_light_list(
 			G_PHONG_DIFFUSE_COEFF,
 			B_PHONG_DIFFUSE_COEFF));
 	t_color	accumulate;
-	t_list	*light_list;
+	const t_list	*light_list = world->light_list;
 
 	accumulate = constant_vec3(0);
-	light_list = world->light_list;
 	while (light_list)
 	{
 		accumulate = add_vec3(accumulate,
