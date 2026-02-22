@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 20:05:24 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 16:26:20 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 18:10:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_color	calc_color_from_light_list(
 	t_color	accumulate;
 	t_list	*light_list;
 
-	ft_bzero(&accumulate, sizeof(t_color));
+	accumulate = constant_vec3(0);
 	light_list = world->light_list;
 	while (light_list)
 	{
@@ -85,8 +85,8 @@ static t_color	calc_color_from_light(
 			length_vec3(light_direct)))
 		return (constant_vec3(0.0));
 	light->mat_ptr->scatter(light->mat_ptr, world, hrec, &tmp_srec);
-	diffuse = calc_diffuse(kd, hrec, &light_direct, &tmp_srec.attenuation);
-	specular = calc_specular(hrec, &light_direct, &tmp_srec.attenuation);
+	diffuse = calc_diffuse(kd, hrec, &normalized_light_direct, &tmp_srec.attenuation);
+	specular = calc_specular(hrec, &normalized_light_direct, &tmp_srec.attenuation);
 	return (add_vec3(diffuse, specular));
 }
 
@@ -115,7 +115,7 @@ static t_color	calc_specular(
 						G_PHONG_SPECULAR_COEFF,
 						B_PHONG_SPECULAR_COEFF);
 	const t_vec3	reflect_vec = reflect(
-						*normalized_light_direct,
+						negative_vec3(*normalized_light_direct),
 						hrec->normal);
 	const t_vec3	point_to_camera = normalize(
 				negative_vec3(hrec->ray_in.direct));
@@ -131,9 +131,9 @@ static t_color	calc_specular(
 static t_color	calc_diffuse(
 			const t_color *kd,
 			const t_hrec *hrec,
-			const t_vec3 *light_direct,
+			const t_vec3 *normalized_light_direct,
 			const t_color *light_color)
 {
 	return (mul_vec3(*light_color,
-			scal_mul_vec3(*kd, fmax(0, dot(*light_direct, hrec->normal)))));
+			scal_mul_vec3(*kd, fmax(0, dot(*normalized_light_direct, hrec->normal)))));
 }
