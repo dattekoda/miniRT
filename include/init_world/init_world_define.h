@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world_define.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:22:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 18:47:09 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/22 19:51:08 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 
 # include "texture.h"
 # include "material.h"
+# include "element.h"
+# include "option.h"
 # include "vec.h"
 # include <stddef.h>
 
 // TODO: UNIT_EDGE should be at rt_config.h
 # define UNIT_EDGE 10
 
-typedef t_texture	*(*t_generate_texture)(t_color color);
-typedef t_material	*(*t_generate_material)(t_texture *texture_ptr);
+extern const t_element				*g_element_table[];
+extern const t_element				*g_infinite_table[];
+extern const t_element				*g_finite_table[];
+
+extern const t_option				*g_option_table[];
 
 #endif

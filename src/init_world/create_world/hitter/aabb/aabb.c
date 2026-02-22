@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:37:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/22 16:25:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 19:52:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static bool	hit_aabb(
 		tmp_range.e[0] = self->min.e[axis] - ray->origin.e[axis] * tmp_div;
 		tmp_range.e[1] = self->max.e[axis] - ray->origin.e[axis] * tmp_div;
 		if (tmp_div < 0.0f)
-			rt_swap(&tmp_range.e[0], &tmp_range.e[1], sizeof(double));
+			ft_swap(&tmp_range.e[0], &tmp_range.e[1], sizeof(double));
 		range->e[0] = fmin(tmp_range.e[0], range->e[0]);
 		range->e[1] = fmax(tmp_range.e[1], range->e[1]);
 		if (range->e[1] <= range->e[0])

@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_swap.c                                       :+:      :+:    :+:   */
+/*   texture_define.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/19 20:53:36 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/22 19:46:16 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/22 19:31:26 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/22 19:32:08 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#ifndef TEXTURE_DEFINE_H
+# define TEXTURE_DEFINE_H
 
-/*
-@brief set appropriate size like double, t_foo... then swap a and b
-*/
-void	ft_swap(void *a, void *b, size_t size)
-{
-	unsigned char	*_a;
-	unsigned char	*_b;
-	unsigned char	tmp;
-	size_t			i;
+# include "texture.h"
 
-	_a = a;
-	_b = b;
-	i = 0;
-	while (i < size)
-	{
-		tmp = _a[i];
-		_a[i] = _b[i];
-		_b[i] = tmp;
-		i++;
-	}
-	return ;
-}
+typedef t_texture					*(*t_generate_texture)(t_color color);
+extern const char					*g_texture_specifiers[];
+extern const t_generate_texture		g_gen_texture_table[];
+
+#endif

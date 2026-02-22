@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/15 23:03:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 19:58:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 int	line_to_light(t_hitter **light, const char *line);
 int	line_to_disk(t_hitter **disk, const char *line);
 int	line_to_sphere(t_hitter **sphere, const char *line);
+int	line_to_plane(t_hitter **plane, const char *line);
 
 extern const t_skip					g_ambient_skips[];
 extern const t_skip					g_camera_skips[];
@@ -38,10 +39,7 @@ const t_element						g_ambient_info = {
 	.id = "A",
 	.id_len = 1,
 	.input_format = "A [lighting ratio(0-1)] [R,G,B(0-255)]",
-	.skip_arr = g_ambient_skips,
-	.line_to_hitter = NULL,
-	.material_idx = 0,
-	.texture_idx = 0
+	.skip_arr = g_ambient_skips
 };
 
 const t_element						g_camera_info = {
@@ -79,7 +77,7 @@ const t_element						g_plane_info = {
 	.input_format = "pl [coordinate](x,y,z) [normalized orient vector](0-1) \
 [R,G,B](0-255)",
 	.skip_arr = g_plane_skips,
-	.line_to_hitter = NULL,
+	.line_to_hitter = line_to_plane,
 	.material_idx = PLANE_MATERIAL_ID,
 	.texture_idx = PLANE_TEXTURE_ID
 };

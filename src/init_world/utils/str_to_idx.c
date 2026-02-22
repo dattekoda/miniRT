@@ -6,18 +6,19 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:45:57 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 18:39:48 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 19:53:15 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_utils.h"
-#include "libft.h"
+#include "material_define.h"
+#include "texture_define.h"
 #include "rt_define.h"
+#include "libft.h"
 #include <stddef.h>
 
 static int	str_to_idx(const char *str, const char *specifiers[]);
 
-enum e_material_idx	str_to_material_idx(const char *str)
+t_material_idx	str_to_material_idx(const char *str)
 {
 	int	idx;
 
@@ -27,7 +28,7 @@ enum e_material_idx	str_to_material_idx(const char *str)
 	return (idx);
 }
 
-enum e_texture_idx	str_to_texture_idx(const char *str)
+t_texture_idx	str_to_texture_idx(const char *str)
 {
 	int	idx;
 

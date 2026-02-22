@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:39:39 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 16:27:57 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 17:58:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,11 @@ static t_color	calc_phong_color(const t_world *world, t_hrec *hrec)
 {
 	const t_color	reflectance = hrec->mat_ptr->texture_ptr
 		->calc_texture_value(hrec->mat_ptr->texture_ptr, hrec);
-	t_color	calculated_ambient;
-	t_color	color_from_light;
+	const t_color	calculated_ambient
+		= calc_ambient(&reflectance, &world->ambient_light);
+	const t_color	color_from_light
+		= calc_color_from_light_list(world, &reflectance, hrec);
 
-	calculated_ambient = calc_ambient(&reflectance, &world->ambient_light);
-	color_from_light = calc_color_from_light_list(
-				world, &reflectance, hrec);
 	return (add_vec3(calculated_ambient, color_from_light));
 }
 

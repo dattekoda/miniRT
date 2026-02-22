@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   scatter_record.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 04:46:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 19:50:38 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/22 19:15:13 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/22 19:29:33 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#ifndef SCATTER_RECORD_H
+# define SCATTER_RECORD_H
 
-# include "hit_record.h"
-# include "rt_utils.h"
-# include "vec.h"
-
-typedef enum e_texture_idx
-{
-	SOLID,
-	CHECKER,
-	BUMP,
-	INVALID_TEXTURE_IDX
-}	t_texture_idx;
+# include "ray.h"
 
 /*
-@param calc_texture_value not const t_hrec* because update it when bump version
+@param attenuation the reduction of the light's force
+@param next_ray new ray for next hit()
+@param surface_pdf don't know
+@param sampling_pdf don't know
 */
-typedef struct s_texture
+typedef struct s_scatter_record
 {
-	t_color	(*calc_texture_value)(
-		const void *self,
-		t_hrec * rec);
-	t_clear	clear;
-}	t_texture;
+	t_color	attenuation;
+	t_ray	next_ray;
+	double	surface_pdf;
+	double	sampling_pdf;
+}			t_srec;
 
 #endif

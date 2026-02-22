@@ -6,11 +6,11 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 15:01:00 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 16:27:49 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 19:51:59 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_utils.h"
+#include "texture_define.h"
 #include <stddef.h>
 
 t_texture	*generate_solid_texture(t_color color);

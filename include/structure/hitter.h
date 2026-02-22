@@ -6,46 +6,20 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:38:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 21:41:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 19:47:16 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HITTER_H
 # define HITTER_H
 
-# include "ray.h"
+# include "element_type.h"
+# include "hit_record.h"
+# include "rt_utils.h"
 # include <stdbool.h>
-
-typedef enum e_element_type
-{
-	AMBIENT,
-	CAMERA,
-	LIGHT,
-	SPHERE,
-	PLANE,
-	CYLINDER,
-	DISK,
-	CONE,
-	TRIANGLE,
-	TREE,
-	NOTHING
-}	t_element_type;
-
-typedef struct s_material	t_material;
-
-typedef struct s_hit_record
-{
-	t_ray		ray_in;
-	double		param_t;
-	t_point3	point;
-	t_vec3		normal;
-	t_point2	map;
-	t_material	*mat_ptr;
-}	t_hrec;
 
 typedef bool				(*t_hit)(const void *self, const t_ray *ray,
 	t_hrec *hrec, t_range *range);
-typedef void				(*t_clear)(void *self);
 
 typedef struct s_aabb
 {
@@ -57,12 +31,12 @@ typedef struct s_aabb
 
 typedef struct s_hitter
 {
-	t_element_type	type;
 	t_hit			hit;
 	t_clear			clear;
 	bool			has_aabb;
 	t_aabb			aabb;
 	t_material		*mat_ptr;
+	t_element_type	type;
 }	t_hitter;
 
 #endif
