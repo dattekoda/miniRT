@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/22 17:13:15 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/22 20:46:58 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,9 +90,6 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							generate_lambertian.c \
 							generate_metal.c \
 							generate_light.c \
-							$(addprefix material_utils/, \
-								orient_normal.c \
-							) \
 							$(addprefix pdf/, \
 								$(addprefix light_pdf_utils/, \
 									calc_light_pdf_value.c \
@@ -161,6 +158,9 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								add_hitter_list.c \
 								line_list_to_hit_arr.c \
 							) \
+						) \
+						$(addprefix utils/, \
+							orient_normal.c \
 						) \
 					) \
 					$(addprefix utils/, \

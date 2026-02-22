@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:37:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 19:03:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 20:48:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 #include <float.h>
 #include <math.h>
 
+t_vec3		orient_normal(
+				const t_vec3 *hrec_normal,
+				const t_vec3 *ray_in_direct);
 void		init_plane_solution(
 				t_solution *solu,
 				const t_vec3 *normal,
@@ -30,15 +33,16 @@ t_point2	construct_plane_uv(
 				const t_vec3 *plane_point);
 static void	assign_plane_hrec(
 				const t_plane *self,
-				const t_ray *ray, t_hrec *hrec, double solution);
+				const t_ray *ray,
+				t_hrec *hrec,
+				double solution);
 
 bool	hit_plane(
 	const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {
-	const t_plane	*self;
+	const t_plane	*self = s;
 	t_solution		solu;
 
-	self = s;
 	init_plane_solution(&solu, &self->normal, &self->point, ray);
 	if (fequal(solu.coeff.e[1], 0))
 		return (false);
@@ -46,17 +50,20 @@ bool	hit_plane(
 	if (!is_inside_range(solu.solution, range))
 		return (false);
 	assign_plane_hrec(self, ray, hrec, solu.solution);
+	// range->e[1] = hrec->param_t;
 	return (true);
 }
 
 static void	assign_plane_hrec(
 				const t_plane *self,
-				const t_ray *ray, t_hrec *hrec, double solution)
+				const t_ray *ray,
+				t_hrec *hrec,
+				double solution)
 {
 	hrec->ray_in = *ray;
 	hrec->param_t = solution;
 	hrec->point = at_ray(ray, hrec->param_t);
-	hrec->normal = self->normal;
+	hrec->normal = orient_normal(&hrec->normal, &ray->direct);
 	hrec->mat_ptr = self->hitter.mat_ptr;
 	hrec->map = construct_plane_uv(&hrec->normal, &hrec->point, &self->point);
 	return ;

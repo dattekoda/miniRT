@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 19:58:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 20:05:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,8 @@ const t_element						g_triangle_info = {
 };
 
 /*
-@param NULL終端にするためにポインタの配列にしている。
+@brief element_type order
+@param set as pointers to NULL terminates
 */
 const t_element						*g_element_table[] = {
 	&g_ambient_info,
@@ -143,7 +144,7 @@ const t_element						*g_element_table[] = {
 };
 
 const t_element						*g_infinite_table[] = {
-	// &g_plane_info,
+	&g_plane_info,
 	// &g_cone_info,
 	NULL
 };
