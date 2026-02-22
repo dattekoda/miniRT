@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_light_pdf_direction.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 23:03:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/21 16:56:10 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/22 16:35:53 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@ static t_vec3	generate_target_sphere_direction(
 static t_vec3	generate_random_direction_to_sphere(
 					double radius, double squared_distance);
 
-#include <stdio.h> // debug 
-void	print_hitter_list(const t_list *list); // debug
-
-
 t_vec3	generate_light_pdf_direction(const void *s)
 {
 	const t_light_pdf	*self = s;
@@ -41,7 +37,6 @@ t_vec3	generate_light_pdf_direction(const void *s)
 	i = 0;
 	while (light_list)
 	{
-		
 		if (i == target)
 			return (generate_target_sphere_direction(
 					light_list->content, &self->point));

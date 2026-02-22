@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_light_pdf_value.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 22:04:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/21 17:15:12 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/22 16:29:02 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,31 +45,6 @@ double	calc_light_pdf_value(const void *s, const t_vec3 *direct)
 	return (pdf_sum);
 }
 
-
-/*
-static double	pdf_value_sphere(void *s, t_point3 p, t_vec3 direction)
-{
-	t_sphere	*self = s;
-
-	t_hit_record	rec;
-	t_range			range = construct_range(HIT_T_MIN, INFINITY);
-	if (!self->hit_table.hit(self, construct_ray(p, direction), &rec, range))
-		return (0);
-	double	cos_theta_max = sqrt(1 - self->radius * self->radius / length_squared_vec(sub_vec(self->center, p)));
-	double	solid_angle = 2 * M_PI * (1 - cos_theta_max);
-	return (1 / solid_angle);
-}
-
-static double	value_light_pdf(void *s, t_vec3 direction)
-{
-	t_light_pdf	*self = s;
-
-	double	result = self->list.hit_table.pdf_value(&self->list, self->p, direction);
-	return (result);
-}
-
-*/
-
 static double	calc_light_sphere_pdf_value(
 					const t_sphere *sphere,
 					const t_point3 *point,
@@ -95,3 +70,28 @@ static double	calc_solid_angle(
 
 	return (2 * M_PI * (1 - cos_theta_max));
 }
+
+
+/*
+static double	pdf_value_sphere(void *s, t_point3 p, t_vec3 direction)
+{
+	t_sphere	*self = s;
+
+	t_hit_record	rec;
+	t_range			range = construct_range(HIT_T_MIN, INFINITY);
+	if (!self->hit_table.hit(self, construct_ray(p, direction), &rec, range))
+		return (0);
+	double	cos_theta_max = sqrt(1 - self->radius * self->radius / length_squared_vec(sub_vec(self->center, p)));
+	double	solid_angle = 2 * M_PI * (1 - cos_theta_max);
+	return (1 / solid_angle);
+}
+
+static double	value_light_pdf(void *s, t_vec3 direction)
+{
+	t_light_pdf	*self = s;
+
+	double	result = self->list.hit_table.pdf_value(&self->list, self->p, direction);
+	return (result);
+}
+
+*/

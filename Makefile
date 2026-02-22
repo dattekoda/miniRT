@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/20 19:26:27 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/02/22 16:47:13 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,10 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							set_camera.c \
 						) \
 						$(addprefix set_light/, \
+							$(addprefix utils/, \
+								add_light_radius.c \
+								str_space_join.c \
+							) \
 							set_light.c \
 							preprocess_line_list.c \
 						) \

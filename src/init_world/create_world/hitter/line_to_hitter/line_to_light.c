@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 14:04:20 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 16:58:54 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,23 @@ static int	light_line_to_shape_param(
 				const char *line,
 				t_sphere *light_param)
 {
-	size_t			i;
+	size_t			line_idx;
 	char			*option;
 	t_solid_texture	*light_solid;
 
-	i = g_element_table[LIGHT]->id_len;
-	token_to_vec(line, &i, &light_param->center);
+	line_idx = g_element_table[LIGHT]->id_len;
+	token_to_vec(line, &line_idx, &light_param->center);
 	if (line_to_light_material(
-			line, &i, &light_param->hitter.mat_ptr) == FAILURE)
+			line, &line_idx, &light_param->hitter.mat_ptr) == FAILURE)
 		return (FAILURE);
-	token_to_value(line, &i, &light_param->radius);
-	token_to_str(line, &i, &option);
+	token_to_value(line, &line_idx, &light_param->radius);
+	token_to_str(line, &line_idx, &option);
 	if (option && ft_strchr(option, 'n'))
 	{
-		light_solid = (t_solid_texture *)light_param->hitter.mat_ptr->texture_ptr;
-		light_solid->color = scal_mul_vec3(light_solid->color, PATHTRACING_LIGHT_STRENGTH);
+		light_solid
+			= (t_solid_texture *)light_param->hitter.mat_ptr->texture_ptr;
+		light_solid->color
+			= scal_mul_vec3(light_solid->color, PATHTRACING_LIGHT_STRENGTH);
 	}
 	return (SUCCESS);
 }
