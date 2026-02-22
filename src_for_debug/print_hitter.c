@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 20:31:15 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:22:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "hitter.h"
 #include "hitter_arr.h"
 #include "libft.h"
+#include "rt_debug.h"
+#include "material.h"
 #include <stdio.h>
 
 /*
@@ -33,13 +35,12 @@ typedef enum e_element_type
 	NOTHING
 }	t_element_type;
 */
-void	print_vec(t_vec3 v);
 
 void	print_hitter(t_hitter *hitter)
 {
 	if (!hitter)
 	{
-		printf("it is null\n");
+		fprintf(stderr, "it is null\n");
 		return ;
 	}
 	static const char *string_table[] = {
@@ -55,20 +56,24 @@ void	print_hitter(t_hitter *hitter)
 		"TREE",
 		"NOTHING"
 	};
-	// printf("%u\n", hitter->type);
-	printf("type:%s ", string_table[hitter->type]);
-	print_vec(hitter->aabb.centroid);
+	fprintf(stderr, "type:%s ", string_table[hitter->type]);
+	print_vec3(hitter->aabb.centroid);
+	if (hitter->mat_ptr)
+	{
+		fprintf(stderr, "color: ");
+		print_vec3(hitter->mat_ptr->texture_ptr->calc_texture_value(hitter->mat_ptr->texture_ptr, NULL));
+	}
 }
 
 void	print_hitter_list(const t_list *list)
 {
+	fprintf(stderr, "hitter list:\n");
 	if (!list)
 	{
-		printf("list has no content\n");
+		fprintf(stderr, "list has no content\n");
 		return ;
 	}
 	t_list	*cur = (t_list *)list;
-	printf("print list:\n");
 	while (cur)
 	{
 		t_hitter *hitter = (t_hitter *)cur->content;
@@ -83,10 +88,10 @@ void	print_hitter_arr(t_hitter_arr arr)
 
 	if (arr.size == 0)
 	{
-		printf("arr has no content\n");
+		fprintf(stderr, "arr has no content\n");
 		return ;
 	}
-	printf("print arr:\n");
+	fprintf(stderr, "print arr:\n");
 	while (i < arr.size)
 	{
 		print_hitter(arr.arr[i]);
@@ -94,14 +99,19 @@ void	print_hitter_arr(t_hitter_arr arr)
 	}
 }
 
-static void	print_tree_recursive(t_hitter *node);
+static void	print_tree_recursive(t_hitter *node, int depth);
 void	print_tree(t_hitter *node)
 {
-	printf("print bvh:\n");
-	print_tree_recursive(node);
+	fprintf(stderr, "print bvh:\n");
+	if (!node)
+	{
+		fprintf(stderr, "the tree has nothing.\n");
+		return ;
+	}
+	print_tree_recursive(node, 0);
 }
 
-static void	print_tree_recursive(t_hitter *node)
+static void	print_tree_recursive(t_hitter *node, int depth)
 {
 	if (!node)
 		return ;
@@ -109,8 +119,10 @@ static void	print_tree_recursive(t_hitter *node)
 	if (node->type != TREE)
 		return ;
 	t_tree	*tree = (t_tree *)node;
-	print_tree_recursive(tree->lhs);
-	print_tree_recursive(tree->rhs);
+	fprintf(stderr, "%*s", depth + 1, "");
+	print_tree_recursive(tree->lhs, depth + 1);
+	fprintf(stderr, "%*s", depth + 1, "");
+	print_tree_recursive(tree->rhs, depth + 1);
 }
 
 

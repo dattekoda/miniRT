@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 17:35:43 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/18 19:41:03 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/20 22:12:10 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ t_compare	get_compare_func(t_axis axis)
 #include <stdio.h>
 static bool	aabb_x_compare(const void *lhs, const void *rhs)
 {
-	// printf("x\n");
+	// fprintf(stderr, "x\n");
 	return (aabb_compare(lhs, rhs, 0));
 }
 
 static bool	aabb_y_compare(const void *lhs, const void *rhs)
 {
-	// printf("y\n");
+	// fprintf(stderr, "y\n");
 	return (aabb_compare(lhs, rhs, 1));
 }
 
 static bool	aabb_z_compare(const void *lhs, const void *rhs)
 {
-	// printf("z\n");
+	// fprintf(stderr, "z\n");
 	return (aabb_compare(lhs, rhs, 2));
 }
 

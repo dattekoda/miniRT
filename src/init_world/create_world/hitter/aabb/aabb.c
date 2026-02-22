@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aabb.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:37:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/29 19:51:00 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/22 16:25:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@
 static bool	hit_aabb(
 				const void *s, const t_ray *ray, t_hrec *hrec, t_range *range);
 
+
+#include <stdio.h> // defbug
+void	print_vec3(t_vec3 v); // debug;
+
 t_aabb	construct_aabb(t_point3 min, t_point3 max)
 {
 	t_aabb	aabb;
 
 	aabb.min = min;
 	aabb.max = max;
-	aabb.centroid = add_vec3(min, max);
+	aabb.centroid = scal_mul_vec3(add_vec3(min, max), 0.5);
 	aabb.hit = hit_aabb;
 	return (aabb);
 }

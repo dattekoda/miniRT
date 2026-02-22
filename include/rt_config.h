@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_config.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/15 20:03:18 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/21 19:08:47 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@
 # endif
 
 // light
-# define LIGHT_RADIUS 100.0
-
-# define PATHTRACING_LIGHT_STRENGTH 10.0
 
 // steradian of path tracing model
 # ifndef LIGHT_STERADIAN
-#  define LIGHT_STERADIAN 0.021
+#  define LIGHT_STERADIAN 0.001
 # endif
+
+# define PATHTRACING_LIGHT_STRENGTH 101.0
+
+
 
 # define RUSSIAN_ROULETTE_START_DEPTH 10
 

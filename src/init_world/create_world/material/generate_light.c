@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/14 14:07:11 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:18:34 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ static t_light	construct_light(t_texture *texture_ptr)
 	light.material.clear = clear_material;
 	return (light);
 }
+
+#include <stdio.h> // debug
+void	print_vec3(t_vec3 v); // debug
 
 static bool	scatter_light(
 				const void *s,

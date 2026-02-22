@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 23:03:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 16:30:17 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/22 16:35:53 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static t_vec3	generate_target_sphere_direction(
 static t_vec3	generate_random_direction_to_sphere(
 					double radius, double squared_distance);
 
-#include <stdio.h>
 t_vec3	generate_light_pdf_direction(const void *s)
 {
 	const t_light_pdf	*self = s;
@@ -59,7 +58,6 @@ static t_vec3	generate_target_sphere_direction(
 			squared_distance)));
 }
 
-#include <stdio.h>
 static t_vec3	generate_random_direction_to_sphere
 			(double radius, double squared_distance)
 {

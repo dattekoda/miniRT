@@ -7,6 +7,7 @@
 void	print_hitter(t_hitter *hitter);
 void	print_hitter_list(const t_list *list);
 void	print_hitter_arr(t_hitter_arr arr);
+void	print_tree(t_hitter *node);
 
 void	print_line_list(const t_list *line_list);
 

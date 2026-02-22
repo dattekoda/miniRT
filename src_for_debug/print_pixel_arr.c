@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_pixel_arr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:03:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 20:17:23 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/20 22:12:10 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_raw_rgb_arr(int *raw_rgb_arr)
 			if (iy % 23 == 0 && ix % 51 == 0)
 			{
 				int color = raw_rgb_arr[x_base + ix];
-				printf("%d %d %d\n", color >> 16 & 0xFF,  color >> 8 & 0xFF, color & 0xFF);
+				fprintf(stderr, "%d %d %d\n", color >> 16 & 0xFF,  color >> 8 & 0xFF, color & 0xFF);
 			}
 		}
 	}

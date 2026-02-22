@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_solid_texture.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:05:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 13:50:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:19:55 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ t_solid_texture	construct_solid_texture(t_color color)
 	solid.texture.clear = clear_texture;
 	solid.color = color;
 	return (solid);
+
 }
+
+#include <stdio.h> // debug
+void	print_vec3(t_vec3 v); // debug
 
 static t_color	calc_solid_texture_value(
 					const void *s,

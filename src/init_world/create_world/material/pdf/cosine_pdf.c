@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cosine_pdf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/13 19:48:57 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:21:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_cosine_pdf	construct_cosine_pdf(t_vec3 normal)
 	return (cosine);
 }
 
+#include <stdio.h>
 static double	calc_cosine_pdf_value(
 					const void *s,
 					const t_vec3 *direction)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_lambertian.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 15:09:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/21 16:45:59 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ static t_lambertian	construct_lambertian(t_texture *texture_ptr)
 	return (lambertian);
 }
 
+#include <stdio.h>
 static bool	scatter_lambertian(
 				const void *s,
 				const t_world *world,
@@ -81,7 +82,8 @@ static bool	scatter_lambertian(
 	return (true);
 }
 
-#include <stdio.h>
+void	print_hitter_list(const t_list *list);
+
 static void		record_next_direct_from_pdf(
 				const t_list *light_list,
 				const t_hrec *hrec,
@@ -102,5 +104,7 @@ static void		record_next_direct_from_pdf(
 			&mix_pdf, &srec->next_ray.direct);
 	srec->surface_pdf = mix_pdf.surface_pdf->calc_pdf_value(
 			mix_pdf.surface_pdf, &srec->next_ray.direct);
+
+	// printf("light pdf: %f\n", light_pdf.pdf.calc_pdf_value(&light_pdf.pdf, &srec->next_ray.direct)); // debug
 	return ;
 }
