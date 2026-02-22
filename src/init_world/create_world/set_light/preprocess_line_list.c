@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   preprocess_line_list.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 21:03:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/21 19:00:04 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/22 14:03:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,18 @@ int	preprocess_line_list(t_list *line_list, t_point3 camera_origin, int option_f
 	return (SUCCESS);
 }
 
+/*
+@brief when path_tracing_mode aka natural mode,
+then add "n" to the tail of the light line in order to judge
+to multiply path_tracing_light_strength
+*/
 static int	add_option_flag(char **light_line, int option_flag)
 {
 	char	*new_light_line;
 
-	if (!(option_flag & OPT_ARTIFICIAL))
+	if (option_flag & OPT_ARTIFICIAL)
 		return (SUCCESS);
-	new_light_line = str_space_join(*light_line, "a");
+	new_light_line = str_space_join(*light_line, "n");
 	if (!new_light_line)
 		return (FAILURE);
 	free(*light_line);
