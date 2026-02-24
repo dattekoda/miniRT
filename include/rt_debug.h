@@ -5,6 +5,8 @@
 #include "hitter_arr.h"
 #include "split.h"
 
+void	print_aabb(t_aabb aabb);
+
 void	print_axis(t_axis axis);
 
 void	print_split(const t_split *split);

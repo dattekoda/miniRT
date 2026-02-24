@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:29:43 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/28 10:56:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 19:42:49 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,45 @@
 #include "init_world_define.h"
 #include "rt_define.h"
 #include "vec_utils.h"
+#include "axis.h"
 #include <math.h>
 
 t_aabb			construct_aabb(t_point3 min, t_point3 max);
 
-double	cost_func(const t_hitter_arr root, size_t left_size,
-		double *left_area_arr, double *right_area_arr)
+double	calc_cost(
+			t_hitter_arr hit_arr,
+			size_t left_size)
 {
-	size_t	right_size;
-	double	left_surface_area;
-	double	right_surface_area;
+	const size_t	right_size = hit_arr.size - left_size;
+	const double	left_surface_area
+		= hit_arr.left_surface_arr[left_size - 1];;
+	const double	right_surface_area
+		= hit_arr.right_surface_arr[right_size - 1];
 
-	right_size = root.size - left_size;
-	left_surface_area = left_area_arr[left_size - 1];
-	right_surface_area = right_area_arr[right_size - 1];
 	return (2 * COST_AABB_INTERSECTION + (left_surface_area * left_size
 			+ right_surface_area * right_size) * COST_ELEMENT_INTERSECTION
-		/ left_area_arr[root.size - 1]);
+		/ hit_arr.left_surface_arr[hit_arr.size - 1]);
 }
 
-t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size)
+t_aabb	surrounding_box(t_aabb aabb1, t_aabb aabb2)
 {
-	t_hitter_arr	rev;
-
-	rev.arr = arr;
-	rev.size = size;
-	return (rev);
-}
-
-t_aabb	surrounding_box(t_aabb box0, t_aabb box1)
-{
-	t_point3	small;
-	t_point3	big;
-
-	small = construct_vec3(fmin(box0.min.e[0], box1.min.e[0]),
-			fmin(box0.min.e[1], box1.min.e[1]), fmin(box0.min.e[2],
-				box1.min.e[2]));
-	big = construct_vec3(fmax(box0.min.e[0], box1.min.e[0]), fmax(box0.min.e[1],
-				box1.min.e[1]), fmax(box0.min.e[2], box1.min.e[2]));
-	return (construct_aabb(small, big));
+	return (construct_aabb(
+		construct_vec3(
+			fmin(aabb1.min.e[A_X], aabb2.min.e[A_X]),
+			fmin(aabb1.min.e[A_Y], aabb2.min.e[A_Y]),
+			fmin(aabb1.min.e[A_Z], aabb2.min.e[A_Z])),
+		construct_vec3(
+			fmax(aabb1.min.e[A_X], aabb2.min.e[A_X]),
+			fmax(aabb1.min.e[A_Y], aabb2.min.e[A_Y]),
+			fmax(aabb1.min.e[A_Z], aabb2.min.e[A_Z]))));
 }
 
 double	calc_surface_area(const t_aabb aabb)
 {
 	double	s[3];
 
-	s[0] = (aabb.max.e[0] - aabb.min.e[0]);
-	s[1] = (aabb.max.e[1] - aabb.min.e[1]);
-	s[2] = (aabb.max.e[2] - aabb.min.e[2]);
-	return (s[0] * s[1] + s[1] * s[2] + s[2] * s[0]);
+	s[A_X] = (aabb.max.e[A_X] - aabb.min.e[A_X]);
+	s[A_Y] = (aabb.max.e[A_Y] - aabb.min.e[A_Y]);
+	s[A_Z] = (aabb.max.e[A_Z] - aabb.min.e[A_Z]);
+	return (s[A_X] * s[A_Y] + s[A_Y] * s[A_Z] + s[A_Z] * s[A_X]);
 }

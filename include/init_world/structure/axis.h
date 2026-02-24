@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 18:57:21 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/12 22:14:28 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 17:36:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ typedef enum e_axis
 {
 	A_X,
 	A_Y,
-	A_Z
+	A_Z,
+	A_NOTHING
 }	t_axis;
 
 #endif

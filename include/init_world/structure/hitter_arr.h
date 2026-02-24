@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:30:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 13:44:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 19:18:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 typedef struct s_hitter_arr
 {
 	t_hitter	**arr;
+	double		*left_surface_arr;
+	double		*right_surface_arr;
 	size_t		size;
 }	t_hitter_arr;
 

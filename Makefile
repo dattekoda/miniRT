@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/24 15:04:41 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/24 19:49:21 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -151,6 +151,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							$(addprefix hitter_arr_to_bvh/, \
 								bvh_utils.c \
 								compare.c \
+								construct_hitter_arr.c \
 								find_best_split_info.c \
 								prepare_surface_arr.c \
 								generate_tree.c \
@@ -221,6 +222,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 
 # you can delete later
 SRCS	+=	$(addprefix src_for_debug/, \
+				print_aabb.c \
 				print_axis.c \
 				print_hitter.c \
 				print_line_list.c \

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 22:13:27 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 19:29:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 #include "libft.h"
 #include <stdlib.h>
 
-static void		clear_hitter_arr(t_hitter_arr arr);
 int				line_list_to_hit_arr(
 					t_hitter_arr *hit_arr,
 					const t_list *line_list,
 					const t_element *object_table[]);
-int				hit_arr_to_bvh(t_hitter **root, const t_hitter_arr hit_arr);
+int				hit_arr_to_bvh(t_hitter **root, t_hitter_arr hit_arr);
+static int		alloc_surface_arr(t_hitter_arr *hit_arr);
+static void		clear_hitter_arr(t_hitter_arr *hit_arr);
 
 
 int	line_list_to_bvh(
@@ -30,26 +31,45 @@ int	line_list_to_bvh(
 {
 	t_hitter_arr	hit_arr;
 
+	ft_bzero(&hit_arr, sizeof(t_hitter_arr));
 	if (line_list_to_hit_arr(&hit_arr, line_list, object_table) == FAILURE)
 		return (FAILURE);
-	if (hit_arr_to_bvh(node, hit_arr) == FAILURE)
+	if (alloc_surface_arr(&hit_arr) == FAILURE)
 	{
-		clear_hitter_arr(hit_arr);
+		clear_hitter_arr(&hit_arr);
 		return (FAILURE);
 	}
-	free(hit_arr.arr);
+	if (hit_arr_to_bvh(node, hit_arr) == FAILURE)
+	{
+		clear_hitter_arr(&hit_arr);
+		return (FAILURE);
+	}
+	clear_hitter_arr(&hit_arr);
 	return (SUCCESS);
 }
 
-static void	clear_hitter_arr(t_hitter_arr arr)
+static int	alloc_surface_arr(t_hitter_arr *hit_arr)
+{
+	hit_arr->left_surface_arr = ft_calloc(hit_arr->size, sizeof(double));
+	if (!hit_arr->left_surface_arr)
+		return (FAILURE);
+	hit_arr->right_surface_arr = ft_calloc(hit_arr->size, sizeof(double));
+	if (!hit_arr->right_surface_arr)
+		return (FAILURE);
+	return (SUCCESS);
+}
+
+static void	clear_hitter_arr(t_hitter_arr *hit_arr)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < arr.size)
+	while (i < hit_arr->size)
 	{
-		arr.arr[i]->clear(arr.arr[i]);
+		hit_arr->arr[i]->clear(hit_arr->arr[i]);
 		i++;
 	}
-	free(arr.arr);
+	free(hit_arr->arr);
+	free(hit_arr->left_surface_arr);
+	free(hit_arr->right_surface_arr);
 }

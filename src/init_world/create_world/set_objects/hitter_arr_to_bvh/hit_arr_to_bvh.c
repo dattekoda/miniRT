@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 14:53:55 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 20:17:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@
 #include "split.h"
 
 t_hitter		*generate_tree(t_hitter *lhs, t_hitter *rhs);
-t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
-int				find_best_split_info(t_hitter_arr hit_arr, t_split *best);
-t_hitter_arr	construct_hitter_arr(t_hitter **arr, size_t size);
+void			find_best_split_info(t_hitter_arr hit_arr, t_split *best);
+t_hitter_arr	construct_lhs_hitter_arr(
+					t_hitter_arr hitter_arr,
+					size_t best_left_size);
+t_hitter_arr	construct_rhs_hitter_arr(
+					t_hitter_arr hitter_arr,
+					size_t best_left_size);
 t_compar		get_compar_func(t_axis axis);
-static int		base_case(t_hitter **hitter, t_hitter_arr hit_arr);
 static int		generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr);
+static int		generate_bvh_base_case(t_hitter **hitter, t_hitter_arr hit_arr);
 
 
 #include <stdio.h> // db
@@ -49,19 +53,17 @@ static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr)
 	t_hitter	*rhs;
 
 	if (hit_arr.size < 3)
-		return (base_case(hitter, hit_arr));
-	if (find_best_split_info(hit_arr, &best) == FAILURE)
-		return (FAILURE);
-	// fprintf(stderr, "axis:\t%d, left_size:\t%zu\n", axis, left_size);
+		return (generate_bvh_base_case(hitter, hit_arr));
+	find_best_split_info(hit_arr, &best);
+	print_split(&best);
 	ft_qsort((char *)hit_arr.arr,
 		hit_arr.size, sizeof(t_hitter *), get_compar_func(best.axis));
-	if (generate_bvh_recursive(&lhs,
-			construct_hitter_arr(hit_arr.arr, best.left_size)) == FAILURE) 
+	if (generate_bvh_recursive(
+			&lhs,
+			construct_lhs_hitter_arr(hit_arr, best.left_size)) == FAILURE) 
 		return (FAILURE);
 	if (generate_bvh_recursive(&rhs,
-			construct_hitter_arr(
-				hit_arr.arr + best.left_size,
-				hit_arr.size - best.left_size)) == FAILURE)
+			construct_rhs_hitter_arr(hit_arr, best.left_size)) == FAILURE)
 		return (lhs->clear(lhs), FAILURE);
 	*hitter = generate_tree(lhs, rhs);
 	if (!*hitter)
@@ -69,7 +71,7 @@ static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr)
 	return (SUCCESS);
 }
 
-static int	base_case(t_hitter **hitter, t_hitter_arr hit_arr)
+static int	generate_bvh_base_case(t_hitter **hitter, t_hitter_arr hit_arr)
 {
 	if (hit_arr.size == 0)
 	{
