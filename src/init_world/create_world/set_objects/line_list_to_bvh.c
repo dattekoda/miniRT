@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 22:04:41 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 23:10:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ static int	line_list_to_bvh(
 		clear_hitter_arr(&hit_arr);
 		return (FAILURE);
 	}
-	clear_hitter_arr(&hit_arr);
+	free(hit_arr.arr);
+	free(hit_arr.left_surface_arr);
+	free(hit_arr.right_surface_arr);
 	return (SUCCESS);
 }
 
