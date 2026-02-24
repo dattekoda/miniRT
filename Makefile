@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/22 17:13:15 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/24 15:04:41 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,6 +155,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								prepare_surface_arr.c \
 								generate_tree.c \
 								hit_arr_to_bvh.c \
+								split.c \
 							) \
 							$(addprefix line_list_to_hitter_arr/, \
 								add_cylinder_disk.c \
@@ -220,11 +221,13 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 
 # you can delete later
 SRCS	+=	$(addprefix src_for_debug/, \
+				print_axis.c \
 				print_hitter.c \
 				print_line_list.c \
 				print_material.c \
 				print_pixel_arr.c \
 				print_ray.c \
+				print_split.c \
 				print_vec.c \
 				print_world.c \
 			)

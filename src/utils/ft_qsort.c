@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 10:46:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 19:53:49 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 13:47:51 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include <stdbool.h>
 
 static ssize_t	partition(char *base, size_t size, size_t nmemb,
-					bool (*compar)(const void*, const void*));
+					int (*compar)(const void*, const void*));
 static void		*decide_pivot(char *base, size_t size, size_t nmemb,
-					bool (*compar)(const void*, const void*));
+					int (*compar)(const void*, const void*));
 
 // left = 0;
 // right = size - 1;
@@ -27,7 +27,7 @@ static void		*decide_pivot(char *base, size_t size, size_t nmemb,
 @brief QUICK sort in Ascending order(1, 2, 3, ...)
 */
 void	ft_qsort(char *base, size_t nmemb, size_t size,
-				bool (*compar)(const void*, const void*))
+				int (*compar)(const void*, const void*))
 {
 	ssize_t	last_idx;
 
@@ -37,10 +37,11 @@ void	ft_qsort(char *base, size_t nmemb, size_t size,
 	ft_qsort(base, last_idx + 1, size, compar);
 	ft_qsort(base + (last_idx + 1) * size, nmemb - (last_idx + 1),
 		size, compar);
+	return ;
 }
 
 static ssize_t	partition(char *base, size_t size, size_t nmemb,
-						bool (*compar)(const void*, const void*))
+						int (*compar)(const void*, const void*))
 {
 	void		*pivot_p;
 	static char	pivot[4096];
@@ -65,7 +66,7 @@ static ssize_t	partition(char *base, size_t size, size_t nmemb,
 }
 
 static void	*decide_pivot(char *base, size_t size, size_t nmemb,
-						bool (*compar)(const void*, const void*))
+						int (*compar)(const void*, const void*))
 {
 	ssize_t	tail;
 	ssize_t	center;

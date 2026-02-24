@@ -3,6 +3,11 @@
 #include "hitter.h"
 #include "libft.h"
 #include "hitter_arr.h"
+#include "split.h"
+
+void	print_axis(t_axis axis);
+
+void	print_split(const t_split *split);
 
 void	print_hitter(t_hitter *hitter);
 void	print_hitter_list(const t_list *list);

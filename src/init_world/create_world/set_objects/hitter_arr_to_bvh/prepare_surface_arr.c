@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prepare_surface_arr.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 23:39:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 21:25:43 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/24 14:16:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	prepare_surface_arr(
 	size_t	left_size;
 	size_t	right_size;
 
+	// why calloc for hit_arr.size?
 	*left_arr_p = ft_calloc(hit_arr.size, sizeof(double));
 	*right_arr_p = ft_calloc(hit_arr.size, sizeof(double));
 	if (!*left_arr_p || !*right_arr_p)
@@ -47,5 +48,6 @@ int	prepare_surface_arr(
 		(*right_arr_p)[right_size] = calc_surface_area(aabb_right);
 		left_size++;
 	}
+	exit(2);
 	return (SUCCESS);
 }

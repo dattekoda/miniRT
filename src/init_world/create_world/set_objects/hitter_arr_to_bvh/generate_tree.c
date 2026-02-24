@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_tree.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 23:39:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 20:02:35 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/24 13:28:48 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 #include <stdlib.h>
 
 static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs);
-static bool		hit_tree(const void *s, const t_ray *ray, t_hrec *hrec,
+static bool		hit_tree(
+					const void *s,
+					const t_ray *ray,
+					t_hrec *hrec,
 					t_range *range);
 void			clear_tree(void *s);
 
@@ -58,7 +61,10 @@ static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs)
 	return (node);
 }
 
-static bool	hit_tree(const void *s, const t_ray *ray, t_hrec *hrec,
+static bool	hit_tree(
+		const void *s,
+		const t_ray *ray,
+		t_hrec *hrec,
 		t_range *range)
 {
 	const t_tree	*self;

@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hitter_arr.h                                       :+:      :+:    :+:   */
+/*   split.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 12:30:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 13:44:46 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/24 14:49:38 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/24 14:49:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HITTER_ARR_H
-# define HITTER_ARR_H
+#ifndef SPLIT_H
+# define SPLIT_H
 
-# include "hitter.h"
+# include "axis.h"
 # include <stddef.h>
 
-typedef struct s_hitter_arr
+/*
+@brief structure to find best split info
+*/
+typedef struct s_split
 {
-	t_hitter	**arr;
-	size_t		size;
-}	t_hitter_arr;
+	t_axis	axis;
+	double	cost;
+	size_t	left_size;
+}	t_split;
 
-// typedef bool	(*t_compar)(const void *lhs, const void *rhs);
-typedef int	(*t_compar)(const void *lhs, const void *rhs);
+t_split	construct_split(
+				t_axis axis,
+				size_t left_size,
+				double cost);
 
 #endif
