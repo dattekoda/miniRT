@@ -1,5 +1,6 @@
 #ifndef RT_DEBUG_H
 #define RT_DEBUG_H
+#include <stdlib.h> // debug
 #include "hitter.h"
 #include "libft.h"
 #include "hitter_arr.h"

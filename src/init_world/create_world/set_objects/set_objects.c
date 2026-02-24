@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 22:08:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 22:10:55 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int			infinite_line_list_to_bvh(t_hitter **node, const t_list *line_list);
 t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs);
 void		clear_tree(void *s);
 
-#include <stdlib.h> // debug
 #include "rt_debug.h"
 int	set_objects(t_world *world, t_list *line_list, int option_flag)
 {
