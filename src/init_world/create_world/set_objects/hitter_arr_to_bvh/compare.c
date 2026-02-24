@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 17:35:43 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/24 13:44:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 21:53:01 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ static int	aabb_compare(const void *lhs, const void *rhs, int axis)
 
 	if (!(*hitter_lhs)->has_aabb || !(*hitter_rhs)->has_aabb)
 		return (0);
+	if ((*hitter_lhs)->aabb.centroid.e[axis]
+		== (*hitter_rhs)->aabb.centroid.e[axis])
+		return (0);
 	if ((*hitter_lhs)->aabb.centroid.e[axis] < (*hitter_rhs)->aabb.centroid.e[axis])
-		return (1);
-	return (-1);
+		return (-1);
+	return (1);
 }

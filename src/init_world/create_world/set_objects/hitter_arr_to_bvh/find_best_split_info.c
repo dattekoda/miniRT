@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 21:14:59 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 22:05:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	find_best_split_info(t_hitter_arr hit_arr, t_split *best)
 	return ;
 }
 
-#include <stdio.h>
 static void	find_best_left_size(
 				t_hitter_arr hit_arr,
 				t_split		*best)

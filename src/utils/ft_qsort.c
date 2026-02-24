@@ -6,11 +6,10 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 10:46:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 13:47:51 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 22:03:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_utils.h"
 #include "libft.h"
 #include <aio.h>
 #include <stdlib.h>
@@ -21,6 +20,7 @@ static ssize_t	partition(char *base, size_t size, size_t nmemb,
 static void		*decide_pivot(char *base, size_t size, size_t nmemb,
 					int (*compar)(const void*, const void*));
 
+void			ft_swap(void *a, void *b, size_t size);
 // left = 0;
 // right = size - 1;
 /*
@@ -54,9 +54,9 @@ static ssize_t	partition(char *base, size_t size, size_t nmemb,
 	r = nmemb;
 	while (l < r)
 	{
-		while (!(*compar)(base + (++l) * size, &pivot))
+		while ((*compar)(base + (++l) * size, &pivot) < 0)
 			;
-		while (!(*compar)(&pivot, base + (--r) * size))
+		while ((*compar)(&pivot, base + (--r) * size) < 0)
 			;
 		if (l >= r)
 			break ;
@@ -92,6 +92,22 @@ static void	*decide_pivot(char *base, size_t size, size_t nmemb,
 			return (base + center * size);
 	}
 }
+
+// #include <stdio.h>
+// static int	charcomp(const void *lhs, const void *rhs) {
+// 	unsigned char	_lhs = *(unsigned char *)lhs;
+// 	unsigned char	_rhs = *(unsigned char *)rhs;
+
+// 	return ((int)_lhs - (int)_rhs);
+// }
+// int	main(int argc, char *argv[])
+// {
+// 	for (int i = 1; i < argc; i++) {
+// 		ft_qsort(argv[i], ft_strlen(argv[i]), sizeof(char), charcomp);
+// 		fprintf(stderr, "%s\n", argv[i]);
+// 	}
+// 	return (0);
+// }
 
 // // structure test
 // #include <stdio.h>

@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/24 20:26:44 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/24 21:55:15 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -200,13 +200,13 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 				) \
 				$(addprefix utils/, \
 					construct_result.c \
+					ft_qsort.c \
+					ft_swap.c \
 					utils_clamp.c \
 					utils_clear.c \
 					utils_err.c \
 					utils_float.c \
-					ft_qsort.c \
 					utils_random.c \
-					utils_swap.c \
 					$(addprefix vec/, \
 						onb.c \
 						range.c \
@@ -297,7 +297,7 @@ TESTSRCFILES	=	$(addprefix test/, \
 							test_add_light_radius.c \
 							test_line_to_light.c \
 							test_is_component_higher.c \
-							test_rt_swap.c \
+							test_ft_swap.c \
 							test_pertition.c \
 						) \
 						$(addprefix utils/, \

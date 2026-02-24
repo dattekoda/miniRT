@@ -6,22 +6,20 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 21:16:34 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 22:08:02 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_define.h"
 #include "init_world_utils.h"
 #include "validate_utils.h"
-#include "element.h"
 #include "world.h"
 #include "rt_utils.h"
 #include "libft.h"
 #include <stdlib.h>
 
 static void	delete_light_line(t_list **line_list);
-int			line_list_to_bvh(t_hitter **node, const t_list *line_list,
-				const t_element *object_table[]);
+int			finite_line_list_to_bvh(t_hitter **node, const t_list *line_list);
+int			infinite_line_list_to_bvh(t_hitter **node, const t_list *line_list);
 t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs);
 void		clear_tree(void *s);
 
@@ -34,9 +32,9 @@ int	set_objects(t_world *world, t_list *line_list, int option_flag)
 
 	if (option_flag & OPT_ARTIFICIAL)
 		delete_light_line(&line_list);
-	if (line_list_to_bvh(&rhs, line_list, g_infinite_table) == FAILURE)
+	if (infinite_line_list_to_bvh(&rhs, line_list) == FAILURE)
 		return (FAILURE);
-	if (line_list_to_bvh(&lhs, line_list, g_finite_table) == FAILURE)
+	if (finite_line_list_to_bvh(&lhs, line_list) == FAILURE)
 	{
 		clear_tree(rhs);
 		return (FAILURE);
@@ -44,8 +42,6 @@ int	set_objects(t_world *world, t_list *line_list, int option_flag)
 	world->object_tree = generate_tree(lhs, rhs);
 	if (!world->object_tree && (lhs || rhs))
 		return (FAILURE);
-	print_tree(world->object_tree);
-	exit(2);
 	return (SUCCESS);
 }
 
