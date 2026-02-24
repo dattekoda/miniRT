@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 20:56:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 21:14:59 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	find_best_split_info(t_hitter_arr hit_arr, t_split *best)
 {
 	t_split	tmp;
 
-	*best = construct_split(A_X, 1, INFINITY);
-	tmp = construct_split(A_X, 1, INFINITY);
+	*best = construct_split(A_X, 0, INFINITY);
+	tmp = construct_split(A_X, 0, INFINITY);
 	while (tmp.axis < 3)
 	{
 		ft_qsort((char *)hit_arr.arr, hit_arr.size,
@@ -50,6 +50,7 @@ void	find_best_split_info(t_hitter_arr hit_arr, t_split *best)
 	return ;
 }
 
+#include <stdio.h>
 static void	find_best_left_size(
 				t_hitter_arr hit_arr,
 				t_split		*best)
@@ -58,7 +59,7 @@ static void	find_best_left_size(
 
 	prepare_surface_arr(hit_arr);
 	tmp = construct_split(A_NOTHING, 1, INFINITY);
-	while (tmp.left_size < hit_arr.size)
+	while (tmp.left_size < hit_arr.size - 1)
 	{
 		tmp.cost = calc_cost(hit_arr, tmp.left_size);
 		if (tmp.cost < best->cost)

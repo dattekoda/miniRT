@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:29:43 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 20:54:03 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 21:14:41 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ double	calc_cost(
 	const double	left_surface_area
 		= hit_arr.left_surface_arr[left_size - 1];;
 	const double	right_surface_area
-		= hit_arr.right_surface_arr[right_size - 1];
+		= hit_arr.right_surface_arr[left_size];
 
 	return (2 * COST_AABB_INTERSECTION + (left_surface_area * left_size
 			+ right_surface_area * right_size) * COST_ELEMENT_INTERSECTION

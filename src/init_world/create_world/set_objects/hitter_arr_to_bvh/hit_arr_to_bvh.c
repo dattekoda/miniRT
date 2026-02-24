@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 20:55:33 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 21:01:25 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr)
 	if (hit_arr.size < 3)
 		return (generate_bvh_base_case(hitter, hit_arr));
 	find_best_split_info(hit_arr, &best);
+	print_split(&best);
 	ft_qsort((char *)hit_arr.arr,
 		hit_arr.size, sizeof(t_hitter *), get_compar_func(best.axis));
 	if (generate_bvh_recursive(
