@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 20:19:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 20:56:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,16 @@ static void	find_best_left_size(
 	t_split	tmp;
 
 	prepare_surface_arr(hit_arr);
-	tmp = construct_split(A_NOTHING, 0, INFINITY);
+	tmp = construct_split(A_NOTHING, 1, INFINITY);
 	while (tmp.left_size < hit_arr.size)
 	{
-		print_split(best);
 		tmp.cost = calc_cost(hit_arr, tmp.left_size);
 		if (tmp.cost < best->cost)
 		{
 			best->cost = tmp.cost;
 			best->left_size = tmp.left_size;
 		}
-		// fprintf(stderr, "inside find_best_left_size: ");
-		// print_split(&tmp);
 		tmp.left_size++;
 	}
-	exit(2);
 	return ;
 }

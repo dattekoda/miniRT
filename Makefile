@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/24 19:49:21 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/24 20:26:44 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -224,6 +224,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 SRCS	+=	$(addprefix src_for_debug/, \
 				print_aabb.c \
 				print_axis.c \
+				print_hitter_arr.c \
 				print_hitter.c \
 				print_line_list.c \
 				print_material.c \

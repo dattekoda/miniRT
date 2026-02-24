@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:29:43 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 19:42:49 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 20:54:03 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ t_aabb	surrounding_box(t_aabb aabb1, t_aabb aabb2)
 			fmin(aabb1.min.e[A_Y], aabb2.min.e[A_Y]),
 			fmin(aabb1.min.e[A_Z], aabb2.min.e[A_Z])),
 		construct_vec3(
-			fmax(aabb1.min.e[A_X], aabb2.min.e[A_X]),
-			fmax(aabb1.min.e[A_Y], aabb2.min.e[A_Y]),
-			fmax(aabb1.min.e[A_Z], aabb2.min.e[A_Z]))));
+			fmax(aabb1.max.e[A_X], aabb2.max.e[A_X]),
+			fmax(aabb1.max.e[A_Y], aabb2.max.e[A_Y]),
+			fmax(aabb1.max.e[A_Z], aabb2.max.e[A_Z]))));
 }
 
+#include "rt_debug.h"
 double	calc_surface_area(const t_aabb aabb)
 {
 	double	s[3];

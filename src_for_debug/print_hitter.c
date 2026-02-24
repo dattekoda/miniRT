@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 14:00:25 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 20:38:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	print_hitter(t_hitter *hitter)
 	};
 	fprintf(stderr, "type:%s\t", string_table[hitter->type]);
 	print_vec3(hitter->aabb.centroid);
+	// print_aabb(hitter->aabb);
 	// if (hitter->mat_ptr)
 	// {
 	// 	fprintf(stderr, "color: ");
@@ -79,23 +80,6 @@ void	print_hitter_list(const t_list *list)
 		t_hitter *hitter = (t_hitter *)cur->content;
 		print_hitter(hitter);
 		cur = cur->next;
-	}
-}
-
-void	print_hitter_arr(t_hitter_arr arr)
-{
-	size_t	i = 0;
-
-	if (arr.size == 0)
-	{
-		fprintf(stderr, "arr has no content\n");
-		return ;
-	}
-	fprintf(stderr, "print arr:\n");
-	while (i < arr.size)
-	{
-		print_hitter(arr.arr[i]);
-		i++;
 	}
 }
 
