@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_element.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 19:58:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/26 19:55:00 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ const t_element						*g_element_table[] = {
 };
 
 const t_element						*g_infinite_table[] = {
-	// &g_plane_info,
+	&g_plane_info,
 	// &g_cone_info,
 	NULL
 };
