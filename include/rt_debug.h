@@ -1,12 +1,21 @@
 #ifndef RT_DEBUG_H
 #define RT_DEBUG_H
+#include <stdlib.h> // debug
 #include "hitter.h"
 #include "libft.h"
 #include "hitter_arr.h"
+#include "split.h"
+
+void	print_aabb(t_aabb aabb);
+
+void	print_axis(t_axis axis);
+
+void	print_hitter_arr(const t_hitter_arr *hit_arr);
+
+void	print_split(const t_split *split);
 
 void	print_hitter(t_hitter *hitter);
 void	print_hitter_list(const t_list *list);
-void	print_hitter_arr(t_hitter_arr arr);
 void	print_tree(t_hitter *node);
 
 void	print_line_list(const t_list *line_list);

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/18 22:10:17 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 22:05:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,79 +15,58 @@
 #include "libft.h"
 #include "result.h"
 #include "vec_utils.h"
-#include "axis.h"
 #include "rt_utils.h"
+#include "split.h"
 #include <math.h>
 #include <stdlib.h>
 
 // void		sort_hit_arr(t_hitter_arr hit_arr, int axis);
-int			prepare_surface_arr(
+void		prepare_surface_arr(t_hitter_arr hit_arr);
+t_compar	get_compar_func(t_axis axis);
+static void	find_best_left_size(
 				t_hitter_arr hit_arr,
-				double **left_arr_p,
-				double **right_arr_p);
-t_compare	get_compare_func(t_axis axis);
-static int	find_best_left_size(
+				t_split		*best);
+double		calc_cost(
 				t_hitter_arr hit_arr,
-				size_t *best_left_size,
-				double *best_cost);
-double		cost_func(const t_hitter_arr root, size_t left_size,
-				double *left_area_arr, double *right_area_arr);
+				size_t left_size);
 
-int	find_best_split_info(t_hitter_arr hit_arr,
-	t_axis *best_axis, size_t *best_left_size)
+#include <stdio.h>
+#include "rt_debug.h"
+void	find_best_split_info(t_hitter_arr hit_arr, t_split *best)
 {
-	double	best_cost;
-	size_t	tmp_axis;
-	size_t	tmp_left_size;
-	double	tmp_cost;
+	t_split	tmp;
 
-	*best_axis = A_X;
-	*best_left_size = 1;
-	best_cost = INFINITY;
-	tmp_cost = INFINITY;
-	tmp_left_size = 1;
-	tmp_axis = A_X;
-	while (tmp_axis < 3)
+	*best = construct_split(A_X, 0, INFINITY);
+	tmp = construct_split(A_X, 0, INFINITY);
+	while (tmp.axis < 3)
 	{
 		ft_qsort((char *)hit_arr.arr, hit_arr.size,
-			sizeof(t_hitter *), get_compare_func(tmp_axis));
-		if (find_best_left_size(hit_arr, &tmp_left_size, &tmp_cost) == FAILURE)
-			return (FAILURE);
-		if (tmp_cost < best_cost)
-		{
-			best_cost = tmp_cost;
-			*best_left_size = tmp_left_size;
-			*best_axis = tmp_axis;
-		}
-		tmp_axis++;
+			sizeof(t_hitter *), get_compar_func(tmp.axis));
+		find_best_left_size(hit_arr, &tmp);
+		if (tmp.cost < best->cost)
+			*best = tmp;
+		tmp.axis++;
 	}
-	return (SUCCESS);
+	return ;
 }
 
-static int	find_best_left_size(
+static void	find_best_left_size(
 				t_hitter_arr hit_arr,
-				size_t *best_left_size,
-				double *best_cost)
+				t_split		*best)
 {
-	double	*left_arr;
-	double	*right_arr;
-	size_t	tmp_left_size;
-	double	tmp_cost;
+	t_split	tmp;
 
-	if (prepare_surface_arr(hit_arr, &left_arr, &right_arr) == FAILURE)
-		return (FAILURE);
-	tmp_left_size = 0;
-	while (tmp_left_size < hit_arr.size)
+	prepare_surface_arr(hit_arr);
+	tmp = construct_split(A_NOTHING, 1, INFINITY);
+	while (tmp.left_size < hit_arr.size - 1)
 	{
-		tmp_cost = cost_func(hit_arr, tmp_left_size, left_arr, right_arr);
-		if (tmp_cost < *best_cost)
+		tmp.cost = calc_cost(hit_arr, tmp.left_size);
+		if (tmp.cost < best->cost)
 		{
-			*best_cost = tmp_cost;
-			*best_left_size = tmp_left_size;
+			best->cost = tmp.cost;
+			best->left_size = tmp.left_size;
 		}
-		tmp_left_size++;
+		tmp.left_size++;
 	}
-	free(left_arr);
-	free(right_arr);
-	return (SUCCESS);
+	return ;
 }

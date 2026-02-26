@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/20 22:12:10 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/24 22:26:24 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ bool	hit_sphere(
 	if (!is_solution_inside_range(&solu, range))
 		return (false);
 	assign_sphere_hrec(self, ray, hrec, solu.solution);
+	range->e[1] = hrec->param_t;
 	return (true);
 }
 

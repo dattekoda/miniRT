@@ -6,10 +6,11 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:37:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/22 19:52:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 22:30:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "axis.h"
 #include "hitter.h"
 #include "vec_utils.h"
 #include "rt_utils.h"
@@ -36,14 +37,13 @@ t_aabb	construct_aabb(t_point3 min, t_point3 max)
 static bool	hit_aabb(
 				const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {
-	const t_aabb	*self;
+	const t_aabb	*self = s;
 	t_range			tmp_range;
-	size_t			axis;
 	double			tmp_div;
+	t_axis			axis;
 
 	(void)hrec;
-	self = s;
-	axis = 0;
+	axis = A_X;
 	while (axis < 3)
 	{
 		tmp_div = 1 / ray->direct.e[axis];

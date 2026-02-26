@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hitter_arr.h                                       :+:      :+:    :+:   */
+/*   print_axis.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 12:30:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 19:18:42 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/24 14:58:48 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/24 15:03:15 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HITTER_ARR_H
-# define HITTER_ARR_H
+#include "axis.h"
+#include <stdio.h>
 
-# include "hitter.h"
-# include <stddef.h>
-
-typedef struct s_hitter_arr
+void	print_axis(t_axis axis)
 {
-	t_hitter	**arr;
-	double		*left_surface_arr;
-	double		*right_surface_arr;
-	size_t		size;
-}	t_hitter_arr;
-
-// typedef bool	(*t_compar)(const void *lhs, const void *rhs);
-typedef int	(*t_compar)(const void *lhs, const void *rhs);
-
-#endif
+	fprintf(stderr, "axis:\t");
+	if (axis == A_X)
+		fprintf(stderr, "x");
+	if (axis == A_Y)
+		fprintf(stderr, "y");
+	if (axis == A_Z)
+		fprintf(stderr, "z");
+	fprintf(stderr, ", ");
+}

@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hitter_arr.h                                       :+:      :+:    :+:   */
+/*   print_split.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 12:30:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 19:18:42 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/24 14:57:56 by khanadat          #+#    #+#             */
+/*   Updated: 2026/02/24 15:03:51 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HITTER_ARR_H
-# define HITTER_ARR_H
+#include "split.h"
+#include <stdio.h>
 
-# include "hitter.h"
-# include <stddef.h>
+void	print_axis(t_axis axis);
 
-typedef struct s_hitter_arr
+void	print_split(const t_split *split)
 {
-	t_hitter	**arr;
-	double		*left_surface_arr;
-	double		*right_surface_arr;
-	size_t		size;
-}	t_hitter_arr;
-
-// typedef bool	(*t_compar)(const void *lhs, const void *rhs);
-typedef int	(*t_compar)(const void *lhs, const void *rhs);
-
-#endif
+	fprintf(stderr, "--- split ---\n");
+	print_axis(split->axis);
+	fprintf(stderr, "left_size:\t%zu, ", split->left_size);
+	fprintf(stderr, "cost:\t%f\n", split->cost);
+}

@@ -3,21 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   generate_tree.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 23:39:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 20:02:35 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/24 23:12:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_world_define.h"
-#include "libft.h"
+#include "rt_define.h"
+#include "vec_utils.h"
 #include "result.h"
 #include "tree.h"
+#include "libft.h"
 #include <stdlib.h>
 
 static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs);
-static bool		hit_tree(const void *s, const t_ray *ray, t_hrec *hrec,
+static bool		hit_tree(
+					const void *s,
+					const t_ray *ray,
+					t_hrec *hrec,
 					t_range *range);
 void			clear_tree(void *s);
 
@@ -58,20 +63,21 @@ static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs)
 	return (node);
 }
 
-static bool	hit_tree(const void *s, const t_ray *ray, t_hrec *hrec,
+#include "rt_debug.h"
+static bool	hit_tree(
+		const void *s,
+		const t_ray *ray,
+		t_hrec *hrec,
 		t_range *range)
 {
-	const t_tree	*self;
+	const t_tree	*self = s;
 	bool			hit_lhs;
 	bool			hit_rhs;
 
-	self = s;
-	if (self->hitter.has_aabb && !self->hitter.aabb.hit(&self->hitter.aabb, ray,
-			hrec, range))
+	if (self->hitter.has_aabb
+		&& !self->hitter.aabb.hit(&self->hitter.aabb, ray, hrec, range))
 		return (false);
 	hit_lhs = self->lhs->hit(self->lhs, ray, hrec, range);
-	if (hit_lhs)
-		range->e[1] = hrec->param_t;
 	hit_rhs = self->rhs->hit(self->rhs, ray, hrec, range);
 	return (hit_lhs | hit_rhs);
 }

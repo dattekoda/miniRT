@@ -6,28 +6,28 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 10:46:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 19:53:49 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/24 22:03:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_utils.h"
 #include "libft.h"
 #include <aio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 static ssize_t	partition(char *base, size_t size, size_t nmemb,
-					bool (*compar)(const void*, const void*));
+					int (*compar)(const void*, const void*));
 static void		*decide_pivot(char *base, size_t size, size_t nmemb,
-					bool (*compar)(const void*, const void*));
+					int (*compar)(const void*, const void*));
 
+void			ft_swap(void *a, void *b, size_t size);
 // left = 0;
 // right = size - 1;
 /*
 @brief QUICK sort in Ascending order(1, 2, 3, ...)
 */
 void	ft_qsort(char *base, size_t nmemb, size_t size,
-				bool (*compar)(const void*, const void*))
+				int (*compar)(const void*, const void*))
 {
 	ssize_t	last_idx;
 
@@ -37,10 +37,11 @@ void	ft_qsort(char *base, size_t nmemb, size_t size,
 	ft_qsort(base, last_idx + 1, size, compar);
 	ft_qsort(base + (last_idx + 1) * size, nmemb - (last_idx + 1),
 		size, compar);
+	return ;
 }
 
 static ssize_t	partition(char *base, size_t size, size_t nmemb,
-						bool (*compar)(const void*, const void*))
+						int (*compar)(const void*, const void*))
 {
 	void		*pivot_p;
 	static char	pivot[4096];
@@ -53,9 +54,9 @@ static ssize_t	partition(char *base, size_t size, size_t nmemb,
 	r = nmemb;
 	while (l < r)
 	{
-		while (!(*compar)(base + (++l) * size, &pivot))
+		while ((*compar)(base + (++l) * size, &pivot) < 0)
 			;
-		while (!(*compar)(&pivot, base + (--r) * size))
+		while ((*compar)(&pivot, base + (--r) * size) < 0)
 			;
 		if (l >= r)
 			break ;
@@ -65,7 +66,7 @@ static ssize_t	partition(char *base, size_t size, size_t nmemb,
 }
 
 static void	*decide_pivot(char *base, size_t size, size_t nmemb,
-						bool (*compar)(const void*, const void*))
+						int (*compar)(const void*, const void*))
 {
 	ssize_t	tail;
 	ssize_t	center;
@@ -91,6 +92,22 @@ static void	*decide_pivot(char *base, size_t size, size_t nmemb,
 			return (base + center * size);
 	}
 }
+
+// #include <stdio.h>
+// static int	charcomp(const void *lhs, const void *rhs) {
+// 	unsigned char	_lhs = *(unsigned char *)lhs;
+// 	unsigned char	_rhs = *(unsigned char *)rhs;
+
+// 	return ((int)_lhs - (int)_rhs);
+// }
+// int	main(int argc, char *argv[])
+// {
+// 	for (int i = 1; i < argc; i++) {
+// 		ft_qsort(argv[i], ft_strlen(argv[i]), sizeof(char), charcomp);
+// 		fprintf(stderr, "%s\n", argv[i]);
+// 	}
+// 	return (0);
+// }
 
 // // structure test
 // #include <stdio.h>

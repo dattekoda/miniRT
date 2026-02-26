@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/22 17:13:15 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/24 21:55:15 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -151,10 +151,12 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							$(addprefix hitter_arr_to_bvh/, \
 								bvh_utils.c \
 								compare.c \
+								construct_hitter_arr.c \
 								find_best_split_info.c \
 								prepare_surface_arr.c \
 								generate_tree.c \
 								hit_arr_to_bvh.c \
+								split.c \
 							) \
 							$(addprefix line_list_to_hitter_arr/, \
 								add_cylinder_disk.c \
@@ -198,13 +200,13 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 				) \
 				$(addprefix utils/, \
 					construct_result.c \
+					ft_qsort.c \
+					ft_swap.c \
 					utils_clamp.c \
 					utils_clear.c \
 					utils_err.c \
 					utils_float.c \
-					ft_qsort.c \
 					utils_random.c \
-					utils_swap.c \
 					$(addprefix vec/, \
 						onb.c \
 						range.c \
@@ -220,11 +222,15 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 
 # you can delete later
 SRCS	+=	$(addprefix src_for_debug/, \
+				print_aabb.c \
+				print_axis.c \
+				print_hitter_arr.c \
 				print_hitter.c \
 				print_line_list.c \
 				print_material.c \
 				print_pixel_arr.c \
 				print_ray.c \
+				print_split.c \
 				print_vec.c \
 				print_world.c \
 			)
@@ -291,7 +297,7 @@ TESTSRCFILES	=	$(addprefix test/, \
 							test_add_light_radius.c \
 							test_line_to_light.c \
 							test_is_component_higher.c \
-							test_rt_swap.c \
+							test_ft_swap.c \
 							test_pertition.c \
 						) \
 						$(addprefix utils/, \
