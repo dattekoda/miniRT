@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/27 22:18:05 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/28 01:27:10 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	line_to_sphere(t_hitter **sphere, const char *line);
 int	line_to_plane(t_hitter **plane, const char *line);
 int	line_to_disk(t_hitter **disk, const char *line);
 int	line_to_cylinder(t_hitter **cylinder, const char *line);
+int	line_to_triangle(t_hitter **triangle, const char *line);
 
 extern const t_skip					g_ambient_skips[];
 extern const t_skip					g_camera_skips[];
@@ -122,7 +123,7 @@ const t_element						g_triangle_info = {
 	.input_format = "tr [coordinate](x,y,z) [coordinate](x,y,z) [coordinate](x,y,z) \
 [R,G,B](0-255)",
 	.skip_arr = g_triangle_skips,
-	.line_to_hitter = NULL,
+	.line_to_hitter = line_to_triangle,
 	.material_idx = TRIANGLE_MATERIAL_ID,
 	.texture_idx = TRIANGLE_TEXTURE_ID
 };
@@ -154,6 +155,6 @@ const t_element						*g_finite_table[] = {
 	&g_sphere_info,
 	&g_cylinder_info,
 	&g_disk_info,
-	// &g_triangle_info,
+	&g_triangle_info,
 	NULL
 };
