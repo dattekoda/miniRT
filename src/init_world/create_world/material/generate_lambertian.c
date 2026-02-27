@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_lambertian.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/21 16:45:59 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/27 23:04:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "ray.h"
 #include "result.h"
 #include "libft.h"
+#include <stdlib.h>
 
 t_vec3					orient_normal(
 							const t_vec3 *hrec_normal, 
@@ -46,7 +47,7 @@ t_material	*generate_lambertian(t_texture *texture_ptr)
 	p = ft_calloc(1, sizeof(t_lambertian));
 	if (!p)
 	{
-		texture_ptr->clear(texture_ptr);
+		free(texture_ptr);
 		return (NULL);
 	}
 	*p = construct_lambertian(texture_ptr);

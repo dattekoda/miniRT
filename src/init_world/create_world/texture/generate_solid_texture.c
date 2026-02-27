@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:05:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/27 18:00:10 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/27 23:02:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_solid_texture	construct_solid_texture(t_color color)
 	t_solid_texture	solid;
 
 	solid.texture.calc_texture_value = calc_solid_texture_value;
-	solid.texture.clear = clear_texture;
 	solid.color = color;
 	return (solid);
 }

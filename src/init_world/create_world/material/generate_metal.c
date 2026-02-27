@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 09:32:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 20:39:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/27 23:05:02 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include "cosine_pdf.h"
 #include <math.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 t_vec3			orient_normal(
 					const t_vec3 *hrec_normal,
@@ -44,7 +45,7 @@ t_material	*generate_metal(t_texture *texture_ptr)
 	metal_ptr = ft_calloc(1, sizeof(t_metal));
 	if (!metal_ptr)
 	{
-		texture_ptr->clear(texture_ptr);
+		free(texture_ptr);
 		return (NULL);
 	}
 	*metal_ptr = construct_metal(texture_ptr);

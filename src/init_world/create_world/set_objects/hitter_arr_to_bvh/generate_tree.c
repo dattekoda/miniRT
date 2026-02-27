@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 23:39:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 23:12:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/27 23:24:22 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,15 @@ void	clear_tree(void *s)
 
 	self = (t_tree *)s;
 	if (self->lhs)
+	{
 		self->lhs->clear(self->lhs);
+		free(self->lhs);
+	}
 	if (self->rhs)
+	{
 		self->rhs->clear(self->rhs);
+		free(self->lhs);
+	}
 	self->lhs = NULL;
 	self->rhs = NULL;
-	free(self);
 }
