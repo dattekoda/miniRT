@@ -2,7 +2,7 @@ C	0,0,0	0,0,1	90
 A	0.5		30,100,255
 
 L	0,10,5	1.0		255,255,255
-sp	2,0,5	4.0		255,255,255	lambertian	solid
-sp	-2,0,5	4.0		255,1,1	metal	solid
+sp	2,0,5	4.0		255,0,255	lambertian	checker
+sp	-2,0,5	4.0		255,255,255	metal	solid
 
 sp	0,-102,5	200	0,255,0	lambertian	solid
