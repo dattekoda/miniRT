@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 22:12:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 00:23:20 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/28 00:29:45 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static int	add_disk(t_list **hitter_list, t_disk disk_param)
 	return (SUCCESS);
 }
 
+#include <stdio.h>
 static t_disk	cylinder_to_lower_disk(t_cylinder cylinder)
 {
 	t_disk		disk_param;
