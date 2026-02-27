@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/27 19:03:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/27 22:00:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,9 @@
 # define TRIANGLE_MATERIAL_ID	0
 
 // 0: ripple
-// 1: block
-# define BUMP_TYPE 0
+// 1: swirl
+// 2: interface
+# define BUMP_TYPE 2
 
 // phong
 # define R_PHONG_AMBIENT_COEFF 0.1

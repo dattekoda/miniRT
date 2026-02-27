@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_element.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:12:12 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/26 19:55:00 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/27 21:05:00 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ const t_element						*g_finite_table[] = {
 	&g_light_info,
 	&g_sphere_info,
 	// &g_cylinder_info,
-	// &g_disk_info,
+	&g_disk_info,
 	// &g_triangle_info,
 	NULL
 };
