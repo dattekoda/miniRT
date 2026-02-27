@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_config.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/21 19:08:47 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/27 19:03:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,12 @@
 
 # define PATHTRACING_LIGHT_STRENGTH 101.0
 
-
-
 # define RUSSIAN_ROULETTE_START_DEPTH 10
 
 // 0.0 - 1.0
 # define METAL_FUZZINESS 0.0
 // 0.0 -
-# define REFRACT_IDX 1.7
+# define REFRACT_IDX 1.5
 
 // set 0.0 - 1.0
 # define LIVE_PROBABILITY_MIN 0.05
