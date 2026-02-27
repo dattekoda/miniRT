@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 18:50:23 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/27 21:50:27 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_hitter	*generate_disk(t_disk disk_param)
 
 	if (!disk_param.hitter.mat_ptr)
 		return (NULL);
-	p = ft_calloc(1, sizeof(t_material));
+	p = ft_calloc(1, sizeof(t_disk));
 	if (!p)
 	{
 		disk_param.hitter.mat_ptr->clear(disk_param.hitter.mat_ptr);

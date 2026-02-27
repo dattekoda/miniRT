@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hitter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 20:38:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/27 21:46:12 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	print_hitter_list(const t_list *list)
 		print_hitter(hitter);
 		cur = cur->next;
 	}
+	printf("print hitter list done\n");
 }
 
 static void	print_tree_recursive(t_hitter *node, int depth);
