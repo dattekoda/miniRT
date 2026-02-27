@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_lambertian.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/27 23:04:44 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 00:20:32 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void				record_next_direct_from_pdf(
 							const t_list *light_list,
 							const t_hrec *hrec,
 							t_srec *srec);
-
+static t_material		*clone_lambertian(void *s);
 /*
 @brief responsible for free(texture_ptr)
 */
@@ -63,7 +63,25 @@ static t_lambertian	construct_lambertian(t_texture *texture_ptr)
 	lambertian.material.clear = clear_material;
 	lambertian.material.texture_ptr = texture_ptr;
 	lambertian.material.idx = LAMBERTIAN;
+	lambertian.material.clone = clone_lambertian;
 	return (lambertian);
+}
+
+static t_material	*clone_lambertian(void *s)
+{
+	const t_lambertian	*self = s;
+	t_texture			*texture_p;
+	t_lambertian		*dst;
+
+	texture_p = self->material.texture_ptr->clone(self->material.texture_ptr);
+	if (!texture_p)
+		return (NULL);
+	dst = ft_calloc(1, sizeof(t_lambertian));
+	if (!dst)
+		return (NULL);
+	ft_memmove(dst, self, sizeof(t_lambertian));
+	dst->material.texture_ptr = texture_p;
+	return ((t_material *)dst);
 }
 
 #include <stdio.h>
