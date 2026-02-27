@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/21 19:09:46 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:50:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@ int		set_option(char *options[]);
 int		init_world(t_world *world, char *file_name, int option_flag);
 int		render_world(t_world *world, int option_flag);
 
-#include "material.h"
-#include "rt_debug.h"
-#include <stdio.h>
-#include <stdlib.h>
-void	print_world(const t_world *world);
+#include "rt_debug.h" // debug
+#include <stdio.h> // debug
 
 int	mini_rt(int argc, char *argv[])
 {

@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/24 21:55:15 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/27 18:45:54 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -233,6 +233,7 @@ SRCS	+=	$(addprefix src_for_debug/, \
 				print_split.c \
 				print_vec.c \
 				print_world.c \
+				print_option.c \
 			)
 
 # --- obj ---

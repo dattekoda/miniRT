@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_solid_texture.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:05:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/21 17:19:55 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:00:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ t_texture	*generate_solid_texture(t_color color)
 	return ((t_texture *)p);
 }
 
+/*
+@brief used at construct_checker(), so not static
+*/
 t_solid_texture	construct_solid_texture(t_color color)
 {
 	t_solid_texture	solid;
@@ -38,11 +41,7 @@ t_solid_texture	construct_solid_texture(t_color color)
 	solid.texture.clear = clear_texture;
 	solid.color = color;
 	return (solid);
-
 }
-
-#include <stdio.h> // debug
-void	print_vec3(t_vec3 v); // debug
 
 static t_color	calc_solid_texture_value(
 					const void *s,

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 13:48:03 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:45:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,15 @@
 
 # include <stddef.h>
 # include <stdbool.h>
+# include <stdint.h>
 
 typedef void	(*t_clear)(void *self);
+
+union u_rand_double
+{
+	uint64_t	u;
+	double		d;
+};
 
 double	clamp(double x, double min, double max);
 // utils_clamp.c

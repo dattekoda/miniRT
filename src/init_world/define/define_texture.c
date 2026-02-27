@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 15:01:00 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/22 19:51:59 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:39:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 #include <stddef.h>
 
 t_texture	*generate_solid_texture(t_color color);
+t_texture	*generate_checker_texture(t_color color);
 
 const char					*g_texture_specifiers[] = {
 	"solid",
-	// "checker",
+	"checker",
 	// "bump",
 	NULL
 };
 
 const t_generate_texture	g_gen_texture_table[] = {
 	generate_solid_texture,
+	generate_checker_texture,
 	NULL
 };
