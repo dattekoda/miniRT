@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 18:33:14 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/28 20:17:06 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	print_hitter_list(const t_list *list)
 		print_hitter(hitter);
 		cur = cur->next;
 	}
+	printf("print hitter list done\n");
 }
 
 static void	print_tree_recursive(t_hitter *node, int depth);

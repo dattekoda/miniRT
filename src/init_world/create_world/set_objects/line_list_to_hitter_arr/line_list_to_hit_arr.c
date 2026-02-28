@@ -29,6 +29,8 @@ static bool	match_objects(const char *line, const t_element *object_table[],
 static int	line_list_to_hitter_list(t_list **hitter_list,
 				const t_list *line_list, const t_element *object_table[]);
 
+
+#include "rt_debug.h"
 int	line_list_to_hit_arr(
 			t_hitter_arr *hit_arr,
 			const t_list *line_list,
@@ -49,6 +51,7 @@ int	line_list_to_hit_arr(
 		ft_lstclear(&hitter_list, clear_hitter);
 		return (FAILURE);
 	}
+	
 	ft_lstclear(&hitter_list, NULL);
 	return (SUCCESS);
 }
@@ -61,6 +64,7 @@ static int	hitter_list_to_hitter_arr(t_list *hitter_list,
 
 	if (!hitter_list)
 		return (SUCCESS);
+	print_hitter_list(hitter_list);
 	hit_arr->size = (size_t)ft_lstsize(hitter_list);
 	hit_arr->arr = ft_calloc(hit_arr->size, sizeof(t_hitter *));
 	if (!hit_arr->arr)
