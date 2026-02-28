@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:00:17 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 19:49:46 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/28 20:13:34 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	validate_arguments(int argc, char *argv[]);
 int		set_option(char *options[]);
 int		init_world(t_world *world, char *file_name, int option_flag);
 int		render_world(t_world *world, int option_flag);
+#include "rt_debug.h"
 
 #include "rt_debug.h"
 
