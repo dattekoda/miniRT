@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 18:38:13 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/28 20:43:34 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static t_vec3	calc_coeff(
 			- length_squared_vec3(*ray_dir) * cos_pow2,
 			dot_rdir__cdir * dot_cdir__c_to_ro
 			- dot_c_to_ro__rdir * cos_pow2,
-			pow(dot_c_to_ro__rdir, 2)
+			pow(dot_cdir__c_to_ro, 2)
 			- length_squared_vec3(*center_to_ray_origin) * cos_pow2));
 }
 
@@ -102,7 +102,7 @@ static void	assign_cone_hrec(
 	hrec->normal = normalize(sub_vec3(center_to_point,
 				scal_mul_vec3(self->direct,
 					dot(center_to_point, self->direct)
-					/ pow(self->half_angle, 2))));
+					/ pow(cos(self->half_angle), 2))));
 	hrec->mat_ptr = self->hitter.mat_ptr;
 	hrec->map = construct_cone_uv(self, &center_to_point);
 	return ;

@@ -64,7 +64,6 @@ static int	hitter_list_to_hitter_arr(t_list *hitter_list,
 
 	if (!hitter_list)
 		return (SUCCESS);
-	print_hitter_list(hitter_list);
 	hit_arr->size = (size_t)ft_lstsize(hitter_list);
 	hit_arr->arr = ft_calloc(hit_arr->size, sizeof(t_hitter *));
 	if (!hit_arr->arr)
