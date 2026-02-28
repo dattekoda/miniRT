@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_bump_texture.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 20:03:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/15 20:03:47 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/27 23:02:48 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static t_bump_texture	construct_bump_texture(t_color color)
 {
 	t_bump_texture	bump;
 
-	bump.texture.clear = clear_texture;
 	bump.texture.calc_texture_value = calc_bump_texture_value;
 	bump.local_normal = g_local_normal[BUMP_TYPE];
 	bump.color = color;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_cylinder_disk.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 22:12:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/02 12:58:05 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 00:29:45 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libft.h"
 #include "result.h"
 #include "vec_utils.h"
+#include <stdlib.h>
 
 static t_disk	cylinder_to_upper_disk(t_cylinder cylinder);
 static t_disk	cylinder_to_lower_disk(t_cylinder cylinder);
@@ -22,8 +23,8 @@ static int		add_disk(t_list **hitter_list, t_disk disk);
 
 int	add_cylinder_disk(t_list **hitter_list, t_cylinder *cylinder)
 {
-	t_disk	upper_disk;
-	t_disk	lower_disk;
+	t_disk		upper_disk;
+	t_disk		lower_disk;
 
 	upper_disk = cylinder_to_upper_disk(*cylinder);
 	if (add_disk(hitter_list, upper_disk) == FAILURE)
@@ -49,27 +50,30 @@ static int	add_disk(t_list **hitter_list, t_disk disk_param)
 	return (SUCCESS);
 }
 
+#include <stdio.h>
 static t_disk	cylinder_to_lower_disk(t_cylinder cylinder)
 {
-	t_disk	disk_param;
+	t_disk		disk_param;
 
 	ft_bzero(&disk_param, sizeof(t_disk));
 	disk_param.center = cylinder.center;
 	disk_param.normal = negative_vec3(cylinder.direct);
 	disk_param.radius = cylinder.radius;
-	disk_param.hitter.mat_ptr = cylinder.hitter.mat_ptr;
+	disk_param.hitter.mat_ptr = cylinder.hitter.mat_ptr->clone(cylinder.hitter.mat_ptr);
+	// NEED null check
 	return (disk_param);
 }
 
 static t_disk	cylinder_to_upper_disk(t_cylinder cylinder)
 {
-	t_disk	disk_param;
+	t_disk		disk_param;
 
 	ft_bzero(&disk_param, sizeof(t_disk));
 	disk_param.center = add_vec3(cylinder.center, scal_mul_vec3(cylinder.direct,
 				cylinder.height));
 	disk_param.normal = cylinder.direct;
 	disk_param.radius = cylinder.radius;
-	disk_param.hitter.mat_ptr = cylinder.hitter.mat_ptr;
+	disk_param.hitter.mat_ptr = cylinder.hitter.mat_ptr->clone(cylinder.hitter.mat_ptr);
+	// NEED null check
 	return (disk_param);
 }

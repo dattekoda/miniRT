@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   generate_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/21 17:18:34 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/27 23:06:01 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "light.h"
 #include "rt_utils.h"
 #include "vec_utils.h"
+#include <stdlib.h>
 
 static t_light	construct_light(t_texture *texture_ptr);
 // static t_color	emmited_light(const void *s, t_hrec *hrec);
@@ -33,7 +34,10 @@ t_material	*generate_light(t_texture *texture_ptr)
 		return (NULL);
 	light_ptr = ft_calloc(1, sizeof(t_light));
 	if (!light_ptr)
-		return (texture_ptr->clear(texture_ptr), NULL);
+	{
+		free(texture_ptr);
+		return (NULL);
+	}
 	*light_ptr = construct_light(texture_ptr);
 	return ((t_material *)light_ptr);
 }

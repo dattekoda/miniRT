@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/27 18:45:54 by khanadat         ###   ########.fr        #
+#    Updated: 2026/02/28 00:03:16 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -345,7 +345,7 @@ lldba:
 	@lldb $(NAME)
 
 # --- address sanitizer ---
-asan:
+asan:fclean
 	$(MAKE) LDFLAG="$(LDFLAG) $(ASANFLAG)" "CFLAG=$(CFLAG) $(ASANFLAG)"
 	@echo "\n\033[1;35mCompiled with AddressSanitizer. Run './$(NAME)' to test.\033[0m"
 
