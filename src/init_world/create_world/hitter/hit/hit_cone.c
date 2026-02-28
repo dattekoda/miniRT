@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 20:43:34 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/28 20:44:05 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ static t_vec3	calc_coeff(
 	const double	cos_pow2 = pow(cos(half_angle), 2);
 
 	return (construct_vec3(
-			pow(dot_rdir__cdir, 2)
-			- length_squared_vec3(*ray_dir) * cos_pow2,
+			length_squared_vec3(*ray_dir) * cos_pow2
+			- pow(dot_rdir__cdir, 2),
 			dot_rdir__cdir * dot_cdir__c_to_ro
 			- dot_c_to_ro__rdir * cos_pow2,
 			pow(dot_cdir__c_to_ro, 2)
