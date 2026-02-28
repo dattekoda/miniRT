@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 22:12:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 17:13:51 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 18:17:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ static int	add_disk(t_list **hitter_list, t_disk disk_param)
 		return (FAILURE);
 	tmp_list = ft_lstnew(tmp_disk);
 	if (!tmp_list)
-		return (tmp_disk->hitter.clear(tmp_disk), FAILURE);
+	{
+		tmp_disk->hitter.clear(tmp_disk);
+		free(tmp_disk);
+		return (FAILURE);
+	}
 	ft_lstadd_back(hitter_list, tmp_list);
 	return (SUCCESS);
 }
