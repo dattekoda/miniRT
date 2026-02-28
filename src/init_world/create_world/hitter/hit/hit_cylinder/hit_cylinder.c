@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 06:26:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 15:51:20 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 18:38:21 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ bool	hit_cylinder(
 		return (false);
 	if (!validate_height_and_assign(self, ray, hrec, &solu))
 		return (false);
-	range->e[1] = solu.solution;
+	range->e[1] = hrec->param_t;
 	return (true);
 }
 

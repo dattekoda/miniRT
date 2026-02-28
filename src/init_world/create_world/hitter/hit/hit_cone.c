@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cone.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/14 15:51:20 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 18:38:13 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ bool	hit_cone(
 	if (!is_solution_inside_range(&solu, range))
 		return (false);
 	assign_cone_hrec(self, ray, hrec, solu.solution);
-	// range->e[1] = hrec->param_t;
+	range->e[1] = hrec->param_t;
 	return (true);
 }
 
