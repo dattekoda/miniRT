@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 18:54:06 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 19:51:27 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/28 19:54:39 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ bool	hit_cylinder(
 	if (!is_in_range_of_height(cy_solu.tmp_height, self->height))
 		return (false);
 	assign_cylinder_hrec(self, ray, hrec, &cy_solu);
+	range->e[1] = hrec->param_t;
 	return (true);
 }
 
