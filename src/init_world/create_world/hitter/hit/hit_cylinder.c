@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 18:54:06 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 19:44:53 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/28 19:49:35 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool	hit_cylinder(
 	if (!is_solution_inside_range(&cy_solu.solu, range))
 		return (false);
 	set_cy_solu_info(&cy_solu, self, ray);
-	if (is_in_range_of_height(cy_solu.tmp_height, self->height))
+	if (!is_in_range_of_height(cy_solu.tmp_height, self->height))
 		return (false);
 	assign_cylinder_hrec(self, ray, hrec, &cy_solu);
 	return (true);
@@ -115,7 +115,7 @@ static t_vec2	construct_cylinder_uv(
 
 static bool	is_in_range_of_height(const double tmp_height, const double height)
 {
-	return (tmp_height < 0 || tmp_height < height);
+	return (0 < tmp_height && tmp_height < height);
 }
 
 static void	set_cy_solu_info(
