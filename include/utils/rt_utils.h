@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/27 23:03:05 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 16:26:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_qsort(char *base, size_t nmemb, size_t size,
 				int (*compar)(const void*, const void*));
 // utils_qsort.c
 
+void	clear_free_hitter(void *self);
 void	clear_hitter(void *self);
 void	clear_material(void *self);
 // utils_clear.c

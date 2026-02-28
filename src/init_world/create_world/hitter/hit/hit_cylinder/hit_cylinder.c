@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 06:26:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 15:51:20 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 16:53:27 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,17 @@ bool			validate_height_and_assign(
 					t_hrec *hrec,
 					t_solution *solu);
 
+#include <stdio.h>
+
 bool	hit_cylinder(
 			const void *s,
 			const t_ray *ray,
 			t_hrec *hrec,
 			t_range *range)
 {
-	const t_cylinder	*self;
+	const t_cylinder	*self = s;
 	t_solution			solu;
 
-	self = s;
 	init_solution_context(&solu, self, ray);
 	if (!is_solution_inside_range(&solu, range))
 		return (false);

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:52:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 16:22:59 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 16:27:17 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	set_light(t_world *world, t_list *line_list, int option_flag)
 		{
 			if (new_light_node(&new_node, line_list->content) == FAILURE)
 			{
-				ft_lstclear(&world->light_list, clear_hitter);
+				ft_lstclear(&world->light_list, clear_free_hitter);
 				return (FAILURE);
 			}
 			ft_lstadd_back(&world->light_list, new_node);

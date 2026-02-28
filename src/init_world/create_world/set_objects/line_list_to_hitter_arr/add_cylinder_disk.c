@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 22:12:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 16:15:20 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 16:19:24 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	cylinder_to_lower_disk(t_cylinder cylinder, t_disk *lower_disk)
 	lower_disk->normal = negative_vec3(cylinder.direct);
 	lower_disk->radius = cylinder.radius;
 	lower_disk->hitter.mat_ptr
-		= lower_disk->hitter.mat_ptr->clone(lower_disk->hitter.mat_ptr);
+		= cylinder.hitter.mat_ptr->clone(cylinder.hitter.mat_ptr);
 	if (!lower_disk->hitter.mat_ptr)
 		return (FAILURE);
 	return (SUCCESS);

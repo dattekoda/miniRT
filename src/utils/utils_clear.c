@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_clear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 01:31:58 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/28 16:28:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 #include "hitter.h"
 #include "material.h"
 #include <stdlib.h>
+
+void	clear_free_hitter(void *self)
+{
+	t_hitter	*hitter;
+
+	hitter = self;
+	hitter->clear(hitter);
+	free(hitter);
+	return ;
+}
 
 void	clear_hitter(void *self)
 {
@@ -26,7 +36,6 @@ void	clear_hitter(void *self)
 		free(hitter->mat_ptr);
 	}
 	hitter->mat_ptr = NULL;
-	free(hitter);
 }
 
 void	clear_material(void *s)
@@ -41,10 +50,10 @@ void	clear_material(void *s)
 
 void	clear_world(t_world *world)
 {
-	ft_lstclear(&world->light_list, clear_hitter);
+	ft_lstclear(&world->light_list, clear_free_hitter);
 	if (world->object_tree)
 	{
 		world->object_tree->clear(world->object_tree);
-		// free(world->object_tree);
+		free(world->object_tree);
 	}
 }
