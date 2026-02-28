@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:52:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 16:27:17 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 19:03:37 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static int	new_light_node(t_list **new_node, const char *line)
 	if (!*new_node)
 	{
 		new_light->clear(new_light);
+		free(new_light);
 		return (FAILURE);
 	}
 	return (SUCCESS);
