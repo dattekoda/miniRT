@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 18:50:59 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/27 22:20:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_hitter	*generate_triangle(t_triangle triangle_param)
 
 	if (!triangle_param.hitter.mat_ptr)
 		return (NULL);
-	p = ft_calloc(1, sizeof(t_material));
+	p = ft_calloc(1, sizeof(t_triangle));
 	if (!p)
 	{
 		triangle_param.hitter.mat_ptr->clear(triangle_param.hitter.mat_ptr);

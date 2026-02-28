@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 23:10:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 16:51:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static void	clear_hitter_arr(t_hitter_arr *hit_arr)
 	while (i < hit_arr->size)
 	{
 		hit_arr->arr[i]->clear(hit_arr->arr[i]);
+		free(hit_arr->arr[i]);
 		i++;
 	}
 	free(hit_arr->arr);
