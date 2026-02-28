@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 22:12:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 16:19:24 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 17:13:51 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,11 @@ static int	add_disk(t_list **hitter_list, t_disk disk_param)
 static int	cylinder_to_upper_disk(t_cylinder cylinder, t_disk *upper_disk)
 {
 	ft_bzero(upper_disk, sizeof(t_disk));
-	upper_disk->center = add_vec3(cylinder.center, scal_mul_vec3(cylinder.direct,
+	upper_disk->center
+		= add_vec3(
+			cylinder.center,
+			scal_mul_vec3(
+				cylinder.direct,
 				cylinder.height));
 	upper_disk->normal = cylinder.direct;
 	upper_disk->radius = cylinder.radius;
