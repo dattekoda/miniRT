@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/20 19:10:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/28 18:38:01 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	hit_triangle(
 	if (!is_inside_triangle(self, &solu.point))
 		return (false);
 	assign_triangle_hrec(self, ray, hrec, &solu);
-	// range->e[1] = hrec->param_t;
+	range->e[1] = hrec->param_t;
 	return (true);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_cylinder_disk.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 22:12:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 18:17:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 20:13:55 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
