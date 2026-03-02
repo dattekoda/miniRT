@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 20:03:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/27 23:02:48 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 18:14:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static t_bump_texture	construct_bump_texture(t_color color)
 	t_bump_texture	bump;
 
 	bump.texture.calc_texture_value = calc_bump_texture_value;
+	bump.texture.size = sizeof(t_bump_texture);
 	bump.local_normal = g_local_normal[BUMP_TYPE];
 	bump.color = color;
 	return (bump);

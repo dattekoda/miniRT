@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/28 00:03:16 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/03/02 18:19:03 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,9 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							preprocess_line_list.c \
 						) \
 						$(addprefix texture/, \
+							$(addprefix texture_utils/, \
+								clone_texture.c \
+							) \
 							$(addprefix local_normal/, \
 								define_local_normal.c \
 								local_normal.c \
@@ -92,6 +95,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							generate_light.c \
 							$(addprefix material_utils/, \
 								orient_normal.c \
+								clone_material.c \
 							) \
 							$(addprefix pdf/, \
 								$(addprefix light_pdf_utils/, \
