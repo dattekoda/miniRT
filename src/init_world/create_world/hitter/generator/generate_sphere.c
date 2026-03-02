@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:55:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 22:49:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:15:57 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_hitter	*generate_sphere(t_sphere shape_param)
 	if (!p)
 	{
 		shape_param.hitter.mat_ptr->clear(shape_param.hitter.mat_ptr);
+		free(shape_param.hitter.mat_ptr);
 		return (NULL);
 	}
 	*p = construct_sphere(shape_param);

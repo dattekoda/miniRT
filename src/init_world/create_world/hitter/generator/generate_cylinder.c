@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_cylinder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 17:07:16 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 18:50:34 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:15:11 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_hitter	*generate_cylinder(t_cylinder cylinder_param)
 	if (!p)
 	{
 		cylinder_param.hitter.mat_ptr->clear(cylinder_param.hitter.mat_ptr);
+		free(cylinder_param.hitter.mat_ptr);
 		return (NULL);
 	}
 	*p = construct_cylinder(cylinder_param);

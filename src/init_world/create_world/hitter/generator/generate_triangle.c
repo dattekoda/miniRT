@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_triangle.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/27 22:20:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:16:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_hitter	*generate_triangle(t_triangle triangle_param)
 	if (!p)
 	{
 		triangle_param.hitter.mat_ptr->clear(triangle_param.hitter.mat_ptr);
+		free(triangle_param.hitter.mat_ptr);
 		return (NULL);
 	}
 	*p = construct_triangle(triangle_param);

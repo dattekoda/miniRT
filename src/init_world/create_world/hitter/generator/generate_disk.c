@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_disk.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/27 22:19:28 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:15:25 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_hitter	*generate_disk(t_disk disk_param)
 	if (!p)
 	{
 		disk_param.hitter.mat_ptr->clear(disk_param.hitter.mat_ptr);
+		free(disk_param.hitter.mat_ptr);
 		return (NULL);
 	}
 	*p = construct_disk(disk_param);
