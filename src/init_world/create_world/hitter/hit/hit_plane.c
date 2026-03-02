@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:37:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/08 19:03:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 18:37:49 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ bool	hit_plane(
 	if (!is_inside_range(solu.solution, range))
 		return (false);
 	assign_plane_hrec(self, ray, hrec, solu.solution);
+	range->e[1] = hrec->param_t;
 	return (true);
 }
 

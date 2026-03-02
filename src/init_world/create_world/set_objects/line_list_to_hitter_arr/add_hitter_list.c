@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:48:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 18:53:01 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 14:37:37 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "result.h"
 #include "cylinder.h"
 #include "libft.h"
+#include <stdlib.h>
 
 int			add_cylinder_disk(t_list **hitter_list, t_cylinder *cylinder);
 static bool	has_subhitter(const t_element *element);

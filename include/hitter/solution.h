@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solution.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:27:21 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/14 15:51:24 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 19:12:40 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,13 @@ double	calc_discriminant(const t_solution *solu);
 double	calc_minus_solution(const t_solution *solu);
 double	calc_plus_solution(const t_solution *solu);
 bool	is_solution_inside_range(t_solution *solu, const t_range *range);
+
+typedef struct s_cylinder_solu
+{
+	t_solution	solu;
+	t_vec3		point;
+	t_vec3		center_to_point;
+	double		tmp_height;
+}	t_cy_solu;
 
 #endif
