@@ -6,13 +6,14 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:31:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/02 12:15:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:24:29 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "plane.h"
 #include "rt_utils.h"
 #include "libft.h"
+#include <stdlib.h>
 
 static t_plane	construct_plane(t_plane plane_param);
 bool			hit_plane(

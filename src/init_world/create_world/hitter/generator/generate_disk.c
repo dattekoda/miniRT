@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/02 12:15:25 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:24:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "solution.h"
 #include "vec_utils.h"
 #include <math.h>
+#include <stdlib.h>
 
 static t_disk	construct_disk(t_disk disk_param);
 bool			hit_disk(

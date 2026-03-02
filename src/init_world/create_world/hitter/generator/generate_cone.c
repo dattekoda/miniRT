@@ -6,12 +6,13 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:55:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/02 12:14:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:23:46 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cone.h"
 #include "rt_utils.h"
+#include <stdlib.h>
 
 bool			hit_cone(
 					const void *s,

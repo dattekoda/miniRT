@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 17:07:16 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/02 12:15:11 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:23:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "vec_utils.h"
 #include "rt_utils.h"
 #include <math.h>
+#include <stdlib.h>
 
 bool				hit_cylinder(
 						const void *s,
