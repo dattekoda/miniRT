@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   material.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 00:18:09 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/02 18:48:28 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ typedef struct s_material
 	t_pdf							*pdf_ptr;
 	t_clear							clear;
 	t_material_idx					idx;
-	t_material						*(*clone)(void *self);
+	size_t							size;
 }	t_material;
+
+t_material	*clone_material(const void *s);
 
 #endif

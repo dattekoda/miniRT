@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/27 23:06:01 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 18:46:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <stdlib.h>
 
 static t_light	construct_light(t_texture *texture_ptr);
-// static t_color	emmited_light(const void *s, t_hrec *hrec);
 static bool		scatter_light(
 					const void *s,
 					const t_world *world,
@@ -47,13 +46,11 @@ static t_light	construct_light(t_texture *texture_ptr)
 	t_light	light;
 
 	light.material.scatter = scatter_light;
-	light.material.texture_ptr = texture_ptr;
 	light.material.clear = clear_material;
+	light.material.size = sizeof(t_light);
+	light.material.texture_ptr = texture_ptr;
 	return (light);
 }
-
-#include <stdio.h> // debug
-void	print_vec3(t_vec3 v); // debug
 
 static bool	scatter_light(
 				const void *s,
