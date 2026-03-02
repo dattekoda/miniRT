@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_lambertian.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 00:20:32 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/02 15:20:45 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ static t_lambertian	construct_lambertian(t_texture *texture_ptr)
 	ft_bzero(&lambertian, sizeof(t_lambertian));
 	lambertian.material.scatter = scatter_lambertian;
 	lambertian.material.clear = clear_material;
+	lambertian.material.clone = clone_lambertian;
 	lambertian.material.texture_ptr = texture_ptr;
 	lambertian.material.idx = LAMBERTIAN;
-	lambertian.material.clone = clone_lambertian;
 	return (lambertian);
 }
 
@@ -78,7 +78,10 @@ static t_material	*clone_lambertian(void *s)
 		return (NULL);
 	dst = ft_calloc(1, sizeof(t_lambertian));
 	if (!dst)
+	{
+		free(texture_p);
 		return (NULL);
+	}
 	ft_memmove(dst, self, sizeof(t_lambertian));
 	dst->material.texture_ptr = texture_p;
 	return ((t_material *)dst);
