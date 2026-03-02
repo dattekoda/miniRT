@@ -41,12 +41,12 @@ int	line_list_to_hit_arr(
 	if (line_list_to_hitter_list(&hitter_list, line_list,
 			object_table) == FAILURE)
 	{
-		ft_lstclear(&hitter_list, clear_hitter);
+		ft_lstclear(&hitter_list, clear_free_hitter);
 		return (FAILURE);
 	}
 	if (hitter_list_to_hitter_arr(hitter_list, hit_arr) == FAILURE)
 	{
-		ft_lstclear(&hitter_list, clear_hitter);
+		ft_lstclear(&hitter_list, clear_free_hitter);
 		return (FAILURE);
 	}
 	ft_lstclear(&hitter_list, NULL);

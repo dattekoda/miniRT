@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 23:39:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 16:31:41 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:16:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs)
 	if (!node)
 	{
 		lhs->clear(lhs);
+		free(lhs);
 		rhs->clear(rhs);
+		free(rhs);
 		return (NULL);
 	}
 	*node = construct_tree(lhs, rhs);

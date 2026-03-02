@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   generate_cone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:55:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 18:50:47 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:23:46 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cone.h"
 #include "rt_utils.h"
+#include <stdlib.h>
 
 bool			hit_cone(
 					const void *s,
@@ -31,6 +32,7 @@ t_hitter	*generate_cone(t_cone shape_param)
 	if (!p)
 	{
 		shape_param.hitter.mat_ptr->clear(shape_param.hitter.mat_ptr);
+		free(shape_param.hitter.mat_ptr);
 		return (NULL);
 	}
 	*p = construct_cone(shape_param);
