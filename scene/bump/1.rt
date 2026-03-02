@@ -5,4 +5,4 @@ L	0,10,5	1.0		255,255,255
 sp	2,0,5	4.0		255,0,255	lambertian	bump
 sp	-2,0,5	4.0		255,255,255	dielectric	solid
 
-sp	0,-102,5	200	0,255,0	lambertian	solid
+sp	0,-1002,5	2000	0,255,0	lambertian	solid

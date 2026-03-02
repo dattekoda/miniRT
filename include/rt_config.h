@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/27 22:00:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 22:48:34 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@
 #  define LIGHT_STERADIAN 0.001
 # endif
 
-# define PATHTRACING_LIGHT_STRENGTH 101.0
+# define PATHTRACING_LIGHT_STRENGTH 110.0
 
 # define RUSSIAN_ROULETTE_START_DEPTH 10
 
 // 0.0 - 1.0
 # define METAL_FUZZINESS 0.0
 // 0.0 -
-# define REFRACT_IDX 1.5
+# define REFRACT_IDX 1.6
 
 // set 0.0 - 1.0
 # define LIVE_PROBABILITY_MIN 0.05
@@ -78,7 +78,7 @@
 // 0: ripple
 // 1: swirl
 // 2: interface
-# define BUMP_TYPE 2
+# define BUMP_TYPE	0
 
 // phong
 # define R_PHONG_AMBIENT_COEFF 0.1

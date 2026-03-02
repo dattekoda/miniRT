@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/27 18:45:54 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/02 22:47:52 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		=	miniRT
 
 CC			=	cc
 CFLAG		=	-Wall -Wextra -Werror $(patsubst %,-I%,$(INCDIRS)) -I$(MLXDIR) \
-				-I$(LIBFTDIR)/include -O3 -march=native
+				-I$(LIBFTDIR)/include -O3 -march=native -MMD -MP
 RMDIR		=	rm -rf
 
 # --- src ---
@@ -221,24 +221,29 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 			)
 
 # you can delete later
-SRCS	+=	$(addprefix src_for_debug/, \
-				print_aabb.c \
-				print_axis.c \
-				print_hitter_arr.c \
-				print_hitter.c \
-				print_line_list.c \
-				print_material.c \
-				print_pixel_arr.c \
-				print_ray.c \
-				print_split.c \
-				print_vec.c \
-				print_world.c \
-				print_option.c \
+SRCS	+=	$(addprefix $(SRCDIR)/, \
+				$(addprefix debug/, \
+					print_aabb.c \
+					print_axis.c \
+					print_hitter_arr.c \
+					print_hitter.c \
+					print_line_list.c \
+					print_material.c \
+					print_pixel_arr.c \
+					print_ray.c \
+					print_split.c \
+					print_vec.c \
+					print_world.c \
+					print_option.c \
+				) \
 			)
 
 # --- obj ---
 OBJDIR		=	obj
 OBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
+
+# --- deps ---
+DEPS		=	$(OBJS:%.o=%.d)
 
 # --- include ---
 INCDIRS		=	$(shell find include -type d)
@@ -328,6 +333,8 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAG) -c $< -o $@
 
+-include $(DEPS)
+
 clean:
 	@$(RMDIR) $(OBJDIR)
 # @$(MAKE) -C $(LIBFTDIR) fclean
@@ -340,7 +347,7 @@ re: fclean all
 
 # --- DEBUGGIN & TESTING ---
 lldba:
-	$(MAKE)  CFLAG="$(CFLAG) $(DFLAG)"
+	$(MAKE) CFLAG="$(CFLAG) $(DFLAG)"
 	@echo "\n\033[1;35mLaunching LLDB for '$(NAME)'...\033[0m"
 	@lldb $(NAME)
 

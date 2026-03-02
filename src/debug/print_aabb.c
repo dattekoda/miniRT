@@ -1,7 +1,6 @@
 #include "hitter.h"
+#include "rt_debug.h"
 #include <stdio.h>
-
-void	print_vec3(t_vec3 v);
 
 void	print_aabb(t_aabb aabb)
 {
