@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/28 19:41:00 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/03/02 15:05:18 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,9 +116,13 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								aabb.c \
 							) \
 							$(addprefix hit/, \
+								$(addprefix cylinder_utils/, \
+									calc_cylinder_coeff.c \
+									construct_cylinder_uv.c \
+								) \
 								$(addprefix plane_utils/, \
-								construct_plane_uv.c \
-								init_plane_solution.c \
+									construct_plane_uv.c \
+									init_plane_solution.c \
 								) \
 								hit_cone.c \
 								hit_disk.c \
