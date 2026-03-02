@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/02 15:20:45 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 15:32:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <stdlib.h>
 
 t_vec3					orient_normal(
-							const t_vec3 *hrec_normal, 
+							const t_vec3 *hrec_normal,
 							const t_vec3 *ray_in_direct);
 void					clear_material(void *s);
 static t_lambertian		construct_lambertian(t_texture *texture_ptr);
@@ -35,6 +35,7 @@ static void				record_next_direct_from_pdf(
 							const t_hrec *hrec,
 							t_srec *srec);
 static t_material		*clone_lambertian(void *s);
+
 /*
 @brief responsible for free(texture_ptr)
 */
@@ -87,7 +88,6 @@ static t_material	*clone_lambertian(void *s)
 	return ((t_material *)dst);
 }
 
-#include <stdio.h>
 static bool	scatter_lambertian(
 				const void *s,
 				const t_world *world,
@@ -104,9 +104,7 @@ static bool	scatter_lambertian(
 	return (true);
 }
 
-void	print_hitter_list(const t_list *list);
-
-static void		record_next_direct_from_pdf(
+static void	record_next_direct_from_pdf(
 				const t_list *light_list,
 				const t_hrec *hrec,
 				t_srec *srec)
@@ -126,7 +124,5 @@ static void		record_next_direct_from_pdf(
 			&mix_pdf, &srec->next_ray.direct);
 	srec->surface_pdf = mix_pdf.surface_pdf->calc_pdf_value(
 			mix_pdf.surface_pdf, &srec->next_ray.direct);
-
-	// printf("light pdf: %f\n", light_pdf.pdf.calc_pdf_value(&light_pdf.pdf, &srec->next_ray.direct)); // debug
 	return ;
 }
