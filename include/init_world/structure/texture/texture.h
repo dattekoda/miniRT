@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:46:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 00:17:20 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/02 18:48:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ struct s_texture
 	t_color		(*calc_texture_value)(
 				const void *self,
 				t_hrec * rec);
-	t_texture	*(*clone)(void *self);
+	size_t		size;
 };
+
+t_texture	*clone_texture(const void *s);
 
 #endif

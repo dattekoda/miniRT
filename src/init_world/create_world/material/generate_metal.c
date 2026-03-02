@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 09:32:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/27 23:05:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 18:40:01 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-t_vec3			orient_normal(
-					const t_vec3 *hrec_normal,
-					const t_vec3 *ray_in_direct);
-static t_metal	construct_metal(t_texture *texture_ptr);
-static t_vec3	random_in_unit_sphere(void);
-static bool		scatter_metal(
-					const void *s,
-					const t_world *world,
-					t_hrec *hrec,
-					t_srec *srec);
+t_vec3				orient_normal(
+						const t_vec3 *hrec_normal,
+						const t_vec3 *ray_in_direct);
+static t_metal		construct_metal(t_texture *texture_ptr);
+static t_vec3		random_in_unit_sphere(void);
+static bool			scatter_metal(
+						const void *s,
+						const t_world *world,
+						t_hrec *hrec,
+						t_srec *srec);
 
 /*
 @brief responsible for free(texture_ptr)
@@ -57,11 +57,12 @@ static t_metal	construct_metal(t_texture *texture_ptr)
 	t_metal	metal;
 
 	ft_bzero(&metal, sizeof(t_metal));
-	metal.fuzz = METAL_FUZZINESS;
 	metal.material.texture_ptr = texture_ptr;
-	metal.material.clear = clear_material;
 	metal.material.scatter = scatter_metal;
+	metal.material.clear = clear_material;
+	metal.material.size = sizeof(t_metal);
 	metal.material.idx = METAL;
+	metal.fuzz = METAL_FUZZINESS;
 	return (metal);
 }
 
