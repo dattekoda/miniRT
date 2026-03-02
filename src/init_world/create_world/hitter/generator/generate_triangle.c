@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_triangle.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/27 22:20:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:24:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "solution.h"
 #include "vec_utils.h"
 #include <math.h>
+#include <stdlib.h>
 
 static t_triangle	construct_triangle(t_triangle triangle_param);
 bool			hit_triangle(
@@ -44,6 +45,7 @@ t_hitter	*generate_triangle(t_triangle triangle_param)
 	if (!p)
 	{
 		triangle_param.hitter.mat_ptr->clear(triangle_param.hitter.mat_ptr);
+		free(triangle_param.hitter.mat_ptr);
 		return (NULL);
 	}
 	*p = construct_triangle(triangle_param);

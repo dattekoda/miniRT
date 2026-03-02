@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:48:05 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:17:17 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ static int	test_target(const char *line, int option_flag)
 	assert(hitter_ptr->mat_ptr != NULL);
 	assert(hitter_ptr->mat_ptr->texture_ptr != NULL);
 	hitter_ptr->clear(hitter_ptr);
+	free(hitter_ptr);
 	return (SUCCESS);
 }

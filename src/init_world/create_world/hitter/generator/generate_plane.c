@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   generate_plane.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:31:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/11 18:50:02 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/02 12:24:29 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "plane.h"
 #include "rt_utils.h"
 #include "libft.h"
+#include <stdlib.h>
 
 static t_plane	construct_plane(t_plane plane_param);
 bool			hit_plane(
@@ -29,6 +30,7 @@ t_hitter	*generate_plane(t_plane plane_param)
 	if (!p)
 	{
 		plane_param.hitter.mat_ptr->clear(plane_param.hitter.mat_ptr);
+		free(plane_param.hitter.mat_ptr);
 		return (NULL);
 	}
 	*p = construct_plane(plane_param);

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:01:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/27 23:03:00 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 18:15:33 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static t_checker_texture	construct_checker_texture(
 	t_checker_texture	check;
 
 	check.texture.calc_texture_value = calc_checker_texture_value;
+	check.texture.size = sizeof(t_checker_texture);
 	check.even = construct_solid_texture(color);
 	check.odd = construct_solid_texture(constant_vec3(1.0));
 	return (check);

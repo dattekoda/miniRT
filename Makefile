@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/02/28 19:41:00 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/03/02 18:19:03 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,9 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							preprocess_line_list.c \
 						) \
 						$(addprefix texture/, \
+							$(addprefix texture_utils/, \
+								clone_texture.c \
+							) \
 							$(addprefix local_normal/, \
 								define_local_normal.c \
 								local_normal.c \
@@ -92,6 +95,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							generate_light.c \
 							$(addprefix material_utils/, \
 								orient_normal.c \
+								clone_material.c \
 							) \
 							$(addprefix pdf/, \
 								$(addprefix light_pdf_utils/, \
@@ -116,9 +120,13 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								aabb.c \
 							) \
 							$(addprefix hit/, \
+								$(addprefix cylinder_utils/, \
+									calc_cylinder_coeff.c \
+									construct_cylinder_uv.c \
+								) \
 								$(addprefix plane_utils/, \
-								construct_plane_uv.c \
-								init_plane_solution.c \
+									construct_plane_uv.c \
+									init_plane_solution.c \
 								) \
 								hit_cone.c \
 								hit_disk.c \

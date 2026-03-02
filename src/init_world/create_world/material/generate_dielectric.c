@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 21:28:52 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 23:15:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 18:46:25 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 #include "rt_config.h"
 #include "vec_utils.h"
 #include <math.h>
+#include <stdlib.h>
 
+static t_vec3		refract(
+						const t_vec3 unit_ray_in_direct,
+						const t_vec3 normal,
+						double refract_ratio);
 static t_dielectric	construct_dielectric(t_texture *texture_ptr);
 static bool			scatter_dielectric(
 						const void *s,
@@ -27,18 +32,22 @@ static void			init_refract_ratio_outward_normal(
 						t_vec3	*outward_normal,
 						const t_dielectric *self,
 						t_hrec *hrec);
-static t_vec3		refract(
-						const t_vec3 unit_ray_in_direct,
-						const t_vec3 normal,
-						double refract_ratio);
 
+/*
+@brief responsinble for free(texture_ptr)
+*/
 t_material	*generate_dielectric(t_texture *texture_ptr)
 {
 	t_dielectric	*p;
 
+	if (!texture_ptr)
+		return (NULL);
 	p = ft_calloc(1, sizeof(t_dielectric));
 	if (!p)
+	{
+		free(texture_ptr);
 		return (NULL);
+	}
 	*p = construct_dielectric(texture_ptr);
 	return ((t_material *)p);
 }
@@ -48,8 +57,9 @@ static t_dielectric	construct_dielectric(t_texture *texture_ptr)
 	t_dielectric	dielectric;
 
 	ft_bzero(&dielectric, sizeof(t_dielectric));
-	dielectric.material.clear = clear_material;
 	dielectric.material.scatter = scatter_dielectric;
+	dielectric.material.clear = clear_material;
+	dielectric.material.size = sizeof(t_dielectric);
 	dielectric.material.texture_ptr = texture_ptr;
 	dielectric.material.idx = DIELECTRIC;
 	dielectric.refract_idx = REFRACT_IDX;
@@ -106,9 +116,9 @@ static void	init_refract_ratio_outward_normal(
 }
 
 static t_vec3	refract(
-					const t_vec3 unit_ray_in_direct,
-					const t_vec3 normal,
-					double refract_ratio)
+			const t_vec3 unit_ray_in_direct,
+			const t_vec3 normal,
+			double refract_ratio)
 {
 	const double	cos_theta = dot(negative_vec3(unit_ray_in_direct), normal);
 	const t_vec3	next_ray_direct_parallel
@@ -121,5 +131,6 @@ static t_vec3	refract(
 		= scal_mul_vec3(
 			normal,
 			-sqrt(1 - length_squared_vec3(next_ray_direct_parallel)));
+
 	return (add_vec3(next_ray_direct_parallel, next_ray_direct_perp));
 }
