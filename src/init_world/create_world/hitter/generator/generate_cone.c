@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_cone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:55:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/02 12:23:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 21:47:06 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_cone	construct_cone(t_cone cone_param)
 	t_cone	cone;
 
 	ft_memmove(&cone, &cone_param, sizeof(t_cone));
-	cone.hitter.type = CYLINDER;
+	cone.hitter.type = CONE;
 	cone.hitter.hit = hit_cone;
 	cone.hitter.clear = clear_hitter;
 	cone.hitter.has_aabb = false;

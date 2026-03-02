@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_cone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 01:52:20 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 21:20:32 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include "vec_utils.h"
 #include "rt_define.h"
 
-static int	line_to_cone_param(const char *line, t_cone *cone_param);
+static int		line_to_cone_param(const char *line, t_cone *cone_param);
+static double	to_radians(const double degrees);
 
 /*
 @brief lineとgenの橋渡しなので使いやすい用にデータを加工する。
@@ -42,12 +43,21 @@ static int	line_to_cone_param(const char *line, t_cone *cone_param)
 	size_t			i;
 
 	i = g_element_table[CONE]->id_len;
-	token_to_vec(line, &i, &cone_param->center);
+	token_to_vec(line, &i, &cone_param->apex);
 	token_to_vec(line, &i, &cone_param->direct);
 	token_to_value(line, &i, &cone_param->half_angle);
+	cone_param->half_angle = to_radians(cone_param->half_angle);
 	if (line_to_material(
 			line, &i, &cone_param->hitter.mat_ptr, g_element_table[CONE])
 		== FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
+}
+
+/*
+@brief 度数法を弧度法に変換
+*/
+static double	to_radians(const double degrees)
+{
+	return (degrees * M_PI / 180.0);
 }

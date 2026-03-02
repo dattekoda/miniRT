@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 20:17:06 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/02 21:47:22 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include <stdio.h>
 
 /*
-
 typedef enum e_element_type
 {
 	AMBIENT,
@@ -104,11 +103,12 @@ static void	print_tree_recursive(t_hitter *node, int depth)
 	if (node->type != TREE)
 		return ;
 	t_tree	*tree = (t_tree *)node;
-	fprintf(stderr, "depth: %d\n", depth);
+	fprintf(stderr, "tree depth: %d\n", depth);
 	fprintf(stderr, "lhs\t:");
 	print_tree_recursive(tree->lhs, depth + 1);
 	fprintf(stderr, "rhs\t:");
 	print_tree_recursive(tree->rhs, depth + 1);
+	fprintf(stderr, "\n");
 }
 
 

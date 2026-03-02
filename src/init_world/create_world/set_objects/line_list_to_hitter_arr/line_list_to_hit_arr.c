@@ -20,14 +20,13 @@
 #include "result.h"
 #include <stdlib.h>
 
-int			add_hitter_list(t_list **hitter_list, const char *line,
-				const t_element *element);
-static int	hitter_list_to_hitter_arr(t_list *hitter_list,
+int				add_hitter_list(t_list **hitter_list, const char *line,
+					const t_element *element);
+static int		hitter_list_to_hitter_arr(t_list *hitter_list,
 				t_hitter_arr *hit_arr);
-static bool	match_objects(const char *line, const t_element *object_table[],
-				size_t *idx);
-static int	line_list_to_hitter_list(t_list **hitter_list,
-				const t_list *line_list, const t_element *object_table[]);
+static ssize_t	search_objects(const char *line, const t_element *object_table[]);
+static int		line_list_to_hitter_list(t_list **hitter_list,
+					const t_list *line_list, const t_element *object_table[]);
 
 
 #include "rt_debug.h"
@@ -79,26 +78,20 @@ static int	hitter_list_to_hitter_arr(t_list *hitter_list,
 }
 
 /*
-@brief if matched object_table return SUCCESS, or return FAILURE
-@param idx if set NULL, you can get appropriate return value
+@brief if line is one member of object_table
 */
-static bool	match_objects(const char *line, const t_element *object_table[],
-		size_t *idx)
+static ssize_t	search_objects(const char *line, const t_element *object_table[])
 {
-	size_t	i;
+	size_t	idx;
 
-	i = 0;
-	while (object_table[i])
+	idx = 0;
+	while (object_table[idx])
 	{
-		if (match_identifier(line, object_table[i]))
-		{
-			if (idx)
-				*idx = i;
-			return (true);
-		}
-		i++;
+		if (match_identifier(line, object_table[idx]))
+			return (idx);
+		idx++;
 	}
-	return (false);
+	return (-1);
 }
 
 /*
@@ -107,16 +100,19 @@ static bool	match_objects(const char *line, const t_element *object_table[],
 static int	line_list_to_hitter_list(t_list **hitter_list,
 		const t_list *line_list, const t_element *object_table[])
 {
-	size_t	obj_idx;
+	ssize_t	obj_idx;
 
 	while (line_list)
 	{
-		if (match_objects(line_list->content, object_table, &obj_idx))
+		obj_idx = search_objects(line_list->content, object_table);
+		if (obj_idx == -1)
 		{
-			if (add_hitter_list(hitter_list, line_list->content,
-					object_table[obj_idx]) == FAILURE)
-				return (FAILURE);
+			line_list = line_list->next;
+			continue ;
 		}
+		if (add_hitter_list(hitter_list, line_list->content,
+				object_table[obj_idx]) == FAILURE)
+			return (FAILURE);
 		line_list = line_list->next;
 	}
 	return (SUCCESS);

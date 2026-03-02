@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 20:44:05 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/02 22:10:04 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static t_vec3		calc_coeff(
 						const t_vec3 *cone_dir,
 						double half_angle);
 
-// TODO: still unsure but maybe need fix range->e[1] to update.
 bool	hit_cone(
 	const void *s,
 	const t_ray *ray,
@@ -56,7 +55,7 @@ static void	init_solution_context(
 				const t_cone *self,
 				const t_ray *ray)
 {
-	const t_vec3	center_to_ray_origin = sub_vec3(ray->origin, self->center);
+	const t_vec3	center_to_ray_origin = sub_vec3(ray->origin, self->apex);
 
 	solu->coeff = calc_coeff(
 			&ray->direct,
@@ -79,12 +78,12 @@ static t_vec3	calc_coeff(
 	const double	cos_pow2 = pow(cos(half_angle), 2);
 
 	return (construct_vec3(
-			length_squared_vec3(*ray_dir) * cos_pow2
-			- pow(dot_rdir__cdir, 2),
-			dot_rdir__cdir * dot_cdir__c_to_ro
-			- dot_c_to_ro__rdir * cos_pow2,
-			pow(dot_cdir__c_to_ro, 2)
-			- length_squared_vec3(*center_to_ray_origin) * cos_pow2));
+			pow(dot_rdir__cdir, 2)
+			- length_squared_vec3(*ray_dir) * cos_pow2,
+			dot_c_to_ro__rdir * cos_pow2
+			- dot_rdir__cdir * dot_cdir__c_to_ro,
+			length_squared_vec3(*center_to_ray_origin) * cos_pow2
+			- pow(dot_cdir__c_to_ro, 2)));
 }
 
 static void	assign_cone_hrec(
@@ -98,7 +97,7 @@ static void	assign_cone_hrec(
 	hrec->ray_in = *ray;
 	hrec->param_t = solution;
 	hrec->point = at_ray(ray, hrec->param_t);
-	center_to_point = sub_vec3(hrec->point, self->center);
+	center_to_point = sub_vec3(hrec->point, self->apex);
 	hrec->normal = normalize(sub_vec3(center_to_point,
 				scal_mul_vec3(self->direct,
 					dot(center_to_point, self->direct)
