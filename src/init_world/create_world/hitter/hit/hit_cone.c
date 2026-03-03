@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/03 22:11:25 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/03 22:46:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static void			assign_cone_hrec(
 						t_hrec *hrec,
 						double solution);
 static t_vec2		construct_cone_uv(const t_cone *self, const t_vec3 *cp);
-static t_vec3		calc_coeff(
-						const t_vec3 *ray_direct,
-						const t_vec3 *c_to_ori,
-						const t_vec3 *cone_dir,
-						double half_angle);
+static t_vec3	calc_coeff(
+		const t_vec3 *ray_dir,
+		const t_vec3 *cone_dir,
+		double half_angle,
+		const t_vec3 *apex_to_ray_origin);
 
 // typedef struct s_cone
 // {
@@ -53,9 +53,10 @@ bool	hit_cone(
 
 	self = s;
 
-	print_vec3(self->direct);
-	printf("half angle: %f\n", self->half_angle);
-	print_vec3(self->apex);
+	// print_vec3(self->direct);
+	// printf("half angle: %f\n", self->half_angle);
+	// print_vec3(self->apex);
+	// exit(0);
 
 	init_solution_context(&solu, self, ray);
 	if (!is_solution_inside_range(&solu, range))
@@ -74,29 +75,29 @@ static void	init_solution_context(
 
 	solu->coeff = calc_coeff(
 			&ray->direct,
-			&apex_to_ray_origin,
 			&self->direct,
-			self->half_angle);
+			self->half_angle,
+			&apex_to_ray_origin);
 	solu->discriminant = calc_discriminant(solu);
 	return ;
 }
 
 static t_vec3	calc_coeff(
 		const t_vec3 *ray_dir,
-		const t_vec3 *apex_to_ray_origin,
 		const t_vec3 *cone_dir,
-		double half_angle)
+		double half_angle,
+		const t_vec3 *apex_to_ray_origin)
 {
 	const double	dot_rdir__cdir = dot(*ray_dir, *cone_dir);
-	const double	dot_c_to_ro__rdir = dot(*apex_to_ray_origin, *ray_dir);
-	const double	dot_cdir__c_to_ro = dot(*cone_dir, *apex_to_ray_origin);
+	const double	dot_c_to_ro__rdir = dot(*apex_to_ray_origin, *cone_dir);
+	const double	dot_rdir__c_to_ro = dot(*ray_dir, *apex_to_ray_origin);
 	const double	cos_pow2 = pow(cos(half_angle), 2);
 
 	return (construct_vec3(
 			pow(dot_rdir__cdir, 2)
 			- length_squared_vec3(*ray_dir) * cos_pow2,
 			dot_rdir__cdir * dot_c_to_ro__rdir
-			- dot_cdir__c_to_ro * cos_pow2,
+			- dot_rdir__c_to_ro * cos_pow2,
 			pow(dot_c_to_ro__rdir, 2)
 			- length_squared_vec3(*apex_to_ray_origin) * cos_pow2));
 }
