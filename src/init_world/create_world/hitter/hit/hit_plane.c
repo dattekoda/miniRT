@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:37:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/03 22:41:07 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/03 22:59:41 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void	assign_plane_hrec(
 				const t_plane *self,
 				const t_ray *ray, t_hrec *hrec, double solution);
 
-#include <stdio.h>
 bool	hit_plane(
 	const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {

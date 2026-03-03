@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 19:06:14 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/03 22:59:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,6 @@ static void			assign_sphere_hrec(
 						double solution);
 static t_vec2		construct_sphere_uv(const t_vec3 *unit_normal);
 
-// TODO: make test_hit_funcs
-// #include "rt_debug.h"
-// #include "sphere.h"
-// #include "vec_utils.h"
-// #include "rt_define.h"
-// #include <math.h>
-// print_hitter(world.object_tree);
-// t_sphere *sphere = (t_sphere *)world.object_tree;
-// print_vec3(sphere->center);
-// fprintf(stderr, "r: %f\n", sphere->radius);
-// t_ray ray = construct_ray(construct_vec3(0,0,5), construct_vec3(0,0,-1));
-// t_hrec	hrec;
-// t_vec2	range = construct_vec2(0.01, INFINITY);
-// if (world.object_tree->hit(world.object_tree, &ray, &hrec, &range))
-// 	fprintf(stderr, "hit\n");
-#include <stdio.h>
-#include "rt_debug.h"
-#include <stdlib.h>
 bool	hit_sphere(
 	const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {

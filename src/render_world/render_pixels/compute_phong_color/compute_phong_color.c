@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute_phong_color.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:39:39 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 17:58:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/03 22:53:09 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static t_color	calc_ambient(const t_color *reflectance,
 					const t_color *ambient)
 {
 	const t_color	ka
-		= mul_vec3(*reflectance, 
+		= mul_vec3(*reflectance,
 			construct_vec3(
 				R_PHONG_AMBIENT_COEFF,
 				G_PHONG_AMBIENT_COEFF,

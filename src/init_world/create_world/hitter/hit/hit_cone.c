@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/03 22:46:50 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/03 22:59:03 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,12 @@ static void			assign_cone_hrec(
 						t_hrec *hrec,
 						double solution);
 static t_vec2		construct_cone_uv(const t_cone *self, const t_vec3 *cp);
-static t_vec3	calc_coeff(
-		const t_vec3 *ray_dir,
-		const t_vec3 *cone_dir,
-		double half_angle,
-		const t_vec3 *apex_to_ray_origin);
+static t_vec3		calc_coeff(
+						const t_vec3 *ray_dir,
+						const t_vec3 *cone_dir,
+						double half_angle,
+						const t_vec3 *apex_to_ray_origin);
 
-// typedef struct s_cone
-// {
-// 	t_hitter	hitter;
-// 	t_vec3		direct;
-// 	double		half_angle; // radian
-// 	t_point3	apex;
-// }	t_cone;
-void	print_vec3(t_vec3 v);
-#include <stdlib.h>
-#include <stdio.h>
 bool	hit_cone(
 	const void *s,
 	const t_ray *ray,
@@ -52,12 +42,6 @@ bool	hit_cone(
 	t_solution		solu;
 
 	self = s;
-
-	// print_vec3(self->direct);
-	// printf("half angle: %f\n", self->half_angle);
-	// print_vec3(self->apex);
-	// exit(0);
-
 	init_solution_context(&solu, self, ray);
 	if (!is_solution_inside_range(&solu, range))
 		return (false);

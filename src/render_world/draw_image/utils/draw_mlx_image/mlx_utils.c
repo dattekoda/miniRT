@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:22:49 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 23:18:15 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/03 22:56:22 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int	init_rt_mlx(t_rt_mlx *rt_mlx)
 		return (FAILURE);
 	}
 	rt_mlx->var.win = mlx_new_window(
-				rt_mlx->var.mlx,
-				g_window_width,
-				(int)(g_window_height),
-				PROJECT_NAME);
+						rt_mlx->var.mlx,
+						g_window_width,
+						(int)(g_window_height),
+						PROJECT_NAME);
 	if (!rt_mlx->var.win)
 	{
 		err_rt("mlx_new_window() failed.");
