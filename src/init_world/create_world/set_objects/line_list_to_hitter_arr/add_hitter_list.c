@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_hitter_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:48:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/02 21:06:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:42:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static int	add_hitter(t_list **hitter_list,
 	if (!list_tmp)
 	{
 		((*hitter_tmp_p))->clear(*hitter_tmp_p);
+		free(*hitter_tmp_p);
 		return (FAILURE);
 	}
 	ft_lstadd_back(hitter_list, list_tmp);

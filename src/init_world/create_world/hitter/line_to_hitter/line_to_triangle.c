@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 19:51:01 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:36:25 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,20 @@ int	line_to_triangle(t_hitter **triangle, const char *line)
 
 static int	line_to_triangle_param(const char *line, t_triangle *triangle_param)
 {
-	size_t	i;
+	size_t	line_idx;
 
-	i = g_element_table[TRIANGLE]->id_len;
-	token_to_vec(line, &i, &triangle_param->vertex[0]);
-	token_to_vec(line, &i, &triangle_param->vertex[1]);
-	token_to_vec(line, &i, &triangle_param->vertex[2]);
+	line_idx = g_element_table[TRIANGLE]->id_len;
+	token_to_vec(line, &line_idx, &triangle_param->vertex[0]);
+	token_to_vec(line, &line_idx, &triangle_param->vertex[1]);
+	token_to_vec(line, &line_idx, &triangle_param->vertex[2]);
 	vertex_to_side(triangle_param->side, triangle_param->vertex);
 	triangle_param->normal = normalize(
 			cross(triangle_param->side[0], triangle_param->side[1]));
 	if (line_to_material(
-			line, &i, &triangle_param->hitter.mat_ptr, g_element_table[TRIANGLE])
+			line,
+			&line_idx,
+			&triangle_param->hitter.mat_ptr,
+			g_element_table[TRIANGLE])
 		== FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
