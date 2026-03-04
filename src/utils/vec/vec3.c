@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:11:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 22:17:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 15:38:25 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ t_vec3	construct_vec3(double e0, double e1, double e2)
 
 t_vec3	map_vec3(t_vec3 vec3, double (*f)(double))
 {
-	return (construct_vec3(
-			f(vec3.e[0]),
-			f(vec3.e[1]),
-			f(vec3.e[2])));
+	const t_vec3	result = {
+		f(vec3.e[0]),
+		f(vec3.e[1]),
+		f(vec3.e[2])
+	};
+	return (result);
 }
 
 t_vec3	constant_vec3(double d)

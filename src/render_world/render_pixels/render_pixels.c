@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_pixels.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/15 15:38:00 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 15:26:56 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	render_pixels(
 	return (SUCCESS);
 }
 
+
 static void	accumulate_raw_rgb_arr(
 				int *raw_rgb_arr,
 				const t_world *world,
@@ -75,6 +76,8 @@ static void	accumulate_raw_rgb_arr(
 	return ;
 }
 
+#include <stdio.h>
+#include <stdlib.h>
 /*
 @brief write() only when percentage changes
 */
@@ -92,6 +95,8 @@ static void	print_remaining(size_t yi)
 	ft_putnbr_fd(percentage, STDERR_FILENO);
 	ft_putstr_fd("%", STDERR_FILENO);
 	old_percentage = percentage;
+	if (old_percentage == 2)
+		exit(0);
 }
 
 static int	convert_into_raw_rgb(t_color color)

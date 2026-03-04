@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/02 18:19:03 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/04 14:38:52 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -361,8 +361,8 @@ valgrind:
 	$(VALGRIND) $(VALGRIND_FLAG) ./$(NAME)
 
 # --- debug ---
-debug:
-	$(MAKE) re CFLAG="$(CFLAG) $(DFLAG)"
+debug:fclean
+	$(MAKE) CFLAG="$(CFLAG) $(DFLAG)"
 
 # --- test ---
 test:
@@ -370,6 +370,9 @@ test:
 	@echo "\033[1;36mRunning tests ...\033[0m"
 	./$(TESTNAME)
 	@echo "\n\033[1;32mall test passed\033[0m"
+
+prof:fclean
+	$(MAKE) CFLAG="$(CFLAG) $(DFLAG) -pg" LDFLAG="$(LDFLAG) -pg"
 
 $(TESTNAME):$(TESTOBJS) $(MLX) $(LIBFT)
 	$(CC) $(TESTOBJS) $(CFLAG) $(TESTLDFLAG) $(LDLIBS) -o $@

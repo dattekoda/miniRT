@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_triangle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/04 14:39:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 15:51:18 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static void			assign_triangle_hrec(
 static bool			is_inside_triangle(
 						const t_triangle *tri,
 						const t_point3 *point);
-static bool			is_point_same_side(
-						const t_triangle *tri,
-						const t_vec3 vtx_to_p[3]);
+// static bool			is_point_same_side(
+// 						const t_triangle *tri,
+// 						const t_vec3 vtx_to_p[3]);
 
 // TODO: still unsure but maybe need to fix range->e[1]'s update
 bool	hit_triangle(
@@ -70,26 +70,49 @@ static bool	is_inside_triangle(
 						const t_triangle *tri,
 						const t_point3 *point)
 {
-	t_vec3	vertex_to_point[3];
+	const t_vec3	v0 = tri->side[0];
+	const t_vec3	v1 = negative_vec3(tri->side[2]);
+	const t_vec3	v2 = sub_vec3(*point, tri->vertex[0]);
 
-	vertex_to_point[0] = sub_vec3(*point, tri->vertex[0]);
-	vertex_to_point[1] = sub_vec3(*point, tri->vertex[1]);
-	vertex_to_point[2] = sub_vec3(*point, tri->vertex[2]);
-	return (is_point_same_side(tri, vertex_to_point));
+	const double	d00 = length_squared_vec3(v0);
+	const double	d01 = dot(v0, v1);
+	const double	d11 = length_squared_vec3(v1);
+	const double	d20 = dot(v2, v0);
+	const double	d21 = dot(v2, v1);
+
+	double	denom = d00 * d11 - d01 * d01;
+	if (denom > -1e-8 && denom < 1e-8)
+		return (false);
+	double u = (d11 * d20 - d01 * d21) / denom;
+	if (u < 0.0 || u > 1.0)
+		return (false);
+
+	double v = (d00 * d21 - d01 * d20) / denom;
+	if (v < 0.0 || (u + v) > 1.0)
+		return (false);
+
+	return (true);
+	// t_vec3	vertex_to_point[3];
+
+	// vertex_to_point[0] = sub_vec3(*point, tri->vertex[0]);
+	// vertex_to_point[1] = sub_vec3(*point, tri->vertex[1]);
+	// vertex_to_point[2] = sub_vec3(*point, tri->vertex[2]);
+	// return (is_point_same_side(tri, vertex_to_point));
+	
 }
 
-static bool	is_point_same_side(
-				const t_triangle *tri,
-				const t_vec3 vtx_to_p[3])
-{
-	bool	is_negative[3];
+// static bool	is_point_same_side(
+// 				const t_triangle *tri,
+// 				const t_vec3 vtx_to_p[3])
+// {
+	// bool	is_negative[3];
 
-	is_negative[0] = dot(tri->normal, cross(tri->side[0], vtx_to_p[0])) < 0;
-	is_negative[1] = dot(tri->normal, cross(tri->side[1], vtx_to_p[1])) < 0;
-	is_negative[2] = dot(tri->normal, cross(tri->side[2], vtx_to_p[2])) < 0;
-	return ((is_negative[0] && is_negative[1] && is_negative[2])
-		|| (!is_negative[0] && !is_negative[1] && !is_negative[2]));
-}
+	// is_negative[0] = dot(tri->normal, cross(tri->side[0], vtx_to_p[0])) < 0;
+	// is_negative[1] = dot(tri->normal, cross(tri->side[1], vtx_to_p[1])) < 0;
+	// is_negative[2] = dot(tri->normal, cross(tri->side[2], vtx_to_p[2])) < 0;
+	// return ((is_negative[0] && is_negative[1] && is_negative[2])
+	// 	|| (!is_negative[0] && !is_negative[1] && !is_negative[2]));
+// }
 
 static void	assign_triangle_hrec(
 				const t_triangle *self,

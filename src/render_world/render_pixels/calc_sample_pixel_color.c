@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/03 22:55:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/04 14:46:03 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static t_ray	get_ray_from_camera(
 					size_t xi,
 					size_t yi);
 
+#include <stdio.h>
+#include <stdlib.h>
 t_color	accumulate_sample_pixel_color(
 			const t_world *world,
 			bool is_phong,
