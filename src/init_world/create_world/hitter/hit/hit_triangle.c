@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_triangle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 18:38:01 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/04 14:39:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ t_point2			construct_plane_uv(
 						const t_vec3 *normal,
 						const t_vec3 *hit_point,
 						const t_vec3 *plane_point);
+t_vec3				orient_normal(
+						const t_vec3 *hrec_normal,
+						const t_vec3 *ray_in_direct);
 static void			assign_triangle_hrec(
 						const t_triangle *self,
 						const t_ray *ray,
@@ -97,7 +100,7 @@ static void	assign_triangle_hrec(
 	hrec->ray_in = *ray;
 	hrec->param_t = solu->solution;
 	hrec->point = solu->point;
-	hrec->normal = self->normal;
+	hrec->normal = orient_normal(&self->normal, &ray->direct);
 	hrec->mat_ptr = self->hitter.mat_ptr;
 	hrec->map = construct_plane_uv(
 			&self->normal,
