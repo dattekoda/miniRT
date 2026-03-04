@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cone.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 18:38:13 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:03:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,17 @@ static void			init_solution_context(
 						t_solution *solu,
 						const t_cone *self,
 						const t_ray *ray);
+static t_vec3		calc_coeff(
+						const t_vec3 *ray_dir,
+						const t_cone *self,
+						const t_vec3 *apex_to_ray_origin);
 static void			assign_cone_hrec(
 						const t_cone *self,
 						const t_ray *ray,
 						t_hrec *hrec,
 						double solution);
 static t_vec2		construct_cone_uv(const t_cone *self, const t_vec3 *cp);
-static t_vec3		calc_coeff(
-						const t_vec3 *ray_direct,
-						const t_vec3 *c_to_ori,
-						const t_vec3 *cone_dir,
-						double half_angle);
 
-// TODO: still unsure but maybe need fix range->e[1] to update.
 bool	hit_cone(
 	const void *s,
 	const t_ray *ray,
@@ -56,35 +54,51 @@ static void	init_solution_context(
 				const t_cone *self,
 				const t_ray *ray)
 {
-	const t_vec3	center_to_ray_origin = sub_vec3(ray->origin, self->center);
+	const t_vec3	apex_to_ray_origin = sub_vec3(ray->origin, self->apex);
 
 	solu->coeff = calc_coeff(
 			&ray->direct,
-			&center_to_ray_origin,
-			&self->direct,
-			self->half_angle);
+			self,
+			&apex_to_ray_origin);
 	solu->discriminant = calc_discriminant(solu);
 	return ;
 }
 
+// Because |cone_dir| == 1
+// dot((Point - Apex), cone_dir)^2 = |Point - Apex|^2 * cos_half_angle^2
+// dot((Origin + ray_dir * t - Apex), cone_dir)^2
+// 	= |Origin + ray_dir * t - Apex|^2 * cos_half_angle^2
+// dot((apex_to_ray_origin + ray_dir * t), cone_dir)^2
+// 	= |apex_to_ray_origin + ray_dir * t|^2 * cos_half_angle^2
+// LHS = (dot(apex_to_ray_origin, cone_dir) + dot(ray_dir, cone_dir) * t)^2
+// LHS = dot(ray_dir, cone_dir)^2 * t^2
+// \+ 2 * dot(ray_dir, cone_dir) * dot(apex_to_ray_origin, cone_dir) * t
+// \+ dot(apex_to_ray_origin, cone_dir)^2
+// RHS = |ray_dir|^2 * cos_half_angle^2 * t^2
+// \+ 2 * dot(apex_to_ray_origin, ray_dir) * cos_half_angle^2 * t
+// \+ |apex_to_ray_origin|^2 * cos_half_angle^2
+// coeff: LHS - RHS = 0
+// you can ignore '2 *' of the 't' s coeff defined as e[1]
 static t_vec3	calc_coeff(
-		const t_vec3 *ray_dir,
-		const t_vec3 *center_to_ray_origin,
-		const t_vec3 *cone_dir,
-		double half_angle)
+	const t_vec3 *ray_dir,
+	const t_cone *self,
+	const t_vec3 *apex_to_ray_origin)
 {
-	const double	dot_rdir__cdir = dot(*ray_dir, *cone_dir);
-	const double	dot_cdir__c_to_ro = dot(*cone_dir, *center_to_ray_origin);
-	const double	dot_c_to_ro__rdir = dot(*center_to_ray_origin, *ray_dir);
-	const double	cos_pow2 = pow(cos(half_angle), 2);
+	const double	dot_rdir__cdir
+		= dot(*ray_dir, self->direct);
+	const double	dot_ap_to_ro__cdir
+		= dot(*apex_to_ray_origin, self->direct);
+	const double	dot_rdir__ap_to_ro
+		= dot(*ray_dir, *apex_to_ray_origin);
 
 	return (construct_vec3(
-			pow(dot_rdir__cdir, 2)
-			- length_squared_vec3(*ray_dir) * cos_pow2,
-			dot_rdir__cdir * dot_cdir__c_to_ro
-			- dot_c_to_ro__rdir * cos_pow2,
-			pow(dot_c_to_ro__rdir, 2)
-			- length_squared_vec3(*center_to_ray_origin) * cos_pow2));
+		dot_rdir__cdir * dot_rdir__cdir
+			- length_squared_vec3(*ray_dir) * self->cos_half_angle_sq,
+		dot_rdir__cdir * dot_ap_to_ro__cdir
+			- dot_rdir__ap_to_ro * self->cos_half_angle_sq,
+		dot_ap_to_ro__cdir * dot_ap_to_ro__cdir
+			- length_squared_vec3(*apex_to_ray_origin)
+			* self->cos_half_angle_sq));
 }
 
 static void	assign_cone_hrec(
@@ -93,18 +107,21 @@ static void	assign_cone_hrec(
 				t_hrec *hrec,
 				double solution)
 {
-	t_vec3	center_to_point;
+	t_vec3	apex_to_point;
 
 	hrec->ray_in = *ray;
 	hrec->param_t = solution;
 	hrec->point = at_ray(ray, hrec->param_t);
-	center_to_point = sub_vec3(hrec->point, self->center);
-	hrec->normal = normalize(sub_vec3(center_to_point,
-				scal_mul_vec3(self->direct,
-					dot(center_to_point, self->direct)
-					/ pow(self->half_angle, 2))));
+	apex_to_point = sub_vec3(hrec->point, self->apex);
+	hrec->normal = normalize(
+					sub_vec3(
+						apex_to_point,
+						scal_mul_vec3(
+							self->direct,
+							dot(apex_to_point, self->direct)
+								/ self->cos_half_angle_sq)));
+	hrec->map = construct_cone_uv(self, &apex_to_point);
 	hrec->mat_ptr = self->hitter.mat_ptr;
-	hrec->map = construct_cone_uv(self, &center_to_point);
 	return ;
 }
 

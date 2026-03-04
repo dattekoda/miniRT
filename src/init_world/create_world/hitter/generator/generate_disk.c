@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_disk.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/02 12:24:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 21:06:15 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

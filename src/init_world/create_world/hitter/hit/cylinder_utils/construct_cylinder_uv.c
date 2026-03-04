@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   construct_cylinder_uv.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 15:02:05 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/02 15:07:56 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/02 21:07:06 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_utils.h"
 #include "rt_define.h"
+#include <math.h>
 
-static t_vec2	construct_cylinder_uv(
+t_vec2	construct_cylinder_uv(
 	const t_vec3 *center_to_point,
 	const t_vec3 *direct,
 	double tmp_height,

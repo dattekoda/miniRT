@@ -6,13 +6,14 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:55:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/02 12:23:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:05:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cone.h"
 #include "rt_utils.h"
 #include <stdlib.h>
+#include <math.h>
 
 bool			hit_cone(
 					const void *s,
@@ -39,14 +40,17 @@ t_hitter	*generate_cone(t_cone shape_param)
 	return ((t_hitter *)p);
 }
 
+#include "rt_debug.h"
+// TODO: need to add hitter.size
 static t_cone	construct_cone(t_cone cone_param)
 {
 	t_cone	cone;
 
 	ft_memmove(&cone, &cone_param, sizeof(t_cone));
-	cone.hitter.type = CYLINDER;
+	cone.hitter.type = CONE;
 	cone.hitter.hit = hit_cone;
 	cone.hitter.clear = clear_hitter;
 	cone.hitter.has_aabb = false;
+	cone.cos_half_angle_sq = pow(cos(cone.half_angle), 2);
 	return (cone);
 }

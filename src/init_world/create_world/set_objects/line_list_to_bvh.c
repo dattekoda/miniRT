@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_list_to_bvh.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 16:51:42 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/28 20:17:00 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	infinite_line_list_to_bvh(t_hitter **node, const t_list *line_list)
 	return (line_list_to_bvh(node, line_list, g_infinite_table));
 }
 
+#include "rt_debug.h" // debug
 static int	line_list_to_bvh(
 		t_hitter **node,
 		const t_list *line_list,
@@ -66,6 +67,8 @@ static int	line_list_to_bvh(
 
 static int	alloc_surface_arr(t_hitter_arr *hit_arr)
 {
+	if (hit_arr->size == 0)
+		return (SUCCESS);
 	hit_arr->left_surface_arr = ft_calloc(hit_arr->size, sizeof(double));
 	if (!hit_arr->left_surface_arr)
 		return (FAILURE);

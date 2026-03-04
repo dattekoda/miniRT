@@ -1,10 +1,15 @@
 #ifndef RT_DEBUG_H
 #define RT_DEBUG_H
+
+#include <stdio.h>
 #include <stdlib.h> // debug
+#include "world.h"
 #include "hitter.h"
 #include "libft.h"
 #include "hitter_arr.h"
 #include "split.h"
+
+void	print_world(const t_world *world);
 
 void	print_aabb(t_aabb aabb);
 

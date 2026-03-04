@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   construct_plane_uv.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 18:51:22 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 16:17:45 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/03 22:58:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -12,13 +12,13 @@ void	print_hitter_arr(const t_hitter_arr *hit_arr)
 		print_hitter(hit_arr->arr[i]);
 	}
 	fprintf(stderr, "left:\t");
-	for (size_t i = 0; i < hit_arr->size; i++) {
+	for (size_t i = 0; i < hit_arr->size && hit_arr->left_surface_arr ; i++) {
 		fprintf(stderr, "%.2f", hit_arr->left_surface_arr[i]);
 		if (i != hit_arr->size - 1)
 			fprintf(stderr, ", ");
 	}
 	fprintf(stderr, "\nright:\t");
-	for (size_t i = 0; i < hit_arr->size; i++) {
+	for (size_t i = 0; i < hit_arr->size && hit_arr->right_surface_arr; i++) {
 		fprintf(stderr, "%.2f", hit_arr->right_surface_arr[i]);
 		if (i != hit_arr->size - 1)
 			fprintf(stderr, ", ");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_triangle.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/02 12:24:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/03 23:02:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,27 @@
 #include <stdlib.h>
 
 static t_triangle	construct_triangle(t_triangle triangle_param);
-bool			hit_triangle(
-					const void *s,
-					const t_ray *ray, t_hrec *hrec, t_range *range);
-static t_aabb	construct_triangle_aabb(t_triangle triangle_param);
-t_aabb			construct_aabb(t_point3 min, t_point3 max);
-double			calc_normal_max(double d);
-static double	get_min_bound_for_axis(t_point3 vtx[3], int axis);
-static double	get_max_bound_for_axis(t_point3 vtx[3], int axis);
+bool				hit_triangle(
+						const void *s,
+						const t_ray *ray, t_hrec *hrec, t_range *range);
+static t_aabb		construct_triangle_aabb(t_triangle triangle_param);
+t_aabb				construct_aabb(t_point3 min, t_point3 max);
+double				calc_normal_max(double d);
+static double		get_min_bound_for_axis(t_point3 vtx[3], int axis);
+static double		get_max_bound_for_axis(t_point3 vtx[3], int axis);
 
 /*		fmin(fmin(
-				triangle.vertex[0].e[0], triangle.vertex[1].e[0]), triangle.vertex[2].e[0]),
+				triangle.vertex[0].e[0],
+				triangle.vertex[1].e[0]),
+				triangle.vertex[2].e[0]),
 		fmin(fmin(
-				triangle.vertex[0].e[1], triangle.vertex[1].e[1]), triangle.vertex[2].e[1]),
+				triangle.vertex[0].e[1],
+				triangle.vertex[1].e[1]),
+				triangle.vertex[2].e[1]),
 		fmin(fmin(
-				triangle.vertex[0].e[2], triangle.vertex[1].e[2]), triangle.vertex[2].e[2]));
+				triangle.vertex[0].e[2],
+				triangle.vertex[1].e[2]),
+				triangle.vertex[2].e[2]));
 @brief if generate_triangle failed, mat_ptr->clear()
 */
 t_hitter	*generate_triangle(t_triangle triangle_param)
@@ -81,17 +87,15 @@ static t_aabb	construct_triangle_aabb(t_triangle triangle)
 static double	get_min_bound_for_axis(t_point3 vtx[3], int axis)
 {
 	return (fmin(fmin(
-		vtx[0].e[axis],
-		vtx[1].e[axis]),
-		vtx[2].e[axis])
-	);
+				vtx[0].e[axis],
+				vtx[1].e[axis]),
+			vtx[2].e[axis]));
 }
 
 static double	get_max_bound_for_axis(t_point3 vtx[3], int axis)
 {
 	return (fmax(fmax(
-		vtx[0].e[axis],
-		vtx[1].e[axis]),
-		vtx[2].e[axis])
-	);
+				vtx[0].e[axis],
+				vtx[1].e[axis]),
+			vtx[2].e[axis]));
 }

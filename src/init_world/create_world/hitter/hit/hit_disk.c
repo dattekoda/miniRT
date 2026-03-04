@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 01:52:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 20:13:37 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/03 23:00:22 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ static void	assign_disk_hrec(
 	hrec->point = solu->point;
 	hrec->normal = self->normal;
 	hrec->mat_ptr = self->hitter.mat_ptr;
-	hrec->map = construct_plane_uv(&self->normal,
-					&hrec->point, &self->center);
+	hrec->map = construct_plane_uv(
+			&self->normal,
+			&hrec->point,
+			&self->center);
 	return ;
 }

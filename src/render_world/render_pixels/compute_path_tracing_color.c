@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/20 20:24:12 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/03 22:53:50 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@
 
 static bool	is_killed_by_russian_roulette(size_t depth, t_color *attenuation);
 
-
-#include <stdio.h>
-void	print_vec3(t_vec3 v);
-
 t_color	compute_path_tracing_color(
 			const t_ray *ray,
 			const t_world *world,
@@ -38,7 +34,7 @@ t_color	compute_path_tracing_color(
 	if (depth >= MAX_DEPTH)
 		return (constant_vec3(0.0));
 	if (!world->object_tree
-	|| !world->object_tree->hit(world->object_tree, ray, &hrec, &range))
+		|| !world->object_tree->hit(world->object_tree, ray, &hrec, &range))
 		return (world->ambient_light);
 	if (!hrec.mat_ptr->scatter(hrec.mat_ptr, world, &hrec, &srec))
 		return (srec.attenuation);
