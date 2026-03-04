@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solution.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:30:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/03 21:36:31 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:12:50 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ bool	is_solution_inside_range(t_solution *solu, const t_range *range)
 	if (solu->discriminant < 0)
 		return (false);
 	solu->root_discriminant = sqrt(solu->discriminant);
+	if (solu->coeff.e[0] < 0)
+	{
+		solu->solution = calc_plus_solution(solu);
+		if (is_inside_range(solu->solution, range))
+			return (true);
+		solu->solution = calc_minus_solution(solu);
+		if (is_inside_range(solu->solution, range))
+			return (true);
+		return (false);
+	}
 	solu->solution = calc_minus_solution(solu);
 	if (is_inside_range(solu->solution, range))
 		return (true);
