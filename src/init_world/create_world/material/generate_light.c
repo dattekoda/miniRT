@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/02 18:46:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 18:35:15 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,8 @@ static bool	scatter_light(
 				t_hrec *hrec,
 				t_srec *srec)
 {
-	const t_light		*self = s;
 	const t_texture		*texture_ptr
-		= self->material.texture_ptr;
+		= ((const t_light *)s)->material.texture_ptr;
 
 	(void)world;
 	if (dot(hrec->normal, hrec->ray_in.direct) > 0)

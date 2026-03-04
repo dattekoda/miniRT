@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/02 18:19:03 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/04 17:24:35 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -159,6 +159,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								construct_hitter_arr.c \
 								find_best_split_info.c \
 								prepare_surface_arr.c \
+								generate_hitter_list.c \
 								generate_tree.c \
 								hit_arr_to_bvh.c \
 								split.c \
@@ -167,12 +168,15 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								add_cylinder_disk.c \
 								add_hitter_list.c \
 								line_list_to_hit_arr.c \
+								line_list_to_hitter_list.c \
 							) \
 						) \
 					) \
 					$(addprefix utils/, \
+						has_object_in_line_list.c \
 						str_to_idx.c \
 						match_identifer.c \
+						search_object.c \
 						token_to_str.c \
 						token_to_value.c \
 						token_to_vec.c \

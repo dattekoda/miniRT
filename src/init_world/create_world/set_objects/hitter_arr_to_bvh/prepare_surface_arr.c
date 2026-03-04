@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 23:39:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 20:54:44 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 16:59:30 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 double	calc_surface_area(const t_aabb aabb);
 t_aabb	surrounding_box(t_aabb box0, t_aabb box1);
 t_aabb	construct_aabb(t_point3 min, t_point3 max);
-#include "rt_debug.h"
 
 #include <stdio.h>
 void	prepare_surface_arr(t_hitter_arr hit_arr)

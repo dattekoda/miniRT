@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hitter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/02 21:47:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/04 15:40:14 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef enum e_element_type
 	CONE,
 	TRIANGLE,
 	TREE,
+	LIST,
 	NOTHING
 }	t_element_type;
 */
@@ -53,6 +54,7 @@ void	print_hitter(t_hitter *hitter)
 		"CONE",
 		"TRIANGLE",
 		"TREE",
+		"LIST",
 		"NOTHING"
 	};
 	fprintf(stderr, "type:%s\t", string_table[hitter->type]);

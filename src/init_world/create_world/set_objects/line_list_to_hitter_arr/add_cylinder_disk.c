@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_cylinder_disk.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 22:12:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/02 18:49:11 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 19:55:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@
 
 static int		cylinder_to_lower_disk(t_cylinder cylinder, t_disk *lower_disk);
 static int		cylinder_to_upper_disk(t_cylinder cylinder, t_disk *upper_disk);
-static int		add_disk(t_list **hitter_list, t_disk disk);
+static int		add_disk(t_list **head, t_disk disk);
 
-int	add_cylinder_disk(t_list **hitter_list, t_cylinder *cylinder)
+int	add_cylinder_disk(t_list **head, t_cylinder *cylinder)
 {
 	t_disk		upper_disk;
 	t_disk		lower_disk;
 
 	if (cylinder_to_upper_disk(*cylinder, &upper_disk) == FAILURE)
 		return (FAILURE);
-	if (add_disk(hitter_list, upper_disk) == FAILURE)
+	if (add_disk(head, upper_disk) == FAILURE)
 		return (FAILURE);
 	if (cylinder_to_lower_disk(*cylinder, &lower_disk) == FAILURE)
 		return (FAILURE);
-	if (add_disk(hitter_list, lower_disk) == FAILURE)
+	if (add_disk(head, lower_disk) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
 
-static int	add_disk(t_list **hitter_list, t_disk disk_param)
+static int	add_disk(t_list **head, t_disk disk_param)
 {
 	t_list	*tmp_list;
 	t_disk	*tmp_disk;
@@ -52,7 +52,7 @@ static int	add_disk(t_list **hitter_list, t_disk disk_param)
 		free(tmp_disk);
 		return (FAILURE);
 	}
-	ft_lstadd_back(hitter_list, tmp_list);
+	ft_lstadd_back(head, tmp_list);
 	return (SUCCESS);
 }
 
