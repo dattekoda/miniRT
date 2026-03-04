@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_clear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 20:18:00 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/04 14:33:50 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ void	clear_world(t_world *world)
 	if (world->object_tree)
 	{
 		world->object_tree->clear(world->object_tree);
-		// free(world->object_tree);
+		free(world->object_tree);
 	}
 }

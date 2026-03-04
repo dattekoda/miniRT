@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 19:51:01 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/04 13:36:25 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:51:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	line_to_triangle_param(const char *line, t_triangle *triangle_param)
 	token_to_vec(line, &line_idx, &triangle_param->vertex[2]);
 	vertex_to_side(triangle_param->side, triangle_param->vertex);
 	triangle_param->normal = normalize(
-			cross(triangle_param->side[0], triangle_param->side[1]));
+			cross(triangle_param->side[1], triangle_param->side[0]));
 	if (line_to_material(
 			line,
 			&line_idx,

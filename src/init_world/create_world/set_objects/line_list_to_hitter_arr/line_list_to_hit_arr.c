@@ -23,13 +23,13 @@
 int				add_hitter_list(t_list **hitter_list, const char *line,
 					const t_element *element);
 static int		hitter_list_to_hitter_arr(t_list *hitter_list,
-				t_hitter_arr *hit_arr);
-static ssize_t	search_objects(const char *line, const t_element *object_table[]);
+					t_hitter_arr *hit_arr);
+static ssize_t	search_objects(
+					const char *line,
+					const t_element *object_table[]);
 static int		line_list_to_hitter_list(t_list **hitter_list,
 					const t_list *line_list, const t_element *object_table[]);
 
-
-#include "rt_debug.h"
 int	line_list_to_hit_arr(
 			t_hitter_arr *hit_arr,
 			const t_list *line_list,
@@ -50,7 +50,6 @@ int	line_list_to_hit_arr(
 		ft_lstclear(&hitter_list, clear_free_hitter);
 		return (FAILURE);
 	}
-	
 	ft_lstclear(&hitter_list, NULL);
 	return (SUCCESS);
 }
@@ -80,7 +79,9 @@ static int	hitter_list_to_hitter_arr(t_list *hitter_list,
 /*
 @brief if line is one member of object_table
 */
-static ssize_t	search_objects(const char *line, const t_element *object_table[])
+static ssize_t	search_objects(
+	const char *line,
+	const t_element *object_table[])
 {
 	size_t	idx;
 
