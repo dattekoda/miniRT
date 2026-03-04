@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 23:39:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/04 18:18:18 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 20:46:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 #include "libft.h"
 #include <stdlib.h>
 
+bool			hit_aabb(
+					const t_aabb *self,
+					const t_ray *ray,
+					const t_vec2 *range);
 t_aabb			surrounding_box(t_aabb aabb1, t_aabb aabb2);
 void			clear_tree(void *s);
 static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs);
@@ -82,7 +86,7 @@ static bool	hit_tree(
 	bool			hit_rhs;
 
 	if (self->hitter.has_aabb
-		&& !self->hitter.aabb.hit(&self->hitter.aabb, ray, hrec, range))
+		&& !hit_aabb(&self->hitter.aabb, ray, range))
 		return (false);
 	hit_lhs = self->lhs->hit(self->lhs, ray, hrec, range);
 	hit_rhs = self->rhs->hit(self->rhs, ray, hrec, range);

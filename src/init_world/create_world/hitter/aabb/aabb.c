@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:37:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/04 16:58:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 20:54:34 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 #include "rt_utils.h"
 #include <math.h>
 
-static bool	hit_aabb(
-				const void *s,
-				const t_ray *ray,
-				t_hrec *hrec,
-				t_range *range);
-
 t_aabb	construct_aabb(t_point3 min, t_point3 max)
 {
 	t_aabb	aabb;
@@ -29,33 +23,33 @@ t_aabb	construct_aabb(t_point3 min, t_point3 max)
 	aabb.min = min;
 	aabb.max = max;
 	aabb.centroid = scal_mul_vec3(add_vec3(min, max), 0.5);
-	aabb.hit = hit_aabb;
 	return (aabb);
 }
 
-static bool	hit_aabb(
-				const void *s,
+bool	hit_aabb(
+				const t_aabb *self,
 				const t_ray *ray,
-				t_hrec *hrec,
-				t_range *range)
+				const t_vec2 *range)
 {
-	const t_aabb	*self = s;
 	t_range			tmp_range;
+	double			t_min;
+	double			t_max;
 	double			tmp_div;
 	t_axis			axis;
 
-	(void)hrec;
+	t_min = range->e[0];
+	t_max = range->e[1];
 	axis = A_X;
 	while (axis < 3)
 	{
-		tmp_div = 1 / ray->direct.e[axis];
-		tmp_range.e[0] = self->min.e[axis] - ray->origin.e[axis] * tmp_div;
-		tmp_range.e[1] = self->max.e[axis] - ray->origin.e[axis] * tmp_div;
-		if (tmp_div < 0.0f)
+		tmp_div = 1.0 / ray->direct.e[axis];
+		tmp_range.e[0] = (self->min.e[axis] - ray->origin.e[axis]) * tmp_div;
+		tmp_range.e[1] = (self->max.e[axis] - ray->origin.e[axis]) * tmp_div;
+		if (tmp_div < 0)
 			ft_swap(&tmp_range.e[0], &tmp_range.e[1], sizeof(double));
-		range->e[0] = fmin(tmp_range.e[0], range->e[0]);
-		range->e[1] = fmax(tmp_range.e[1], range->e[1]);
-		if (range->e[1] <= range->e[0])
+		t_min = fmax(tmp_range.e[0], t_min);
+		t_max = fmin(tmp_range.e[1], t_max);
+		if (t_max <= t_min)
 			return (false);
 		axis++;
 	}
