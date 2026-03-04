@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_objects.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/27 21:50:55 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/04 18:00:53 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 
 static void	delete_light_line(t_list **line_list);
 int			finite_line_list_to_bvh(t_hitter **node, const t_list *line_list);
-int			infinite_line_list_to_bvh(t_hitter **node, const t_list *line_list);
+int			infinite_line_list_to_hitter_list(t_hitter **node, const t_list *line_list);
 t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs);
 void		clear_tree(void *s);
 
-#include "rt_debug.h"
 int	set_objects(t_world *world, t_list *line_list, int option_flag)
 {
 	t_hitter	*rhs;
@@ -31,7 +30,7 @@ int	set_objects(t_world *world, t_list *line_list, int option_flag)
 
 	if (option_flag & OPT_ARTIFICIAL)
 		delete_light_line(&line_list);
-	if (infinite_line_list_to_bvh(&rhs, line_list) == FAILURE)
+	if (infinite_line_list_to_hitter_list(&rhs, line_list) == FAILURE)
 		return (FAILURE);
 	if (finite_line_list_to_bvh(&lhs, line_list) == FAILURE)
 	{

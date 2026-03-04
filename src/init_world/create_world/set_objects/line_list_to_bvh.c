@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_list_to_bvh.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 20:17:00 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/04 18:00:28 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 #include "libft.h"
 #include <stdlib.h>
 
+bool			has_object_in_line_list(
+					const t_list *line_list,
+					const t_element *object_table[]);
+t_hitter		*generate_hitter_list(
+					const t_list *line_list,
+					const t_element *object_table[]);
 int				line_list_to_hit_arr(
 					t_hitter_arr *hit_arr,
 					const t_list *line_list,
@@ -30,15 +36,23 @@ static void		clear_hitter_arr(t_hitter_arr *hit_arr);
 
 int	finite_line_list_to_bvh(t_hitter **node, const t_list *line_list)
 {
+	*node = NULL;
+	if (!has_object_in_line_list(line_list, g_finite_table))
+		return (SUCCESS);
 	return (line_list_to_bvh(node, line_list, g_finite_table));
 }
 
-int	infinite_line_list_to_bvh(t_hitter **node, const t_list *line_list)
+int	infinite_line_list_to_hitter_list(t_hitter **node, const t_list *line_list)
 {
-	return (line_list_to_bvh(node, line_list, g_infinite_table));
+	*node = NULL;
+	if (!has_object_in_line_list(line_list, g_infinite_table))
+		return (SUCCESS);
+	*node = generate_hitter_list(line_list, g_infinite_table);
+	if (!*node)
+		return (FAILURE);
+	return (SUCCESS);
 }
 
-#include "rt_debug.h" // debug
 static int	line_list_to_bvh(
 		t_hitter **node,
 		const t_list *line_list,

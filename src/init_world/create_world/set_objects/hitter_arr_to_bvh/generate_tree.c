@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 23:39:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/02 12:16:47 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 18:18:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 #include "libft.h"
 #include <stdlib.h>
 
+t_aabb			surrounding_box(t_aabb aabb1, t_aabb aabb2);
+void			clear_tree(void *s);
 static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs);
 static bool		hit_tree(
 					const void *s,
 					const t_ray *ray,
 					t_hrec *hrec,
 					t_range *range);
-void			clear_tree(void *s);
 
 /*
 @brief responsible for free lhs, rhs when malloc failed
@@ -60,12 +61,16 @@ static t_tree	construct_tree(t_hitter *lhs, t_hitter *rhs)
 	node.hitter.type = TREE;
 	node.hitter.hit = hit_tree;
 	node.hitter.clear = clear_tree;
+	if (lhs->has_aabb && rhs->has_aabb)
+	{
+		node.hitter.has_aabb = true;
+		node.hitter.aabb = surrounding_box(lhs->aabb, rhs->aabb);
+	}
 	node.lhs = lhs;
 	node.rhs = rhs;
 	return (node);
 }
 
-#include "rt_debug.h"
 static bool	hit_tree(
 		const void *s,
 		const t_ray *ray,

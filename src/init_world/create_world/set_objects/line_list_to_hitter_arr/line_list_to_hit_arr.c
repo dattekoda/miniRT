@@ -20,15 +20,10 @@
 #include "result.h"
 #include <stdlib.h>
 
-int				add_hitter_list(t_list **hitter_list, const char *line,
-					const t_element *element);
+int				line_list_to_hitter_list(t_list **hitter_list,
+					const t_list *line_list, const t_element *object_table[]);
 static int		hitter_list_to_hitter_arr(t_list *hitter_list,
 					t_hitter_arr *hit_arr);
-static ssize_t	search_objects(
-					const char *line,
-					const t_element *object_table[]);
-static int		line_list_to_hitter_list(t_list **hitter_list,
-					const t_list *line_list, const t_element *object_table[]);
 
 int	line_list_to_hit_arr(
 			t_hitter_arr *hit_arr,
@@ -72,49 +67,6 @@ static int	hitter_list_to_hitter_arr(t_list *hitter_list,
 	{
 		hit_arr->arr[i++] = curr->content;
 		curr = curr->next;
-	}
-	return (SUCCESS);
-}
-
-/*
-@brief if line is one member of object_table
-*/
-static ssize_t	search_objects(
-	const char *line,
-	const t_element *object_table[])
-{
-	size_t	idx;
-
-	idx = 0;
-	while (object_table[idx])
-	{
-		if (match_identifier(line, object_table[idx]))
-			return (idx);
-		idx++;
-	}
-	return (-1);
-}
-
-/*
-@brief not responsible for free(hitter_list)
-*/
-static int	line_list_to_hitter_list(t_list **hitter_list,
-		const t_list *line_list, const t_element *object_table[])
-{
-	ssize_t	obj_idx;
-
-	while (line_list)
-	{
-		obj_idx = search_objects(line_list->content, object_table);
-		if (obj_idx == -1)
-		{
-			line_list = line_list->next;
-			continue ;
-		}
-		if (add_hitter_list(hitter_list, line_list->content,
-				object_table[obj_idx]) == FAILURE)
-			return (FAILURE);
-		line_list = line_list->next;
 	}
 	return (SUCCESS);
 }

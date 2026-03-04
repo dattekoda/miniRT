@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 19:06:35 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 15:52:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 
 bool			match_identifier(
 					const char *line, const t_element *info);
+ssize_t			search_object(
+					const char *line,
+					const t_element *object_table[]);
 t_result		token_to_value(
 					const char *line, size_t *line_idx, double *d);
 t_result		token_to_vec(
