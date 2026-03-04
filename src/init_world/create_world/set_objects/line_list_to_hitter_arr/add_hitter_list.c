@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:48:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/04 13:42:20 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/04 20:03:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,57 +18,54 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int			add_cylinder_disk(t_list **hitter_list, t_cylinder *cylinder);
-static bool	has_subhitter(const t_element *element);
-static int	add_sub_hitters(t_list **hitter_list, t_hitter *hitter_tmp);
-static int	add_hitter(t_list **hitter_list,
-						t_hitter **hitter_tmp_p,
+int			add_cylinder_disk(t_list **head, t_cylinder *cylinder);
+static int	add_sub_hitters(t_list **head, t_hitter *hitter);
+static int	add_hitter(t_list **head,
+						t_hitter **hitter_p,
 						const char *line,
 						const t_element *element);
 
-int	add_hitter_list(t_list **hitter_list, const char *line, const t_element *element)
+int	add_hitter_list(t_list **head, const char *line, const t_element *element)
 {
-	t_hitter	*hitter_tmp;
+	t_hitter	*hitter;
 
-	hitter_tmp = NULL;
-	if (add_hitter(hitter_list, &hitter_tmp, line, element) == FAILURE)
+	hitter = NULL;
+	if (add_hitter(head, &hitter, line, element) == FAILURE)
 		return (FAILURE);
-	if (has_subhitter(element) == true)
+	if (element->has_sub_hitter)
 	{
-		if (add_sub_hitters(hitter_list, hitter_tmp) == FAILURE)
+		if (add_sub_hitters(head, hitter) == FAILURE)
 			return (FAILURE);
 	}
 	return (SUCCESS);
 }
 
-static int	add_hitter(t_list **hitter_list,
-						t_hitter **hitter_tmp_p,
+static int	add_hitter(t_list **head,
+						t_hitter **hitter_p,
 						const char *line,
 						const t_element *element)
 {
-	t_list		*list_tmp;
+	t_list	*tail;
 
-	if (element->line_to_hitter(hitter_tmp_p, line) == FAILURE)
+	if (element->line_to_hitter(hitter_p, line) == FAILURE)
 		return (FAILURE);
-	list_tmp = ft_lstnew(*hitter_tmp_p);
-	if (!list_tmp)
+	tail = ft_lstnew(*hitter_p);
+	if (!tail)
 	{
-		((*hitter_tmp_p))->clear(*hitter_tmp_p);
-		free(*hitter_tmp_p);
+		((*hitter_p))->clear(*hitter_p);
+		free(*hitter_p);
 		return (FAILURE);
 	}
-	ft_lstadd_back(hitter_list, list_tmp);
+	ft_lstadd_back(head, tail);
 	return (SUCCESS);
 }
 
-static bool	has_subhitter(const t_element *element)
+static int	add_sub_hitters(t_list **head, t_hitter *hitter)
 {
-	return (element == g_element_table[CYLINDER]);
-}
-
-static int	add_sub_hitters(t_list **hitter_list, t_hitter *hitter_tmp)
-{
-	if (add_cylinder_disk(hitter_list, (t_cylinder *)hitter_tmp) == FAILURE)
-		return (FAILURE);
+	if (hitter->type == CYLINDER)
+	{
+		if (add_cylinder_disk(head, (t_cylinder *)hitter) == FAILURE)
+			return (FAILURE);
+	}
 	return (SUCCESS);
 }
