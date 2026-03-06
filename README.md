@@ -22,7 +22,7 @@ miniRT is a project in the 42 curriculum that involves implementing a ray tracer
 ## Instructions
 1. Clone the repository:
 ```bash
-git clone [] miniRT && cd miniRT
+git clone [git@vogsphere-v2.42tokyo.jp:vogsphere/intra-uuid-46f583b3-8acf-49dd-8cf6-0ed0221ba73c-7112890-khanadat] miniRT && cd ./miniRT
 ```
 2. Compile the project using the provided Makefile:
 ```bash
