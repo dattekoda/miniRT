@@ -23,4 +23,6 @@ jobs:
           sudo apt-get install -y libx11-dev libxext-dev libbsd-dev
 
       - name: Run make
-        run: make
+        run: |
+         make -C minilibx-linux
+         make
