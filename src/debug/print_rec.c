@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_rec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 20:11:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/20 22:12:10 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/06 20:48:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ void	print_material(const t_material *material);
 
 void	print_hrec(const t_hrec *hrec)
 {
-	fprintf(stderr, "ray in: ");
+	printf("ray in: ");
 	print_ray(&hrec->ray_in);
-	fprintf(stderr, "point: ");
+	printf("point: ");
 	print_vec3(hrec->point);
-	fprintf(stderr, "param_t: %f\n", hrec->param_t);
-	fprintf(stderr, "normal: ");
+	printf("param_t: %f\n", hrec->param_t);
+	printf("normal: ");
 	print_vec3(hrec->normal);
-	fprintf(stderr, "map: ");
+	printf("map: ");
 	print_vec2(hrec->map);
 	print_material(hrec->mat_ptr);
 }
 
 void	print_srec(const t_srec *srec)
 {
-	fprintf(stderr, "attenuation: ");
+	printf("attenuation: ");
 	print_vec3(srec->attenuation);
-	fprintf(stderr, "next ray: ");
+	printf("next ray: ");
 	print_ray(&srec->next_ray);
 }

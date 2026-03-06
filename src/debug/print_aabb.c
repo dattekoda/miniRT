@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 20:21:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 20:21:11 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 20:48:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	print_vec3(t_vec3 v);
 
 void	print_aabb(t_aabb aabb)
 {
-	fprintf(stderr, "min:\t");
+	printf("min:\t");
 	print_vec3(aabb.min);
-	fprintf(stderr, "max:\t");
+	printf("max:\t");
 	print_vec3(aabb.max);
-	fprintf(stderr, "centroid:\t");
+	printf("centroid:\t");
 	print_vec3(aabb.centroid);
 	return ;
 }

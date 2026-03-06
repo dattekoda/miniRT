@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 20:28:35 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 20:28:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 20:48:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 
 void	print_ray(const t_ray *ray)
 {
-	fprintf(stderr, "\n");
+	printf("\n");
 	if (!ray)
 	{
-		fprintf(stderr, "ray: null\n");
+		printf("ray: null\n");
 		return ;
 	}
-	fprintf(stderr, "ray: origin\n");
+	printf("ray: origin\n");
 	print_vec3(ray->origin);
-	fprintf(stderr, "ray: direct\n");
+	printf("ray: direct\n");
 	print_vec3(ray->direct);
 }

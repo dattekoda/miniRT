@@ -63,7 +63,7 @@ void	__wrap_free(void *ptr)
 		prev = cur;
 		cur = cur->next;
 	}
-	fprintf(stderr, "ERROR: invalid free.\n");
+	printf("ERROR: invalid free.\n");
 	abort();
 }
 

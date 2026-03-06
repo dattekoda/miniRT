@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 20:27:57 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 20:27:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 20:48:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	print_material(const t_material *material)
 {
 	if (!material)
 	{
-		fprintf(stderr, "material null\n");
+		printf("material null\n");
 		return ;
 	}
-	fprintf(stderr, "material: %s\n", g_material_specifiers[material->idx]);
+	printf("material: %s\n", g_material_specifiers[material->idx]);
 }

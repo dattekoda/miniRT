@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 11:21:39 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 12:09:26 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 20:48:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	print_time(void)
 
 	gettimeofday(&end, NULL);
 	d_end = (double)end.tv_sec + (double)end.tv_usec * 0.000001;
-	fprintf(stderr, "time:\t%0.4fs\n", d_end - g_time);
+	printf("time:\t%0.4fs\n", d_end - g_time);
 	return ;
 }

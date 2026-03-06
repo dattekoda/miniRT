@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 14:58:48 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/24 15:03:15 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 20:48:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 void	print_axis(t_axis axis)
 {
-	fprintf(stderr, "axis:\t");
+	printf("axis:\t");
 	if (axis == A_X)
-		fprintf(stderr, "x");
+		printf("x");
 	if (axis == A_Y)
-		fprintf(stderr, "y");
+		printf("y");
 	if (axis == A_Z)
-		fprintf(stderr, "z");
-	fprintf(stderr, ", ");
+		printf("z");
+	printf(", ");
 }
