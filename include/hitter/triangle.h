@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 19:51:54 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 16:11:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:31:55 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_triangle
 	t_hitter	hitter;
 	t_vec3		normal;
 	t_point3	vertex[3];
-	t_vec3		side[3];
+	// t_vec3		side[3];
 	t_vec3		edge[2];
 }	t_triangle;
 
