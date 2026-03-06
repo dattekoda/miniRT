@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 18:54:06 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/02 15:07:16 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 10:50:28 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	assign_cylinder_hrec(
 				cy_solu->center_to_point,
 				scal_mul_vec3(
 					self->direct,
-					-cy_solu->tmp_height)),
+					cy_solu->tmp_height)),
 			self->radius);
 	hrec->map = construct_cylinder_uv(
 			&cy_solu->center_to_point,
