@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/06 11:27:34 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/06 18:28:00 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,6 +123,9 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 								$(addprefix cylinder_utils/, \
 									calc_cylinder_coeff.c \
 									construct_cylinder_uv.c \
+								) \
+								$(addprefix triangle_utils/, \
+									is_valid_tr_solution.c \
 								) \
 								$(addprefix plane_utils/, \
 									construct_plane_uv.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solution.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:27:21 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/28 19:12:40 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:12:54 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,14 @@ typedef struct s_cylinder_solu
 	t_vec3		center_to_point;
 	double		tmp_height;
 }	t_cy_solu;
+
+typedef struct s_triangle_solu
+{
+	t_solution	solu;
+	t_vec3		cross[2];
+	t_vec3		ver0_to_origin;
+	double		det;
+	double		div_det;
+}	t_triangle_solu;
 
 #endif
