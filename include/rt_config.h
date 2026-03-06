@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 07:04:06 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 07:42:25 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # define PROJECT_NAME "miniRT"
 
+# define SAMPLES_PER_PIXEL 50
+
 // window
 # define WINDOW_WIDTH 600
 // camera
@@ -22,12 +24,15 @@
 
 # define LENS_RADIUS 0.0
 
+// Maximum number of reflections
+# define MAX_DEPTH	5
+
 // light
 // steradian of path tracing model
 // minimum light radius is 1.0
-# define LIGHT_STERADIAN 0.0001
+# define LIGHT_STERADIAN 0.005
 
-# define PATHTRACING_LIGHT_STRENGTH 101.0
+# define PATHTRACING_LIGHT_STRENGTH 200.0
 
 # define RUSSIAN_ROULETTE_START_DEPTH 10
 
