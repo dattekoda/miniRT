@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/06 18:28:00 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/06 19:50:42 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,7 +108,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							) \
 						) \
 						$(addprefix hitter/, \
-							$(addprefix generator/, \
+							$(addprefix generate/, \
 								generate_cone.c \
 								generate_cylinder.c \
 								generate_disk.c \
