@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:39:52 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/04 14:33:50 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 10:09:07 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	clear_free_hitter(void *self)
 {
 	t_hitter	*hitter;
 
+	if (!self)
+		return ;
 	hitter = self;
 	hitter->clear(hitter);
 	free(hitter);

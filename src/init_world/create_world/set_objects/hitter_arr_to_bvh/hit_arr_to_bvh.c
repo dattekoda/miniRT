@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_arr_to_bvh.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/27 21:13:37 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/06 10:09:45 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@ t_hitter_arr	construct_rhs_hitter_arr(
 t_compar		get_compar_func(t_axis axis);
 static int		generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr);
 static int		generate_bvh_base_case(t_hitter **hitter, t_hitter_arr hit_arr);
-
-
-#include <stdio.h> // db
-#include <stdlib.h> // debug
-#include "rt_debug.h"
 
 int	hit_arr_to_bvh(t_hitter **root, t_hitter_arr hit_arr)
 {
@@ -61,9 +56,10 @@ static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr)
 			&lhs,
 			construct_lhs_hitter_arr(hit_arr, best.left_size)) == FAILURE) 
 		return (FAILURE);
-	if (generate_bvh_recursive(&rhs,
+	if (generate_bvh_recursive(
+			&rhs,
 			construct_rhs_hitter_arr(hit_arr, best.left_size)) == FAILURE)
-		return (lhs->clear(lhs), FAILURE);
+		return (clear_free_hitter(lhs), FAILURE);
 	*hitter = generate_tree(lhs, rhs);
 	if (!*hitter)
 		return (FAILURE);
