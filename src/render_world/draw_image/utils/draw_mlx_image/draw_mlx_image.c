@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:58:49 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/12 18:18:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 11:29:03 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	assign_rgb_color_loop(
 				t_rt_img *rt_img,
 				const int *raw_rgb_arr);
 
+#include "rt_debug.h"
+
 int	draw_mlx_image(int **raw_rgb_arr)
 {
 	t_rt_mlx	rt_mlx;
@@ -38,6 +40,7 @@ int	draw_mlx_image(int **raw_rgb_arr)
 	}
 	assign_rgb_color_loop(rt_mlx.var.mlx, &rt_mlx.img, *raw_rgb_arr);
 	free(*raw_rgb_arr);
+	print_time();
 	mlx_put_image_to_window(rt_mlx.var.mlx, rt_mlx.var.win, rt_mlx.img.id, 0, 0);
 	mlx_hook(rt_mlx.var.win, 17, 0L, close_window, &rt_mlx);
 	mlx_loop(rt_mlx.var.mlx);

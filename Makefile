@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/04 17:24:35 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/06 11:27:34 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		=	miniRT
 
 CC			=	cc
 CFLAG		=	-Wall -Wextra -Werror $(patsubst %,-I%,$(INCDIRS)) -I$(MLXDIR) \
-				-I$(LIBFTDIR)/include -O3 -march=native
+				-I$(LIBFTDIR)/include -O3 -march=native -MMD -MP
 RMDIR		=	rm -rf
 
 # --- src ---
@@ -230,24 +230,30 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 			)
 
 # you can delete later
-SRCS	+=	$(addprefix src_for_debug/, \
-				print_aabb.c \
-				print_axis.c \
-				print_hitter_arr.c \
-				print_hitter.c \
-				print_line_list.c \
-				print_material.c \
-				print_pixel_arr.c \
-				print_ray.c \
-				print_split.c \
-				print_vec.c \
-				print_world.c \
-				print_option.c \
+SRCS	+=	$(addprefix $(SRCDIR)/, \
+				$(addprefix src_for_debug/, \
+					clock.c \
+					print_aabb.c \
+					print_axis.c \
+					print_hitter_arr.c \
+					print_hitter.c \
+					print_line_list.c \
+					print_material.c \
+					print_pixel_arr.c \
+					print_ray.c \
+					print_split.c \
+					print_vec.c \
+					print_world.c \
+					print_option.c \
+				) \
 			)
 
 # --- obj ---
 OBJDIR		=	obj
 OBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
+
+# --- deps ---
+DEPS		=	$(OBJS:.o=.d)
 
 # --- include ---
 INCDIRS		=	$(shell find include -type d)
@@ -325,6 +331,8 @@ all: $(NAME)
 $(NAME): $(OBJS) $(MLX) $(LIBFT)
 	$(CC) $(CFLAG) $(OBJS) $(LDFLAG) $(LDLIBS) -o $@
 	@echo "\n\033[1;32m'$(NAME)' has been created!\033[0m"
+
+-include	$(DEPS)
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFTDIR) bonus

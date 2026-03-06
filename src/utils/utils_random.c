@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_random.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:48:09 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 20:12:44 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/06 11:34:35 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,15 @@ static uint64_t	random_uint64(void)
 
 void	set_random_seed_from_time(void)
 {
-	struct timeval	tv;
+	// struct timeval	tv;
 
-	if (gettimeofday(&tv, NULL))
-	{
-		g_x = RANDOM_SEED_UINT64;
-		perror_rt("gettimeofday");
-	}
-	else
-		g_x = (uint64_t)((tv.tv_sec ^ tv.tv_usec) ^ RANDOM_SEED_UINT64);
+	g_x = RANDOM_SEED_UINT64;
+	// if (gettimeofday(&tv, NULL))
+	// {
+	// 	g_x = RANDOM_SEED_UINT64;
+	// 	perror_rt("gettimeofday");
+	// }
+	// else
+	// 	g_x = (uint64_t)((tv.tv_sec ^ tv.tv_usec) ^ RANDOM_SEED_UINT64);
 	return ;
 }

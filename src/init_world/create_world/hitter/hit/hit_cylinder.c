@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 18:54:06 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 10:50:28 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 11:59:26 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ bool	hit_cylinder(
 	const t_cylinder	*self = s;
 	t_cy_solu			cy_solu;
 
+	if (!hit_aabb(&self->hitter.aabb, ray, range))
+		return (false);
 	init_solution_context(&cy_solu.solu, self, ray);
 	if (!is_solution_inside_range(&cy_solu.solu, range))
 		return (false);

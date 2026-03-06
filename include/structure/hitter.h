@@ -6,13 +6,14 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:38:41 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/04 20:37:11 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 11:56:08 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HITTER_H
 # define HITTER_H
 
+# include "aabb.h"
 # include "element_type.h"
 # include "hit_record.h"
 # include "rt_utils.h"
@@ -20,13 +21,6 @@
 
 typedef bool				(*t_hit)(const void *self, const t_ray *ray,
 	t_hrec *hrec, t_range *range);
-
-typedef struct s_aabb
-{
-	t_point3	min;
-	t_point3	max;
-	t_point3	centroid;
-}	t_aabb;
 
 typedef struct s_hitter
 {

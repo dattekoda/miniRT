@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/04 14:39:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 11:56:45 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ bool	hit_triangle(
 			t_hrec *hrec,
 			t_range *range)
 {
-	const t_triangle	*self;
+	const t_triangle	*self = s;
 	t_solution			solu;
 
-	self = s;
+	if (!hit_aabb(&self->hitter.aabb, ray, range))
+		return (false);
 	init_plane_solution(&solu, &self->normal, &self->vertex[0], ray);
 	if (fequal(solu.coeff.e[1], 0))
 		return (false);
