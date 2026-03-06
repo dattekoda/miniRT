@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:48:21 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 20:34:15 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:06:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_vec3	local_normal_ripple(t_vec2 map)
 	const double	ripple = cos(r * frequency) * strength;
 
 	if (r == 0)
-		return (construct_vec3(0, 0, 1.0));	
+		return (construct_vec3(0, 0, 1.0));
 	return (construct_vec3(
 			(map.e[0] / r) * ripple,
 			(map.e[1] / r) * ripple,
@@ -34,12 +34,13 @@ t_vec3	local_normal_ripple(t_vec2 map)
 #define BLOCK_STRENGTH 2.0
 #define BLOCK_WIDTH 20.0
 #define BLOCK_HEIGHT 10.0
+
 t_vec3	local_normal_block(t_vec2 map)
 {
 	const int	row = (int)floor(map.e[1] / BLOCK_HEIGHT);
 	t_vec2		cycle_map;
 	t_vec2		delta_map;
-	
+
 	if (row % 2 != 0)
 		map.e[0] += BLOCK_WIDTH / 2.0;
 	cycle_map = construct_vec2(

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 18:27:18 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:28:19 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ static void	assign_triangle_hrec(
 	hrec->point = at_ray(ray, tr_solu->solu.solution);
 	hrec->normal = orient_normal(&self->normal, &ray->direct);
 	hrec->mat_ptr = self->hitter.mat_ptr;
-	hrec->map = construct_vec2(tr_solu->solu.coeff.e[0], tr_solu->solu.coeff.e[1]);
+	hrec->map
+		= construct_vec2(tr_solu->solu.coeff.e[0], tr_solu->solu.coeff.e[1]);
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:48:09 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 11:34:35 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:43:43 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static uint64_t	random_uint64(void);
 static uint64_t	g_x;
 
 /*
-@brief ランダムな53bitを取り出し仮数部とする。
+@brief let randomized 53 bits as a mantissa
 */
 double	random_double(double min, double max)
 {
@@ -59,15 +59,14 @@ static uint64_t	random_uint64(void)
 
 void	set_random_seed_from_time(void)
 {
-	// struct timeval	tv;
+	struct timeval	tv;
 
-	g_x = RANDOM_SEED_UINT64;
-	// if (gettimeofday(&tv, NULL))
-	// {
-	// 	g_x = RANDOM_SEED_UINT64;
-	// 	perror_rt("gettimeofday");
-	// }
-	// else
-	// 	g_x = (uint64_t)((tv.tv_sec ^ tv.tv_usec) ^ RANDOM_SEED_UINT64);
+	if (gettimeofday(&tv, NULL))
+	{
+		g_x = RANDOM_SEED_UINT64;
+		perror_rt("gettimeofday");
+	}
+	else
+		g_x = (uint64_t)((tv.tv_sec ^ tv.tv_usec) ^ RANDOM_SEED_UINT64);
 	return ;
 }

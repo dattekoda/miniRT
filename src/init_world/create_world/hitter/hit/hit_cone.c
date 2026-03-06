@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 18:38:13 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:28:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ static t_vec3	calc_coeff(
 		= dot(*ray_dir, *apex_to_ray_origin);
 
 	return (construct_vec3(
-		dot_rdir__cdir * dot_rdir__cdir
+			dot_rdir__cdir * dot_rdir__cdir
 			- length_squared_vec3(*ray_dir) * self->cos_half_angle_sq,
-		dot_rdir__cdir * dot_ap_to_ro__cdir
+			dot_rdir__cdir * dot_ap_to_ro__cdir
 			- dot_rdir__ap_to_ro * self->cos_half_angle_sq,
-		dot_ap_to_ro__cdir * dot_ap_to_ro__cdir
+			dot_ap_to_ro__cdir * dot_ap_to_ro__cdir
 			- length_squared_vec3(*apex_to_ray_origin)
 			* self->cos_half_angle_sq));
 }
@@ -113,12 +113,12 @@ static void	assign_cone_hrec(
 	hrec->point = at_ray(ray, hrec->param_t);
 	apex_to_point = sub_vec3(hrec->point, self->apex);
 	hrec->normal = normalize(
-					sub_vec3(
-						apex_to_point,
-						scal_mul_vec3(
-							self->direct,
-							dot(apex_to_point, self->direct)
-								/ self->cos_half_angle_sq)));
+			sub_vec3(
+				apex_to_point,
+				scal_mul_vec3(
+					self->direct,
+					dot(apex_to_point, self->direct)
+					/ self->cos_half_angle_sq)));
 	hrec->map = construct_cone_uv(self, &apex_to_point);
 	hrec->mat_ptr = self->hitter.mat_ptr;
 	return ;

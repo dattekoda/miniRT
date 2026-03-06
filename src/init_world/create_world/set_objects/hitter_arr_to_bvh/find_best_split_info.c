@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:45:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 22:05:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:12:19 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ void		prepare_surface_arr(t_hitter_arr hit_arr);
 t_compar	get_compar_func(t_axis axis);
 static void	find_best_left_size(
 				t_hitter_arr hit_arr,
-				t_split		*best);
+				t_split *best);
 double		calc_cost(
 				t_hitter_arr hit_arr,
 				size_t left_size);
 
-#include <stdio.h>
-#include "rt_debug.h"
 void	find_best_split_info(t_hitter_arr hit_arr, t_split *best)
 {
 	t_split	tmp;
@@ -52,7 +50,7 @@ void	find_best_split_info(t_hitter_arr hit_arr, t_split *best)
 
 static void	find_best_left_size(
 				t_hitter_arr hit_arr,
-				t_split		*best)
+				t_split *best)
 {
 	t_split	tmp;
 

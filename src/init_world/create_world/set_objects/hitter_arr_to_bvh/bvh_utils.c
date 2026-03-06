@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:29:43 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/04 16:59:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:12:49 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ double	calc_cost(
 {
 	const size_t	right_size = hit_arr.size - left_size;
 	const double	left_surface_area
-		= hit_arr.left_surface_arr[left_size - 1];;
+		= hit_arr.left_surface_arr[left_size - 1];
 	const double	right_surface_area
 		= hit_arr.right_surface_arr[left_size];
 

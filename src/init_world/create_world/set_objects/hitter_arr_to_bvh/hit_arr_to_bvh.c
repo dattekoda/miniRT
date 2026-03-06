@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 21:31:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 10:09:45 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:09:12 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	generate_bvh_recursive(t_hitter **hitter, t_hitter_arr hit_arr)
 		hit_arr.size, sizeof(t_hitter *), get_compar_func(best.axis));
 	if (generate_bvh_recursive(
 			&lhs,
-			construct_lhs_hitter_arr(hit_arr, best.left_size)) == FAILURE) 
+			construct_lhs_hitter_arr(hit_arr, best.left_size)) == FAILURE)
 		return (FAILURE);
 	if (generate_bvh_recursive(
 			&rhs,

@@ -6,10 +6,9 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/04 15:52:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:43:17 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef INIT_WORLD_UTILS_H
 # define INIT_WORLD_UTILS_H

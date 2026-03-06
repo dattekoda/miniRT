@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:45 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 16:02:14 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:15:10 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ void	set_camera(t_camera *camera, const t_list *line_list)
 	*camera = get_camera_data(line_list->content);
 }
 
-#include "rt_debug.h"
-#include <stdio.h>
-#include <stdlib.h>
 t_camera	get_camera_data(const char *line)
 {
 	size_t		i;

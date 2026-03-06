@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 21:03:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 16:46:17 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:14:16 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,20 @@ char		*str_space_join(char *a, char *b);
 int			add_light_radius(char **light_line, t_point3 camera_origin);
 static int	add_option_flag(char **light_line, int option_flag);
 
-int	preprocess_line_list(t_list *line_list, t_point3 camera_origin, int option_flag)
+int	preprocess_line_list(
+		t_list *line_list,
+		t_point3 camera_origin,
+		int option_flag)
 {
 	while (line_list)
 	{
 		if (match_identifier(line_list->content, g_element_table[LIGHT]))
 		{
-			if (add_light_radius(
-					(char **)&line_list->content, camera_origin) == FAILURE)
+			if (add_light_radius((char **)&line_list->content, camera_origin)
+				== FAILURE)
 				return (FAILURE);
-			if (add_option_flag((char **)&line_list->content, option_flag) == FAILURE)
+			if (add_option_flag((char **)&line_list->content, option_flag)
+				== FAILURE)
 				return (FAILURE);
 		}
 		line_list = line_list->next;

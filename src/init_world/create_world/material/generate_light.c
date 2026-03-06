@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/04 18:35:15 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:15:57 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ static bool	scatter_light(
 		srec->attenuation = construct_vec3(1.0, 0.0, 0.0);
 	else
 		srec->attenuation
-		= texture_ptr->calc_texture_value(texture_ptr, hrec);
+			= texture_ptr->calc_texture_value(texture_ptr, hrec);
 	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 23:39:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/04 16:59:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:08:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ double	calc_surface_area(const t_aabb aabb);
 t_aabb	surrounding_box(t_aabb box0, t_aabb box1);
 t_aabb	construct_aabb(t_point3 min, t_point3 max);
 
-#include <stdio.h>
 void	prepare_surface_arr(t_hitter_arr hit_arr)
 {
 	t_aabb	aabb_left;
@@ -38,9 +37,9 @@ void	prepare_surface_arr(t_hitter_arr hit_arr)
 	{
 		right_idx = hit_arr.size - left_idx - 1;
 		aabb_left = surrounding_box(aabb_left,
-			hit_arr.arr[left_idx]->aabb);
+				hit_arr.arr[left_idx]->aabb);
 		aabb_right = surrounding_box(aabb_right,
-			hit_arr.arr[right_idx]->aabb);
+				hit_arr.arr[right_idx]->aabb);
 		(hit_arr.left_surface_arr)[left_idx] = calc_surface_area(aabb_left);
 		(hit_arr.right_surface_arr)[right_idx] = calc_surface_area(aabb_right);
 		left_idx++;

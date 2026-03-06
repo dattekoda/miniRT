@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:48:20 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/04 20:03:10 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:07:48 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 int			add_cylinder_disk(t_list **head, t_cylinder *cylinder);
 static int	add_sub_hitters(t_list **head, t_hitter *hitter);
 static int	add_hitter(t_list **head,
-						t_hitter **hitter_p,
-						const char *line,
-						const t_element *element);
+				t_hitter **hitter_p,
+				const char *line,
+				const t_element *element);
 
 int	add_hitter_list(t_list **head, const char *line, const t_element *element)
 {

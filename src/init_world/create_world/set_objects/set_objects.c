@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/04 18:00:53 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:07:19 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 
 static void	delete_light_line(t_list **line_list);
 int			finite_line_list_to_bvh(t_hitter **node, const t_list *line_list);
-int			infinite_line_list_to_hitter_list(t_hitter **node, const t_list *line_list);
+int			infinite_line_list_to_hitter_list(
+				t_hitter **node,
+				const t_list *line_list);
 t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs);
 void		clear_tree(void *s);
 
