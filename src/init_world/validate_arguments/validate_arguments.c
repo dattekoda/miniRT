@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_arguments.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:21:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 22:48:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <unistd.h>
 
 static void	put_format(void);
+static void	print_help(void);
 bool		is_valid_file_name(const char *file_path);
 bool		is_valid_option(char **options);
 
@@ -32,6 +33,11 @@ void	validate_arguments(int argc, char *argv[])
 		put_format();
 		exit(EXIT_FAILURE);
 	}
+	if (!ft_strcmp("-h", argv[1]))
+	{
+		print_help();
+		exit(EXIT_SUCCESS);
+	}
 	if (!is_valid_file_name(argv[1]))
 		exit(EXIT_FAILURE);
 	if (argc >= 3 && !is_valid_option(argv + 2))
@@ -39,10 +45,25 @@ void	validate_arguments(int argc, char *argv[])
 	return ;
 }
 
+static void	print_help(void)
+{
+	ft_putendl_fd("Usage: ./miniRT <.rt file> [OPTION]", STDERR_FILENO);
+	put_format();
+	ft_putendl_fd("\noptions:", STDERR_FILENO);
+	ft_putendl_fd("\t-a artificial mode: use Phong reflection model",
+		STDERR_FILENO);
+	ft_putendl_fd("\t-m define object materials. "\
+"-- lambertian, metal, dielectric for material", STDERR_FILENO);
+	ft_putendl_fd("\t                            "\
+"-- solid, checker, bump for texture", STDERR_FILENO);
+	ft_putendl_fd("\t-p ppm mode: out put ppm file", STDERR_FILENO);
+}
+
 static void	put_format(void)
 {
 	size_t	i;
 
+	ft_putendl_fd("\nformats:", STDERR_FILENO);
 	i = 0;
 	while (g_element_table[i])
 		ft_putendl_fd(g_element_table[i++]->input_format, STDERR_FILENO);

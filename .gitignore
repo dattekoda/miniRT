@@ -11,3 +11,4 @@
 !test/*
 !test_scene/**
 !*.rt
+!README.md
