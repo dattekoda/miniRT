@@ -6,9 +6,6 @@
 ### What is miniRT
 miniRT is a project in the 42 curriculum that involves implementing a ray tracer using the C language.
 
-### How to use
-
-
 ### Features
 - Ambient lighting, spot light sources, and camera settings
 	> [TODO] add images
