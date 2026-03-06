@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_split.c                                      :+:      :+:    :+:   */
+/*   print_line_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/24 14:57:56 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/24 15:03:51 by khanadat         ###   ########.fr       */
+/*   Created: 2026/02/11 19:00:14 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/03/06 20:48:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "split.h"
+#include "libft.h"
 #include <stdio.h>
 
-void	print_axis(t_axis axis);
-
-void	print_split(const t_split *split)
+void	print_line_list(const t_list *line_list)
 {
-	fprintf(stderr, "--- split ---\n");
-	print_axis(split->axis);
-	fprintf(stderr, "left_size:\t%zu, ", split->left_size);
-	fprintf(stderr, "cost:\t%f\n", split->cost);
+	while (line_list)
+	{
+		printf("%s", (char *)line_list->content);
+		line_list = line_list->next;
+	}
+	printf("\n");
 }

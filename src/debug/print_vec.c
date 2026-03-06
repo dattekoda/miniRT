@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clock.c                                            :+:      :+:    :+:   */
+/*   print_vec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/06 11:21:39 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 12:09:26 by khanadat         ###   ########.fr       */
+/*   Created: 2026/01/26 08:43:06 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/03/06 20:48:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "vec.h"
 #include <stdio.h>
-#include <unistd.h>
-#include <sys/time.h>
 
-static double	g_time;
-
-void	init_time(void)
+void	print_vec3(t_vec3 v)
 {
-	struct timeval	start;
-
-	gettimeofday(&start, NULL);
-	g_time = (double)start.tv_sec + (double)start.tv_usec * 0.000001;
+	printf("vec:\t(%.2f, %.2f, %.2f)\n", v.e[0], v.e[1], v.e[2]);
 }
 
-void	print_time(void)
+void	print_vec2(t_vec2 m)
 {
-	struct timeval	end;
-	double			d_end;
-
-	gettimeofday(&end, NULL);
-	d_end = (double)end.tv_sec + (double)end.tv_usec * 0.000001;
-	fprintf(stderr, "time:\t%0.4fs\n", d_end - g_time);
-	return ;
+	printf("vec:\t(%.2f, %.2f)\n", m.e[0], m.e[1]);
 }

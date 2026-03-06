@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_world.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 19:17:54 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/20 22:12:10 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/06 20:48:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@ void	print_tree(t_hitter *node);
 
 void	print_camera(const t_camera *camera)
 {
-	fprintf(stderr, "camera:\n");
-	fprintf(stderr, "origin ");
+	printf("camera:\n");
+	printf("origin ");
 	print_vec3(camera->origin);
-	fprintf(stderr, "onb u      ");
+	printf("onb u      ");
 	print_vec3(camera->onb.v[0]);
-	fprintf(stderr, "onb v      ");
+	printf("onb v      ");
 	print_vec3(camera->onb.v[1]);
-	fprintf(stderr, "onb w (up) ");
+	printf("onb w (up) ");
 	print_vec3(camera->onb.v[2]);
 }
 
 void	print_world(const t_world *world)
 {
-	fprintf(stderr, "world:\n");
-	fprintf(stderr, "ambient color ");
+	printf("world:\n");
+	printf("ambient color ");
 	print_vec3(world->ambient_light);
 	print_camera(&world->camera);
-	fprintf(stderr, "lght list: ");
+	printf("lght list: ");
 	print_hitter_list(world->light_list);
 	print_tree(world->object_tree);
 }

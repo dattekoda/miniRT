@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_option.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 20:22:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 20:28:17 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/06 20:36:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	print_option(int option_flag)
 {
 	int	i;
 
-	printf("option:\n");
 	i = 0;
+	printf("option:\n");
 	while (g_option_table[i])
 	{
 		if (option_flag & g_option_table[i]->flag)
@@ -28,4 +28,3 @@ void	print_option(int option_flag)
 		i++;
 	}
 }
-
