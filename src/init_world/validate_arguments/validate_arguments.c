@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:21:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 22:54:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/06 22:54:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	validate_arguments(int argc, char *argv[])
 	{
 		err_rt("set .rt file as first argument");
 		put_format();
-		ft_putendl_fd("See \'./miniRT -h\' for help\n", STDERR_FILENO);
+		ft_putendl_fd("\nSee \'./miniRT -h\' for help", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	if (!ft_strcmp("-h", argv[1]))
