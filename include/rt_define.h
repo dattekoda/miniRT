@@ -3,48 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   rt_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/11 15:41:45 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/06 15:58:26 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_DEFINE_H
 # define RT_DEFINE_H
 
-# include <stddef.h>
+# include "rt_config.h"
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
 # endif
 
+extern const unsigned int	g_window_width;
+extern const unsigned int	g_window_height;
+
 # define GREEN "\033[92m"
 # define RESET "\033[m"
 
-enum e_result
-{
-	SUCCESS,
-	FAILURE,
-};
+// /bin/bash -c openssl rand -hex 8
+# define RANDOM_SEED_UINT64 0x629d97afad9281f2
 
-union u_result
-{
-	int		ok;
-	char	*err_msg;
-};
+# define DOUBLE_INV_SCALE 0x1p-53
 
-typedef struct s_result
-{
-	enum e_result	state;
-	union u_result	value;
-}	t_result;
+// how heavy to calculate to hit aabb intersection
+# define COST_AABB_INTERSECTION 1.0
 
-typedef struct s_world	t_world;
+// how heavy to calculate to hit element intersection
+# define COST_ELEMENT_INTERSECTION 2.8
 
-struct s_world
-{
-	int	option_flag;
-};
+# define HIT_T_MIN 1e-3
+
+// 0 < SAMPLES_PER_PIXEL
+// should be at rt_config.h
+# define SAMPLES_PER_PIXEL 30
+# define LENS_RADIUS 0.0
+# define MAX_DEPTH	10
 
 #endif

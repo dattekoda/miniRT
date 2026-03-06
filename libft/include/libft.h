@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 12:52:23 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/08 11:38:44 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/02/17 21:19:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stddef.h>
+# include <aio.h>
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4096
 # endif

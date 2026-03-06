@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 22:05:29 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/12 14:27:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:37:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_utils.h"
-#include "vec_define.h"
+#include "vec.h"
 #include <math.h>
 
 double	dot(t_vec3 lhs, t_vec3 rhs)
@@ -44,9 +44,8 @@ l0 * r1 - l1 * r2)
 */
 t_vec3	cross(t_vec3 lhs, t_vec3 rhs)
 {
-	return (construct_vec3(\
-lhs.e[1] * rhs.e[2] - lhs.e[2] * rhs.e[1], \
-lhs.e[2] * rhs.e[0] - lhs.e[0] * rhs.e[2], \
-lhs.e[0] * rhs.e[1] - lhs.e[1] * rhs.e[0]\
-));
+	return (construct_vec3(
+			lhs.e[1] * rhs.e[2] - lhs.e[2] * rhs.e[1],
+			lhs.e[2] * rhs.e[0] - lhs.e[0] * rhs.e[2],
+			lhs.e[0] * rhs.e[1] - lhs.e[1] * rhs.e[0]));
 }

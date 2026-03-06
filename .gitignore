@@ -10,3 +10,4 @@
 !docs/*.md
 !test/*
 !test_scene/**
+!*.rt

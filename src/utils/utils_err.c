@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_err.c                                         :+:      :+:    :+:   */
+/*   utils_err.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 10:19:05 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/10 18:36:52 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/02/10 17:15:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_utils.h"
+#include "rt_config.h"
 #include "libft.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -21,7 +22,8 @@
 */
 void	err_rt(char *err_msg)
 {
-	ft_putstr_fd("miniRT: ", STDERR_FILENO);
+	ft_putstr_fd(PROJECT_NAME, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
 	if (err_msg)
 		ft_putendl_fd(err_msg, STDERR_FILENO);
 }

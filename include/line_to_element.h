@@ -1,0 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   line_to_element.h                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/16 18:58:22 by ikawamuk          #+#    #+#             */
+/*   Updated: 2026/01/29 23:37:48 by ikawamuk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef LINE_TO_ELEMENT_H
+# define LINE_TO_ELEMENT_H
+
+# include "hitter.h"
+# include "element.h"
+
+int	line_to_light(t_hitter **light, const char *line);
+int	line_to_sphere(t_hitter **sphere, const char *line);
+int	line_to_plane(t_hitter **plane, const char *line);
+int	line_to_material(
+		const char *line,
+		size_t *line_idx,
+		t_material **mat_pp,
+		const t_element *element);
+
+#endif

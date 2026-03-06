@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
         # submodules オプションを削除
 
       # グラフィック関連のライブラリをインストール
@@ -21,4 +23,6 @@ jobs:
           sudo apt-get install -y libx11-dev libxext-dev libbsd-dev
 
       - name: Run make
-        run: make
+        run: |
+         make -C minilibx-linux
+         make

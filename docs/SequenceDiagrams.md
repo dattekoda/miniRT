@@ -151,8 +151,20 @@ flowchart
 		output[/color/]
 	end
 ```
-
-
+```mermaid
+flowchart
+	subgraph feature-read material
+		direction TB
+		if1{has texture specifier}
+		if1-->|true|frm1[set texture from line_list]
+		if1-->|false|frm2[set element's default texture]
+		if2{has material specifier}
+		frm1-->if2
+		if2-->|true|frm3[set material from line_list]
+		if2-->|false|frm4[set element's default material]
+		frm2-->frm4
+	end
+```
 
 
 
