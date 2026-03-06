@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_disk.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 01:52:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/03 23:00:22 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/06 11:58:29 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ static void			assign_disk_hrec(
 bool	hit_disk(
 			const void *s, const t_ray *ray, t_hrec *hrec, t_range *range)
 {
-	const t_disk	*self;
+	const t_disk	*self = s;
 	t_solution		solu;
 
-	self = s;
+	if (!hit_aabb(&self->hitter.aabb, ray, range))
+		return (false);
 	init_plane_solution(&solu, &self->normal, &self->center, ray);
 	if (fequal(solu.coeff.e[1], 0))
 		return (false);

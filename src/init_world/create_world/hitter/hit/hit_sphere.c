@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/03 22:59:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/06 11:57:52 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ bool	hit_sphere(
 	const t_sphere	*self = s;
 	t_solution		solu;
 
+	if (!hit_aabb(&self->hitter.aabb, ray, range))
+		return (false);
 	init_solution_context(&solu, self, ray);
 	if (!is_solution_inside_range(&solu, range))
 		return (false);

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/04 13:03:04 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:38:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,9 @@ bool	hit_cone(
 	t_hrec *hrec,
 	t_range *range)
 {
-	const t_cone	*self;
+	const t_cone	*self = s;
 	t_solution		solu;
 
-	self = s;
 	init_solution_context(&solu, self, ray);
 	if (!is_solution_inside_range(&solu, range))
 		return (false);
