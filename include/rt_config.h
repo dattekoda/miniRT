@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 06:58:31 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 07:04:06 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define LENS_RADIUS 0.0
 
 // light
-
 // steradian of path tracing model
+// minimum light radius is 1.0
 # define LIGHT_STERADIAN 0.0001
 
 # define PATHTRACING_LIGHT_STRENGTH 101.0

@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 20:31:35 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/30 06:25:12 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 06:52:24 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include "material.h"
 # include "vec.h"
 
+/*
+@param center center of bottom disk
+*/
 typedef struct s_cylinder
 {
 	t_hitter	hitter;

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_cylinder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 07:05:34 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "line_to_element.h"
 #include "init_world_utils.h"
 #include "validate_utils.h"
+#include "vec_utils.h"
 #include "cylinder.h"
 #include "hitter.h"
 #include "vec.h"
@@ -48,6 +49,9 @@ static int	line_to_cylinder_param(
 	token_to_value(line, &i, &diameter);
 	cylinder_param->radius = diameter * 0.5;
 	token_to_value(line, &i, &cylinder_param->height);
+	cylinder_param->center = sub_vec3(cylinder_param->center,
+			scal_mul_vec3(cylinder_param->direct,
+				cylinder_param->height * 0.5));
 	if (line_to_material(
 			line, &i, &cylinder_param->hitter.mat_ptr, g_element_table[DISK])
 		== FAILURE)
