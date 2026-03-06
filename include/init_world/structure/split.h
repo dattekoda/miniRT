@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 14:49:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/24 14:49:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:44:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef struct s_split
 }	t_split;
 
 t_split	construct_split(
-				t_axis axis,
-				size_t left_size,
-				double cost);
+			t_axis axis,
+			size_t left_size,
+			double cost);
 
 #endif

@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 18:28:34 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/10 21:03:55 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:47:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_img_H
-# define RT_img_H
+#ifndef RT_IMG_H
+# define RT_IMG_H
 
 typedef struct s_rt_img
 {
