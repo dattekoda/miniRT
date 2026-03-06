@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 20:42:45 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:51:33 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static bool	err_invlid_line(
 t_result	skip_material(char *line, size_t *line_idx);
 t_result	skip_texture(char *line, size_t *line_idx);
 
-#include <stdio.h>
-// TODO: arg, const int option_flag should bool is_phong
 bool	is_valid_element(char *line, const t_element *elem_info,
 		const int option_flag)
 {
@@ -44,7 +42,7 @@ bool	is_valid_element(char *line, const t_element *elem_info,
 		&& elem_info != g_element_table[CAMERA]
 		&& elem_info != g_element_table[LIGHT])
 	{
-		if (is_valid_material(line, &line_idx, elem_info->input_format) == false)
+		if (!is_valid_material(line, &line_idx, elem_info->input_format))
 			return (false);
 	}
 	result = skip_until_end(line, &line_idx);

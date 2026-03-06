@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:55:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/04 13:05:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:31:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_hitter	*generate_cone(t_cone shape_param)
 	return ((t_hitter *)p);
 }
 
-#include "rt_debug.h"
 // TODO: need to add hitter.size
 static t_cone	construct_cone(t_cone cone_param)
 {

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 18:32:01 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:29:38 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,10 @@ bool				hit_triangle(
 t_aabb				construct_aabb(t_point3 min, t_point3 max);
 double				calc_normal_max(double d);
 static t_aabb		construct_triangle_aabb(t_triangle triangle_param);
-// static void			vertex_to_side(t_vec3 side[3], t_point3 vertex[3]);
 static double		get_min_bound_for_axis(t_point3 vtx[3], int axis);
 static double		get_max_bound_for_axis(t_point3 vtx[3], int axis);
 
-/*		fmin(fmin(
-				triangle.vertex[0].e[0],
-				triangle.vertex[1].e[0]),
-				triangle.vertex[2].e[0]),
-		fmin(fmin(
-				triangle.vertex[0].e[1],
-				triangle.vertex[1].e[1]),
-				triangle.vertex[2].e[1]),
-		fmin(fmin(
-				triangle.vertex[0].e[2],
-				triangle.vertex[1].e[2]),
-				triangle.vertex[2].e[2]));
+/*
 @brief if generate_triangle failed, mat_ptr->clear()
 */
 t_hitter	*generate_triangle(t_triangle triangle_param)
@@ -66,7 +54,6 @@ static t_triangle	construct_triangle(t_triangle triangle_param)
 	triangle_param.hitter.clear = clear_hitter;
 	triangle_param.hitter.has_aabb = true;
 	triangle_param.hitter.aabb = construct_triangle_aabb(triangle_param);
-	// vertex_to_side(triangle_param.side, triangle_param.vertex);
 	triangle_param.edge[0]
 		= sub_vec3(triangle_param.vertex[1], triangle_param.vertex[0]);
 	triangle_param.edge[1]

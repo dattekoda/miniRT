@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:01:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/02 18:15:33 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:57:16 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ static t_color	calc_checker_texture_value(
 					t_hrec *hrec)
 {
 	const t_checker_texture	*self = s;
-	const int				ui = (int)floor(hrec->map.e[1] * CHECKER_SPLIT_SIZE);
-	const int				vi = (int)floor(hrec->map.e[0] * CHECKER_SPLIT_SIZE);
+	const int				ui
+		= (int)floor(hrec->map.e[1] * CHECKER_SPLIT_SIZE);
+	const int				vi
+		= (int)floor(hrec->map.e[0] * CHECKER_SPLIT_SIZE);
 
 	if ((ui + vi) & 1)
 		return (self->odd.texture.calc_texture_value(&self->odd, hrec));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:20:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/18 22:59:55 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:48:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	render_world(t_world *world, int option_flag)
 {
 	int	*raw_rgb_arr;
 
-	if (render_pixels(
-		&raw_rgb_arr, world, option_flag & OPT_ARTIFICIAL) == FAILURE)
+	if (render_pixels(&raw_rgb_arr, world, option_flag & OPT_ARTIFICIAL)
+		== FAILURE)
 	{
 		clear_world(world);
 		return (FAILURE);

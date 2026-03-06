@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:37:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/04 20:54:34 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:35:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ bool	hit_aabb(
 				const t_ray *ray,
 				const t_vec2 *range)
 {
-	t_range			tmp_range;
-	double			t_min;
-	double			t_max;
-	double			tmp_div;
-	t_axis			axis;
+	t_range	tmp_range;
+	double	t_min;
+	double	t_max;
+	double	tmp_div;
+	t_axis	axis;
 
 	t_min = range->e[0];
 	t_max = range->e[1];
@@ -59,12 +59,12 @@ bool	hit_aabb(
 t_aabb	surrounding_box(t_aabb aabb1, t_aabb aabb2)
 {
 	return (construct_aabb(
-		construct_vec3(
-			fmin(aabb1.min.e[A_X], aabb2.min.e[A_X]),
-			fmin(aabb1.min.e[A_Y], aabb2.min.e[A_Y]),
-			fmin(aabb1.min.e[A_Z], aabb2.min.e[A_Z])),
-		construct_vec3(
-			fmax(aabb1.max.e[A_X], aabb2.max.e[A_X]),
-			fmax(aabb1.max.e[A_Y], aabb2.max.e[A_Y]),
-			fmax(aabb1.max.e[A_Z], aabb2.max.e[A_Z]))));
+			construct_vec3(
+				fmin(aabb1.min.e[A_X], aabb2.min.e[A_X]),
+				fmin(aabb1.min.e[A_Y], aabb2.min.e[A_Y]),
+				fmin(aabb1.min.e[A_Z], aabb2.min.e[A_Z])),
+			construct_vec3(
+				fmax(aabb1.max.e[A_X], aabb2.max.e[A_X]),
+				fmax(aabb1.max.e[A_Y], aabb2.max.e[A_Y]),
+				fmax(aabb1.max.e[A_Z], aabb2.max.e[A_Z]))));
 }

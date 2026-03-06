@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/22 16:58:54 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:26:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,6 @@ static t_color	calc_color(t_color raw_color, double ratio)
 	return (scal_mul_vec3(normalize_color(raw_color), ratio));
 }
 
-#include "rt_debug.h"
-#include <stdlib.h>
 static t_material	*param_to_light_material(t_color color)
 {
 	t_texture	*texture_ptr;

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 10:46:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/24 22:03:10 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:45:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void		*decide_pivot(char *base, size_t size, size_t nmemb,
 					int (*compar)(const void*, const void*));
 
 void			ft_swap(void *a, void *b, size_t size);
+
 // left = 0;
 // right = size - 1;
 /*
@@ -129,10 +130,14 @@ static void	*decide_pivot(char *base, size_t size, size_t nmemb,
 
 // void	print_obj_sort(t_obj arr[])
 // {
-// 	fprintf(stderr, "before:\ta:%d b:%d c:%d d:%d\n", *arr[0].date_p, *arr[1].date_p, *arr[2].date_p, *arr[3].date_p);
+// 	fprintf(stderr,
+//	"before:\ta:%d b:%d c:%d d:%d\n",
+//	*arr[0].date_p, *arr[1].date_p, *arr[2].date_p, *arr[3].date_p);
 // 	ft_qsort((char *)arr, 4, sizeof(t_obj), compare_obj);
 // 	// ft_swap(arr, arr+1, sizeof(t_obj));
-// 	fprintf(stderr, "after:\ta:%d b:%d c:%d d:%d\n", *arr[0].date_p, *arr[1].date_p, *arr[2].date_p, *arr[3].date_p);
+// 	fprintf(stderr,
+//	"after:\ta:%d b:%d c:%d d:%d\n",
+//	*arr[0].date_p, *arr[1].date_p, *arr[2].date_p, *arr[3].date_p);
 // }
 
 // int	main(void)
@@ -153,8 +158,6 @@ static void	*decide_pivot(char *base, size_t size, size_t nmemb,
 // 	print_obj_sort(arr2);
 // 	print_obj_sort(arr3);
 // }
-
-
 
 // // sorting test
 // #include <stdio.h>

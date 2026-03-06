@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 15:04:27 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/04 18:15:59 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:10:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ static bool	hit_hitter_list(
 
 static void	clear_hitter_list(void *s)
 {
-	t_hitter_list	*self = s;
-
-	ft_lstclear(&self->head, clear_free_hitter);
+	ft_lstclear(&(((t_hitter_list *)s)->head), clear_free_hitter);
 	return ;
 }
