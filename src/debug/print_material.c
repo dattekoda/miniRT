@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_line_list.c                                  :+:      :+:    :+:   */
+/*   print_material.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/11 19:00:14 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/20 22:12:10 by ikawamuk         ###   ########.fr       */
+/*   Created: 2026/03/06 20:27:57 by khanadat          #+#    #+#             */
+/*   Updated: 2026/03/06 20:27:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "material_define.h"
 #include <stdio.h>
 
-void	print_line_list(const t_list *line_list)
+void	print_material(const t_material *material)
 {
-	t_list	*cur = (t_list *)line_list;
-	while (cur)
+	if (!material)
 	{
-		fprintf(stderr, "%s", (char *)cur->content);
-		cur = cur->next;
+		fprintf(stderr, "material null\n");
+		return ;
 	}
-	fprintf(stderr, "\n");
+	fprintf(stderr, "material: %s\n", g_material_specifiers[material->idx]);
 }

@@ -1,13 +1,25 @@
-#ifndef RT_DEBUG_H
-#define RT_DEBUG_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rt_debug.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/06 20:20:32 by khanadat          #+#    #+#             */
+/*   Updated: 2026/03/06 20:20:50 by khanadat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h> // debug
-#include "world.h"
-#include "hitter.h"
-#include "libft.h"
-#include "hitter_arr.h"
-#include "split.h"
+#ifndef RT_DEBUG_H
+# define RT_DEBUG_H
+
+# include "world.h"
+# include "hitter.h"
+# include "libft.h"
+# include "hitter_arr.h"
+# include "split.h"
+# include <stdio.h>
+# include <stdlib.h>
 
 void	init_time(void);
 void	print_time(void);

@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/06 19:50:42 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/06 20:35:45 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -234,7 +234,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 
 # you can delete later
 SRCS	+=	$(addprefix $(SRCDIR)/, \
-				$(addprefix src_for_debug/, \
+				$(addprefix debug/, \
 					clock.c \
 					print_aabb.c \
 					print_axis.c \
@@ -242,7 +242,6 @@ SRCS	+=	$(addprefix $(SRCDIR)/, \
 					print_hitter.c \
 					print_line_list.c \
 					print_material.c \
-					print_pixel_arr.c \
 					print_ray.c \
 					print_split.c \
 					print_vec.c \

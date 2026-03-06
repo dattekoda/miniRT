@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:20:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 18:48:39 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/06 20:40:14 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@
 #include <stdlib.h>
 #include <math.h>
 
-int			render_pixels(
-				int **raw_rgb_arr,
-				const t_world *world,
-				bool is_phong);
-int			draw_image(int **raw_rgb_arr, bool is_ppm_mode);
-void		clear_world(t_world *world);
+int		render_pixels(
+			int **raw_rgb_arr,
+			const t_world *world,
+			bool is_phong);
+int		draw_image(int **raw_rgb_arr, bool is_ppm_mode);
+void	clear_world(t_world *world);
+void	init_time(void);
 
 /*
 @brief responsible for free(world)
@@ -34,6 +35,7 @@ int	render_world(t_world *world, int option_flag)
 {
 	int	*raw_rgb_arr;
 
+	init_time();
 	if (render_pixels(&raw_rgb_arr, world, option_flag & OPT_ARTIFICIAL)
 		== FAILURE)
 	{
