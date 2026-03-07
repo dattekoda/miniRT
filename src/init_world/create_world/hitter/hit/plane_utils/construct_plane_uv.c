@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 18:51:22 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/03 22:58:30 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 16:48:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_point2	construct_plane_uv(
 					const t_vec3 *hit_point,
 					const t_vec3 *plane_point)
 {
-	static const double	inv_unit_edge = 1 / (int)UNIT_EDGE;
+	static const double	inv_unit_edge = 1 / (double)(UNIT_EDGE * 10.0);
 	const t_vec3		offset = sub_vec3(*hit_point, *plane_point);
 	const t_onb			onb = construct_onb(*normal);
 	t_point2			map;

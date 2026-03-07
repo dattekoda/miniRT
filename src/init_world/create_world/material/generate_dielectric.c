@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_dielectric.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 21:28:52 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/02 18:46:25 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 17:25:34 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-static t_vec3		refract(
+t_vec3				refract(
 						const t_vec3 unit_ray_in_direct,
 						const t_vec3 normal,
 						double refract_ratio);
@@ -25,6 +25,10 @@ static t_dielectric	construct_dielectric(t_texture *texture_ptr);
 static bool			scatter_dielectric(
 						const void *s,
 						const t_world *world,
+						t_hrec *hrec,
+						t_srec *srec);
+static void			record_next_direct(
+						const t_dielectric *self,
 						t_hrec *hrec,
 						t_srec *srec);
 static void			init_refract_ratio_outward_normal(
@@ -73,12 +77,24 @@ static bool	scatter_dielectric(
 			t_srec *srec)
 {
 	const t_dielectric	*self = s;
-	const t_vec3		unit_direct = normalize(hrec->ray_in.direct);
-	double				refract_ratio;
-	t_vec3				outward_normal;
-	double				sin_theta;
 
 	(void)world;
+	srec->attenuation = self->material.texture_ptr->calc_texture_value(
+			self->material.texture_ptr, hrec);
+	record_next_direct(self, hrec, srec);
+	return (true);
+}
+
+static void	record_next_direct(
+			const t_dielectric *self,
+			t_hrec *hrec,
+			t_srec *srec)
+{
+	const t_vec3		unit_direct = normalize(hrec->ray_in.direct);
+	t_vec3				outward_normal;
+	double				refract_ratio;
+	double				sin_theta;
+
 	init_refract_ratio_outward_normal(
 		&refract_ratio, &outward_normal, self, hrec);
 	sin_theta = sqrt(1.0 - pow(
@@ -89,11 +105,9 @@ static bool	scatter_dielectric(
 	else
 		srec->next_ray = construct_ray(hrec->point,
 				refract(unit_direct, outward_normal, refract_ratio));
-	srec->attenuation = self->material.texture_ptr->calc_texture_value(
-			self->material.texture_ptr, hrec);
 	srec->sampling_pdf = 1.0;
 	srec->surface_pdf = 1.0;
-	return (true);
+	return ;
 }
 
 static void	init_refract_ratio_outward_normal(
@@ -113,24 +127,4 @@ static void	init_refract_ratio_outward_normal(
 		*outward_normal = negative_vec3(hrec->normal);
 	}
 	return ;
-}
-
-static t_vec3	refract(
-			const t_vec3 unit_ray_in_direct,
-			const t_vec3 normal,
-			double refract_ratio)
-{
-	const double	cos_theta = dot(negative_vec3(unit_ray_in_direct), normal);
-	const t_vec3	next_ray_direct_parallel
-		= scal_mul_vec3(
-			add_vec3(
-				unit_ray_in_direct,
-				scal_mul_vec3(normal, cos_theta)),
-			refract_ratio);
-	const t_vec3	next_ray_direct_perp
-		= scal_mul_vec3(
-			normal,
-			-sqrt(1 - length_squared_vec3(next_ray_direct_parallel)));
-
-	return (add_vec3(next_ray_direct_parallel, next_ray_direct_perp));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_metal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 09:32:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/02 18:40:01 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 17:08:29 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ t_vec3				orient_normal(
 						const t_vec3 *hrec_normal,
 						const t_vec3 *ray_in_direct);
 static t_metal		construct_metal(t_texture *texture_ptr);
-static t_vec3		random_in_unit_sphere(void);
 static bool			scatter_metal(
 						const void *s,
 						const t_world *world,
 						t_hrec *hrec,
 						t_srec *srec);
+static void			record_next_direct_from_pdf(
+						t_hrec *hrec,
+						t_srec *srec);
+static t_vec3		random_in_unit_sphere(void);
 
 /*
 @brief responsible for free(texture_ptr)
@@ -73,16 +76,25 @@ static bool	scatter_metal(
 				t_srec *srec)
 {
 	const t_metal	*self = s;
+	const t_texture	*texture_ptr = self->material.texture_ptr;
+
+	(void)world;
+	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec);
+	record_next_direct_from_pdf(hrec, srec);
+	return (true);
+}
+
+static void	record_next_direct_from_pdf(
+				t_hrec *hrec,
+				t_srec *srec)
+{
 	const t_vec3	reflect_normal
 		= orient_normal(&hrec->normal, &hrec->ray_in.direct);
 	const t_vec3	reflected
 		= reflect(normalize(hrec->ray_in.direct), reflect_normal);
-	const t_texture	*texture_ptr = self->material.texture_ptr;
 
-	(void)world;
 	srec->surface_pdf = 1.0;
 	srec->sampling_pdf = 1.0;
-	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec);
 	srec->next_ray = construct_ray(
 			hrec->point,
 			add_vec3(
@@ -90,7 +102,7 @@ static bool	scatter_metal(
 				scal_mul_vec3(
 					random_in_unit_sphere(),
 					METAL_FUZZINESS)));
-	return (true);
+	return ;
 }
 
 static t_vec3	random_in_unit_sphere(void)
