@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_checker_texture.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:01:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/07 16:40:36 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 18:15:34 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static t_checker_texture	construct_checker_texture(
 	check.texture.calc_texture_value = calc_checker_texture_value;
 	check.texture.size = sizeof(t_checker_texture);
 	check.even = construct_solid_texture(color);
-	check.odd = construct_solid_texture(constant_vec3(1.0));
+	check.odd = construct_solid_texture(
+			construct_vec3(R_CHECKER, G_CHECKER, B_CHECKER));
 	return (check);
 }
 

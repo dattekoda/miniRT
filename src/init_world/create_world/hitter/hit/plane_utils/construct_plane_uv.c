@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   construct_plane_uv.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 18:51:22 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/07 16:48:29 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 18:06:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_utils.h"
-#include "init_world_utils.h"
+#include "rt_define.h"
 #include <math.h>
 
 t_point2	construct_plane_uv(
