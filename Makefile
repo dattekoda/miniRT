@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/07 17:22:48 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/03/07 17:53:50 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -264,7 +264,7 @@ INCDIRS		=	$(shell find include -type d)
 # --- OS DETECTION ---
 UNAME	=	$(shell uname -s)
 ifeq ($(UNAME),Darwin)
-	MLXDIR := $(HOME)/minilibx
+	MLXDIR := minilibx_maxos
 	MLXFLAG := -framework OpenGL -framework AppKit
 	GITHUBURL := https://github.com/dannywillems/minilibx.git
 else ifeq ($(UNAME),Linux)
@@ -331,7 +331,7 @@ TESTOBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(TESTSRCS))
 # --- Rules ---
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
+$(NAME): $(OBJS)
 	$(CC) $(CFLAG) $(OBJS) $(LDFLAG) $(LDLIBS) -o $@
 	@echo "\n\033[1;32m'$(NAME)' has been created!\033[0m"
 
@@ -344,7 +344,7 @@ $(MLX):
 	git clone $(GITHUBURL) $(MLXDIR)
 	@$(MAKE) -C $(MLXDIR)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(LIBFT) $(MLX)
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAG) -c $< -o $@
 
