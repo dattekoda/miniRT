@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 07:42:25 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 14:52:08 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@
 
 // tetxure
 // 0: solid
-// 1: bump
-// 2: checker
+// 1: checker
+// 2: bump
 
 # define LIGHT_TEXTURE_ID		0
 # define SPHERE_TEXTURE_ID		0
@@ -59,11 +59,14 @@
 # define CONE_TEXTURE_ID		0
 # define TRIANGLE_TEXTURE_ID	0
 
-// material
+// 0: ripple
+// 1: block
+# define BUMP_TYPE 0
+
+// material (not supported in artificial mode)
 // 0: lambertian
 // 1: metal
 // 2: dielectric
-
 # define LIGHT_MATERIAL_ID		0
 # define SPHERE_MATERIAL_ID		0
 # define PLANE_MATERIAL_ID		0
@@ -72,9 +75,6 @@
 # define CONE_MATERIAL_ID		0
 # define TRIANGLE_MATERIAL_ID	0
 
-// 0: ripple
-// 1: block
-# define BUMP_TYPE 0
 
 // phong
 # define R_PHONG_AMBIENT_COEFF 0.1

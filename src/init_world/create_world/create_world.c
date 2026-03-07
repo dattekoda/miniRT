@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:14:11 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/07 13:48:27 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 14:18:24 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ int	create_world(t_world *world, t_list *line_list, int option_flag)
 		return (FAILURE);
 	if (set_objects(world, line_list, option_flag) == FAILURE)
 		return (FAILURE);
-	print_tree(world->object_tree);
 	return (SUCCESS);
 }
