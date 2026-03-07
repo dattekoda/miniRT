@@ -34,6 +34,8 @@ jobs:
       # 4. Norminetteの実行
       - name: Run Norminette on src and include
         run: |
-          if norminette src include | grep -q "Error:"; then
-            exit 1
-          fi
+          ! norminette src include 2>&1 |  grep "Error :"
+      # if norminette src include |& grep -q "Error :"; 
+      # then
+      #   exit 1
+      # fi
