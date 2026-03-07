@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/15 15:38:00 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 18:01:48 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	print_remaining(size_t yi)
 	static int			old_percentage = -1;
 	int					percentage;
 
-	percentage = (int)((double)yi * inv_h_mul_100);
+	percentage = (int)((double)yi * inv_h_mul_100 + 0.5);
 	if (percentage == old_percentage)
 		return ;
 	ft_putstr_fd("\rScanlines remaining: ", STDERR_FILENO);

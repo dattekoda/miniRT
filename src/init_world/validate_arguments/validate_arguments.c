@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static void	put_format(void);
+void		put_format(void);
 static void	print_help(void);
 bool		is_valid_file_name(const char *file_path);
 bool		is_valid_option(char **options);
@@ -61,7 +61,7 @@ static void	print_help(void)
 	ft_putendl_fd("\t-h, --help: print help", STDOUT_FILENO);
 }
 
-static void	put_format(void)
+void	put_format(void)
 {
 	size_t	i;
 
