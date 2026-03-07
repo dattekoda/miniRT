@@ -6,7 +6,7 @@
 #    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/07 02:08:10 by ikawamuk         ###   ########.fr        #
+#    Updated: 2026/03/07 17:22:48 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 							$(addprefix material_utils/, \
 								orient_normal.c \
 								clone_material.c \
+								refract.c \
 							) \
 							$(addprefix pdf/, \
 								$(addprefix light_pdf_utils/, \

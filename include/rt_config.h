@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 16:43:42 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 17:19:36 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@
 
 # define LIGHT_TEXTURE_ID		0
 # define SPHERE_TEXTURE_ID		0
-# define PLANE_TEXTURE_ID		1
+# define PLANE_TEXTURE_ID		2
 # define CYLINDER_TEXTURE_ID	0
-# define DISK_TEXTURE_ID		1
-# define CONE_TEXTURE_ID		1
-# define TRIANGLE_TEXTURE_ID	1
+# define DISK_TEXTURE_ID		2
+# define CONE_TEXTURE_ID		2
+# define TRIANGLE_TEXTURE_ID	2
 
 // 0: ripple
 // 1: block
@@ -68,12 +68,12 @@
 // 1: metal
 // 2: dielectric
 # define LIGHT_MATERIAL_ID		0
-# define SPHERE_MATERIAL_ID		0
+# define SPHERE_MATERIAL_ID		2
 # define PLANE_MATERIAL_ID		0
-# define CYLINDER_MATERIAL_ID	0
-# define DISK_MATERIAL_ID		0
-# define CONE_MATERIAL_ID		0
-# define TRIANGLE_MATERIAL_ID	0
+# define CYLINDER_MATERIAL_ID	2
+# define DISK_MATERIAL_ID		2
+# define CONE_MATERIAL_ID		2
+# define TRIANGLE_MATERIAL_ID	2
 
 // phong
 # define R_PHONG_AMBIENT_COEFF 0.1
