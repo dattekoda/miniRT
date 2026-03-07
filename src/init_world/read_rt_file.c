@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_rt_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/24 23:11:44 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 18:08:43 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	read_rt_file(t_list **line_list, const char *file_path)
 		perror_rt(file_path);
 		exit(EXIT_FAILURE);
 	}
-	if (read_lines_to_list(ft_memset(&head, 0, sizeof(t_list)), fd) == FAILURE)
+	ft_memset(&head, 0, sizeof(t_list));
+	if (read_lines_to_list(&head, fd) == FAILURE)
 	{
 		ft_lstclear(&head.next, free);
 		close(fd);
