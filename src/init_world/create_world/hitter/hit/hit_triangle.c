@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 19:28:19 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 18:23:34 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 #include "vec_utils.h"
 #include <math.h>
 
+t_point2	construct_plane_uv(
+				const t_vec3 *normal,
+				const t_vec3 *hit_point,
+				const t_vec3 *plane_point);
 t_vec3		orient_normal(
 				const t_vec3 *hrec_normal,
 				const t_vec3 *ray_in_direct);
@@ -62,7 +66,7 @@ static void	assign_triangle_hrec(
 	hrec->normal = orient_normal(&self->normal, &ray->direct);
 	hrec->mat_ptr = self->hitter.mat_ptr;
 	hrec->map
-		= construct_vec2(tr_solu->solu.coeff.e[0], tr_solu->solu.coeff.e[1]);
+		= construct_plane_uv(&hrec->normal, &self->vertex[0], &hrec->point);
 	return ;
 }
 
