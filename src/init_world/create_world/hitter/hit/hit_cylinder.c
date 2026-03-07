@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 18:54:06 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 13:42:00 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 16:40:12 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,8 @@ static void	init_solution_context(
 	const t_cylinder *self,
 	const t_ray *ray)
 {
-	const t_vec3	center_to_ray_origin = sub_vec3(ray->origin, self->bottom_center);
+	const t_vec3	center_to_ray_origin
+		= sub_vec3(ray->origin, self->bottom_center);
 
 	solu->coeff = calc_cylinder_coeff(
 			&ray->direct,

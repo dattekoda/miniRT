@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cone.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 19:28:06 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 16:42:09 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ static t_vec2	construct_cone_uv(
 		const t_cone *self,
 		const t_vec3 *center_to_point)
 {
-	static const int	unit_height = 5;
+	static const double	unit_height = 1.0 / 5.0;
 	const t_onb			onb = construct_onb(self->direct);
 	const double		theta = atan2(
 			dot(*center_to_point, onb.v[0]),
@@ -137,5 +137,5 @@ static t_vec2	construct_cone_uv(
 
 	return (construct_vec2(
 			1.0 - (theta / (2.0 * M_PI) + 0.5),
-			fmod(height, unit_height) / unit_height));
+			fmod(height, unit_height) * unit_height));
 }

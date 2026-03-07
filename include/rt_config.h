@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 14:52:08 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 16:43:42 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@
 
 # define LIGHT_TEXTURE_ID		0
 # define SPHERE_TEXTURE_ID		0
-# define PLANE_TEXTURE_ID		0
+# define PLANE_TEXTURE_ID		1
 # define CYLINDER_TEXTURE_ID	0
-# define DISK_TEXTURE_ID		0
-# define CONE_TEXTURE_ID		0
-# define TRIANGLE_TEXTURE_ID	0
+# define DISK_TEXTURE_ID		1
+# define CONE_TEXTURE_ID		1
+# define TRIANGLE_TEXTURE_ID	1
 
 // 0: ripple
 // 1: block
@@ -74,7 +74,6 @@
 # define DISK_MATERIAL_ID		0
 # define CONE_MATERIAL_ID		0
 # define TRIANGLE_MATERIAL_ID	0
-
 
 // phong
 # define R_PHONG_AMBIENT_COEFF 0.1
