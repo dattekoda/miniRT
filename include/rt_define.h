@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/07 07:41:14 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 13:57:40 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ extern const unsigned int	g_window_height;
 # define COST_ELEMENT_INTERSECTION 2.8
 
 # define HIT_T_MIN 1e-3
+
+# define PLANE_AABB_THICKNESS 1e-3
 
 // 0 < SAMPLES_PER_PIXEL
 // should be at rt_config.h

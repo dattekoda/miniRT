@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_cylinder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 07:05:34 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 13:40:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,18 @@ cy 50.0,0.0,20.6 0.0,0.0,1.0 14.2 21.42 10,0,255 lambertian checker
 static int	line_to_cylinder_param(
 				const char *line, t_cylinder *cylinder_param)
 {
-	size_t	i;
-	double	diameter;
+	size_t		i;
+	double		diameter;
+	t_point3	center;
 
 	i = g_element_table[CYLINDER]->id_len;
-	token_to_vec(line, &i, &cylinder_param->center);
+	token_to_vec(line, &i, &center);
 	token_to_vec(line, &i, &cylinder_param->direct);
 	token_to_value(line, &i, &diameter);
 	cylinder_param->radius = diameter * 0.5;
 	token_to_value(line, &i, &cylinder_param->height);
-	cylinder_param->center = sub_vec3(cylinder_param->center,
+	cylinder_param->bottom_center
+		= sub_vec3(center,
 			scal_mul_vec3(cylinder_param->direct,
 				cylinder_param->height * 0.5));
 	if (line_to_material(

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 19:29:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 13:58:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "rt_utils.h"
 #include "solution.h"
 #include "vec_utils.h"
+#include "rt_define.h"
 #include <math.h>
 #include <stdlib.h>
 
@@ -84,7 +85,7 @@ static double	get_min_bound_for_axis(t_point3 vtx[3], int axis)
 	return (fmin(fmin(
 				vtx[0].e[axis],
 				vtx[1].e[axis]),
-			vtx[2].e[axis]) - 0.0001);
+			vtx[2].e[axis]) - PLANE_AABB_THICKNESS);
 }
 
 static double	get_max_bound_for_axis(t_point3 vtx[3], int axis)
@@ -92,7 +93,7 @@ static double	get_max_bound_for_axis(t_point3 vtx[3], int axis)
 	return (fmax(fmax(
 				vtx[0].e[axis],
 				vtx[1].e[axis]),
-			vtx[2].e[axis]) + 0.0001);
+			vtx[2].e[axis]) + PLANE_AABB_THICKNESS);
 }
 
 // static void	vertex_to_side(t_vec3 side[3], t_point3 vertex[3])

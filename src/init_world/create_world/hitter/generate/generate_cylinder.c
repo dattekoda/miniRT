@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 17:07:16 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/02 12:23:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 13:41:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ static t_aabb	construct_cylinder_aabb(t_cylinder cylinder)
 
 	v_max = scal_mul_vec3(map_vec3(cylinder.direct, calc_normal_max),
 			cylinder.radius);
-	top_center = add_vec3(cylinder.center,
+	top_center = add_vec3(cylinder.bottom_center,
 			scal_mul_vec3(cylinder.direct, cylinder.height));
-	min = sub_vec3(map2_vec3(cylinder.center, top_center, fmin), v_max);
-	max = add_vec3(map2_vec3(cylinder.center, top_center, fmax), v_max);
+	min = sub_vec3(map2_vec3(cylinder.bottom_center, top_center, fmin), v_max);
+	max = add_vec3(map2_vec3(cylinder.bottom_center, top_center, fmax), v_max);
 	return (construct_aabb(min, max));
 }
 
