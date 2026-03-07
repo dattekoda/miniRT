@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:35:16 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 14:44:43 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 19:46:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ static void	err_invalid_identifer(char *line)
 	identifier_idx = 0;
 	while (!ft_strchr(" \t", line[identifier_idx]))
 		identifier_idx++;
-	err_point_out(line, identifier_idx - 1);
+	if (identifier_idx)
+		identifier_idx--;
+	err_point_out(line, identifier_idx);
 	err_rt("invalid identifier");
 	return ;
 }
