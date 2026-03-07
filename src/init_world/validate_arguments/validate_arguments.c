@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:21:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 18:10:32 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 18:03:24 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	validate_arguments(int argc, char *argv[])
 	{
 		err_rt("set .rt file as first argument");
 		put_format();
-		ft_putendl_fd("\nSee \'./miniRT -h\' for help", STDERR_FILENO);
+		ft_putendl_fd("\nSee \'./miniRT --help\' for help", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
-	if (!ft_strcmp("-h", argv[1]))
+	if (!ft_strcmp("-h", argv[1]) || !ft_strcmp("--help", argv[1]))
 	{
 		print_help();
 		exit(EXIT_SUCCESS);
@@ -48,16 +48,17 @@ void	validate_arguments(int argc, char *argv[])
 
 static void	print_help(void)
 {
-	ft_putendl_fd("Usage: ./miniRT <.rt file> [OPTION]", STDERR_FILENO);
+	ft_putendl_fd("Usage: ./miniRT <.rt file> [OPTION]", STDOUT_FILENO);
 	put_format();
-	ft_putendl_fd("\noptions:", STDERR_FILENO);
-	ft_putendl_fd("\t-a artificial mode: use Phong reflection model",
-		STDERR_FILENO);
-	ft_putendl_fd("\t-m define object materials. "\
-"-- lambertian, metal, dielectric for material", STDERR_FILENO);
-	ft_putendl_fd("\t                            "\
-"-- solid, checker, bump for texture", STDERR_FILENO);
-	ft_putendl_fd("\t-p ppm mode: out put ppm file", STDERR_FILENO);
+	ft_putendl_fd("\noptions:", STDOUT_FILENO);
+	ft_putendl_fd("\t-a, --artificial: artificial mode. use Phong reflection model",
+		STDOUT_FILENO);
+	ft_putendl_fd("\t-m, --material: define object materials. "\
+"-- lambertian, metal, dielectric for material", STDOUT_FILENO);
+	ft_putendl_fd("\t                                         "\
+"-- solid, checker, bump for texture", STDOUT_FILENO);
+	ft_putendl_fd("\t-p, --ppm: ppm mode: out put ppm file", STDOUT_FILENO);
+	ft_putendl_fd("\t-h, --help: print help", STDOUT_FILENO);
 }
 
 void	put_format(void)
