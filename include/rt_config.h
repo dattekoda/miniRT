@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_config.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 20:12:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 07:42:25 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,24 @@
 
 # define PROJECT_NAME "miniRT"
 
-// window
-# ifndef WINDOW_WIDTH
-#  define WINDOW_WIDTH 400
-# endif
-// camera
-# ifndef ASPECT_RATIO
-#  define ASPECT_RATIO 0.5625 /*  (9.0 / 16.0)  */
-# endif
+# define SAMPLES_PER_PIXEL 50
 
-# ifndef LENS_RADIUS
-#  define LENS_RADIUS 0.0
-# endif
+// window
+# define WINDOW_WIDTH 600
+// camera
+# define ASPECT_RATIO 0.5625 /*  (9.0 / 16.0)  */
+
+# define LENS_RADIUS 0.0
+
+// Maximum number of reflections
+# define MAX_DEPTH	5
 
 // light
-
 // steradian of path tracing model
-# ifndef LIGHT_STERADIAN
-#  define LIGHT_STERADIAN 0.001
-# endif
+// minimum light radius is 1.0
+# define LIGHT_STERADIAN 0.005
 
-# define PATHTRACING_LIGHT_STRENGTH 101.0
+# define PATHTRACING_LIGHT_STRENGTH 200.0
 
 # define RUSSIAN_ROULETTE_START_DEPTH 10
 

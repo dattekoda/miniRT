@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 22:12:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/04 19:55:06 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 13:42:18 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	cylinder_to_upper_disk(t_cylinder cylinder, t_disk *upper_disk)
 	ft_bzero(upper_disk, sizeof(t_disk));
 	upper_disk->center
 		= add_vec3(
-			cylinder.center,
+			cylinder.bottom_center,
 			scal_mul_vec3(
 				cylinder.direct,
 				cylinder.height));
@@ -77,7 +77,7 @@ static int	cylinder_to_upper_disk(t_cylinder cylinder, t_disk *upper_disk)
 static int	cylinder_to_lower_disk(t_cylinder cylinder, t_disk *lower_disk)
 {
 	ft_bzero(lower_disk, sizeof(t_disk));
-	lower_disk->center = cylinder.center;
+	lower_disk->center = cylinder.bottom_center;
 	lower_disk->normal = negative_vec3(cylinder.direct);
 	lower_disk->radius = cylinder.radius;
 	lower_disk->hitter.mat_ptr

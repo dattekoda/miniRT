@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 20:31:35 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/30 06:25:12 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 13:39:37 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@
 # include "material.h"
 # include "vec.h"
 
+/*
+@param bottom_center center of bottom disk
+*/
 typedef struct s_cylinder
 {
 	t_hitter	hitter;
-	t_point3	center;
+	t_point3	bottom_center;
 	t_vec3		direct;
 	double		radius;
 	double		height;

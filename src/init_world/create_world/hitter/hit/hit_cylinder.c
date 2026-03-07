@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 18:54:06 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 11:59:26 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 13:42:00 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static void	set_cy_solu_info(
 				const t_ray *ray)
 {
 	cy_solu->point = at_ray(ray, cy_solu->solu.solution);
-	cy_solu->center_to_point = sub_vec3(cy_solu->point, self->center);
+	cy_solu->center_to_point = sub_vec3(cy_solu->point, self->bottom_center);
 	cy_solu->tmp_height = dot(cy_solu->center_to_point, self->direct);
 }
 
@@ -107,7 +107,7 @@ static void	init_solution_context(
 	const t_cylinder *self,
 	const t_ray *ray)
 {
-	const t_vec3	center_to_ray_origin = sub_vec3(ray->origin, self->center);
+	const t_vec3	center_to_ray_origin = sub_vec3(ray->origin, self->bottom_center);
 
 	solu->coeff = calc_cylinder_coeff(
 			&ray->direct,

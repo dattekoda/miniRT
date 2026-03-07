@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/06 20:35:45 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/07 02:08:10 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -330,7 +330,7 @@ TESTOBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(TESTSRCS))
 # --- Rules ---
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MLX) $(LIBFT)
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
 	$(CC) $(CFLAG) $(OBJS) $(LDFLAG) $(LDLIBS) -o $@
 	@echo "\n\033[1;32m'$(NAME)' has been created!\033[0m"
 
@@ -340,7 +340,7 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFTDIR) bonus
 
 $(MLX):
-	@git clone $(GITHUBURL)
+	git clone $(GITHUBURL) $(MLXDIR)
 	@$(MAKE) -C $(MLXDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
@@ -349,8 +349,6 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 
 clean:
 	@$(RMDIR) $(OBJDIR)
-# @$(MAKE) -C $(LIBFTDIR) fclean
-# @$(MAKE) -C $(MLXDIR) clean
 
 fclean: clean
 	$(RM) $(NAME) $(TESTNAME)

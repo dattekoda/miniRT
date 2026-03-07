@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:02:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 20:48:06 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 13:53:00 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ static const char	*g_type_table[] = {
 
 void	print_hitter(t_hitter *hitter)
 {
+	t_hrec	hrec;
+
+	ft_bzero(&hrec, sizeof(t_hrec));
 	if (!hitter)
 	{
 		printf("it is null\n");
@@ -70,7 +73,7 @@ void	print_hitter(t_hitter *hitter)
 		print_vec3(
 			hitter->mat_ptr->texture_ptr->calc_texture_value(
 				hitter->mat_ptr->texture_ptr,
-				NULL));
+				&hrec));
 	}
 }
 
