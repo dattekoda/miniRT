@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:21:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 22:54:53 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 18:10:32 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static void	put_format(void);
+void		put_format(void);
 static void	print_help(void);
 bool		is_valid_file_name(const char *file_path);
 bool		is_valid_option(char **options);
@@ -60,7 +60,7 @@ static void	print_help(void)
 	ft_putendl_fd("\t-p ppm mode: out put ppm file", STDERR_FILENO);
 }
 
-static void	put_format(void)
+void	put_format(void)
 {
 	size_t	i;
 
