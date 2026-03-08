@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:29:47 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RESULTBONUS_H
-# define RESULTBONUS_H
+#ifndef RESULT_BONUS_H
+# define RESULT_BONUS_H
 
 enum e_result
 {

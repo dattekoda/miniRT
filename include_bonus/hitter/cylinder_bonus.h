@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 20:31:35 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CYLINDERBONUS_H
-# define CYLINDERBONUS_H
+#ifndef CYLINDER_BONUS_H
+# define CYLINDER_BONUS_H
 
 # include "material_bonus.h"
 # include "vec_bonus.h"

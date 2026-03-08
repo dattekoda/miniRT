@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 11:55:10 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AABBBONUS_H
-# define AABBBONUS_H
+#ifndef AABB_BONUS_H
+# define AABB_BONUS_H
 
 # include "vec_bonus.h"
 # include "ray_bonus.h"

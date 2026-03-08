@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 18:57:21 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AXISBONUS_H
-# define AXISBONUS_H
+#ifndef AXIS_BONUS_H
+# define AXIS_BONUS_H
 
 typedef enum e_axis
 {

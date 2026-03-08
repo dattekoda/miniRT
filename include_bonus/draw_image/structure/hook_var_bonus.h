@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:07:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOOK_VARBONUS_H
-# define HOOK_VARBONUS_H
+#ifndef HOOK_VAR_BONUS_H
+# define HOOK_VAR_BONUS_H
 
 typedef struct s_hook_var
 {

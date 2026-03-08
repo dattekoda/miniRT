@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 20:20:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_DEBUGBONUS_H
-# define RT_DEBUGBONUS_H
+#ifndef RT_DEBUG_BONUS_H
+# define RT_DEBUG_BONUS_H
 
 # include "world_bonus.h"
 # include "hitter_bonus.h"

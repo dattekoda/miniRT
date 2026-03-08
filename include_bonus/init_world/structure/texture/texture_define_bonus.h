@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 19:31:26 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_DEFINEBONUS_H
-# define TEXTURE_DEFINEBONUS_H
+#ifndef TEXTURE_DEFINE_BONUS_H
+# define TEXTURE_DEFINE_BONUS_H
 
 # include "texture_bonus.h"
 

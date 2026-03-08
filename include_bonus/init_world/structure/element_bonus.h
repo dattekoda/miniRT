@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:27:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ELEMENTBONUS_H
-# define ELEMENTBONUS_H
+#ifndef ELEMENT_BONUS_H
+# define ELEMENT_BONUS_H
 
 # include "skip_bonus.h"
 # include "hitter_bonus.h"

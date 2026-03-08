@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 19:15:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIAL_DEFINEBONUS_H
-# define MATERIAL_DEFINEBONUS_H
+#ifndef MATERIAL_DEFINE_BONUS_H
+# define MATERIAL_DEFINE_BONUS_H
 
 # include "material_bonus.h"
 

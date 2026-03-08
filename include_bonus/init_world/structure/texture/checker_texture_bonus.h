@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:02:33 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_TEXTUREBONUS_H
-# define CHECKER_TEXTUREBONUS_H
+#ifndef CHECKER_TEXTURE_BONUS_H
+# define CHECKER_TEXTURE_BONUS_H
 
 # include "solid_texture_bonus.h"
 

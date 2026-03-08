@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:04:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MIXTURE_PDFBONUS_H
-# define MIXTURE_PDFBONUS_H
+#ifndef MIXTURE_PDF_BONUS_H
+# define MIXTURE_PDF_BONUS_H
 
 # include "pdf_bonus.h"
 # include "light_pdf_bonus.h"

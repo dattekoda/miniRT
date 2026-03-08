@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:12:07 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHT_PDFBONUS_H
-# define LIGHT_PDFBONUS_H
+#ifndef LIGHT_PDF_BONUS_H
+# define LIGHT_PDF_BONUS_H
 
 # include "pdf_bonus.h"
 # include "vec_bonus.h"

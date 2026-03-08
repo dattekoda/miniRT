@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SKIPBONUS_H
-# define SKIPBONUS_H
+#ifndef SKIP_BONUS_H
+# define SKIP_BONUS_H
 
 # include "result_bonus.h"
 # include <stddef.h>

@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:46:57 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTUREBONUS_H
-# define TEXTUREBONUS_H
+#ifndef TEXTURE_BONUS_H
+# define TEXTURE_BONUS_H
 
 # include "hit_record_bonus.h"
 # include "rt_utils_bonus.h"

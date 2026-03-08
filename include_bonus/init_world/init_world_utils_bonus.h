@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_WORLD_UTILSBONUS_H
-# define INIT_WORLD_UTILSBONUS_H
+#ifndef INIT_WORLD_UTILS_BONUS_H
+# define INIT_WORLD_UTILS_BONUS_H
 
 # include "init_world_define_bonus.h"
 # include "element_bonus.h"

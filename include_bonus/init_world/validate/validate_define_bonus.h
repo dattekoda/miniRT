@@ -6,12 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:50:21 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:37:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATE_DEFINEBONUS_H
-# define VALIDATE_DEFINEBONUS_H
+#ifndef VALIDATE_DEFINE_BONUS_H
+# define VALIDATE_DEFINE_BONUS_H
 
 # ifndef NORMALZIE_EPSILON
 #  define NORMALIZE_EPSILON 1e-3
