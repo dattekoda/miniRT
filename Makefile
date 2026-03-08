@@ -6,10 +6,9 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/07 17:53:50 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/08 18:49:58 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME		=	miniRT
 
@@ -212,6 +211,7 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 					ray.c \
 				) \
 				$(addprefix utils/, \
+					clock.c \
 					construct_result.c \
 					ft_qsort.c \
 					ft_swap.c \
@@ -236,7 +236,6 @@ SRCS	=	$(addprefix $(SRCDIR)/, \
 # you can delete later
 SRCS	+=	$(addprefix $(SRCDIR)/, \
 				$(addprefix debug/, \
-					clock.c \
 					print_aabb.c \
 					print_axis.c \
 					print_hitter_arr.c \
@@ -251,15 +250,247 @@ SRCS	+=	$(addprefix $(SRCDIR)/, \
 				) \
 			)
 
+SRCDIR_BONUS	=	src_bonus
+
+SRCS_BONUS	=	$(addprefix $(SRCDIR_BONUS)/, \
+					main_bonus.c \
+					mini_rt_bonus.c \
+					$(addprefix define/, \
+						define_window_bonus.c \
+					) \
+					$(addprefix init_world/, \
+						init_world_bonus.c \
+						set_option_bonus.c \
+						read_rt_file_bonus.c \
+						$(addprefix define/, \
+						define_element_bonus.c \
+						define_material_bonus.c \
+						define_option_bonus.c \
+						define_skips_bonus.c \
+						define_texture_bonus.c \
+						) \
+						$(addprefix validate_arguments/, \
+						validate_arguments_bonus.c \
+						is_valid_file_name_bonus.c \
+						is_valid_option_bonus.c \
+						) \
+						$(addprefix is_valid_line_list/, \
+							is_valid_element_bonus.c \
+							is_valid_line_bonus.c \
+							is_valid_line_list_bonus.c \
+							$(addprefix skips/, \
+								skip_until_end_bonus.c \
+								skip_value_bonus.c \
+								skip_vector_bonus.c \
+							) \
+							$(addprefix utils/, \
+								err_point_out_bonus.c \
+								skip_material_bonus.c \
+								skip_range_bonus.c \
+								skip_spaces_bonus.c \
+								skip_texture_bonus.c \
+								skip_vec_bonus.c \
+							) \
+						) \
+						$(addprefix create_world/, \
+							create_world_bonus.c \
+							set_ambient_light_bonus.c \
+							$(addprefix set_camera/, \
+								construct_camera_bonus.c \
+								set_camera_bonus.c \
+							) \
+							$(addprefix set_light/, \
+								$(addprefix utils/, \
+									add_light_radius_bonus.c \
+									str_space_join_bonus.c \
+								) \
+								set_light_bonus.c \
+								preprocess_line_list_bonus.c \
+							) \
+							$(addprefix texture/, \
+								$(addprefix texture_utils/, \
+									clone_texture_bonus.c \
+								) \
+								$(addprefix local_normal/, \
+									define_local_normal_bonus.c \
+									local_normal_bonus.c \
+								) \
+								generate_bump_texture_bonus.c \
+								generate_checker_texture_bonus.c \
+								generate_solid_texture_bonus.c \
+							) \
+							$(addprefix material/, \
+								generate_dielectric_bonus.c \
+								generate_lambertian_bonus.c \
+								generate_metal_bonus.c \
+								generate_light_bonus.c \
+								$(addprefix material_utils/, \
+									orient_normal_bonus.c \
+									clone_material_bonus.c \
+									refract_bonus.c \
+								) \
+								$(addprefix pdf/, \
+									$(addprefix light_pdf_utils/, \
+										calc_light_pdf_value_bonus.c \
+										generate_light_pdf_direction_bonus.c \
+									) \
+									cosine_pdf_bonus.c \
+									light_pdf_bonus.c \
+									mixture_pdf_bonus.c \
+								) \
+							) \
+							$(addprefix hitter/, \
+								$(addprefix generate/, \
+									generate_cone_bonus.c \
+									generate_cylinder_bonus.c \
+									generate_disk_bonus.c \
+									generate_sphere_bonus.c \
+									generate_plane_bonus.c \
+									generate_triangle_bonus.c \
+								) \
+								$(addprefix aabb/, \
+									aabb_bonus.c \
+								) \
+								$(addprefix hit/, \
+									$(addprefix cylinder_utils/, \
+										calc_cylinder_coeff_bonus.c \
+										construct_cylinder_uv_bonus.c \
+									) \
+									$(addprefix triangle_utils/, \
+										is_valid_tr_solution_bonus.c \
+									) \
+									$(addprefix plane_utils/, \
+										construct_plane_uv_bonus.c \
+										init_plane_solution_bonus.c \
+									) \
+									hit_cone_bonus.c \
+									hit_disk_bonus.c \
+									hit_sphere_bonus.c \
+									hit_plane_bonus.c \
+									hit_triangle_bonus.c \
+									hit_cylinder_bonus.c \
+								) \
+								$(addprefix line_to_hitter/, \
+									line_to_cone_bonus.c \
+									line_to_cylinder_bonus.c \
+									line_to_disk_bonus.c \
+									line_to_light_bonus.c \
+									line_to_material_bonus.c \
+									line_to_plane_bonus.c \
+									line_to_sphere_bonus.c \
+									line_to_triangle_bonus.c \
+								) \
+								$(addprefix utils/, \
+									solution_bonus.c \
+									calc_normal_max_bonus.c \
+								) \
+							) \
+							$(addprefix set_objects/, \
+								line_list_to_bvh_bonus.c \
+								set_objects_bonus.c \
+								$(addprefix hitter_arr_to_bvh/, \
+									bvh_utils_bonus.c \
+									compare_bonus.c \
+									construct_hitter_arr_bonus.c \
+									find_best_split_info_bonus.c \
+									prepare_surface_arr_bonus.c \
+									generate_hitter_list_bonus.c \
+									generate_tree_bonus.c \
+									hit_arr_to_bvh_bonus.c \
+									split_bonus.c \
+								) \
+								$(addprefix line_list_to_hitter_arr/, \
+									add_cylinder_disk_bonus.c \
+									add_hitter_list_bonus.c \
+									line_list_to_hit_arr_bonus.c \
+									line_list_to_hitter_list_bonus.c \
+								) \
+							) \
+						) \
+						$(addprefix utils/, \
+							has_object_in_line_list_bonus.c \
+							str_to_idx_bonus.c \
+							match_identifer_bonus.c \
+							search_object_bonus.c \
+							token_to_str_bonus.c \
+							token_to_value_bonus.c \
+							token_to_vec_bonus.c \
+						) \
+					) \
+					$(addprefix render_world/, \
+						render_world_bonus.c \
+						$(addprefix render_pixels/, \
+							$(addprefix compute_phong_color/, \
+								calc_color_from_light_list_bonus.c \
+								compute_phong_color_bonus.c \
+							) \
+							calc_sample_pixel_color_bonus.c \
+							compute_path_tracing_color_bonus.c \
+							render_pixels_bonus.c \
+						) \
+						$(addprefix draw_image/, \
+							$(addprefix utils/, \
+								$(addprefix draw_mlx_image/, \
+									mlx_utils_bonus.c \
+									draw_mlx_image_bonus.c \
+								) \
+								draw_ppm_image_bonus.c \
+							) \
+							draw_image_bonus.c \
+						) \
+					) \
+					$(addprefix ray/, \
+						ray_bonus.c \
+					) \
+					$(addprefix utils/, \
+						clock_bonus.c \
+						construct_result_bonus.c \
+						ft_qsort_bonus.c \
+						ft_swap_bonus.c \
+						utils_clamp_bonus.c \
+						utils_clear_bonus.c \
+						utils_err_bonus.c \
+						utils_float_bonus.c \
+						utils_random_bonus.c \
+						$(addprefix vec/, \
+							onb_bonus.c \
+							range_bonus.c \
+							vec2_bonus.c \
+							vec3_bonus.c \
+							vec3_basic_bonus.c \
+							vec3_product_bonus.c \
+							vec3_scal_bonus.c \
+							reflect_bonus.c \
+						) \
+					) \
+				)
+
 # --- obj ---
-OBJDIR		=	obj
-OBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
+OBJDIR			=	obj
+OBJS			=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
+
+OBJDIR_BONUS	=	obj_bonus
+OBJS_BONUS		=	$(patsubst $(SRCDIR_BONUS)/%.c, $(OBJDIR_BONUS)/%.o, $(SRCS_BONUS))
+
+ifeq ($(MAKECMDGOALS),bonus)
+	BUILD_OBJS	:=	$(OBJS_BONUS)
+else ifeq ($(MAKECMDGOALS),rebonus)
+	BUILD_OBJS	:=	$(OBJS_BONUS)
+else
+	BUILD_OBJS	:=	$(OBJS)
+endif
 
 # --- deps ---
-DEPS		=	$(OBJS:.o=.d)
+DEPS		=	$(BUILD_OBJS:.o=.d)
 
 # --- include ---
-INCDIRS		=	$(shell find include -type d)
+ifeq ($(MAKECMDGOALS),bonus)
+	INCDIRS	:=	$(shell find include_bonus -type d)
+else ifeq ($(MAKECMDGOALS),rebonus)
+	INCDIRS	:=	$(shell find include_bonus -type d)
+else
+	INCDIRS	:=	$(shell find include -type d)
+endif
 
 # --- OS DETECTION ---
 UNAME	=	$(shell uname -s)
@@ -331,8 +562,10 @@ TESTOBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(TESTSRCS))
 # --- Rules ---
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAG) $(OBJS) $(LDFLAG) $(LDLIBS) -o $@
+bonus:	$(NAME)
+
+$(NAME): $(BUILD_OBJS)
+	$(CC) $(CFLAG) $^ $(LDFLAG) $(LDLIBS) -o $@
 	@echo "\n\033[1;32m'$(NAME)' has been created!\033[0m"
 
 -include	$(DEPS)
@@ -348,17 +581,24 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c $(LIBFT) $(MLX)
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAG) -c $< -o $@
 
+$(OBJDIR_BONUS)/%.o: $(SRCDIR_BONUS)/%.c $(LIBFT) $(MLX)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAG) -c $< -o $@
+
 clean:
 	@$(RMDIR) $(OBJDIR)
+	@$(RMDIR) $(OBJDIR_BONUS)
 
 fclean: clean
 	$(RM) $(NAME) $(TESTNAME)
 
 re: fclean all
 
+rebonus: fclean bonus
+
 # --- DEBUGGIN & TESTING ---
 lldba:
-	$(MAKE)  CFLAG="$(CFLAG) $(DFLAG)"
+	$(MAKE) CFLAG="$(CFLAG) $(DFLAG)"
 	@echo "\n\033[1;35mLaunching LLDB for '$(NAME)'...\033[0m"
 	@lldb $(NAME)
 
@@ -391,4 +631,4 @@ $(TESTNAME):$(TESTOBJS) $(MLX) $(LIBFT)
 scanb: fclean
 	@$(SCANBUILD) $(MAKE) all
 
-.PHONY:	all clean fclean re test debug asan valgrind scanb
+.PHONY:	all clean fclean re bonus rebonus test debug asan valgrind scanb
