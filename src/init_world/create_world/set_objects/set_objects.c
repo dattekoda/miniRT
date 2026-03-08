@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_objects.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 19:07:19 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 22:24:14 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			infinite_line_list_to_hitter_list(
 t_hitter	*generate_tree(t_hitter *lhs, t_hitter *rhs);
 void		clear_tree(void *s);
 
-int	set_objects(t_world *world, t_list *line_list, int option_flag)
+int	set_objects(t_hitter **obj_tree, t_list *line_list, int option_flag)
 {
 	t_hitter	*rhs;
 	t_hitter	*lhs;
@@ -39,8 +39,8 @@ int	set_objects(t_world *world, t_list *line_list, int option_flag)
 		clear_tree(rhs);
 		return (FAILURE);
 	}
-	world->object_tree = generate_tree(lhs, rhs);
-	if (!world->object_tree && (lhs || rhs))
+	*obj_tree = generate_tree(lhs, rhs);
+	if (!*obj_tree && (lhs || rhs))
 		return (FAILURE);
 	return (SUCCESS);
 }

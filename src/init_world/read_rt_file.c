@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/07 18:08:43 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 22:14:30 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-#include <stdio.h>
 
 static int	read_lines_to_list(t_list *cur, int fd);
 

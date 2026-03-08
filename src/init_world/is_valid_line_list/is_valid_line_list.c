@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid_line_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:32:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 17:15:52 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 22:43:04 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 
 static bool	is_valid_ambient_camera_count(const t_list *line_list);
 bool		is_valid_line(char *line, const int option_flag);
+static void	ambient_count_error(size_t count);
+static void	camera_count_error(size_t count);
 
 bool	is_valid_line_list(const t_list *line_list, const int option_flag)
 {
-	int	is_valid;
+	bool	is_valid;
 
 	is_valid = is_valid_ambient_camera_count(line_list);
 	while (line_list)
@@ -49,8 +51,24 @@ static bool	is_valid_ambient_camera_count(const t_list *line_list)
 	if (ambient_count == 1 && camera_count == 1)
 		return (true);
 	if (ambient_count != 1)
-		err_rt("Set only one ambient");
+		ambient_count_error(ambient_count);
 	if (camera_count != 1)
-		err_rt("Set only one camera");
+		camera_count_error(camera_count);
 	return (false);
+}
+
+static void	ambient_count_error(size_t count)
+{
+	if (count > 1)
+		err_rt("Set only one ambient");
+	else
+		err_rt("Set one ambient");
+}
+
+static void	camera_count_error(size_t count)
+{
+	if (count > 1)
+		err_rt("Set only one camera");
+	else
+		err_rt("Set one camera");
 }

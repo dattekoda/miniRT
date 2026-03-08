@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:20:58 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 20:40:14 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 22:29:26 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int		render_pixels(
 			bool is_phong);
 int		draw_image(int **raw_rgb_arr, bool is_ppm_mode);
 void	clear_world(t_world *world);
-void	init_time(void);
 
 /*
 @brief responsible for free(world)
@@ -35,7 +34,6 @@ int	render_world(t_world *world, int option_flag)
 {
 	int	*raw_rgb_arr;
 
-	init_time();
 	if (render_pixels(&raw_rgb_arr, world, option_flag & OPT_ARTIFICIAL)
 		== FAILURE)
 	{

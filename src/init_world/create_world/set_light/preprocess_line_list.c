@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   preprocess_line_list.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 21:03:40 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 19:14:16 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 22:48:27 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ static int	add_option_flag(char **light_line, int option_flag)
 {
 	char	*new_light_line;
 
-	if (option_flag & OPT_ARTIFICIAL)
+	if (!(option_flag & OPT_ARTIFICIAL))
 		return (SUCCESS);
-	new_light_line = str_space_join(*light_line, "n");
+	new_light_line = str_space_join(*light_line, "a");
 	if (!new_light_line)
 		return (FAILURE);
 	free(*light_line);

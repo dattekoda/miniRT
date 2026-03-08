@@ -6,12 +6,11 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:37:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/02 21:42:51 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 22:18:03 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "element.h"
-#include "result.h"
 #include "libft.h"
 #include <stdbool.h>
 #include <stddef.h>

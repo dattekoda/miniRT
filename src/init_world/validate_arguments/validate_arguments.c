@@ -6,15 +6,15 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:21:36 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 18:03:24 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 22:05:16 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_world_utils.h"
 #include "rt_utils.h"
+#include "init_world_utils.h"
 #include "libft.h"
-#include <stdlib.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 void		put_format(void);
 static void	print_help(void);
@@ -51,7 +51,8 @@ static void	print_help(void)
 	ft_putendl_fd("Usage: ./miniRT <.rt file> [OPTION]", STDOUT_FILENO);
 	put_format();
 	ft_putendl_fd("\noptions:", STDOUT_FILENO);
-	ft_putendl_fd("\t-a, --artificial: artificial mode. use Phong reflection model",
+	ft_putendl_fd("\t-a, --artificial: artificial mode."\
+"use Phong reflection model",
 		STDOUT_FILENO);
 	ft_putendl_fd("\t-m, --material: define object materials. "\
 "-- lambertian, metal, dielectric for material", STDOUT_FILENO);

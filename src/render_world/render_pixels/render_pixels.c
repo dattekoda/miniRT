@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:38:10 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 18:01:48 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/08 15:55:13 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	render_pixels(
 			sizeof(int));
 	if (!*raw_rgb_arr)
 		return (FAILURE);
-	set_random_seed_from_time();
 	accumulate_raw_rgb_arr(*raw_rgb_arr, world, is_phong);
 	return (SUCCESS);
 }
@@ -56,6 +55,7 @@ static void	accumulate_raw_rgb_arr(
 	size_t	xi;
 	size_t	x_base;
 
+	set_random_seed_from_time();
 	yi = 0;
 	while (yi < g_window_height)
 	{
@@ -96,12 +96,14 @@ static void	print_remaining(size_t yi)
 
 static int	convert_into_raw_rgb(t_color color)
 {
-	t_color	adjusted_color;
-	int		rgb_color[3];
+	t_color	gamma_encoded_color;
+	int		r;
+	int		g;
+	int		b;
 
-	adjusted_color = map_vec3(color, sqrt);
-	rgb_color[0] = 256.0 * clamp(adjusted_color.e[0], 0.0, 0.999);
-	rgb_color[1] = 256.0 * clamp(adjusted_color.e[1], 0.0, 0.999);
-	rgb_color[2] = 256.0 * clamp(adjusted_color.e[2], 0.0, 0.999);
-	return ((rgb_color[0] << 16) | (rgb_color[1] << 8) | rgb_color[2]);
+	gamma_encoded_color = map_vec3(color, sqrt);
+	r = (int)round((double)0xFF * clamp(gamma_encoded_color.e[0], 0.0, 1.0));
+	g = (int)round((double)0xFF * clamp(gamma_encoded_color.e[1], 0.0, 1.0));
+	b = (int)round((double)0xFF * clamp(gamma_encoded_color.e[2], 0.0, 1.0));
+	return ((r << 16) | (g << 8) | b);
 }
