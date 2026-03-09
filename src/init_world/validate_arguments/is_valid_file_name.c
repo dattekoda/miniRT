@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid_file_name.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 02:22:49 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 22:06:35 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/09 16:31:27 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	is_valid_file_name(const char *file_path)
 {
 	const char	*rt_file;
 
-	rt_file = ft_strchr(file_path, '/');
+	rt_file = ft_strrchr(file_path, '/');
 	if (rt_file)
 		rt_file += 1;
 	else
