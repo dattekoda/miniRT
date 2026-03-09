@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:14:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 19:26:40 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 22:47:13 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,12 @@ static int	light_line_to_shape_param(
 		return (FAILURE);
 	token_to_value(line, &line_idx, &light_param->radius);
 	token_to_str(line, &line_idx, &option);
-	if (option && ft_strchr(option, 'n'))
-	{
-		light_solid
-			= (t_solid_texture *)light_param->hitter.mat_ptr->texture_ptr;
-		light_solid->color
-			= scal_mul_vec3(light_solid->color, PATHTRACING_LIGHT_STRENGTH);
-	}
+	if (option && ft_strchr(option, 'a'))
+		return (SUCCESS);
+	light_solid
+		= (t_solid_texture *)light_param->hitter.mat_ptr->texture_ptr;
+	light_solid->color
+		= scal_mul_vec3(light_solid->color, PATHTRACING_LIGHT_STRENGTH);
 	return (SUCCESS);
 }
 

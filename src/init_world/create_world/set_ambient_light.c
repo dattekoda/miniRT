@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_ambient_light.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 18:36:25 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/14 17:07:10 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 22:23:43 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 t_color			line_to_ambient_light(const char *line);
 static t_color	construct_ambient_light(t_color raw_color, double ratio);
 
-void	set_ambient_light(t_world *world, const t_list *line_list)
+void	set_ambient_light(t_color *ambient_light, const t_list *line_list)
 {
 	while (line_list)
 	{
@@ -29,7 +29,7 @@ void	set_ambient_light(t_world *world, const t_list *line_list)
 			break ;
 		line_list = line_list->next;
 	}
-	world->ambient_light
+	*ambient_light
 		= line_to_ambient_light(line_list->content);
 	return ;
 }

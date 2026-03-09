@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:52:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/28 19:03:37 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 22:55:53 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,14 @@ int	set_light(t_world *world, t_list *line_list, int option_flag)
 
 static int	new_light_node(t_list **new_node, const char *line)
 {
-	t_hitter		*new_light;
+	t_hitter	*new_light;
 
 	if (line_to_light(&new_light, line) == FAILURE)
 		return (FAILURE);
 	*new_node = ft_lstnew(new_light);
 	if (!*new_node)
 	{
-		new_light->clear(new_light);
-		free(new_light);
+		clear_free_hitter(new_light);
 		return (FAILURE);
 	}
 	return (SUCCESS);

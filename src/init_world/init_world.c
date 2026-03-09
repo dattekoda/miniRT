@@ -6,7 +6,7 @@
 /*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:26:06 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/07 18:13:21 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/07 22:11:49 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ int	init_world(t_world *world, char *file_path, int option_flag)
 
 	line_list = NULL;
 	read_rt_file(&line_list, file_path);
-	if (!line_list)
-	{
-		ft_putstr_fd("input world elements information.\n", STDERR_FILENO);
-		put_format();
-		return (EXIT_FAILURE);
-	}
 	ft_bzero(world, sizeof(t_world));
 	if (!is_valid_line_list(line_list, option_flag))
 	{

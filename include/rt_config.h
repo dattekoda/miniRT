@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:59:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 18:17:27 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 21:42:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 # define PATHTRACING_LIGHT_STRENGTH 200.0
 
-# define RUSSIAN_ROULETTE_START_DEPTH 10
+# define RUSSIAN_ROULETTE_START_DEPTH 5
 
 // 0.0 - 1.0
 # define METAL_FUZZINESS 0.0
@@ -50,7 +50,7 @@
 
 // 0: ripple
 // 1: block
-# define BUMP_TYPE 1
+# define BUMP_TYPE 0
 
 // tetxure
 // 0: solid

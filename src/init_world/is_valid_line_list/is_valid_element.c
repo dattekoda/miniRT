@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid_element.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:05:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 18:51:33 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/07 22:18:20 by ikawamuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
