@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:45:57 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/22 19:53:15 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/09 16:25:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include "libft.h"
 #include <stddef.h>
 
-static int	str_to_idx(const char *str, const char *specifiers[]);
+static int		str_to_idx(const char *str, const char *specifiers[]);
+static size_t	strlen_until_space(const char *str);
 
 t_material_idx	str_to_material_idx(const char *str)
 {
@@ -44,14 +45,26 @@ t_texture_idx	str_to_texture_idx(const char *str)
 */
 static int	str_to_idx(const char *str, const char *specifiers[])
 {
-	int	idx;
+	int		idx;
+	size_t	str_len;
 
 	idx = 0;
 	while (specifiers[idx])
 	{
-		if (ft_strncmp(specifiers[idx], str, ft_strlen(specifiers[idx])) == 0)
+		str_len = strlen_until_space(str);
+		if (ft_strncmp(specifiers[idx], str, str_len) == 0
+			&& ft_strlen(specifiers[idx]) == str_len)
 			return (idx);
 		idx++;
 	}
 	return (-1);
+}
+
+static size_t	strlen_until_space(const char *str)
+{
+	const char	*start = str;
+
+	while (str && !ft_strchr("\n\t ", *str))
+		str++;
+	return ((size_t)(str - start));
 }
