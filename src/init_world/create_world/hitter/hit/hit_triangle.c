@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 18:40:19 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 19:45:08 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	hit_triangle(
 	if (!is_inside_range(tr_solu.solu.solution, range))
 		return (false);
 	assign_triangle_hrec(self, ray, hrec, &tr_solu);
-	range->e[1] = tr_solu.solu.solution;
+	range->e[E_MAX] = tr_solu.solu.solution;
 	return (true);
 }
 

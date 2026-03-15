@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 18:54:06 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 16:40:12 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 19:44:42 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	hit_cylinder(
 	if (!is_in_range_of_height(cy_solu.tmp_height, self->height))
 		return (false);
 	assign_cylinder_hrec(self, ray, hrec, &cy_solu);
-	range->e[1] = hrec->param_t;
+	range->e[E_MAX] = hrec->param_t;
 	return (true);
 }
 
