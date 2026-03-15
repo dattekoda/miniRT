@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:16:14 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:32:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:20:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ t_result	skip_material(const char *line, size_t *line_idx)
 		return (construct_result(
 				"material specifier should be: lambertian metal dielectric"));
 	}
-	return (construct_result(NULL));
+	return (construct_success_result());
 }

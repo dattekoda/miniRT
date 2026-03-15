@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:21:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/15 20:31:03 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:32:48 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ t_result	token_to_str(const char *line, size_t *line_idx, char **str_ptr)
 		&& (line[*line_idx]) != '\t'
 		&& line[*line_idx] != ' ')
 		(*line_idx)++;
-	return (construct_result(NULL));
+	return (construct_success_result());
 }

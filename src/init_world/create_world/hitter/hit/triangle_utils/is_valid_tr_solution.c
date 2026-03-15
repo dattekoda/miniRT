@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 18:23:54 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 18:25:47 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 18:40:19 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static double	calc_coeff1(
 					const t_ray *ray,
 					t_triangle_solu *tr_solu);
 
-bool	is_valid_tr_solution(
+bool	solve_tr_solution(
 		const t_triangle *self,
 		const t_ray *ray,
 		t_triangle_solu *tr_solu)

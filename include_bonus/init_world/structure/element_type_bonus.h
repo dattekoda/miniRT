@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   element_type_bonus.h                               :+:      :+:    :+:   */
+/*   element_type.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 18:50:47 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:13:09 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef enum e_element_type
 	TRIANGLE,
 	TREE,
 	LIST,
-	NOTHING
+	INVALID_ELEM
 }	t_element_type;
 
 #endif

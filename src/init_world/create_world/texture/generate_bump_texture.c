@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 20:03:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 18:56:35 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:56:41 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static t_color	calc_bump_texture_value(const void *s, t_hrec *hrec)
 	const t_bump_texture	*self = s;
 	const t_onb				onb = construct_onb(hrec->normal);
 	const t_vec3			normalized_local_normal
-		= normalize(self->local_normal(hrec->map));
+		= normalize_vec3(self->local_normal(hrec->map));
 
 	hrec->normal = local_onb(onb, normalized_local_normal);
 	return (self->color);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_light_pdf_value_bonus.c                       :+:      :+:    :+:   */
+/*   calc_light_pdf_value.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 22:04:13 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:31:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:17:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static double	calc_solid_angle(
 	const double	squared_distance
 		= length_squared_vec3(sub_vec3(sphere->center, *point));
 	const double	cos_theta_max
-		= sqrt(1 - pow(sphere->radius, 2) / squared_distance);
+		= sqrt(1 - sphere->squared_rad / squared_distance);
 
 	return (2 * M_PI * (1 - cos_theta_max));
 }

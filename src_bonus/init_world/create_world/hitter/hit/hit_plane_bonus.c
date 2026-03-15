@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit_plane_bonus.c                                  :+:      :+:    :+:   */
+/*   hit_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:37:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:31:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:17:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "init_world_define_bonus.h"
 #include "vec_utils_bonus.h"
 #include "rt_utils_bonus.h"
-#include <float.h>
 #include <math.h>
 
 void		init_plane_solution(
@@ -46,7 +45,7 @@ bool	hit_plane(
 	if (!is_inside_range(solu.solution, range))
 		return (false);
 	assign_plane_hrec(self, ray, hrec, solu.solution);
-	range->e[1] = hrec->param_t;
+	range->e[E_MAX] = hrec->param_t;
 	return (true);
 }
 

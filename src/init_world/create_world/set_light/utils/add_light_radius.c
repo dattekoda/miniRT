@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 16:37:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/22 16:45:05 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:06:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	calc_radius(t_point3 light_point, t_point3 camera_origin)
 	double	distance;
 
 	cos_theta = 1 - (LIGHT_STERADIAN / (2 * M_PI));
-	sin_theta = sqrt(1 - pow(cos_theta, 2));
+	sin_theta = sqrt(1 - cos_theta * cos_theta);
 	distance = length_vec3(sub_vec3(light_point, camera_origin));
 	radius_in_int = (int)round(distance * sin_theta);
 	return (radius_in_int);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit_cylinder_bonus.c                               :+:      :+:    :+:   */
+/*   hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 18:54:06 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:31:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:17:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	hit_cylinder(
 	if (!is_in_range_of_height(cy_solu.tmp_height, self->height))
 		return (false);
 	assign_cylinder_hrec(self, ray, hrec, &cy_solu);
-	range->e[1] = hrec->param_t;
+	range->e[E_MAX] = hrec->param_t;
 	return (true);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:37:44 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 16:35:58 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 19:44:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "init_world_define.h"
 #include "vec_utils.h"
 #include "rt_utils.h"
-#include <float.h>
 #include <math.h>
 
 void		init_plane_solution(
@@ -46,7 +45,7 @@ bool	hit_plane(
 	if (!is_inside_range(solu.solution, range))
 		return (false);
 	assign_plane_hrec(self, ray, hrec, solu.solution);
-	range->e[1] = hrec->param_t;
+	range->e[E_MAX] = hrec->param_t;
 	return (true);
 }
 

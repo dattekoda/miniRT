@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_dielectric.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 21:28:52 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/07 17:25:34 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:56:41 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void	record_next_direct(
 			t_hrec *hrec,
 			t_srec *srec)
 {
-	const t_vec3		unit_direct = normalize(hrec->ray_in.direct);
+	const t_vec3		unit_direct = normalize_vec3(hrec->ray_in.direct);
 	t_vec3				outward_normal;
 	double				refract_ratio;
 	double				sin_theta;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compute_path_tracing_color_bonus.c                 :+:      :+:    :+:   */
+/*   compute_path_tracing_color.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:31:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:17:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ t_color	compute_path_tracing_color(
 
 	range = construct_vec2(HIT_T_MIN, INFINITY);
 	if (depth >= MAX_DEPTH)
-		return (constant_vec3(0.0));
+		return (fill_vec3(0.0));
 	if (!world->object_tree
 		|| !world->object_tree->hit(world->object_tree, ray, &hrec, &range))
 		return (world->ambient_light);
 	if (!hrec.mat_ptr->scatter(hrec.mat_ptr, world, &hrec, &srec))
 		return (srec.attenuation);
 	if (is_killed_by_russian_roulette(depth, &srec.attenuation))
-		return (constant_vec3(0.0));
+		return (fill_vec3(0.0));
 	return (scal_mul_vec3(
 			mul_vec3(
 				srec.attenuation,

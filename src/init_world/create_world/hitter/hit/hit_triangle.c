@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:27:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 18:23:34 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 19:45:08 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_point2	construct_plane_uv(
 t_vec3		orient_normal(
 				const t_vec3 *hrec_normal,
 				const t_vec3 *ray_in_direct);
-bool		is_valid_tr_solution(
+bool		solve_tr_solution(
 				const t_triangle *self,
 				const t_ray *ray,
 				t_triangle_solu *tr_solu);
@@ -45,12 +45,12 @@ bool	hit_triangle(
 
 	if (!hit_aabb(&self->hitter.aabb, ray, range))
 		return (false);
-	if (!is_valid_tr_solution(self, ray, &tr_solu))
+	if (!solve_tr_solution(self, ray, &tr_solu))
 		return (false);
 	if (!is_inside_range(tr_solu.solu.solution, range))
 		return (false);
 	assign_triangle_hrec(self, ray, hrec, &tr_solu);
-	range->e[1] = tr_solu.solu.solution;
+	range->e[E_MAX] = tr_solu.solu.solution;
 	return (true);
 }
 
