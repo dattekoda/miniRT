@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_to_value.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:00:53 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 11:43:13 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:32:48 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ t_result	token_to_value(const char *line, size_t *line_idx, double *d)
 	if (isnan(*d) || isinf(*d))
 		return (construct_result("invalid value"));
 	*line_idx = (size_t)(endptr - line);
-	return (construct_result(NULL));
+	return (construct_success_result());
 }

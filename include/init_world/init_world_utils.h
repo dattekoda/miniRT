@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:25:50 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 19:43:17 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:38:25 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 # include "material.h"
 # include "texture.h"
 # include <stdbool.h>
+# include <sys/types.h>
 
 bool			match_identifier(
 					const char *line, const t_element *info);
-ssize_t			search_object(
+t_element_type	search_object(
 					const char *line,
 					const t_element *object_table[]);
 t_result		token_to_value(

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   skip_range.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:05:02 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 17:35:23 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:32:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ t_result	skip_range(const char *line, size_t *line_idx,
 		(*line_idx)--;
 		return (construct_result("out of range"));
 	}
-	return (construct_result(NULL));
+	return (construct_success_result());
 }

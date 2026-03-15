@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 15:57:03 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/04 20:12:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:38:50 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	line_list_to_hitter_list(
 		const t_list *line_list,
 		const t_element *object_table[])
 {
-	ssize_t	obj_idx;
+	t_element_type	obj_idx;
 
 	while (line_list)
 	{
 		obj_idx = search_object(line_list->content, object_table);
-		if (obj_idx == -1)
+		if (obj_idx == INVALID_ELEM)
 		{
 			line_list = line_list->next;
 			continue ;
