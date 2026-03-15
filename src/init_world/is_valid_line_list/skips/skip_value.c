@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 18:30:53 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 14:59:39 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 15:17:53 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ t_result	skip_sharp_angle(const char *line, size_t *line_idx)
 
 t_result	skip_length(const char *line, size_t *line_idx)
 {
-	return (skip_range(line, line_idx, DBL_EPSILON, INFINITY));
+	return (skip_range(line, line_idx, FLT_EPSILON, INFINITY));
 }
