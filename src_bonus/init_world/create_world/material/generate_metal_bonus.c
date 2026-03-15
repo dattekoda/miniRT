@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 09:32:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:32:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:20:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void	record_next_direct_from_pdf(
 	const t_vec3	reflect_normal
 		= orient_normal(&hrec->normal, &hrec->ray_in.direct);
 	const t_vec3	reflected
-		= reflect(normalize(hrec->ray_in.direct), reflect_normal);
+		= reflect(normalize_vec3(hrec->ray_in.direct), reflect_normal);
 
 	srec->surface_pdf = 1.0;
 	srec->sampling_pdf = 1.0;

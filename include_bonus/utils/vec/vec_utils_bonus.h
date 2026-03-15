@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 21:55:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:17:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 t_vec3	construct_vec3(double e0, double e1, double e2);
 t_vec3	map_vec3(t_vec3 vec3, double (*f)(double));
-t_vec3	constant_vec3(double d);
+t_vec3	fill_vec3(double d);
 t_color	construct_color(double e0, double e1, double e2);
 t_color	normalize_color(t_color raw_color);
 
@@ -34,12 +34,11 @@ t_vec3	scal_div_vec3(t_vec3 lhs, double rhs);
 double	dot(t_vec3 lhs, t_vec3 rhs);
 double	length_squared_vec3(t_vec3 vec3);
 double	length_vec3(t_vec3 vec3);
-t_vec3	normalize(t_vec3 vec3);
+t_vec3	normalize_vec3(t_vec3 vec3);
 
 t_vec3	cross(t_vec3 lhs, t_vec3 rhs);
 
 bool	is_inside_range(double d, const t_range *range);
-bool	is_outside_range(double d, const t_range *range);
 // range.c
 
 t_vec2	construct_vec2(double e0, double e1);

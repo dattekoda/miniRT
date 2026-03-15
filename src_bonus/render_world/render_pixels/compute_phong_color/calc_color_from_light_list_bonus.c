@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 20:05:24 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:32:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:20:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_color	calc_color_from_light_list(
 	const t_list	*light_list = world->light_list;
 	t_color			accumulate;
 
-	accumulate = constant_vec3(0);
+	accumulate = fill_vec3(0);
 	while (light_list)
 	{
 		accumulate = add_vec3(accumulate,
@@ -76,14 +76,14 @@ static t_color	calc_color_from_light(
 	const t_vec3	light_direct
 		= sub_vec3(light_sphere->center, hrec->point);
 	const t_vec3	normalized_light_direct
-		= normalize(light_direct);
+		= normalize_vec3(light_direct);
 
 	if (is_in_shadow(
 			world,
 			&hrec->point,
 			&normalized_light_direct,
 			length_vec3(light_direct)))
-		return (constant_vec3(0.0));
+		return (fill_vec3(0.0));
 	light_sphere->hitter.mat_ptr->scatter(
 		light_sphere->hitter.mat_ptr, world, hrec, &tmp_srec);
 	diffuse = calc_diffuse(
@@ -120,7 +120,7 @@ static t_color	calc_specular(
 	const t_vec3	reflect_vec = reflect(
 			negative_vec3(*normalized_light_direct),
 			hrec->normal);
-	const t_vec3	point_to_camera = normalize(
+	const t_vec3	point_to_camera = normalize_vec3(
 			negative_vec3(hrec->ray_in.direct));
 
 	return (mul_vec3(*light_color,

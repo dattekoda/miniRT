@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_light_pdf_direction_bonus.c               :+:      :+:    :+:   */
+/*   generate_light_pdf_direction.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 23:03:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:31:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:17:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_vec3	generate_light_pdf_direction(const void *s)
 	size_t				i;
 
 	if (count == 0)
-		return (constant_vec3(0));
+		return (fill_vec3(0));
 	target = (size_t)random_double(0, count - 0.001);
 	i = 0;
 	while (light_list)
@@ -43,7 +43,7 @@ t_vec3	generate_light_pdf_direction(const void *s)
 		light_list = light_list->next;
 		i++;
 	}
-	return (constant_vec3(0));
+	return (fill_vec3(0));
 }
 
 static t_vec3	generate_target_sphere_direction(
