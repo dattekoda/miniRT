@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 14:06:41 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:56:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ static t_aabb	construct_disk_aabb(t_disk disk)
 			map_vec3(disk.normal, calc_normal_max), disk.radius);
 	min = sub_vec3(
 			sub_vec3(disk.center, v_max),
-			constant_vec3(PLANE_AABB_THICKNESS));
+			fill_vec3(PLANE_AABB_THICKNESS));
 	max = add_vec3(
 			add_vec3(disk.center, v_max),
-			constant_vec3(PLANE_AABB_THICKNESS));
+			fill_vec3(PLANE_AABB_THICKNESS));
 	return (construct_aabb(min, max));
 }

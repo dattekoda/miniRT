@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:11:51 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 22:17:58 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:56:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_vec3	map_vec3(t_vec3 vec3, double (*f)(double))
 			f(vec3.e[2])));
 }
 
-t_vec3	constant_vec3(double d)
+t_vec3	fill_vec3(double d)
 {
 	return (construct_vec3(d, d, d));
 }

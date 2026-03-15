@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 22:05:29 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/15 14:53:15 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:56:41 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ double	length_vec3(t_vec3 vec3)
 	return (sqrt(length_squared_vec3(vec3)));
 }
 
-t_vec3	normalize(t_vec3 vec3)
+t_vec3	normalize_vec3(t_vec3 vec3)
 {
 	return (scal_div_vec3(vec3, length_vec3(vec3)));
 }

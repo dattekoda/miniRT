@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/07 13:58:13 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:56:41 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static t_triangle	construct_triangle(t_triangle triangle_param)
 		= sub_vec3(triangle_param.vertex[1], triangle_param.vertex[0]);
 	triangle_param.edge[1]
 		= sub_vec3(triangle_param.vertex[2], triangle_param.vertex[0]);
-	triangle_param.normal = normalize(
+	triangle_param.normal = normalize_vec3(
 			cross(triangle_param.edge[0], triangle_param.edge[1]));
 	return (triangle_param);
 }

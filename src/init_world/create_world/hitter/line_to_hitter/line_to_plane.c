@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_to_plane.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/26 19:58:24 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:56:41 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	line_to_plane_param(const char *line, t_plane *plane_param)
 	i = g_element_table[PLANE]->id_len;
 	token_to_vec(line, &i, &plane_param->point);
 	token_to_vec(line, &i, &plane_param->normal);
-	plane_param->normal = normalize(plane_param->normal);
+	plane_param->normal = normalize_vec3(plane_param->normal);
 	if (line_to_material(
 			line, &i, &plane_param->hitter.mat_ptr, g_element_table[PLANE])
 		== FAILURE)
