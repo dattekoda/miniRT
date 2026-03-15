@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_mlx_image.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:58:49 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/07 22:43:29 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:58:50 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	assign_rgb_color_loop(
 		x_base = yi * g_window_width;
 		while (xi < g_window_width)
 		{
-			dst = (rt_img->addr + (yi * rt_img->line_len + xi * rt_img->bpp));
+			dst = (rt_img->addr + (yi * rt_img->line_len + xi * rt_img->bit_per_pixel));
 			*(int *)dst = mlx_get_color_value(mlx, raw_rgb_arr[x_base + xi++]);
 		}
 		yi++;
