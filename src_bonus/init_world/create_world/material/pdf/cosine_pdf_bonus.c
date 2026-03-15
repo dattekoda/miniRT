@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:31:15 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 20:20:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 22:35:16 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 static double	calc_cosine_pdf_value(
 					const void *s,
 					const t_vec3 *direction);
-static t_vec3	generate_cosine_pdf_direction(const void *s);
-static t_vec3	random_cosine_direction(void);
+static t_vec3	generate_cosine_pdf_direction(const void *s, uint64_t *seed);
+static t_vec3	random_cosine_direction(uint64_t *seed);
 
 t_cosine_pdf	construct_cosine_pdf(t_vec3 normal)
 {
@@ -47,17 +47,17 @@ static double	calc_cosine_pdf_value(
 	return (cosine / M_PI);
 }
 
-static t_vec3	generate_cosine_pdf_direction(const void *s)
+static t_vec3	generate_cosine_pdf_direction(const void *s, uint64_t *seed)
 {
 	return (local_onb(
 			((const t_cosine_pdf *)s)->onb,
-			random_cosine_direction()));
+			random_cosine_direction(seed)));
 }
 
-static t_vec3	random_cosine_direction(void)
+static t_vec3	random_cosine_direction(uint64_t *seed)
 {
-	const double	r1 = random_01();
-	const double	r2 = random_01();
+	const double	r1 = random_01(seed);
+	const double	r2 = random_01(seed);
 	const double	phi = 2 * M_PI * r1;
 
 	return (construct_vec3(

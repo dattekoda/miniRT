@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/15 17:51:13 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/15 21:34:03 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -427,6 +427,7 @@ SRCS_BONUS	=	$(addprefix $(SRCDIR_BONUS)/, \
 							calc_sample_pixel_color_bonus.c \
 							compute_path_tracing_color_bonus.c \
 							render_pixels_bonus.c \
+							thread_render_bonus.c \
 						) \
 						$(addprefix draw_image/, \
 							$(addprefix utils/, \

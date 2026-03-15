@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:09:51 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 20:20:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 23:19:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	validate_unit_vec3(t_vec3 vec3)
 	double	squred_sum;
 
 	squred_sum = length_squared_vec3(vec3);
-	if (!fequal(squred_sum, 1))
+	if (fabs(squred_sum - 1) > 0.01)
 		return (FAILURE);
 	return (SUCCESS);
 }

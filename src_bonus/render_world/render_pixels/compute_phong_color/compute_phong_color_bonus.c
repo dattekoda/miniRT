@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compute_phong_color.c                              :+:      :+:    :+:   */
+/*   compute_phong_color_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:39:39 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 20:17:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 23:15:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,35 @@
 #include <math.h>
 
 t_color			calc_color_from_light_list(
-					const t_world *world,
+					t_render_task *r_task,
 					const t_color *reflectance,
-					const t_hrec *hrec);
-static t_color	calc_phong_color(const t_world *world, t_hrec *hrec);
+					t_hrec *hrec);
+static t_color	calc_phong_color(t_render_task *r_task, t_hrec *hrec);
 static t_color	calc_ambient(const t_color *reflectance,
 					const t_color *ambient);
 
 t_color	compute_phong_color(
 			const t_ray *ray,
-			const t_world *world)
+			t_render_task *r_task)
 {
 	t_range	range;
 	t_hrec	hrec;
 
 	range = construct_vec2(HIT_T_MIN, INFINITY);
-	if (world->object_tree
-		&& world->object_tree->hit(world->object_tree, ray, &hrec, &range))
-		return (calc_phong_color(world, &hrec));
-	return (world->ambient_light);
+	if (r_task->world->object_tree
+		&& r_task->world->object_tree->hit(r_task->world->object_tree, ray, &hrec, &range))
+		return (calc_phong_color(r_task, &hrec));
+	return (r_task->world->ambient_light);
 }
 
-static t_color	calc_phong_color(const t_world *world, t_hrec *hrec)
+static t_color	calc_phong_color(t_render_task *r_task, t_hrec *hrec)
 {
 	const t_color	reflectance = hrec->mat_ptr->texture_ptr
 		->calc_texture_value(hrec->mat_ptr->texture_ptr, hrec);
 	const t_color	calculated_ambient
-		= calc_ambient(&reflectance, &world->ambient_light);
+		= calc_ambient(&reflectance, &r_task->world->ambient_light);
 	const t_color	color_from_light
-		= calc_color_from_light_list(world, &reflectance, hrec);
+		= calc_color_from_light_list(r_task, &reflectance, hrec);
 
 	return (add_vec3(calculated_ambient, color_from_light));
 }

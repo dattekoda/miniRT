@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 20:05:24 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 20:20:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 23:17:23 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 static t_color	calc_color_from_light(
 					const t_sphere *light_sphere,
-					const t_world *world,
+					t_render_task *r_task,
 					const t_color *kd,
 					t_hrec *hrec);
 static bool		is_in_shadow(
@@ -41,7 +41,7 @@ static t_color	calc_diffuse(
 					const t_color *light_color);
 
 t_color	calc_color_from_light_list(
-			const t_world *world,
+			t_render_task *r_task,
 			const t_color *reflectance,
 			t_hrec *hrec)
 {
@@ -51,14 +51,14 @@ t_color	calc_color_from_light_list(
 				R_PHONG_DIFFUSE_COEFF,
 				G_PHONG_DIFFUSE_COEFF,
 				B_PHONG_DIFFUSE_COEFF));
-	const t_list	*light_list = world->light_list;
+	const t_list	*light_list = r_task->world->light_list;
 	t_color			accumulate;
 
 	accumulate = fill_vec3(0);
 	while (light_list)
 	{
 		accumulate = add_vec3(accumulate,
-				calc_color_from_light(light_list->content, world, &kd, hrec));
+				calc_color_from_light(light_list->content, r_task, &kd, hrec));
 		light_list = light_list->next;
 	}
 	return (accumulate);
@@ -66,7 +66,7 @@ t_color	calc_color_from_light_list(
 
 static t_color	calc_color_from_light(
 					const t_sphere *light_sphere,
-					const t_world *world,
+					t_render_task *r_task,
 					const t_color *kd,
 					t_hrec *hrec)
 {
@@ -79,13 +79,13 @@ static t_color	calc_color_from_light(
 		= normalize_vec3(light_direct);
 
 	if (is_in_shadow(
-			world,
+			r_task->world,
 			&hrec->point,
 			&normalized_light_direct,
 			length_vec3(light_direct)))
 		return (fill_vec3(0.0));
 	light_sphere->hitter.mat_ptr->scatter(
-		light_sphere->hitter.mat_ptr, world, hrec, &tmp_srec);
+		light_sphere->hitter.mat_ptr, r_task, hrec, &tmp_srec);
 	diffuse = calc_diffuse(
 			kd, hrec, &normalized_light_direct, &tmp_srec.attenuation);
 	specular = calc_specular(

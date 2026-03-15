@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_utils.h                                         :+:      :+:    :+:   */
+/*   rt_utils_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 01:14:17 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 20:13:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 22:15:23 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,35 +25,35 @@ union u_rand_double
 	double		d;
 };
 
-double	clamp(double x, double min, double max);
+double		clamp(double x, double min, double max);
 // utils_clamp.c
 
-bool	fequal(double a, double b);
+bool		fequal(double a, double b);
 // utils_float.c
 
-void	err_rt(char *err_msg);
-void	perror_rt(const char *syscall_fname);
+void		err_rt(char *err_msg);
+void		perror_rt(const char *syscall_fname);
 // utils_err.c
 
-double	random_double(double min, double max);
-double	random_01(void);
-double	random_minus1_to_1(void);
-void	set_random_seed_from_time(void);
+double		random_double(double min, double max, uint64_t *state);
+double		random_01(uint64_t *state);
+double		random_minus1_to_1(uint64_t *state);
+uint64_t	set_random_seed_from_time(void);
 // utils_random.c
 
-void	ft_qsort(
-			char *base,
-			size_t nmemb,
-			size_t size,
-			int (*compar)(const void*, const void*));
+void		ft_qsort(
+				char *base,
+				size_t nmemb,
+				size_t size,
+				int (*compar)(const void*, const void*));
 // utils_qsort.c
 
-void	clear_free_hitter(void *self);
-void	clear_hitter(void *self);
-void	clear_material(void *self);
+void		clear_free_hitter(void *self);
+void		clear_hitter(void *self);
+void		clear_material(void *self);
 // utils_clear.c
 
-void	ft_swap(void *a, void *b, size_t size);
+void		ft_swap(void *a, void *b, size_t size);
 // utils_swap.c
 
 #endif

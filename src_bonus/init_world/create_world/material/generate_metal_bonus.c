@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 09:32:13 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/15 20:20:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 22:46:45 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ t_vec3				orient_normal(
 static t_metal		construct_metal(t_texture *texture_ptr);
 static bool			scatter_metal(
 						const void *s,
-						const t_world *world,
+						t_render_task *r_task,
 						t_hrec *hrec,
 						t_srec *srec);
 static void			record_next_direct_from_pdf(
 						t_hrec *hrec,
-						t_srec *srec);
-static t_vec3		random_in_unit_sphere(void);
+						t_srec *srec,
+						uint64_t *seed);
+static t_vec3		random_in_unit_sphere(uint64_t *seed);
 
 /*
 @brief responsible for free(texture_ptr)
@@ -71,22 +72,22 @@ static t_metal	construct_metal(t_texture *texture_ptr)
 
 static bool	scatter_metal(
 				const void *s,
-				const t_world *world,
+				t_render_task *r_task,
 				t_hrec *hrec,
 				t_srec *srec)
 {
 	const t_metal	*self = s;
 	const t_texture	*texture_ptr = self->material.texture_ptr;
 
-	(void)world;
 	srec->attenuation = texture_ptr->calc_texture_value(texture_ptr, hrec);
-	record_next_direct_from_pdf(hrec, srec);
+	record_next_direct_from_pdf(hrec, srec, &r_task->seed);
 	return (true);
 }
 
 static void	record_next_direct_from_pdf(
 				t_hrec *hrec,
-				t_srec *srec)
+				t_srec *srec,
+				uint64_t *seed)
 {
 	const t_vec3	reflect_normal
 		= orient_normal(&hrec->normal, &hrec->ray_in.direct);
@@ -100,21 +101,21 @@ static void	record_next_direct_from_pdf(
 			add_vec3(
 				reflected,
 				scal_mul_vec3(
-					random_in_unit_sphere(),
+					random_in_unit_sphere(seed),
 					METAL_FUZZINESS)));
 	return ;
 }
 
-static t_vec3	random_in_unit_sphere(void)
+static t_vec3	random_in_unit_sphere(uint64_t *seed)
 {
 	t_vec3	vec;
 
 	while (1)
 	{
 		vec = construct_vec3(
-				random_minus1_to_1(),
-				random_minus1_to_1(),
-				random_minus1_to_1());
+				random_minus1_to_1(seed),
+				random_minus1_to_1(seed),
+				random_minus1_to_1(seed));
 		if (length_squared_vec3(vec) < 1)
 			break ;
 	}

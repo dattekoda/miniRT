@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 20:17:04 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 22:39:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MATERIAL_BONUS_H
 
 # include "scatter_record_bonus.h"
+# include "render_task_bonus.h"
 # include "hit_record_bonus.h"
 # include "rt_utils_bonus.h"
 # include "texture_bonus.h"
@@ -33,7 +34,7 @@ typedef struct s_material
 {
 	bool							(*scatter)(
 		const void *self,
-		const t_world * world,
+		t_render_task *r_task,
 		t_hrec * hrec,
 		t_srec * srec);
 	t_texture						*texture_ptr;
