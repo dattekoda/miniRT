@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   value_skips.c                                      :+:      :+:    :+:   */
+/*   skip_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 18:30:53 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/16 16:49:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 14:59:39 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "result.h"
-#include <float.h>
+#include "rt_define.h"
 #include <math.h>
 #include <stddef.h>
 

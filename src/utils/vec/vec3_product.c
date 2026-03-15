@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 22:05:29 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 19:37:13 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 14:53:15 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 double	dot(t_vec3 lhs, t_vec3 rhs)
 {
-	return (lhs.e[0] * rhs.e[0] \
-+ lhs.e[1] * rhs.e[1] \
-+ lhs.e[2] * rhs.e[2]);
+	return (lhs.e[0] * rhs.e[0]
+		+ lhs.e[1] * rhs.e[1]
+		+ lhs.e[2] * rhs.e[2]);
 }
 
 double	length_squared_vec3(t_vec3 vec3)
