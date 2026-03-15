@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disk.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 18:40:24 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/25 20:35:52 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 19:53:05 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_disk
 	t_point3	center;
 	t_vec3		normal;
 	double		radius;
+	double		rad_squared;
 }	t_disk;
 
 t_hitter	*generate_disk(t_disk disk_param);

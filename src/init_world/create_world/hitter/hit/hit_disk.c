@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 01:52:37 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 19:44:49 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 19:54:17 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	hit_disk(
 		return (false);
 	solu.point = at_ray(ray, solu.solution);
 	if (length_squared_vec3(sub_vec3(solu.point, self->center))
-		> pow(self->radius, 2))
+		> self->rad_squared)
 		return (false);
 	assign_disk_hrec(self, ray, hrec, &solu);
 	range->e[E_MAX] = hrec->param_t;

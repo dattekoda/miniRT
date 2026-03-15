@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_normal_max.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 06:03:28 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/30 07:07:25 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 19:46:06 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 double	calc_normal_max(double d)
 {
-	return (sqrt(1 - pow(d, 2)));
+	return (sqrt(1 - d * d));
 }
