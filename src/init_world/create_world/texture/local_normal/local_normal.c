@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 19:48:21 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 19:06:42 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:06:55 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_vec3	local_normal_ripple(t_vec2 map)
 {
 	const double	frequency = 150 * M_PI;
 	const double	strength = 2.0;
-	const double	r = sqrt(pow(map.e[0], 2) + pow(map.e[1], 2));
+	const double	r = sqrt(map.e[0] * map.e[0] + map.e[1] * map.e[1]);
 	const double	ripple = cos(r * frequency) * strength;
 
 	if (r == 0)

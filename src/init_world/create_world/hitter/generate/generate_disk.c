@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 19:53:32 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:05:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_hitter	*generate_disk(t_disk disk_param)
 
 static t_disk	construct_disk(t_disk disk_param)
 {
-	disk_param.rad_squared = disk_param.radius * disk_param.radius;
+	disk_param.squared_rad = disk_param.radius * disk_param.radius;
 	disk_param.hitter.type = DISK;
 	disk_param.hitter.hit = hit_disk;
 	disk_param.hitter.clear = clear_hitter;

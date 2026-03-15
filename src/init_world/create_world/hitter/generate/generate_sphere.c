@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:55:33 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 19:50:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:05:21 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static t_sphere	construct_sphere(t_sphere shape_param)
 	t_sphere	sphere;
 
 	ft_memmove(&sphere, &shape_param, sizeof(t_sphere));
-	sphere.rad_squared = sphere.radius * sphere.radius;
+	sphere.squared_rad = sphere.radius * sphere.radius;
 	sphere.hitter.type = SPHERE;
 	sphere.hitter.hit = hit_sphere;
 	sphere.hitter.clear = clear_hitter;
