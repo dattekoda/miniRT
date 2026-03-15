@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/15 15:18:09 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 18:37:22 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ extern const unsigned int	g_window_height;
 # define RANDOM_SEED_UINT64 0x629d97afad9281f2
 
 // 2 ** (-53)
-# define DOUBLE_INV_SCALE 0x3ca0000000000000
+# define DOUBLE_INV_SCALE 1.11022302462515e-16
 
 // how heavy to calculate to hit aabb intersection
 # define COST_AABB_INTERSECTION 1.0
