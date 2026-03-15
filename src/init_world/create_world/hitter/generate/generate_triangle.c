@@ -6,10 +6,11 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:54:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 17:56:41 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 19:37:16 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "axis.h"
 #include "triangle.h"
 #include "rt_utils.h"
 #include "solution.h"
@@ -70,13 +71,13 @@ static t_aabb	construct_triangle_aabb(t_triangle triangle)
 	t_point3	max;
 
 	min = construct_vec3(
-			get_min_bound_for_axis(triangle.vertex, 0),
-			get_min_bound_for_axis(triangle.vertex, 1),
-			get_min_bound_for_axis(triangle.vertex, 2));
+			get_min_bound_for_axis(triangle.vertex, A_X),
+			get_min_bound_for_axis(triangle.vertex, A_Y),
+			get_min_bound_for_axis(triangle.vertex, A_Z));
 	max = construct_vec3(
-			get_max_bound_for_axis(triangle.vertex, 0),
-			get_max_bound_for_axis(triangle.vertex, 1),
-			get_max_bound_for_axis(triangle.vertex, 2));
+			get_max_bound_for_axis(triangle.vertex, A_X),
+			get_max_bound_for_axis(triangle.vertex, A_Y),
+			get_max_bound_for_axis(triangle.vertex, A_Z));
 	return (construct_aabb(min, max));
 }
 
@@ -95,11 +96,3 @@ static double	get_max_bound_for_axis(t_point3 vtx[3], int axis)
 				vtx[1].e[axis]),
 			vtx[2].e[axis]) + PLANE_AABB_THICKNESS);
 }
-
-// static void	vertex_to_side(t_vec3 side[3], t_point3 vertex[3])
-// {
-// 	side[0] = sub_vec3(vertex[1], vertex[0]);
-// 	side[1] = sub_vec3(vertex[2], vertex[1]);
-// 	side[2] = sub_vec3(vertex[0], vertex[2]);
-// 	return ;
-// }

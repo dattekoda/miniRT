@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 21:55:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/15 17:56:41 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 19:38:53 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ t_vec3	normalize_vec3(t_vec3 vec3);
 t_vec3	cross(t_vec3 lhs, t_vec3 rhs);
 
 bool	is_inside_range(double d, const t_range *range);
-bool	is_outside_range(double d, const t_range *range);
 // range.c
 
 t_vec2	construct_vec2(double e0, double e1);
