@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 18:28:34 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 19:47:42 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:58:50 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ typedef struct s_rt_img
 {
 	void	*id;
 	char	*addr;
-	int		bpp;
+	int		bit_per_pixel;
 	int		line_len;
 	int		endian;
 }	t_rt_img;

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:00:46 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/26 22:16:54 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:32:48 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_result	token_to_vec(const char *line, size_t *line_idx, t_vec3 *vec)
 			return (result);
 		e_idx++;
 	}
-	return (construct_result(NULL));
+	return (construct_success_result());
 }
 
 static t_result	skip_comma(const char *line, size_t *line_idx)
@@ -43,5 +43,5 @@ static t_result	skip_comma(const char *line, size_t *line_idx)
 	if (line[*line_idx] != ',')
 		return (construct_result("need ','"));
 	(*line_idx)++;
-	return (construct_result(NULL));
+	return (construct_success_result());
 }

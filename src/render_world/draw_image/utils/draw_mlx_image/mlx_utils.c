@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:22:49 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/07 22:36:21 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:58:50 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	init_rt_img(t_rt_img *rt_img, void *mlx)
 	}
 	rt_img->addr = mlx_get_data_addr(
 			rt_img->id,
-			&rt_img->bpp,
+			&rt_img->bit_per_pixel,
 			&rt_img->line_len,
 			&rt_img->endian);
 	if (!rt_img->addr)
@@ -70,7 +70,7 @@ static int	init_rt_img(t_rt_img *rt_img, void *mlx)
 		err_rt("mlx_get_data_addr failed.");
 		return (FAILURE);
 	}
-	rt_img->bpp /= 8;
+	rt_img->bit_per_pixel /= 8;
 	return (SUCCESS);
 }
 

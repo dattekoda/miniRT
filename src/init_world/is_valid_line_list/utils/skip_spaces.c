@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   skip_spaces.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 23:48:23 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/25 11:41:33 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:32:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ t_result	skip_spaces(const char *line, size_t *line_idx)
 		return (construct_result("invalid format"));
 	while (line[*line_idx] == ' ' || line[*line_idx] == '\t')
 		(*line_idx)++;
-	return (construct_result(NULL));
+	return (construct_success_result());
 }

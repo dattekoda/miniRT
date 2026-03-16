@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_define.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:31:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/07 16:38:39 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 18:37:22 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
+# ifndef FLT_EPSILON
+#  define FLT_EPSILON	1.19209290e-7F
+# endif
+
+// # ifndef DBL_EPSILON
+// #  define DBL_EPSILON	2.2204460492503131e-16
+// # endif
+
 extern const unsigned int	g_window_width;
 extern const unsigned int	g_window_height;
 
@@ -28,7 +36,8 @@ extern const unsigned int	g_window_height;
 // /bin/bash -c openssl rand -hex 8
 # define RANDOM_SEED_UINT64 0x629d97afad9281f2
 
-# define DOUBLE_INV_SCALE 0x1p-53
+// 2 ** (-53)
+# define DOUBLE_INV_SCALE 1.11022302462515e-16
 
 // how heavy to calculate to hit aabb intersection
 # define COST_AABB_INTERSECTION 1.0

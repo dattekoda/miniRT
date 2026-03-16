@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 12:52:23 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/17 21:19:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:16:46 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 # define LIBFT_H
 
 # include <stddef.h>
-# include <aio.h>
+
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4096
+#  define BUFFER_SIZE 1
 # endif
+
+# define GNL_ERR_INVALID -3
+# define GNL_ERR_MALLOC -2
+# define GNL_ERR_READ -1
+# define GNL_EOF 0
+# define GNL_LINE 1
 
 typedef struct s_list
 {

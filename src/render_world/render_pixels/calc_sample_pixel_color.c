@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_sample_pixel_color.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 21:51:41 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/03 22:55:57 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:57:50 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static t_color	calc_one_sample_pixel_color(
 					bool is_phong,
 					size_t xi,
 					size_t yi);
-static t_vec2	calc_random_xv(size_t xi, size_t yi);
+static t_vec2	calc_random_xy(size_t xi, size_t yi);
 static t_vec3	random_point_in_unit_disk(void);
 static t_ray	get_ray_from_camera(
 					const t_camera *camera,
@@ -76,7 +76,7 @@ static t_color	calc_one_sample_pixel_color(
 static t_ray	get_ray_from_camera(const t_camera *camera,
 									size_t xi, size_t yi)
 {
-	const t_vec2	random_xv = calc_random_xv(xi, yi);
+	const t_vec2	random_xv = calc_random_xy(xi, yi);
 	const t_vec3	ray_displacement
 		= scal_mul_vec3(random_point_in_unit_disk(), LENS_RADIUS);
 	const t_vec3	offset
@@ -99,7 +99,7 @@ static t_ray	get_ray_from_camera(const t_camera *camera,
 			(sub_vec3(ray_direct, offset))));
 }
 
-static t_vec2	calc_random_xv(size_t xi, size_t yi)
+static t_vec2	calc_random_xy(size_t xi, size_t yi)
 {
 	static const double	inv_w = 1.0 / (WINDOW_WIDTH - 1);
 	static const double	inv_h = 1.0 / (WINDOW_WIDTH * ASPECT_RATIO - 1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:28:48 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/02/20 19:21:35 by ikawamuk         ###   ########.fr       */
+/*   Updated: 2026/03/15 19:40:15 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef struct s_vec3
 {
 	double	e[3];
-}			t_vec3;
+}	t_vec3;
 
 /*
 @param e[0] R
@@ -32,12 +32,25 @@ typedef struct s_vec3
 */
 typedef t_vec3		t_color;
 
+typedef enum e_rgb
+{
+	E_R,
+	E_G,
+	E_B
+}	t_rgb;
+
 /*
 @param e[0] X
 @param e[1] Y
 @param e[2] Z
 */
 typedef t_vec3		t_point3;
+
+typedef enum e_range_edge
+{
+	E_MIN,
+	E_MAX
+}	t_range_edge;
 
 typedef struct s_vec2
 {

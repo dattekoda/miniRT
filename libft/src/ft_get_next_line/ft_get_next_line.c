@@ -6,14 +6,12 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:17:14 by khanadat          #+#    #+#             */
-/*   Updated: 2026/02/11 18:08:48 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:17:29 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "libft.h"
 
-#include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
 

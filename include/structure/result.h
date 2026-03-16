@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:29:47 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/01/15 23:11:25 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:31:58 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ typedef struct s_result
 }	t_result;
 
 t_result	construct_result(char *_err_msg);
+t_result	construct_success_result(void);
 
 #endif

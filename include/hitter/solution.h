@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:27:21 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 18:12:54 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:27:20 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,7 @@
 */
 typedef struct s_solution
 {
-	// t_vec3		center_to_origin;
 	t_point3	point;
-	// double		a;
-	// double		b;
-	// double		c;
 	t_vec3		coeff;
 	double		discriminant;
 	double		root_discriminant;

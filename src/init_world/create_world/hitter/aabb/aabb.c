@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:37:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/06 19:35:06 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 19:08:02 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,24 @@ bool	hit_aabb(
 				const t_vec2 *range)
 {
 	t_range	tmp_range;
-	double	t_min;
-	double	t_max;
-	double	tmp_div;
+	double	tmp_min;
+	double	tmp_max;
 	t_axis	axis;
 
-	t_min = range->e[0];
-	t_max = range->e[1];
+	tmp_min = range->e[E_MIN];
+	tmp_max = range->e[E_MAX];
 	axis = A_X;
-	while (axis < 3)
+	while (axis < A_Z)
 	{
-		tmp_div = 1.0 / ray->direct.e[axis];
-		tmp_range.e[0] = (self->min.e[axis] - ray->origin.e[axis]) * tmp_div;
-		tmp_range.e[1] = (self->max.e[axis] - ray->origin.e[axis]) * tmp_div;
-		if (tmp_div < 0)
-			ft_swap(&tmp_range.e[0], &tmp_range.e[1], sizeof(double));
-		t_min = fmax(tmp_range.e[0], t_min);
-		t_max = fmin(tmp_range.e[1], t_max);
-		if (t_max <= t_min)
+		tmp_range.e[E_MIN] = (self->min.e[axis] - ray->origin.e[axis])
+			* ray->inv_direct.e[axis];
+		tmp_range.e[E_MAX] = (self->max.e[axis] - ray->origin.e[axis])
+			* ray->inv_direct.e[axis];
+		if (ray->inv_direct.e[axis] < 0)
+			ft_swap(&tmp_range.e[E_MIN], &tmp_range.e[E_MAX], sizeof(double));
+		tmp_min = fmax(tmp_range.e[E_MIN], tmp_min);
+		tmp_max = fmin(tmp_range.e[E_MAX], tmp_max);
+		if (tmp_max <= tmp_min)
 			return (false);
 		axis++;
 	}

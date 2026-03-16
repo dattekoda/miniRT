@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 10:21:16 by khanadat          #+#    #+#             */
-/*   Updated: 2026/01/08 11:20:37 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 16:35:51 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	dst[i] = '\0';
 	return (len);
 }
+
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	char	store[100];
+
+// 	ft_strlcpy(store, "hello", sizeof(store));
+// 	printf("%s\n", store);
+// 	ft_strlcpy(store, "a", sizeof(store));
+// 	printf("%s\n", store);
+// 	return (0);
+// }
 
 // #include <bsd/string.h>
 // #include <stdio.h>

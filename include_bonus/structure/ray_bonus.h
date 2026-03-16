@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:46:45 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:54:44 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:17:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_ray
 {
 	t_point3	origin;
 	t_vec3		direct;
+	t_vec3		inv_direct;
 }	t_ray;
 
 t_ray		construct_ray(t_point3 origin, t_vec3 dir);

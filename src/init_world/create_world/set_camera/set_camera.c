@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:13:45 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/06 19:15:10 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:56:41 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ t_camera	get_camera_data(const char *line)
 	token_to_vec(line, &i, &original);
 	token_to_vec(line, &i, &direct);
 	token_to_value(line, &i, &hfov);
-	return (construct_camera(original, normalize(direct), hfov));
+	return (construct_camera(original, normalize_vec3(direct), hfov));
 }

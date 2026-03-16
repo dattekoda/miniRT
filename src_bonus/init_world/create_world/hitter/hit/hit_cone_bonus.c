@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit_cone_bonus.c                                   :+:      :+:    :+:   */
+/*   hit_cone.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:57:55 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:31:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:17:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool	hit_cone(
 	if (!is_solution_inside_range(&solu, range))
 		return (false);
 	assign_cone_hrec(self, ray, hrec, solu.solution);
-	range->e[1] = hrec->param_t;
+	range->e[E_MAX] = hrec->param_t;
 	return (true);
 }
 
@@ -113,7 +113,7 @@ static void	assign_cone_hrec(
 	hrec->param_t = solution;
 	hrec->point = at_ray(ray, hrec->param_t);
 	apex_to_point = sub_vec3(hrec->point, self->apex);
-	hrec->normal = normalize(
+	hrec->normal = normalize_vec3(
 			sub_vec3(
 				apex_to_point,
 				scal_mul_vec3(

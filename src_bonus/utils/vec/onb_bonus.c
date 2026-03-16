@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   onb_bonus.c                                        :+:      :+:    :+:   */
+/*   onb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 22:10:38 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/08 18:31:30 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:17:36 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ t_onb	construct_onb(const t_vec3 vec3)
 	t_onb	onb;
 	t_vec3	operand;
 
-	onb.v[2] = normalize(vec3);
+	onb.v[2] = normalize_vec3(vec3);
 	if (fabs(onb.v[2].e[A_X]) > 0.9)
 		operand = construct_vec3(0, 1, 0);
 	else
 		operand = construct_vec3(1, 0, 0);
-	onb.v[1] = normalize(cross(onb.v[2], operand));
+	onb.v[1] = normalize_vec3(cross(onb.v[2], operand));
 	onb.v[0] = cross(onb.v[2], onb.v[1]);
 	return (onb);
 }

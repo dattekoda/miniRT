@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:16:04 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:32:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:20:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	line_to_plane_param(const char *line, t_plane *plane_param)
 	i = g_element_table[PLANE]->id_len;
 	token_to_vec(line, &i, &plane_param->point);
 	token_to_vec(line, &i, &plane_param->normal);
-	plane_param->normal = normalize(plane_param->normal);
+	plane_param->normal = normalize_vec3(plane_param->normal);
 	if (line_to_material(
 			line, &i, &plane_param->hitter.mat_ptr, g_element_table[PLANE])
 		== FAILURE)

@@ -6,7 +6,7 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/08 18:49:58 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/15 17:51:13 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -495,7 +495,7 @@ endif
 # --- OS DETECTION ---
 UNAME	=	$(shell uname -s)
 ifeq ($(UNAME),Darwin)
-	MLXDIR := minilibx_maxos
+	MLXDIR := minilibx_macos
 	MLXFLAG := -framework OpenGL -framework AppKit
 	GITHUBURL := https://github.com/dannywillems/minilibx.git
 else ifeq ($(UNAME),Linux)
@@ -568,8 +568,6 @@ $(NAME): $(BUILD_OBJS)
 	$(CC) $(CFLAG) $^ $(LDFLAG) $(LDLIBS) -o $@
 	@echo "\n\033[1;32m'$(NAME)' has been created!\033[0m"
 
--include	$(DEPS)
-
 $(LIBFT):
 	@$(MAKE) -C $(LIBFTDIR) bonus
 
@@ -632,3 +630,5 @@ scanb: fclean
 	@$(SCANBUILD) $(MAKE) all
 
 .PHONY:	all clean fclean re bonus rebonus test debug asan valgrind scanb
+
+-include	$(DEPS)

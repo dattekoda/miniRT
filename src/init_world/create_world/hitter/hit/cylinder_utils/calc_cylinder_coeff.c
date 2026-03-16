@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 15:03:57 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/02 15:08:29 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 19:47:54 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ t_vec3	calc_cylinder_coeff(
 		= dot(*center_to_ray_origin, *ray_direct);
 
 	return (construct_vec3(
-			len_sq_ray_dir - pow(dot_ray_dir__cy_dir, 2),
+			len_sq_ray_dir - dot_ray_dir__cy_dir * dot_ray_dir__cy_dir,
 			dot_c_to_ro__ray_dir - dot_ray_dir__cy_dir * dot_cy_dir__c_to_ro,
-			len_sq_c_to_ro - pow(dot_cy_dir__c_to_ro, 2) - pow(radius, 2)));
+			len_sq_c_to_ro
+			- dot_cy_dir__c_to_ro * dot_cy_dir__c_to_ro - radius * radius));
 }

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 00:02:54 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/08 18:32:07 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:20:31 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,14 @@ t_result	construct_result(char *_err_msg)
 	}
 	result.state = FAILURE;
 	result.value.err_msg = _err_msg;
+	return (result);
+}
+
+t_result	construct_success_result(void)
+{
+	t_result	result;
+
+	result.state = SUCCESS;
+	result.value.ok = 0;
 	return (result);
 }
