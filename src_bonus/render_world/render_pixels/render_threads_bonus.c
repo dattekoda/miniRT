@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   thread_render_bonus.c                              :+:      :+:    :+:   */
+/*   render_threads_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 20:26:31 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/17 15:11:38 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/17 21:07:01 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,22 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <math.h>
+#include <stdio.h>
 
 t_color			accumulate_sample_pixel_color(
 					t_render_task *r_task,
 					size_t xi,
 					size_t yi);
+static int		accumulate_with_threads(
+					pthread_t *threads,
+					t_render_task *r_tasks,
+					long core_num);
 static void		*accumulate_routine(void *task_p);
 static int		init_render_task(
 					t_render_task **r_task,
 					t_render_task r_task_param,
 					long size);
 static int		convert_into_raw_rgb(t_color color);
-static void		print_thread_num(long thread_num, int fd);
 
 int	accumulate_raw_rgb_arr(
 				int *raw_rgb_arr,
@@ -45,23 +49,46 @@ int	accumulate_raw_rgb_arr(
 	const long			core_num = sysconf(_SC_NPROCESSORS_ONLN);
 	pthread_t			*threads;
 	t_render_task		*r_tasks;
-	long				threads_idx;
 
 	threads = ft_calloc(core_num, sizeof(pthread_t));
 	if (!threads)
 		return (FAILURE);
 	if (init_render_task(&r_tasks, sample_task, core_num))
 		return (free(threads), FAILURE);
-	print_thread_num(core_num, STDERR_FILENO);
-	threads_idx = -1;
-	while (++threads_idx < core_num)
-		pthread_create(&threads[threads_idx],
-			NULL, accumulate_routine, &r_tasks[threads_idx]);
-	threads_idx = -1;
-	while (++threads_idx < core_num)
-		pthread_join(threads[threads_idx], NULL);
-	ft_putendl_fd("Done", STDERR_FILENO);
+	if (accumulate_with_threads(threads, r_tasks, core_num))
+		return (free(threads), free(r_tasks), FAILURE);
 	return (free(threads), free(r_tasks), SUCCESS);
+}
+
+static int	accumulate_with_threads(
+				pthread_t *threads,
+				t_render_task *r_tasks,
+				long core_num)
+{
+	long	threads_idx;
+	long	join_idx;
+	int		result;
+
+	fprintf(stderr, "%ld threads computing...\n", core_num);
+	threads_idx = -1;
+	result = SUCCESS;
+	while (++threads_idx < core_num)
+	{
+		if (pthread_create(&threads[threads_idx],
+				NULL, accumulate_routine, &r_tasks[threads_idx]))
+		{
+			result = FAILURE;
+			break ;
+		}
+	}
+	join_idx = -1;
+	while (++join_idx < threads_idx)
+	{
+		if (pthread_join(threads[join_idx], NULL))
+			return (FAILURE);
+	}
+	ft_putendl_fd("Done", STDERR_FILENO);
+	return (result);
 }
 
 static int	init_render_task(
@@ -130,12 +157,6 @@ static int	convert_into_raw_rgb(t_color color)
 	g = (int)round((double)0xFF * clamp(gamma_encoded_color.e[1], 0.0, 1.0));
 	b = (int)round((double)0xFF * clamp(gamma_encoded_color.e[2], 0.0, 1.0));
 	return ((r << 16) | (g << 8) | b);
-}
-
-static void	print_thread_num(long thread_num, int fd)
-{
-	ft_putnbr_fd((int)thread_num, fd);
-	ft_putendl_fd(" threads calculating...", fd);
 }
 
 // int	init_threads(pthread_mutex_t **threads, long size)
