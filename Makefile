@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: ikawamuk <ikawamuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/17 15:13:58 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/17 21:41:48 by ikawamuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	miniRT
+BONUS_NAME	=	miniRT_bonus
 
 CC			=	cc
 CFLAG		=	-Wall -Wextra -Werror $(patsubst %,-I%,$(INCDIRS)) -I$(MLXDIR) \
@@ -473,14 +474,6 @@ OBJS			=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 OBJDIR_BONUS	=	obj_bonus
 OBJS_BONUS		=	$(patsubst $(SRCDIR_BONUS)/%.c, $(OBJDIR_BONUS)/%.o, $(SRCS_BONUS))
 
-ifeq ($(MAKECMDGOALS),bonus)
-	BUILD_OBJS	:=	$(OBJS_BONUS)
-else ifeq ($(MAKECMDGOALS),rebonus)
-	BUILD_OBJS	:=	$(OBJS_BONUS)
-else
-	BUILD_OBJS	:=	$(OBJS)
-endif
-
 # --- deps ---
 DEPS		=	$(BUILD_OBJS:.o=.d)
 
@@ -563,11 +556,15 @@ TESTOBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(TESTSRCS))
 # --- Rules ---
 all: $(NAME)
 
-bonus:	$(NAME)
+bonus:	$(BONUS_NAME)
 
-$(NAME): $(BUILD_OBJS)
+$(NAME): $(OBJS)
 	$(CC) $(CFLAG) $^ $(LDFLAG) $(LDLIBS) -o $@
 	@echo "\n\033[1;32m'$(NAME)' has been created!\033[0m"
+
+$(BONUS_NAME): $(OBJS_BONUS)
+	$(CC) $(CFLAG) $^ $(LDFLAG) $(LDLIBS) -o $@
+	@echo "\n\033[1;32m'$(BONUS_NAME)' has been created!\033[0m"
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFTDIR) bonus
@@ -591,9 +588,11 @@ clean:
 fclean: clean
 	$(RM) $(NAME) $(TESTNAME)
 
-re: fclean all
+re: fclean
+	@$(MAKE) all
 
-rebonus: fclean bonus
+rebonus: fclean
+	@$(MAKE) bonus
 
 # --- DEBUGGIN & TESTING ---
 lldba:
