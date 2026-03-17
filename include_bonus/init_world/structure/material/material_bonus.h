@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:45:31 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 22:39:21 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/17 15:16:50 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_material
 {
 	bool							(*scatter)(
 		const void *self,
-		t_render_task *r_task,
+		t_render_task * r_task,
 		t_hrec * hrec,
 		t_srec * srec);
 	t_texture						*texture_ptr;
