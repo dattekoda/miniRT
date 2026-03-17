@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_dielectric.c                              :+:      :+:    :+:   */
+/*   generate_dielectric_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 21:28:52 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/15 20:17:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 23:04:11 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_vec3				refract(
 static t_dielectric	construct_dielectric(t_texture *texture_ptr);
 static bool			scatter_dielectric(
 						const void *s,
-						const t_world *world,
+						t_render_task *r_task,
 						t_hrec *hrec,
 						t_srec *srec);
 static void			record_next_direct(
@@ -72,13 +72,13 @@ static t_dielectric	construct_dielectric(t_texture *texture_ptr)
 
 static bool	scatter_dielectric(
 			const void *s,
-			const t_world *world,
+			t_render_task *r_task,
 			t_hrec *hrec,
 			t_srec *srec)
 {
 	const t_dielectric	*self = s;
 
-	(void)world;
+	(void)r_task;
 	srec->attenuation = self->material.texture_ptr->calc_texture_value(
 			self->material.texture_ptr, hrec);
 	record_next_direct(self, hrec, srec);

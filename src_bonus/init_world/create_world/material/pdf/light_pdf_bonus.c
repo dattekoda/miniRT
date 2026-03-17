@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light_pdf.c                                        :+:      :+:    :+:   */
+/*   light_pdf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:14:59 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 20:17:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 22:25:04 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "light_pdf_bonus.h"
 
 double	calc_light_pdf_value(const void *s, const t_vec3 *direct);
-t_vec3	generate_light_pdf_direction(const void *s);
+t_vec3	generate_light_pdf_direction(const void *s, uint64_t *seed);
 
 /*
 @brief calc pdf to lights

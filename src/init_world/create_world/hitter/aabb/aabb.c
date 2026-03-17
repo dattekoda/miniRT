@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:37:59 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/15 19:08:02 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/16 00:12:25 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	hit_aabb(
 	tmp_min = range->e[E_MIN];
 	tmp_max = range->e[E_MAX];
 	axis = A_X;
-	while (axis < A_Z)
+	while (axis <= A_Z)
 	{
 		tmp_range.e[E_MIN] = (self->min.e[axis] - ray->origin.e[axis])
 			* ray->inv_direct.e[axis];

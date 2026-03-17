@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:04:11 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 20:20:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 22:36:12 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 
 static double	calc_mixture_pdf_value(const void *s, const t_vec3 *direction);
-static t_vec3	generate_mixture_pdf_direction(const void *s);
+static t_vec3	generate_mixture_pdf_direction(const void *s, uint64_t *seed);
 
 t_mixture_pdf	construct_mixture_pdf(
 					const void *surface_pdf,
@@ -46,13 +46,13 @@ static double	calc_mixture_pdf_value(const void *s, const t_vec3 *direction)
 		* light_pdf->pdf.calc_pdf_value(light_pdf, direction));
 }
 
-static t_vec3	generate_mixture_pdf_direction(const void *s)
+static t_vec3	generate_mixture_pdf_direction(const void *s, uint64_t *seed)
 {
 	const t_mixture_pdf	*self = s;
 	const t_pdf			*surface_pdf = self->surface_pdf;
 	const t_light_pdf	*light_pdf = self->light_pdf;
 
-	if (light_pdf->light_list && random_01() < MIXTURE_LIGHT_RATIO)
-		return (light_pdf->pdf.generate(light_pdf));
-	return (surface_pdf->generate(surface_pdf));
+	if (light_pdf->light_list && random_01(seed) < MIXTURE_LIGHT_RATIO)
+		return (light_pdf->pdf.generate(light_pdf, seed));
+	return (surface_pdf->generate(surface_pdf, seed));
 }

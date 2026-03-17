@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_light.c                                   :+:      :+:    :+:   */
+/*   generate_light_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:34:25 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/15 20:17:36 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 22:44:32 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 static t_light	construct_light(t_texture *texture_ptr);
 static bool		scatter_light(
 					const void *s,
-					const t_world *world,
+					t_render_task *r_task,
 					t_hrec *hrec,
 					t_srec *srec);
 
@@ -54,14 +54,14 @@ static t_light	construct_light(t_texture *texture_ptr)
 
 static bool	scatter_light(
 				const void *s,
-				const t_world *world,
+				t_render_task *r_task,
 				t_hrec *hrec,
 				t_srec *srec)
 {
 	const t_texture		*texture_ptr
 		= ((const t_light *)s)->material.texture_ptr;
 
-	(void)world;
+	(void)r_task;
 	if (dot(hrec->normal, hrec->ray_in.direct) > 0)
 		srec->attenuation = construct_vec3(1.0, 0.0, 0.0);
 	else

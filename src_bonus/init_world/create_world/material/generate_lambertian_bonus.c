@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:43:27 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 20:20:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/15 22:47:11 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ void					clear_material(void *s);
 static t_lambertian		construct_lambertian(t_texture *texture_ptr);
 static bool				scatter_lambertian(
 							const void *s,
-							const t_world *world,
+							t_render_task *r_task,
 							t_hrec *hrec,
 							t_srec *srec);
 static void				record_next_direct_from_pdf(
 							const t_list *light_list,
 							const t_hrec *hrec,
-							t_srec *srec);
+							t_srec *srec,
+							uint64_t *seed);
 
 /*
 @brief responsible for free(texture_ptr)
@@ -69,7 +70,7 @@ static t_lambertian	construct_lambertian(t_texture *texture_ptr)
 
 static bool	scatter_lambertian(
 				const void *s,
-				const t_world *world,
+				t_render_task *r_task,
 				t_hrec *hrec,
 				t_srec *srec)
 {
@@ -79,14 +80,16 @@ static bool	scatter_lambertian(
 		= self->material.texture_ptr->calc_texture_value(
 			self->material.texture_ptr,
 			hrec);
-	record_next_direct_from_pdf(world->light_list, hrec, srec);
+	record_next_direct_from_pdf(
+		r_task->world->light_list, hrec, srec, &r_task->seed);
 	return (true);
 }
 
 static void	record_next_direct_from_pdf(
 				const t_list *light_list,
 				const t_hrec *hrec,
-				t_srec *srec)
+				t_srec *srec,
+				uint64_t *seed)
 {
 	const t_vec3		reflect_normal
 		= orient_normal(&hrec->normal, &hrec->ray_in.direct);
@@ -98,7 +101,7 @@ static void	record_next_direct_from_pdf(
 		= construct_mixture_pdf(&cos_pdf, &light_pdf);
 
 	srec->next_ray = construct_ray(
-			hrec->point, mix_pdf.pdf.generate(&mix_pdf));
+			hrec->point, mix_pdf.pdf.generate(&mix_pdf, seed));
 	srec->sampling_pdf = mix_pdf.pdf.calc_pdf_value(
 			&mix_pdf, &srec->next_ray.direct);
 	srec->surface_pdf = mix_pdf.surface_pdf->calc_pdf_value(
