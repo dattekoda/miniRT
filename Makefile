@@ -6,11 +6,12 @@
 #    By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/27 20:41:19 by ikawamuk          #+#    #+#              #
-#    Updated: 2026/03/17 15:13:58 by khanadat         ###   ########.fr        #
+#    Updated: 2026/03/17 21:40:06 by khanadat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	miniRT
+NAME_BONUS	=	miniRT_bonus
 
 CC			=	cc
 CFLAG		=	-Wall -Wextra -Werror $(patsubst %,-I%,$(INCDIRS)) -I$(MLXDIR) \
@@ -563,11 +564,15 @@ TESTOBJS		=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(TESTSRCS))
 # --- Rules ---
 all: $(NAME)
 
-bonus:	$(NAME)
+bonus:	$(NAME_BONUS)
 
 $(NAME): $(BUILD_OBJS)
 	$(CC) $(CFLAG) $^ $(LDFLAG) $(LDLIBS) -o $@
 	@echo "\n\033[1;32m'$(NAME)' has been created!\033[0m"
+
+$(NAME_BONUS): $(BUILD_OBJS)
+	$(CC) $(CFLAG) $^ $(LDFLAG) $(LDLIBS) -o $@
+	@echo "\n\033[1;32m'$(NAME_BONUS)' has been created!\033[0m"
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFTDIR) bonus
@@ -589,7 +594,7 @@ clean:
 	@$(RMDIR) $(OBJDIR_BONUS)
 
 fclean: clean
-	$(RM) $(NAME) $(TESTNAME)
+	$(RM) $(NAME) $(NAME_BONUS) $(TESTNAME)
 
 re: fclean all
 
