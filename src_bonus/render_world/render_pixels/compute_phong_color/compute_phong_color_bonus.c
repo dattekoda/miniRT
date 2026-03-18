@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:39:39 by ikawamuk          #+#    #+#             */
-/*   Updated: 2026/03/15 23:15:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/18 15:51:19 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ t_color	compute_phong_color(
 
 	range = construct_vec2(HIT_T_MIN, INFINITY);
 	if (r_task->world->object_tree
-		&& r_task->world->object_tree->hit(r_task->world->object_tree, ray, &hrec, &range))
+		&& r_task->world->object_tree->hit(
+			r_task->world->object_tree, ray, &hrec, &range))
 		return (calc_phong_color(r_task, &hrec));
 	return (r_task->world->ambient_light);
 }
