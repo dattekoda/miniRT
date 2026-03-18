@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:58:49 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/15 20:21:24 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/18 18:34:34 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ int			close_window(t_rt_mlx *rt_mlx);
 int			init_rt_mlx(t_rt_mlx *rt_mlx);
 int			init_rt_img(t_rt_img *rt_img, void *mlx);
 void		clear_rt_mlx(t_rt_mlx *rt_mlx);
+static int	key_handler(int key, t_rt_mlx *rt_mlx);
+static int	draw_image_again(void *param);
 static void	raw_rgb_arr_to_mlx_addr(
 				void *mlx,
 				t_rt_img *rt_img,
 				const int *raw_rgb_arr);
-static int	key_handler(int key, t_rt_mlx *rt_mlx);
 
 int	draw_mlx_image(int **raw_rgb_arr)
 {
@@ -52,6 +53,7 @@ int	draw_mlx_image(int **raw_rgb_arr)
 		0);
 	mlx_hook(rt_mlx.var.win, ClientMessage, NoEventMask, close_window, &rt_mlx);
 	mlx_key_hook(rt_mlx.var.win, key_handler, &rt_mlx);
+	mlx_expose_hook(rt_mlx.var.win, draw_image_again, &rt_mlx);
 	mlx_loop(rt_mlx.var.mlx);
 	return (SUCCESS);
 }
@@ -60,6 +62,20 @@ static int	key_handler(int key, t_rt_mlx *rt_mlx)
 {
 	if (key == XK_Escape || key == XK_q)
 		close_window(rt_mlx);
+	return (0);
+}
+
+static int	draw_image_again(void *param)
+{
+	t_rt_mlx	*rt_mlx_p;
+
+	rt_mlx_p = param;
+	mlx_put_image_to_window(
+		rt_mlx_p->var.mlx,
+		rt_mlx_p->var.win,
+		rt_mlx_p->img.id,
+		0,
+		0);
 	return (0);
 }
 
