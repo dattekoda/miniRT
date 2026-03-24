@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:17:14 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/15 17:17:29 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/24 18:04:26 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	ft_get_next_line(int fd, char **line)
 	static char	*store = NULL;
 	ssize_t		ws_ret;
 
+	if (fd == STORE_FREE_FD)
+		safe_free(&store);
 	if (!line || fd < 0 || BUFFER_SIZE <= 0)
 		return (GNL_ERR_INVALID);
 	*line = NULL;

@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:33:32 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/15 20:20:31 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/24 20:05:44 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static int	read_lines_to_list(t_list *cur, int fd)
 		cur = cur->next;
 	}
 	if (!cur)
-		return (free(line), perror_rt("malloc"), FAILURE);
+		return (ft_get_next_line(STORE_FREE_FD, NULL),
+			free(line), perror_rt("malloc"), FAILURE);
 	return (SUCCESS);
 }

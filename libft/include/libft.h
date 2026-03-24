@@ -6,7 +6,7 @@
 /*   By: khanadat <khanadat@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 12:52:23 by khanadat          #+#    #+#             */
-/*   Updated: 2026/03/15 17:16:46 by khanadat         ###   ########.fr       */
+/*   Updated: 2026/03/24 18:04:47 by khanadat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
+
+# define STORE_FREE_FD	-7
 
 # define GNL_ERR_INVALID -3
 # define GNL_ERR_MALLOC -2
